@@ -1,34 +1,34 @@
-package commons.impl;
+package model.entity.commons.impl;
 
-import commons.api.Health;
+import model.entity.commons.api.*;
 
 public class HealthImpl implements Health {
 
-    private float maxHealth;
-    private float currentHealth;
+    private Integer maxHealth;
+    private Integer currentHealth;
 
-    public HealthImpl(float maxHealth) {
+    public HealthImpl(Integer maxHealth) {
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
     }
 
     @Override
-    public float getCurrentHealth() {
+    public Integer getCurrentHealth() {
         return currentHealth;
     }
 
     @Override
-    public float getMaxHealth() {
+    public Integer getMaxHealth() {
         return maxHealth;
     }
 
     @Override
-    public void decreaseHealth(float amount) {
+    public void decreaseHealth(Integer amount) {
         this.currentHealth = this.currentHealth - amount;
     }
 
     @Override
-    public void increaseHealth(float amount) {
+    public void increaseHealth(Integer amount) {
         this.currentHealth = this.currentHealth + amount;
     }
     

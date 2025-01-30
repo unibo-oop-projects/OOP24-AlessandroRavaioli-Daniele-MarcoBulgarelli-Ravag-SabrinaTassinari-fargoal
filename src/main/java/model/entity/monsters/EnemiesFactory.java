@@ -1,4 +1,4 @@
-package model.monsters;
+package model.entity.monsters;
 
 public interface EnemiesFactory {
     

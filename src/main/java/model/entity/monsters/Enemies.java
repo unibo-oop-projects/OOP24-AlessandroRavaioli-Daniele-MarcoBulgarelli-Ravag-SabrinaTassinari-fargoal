@@ -1,4 +1,4 @@
-package model.monsters;
+package model.entity.monsters;
 
 import commons.api.*;
 

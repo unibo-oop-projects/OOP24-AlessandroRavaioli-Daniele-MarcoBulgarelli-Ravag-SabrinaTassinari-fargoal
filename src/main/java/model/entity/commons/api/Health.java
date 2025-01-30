@@ -1,4 +1,4 @@
-package commons.api;
+package model.entity.commons.api;
 
 public interface Health {
     
@@ -6,23 +6,23 @@ public interface Health {
      * Getter for the current health.
      * @return current health.
      */
-    public float getCurrentHealth();
+    public Integer getCurrentHealth();
 
     /*
      * Getter for the max health of the floor.
      * @return max health
      */
-    public float getMaxHealth();
+    public Integer getMaxHealth();
 
     /*
      * Decreases the current health value.
      * @param amount to subtract to the current health value.
      */
-    public void decreaseHealth(float amount);
+    public void decreaseHealth(Integer amount);
 
     /*
      * Increases the current health value.
      * @param amount to add to the current health value.
      */
-    public void increaseHealth(float amount);
+    public void increaseHealth(Integer amount);
 }
