@@ -1,12 +1,12 @@
-package fargoal.model.entity.monsters.impl;
+package model.entity.monsters.impl;
 
-import fargoal.model.entity.monsters.api.AbstractMonster;
+import model.entity.monsters.api.AbstractMonster;
 
-public class Barbarian extends AbstractMonster{
+public class Assassin extends AbstractMonster{
 
     @Override
     public String getTag() {
-        return "BARBARIAN";
+        return "ASSASSIN";
     }
 
     @Override

@@ -15,32 +15,38 @@ public class MonsterFactoryImpl implements MonsterFactory{
 
     @Override
     public AbstractMonster generateBarbarian() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateBarbarian'");
+        monster = new Barbarian();
+        return monster;
     }
 
     @Override
     public AbstractMonster generateMonk() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateMonk'");
+        monster = new Monk();
+        return monster;
     }
 
     @Override
     public AbstractMonster generateAssassin() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateAssassin'");
+        monster = new Assassin();
+        return monster;
     }
 
     @Override
     public AbstractMonster generateWarLord() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateWarLord'");
+        monster = new WarLord();
+        return monster;
     }
 
     @Override
     public AbstractMonster generateMage() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateMage'");
+        monster = new Mage();
+        return monster;
+    }
+
+    @Override
+    public AbstractMonster generateSpider() {
+        monster = new Spider();
+        return monster;
     }
     
 }

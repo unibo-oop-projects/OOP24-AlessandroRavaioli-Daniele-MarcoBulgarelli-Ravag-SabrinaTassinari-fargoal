@@ -6,3 +6,4 @@ public interface EnemiesFactory {
 
     Enemies generateMonsterY();
 }
+
