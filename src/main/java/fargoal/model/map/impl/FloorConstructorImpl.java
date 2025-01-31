@@ -21,6 +21,12 @@ public class FloorConstructorImpl implements FloorConstructor{
     
     private class FloorMapBuilder {
     
+        private static final int NUMBER_OF_ROOMS_AND_CORRIDORS = 10;
+        private static final int OPPOSITE_DIRECTION = 3;
+        private static final int MINIMUM_ROOM_SIZE = 3;
+        private static final int VARIABLE_ROOM_SIZE = 5;
+        private static final int MINIMUM_CORRIDOR_LENGTH = 5;
+        private static final int VARIABLE_CORRIDOR_LENGTH = 8;
         Set<Position> temporaryTiles = new HashSet<>();
         List<Position> centers = new ArrayList<>();
         private final Dimension size;
@@ -57,12 +63,12 @@ public class FloorConstructorImpl implements FloorConstructor{
                         new Position(0, -1)));
             FloorState state = FloorState.CONTINUE;
             Random rnd = new Random();
-            int direction = rnd.nextInt(4);
+            int direction = rnd.nextInt(directions.size());
             Position currentPosition = pos;
 
             while (state.equals(FloorState.CONTINUE)) {
                 state = FloorState.CONTINUE;
-                int length = rnd.nextInt(8) + 5;
+                int length = rnd.nextInt(VARIABLE_CORRIDOR_LENGTH) + MINIMUM_CORRIDOR_LENGTH;
                 
                 for(int j = 0; j < length; j++) {
                     currentPosition = currentPosition.add(directions.get(direction));
@@ -83,21 +89,21 @@ public class FloorConstructorImpl implements FloorConstructor{
 
                 int last = direction;
                 do {
-                    direction = rnd.nextInt(4);
-                } while (direction == 3 - last);
+                    direction = rnd.nextInt(directions.size());
+                } while (direction == OPPOSITE_DIRECTION - last);
             }
         }
 
         private FloorMapBuilder buildRooms(){
-            for(int i = 0; i < 10; i++) {
+            for(int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
                 centers.add(new Position(rnd.nextInt(size.length() - 1), rnd.nextInt(size.height() - 1)));
-                this.buildRoom(centers.get(i), rnd.nextInt(5) + 3, rnd.nextInt(5) + 3);
+                this.buildRoom(centers.get(i), rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE, rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE);
             }
             return this;
         }
 
         private FloorMapBuilder buildCorridors(){
-            for(int i = 0; i < 10; i++) {
+            for(int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
                 this.buildCorridor(centers.get(i));
             }
             return this;
