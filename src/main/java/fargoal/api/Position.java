@@ -1,4 +1,4 @@
-package commons.api;
+package fargoal.api;
 
 public record Position(int x, int y) {
 

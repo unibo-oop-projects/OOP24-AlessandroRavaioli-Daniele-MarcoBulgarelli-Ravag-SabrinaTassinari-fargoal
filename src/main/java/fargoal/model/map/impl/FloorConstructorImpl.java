@@ -1,4 +1,4 @@
-package model.map.impl;
+package fargoal.model.map.impl;
 
 import java.util.ArrayList;
 import java.util.HashSet;

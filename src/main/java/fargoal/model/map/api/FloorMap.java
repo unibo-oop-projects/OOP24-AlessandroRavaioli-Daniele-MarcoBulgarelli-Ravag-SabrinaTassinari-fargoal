@@ -1,6 +1,6 @@
-package model.map.api;
+package fargoal.model.map.api;
 
-import commons.api.Position;
+import fargoal.api.Position;
 
 public interface FloorMap {
     

@@ -1,4 +1,4 @@
-package model.entity.commons.api;
+package fargoal.model.entity.commons.api;
 
 public interface Health {
     

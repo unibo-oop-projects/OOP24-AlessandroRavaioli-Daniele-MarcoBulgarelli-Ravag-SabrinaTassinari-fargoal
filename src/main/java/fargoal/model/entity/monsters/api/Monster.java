@@ -1,6 +1,6 @@
-package model.entity.monsters.api;
+package fargoal.model.entity.monsters.api;
 
-import model.entity.commons.api.Entity;
+import fargoal.model.entity.commons.api.Entity;
 
 public interface Monster extends Entity{
     

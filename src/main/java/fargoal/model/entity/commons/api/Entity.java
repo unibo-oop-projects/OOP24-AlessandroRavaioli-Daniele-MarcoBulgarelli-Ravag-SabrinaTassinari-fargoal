@@ -1,7 +1,7 @@
-package model.entity.commons.api;
+package fargoal.model.entity.commons.api;
 
-import commons.api.*;
-import model.FloorElement;
+import fargoal.api.Position;
+import fargoal.model.FloorElement;
 
 public interface Entity extends FloorElement{
     

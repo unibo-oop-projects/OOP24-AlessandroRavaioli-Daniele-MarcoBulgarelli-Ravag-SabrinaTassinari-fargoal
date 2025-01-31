@@ -1,6 +1,6 @@
-package model.entity.commons.impl;
+package fargoal.model.entity.commons.impl;
 
-import model.entity.commons.api.*;
+import fargoal.model.entity.commons.api.*;
 
 public class HealthImpl implements Health {
 
