@@ -1,18 +1,21 @@
 package fargoal.model.entity.monsters.impl;
 
+import fargoal.api.Position;
 import fargoal.model.entity.monsters.api.AbstractMonster;
+import fargoal.model.entity.monsters.api.MonsterType;
+import fargoal.model.map.api.FloorMap;
 
 public class Mage extends AbstractMonster{
+
+    public Mage(Position position, Integer level, FloorMap floorMap) {
+        setMonsterType(MonsterType.MAGE);
+        setPosition(position);
+        setFloorMap(floorMap);
+    }
 
     @Override
     public String getTag() {
         return "MAGE";
-    }
-
-    @Override
-    public void move() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'move'");
     }
     
 }

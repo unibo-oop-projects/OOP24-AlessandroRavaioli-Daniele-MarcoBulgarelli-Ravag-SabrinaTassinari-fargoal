@@ -1,15 +1,21 @@
 package fargoal.model.entity.monsters.api;
 
+import java.util.Random;
+
 import fargoal.api.Position;
 import fargoal.model.entity.commons.api.*;
+import fargoal.model.map.api.*;
 
 
 public abstract class AbstractMonster implements Monster{
 
+    private final Integer POSSIBLE_DIRECTIONS = 2;
+    private FloorMap floorMap;
     private MonsterType monsterType;
     private Health health;
     private Position position;
     private Integer skill;
+    private final Random random = new Random();
     
     @Override
     public MonsterType getMonsterType() {
@@ -35,8 +41,6 @@ public abstract class AbstractMonster implements Monster{
         return false;
     }
 
-    public abstract void move();
-
     public void setMonsterType(MonsterType monsterType) {
         this.monsterType = monsterType;
     }
@@ -51,6 +55,26 @@ public abstract class AbstractMonster implements Monster{
 
     public void setSkill(Integer skill) {
         this.skill = skill;
+    }
+
+    public Integer getRandom(int num) {
+        return random.nextInt(num);
+    }
+
+    public void setFloorMap(FloorMap floorMap) {
+        this.floorMap = floorMap;
+    }
+
+    public FloorMap getFloorMap() {
+        return this.floorMap;
+    }
+
+    public void move() {
+        Position pos;
+        do {
+            pos = getPosition().add(new Position(getRandom(POSSIBLE_DIRECTIONS), getRandom(POSSIBLE_DIRECTIONS)));
+        } while(getFloorMap().isTile(pos));
+        setPosition(pos);
     }
     
 }
