@@ -1,6 +1,6 @@
-package model.entity.monsters;
+package fargoal.model.entity.monsters;
 
-import commons.api.*;
+import fargoal.api.*;
 
 public interface Enemies {
     

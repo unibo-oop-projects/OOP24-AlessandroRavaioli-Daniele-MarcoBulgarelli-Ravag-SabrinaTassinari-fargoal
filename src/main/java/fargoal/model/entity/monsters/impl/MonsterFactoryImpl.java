@@ -1,7 +1,7 @@
-package model.entity.monsters.impl;
+package fargoal.model.entity.monsters.impl;
 
-import model.entity.monsters.api.AbstractMonster;
-import model.entity.monsters.api.MonsterFactory;
+import fargoal.model.entity.monsters.api.AbstractMonster;
+import fargoal.model.entity.monsters.api.MonsterFactory;
 
 public class MonsterFactoryImpl implements MonsterFactory{
 

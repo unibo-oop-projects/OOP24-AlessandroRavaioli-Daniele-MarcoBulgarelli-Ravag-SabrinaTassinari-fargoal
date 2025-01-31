@@ -1,4 +1,4 @@
-package model.map.api;
+package fargoal.model.map.api;
 
 public interface FloorConstructor {
     

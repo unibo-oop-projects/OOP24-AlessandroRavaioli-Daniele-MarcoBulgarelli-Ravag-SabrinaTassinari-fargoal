@@ -1,9 +1,9 @@
-package model.map.impl;
+package fargoal.model.map.impl;
 
 import java.util.Set;
 
-import commons.api.Position;
-import model.map.api.FloorMap;
+import fargoal.api.Position;
+import fargoal.model.map.api.FloorMap;
 
 public class FloorMapImpl implements FloorMap {
 

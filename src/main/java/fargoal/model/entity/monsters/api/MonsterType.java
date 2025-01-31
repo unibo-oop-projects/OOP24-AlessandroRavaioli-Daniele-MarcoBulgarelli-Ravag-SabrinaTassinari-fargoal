@@ -1,4 +1,4 @@
-package model.entity.monsters.api;
+package fargoal.model.entity.monsters.api;
 
 public enum MonsterType {
     /* an enemy that will always steal when attacking. */

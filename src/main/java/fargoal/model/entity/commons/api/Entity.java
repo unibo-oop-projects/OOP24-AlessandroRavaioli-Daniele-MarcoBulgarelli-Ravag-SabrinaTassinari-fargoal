@@ -1,14 +1,12 @@
-package model.entity.commons.api;
+package fargoal.model.entity.commons.api;
 
-import commons.api.*;
-import model.FloorElement;
+import fargoal.api.*;
 
-public interface Entity extends FloorElement{
+public interface Entity {
     
-    Integer getHealth();
+    public Integer getHealth();
 
-    Position getPosition();
+    public Position getPosition();
 
-    Integer getSkill();
-
+    public Integer getSkill();
 }

@@ -1,7 +1,6 @@
-package model.entity.monsters.impl;
+package fargoal.model.entity.monsters.impl;
 
-import model.entity.commons.api.*;
-import model.entity.monsters.api.AbstractMonster;
+import fargoal.model.entity.monsters.api.AbstractMonster;
 
 public class Rogue extends AbstractMonster{
 

@@ -1,7 +1,8 @@
-package model.entity.monsters.api;
+package fargoal.model.entity.monsters.api;
 
-import commons.api.Position;
-import model.entity.commons.api.*;
+import fargoal.api.Position;
+import fargoal.model.entity.commons.api.Health;
+
 
 
 public abstract class AbstractMonster implements Monster{

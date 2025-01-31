@@ -1,6 +1,6 @@
-package model.entity.commons.impl;
+package fargoal.model.entity.commons.impl;
 
-import model.entity.commons.api.*;
+import fargoal.model.entity.commons.api.*;
 
 public class HealthImpl implements Health {
 
@@ -30,11 +30,6 @@ public class HealthImpl implements Health {
     @Override
     public void increaseHealth(Integer amount) {
         this.currentHealth = this.currentHealth + amount;
-    }
-
-    @Override
-    public void setHealth(Integer amount) {
-        this.currentHealth = amount;
     }
     
 }

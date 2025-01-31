@@ -1,4 +1,4 @@
-package model.entity.monsters.api;
+package fargoal.model.entity.monsters.api;
 
 public interface MonsterFactory {
 

@@ -1,4 +1,4 @@
-package model.map.impl;
+package fargoal.model.map.impl;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,9 +7,9 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import commons.api.Position;
-import model.map.api.FloorConstructor;
-import model.map.api.FloorMap;
+import fargoal.api.Position;
+import fargoal.model.map.api.FloorConstructor;
+import fargoal.model.map.api.FloorMap;
 
 public class FloorConstructorImpl implements FloorConstructor{
 
