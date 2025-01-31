@@ -6,4 +6,5 @@ public interface FloorMap {
     
     boolean isTile(Position pos);
 
+    Dimension getSize();
 }

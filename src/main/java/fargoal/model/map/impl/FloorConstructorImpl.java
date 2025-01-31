@@ -8,24 +8,27 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import fargoal.api.Position;
+import fargoal.model.map.api.Dimension;
 import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;
 
 public class FloorConstructorImpl implements FloorConstructor{
 
     @Override
-    public FloorMap createFloor(int size) {
-        FloorMapBuilder builder = new FloorMapBuilder(size);
+    public FloorMap createFloor(int length, int height) {
+        FloorMapBuilder builder = new FloorMapBuilder(length, height);
         Random rnd = new Random();
         List<Position> centers = new ArrayList<>();
         for(int i = 0; i < 10; i++) {
-            centers.add(new Position(rnd.nextInt(size - 1), rnd.nextInt(size - 1)));
+            System.out.println("Stanza " + i);
+            centers.add(new Position(rnd.nextInt(length - 1), rnd.nextInt(height - 1)));
             builder.buildRoom(
                 centers.get(i),
                 rnd.nextInt(5) + 3,
                 rnd.nextInt(5) + 3);
         }
         for(int i = 0; i < 10; i++) {
+            System.out.println("Corridoio " + i);
             builder.buildCorridor(centers.get(i));
         }
         return builder.build();
@@ -34,18 +37,18 @@ public class FloorConstructorImpl implements FloorConstructor{
     private class FloorMapBuilder {
     
         Set<Position> temporaryTiles = new HashSet<>();
-        final private int size;
+        private final Dimension size;
 
-        public FloorMapBuilder(int size){
-            this.size = size;
+        public FloorMapBuilder(int length, int height){
+            this.size = new Dimension(length, height);
         }
 
         private FloorMap build() {
             temporaryTiles = temporaryTiles.stream()
                     .filter(p -> p.x() >= 1 && p.y() >= 1)
-                    .filter(p -> p.x() < this.size - 1 && p.y() < this.size - 1)
+                    .filter(p -> p.x() < this.size.length() - 1 && p.y() < this.size.height() - 1)
                     .collect(Collectors.toSet());
-            return new FloorMapImpl(temporaryTiles);
+            return new FloorMapImpl(temporaryTiles, size.length(), size.height());
         }
 
         private void buildRoom(Position pos, int height, int length){
@@ -80,7 +83,7 @@ public class FloorConstructorImpl implements FloorConstructor{
                         state = FloorState.WALL;
                     }
                     if (currentPosition.x() < 1 || currentPosition.y() < 1 
-                        || currentPosition.x() >= this.size - 1 || currentPosition.y() >= this.size - 1) {
+                        || currentPosition.x() >= this.size.length() - 1 || currentPosition.y() >= this.size.height() - 1) {
                         break;
                     }
                     if (state.equals(FloorState.WALL) && this.temporaryTiles.contains(currentPosition)) {
