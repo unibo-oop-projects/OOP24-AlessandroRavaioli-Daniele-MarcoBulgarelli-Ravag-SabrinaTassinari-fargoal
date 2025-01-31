@@ -27,10 +27,10 @@ public class FloorConstructorImpl implements FloorConstructor{
                 rnd.nextInt(5) + 3,
                 rnd.nextInt(5) + 3);
         }
-        for(int i = 0; i < 10; i++) {
-            System.out.println("Corridoio " + i);
-            builder.buildCorridor(centers.get(i));
-        }
+        // for(int i = 0; i < 10; i++) {
+        //     System.out.println("Corridoio " + i);
+        //     builder.buildCorridor(centers.get(i));
+        // }
         return builder.build();
     }
     
