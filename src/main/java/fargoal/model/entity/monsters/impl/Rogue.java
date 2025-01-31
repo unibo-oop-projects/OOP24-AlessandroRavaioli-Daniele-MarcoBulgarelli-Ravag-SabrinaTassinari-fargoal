@@ -1,8 +1,8 @@
 package fargoal.model.entity.monsters.impl;
 
+import fargoal.commons.api.*;
 import fargoal.model.entity.monsters.api.*;
 import fargoal.model.map.api.FloorMap;
-import fargoal.api.*;
 
 public class Rogue extends AbstractMonster{
 

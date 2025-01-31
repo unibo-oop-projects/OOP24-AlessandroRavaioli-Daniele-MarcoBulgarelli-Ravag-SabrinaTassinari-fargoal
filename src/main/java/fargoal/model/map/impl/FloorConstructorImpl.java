@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import fargoal.api.Position;
+import fargoal.commons.api.Position;
 import fargoal.model.map.api.Dimension;
 import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;

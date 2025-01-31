@@ -2,7 +2,7 @@ package fargoal.model.map.impl;
 
 import java.util.Set;
 
-import fargoal.api.Position;
+import fargoal.commons.api.Position;
 import fargoal.model.map.api.Dimension;
 import fargoal.model.map.api.FloorMap;
 
