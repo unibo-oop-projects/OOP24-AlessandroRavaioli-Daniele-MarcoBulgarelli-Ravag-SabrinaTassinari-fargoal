@@ -24,7 +24,7 @@ public class TestFloorGeneration {
             for(int j = 0; j < 40; j++){
                 System.out.print(
                     TestFloorGeneration.map.isTile(new Position(j, i)) 
-                        ? new Position(j, i)
+                        ? "O"
                         : " "
                 );
             }

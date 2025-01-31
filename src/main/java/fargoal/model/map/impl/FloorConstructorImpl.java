@@ -16,28 +16,15 @@ public class FloorConstructorImpl implements FloorConstructor{
 
     @Override
     public FloorMap createFloor(int length, int height) {
-        FloorMapBuilder builder = new FloorMapBuilder(length, height);
-        Random rnd = new Random();
-        List<Position> centers = new ArrayList<>();
-        for(int i = 0; i < 10; i++) {
-            System.out.println("Stanza " + i);
-            centers.add(new Position(rnd.nextInt(length - 1), rnd.nextInt(height - 1)));
-            builder.buildRoom(
-                centers.get(i),
-                rnd.nextInt(5) + 3,
-                rnd.nextInt(5) + 3);
-        }
-        // for(int i = 0; i < 10; i++) {
-        //     System.out.println("Corridoio " + i);
-        //     builder.buildCorridor(centers.get(i));
-        // }
-        return builder.build();
+        return new FloorMapBuilder(length, height).buildRooms().buildCorridors().build();
     }
     
     private class FloorMapBuilder {
     
         Set<Position> temporaryTiles = new HashSet<>();
+        List<Position> centers = new ArrayList<>();
         private final Dimension size;
+        private final Random rnd = new Random();
 
         public FloorMapBuilder(int length, int height){
             this.size = new Dimension(length, height);
@@ -78,7 +65,7 @@ public class FloorConstructorImpl implements FloorConstructor{
                 int length = rnd.nextInt(8) + 5;
                 
                 for(int j = 0; j < length; j++) {
-                    currentPosition.add(directions.get(direction));
+                    currentPosition = currentPosition.add(directions.get(direction));
                     if (!this.temporaryTiles.contains(currentPosition)) {
                         state = FloorState.WALL;
                     }
@@ -99,6 +86,21 @@ public class FloorConstructorImpl implements FloorConstructor{
                     direction = rnd.nextInt(4);
                 } while (direction == 3 - last);
             }
+        }
+
+        private FloorMapBuilder buildRooms(){
+            for(int i = 0; i < 10; i++) {
+                centers.add(new Position(rnd.nextInt(size.length() - 1), rnd.nextInt(size.height() - 1)));
+                this.buildRoom(centers.get(i), rnd.nextInt(5) + 3, rnd.nextInt(5) + 3);
+            }
+            return this;
+        }
+
+        private FloorMapBuilder buildCorridors(){
+            for(int i = 0; i < 10; i++) {
+                this.buildCorridor(centers.get(i));
+            }
+            return this;
         }
     }
 }
