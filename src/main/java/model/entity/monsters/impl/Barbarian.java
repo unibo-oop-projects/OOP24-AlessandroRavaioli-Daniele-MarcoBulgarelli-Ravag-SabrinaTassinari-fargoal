@@ -6,8 +6,7 @@ public class Barbarian extends AbstractMonster{
 
     @Override
     public String getTag() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+        return "BARBARIAN";
     }
 
     @Override

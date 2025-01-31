@@ -15,4 +15,6 @@ public interface MonsterFactory {
     AbstractMonster generateWarLord();
 
     AbstractMonster generateMage();
+
+    AbstractMonster generateSpider();
 }

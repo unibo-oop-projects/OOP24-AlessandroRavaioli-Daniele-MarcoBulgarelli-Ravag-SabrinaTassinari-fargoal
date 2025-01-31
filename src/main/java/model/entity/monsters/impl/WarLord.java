@@ -2,11 +2,11 @@ package model.entity.monsters.impl;
 
 import model.entity.monsters.api.AbstractMonster;
 
-public class Rogue extends AbstractMonster{
+public class WarLord extends AbstractMonster{
 
     @Override
     public String getTag() {
-        return "ROGUE";
+        return "WAR_LORD";
     }
 
     @Override
