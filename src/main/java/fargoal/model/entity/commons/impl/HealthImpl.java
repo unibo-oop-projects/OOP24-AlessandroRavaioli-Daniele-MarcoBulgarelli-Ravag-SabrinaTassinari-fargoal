@@ -31,5 +31,10 @@ public class HealthImpl implements Health {
     public void increaseHealth(Integer amount) {
         this.currentHealth = this.currentHealth + amount;
     }
+
+    @Override
+    public void setHealth(Integer amount) {
+        this.currentHealth = amount;
+    }
     
 }
