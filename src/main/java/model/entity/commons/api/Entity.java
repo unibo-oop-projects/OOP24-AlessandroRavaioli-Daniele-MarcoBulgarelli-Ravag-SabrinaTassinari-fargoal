@@ -1,12 +1,14 @@
 package model.entity.commons.api;
 
 import commons.api.*;
+import model.FloorElement;
 
-public interface Entity {
+public interface Entity extends FloorElement{
     
-    public Integer getHealth();
+    Integer getHealth();
 
-    public Position getPosition();
+    Position getPosition();
 
-    public Integer getSkill();
+    Integer getSkill();
+
 }

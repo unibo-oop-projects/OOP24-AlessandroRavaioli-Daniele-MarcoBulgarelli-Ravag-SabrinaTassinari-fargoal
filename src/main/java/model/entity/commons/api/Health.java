@@ -25,4 +25,10 @@ public interface Health {
      * @param amount to add to the current health value.
      */
     public void increaseHealth(Integer amount);
+
+    /*
+     * Set the value of the current health value.
+     * @param amount to set to the current health value.
+     */
+    public void setHealth(Integer amount);
 }
