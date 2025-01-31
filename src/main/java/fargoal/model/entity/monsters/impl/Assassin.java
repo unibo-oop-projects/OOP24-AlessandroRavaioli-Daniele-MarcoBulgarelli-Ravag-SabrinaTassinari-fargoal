@@ -11,8 +11,7 @@ public class Assassin extends AbstractMonster{
 
     @Override
     public void move() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'move'");
+        
     }
     
 }

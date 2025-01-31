@@ -36,5 +36,21 @@ public abstract class AbstractMonster implements Monster{
     }
 
     public abstract void move();
+
+    public void setMonsterType(MonsterType monsterType) {
+        this.monsterType = monsterType;
+    }
+
+    public void setHealth(Health health) {
+        this.health = health;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
+    public void setSkill(Integer skill) {
+        this.skill = skill;
+    }
     
 }
