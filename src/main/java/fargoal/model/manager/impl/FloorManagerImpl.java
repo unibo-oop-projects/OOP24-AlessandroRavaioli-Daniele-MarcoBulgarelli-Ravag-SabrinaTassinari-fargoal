@@ -16,6 +16,7 @@ public class FloorManagerImpl implements FloorManager {
     public FloorManagerImpl() {
         this.monsters = new LinkedList<>();
     }
+    
     @Override
     public void update(Command input) {
         // TODO Auto-generated method stub
