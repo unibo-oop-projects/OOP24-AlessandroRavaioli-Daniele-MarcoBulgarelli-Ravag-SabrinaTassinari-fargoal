@@ -10,12 +10,25 @@ public class Assassin extends AbstractMonster{
     public Assassin(Position position, Integer level, FloorMap floorMap) {
         setMonsterType(MonsterType.ASSASSIN);
         setPosition(position); 
-        setFloorMap(floorMap); 
+        setFloorMap(floorMap);
+        setSkill(level); 
     }
 
     @Override
     public String getTag() {
         return "ASSASSIN";
+    }
+
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'attack'");
+    }
+
+    @Override
+    public void steal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
     
 }

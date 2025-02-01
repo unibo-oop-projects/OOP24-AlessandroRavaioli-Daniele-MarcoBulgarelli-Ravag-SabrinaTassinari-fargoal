@@ -10,11 +10,24 @@ public class Rogue extends AbstractMonster{
         setMonsterType(MonsterType.ROGUE);
         setPosition(position);
         setFloorMap(floorMap);
+        setSkill(level);
     }
 
     @Override
     public String getTag() {
         return "ROGUE";
+    }
+
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'attack'");
+    }
+
+    @Override
+    public void steal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
     
 }

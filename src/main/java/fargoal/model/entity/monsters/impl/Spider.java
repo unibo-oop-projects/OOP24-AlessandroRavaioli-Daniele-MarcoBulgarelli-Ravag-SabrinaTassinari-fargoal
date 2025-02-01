@@ -13,6 +13,7 @@ public class Spider extends AbstractMonster{
         setMonsterType(MonsterType.SPIDER);
         setPosition(position);
         setFloorMap(floorMap);
+        setSkill(level);
     }
 
     @Override
@@ -98,6 +99,18 @@ public class Spider extends AbstractMonster{
             }
         }while(!check);
 
+    }
+
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'attack'");
+    }
+
+    @Override
+    public void steal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
     
 }

@@ -6,7 +6,6 @@ import fargoal.api.Position;
 import fargoal.model.entity.commons.api.*;
 import fargoal.model.map.api.*;
 
-
 public abstract class AbstractMonster implements Monster{
 
     private final Integer POSSIBLE_DIRECTIONS = 2;
@@ -53,8 +52,8 @@ public abstract class AbstractMonster implements Monster{
         this.position = position;
     }
 
-    public void setSkill(Integer skill) {
-        this.skill = skill;
+    public void setSkill(Integer level) {
+        this.skill = level * getRandom(level);
     }
 
     public Integer getRandom(int num) {
@@ -76,5 +75,9 @@ public abstract class AbstractMonster implements Monster{
         } while(getFloorMap().isTile(pos));
         setPosition(pos);
     }
+
+    public abstract void attack();
+
+    public abstract void steal();
     
 }

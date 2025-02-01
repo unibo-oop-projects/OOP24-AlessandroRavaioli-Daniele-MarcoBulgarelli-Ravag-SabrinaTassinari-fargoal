@@ -11,11 +11,24 @@ public class Monk extends AbstractMonster{
         setMonsterType(MonsterType.MONK);
         setPosition(position);
         setFloorMap(floorMap);
+        setSkill(level);
     }
 
     @Override
     public String getTag() {
         return "MONK";
+    }
+
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'attack'");
+    }
+
+    @Override
+    public void steal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
     
 }

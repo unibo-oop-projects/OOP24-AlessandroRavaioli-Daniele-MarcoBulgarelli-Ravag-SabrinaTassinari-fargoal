@@ -11,11 +11,24 @@ public class Barbarian extends AbstractMonster{
         setMonsterType(MonsterType.BARBARIAN);
         setPosition(position);
         setFloorMap(floorMap);
+        setSkill(level);
     }
 
     @Override
     public String getTag() {
         return "BARBARIAN";
+    }
+
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'attack'");
+    }
+
+    @Override
+    public void steal() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
     
 }
