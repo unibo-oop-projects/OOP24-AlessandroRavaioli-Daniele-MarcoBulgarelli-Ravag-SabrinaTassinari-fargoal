@@ -8,8 +8,8 @@ public class GameEngine {
     private static final int period = 20; 
     private final FloorManager manager;
 
-    public GameEngine(){
-        manager = new FloorManagerImpl();
+    public GameEngine() {
+        this.manager = new FloorManagerImpl();
     }
     
     public void start() {

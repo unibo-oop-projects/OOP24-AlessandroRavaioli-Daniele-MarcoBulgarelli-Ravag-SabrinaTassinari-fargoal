@@ -11,8 +11,11 @@ import fargoal.model.map.api.FloorMap;
 public class FloorManagerImpl implements FloorManager {
 
     private FloorMap map;
-    private List<Monster> monsters = new LinkedList<>();
+    private List<Monster> monsters;
 
+    public FloorManagerImpl() {
+        this.monsters = new LinkedList<>();
+    }
     @Override
     public void update(Command input) {
         // TODO Auto-generated method stub
