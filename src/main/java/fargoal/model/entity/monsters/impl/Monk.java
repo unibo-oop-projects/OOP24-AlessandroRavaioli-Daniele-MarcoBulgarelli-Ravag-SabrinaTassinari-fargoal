@@ -30,5 +30,9 @@ public class Monk extends AbstractMonster{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
+
+    private void heal() {
+        
+    }
     
 }
