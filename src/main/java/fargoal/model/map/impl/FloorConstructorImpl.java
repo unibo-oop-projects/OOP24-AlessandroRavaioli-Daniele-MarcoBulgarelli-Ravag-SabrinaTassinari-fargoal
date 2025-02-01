@@ -13,9 +13,6 @@ import fargoal.model.map.api.FloorMap;
 
 public class FloorConstructorImpl implements FloorConstructor {
 
-    private static final int FLOOR_LENGTH = 40;
-    private static final int FLOOR_HEIGHT = 25;
-
     @Override
     public FloorMap createFloor() {
         return new FloorMapBuilder().buildRooms().buildCorridors().build();
@@ -29,6 +26,9 @@ public class FloorConstructorImpl implements FloorConstructor {
         private static final int VARIABLE_ROOM_SIZE = 5;
         private static final int MINIMUM_CORRIDOR_LENGTH = 5;
         private static final int VARIABLE_CORRIDOR_LENGTH = 8;
+        private static final int FLOOR_LENGTH = 40;
+        private static final int FLOOR_HEIGHT = 25;
+        
         private Set<Position> temporaryTiles = new HashSet<>();
         private List<Position> centers = new ArrayList<>();
         private final Random rnd = new Random();
@@ -96,8 +96,8 @@ public class FloorConstructorImpl implements FloorConstructor {
                 int length = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
                 int height = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
                 Position start = new Position(
-                    rnd.nextInt(FLOOR_LENGTH - MINIMUM_ROOM_SIZE - length),
-                    rnd.nextInt(FLOOR_HEIGHT - MINIMUM_ROOM_SIZE - height));
+                    rnd.nextInt(FLOOR_LENGTH - MINIMUM_ROOM_SIZE - length) + 1,
+                    rnd.nextInt(FLOOR_HEIGHT - MINIMUM_ROOM_SIZE - height) + 1);
                 centers.add(new Position(start.x() + length / 2, start.y() + height / 2));
                 this.buildRoom(start, height, length);
             }

@@ -14,20 +14,19 @@ public class TestFloorGeneration {
     private static FloorMap map;
 
     @BeforeAll
-    static void init(){
+    static void init() {
         map = fc.createFloor();
     }
 
     @Test
-    void visualizeFloor(){
-        for(int i = 0; i < 25; i++){
+    void visualizeFloor() {
+        for (int i = 0; i < 25; i++) {
             System.out.print(i + "\t");
-            for(int j = 0; j < 40; j++){
+            for (int j = 0; j < 40; j++) {
                 System.out.print(
                     TestFloorGeneration.map.isTile(new Position(j, i)) 
                         ? "O"
-                        : " "
-                );
+                        : " ");
             }
             System.out.println();
         }
