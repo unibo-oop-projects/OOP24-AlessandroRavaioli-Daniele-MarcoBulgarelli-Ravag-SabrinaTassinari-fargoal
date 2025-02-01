@@ -14,6 +14,7 @@ public abstract class AbstractMonster implements Monster{
     private Health health;
     private Position position;
     private Integer skill;
+    private boolean isVisible = false;
     private final Random random = new Random();
     
     @Override
@@ -66,6 +67,14 @@ public abstract class AbstractMonster implements Monster{
 
     public FloorMap getFloorMap() {
         return this.floorMap;
+    }
+
+    public void setVisibilityOn() {
+        this.isVisible = true;
+    }
+
+    public void setVisibilityOff() {
+        this.isVisible = false;
     }
 
     public void move() {

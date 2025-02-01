@@ -12,6 +12,7 @@ public class Assassin extends AbstractMonster{
         setPosition(position); 
         setFloorMap(floorMap);
         setSkill(level); 
+        setVisibilityOff();
     }
 
     @Override
