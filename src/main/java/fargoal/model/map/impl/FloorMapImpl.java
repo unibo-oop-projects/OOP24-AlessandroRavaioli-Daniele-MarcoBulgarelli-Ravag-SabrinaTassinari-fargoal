@@ -11,13 +11,13 @@ public class FloorMapImpl implements FloorMap {
     private final Set<Position> tiles;
     private final Dimension size;
 
-    protected FloorMapImpl(Set<Position> tiles, int length, int height){
+    protected FloorMapImpl(final Set<Position> tiles, final int length, final int height) {
         this.tiles = Set.copyOf(tiles);
         this.size = new Dimension(length, height);
     }
 
     @Override
-    public boolean isTile(Position pos) {
+    public boolean isTile(final Position pos) {
         return this.tiles.contains(pos);
     }
 
@@ -25,5 +25,4 @@ public class FloorMapImpl implements FloorMap {
     public Dimension getSize() {
         return size;
     }
-    
 }

@@ -12,27 +12,27 @@ import fargoal.model.map.api.Dimension;
 import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;
 
-public class FloorConstructorImpl implements FloorConstructor{
+public class FloorConstructorImpl implements FloorConstructor {
 
     @Override
-    public FloorMap createFloor(int length, int height) {
+    public FloorMap createFloor(final int length, final int height) {
         return new FloorMapBuilder(length, height).buildRooms().buildCorridors().build();
     }
-    
+
     private class FloorMapBuilder {
-    
+
         private static final int NUMBER_OF_ROOMS_AND_CORRIDORS = 10;
         private static final int OPPOSITE_DIRECTION = 3;
         private static final int MINIMUM_ROOM_SIZE = 3;
         private static final int VARIABLE_ROOM_SIZE = 5;
         private static final int MINIMUM_CORRIDOR_LENGTH = 5;
         private static final int VARIABLE_CORRIDOR_LENGTH = 8;
-        Set<Position> temporaryTiles = new HashSet<>();
-        List<Position> centers = new ArrayList<>();
+        private Set<Position> temporaryTiles = new HashSet<>();
+        private List<Position> centers = new ArrayList<>();
         private final Dimension size;
         private final Random rnd = new Random();
 
-        public FloorMapBuilder(int length, int height){
+        FloorMapBuilder(final int length, final int height) {
             this.size = new Dimension(length, height);
         }
 
@@ -44,15 +44,15 @@ public class FloorConstructorImpl implements FloorConstructor{
             return new FloorMapImpl(temporaryTiles, size.length(), size.height());
         }
 
-        private void buildRoom(Position pos, int height, int length){
-            for(int i = pos.x() - length / 2; i < pos.x() + length / 2; i++) {
-                for(int j = pos.y() - height / 2; j < pos.y() + height / 2; j++){
+        private void buildRoom(final Position pos, final int height, final int length) {
+            for (int i = pos.x() - length / 2; i < pos.x() + length / 2; i++) {
+                for (int j = pos.y() - height / 2; j < pos.y() + height / 2; j++) {
                     this.temporaryTiles.add(new Position(i, j));
                 }
             }
         }
 
-        private void buildCorridor(Position pos){
+        private void buildCorridor(final Position pos) {
             enum FloorState {
                 CONTINUE, HIT_PATH, WALL
             }
@@ -69,8 +69,8 @@ public class FloorConstructorImpl implements FloorConstructor{
             while (state.equals(FloorState.CONTINUE)) {
                 state = FloorState.CONTINUE;
                 int length = rnd.nextInt(VARIABLE_CORRIDOR_LENGTH) + MINIMUM_CORRIDOR_LENGTH;
-                
-                for(int j = 0; j < length; j++) {
+
+                for (int j = 0; j < length; j++) {
                     currentPosition = currentPosition.add(directions.get(direction));
                     if (!this.temporaryTiles.contains(currentPosition)) {
                         state = FloorState.WALL;
@@ -94,16 +94,18 @@ public class FloorConstructorImpl implements FloorConstructor{
             }
         }
 
-        private FloorMapBuilder buildRooms(){
-            for(int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
+        private FloorMapBuilder buildRooms() {
+            for (int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
                 centers.add(new Position(rnd.nextInt(size.length() - 1), rnd.nextInt(size.height() - 1)));
-                this.buildRoom(centers.get(i), rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE, rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE);
+                this.buildRoom(centers.get(i),
+                         rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE,
+                         rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE);
             }
             return this;
         }
 
-        private FloorMapBuilder buildCorridors(){
-            for(int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
+        private FloorMapBuilder buildCorridors() {
+            for (int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
                 this.buildCorridor(centers.get(i));
             }
             return this;
