@@ -9,24 +9,23 @@ public class PlayerImpl implements Player{
     private Health health;
     private Position position;
     private Integer skill;
-    private Integer healingPotions;
-    private Integer invisibilitySpells;
-    private Integer teleportSpells;
-    private Integer shieldSpells;
-
+    
     @Override
     public Integer getHealth() {
-        return this.health.getCurrentHealth();
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getHealth'");
     }
 
     @Override
     public Position getPosition() {
-        return this.position;
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
     }
 
     @Override
     public Integer getSkill() {
-        return this.skill;
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSkill'");
     }
 
     @Override
@@ -37,7 +36,8 @@ public class PlayerImpl implements Player{
 
     @Override
     public String getTag() {
-        return "PLAYER";
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
     }
 
     @Override
@@ -47,63 +47,9 @@ public class PlayerImpl implements Player{
     }
 
     @Override
-    public Integer getHealingPotion() {
-        return this.healingPotions;
-    }
-
-    @Override
-    public Integer getInvisibilitySpell() {
-        return this.invisibilitySpells;
-    }
-
-    @Override
-    public Integer getTeleportSpell() {
-        return this.teleportSpells;
-    }
-
-    @Override
-    public Integer getShieldSpell() {
-        return this.shieldSpells;
-    }
-
-    @Override
-    public void addHealingPotion() {
-        this.healingPotions++;
-    }
-
-    @Override
-    public void removeHealingPotion() {
-        this.healingPotions--;
-    }
-
-    @Override
-    public void addInvisibilitySpell() {
-        this.invisibilitySpells++;
-    }
-
-    @Override
-    public void removeInvisibilitySpell() {
-        this.invisibilitySpells--;
-    }
-
-    @Override
-    public void addTeleportSpell() {
-        this.teleportSpells++;
-    }
-
-    @Override
-    public void removeTeleportSpell() {
-        this.teleportSpells--;
-    }
-
-    @Override
-    public void addShieldSpell() {
-        this.shieldSpells++;
-    }
-
-    @Override
-    public void removeShieldSpell() {
-        this.shieldSpells--;
+    public void attack() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'attack'");
     }
     
 }
