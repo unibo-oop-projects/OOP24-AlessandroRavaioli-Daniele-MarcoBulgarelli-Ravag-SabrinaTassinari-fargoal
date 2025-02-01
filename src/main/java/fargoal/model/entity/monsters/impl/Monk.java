@@ -1,9 +1,9 @@
 package fargoal.model.entity.monsters.impl;
 
+import fargoal.commons.api.*;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.map.api.FloorMap;
-import fargoal.api.*;
 
 public class Monk extends AbstractMonster{
 

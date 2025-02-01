@@ -1,6 +1,6 @@
 package fargoal.model.entity.monsters.api;
 
-import fargoal.api.*;
+import fargoal.commons.api.*;
 import fargoal.model.map.api.*;
 
 public interface MonsterFactory {

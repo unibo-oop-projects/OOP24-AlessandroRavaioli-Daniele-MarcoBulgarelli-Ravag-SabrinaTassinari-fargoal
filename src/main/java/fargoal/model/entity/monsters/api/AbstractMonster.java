@@ -2,7 +2,7 @@ package fargoal.model.entity.monsters.api;
 
 import java.util.Random;
 
-import fargoal.api.Position;
+import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.*;
 import fargoal.model.map.api.*;
 

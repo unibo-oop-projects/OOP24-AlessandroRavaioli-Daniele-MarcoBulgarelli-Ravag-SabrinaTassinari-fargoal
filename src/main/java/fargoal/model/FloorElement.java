@@ -1,6 +1,6 @@
 package fargoal.model;
 
-import fargoal.api.Position;
+import fargoal.commons.api.Position;
 
 public interface FloorElement {
     
