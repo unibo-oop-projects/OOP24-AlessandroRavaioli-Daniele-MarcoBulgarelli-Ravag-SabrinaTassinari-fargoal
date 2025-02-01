@@ -6,23 +6,28 @@ public interface Health {
      * Getter for the current health.
      * @return current health.
      */
-    public Integer getCurrentHealth();
+    Integer getCurrentHealth();
 
     /**
      * Getter for the max health of the floor.
      * @return max health
      */
-    public Integer getMaxHealth();
+    Integer getMaxHealth();
 
     /**
      * Decreases the current health value.
      * @param amount to subtract to the current health value.
      */
-    public void decreaseHealth(Integer amount);
+    void decreaseHealth(Integer amount);
 
     /**
      * Increases the current health value.
      * @param amount to add to the current health value.
      */
-    public void increaseHealth(Integer amount);
+    void increaseHealth(Integer amount);
+
+    /**
+     * Set the current health value to the max health value
+     */
+    void setToMaxHealth();
 }

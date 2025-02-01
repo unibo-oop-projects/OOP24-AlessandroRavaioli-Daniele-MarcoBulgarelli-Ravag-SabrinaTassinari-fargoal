@@ -4,6 +4,7 @@ import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.*;
+import fargoal.model.entity.player.api.Player;
 import fargoal.model.map.api.*;
 
 public abstract class AbstractMonster implements Monster{
@@ -23,8 +24,8 @@ public abstract class AbstractMonster implements Monster{
     }
 
     @Override
-    public Integer getHealth() {
-        return this.health.getCurrentHealth();
+    public Health getHealth() {
+        return this.health;
     }
 
     @Override
@@ -85,8 +86,11 @@ public abstract class AbstractMonster implements Monster{
         setPosition(pos);
     }
 
-    public abstract void attack();
+    public void attack(Player player) {
+        var ratio = player.getSkill()/this.getSkill();
+        player.getHealth().decreaseHealth(getRandom(4 * player.getLevel() * ratio));
+    }
 
-    public abstract void steal();
+    public abstract void steal(Player player);
     
 }

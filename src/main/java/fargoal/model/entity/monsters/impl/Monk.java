@@ -3,6 +3,7 @@ package fargoal.model.entity.monsters.impl;
 import fargoal.commons.api.*;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
+import fargoal.model.entity.player.api.Player;
 import fargoal.model.map.api.FloorMap;
 
 public class Monk extends AbstractMonster{
@@ -20,19 +21,13 @@ public class Monk extends AbstractMonster{
     }
 
     @Override
-    public void attack() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'attack'");
-    }
-
-    @Override
-    public void steal() {
+    public void steal(Player player) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
 
     private void heal() {
-        
+        this.getHealth().setToMaxHealth();
     }
     
 }

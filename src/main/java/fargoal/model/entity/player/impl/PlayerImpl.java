@@ -6,12 +6,13 @@ import fargoal.model.entity.player.api.Player;
 
 public class PlayerImpl implements Player{
 
+    private Integer level;
     private Health health;
     private Position position;
     private Integer skill;
     
     @Override
-    public Integer getHealth() {
+    public Health getHealth() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getHealth'");
     }
@@ -50,6 +51,12 @@ public class PlayerImpl implements Player{
     public void attack() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'attack'");
+    }
+
+    @Override
+    public Integer getLevel() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getLevel'");
     }
     
 }
