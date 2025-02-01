@@ -1,6 +1,6 @@
 package fargoal.model.manager.api;
 
-import fargoal.input.api.Command;
+import fargoal.controller.input.api.Command;
 
 public interface FloorManager {
     
