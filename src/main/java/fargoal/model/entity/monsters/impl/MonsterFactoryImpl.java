@@ -1,11 +1,11 @@
 package fargoal.model.entity.monsters.impl;
 
-import fargoal.commons.api.*;
+import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.map.api.FloorMap;
 
-public class MonsterFactoryImpl implements MonsterFactory{
+public class MonsterFactoryImpl implements MonsterFactory {
 
     private AbstractMonster monster;
 

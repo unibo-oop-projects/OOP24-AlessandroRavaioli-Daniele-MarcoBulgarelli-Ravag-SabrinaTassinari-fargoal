@@ -4,7 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.player.api.Player;
 
-public class PlayerImpl implements Player{
+public class PlayerImpl implements Player {
 
     private Integer level;
     private Health health;
@@ -58,5 +58,4 @@ public class PlayerImpl implements Player{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getLevel'");
     }
-    
 }

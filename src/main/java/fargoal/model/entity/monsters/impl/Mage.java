@@ -6,7 +6,7 @@ import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.map.api.FloorMap;
 
-public class Mage extends AbstractMonster{
+public class Mage extends AbstractMonster {
 
     public Mage(Position position, Integer level, FloorMap floorMap) {
         setMonsterType(MonsterType.MAGE);
@@ -25,5 +25,4 @@ public class Mage extends AbstractMonster{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
-    
 }

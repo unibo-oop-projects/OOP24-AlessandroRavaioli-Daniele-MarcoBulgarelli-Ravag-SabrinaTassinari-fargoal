@@ -2,7 +2,7 @@ package fargoal.model.entity.player.impl;
 
 import fargoal.model.entity.player.api.Inventory;
 
-public class InventoryImpl implements Inventory{
+public class InventoryImpl implements Inventory {
 
     private Integer healingPotions;
     private Integer invisibilitySpells;
@@ -80,5 +80,4 @@ public class InventoryImpl implements Inventory{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'removeShieldSpell'");
     }
-    
 }

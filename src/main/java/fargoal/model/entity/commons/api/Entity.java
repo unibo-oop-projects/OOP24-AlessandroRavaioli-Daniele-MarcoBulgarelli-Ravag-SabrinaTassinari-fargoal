@@ -5,9 +5,9 @@ import fargoal.model.FloorElement;
 
 public interface Entity extends FloorElement{
     
-    public Health getHealth();
+    Health getHealth();
 
-    public Position getPosition();
+    Position getPosition();
 
-    public Integer getSkill();
+    Integer getSkill();
 }

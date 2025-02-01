@@ -1,6 +1,6 @@
 package fargoal.model.entity.commons.impl;
 
-import fargoal.model.entity.commons.api.*;
+import fargoal.model.entity.commons.api.Health;
 
 public class HealthImpl implements Health {
 
@@ -36,5 +36,4 @@ public class HealthImpl implements Health {
     public void setToMaxHealth() {
         this.currentHealth = maxHealth;
     }
-    
 }

@@ -1,11 +1,12 @@
 package fargoal.model.entity.monsters.impl;
 
-import fargoal.commons.api.*;
-import fargoal.model.entity.monsters.api.*;
+import fargoal.commons.api.Position;
+import fargoal.model.entity.monsters.api.AbstractMonster;
+import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.map.api.FloorMap;
 
-public class Rogue extends AbstractMonster{
+public class Rogue extends AbstractMonster {
 
     public Rogue(Position position, Integer level, FloorMap floorMap) {
         setMonsterType(MonsterType.ROGUE);
@@ -24,5 +25,4 @@ public class Rogue extends AbstractMonster{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
-    
 }

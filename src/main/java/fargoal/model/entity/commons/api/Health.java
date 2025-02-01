@@ -1,7 +1,6 @@
 package fargoal.model.entity.commons.api;
 
 public interface Health {
-    
     /**
      * Getter for the current health.
      * @return current health.
@@ -27,7 +26,7 @@ public interface Health {
     void increaseHealth(Integer amount);
 
     /**
-     * Set the current health value to the max health value
+     * Set the current health value to the max health value.
      */
     void setToMaxHealth();
 }

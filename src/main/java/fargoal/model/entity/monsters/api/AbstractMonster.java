@@ -3,11 +3,11 @@ package fargoal.model.entity.monsters.api;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
-import fargoal.model.entity.commons.api.*;
+import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.player.api.Player;
-import fargoal.model.map.api.*;
+import fargoal.model.map.api.FloorMap;
 
-public abstract class AbstractMonster implements Monster{
+public abstract class AbstractMonster implements Monster {
 
     private final Integer POSSIBLE_DIRECTIONS = 2;
     private FloorMap floorMap;
@@ -17,7 +17,6 @@ public abstract class AbstractMonster implements Monster{
     private Integer skill;
     private boolean isVisible = false;
     private final Random random = new Random();
-    
     @Override
     public MonsterType getMonsterType() {
         return this.monsterType;
@@ -87,7 +86,7 @@ public abstract class AbstractMonster implements Monster{
     }
 
     public void attack(Player player) {
-        var ratio = player.getSkill()/this.getSkill();
+        var ratio = player.getSkill() / this.getSkill();
         player.getHealth().decreaseHealth(getRandom(4 * player.getLevel() * ratio));
     }
 

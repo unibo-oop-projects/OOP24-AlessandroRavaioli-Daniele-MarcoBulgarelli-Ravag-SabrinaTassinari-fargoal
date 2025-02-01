@@ -1,12 +1,10 @@
 package fargoal.model.entity.monsters.api;
 
-import fargoal.commons.api.*;
-import fargoal.model.map.api.*;
+import fargoal.commons.api.Position;
+import fargoal.model.map.api.FloorMap;
 
 public interface MonsterFactory {
 
-    //public AbstractMonster generateMonster(Integer level);
-    
     AbstractMonster generateRogue(Position position, Integer level, FloorMap floorMap);
 
     AbstractMonster generateBarbarian(Position position, Integer level, FloorMap floorMap);
