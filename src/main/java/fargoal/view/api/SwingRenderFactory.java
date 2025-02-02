@@ -1,20 +1,21 @@
 package fargoal.view.api;
 
+import fargoal.commons.api.Position;
 import fargoal.view.impl.SwingRenderer;
 
 public interface SwingRenderFactory {
     
-    SwingRenderer player();
+    SwingRenderer player(Position pos);
 
-    SwingRenderer wall();
+    SwingRenderer wall(Position pos);
 
-    SwingRenderer tile();
+    SwingRenderer tile(Position pos);
 
-    SwingRenderer moster();
+    SwingRenderer moster(Position pos);
 
-    SwingRenderer stair();
+    SwingRenderer stair(Position pos);
 
-    SwingRenderer temple();
+    SwingRenderer temple(Position pos);
 
-    SwingRenderer pickup();
+    SwingRenderer pickup(Position pos);
 }
