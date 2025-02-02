@@ -42,7 +42,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     }
 
     @Override
-    public SwingRenderer moster(Position pos) {
+    public SwingRenderer monster(Position pos) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'moster'");
     }

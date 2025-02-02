@@ -6,6 +6,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.map.api.FloorMap;
+import fargoal.model.entity.monsters.ai.Ai;
 
 /**
  * A Monster is an abstraction of anything that will try

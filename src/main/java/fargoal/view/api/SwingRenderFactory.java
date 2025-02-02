@@ -11,7 +11,7 @@ public interface SwingRenderFactory {
 
     SwingRenderer tile(Position pos);
 
-    SwingRenderer moster(Position pos);
+    SwingRenderer monster(Position pos);
 
     SwingRenderer stair(Position pos);
 
