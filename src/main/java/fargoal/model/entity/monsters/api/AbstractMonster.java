@@ -5,6 +5,7 @@ import java.util.Random;
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.entity.monsters.ai.Ai;
 
@@ -16,7 +17,8 @@ import fargoal.model.entity.monsters.ai.Ai;
  */
 public abstract class AbstractMonster implements Monster {
 
-    private final Integer POSSIBLE_DIRECTIONS = 2;
+    private final static Integer POSSIBLE_DIRECTIONS = 2;
+    private final static Integer MONSTER_ATTACK = 4;
     private FloorMap floorMap;
     private MonsterType monsterType;
     private Health health;
@@ -149,7 +151,18 @@ public abstract class AbstractMonster implements Monster {
      */
     public void attack(Player player) {
         var ratio = player.getSkill() / this.getSkill();
-        player.getHealth().decreaseHealth(getRandom(4 * player.getLevel() * ratio));
+        player.getHealth().decreaseHealth(getRandom(MONSTER_ATTACK * player.getLevel() * ratio));
+    }
+
+    /**
+     * Return if the monster and the player are near.
+     * 
+     * @param floorManager - which can give all the information we need
+     * @return if the monster is near the player
+     */
+    public boolean areNeighbours(FloorManager floorManager) {
+        return (floorManager.getPlayer().getPosition().x() - this.getPosition().x() == 1
+                && floorManager.getPlayer().getPosition().y() - this.getPosition().y() == 1);
     }
 
     /**

@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 
 public class Monk extends AbstractMonster {
@@ -28,5 +29,11 @@ public class Monk extends AbstractMonster {
 
     private void heal() {
         this.getHealth().setToMaxHealth();
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 }

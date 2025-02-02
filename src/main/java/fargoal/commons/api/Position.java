@@ -47,4 +47,20 @@ public record Position(int x, int y) {
     public Position negateY(Position position) {
         return new Position(x, -position.y());
     }
+
+    public Position decreaseX() {
+        return new Position(x - 1, y);
+    }
+
+    public Position decreaseY() {
+        return new Position(x, y - 1);
+    }
+
+    public Position increaseX() {
+        return new Position(x + 1, y);
+    }
+
+    public Position increaseY() {
+        return new Position(x, y + 1);
+    }
 }

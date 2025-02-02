@@ -3,6 +3,7 @@ package fargoal.model.entity.player.impl;
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.manager.api.FloorManager;
 
 public class PlayerImpl implements Player {
 
@@ -57,5 +58,11 @@ public class PlayerImpl implements Player {
     public Integer getLevel() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getLevel'");
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 }

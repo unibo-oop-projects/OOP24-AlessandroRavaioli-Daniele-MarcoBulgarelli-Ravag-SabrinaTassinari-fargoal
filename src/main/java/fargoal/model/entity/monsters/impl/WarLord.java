@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 
 public class WarLord extends AbstractMonster {
@@ -24,5 +25,11 @@ public class WarLord extends AbstractMonster {
     public void steal(Player player) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steal'");
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 }
