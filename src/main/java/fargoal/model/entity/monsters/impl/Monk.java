@@ -1,6 +1,7 @@
 package fargoal.model.entity.monsters.impl;
 
 import fargoal.commons.api.Position;
+import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
@@ -28,13 +29,22 @@ public class Monk extends AbstractMonster {
         throw new UnsupportedOperationException("Unimplemented method 'steal'");
     }
 
+    /**
+     * The Monster heal himself with a HealingPotion
+     * to recover hp.
+     */
     private void heal() {
         this.getHealth().setToMaxHealth();
     }
 
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        if(this.areNeighbours(floorManager, 1)) {
+            this.attack(floorManager.getPlayer());
+        } else if(!this.getHealth().isHealthy() && !this.areNeighbours(floorManager, 2)) {
+            this.heal();
+        } else {
+            Ai.move(this, floorManager.getPlayer());
+        }
     }
 }

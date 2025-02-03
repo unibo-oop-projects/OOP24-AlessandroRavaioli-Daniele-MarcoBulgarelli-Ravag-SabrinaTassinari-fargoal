@@ -34,7 +34,6 @@ public class Assassin extends AbstractMonster {
     public void update(FloorManager floorManager) {
         if(this.areNeighbours(floorManager, 1)) {
             this.attack(floorManager.getPlayer());
-            this.steal(floorManager.getPlayer());
         } else {
             Ai.move(this, floorManager.getPlayer());
         }

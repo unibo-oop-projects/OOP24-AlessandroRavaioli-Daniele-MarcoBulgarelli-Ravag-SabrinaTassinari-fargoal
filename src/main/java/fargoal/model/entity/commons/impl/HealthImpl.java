@@ -50,4 +50,10 @@ public class HealthImpl implements Health {
     public void setToMaxHealth() {
         this.currentHealth = maxHealth;
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isHealthy() {
+        return (this.currentHealth == this.maxHealth);
+    }
 }

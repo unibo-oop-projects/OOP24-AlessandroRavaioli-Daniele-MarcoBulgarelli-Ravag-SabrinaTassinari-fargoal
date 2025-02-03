@@ -36,7 +36,10 @@ public class Spider extends AbstractMonster {
 
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        if(this.areNeighbours(floorManager, 1)) {
+            this.attack(floorManager.getPlayer());
+        } else {
+            Ai.move(this, floorManager.getPlayer());
+        }
     }
 }
