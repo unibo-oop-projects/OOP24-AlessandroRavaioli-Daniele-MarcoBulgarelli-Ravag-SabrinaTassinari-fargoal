@@ -6,6 +6,9 @@ import fargoal.commons.api.Position;
 import fargoal.model.map.api.Dimension;
 import fargoal.model.map.api.FloorMap;
 
+/**
+ * A class that models a floor
+ */
 public class FloorMapImpl implements FloorMap {
 
     private final Set<Position> tiles;
@@ -16,11 +19,17 @@ public class FloorMapImpl implements FloorMap {
         this.size = new Dimension(length, height);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isTile(final Position pos) {
         return this.tiles.contains(pos);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Dimension getSize() {
         return size;
