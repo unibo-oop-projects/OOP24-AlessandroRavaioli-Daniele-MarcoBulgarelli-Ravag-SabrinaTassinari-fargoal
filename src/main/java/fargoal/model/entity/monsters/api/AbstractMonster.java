@@ -151,14 +151,15 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * Return if the monster and the player are near.
+     * Return if the monster and the player are near(based on the given amount).
      * 
      * @param floorManager - which can give all the information we need
+     * @param amount - the Integer to set the proximity area
      * @return if the monster is near the player
      */
-    public boolean areNeighbours(FloorManager floorManager) {
-        return (floorManager.getPlayer().getPosition().x() - this.getPosition().x() == 1
-                && floorManager.getPlayer().getPosition().y() - this.getPosition().y() == 1);
+    public boolean areNeighbours(FloorManager floorManager, Integer amount) {
+        return (floorManager.getPlayer().getPosition().x() - this.getPosition().x() <= amount
+                && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount);
     }
 
     /**
