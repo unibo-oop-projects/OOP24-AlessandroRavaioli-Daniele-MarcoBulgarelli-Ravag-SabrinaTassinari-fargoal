@@ -9,4 +9,8 @@ public class GameContext {
     public GameContext(View view) {
         this.view = view;
     }
+
+    public View getView() {
+        return this.view;
+    }
 }

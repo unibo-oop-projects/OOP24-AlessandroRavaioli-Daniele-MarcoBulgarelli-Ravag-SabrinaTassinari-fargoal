@@ -10,7 +10,7 @@ import fargoal.model.map.impl.FloorConstructorImpl;
 
 public class TestFloorGeneration {
 
-    private final static FloorConstructor fc= new FloorConstructorImpl();
+    private static FloorConstructor fc = new FloorConstructorImpl();
     private static FloorMap map;
 
     @BeforeAll
@@ -24,7 +24,7 @@ public class TestFloorGeneration {
             System.out.print(i + "\t");
             for (int j = 0; j < 40; j++) {
                 System.out.print(
-                    TestFloorGeneration.map.isTile(new Position(j, i)) 
+                    map.isTile(new Position(j, i)) 
                         ? "O"
                         : " ");
             }
