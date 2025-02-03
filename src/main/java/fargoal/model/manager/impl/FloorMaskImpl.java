@@ -13,6 +13,9 @@ import fargoal.view.api.View;
 import fargoal.view.impl.SwingRenderFactoryImpl;
 import fargoal.view.impl.SwingView;
 
+/**
+ * A class that implements the map covering effect
+ */
 public class FloorMaskImpl implements FloorMask{
 
     private final static int FLOOR_HEIGTH = 25;
@@ -27,6 +30,9 @@ public class FloorMaskImpl implements FloorMask{
         resetMask();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void resetMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
@@ -36,6 +42,9 @@ public class FloorMaskImpl implements FloorMask{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void update(GameContext context, FloorManager manager) {
         List<Position> lightUp = this.mask.keySet().stream()
