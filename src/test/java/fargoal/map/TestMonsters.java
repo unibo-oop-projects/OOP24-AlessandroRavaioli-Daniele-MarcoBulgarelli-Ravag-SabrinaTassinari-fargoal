@@ -23,7 +23,7 @@ public class TestMonsters {
     static void init() {
         manager = new FloorManagerImpl();
         map = new FloorConstructorImpl().createFloor();
-        monster = monsterFactory.generateRogue(new Position(0, 0), 2, map);
+        monster = monsterFactory.generateRogue(new Position(0, 0), 2, map, manager);
     }
 
     @Test
