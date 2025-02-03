@@ -8,15 +8,22 @@ import fargoal.commons.api.Position;
 import fargoal.model.core.GameContext;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
+import fargoal.view.api.SwingRenderFactory;
+import fargoal.view.api.View;
+import fargoal.view.impl.SwingRenderFactoryImpl;
+import fargoal.view.impl.SwingView;
 
 public class FloorMaskImpl implements FloorMask{
 
     private final static int FLOOR_HEIGTH = 25;
     private final static int FLOOR_LENGTH = 40;
 
-    private final Map<Position, Boolean> mask = new HashMap<>();
+    private final Map<Position, Boolean> mask;
+    private final SwingRenderFactory renderFac;
 
-    public FloorMaskImpl() {
+    public FloorMaskImpl(View view) {
+        this.mask = new HashMap<>();
+        renderFac = new SwingRenderFactoryImpl((SwingView)view);
         resetMask();
     }
 
@@ -24,7 +31,7 @@ public class FloorMaskImpl implements FloorMask{
     public void resetMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
             for (int j = 0; j < FLOOR_HEIGTH; j++) {
-                mask.put(new Position(i, j), false);
+                mask.put(new Position(i, j), true);
             }
         }
     }
@@ -40,7 +47,9 @@ public class FloorMaskImpl implements FloorMask{
         for (int x = 0; x < FLOOR_LENGTH; x++) {
             for (int y = 0; y < FLOOR_HEIGTH; y++) {
                 if (this.mask.get(new Position(x, y))) {
-                    /*update view list here */
+                    (manager.getFloorMap().isTile(new Position(x, y))
+                        ? this.renderFac.tile(new Position(x, y))
+                        : this.renderFac.wall(new Position(x, y))).render(context.getView());
                 }
             }
         }

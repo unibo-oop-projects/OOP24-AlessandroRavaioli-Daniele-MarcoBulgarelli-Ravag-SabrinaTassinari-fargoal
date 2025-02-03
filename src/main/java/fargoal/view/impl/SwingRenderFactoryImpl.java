@@ -22,8 +22,8 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     @Override
     public SwingRenderer wall(Position pos) {
         return new SwingRenderer(g2d -> {
-                g2d.setColor(Color.BLACK);
-                g2d.drawRect(pos.x() * this.view.getTilePixelDim(),
+                g2d.setColor(Color.RED);
+                g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
                             pos.y() * this.view.getTilePixelDim(),
                             this.view.getTilePixelDim(),
                             this.view.getTilePixelDim());
@@ -34,7 +34,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     public SwingRenderer tile(Position pos) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.BLACK);
-            g2d.drawRect(pos.x() * this.view.getTilePixelDim(),
+            g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
                          pos.y() * this.view.getTilePixelDim(),
                          this.view.getTilePixelDim(),
                          this.view.getTilePixelDim());

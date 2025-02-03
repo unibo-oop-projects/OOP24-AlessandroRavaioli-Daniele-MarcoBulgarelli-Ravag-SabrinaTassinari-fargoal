@@ -12,17 +12,16 @@ public class GameEngine {
     private final View view;
 
     public GameEngine() {
-        this.manager = new FloorManagerImpl();
         this.view = new SwingView();
+        this.manager = new FloorManagerImpl(new GameContext(view));
     }
     
     public void start() {
         while (true) {
             long currentCycleStartTime = System.currentTimeMillis();
-            manager.update(null);
+            manager.update(new GameContext(view));
             view.update();
             waitToNextFrame(currentCycleStartTime);
-            System.out.println("Sono partito");
         }
     }
 

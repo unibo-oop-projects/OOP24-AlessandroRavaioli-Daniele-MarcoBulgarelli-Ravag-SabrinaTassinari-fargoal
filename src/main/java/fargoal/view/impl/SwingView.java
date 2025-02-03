@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 import javax.swing.WindowConstants;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 import fargoal.view.api.View;
 
@@ -23,11 +24,11 @@ public class SwingView implements View {
         this.frame = new JFrame();
         this.canvas = new SwingViewCanvas();
         this.frame.setLayout(new BorderLayout());
+        this.frame.setSize(3500, 3000);
         this.frame.getContentPane().add(canvas, BorderLayout.CENTER);
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         calculateDimensions();
-        this.frame.pack();
         this.frame.setVisible(true);
     }
 
@@ -38,7 +39,7 @@ public class SwingView implements View {
     @Override
     public void update() {
         calculateDimensions();
-        this.canvas.repaint();
+        SwingUtilities.invokeLater(() -> this.canvas.repaint());
     }
     
     @Override

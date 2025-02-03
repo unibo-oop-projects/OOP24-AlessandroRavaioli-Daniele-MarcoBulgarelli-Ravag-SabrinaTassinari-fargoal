@@ -8,16 +8,21 @@ import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.FloorMask;
 import fargoal.model.map.api.FloorMap;
+import fargoal.model.map.impl.FloorConstructorImpl;
 
 public class FloorManagerImpl implements FloorManager {
 
     private FloorMap map;
     private List<Monster> monsters;
     private Player player;
+    private final FloorMask mask;
 
-    public FloorManagerImpl() {
+    public FloorManagerImpl(GameContext context) {
         this.monsters = new LinkedList<>();
+        this.mask = new FloorMaskImpl(context.getView());
+        this.map = new FloorConstructorImpl().createFloor();
     }
 
     @Override
@@ -26,6 +31,7 @@ public class FloorManagerImpl implements FloorManager {
         elements.addAll(this.monsters);
         elements.add(player);
         elements.forEach(e -> e.update(this));
+        this.mask.update(context, this);
     }
 
     @Override
@@ -36,6 +42,11 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public List<Monster> getMonsters() {
         return this.monsters;
+    }
+
+    @Override
+    public FloorMap getFloorMap() {
+        return this.map;
     }
 
 }
