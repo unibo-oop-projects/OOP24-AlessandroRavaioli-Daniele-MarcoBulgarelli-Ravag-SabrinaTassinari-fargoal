@@ -27,6 +27,7 @@ public class SwingView implements View {
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         calculateDimensions();
+        this.frame.pack();
         this.frame.setVisible(true);
     }
 
