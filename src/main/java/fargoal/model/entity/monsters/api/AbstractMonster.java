@@ -135,12 +135,8 @@ public abstract class AbstractMonster implements Monster {
      * Move the Monster to a new Position, the choice of
      * new location is random.
      */
-    public void move() {
-        Position pos;
-        do {
-            pos = getPosition().add(new Position(getRandom(POSSIBLE_DIRECTIONS), getRandom(POSSIBLE_DIRECTIONS)));
-        } while (getFloorMap().isTile(pos));
-        setPosition(pos);
+    public void move(FloorManager floorManager) {
+        Ai.move(this, floorManager.getPlayer());
     }
 
     /**
