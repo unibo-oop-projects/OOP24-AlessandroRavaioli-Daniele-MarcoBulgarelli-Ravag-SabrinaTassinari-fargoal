@@ -9,11 +9,12 @@ import fargoal.model.map.api.FloorMap;
 
 public class Rogue extends AbstractMonster {
 
-    public Rogue(Position position, Integer level, FloorMap floorMap) {
+    public Rogue(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
         setMonsterType(MonsterType.ROGUE);
         setPosition(position);
         setFloorMap(floorMap);
         setSkill(level);
+        this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
     }
 
     @Override

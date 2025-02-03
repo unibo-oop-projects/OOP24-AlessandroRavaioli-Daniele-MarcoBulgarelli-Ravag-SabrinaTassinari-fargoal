@@ -3,6 +3,7 @@ package fargoal.model.entity.monsters.impl;
 import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
+import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 
 /**
@@ -15,50 +16,50 @@ public class MonsterFactoryImpl implements MonsterFactory {
 
     /** {@inheritDoc} */
     @Override
-    public AbstractMonster generateRogue(Position position, Integer level, FloorMap floorMap) {
-        monster = new Rogue(position, level, floorMap);
+    public AbstractMonster generateRogue(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        monster = new Rogue(position, level, floorMap, floorManager);
         return monster;
     }
 
     /** {@inheritDoc} */
     @Override
-    public AbstractMonster generateBarbarian(Position position, Integer level, FloorMap floorMap) {
-        monster = new Barbarian(position, level, floorMap);
+    public AbstractMonster generateBarbarian(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        monster = new Barbarian(position, level, floorMap, floorManager);
         return monster;
     }
 
     /** {@inheritDoc} */
     @Override
-    public AbstractMonster generateMonk(Position position, Integer level, FloorMap floorMap) {
-        monster = new Monk(position, level, floorMap);
+    public AbstractMonster generateMonk(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        monster = new Monk(position, level, floorMap, floorManager);
         return monster;
     }
 
     /** {@inheritDoc} */
     @Override
-    public AbstractMonster generateAssassin(Position position, Integer level, FloorMap floorMap) {
-        monster = new Assassin(position, level, floorMap);
+    public AbstractMonster generateAssassin(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        monster = new Assassin(position, level, floorMap, floorManager);
         return monster;
     }
 
     /** {@inheritDoc} */
     @Override
-    public AbstractMonster generateWarLord(Position position, Integer level, FloorMap floorMap) {
-        monster = new WarLord(position, level, floorMap);
+    public AbstractMonster generateWarLord(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        monster = new WarLord(position, level, floorMap, floorManager);
         return monster;
     }
 
     /** {@inheritDoc} */
     @Override
-    public AbstractMonster generateMage(Position position, Integer level, FloorMap floorMap) {
-        monster = new Mage(position, level, floorMap);
+    public AbstractMonster generateMage(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        monster = new Mage(position, level, floorMap, floorManager);
         return monster;
     }
 
     /** {@inheritDoc} */
     @Override
-    public AbstractMonster generateSpider(Position position, Integer level, FloorMap floorMap) {
-        monster = new Spider(position, level, floorMap);
+    public AbstractMonster generateSpider(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        monster = new Spider(position, level, floorMap, floorManager);
         return monster;
     }
     

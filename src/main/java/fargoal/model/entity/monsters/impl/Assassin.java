@@ -10,12 +10,13 @@ import fargoal.model.map.api.FloorMap;
 
 public class Assassin extends AbstractMonster {
 
-    public Assassin(Position position, Integer level, FloorMap floorMap) {
+    public Assassin(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
         setMonsterType(MonsterType.ASSASSIN);
         setPosition(position); 
         setFloorMap(floorMap);
         setSkill(level); 
         setVisibilityOff();
+        this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
     }
 
     @Override
@@ -31,7 +32,7 @@ public class Assassin extends AbstractMonster {
 
     @Override
     public void update(FloorManager floorManager) {
-        if(areNeighbours(floorManager)) {
+        if(this.areNeighbours(floorManager)) {
             this.attack(floorManager.getPlayer());
             this.steal(floorManager.getPlayer());
         } else {

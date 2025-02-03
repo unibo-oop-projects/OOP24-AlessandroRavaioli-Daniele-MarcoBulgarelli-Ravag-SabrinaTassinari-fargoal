@@ -9,11 +9,12 @@ import fargoal.model.map.api.FloorMap;
 
 public class WarLord extends AbstractMonster {
 
-    public WarLord(Position position, Integer level, FloorMap floorMap) {
+    public WarLord(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
         setMonsterType(MonsterType.WAR_LORD);
         setPosition(position);
         setFloorMap(floorMap);
         setSkill(level);
+        this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
     }
 
     @Override

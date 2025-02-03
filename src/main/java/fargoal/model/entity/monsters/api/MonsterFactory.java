@@ -1,6 +1,7 @@
 package fargoal.model.entity.monsters.api;
 
 import fargoal.commons.api.Position;
+import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 
 /**
@@ -15,9 +16,10 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floor where the monster is located
+     * @param floorManager - to get infos also about other entities
      * @return a new Rogue
      */
-    AbstractMonster generateRogue(Position position, Integer level, FloorMap floorMap);
+    AbstractMonster generateRogue(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
 
     /**
      * Generate a Barbarian.
@@ -25,9 +27,10 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floor where the monster is located
+     * @param floorManager - to get infos also about other entities
      * @return a new Barbarian
      */
-    AbstractMonster generateBarbarian(Position position, Integer level, FloorMap floorMap);
+    AbstractMonster generateBarbarian(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
 
     /**
      * Generate a Monk.
@@ -35,9 +38,10 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floor where the monster is located
+     * @param floorManager - to get infos also about other entities
      * @return a new Monk
      */
-    AbstractMonster generateMonk(Position position, Integer level, FloorMap floorMap);
+    AbstractMonster generateMonk(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
 
     /**
      * Generate an Assassin.
@@ -45,9 +49,10 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floor where the monster is located
+     * @param floorManager - to get infos also about other entities
      * @return a new Assassin
      */
-    AbstractMonster generateAssassin(Position position, Integer level, FloorMap floorMap);
+    AbstractMonster generateAssassin(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
 
     /**
      * Generate a War Lord.
@@ -55,9 +60,10 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floor where the monster is located
+     * @param floorManager - to get infos also about other entities
      * @return a new War Lord
      */
-    AbstractMonster generateWarLord(Position position, Integer level, FloorMap floorMap);
+    AbstractMonster generateWarLord(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
 
     /**
      * Generate a Mage.
@@ -65,9 +71,10 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floor where the monster is located
+     * @param floorManager - to get infos also about other entities
      * @return a new Mage
      */
-    AbstractMonster generateMage(Position position, Integer level, FloorMap floorMap);
+    AbstractMonster generateMage(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
 
     /**
      * Generate a Spider.
@@ -75,7 +82,8 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floor where the monster is located
+     * @param floorManager - to get infos also about other entities
      * @return a new Spider
      */
-    AbstractMonster generateSpider(Position position, Integer level, FloorMap floorMap);
+    AbstractMonster generateSpider(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
 }
