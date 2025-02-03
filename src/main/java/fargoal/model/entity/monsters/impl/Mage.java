@@ -1,6 +1,7 @@
 package fargoal.model.entity.monsters.impl;
 
 import fargoal.commons.api.Position;
+import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
@@ -30,7 +31,10 @@ public class Mage extends AbstractMonster {
 
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        if(this.areNeighbours(floorManager, 1)) {
+            this.attack(floorManager.getPlayer());
+        } else {
+            Ai.move(this, floorManager.getPlayer());
+        }
     }
 }
