@@ -19,7 +19,7 @@ public record Position(int x, int y) {
     }
 
     /**
-     * Method to deny both the variable of a position.
+     * Method to deny both the values of a position.
      * 
      * @param position - the position to be denied
      * @return the new position that has been denied
@@ -29,7 +29,7 @@ public record Position(int x, int y) {
     }
 
     /**
-     * Method to deny the variable X of a position.
+     * Method to deny the value X of a position.
      * 
      * @param position - the position which the variable X has to be denied
      * @return the new position with the X denied
@@ -39,7 +39,7 @@ public record Position(int x, int y) {
     }
 
     /**
-     * Method to deny the variable Y of a position.
+     * Method to deny the value Y of a position.
      * 
      * @param position - the position which the variable Y has to be denied
      * @return the new position with the Y denied
@@ -48,18 +48,38 @@ public record Position(int x, int y) {
         return new Position(x, -position.y());
     }
 
+    /**
+     * Method to decrease the value X. 
+     * 
+     * @return a position with X decreased
+     */
     public Position decreaseX() {
         return new Position(x - 1, y);
     }
 
+    /**
+     * Method to decrease the value Y.
+     * 
+     * @return a position with Y decreased
+     */
     public Position decreaseY() {
         return new Position(x, y - 1);
     }
 
+    /**
+     * Method to increase the value X.
+     * 
+     * @return a position with X increased
+     */
     public Position increaseX() {
         return new Position(x + 1, y);
     }
 
+    /**
+     * Method to increase the value Y.
+     * 
+     * @return a position with Y increased
+     */
     public Position increaseY() {
         return new Position(x, y + 1);
     }
