@@ -4,7 +4,6 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.impl.Spider;
 import fargoal.model.entity.player.api.Player;
-import fargoal.model.map.api.FloorMap;
 
 public class Ai {
 

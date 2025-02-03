@@ -30,7 +30,7 @@ public class FloorManagerImpl implements FloorManager {
 
     @Override
     public Player getPlayer() {
-        return player;
+        return this.player;
     }
 
     @Override

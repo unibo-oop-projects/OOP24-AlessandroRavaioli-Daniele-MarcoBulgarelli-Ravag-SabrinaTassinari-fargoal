@@ -12,13 +12,6 @@ public interface Health {
     Integer getCurrentHealth();
 
     /**
-     * Getter for the max health of the floor.
-     * 
-     * @return max health
-     */
-    Integer getMaxHealth();
-
-    /**
      * Decreases the current health value.
      * 
      * @param amount to subtract to the current health value.
@@ -33,7 +26,15 @@ public interface Health {
     void increaseHealth(Integer amount);
 
     /**
-     * Set the current health value to the max health value.
+     * Set the current health value to the given amount value.
+     * 
+     * @param amount to set as entity's health
+     */
+    void setHealth(Integer amount);
+
+    /**
+     * Set the current health to the max health value possible
+     * for the current entity.
      */
     void setToMaxHealth();
 }

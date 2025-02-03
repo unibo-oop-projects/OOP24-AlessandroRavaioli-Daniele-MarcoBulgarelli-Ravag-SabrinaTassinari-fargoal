@@ -16,21 +16,15 @@ public class HealthImpl implements Health {
      * 
      * @param maxHealth - the maximum health value
      */
-    public HealthImpl(Integer maxHealth) {
-        this.maxHealth = maxHealth;
-        this.currentHealth = maxHealth;
+    public HealthImpl(Integer amount) {
+        this.maxHealth = amount;
+        this.currentHealth = amount;
     }
 
     /** {@inheritDoc} */
     @Override
     public Integer getCurrentHealth() {
         return currentHealth;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public Integer getMaxHealth() {
-        return maxHealth;
     }
 
     /** {@inheritDoc} */
@@ -43,6 +37,12 @@ public class HealthImpl implements Health {
     @Override
     public void increaseHealth(Integer amount) {
         this.currentHealth = this.currentHealth + amount;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setHealth(Integer amount) {
+        this.currentHealth = amount;
     }
 
     /** {@inheritDoc} */
