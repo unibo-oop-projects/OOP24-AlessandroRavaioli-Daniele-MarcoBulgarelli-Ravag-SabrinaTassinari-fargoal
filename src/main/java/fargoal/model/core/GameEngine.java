@@ -23,7 +23,6 @@ public class GameEngine {
             view.update();
             waitToNextFrame(currentCycleStartTime);
             System.out.println("Sono partito");
-            System.exit(0);
         }
     }
 
