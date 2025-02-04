@@ -1,7 +1,7 @@
 package fargoal.model.entity.commons.api;
 
 import fargoal.commons.api.Position;
-import fargoal.model.FloorElement;
+import fargoal.model.commons.FloorElement;
 
 /**
  * An Entity represent a FloorElement that can move, attack and be damaged.

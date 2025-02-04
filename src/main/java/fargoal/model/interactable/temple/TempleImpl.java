@@ -1,10 +1,10 @@
-package fargoal.model.interactable.temple.impl;
+package fargoal.model.interactable.temple;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
-public class TempleImpl implements Interactable{
+public class TempleImpl implements Interactable {
 
     final Position position;
 
@@ -12,7 +12,7 @@ public class TempleImpl implements Interactable{
         this.position = position;
     }
 
-    //dona al tempio
+    //dona al tempio e non può essere attaccato
     @Override
     public void interact() {
         // TODO Auto-generated method stub
