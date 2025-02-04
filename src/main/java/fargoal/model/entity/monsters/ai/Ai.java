@@ -15,6 +15,10 @@ public class Ai {
     private static final Integer MAX_DISTANCE = 10;
     private static final Integer MAX_TRY = 15;
 
+    private Ai() {
+
+    }
+
     /**
      * Method that actualy moves the monster towards the
      * player, or otherwise randomly.
@@ -208,5 +212,5 @@ public class Ai {
                 spider.setVisibilityOff();
             }
         }
-    }   
+    }
 }
