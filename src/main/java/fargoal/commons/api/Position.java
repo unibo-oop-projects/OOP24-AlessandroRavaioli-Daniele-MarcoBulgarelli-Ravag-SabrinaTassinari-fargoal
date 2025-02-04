@@ -14,7 +14,7 @@ public record Position(int x, int y) {
      * @param position - the position to add
      * @return the new position, that is the sum
      */
-    public Position add(Position position) {
+    public Position add(final Position position) {
         return new Position(x + position.x(), y + position.y());
     }
 
@@ -24,7 +24,7 @@ public record Position(int x, int y) {
      * @param position - the position to be denied
      * @return the new position that has been denied
      */
-    public Position negate(Position position) {
+    public Position negate(final Position position) {
         return new Position(-position.x(), -position.y());
     }
 
@@ -34,7 +34,7 @@ public record Position(int x, int y) {
      * @param position - the position which the variable X has to be denied
      * @return the new position with the X denied
      */
-    public Position negateX(Position position) {
+    public Position negateX(final Position position) {
         return new Position(-position.x(), y);
     }
 
@@ -44,7 +44,7 @@ public record Position(int x, int y) {
      * @param position - the position which the variable Y has to be denied
      * @return the new position with the Y denied
      */
-    public Position negateY(Position position) {
+    public Position negateY(final Position position) {
         return new Position(x, -position.y());
     }
 
