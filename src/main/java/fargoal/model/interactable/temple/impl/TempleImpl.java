@@ -12,6 +12,7 @@ public class TempleImpl implements Temple{
         this.position = position;
     }
 
+    //dona al tempio
     @Override
     public void interact() {
         // TODO Auto-generated method stub
@@ -23,10 +24,6 @@ public class TempleImpl implements Temple{
         return this.position;
     }
 
-    @Override
-    public boolean isColliding() {
-        return false;
-    }
 
     @Override
     public String getTag() {

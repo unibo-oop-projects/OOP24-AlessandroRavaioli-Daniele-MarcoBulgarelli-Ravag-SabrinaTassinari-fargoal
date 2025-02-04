@@ -3,7 +3,6 @@ package fargoal.model.interactable.pickUpAble.inChest.impl;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
-import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.api.Chest;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.manager.api.FloorManager;
@@ -26,11 +25,6 @@ public class ChestImpl implements Chest{
     @Override
     public Position getPosition() {
         return this.position;
-    }
-
-    @Override
-    public boolean isColliding() {
-        return false;
     }
 
     @Override

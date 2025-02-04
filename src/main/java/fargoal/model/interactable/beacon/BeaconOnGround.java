@@ -18,11 +18,6 @@ public class BeaconOnGround implements Interactable{
     }
 
     @Override
-    public boolean isColliding() {
-        return false;
-    }
-
-    @Override
     public String getTag() {
         return "BEACON";
     }

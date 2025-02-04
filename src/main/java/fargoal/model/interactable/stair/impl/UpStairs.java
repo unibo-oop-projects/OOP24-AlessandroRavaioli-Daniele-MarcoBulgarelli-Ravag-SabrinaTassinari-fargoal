@@ -27,12 +27,6 @@ public class UpStairs implements Stairs {
     }
 
     @Override
-    public boolean isColliding() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isColliding'");
-    }
-
-    @Override
     public String getTag() {
         return "UpStairs";
     }
