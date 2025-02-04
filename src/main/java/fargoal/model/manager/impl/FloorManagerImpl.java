@@ -3,7 +3,7 @@ package fargoal.model.manager.impl;
 import java.util.LinkedList;
 import java.util.List;
 
-import fargoal.model.FloorElement;
+import fargoal.model.commons.FloorElement;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
