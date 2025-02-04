@@ -11,8 +11,14 @@ import fargoal.commons.api.Position;
 import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;
 
+/**
+ * class that creates a random floor
+ */
 public class FloorConstructorImpl implements FloorConstructor {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FloorMap createFloor() {
         return new FloorMapBuilder().buildRooms().buildCorridors().build();

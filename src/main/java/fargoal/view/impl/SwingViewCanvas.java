@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 public class SwingViewCanvas extends JPanel {
     
@@ -17,7 +18,7 @@ public class SwingViewCanvas extends JPanel {
     }
 
     public void addToList(Consumer<Graphics2D> g2d) {
-        list.add(g2d);
+        SwingUtilities.invokeLater(() -> list.add(g2d));
     }
 
     @Override

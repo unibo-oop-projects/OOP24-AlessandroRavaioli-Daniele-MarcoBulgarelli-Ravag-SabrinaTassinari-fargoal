@@ -2,25 +2,26 @@ package fargoal.model.core;
 
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
+import fargoal.view.api.View;
+import fargoal.view.impl.SwingView;
 
 public class GameEngine {
 
     private static final int period = 20; 
     private final FloorManager manager;
+    private final View view;
 
     public GameEngine() {
-        this.manager = new FloorManagerImpl();
+        this.view = new SwingView();
+        this.manager = new FloorManagerImpl(new GameContext(view));
     }
     
     public void start() {
-        long previousCycleStartTime = System.currentTimeMillis();
         while (true) {
             long currentCycleStartTime = System.currentTimeMillis();
-            manager.update(null);
+            manager.update(new GameContext(view));
+            view.update();
             waitToNextFrame(currentCycleStartTime);
-            System.out.println("Sono partito");
-            previousCycleStartTime = currentCycleStartTime;
-            System.exit(0);
         }
     }
 
