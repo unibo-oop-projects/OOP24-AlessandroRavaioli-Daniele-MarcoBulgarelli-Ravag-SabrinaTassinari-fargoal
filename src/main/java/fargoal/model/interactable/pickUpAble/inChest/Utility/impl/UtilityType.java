@@ -4,6 +4,7 @@ public enum UtilityType {
     ENCHANTED_WEAPON("ENCHANTED WEAPON"),
     HEALING_POTION("HEALING POTION"),
     BEACON("BEACON"),
+    MAGIC_SACK("MAGIC SACK"),
     MAP("MAP");
 
     private final String name;
