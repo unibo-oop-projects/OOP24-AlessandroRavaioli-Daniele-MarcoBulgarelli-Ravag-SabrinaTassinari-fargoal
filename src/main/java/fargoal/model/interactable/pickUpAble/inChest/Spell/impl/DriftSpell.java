@@ -5,10 +5,6 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class DriftSpell implements Spell{
 
-    public DriftSpell() {
-
-    }
-
     @Override
     public String getChestItemType() {
         return ChestItemType.SPELL.getName();

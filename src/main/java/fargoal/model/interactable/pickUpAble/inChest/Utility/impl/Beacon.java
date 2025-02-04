@@ -21,4 +21,8 @@ public class Beacon implements Utility {
         throw new UnsupportedOperationException("Unimplemented method 'store'");
     }
     
+    //il giocatore mette a terra la torcia
+    public void putOnGround() {
+
+    }
 }

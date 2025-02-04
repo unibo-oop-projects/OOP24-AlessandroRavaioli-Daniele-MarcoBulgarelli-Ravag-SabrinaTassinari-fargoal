@@ -4,11 +4,11 @@ import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
-public class Beacon implements Interactable{
+public class BeaconOnGround implements Interactable{
 
     final Position position;
 
-    public Beacon(final Position position) {
+    public BeaconOnGround(final Position position) {
         this.position = position;
     }
 

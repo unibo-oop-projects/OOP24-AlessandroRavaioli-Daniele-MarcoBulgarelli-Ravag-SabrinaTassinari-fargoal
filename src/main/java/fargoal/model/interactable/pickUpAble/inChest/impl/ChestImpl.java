@@ -6,10 +6,11 @@ import fargoal.model.manager.api.FloorManager;
 
 public class ChestImpl implements Chest{
 
-    private Position position;
+    final private Position position;
     private boolean open;
 
-    public ChestImpl() {
+    public ChestImpl(final Position position) {
+        this.position = position;
         this.open = false;
     }
 
@@ -20,10 +21,6 @@ public class ChestImpl implements Chest{
     @Override
     public Position getPosition() {
         return this.position;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     @Override
