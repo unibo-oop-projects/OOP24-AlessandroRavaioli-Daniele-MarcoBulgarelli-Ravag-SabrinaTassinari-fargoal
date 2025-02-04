@@ -10,6 +10,15 @@ import fargoal.model.map.api.FloorMap;
  */
 public interface MonsterFactory {
 
-    Monster generate(Position position, Integer level, FloorMap floorMap, FloorManager floorManager);
+    /**
+     * Method to generate a random monster, based on the floor where the 
+     * player is currently located
+     * 
+     * @param position - the starting position
+     * @param floorMap - the floormap where the monster is located
+     * @param floorManager - to get infos also about other entities
+     * @return a Monster
+     */
+    Monster generate(Position position, FloorMap floorMap, FloorManager floorManager);
 
 }

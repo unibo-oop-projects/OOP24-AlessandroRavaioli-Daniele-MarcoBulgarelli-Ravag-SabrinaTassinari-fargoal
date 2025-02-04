@@ -1,8 +1,9 @@
 package fargoal.model.entity.monsters.impl;
 
+import java.util.Random;
+
 import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.Monster;
-import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
@@ -13,11 +14,69 @@ import fargoal.model.map.api.FloorMap;
  */
 public class MonsterFactoryImpl implements MonsterFactory {
 
-    private AbstractMonster monster;
+    private static final int ROGUE = 1;
+    private static final int BARBARIAN = 2;
+    private static final int MONK = 3;
+    private static final int WAR_LORD = 4;
+    private static final int SPIDER = 5;
+    private static final int MAGE = 6;
+    private static final int ASSASSIN = 7; 
+    private Integer level;
+    private final Random random = new Random();
 
+    /**
+     * Initialize the only field in this class.
+     * 
+     * @param level - to set the current level
+     */
+    public MonsterFactoryImpl(Integer level) {
+        this.level = level;
+    }
+
+    /** {@inheritDoc} */
     @Override
-    public Monster generate(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        return monster;
+    public Monster generate(Position position, FloorMap floorMap, FloorManager floorManager) {
+        int num;
+        if (floorManager.getFloorLevel() >= 9) {
+            num = random.nextInt(4) + 4;
+            if (num == WAR_LORD) {
+                return generateWarLord(position, level, floorMap, floorManager);
+            } else if (num == SPIDER) {
+                return generateSpider(position, level, floorMap, floorManager);
+            } else if (num == MAGE) {
+                return generateMage(position, level, floorMap, floorManager);
+            } else if (num == ASSASSIN) {
+                return generateAssassin(position, level, floorMap, floorManager);
+            }
+        } else if (floorManager.getFloorLevel() >= 7) {
+            num = random.nextInt(3) + 4;
+            if (num == WAR_LORD) {
+                return generateWarLord(position, level, floorMap, floorManager);
+            } else if (num == SPIDER) {
+                return generateSpider(position, level, floorMap, floorManager);
+            } else if (num == MAGE) {
+                return generateMage(position, level, floorMap, floorManager);
+            }
+        } else if (floorManager.getFloorLevel() >= 5) {
+            num = random.nextInt(3) + 3;
+            if (num == MONK) {
+                return generateMonk(position, level, floorMap, floorManager);
+            } else if (num == WAR_LORD) {
+                return generateWarLord(position, level, floorMap, floorManager);
+            } else if (num == SPIDER) {
+                return generateSpider(position, level, floorMap, floorManager);
+            }
+        } else if (floorManager.getFloorLevel() == 4) {
+            return generateMonk(position, level, floorMap, floorManager);
+        } else if (floorManager.getFloorLevel() <= 3) {
+            num = random.nextInt(2) + 1;
+            if (num == ROGUE) {
+                return generateRogue(position, level, floorMap, floorManager);
+            } else if (num == BARBARIAN) {
+                return generateBarbarian(position, level, floorMap, floorManager);
+            }
+        }
+        return generateBarbarian(position, level, floorMap, floorManager);
     }
 
     /**
@@ -25,13 +84,12 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floor where the monster is located
+     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @return a new Rogue
      */
     private Monster generateRogue(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        monster = new Rogue(position, level, floorMap, floorManager);
-        return monster;
+        return new Rogue(position, level, floorMap, floorManager);
     }
 
     /**
@@ -39,13 +97,12 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floor where the monster is located
+     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @return a new Barbarian
      */
-    private AbstractMonster generateBarbarian(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        monster = new Barbarian(position, level, floorMap, floorManager);
-        return monster;
+    private Monster generateBarbarian(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        return new Barbarian(position, level, floorMap, floorManager);
     }
 
     /**
@@ -53,13 +110,12 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floor where the monster is located
+     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @return a new Monk
      */
-    private AbstractMonster generateMonk(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        monster = new Monk(position, level, floorMap, floorManager);
-        return monster;
+    private Monster generateMonk(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        return new Monk(position, level, floorMap, floorManager);
     }
 
     /**
@@ -67,13 +123,12 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floor where the monster is located
+     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @return a new Assassin
      */
-    private AbstractMonster generateAssassin(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        monster = new Assassin(position, level, floorMap, floorManager);
-        return monster;
+    private Monster generateAssassin(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        return new Assassin(position, level, floorMap, floorManager);
     }
 
     /**
@@ -81,13 +136,12 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floor where the monster is located
+     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @return a new War Lord
      */
-    private AbstractMonster generateWarLord(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        monster = new WarLord(position, level, floorMap, floorManager);
-        return monster;
+    private Monster generateWarLord(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        return new WarLord(position, level, floorMap, floorManager);
     }
 
     /**
@@ -95,13 +149,12 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floor where the monster is located
+     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @return a new Mage
      */
-    private AbstractMonster generateMage(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        monster = new Mage(position, level, floorMap, floorManager);
-        return monster;
+    private Monster generateMage(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        return new Mage(position, level, floorMap, floorManager);
     }
 
     /**
@@ -109,13 +162,12 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floor where the monster is located
+     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @return a new Spider
      */
-    private AbstractMonster generateSpider(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
-        monster = new Spider(position, level, floorMap, floorManager);
-        return monster;
+    private Monster generateSpider(Position position, Integer level, FloorMap floorMap, FloorManager floorManager) {
+        return new Spider(position, level, floorMap, floorManager);
     }
     
 }
