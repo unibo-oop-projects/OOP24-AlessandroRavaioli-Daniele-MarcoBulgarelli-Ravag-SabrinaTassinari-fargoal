@@ -1,10 +1,10 @@
 package fargoal.model.interactable.temple.impl;
 
 import fargoal.commons.api.Position;
-import fargoal.model.interactable.temple.api.Temple;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
-public class TempleImpl implements Temple{
+public class TempleImpl implements Interactable{
 
     final Position position;
 
@@ -28,12 +28,6 @@ public class TempleImpl implements Temple{
     @Override
     public String getTag() {
         return "TEMPLE";
-    }
-
-    @Override
-    public void unattackable() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'donate'");
     }
 
     @Override

@@ -24,11 +24,6 @@ public class SackOfMoney implements Interactable{
     }
 
     @Override
-    public boolean isColliding() {
-        return false;
-    }
-
-    @Override
     public String getTag() {
         return "SACK OF GOLD";
     }
