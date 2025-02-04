@@ -2,9 +2,32 @@ package fargoal.model.interactable.pickUpAble.inChest.api;
 
 public interface ChestItemFactory {
     
-    ChestItem generateSpell();
+    public ChestItem generateDriftSpell();
 
-    ChestItem generateTrap();
+    public ChestItem generateInvisibilitySpell();
 
-    ChestItem generateUtility();
+    public ChestItem generateLightSpell();
+
+    public ChestItem generateRegenerationSpell();
+
+    public ChestItem generateShieldSpell();
+
+    public ChestItem generateTeleportSpell();
+
+    public ChestItem generateCeilingTrap();
+
+    public ChestItem generateExplosion();
+
+    public ChestItem generatePit();
+
+    public ChestItem generateTeleport();
+
+    public ChestItem generateBeacon();
+
+    public ChestItem generateEnchantedWeapon();
+
+    public ChestItem generateHealingPotion();
+
+    public ChestItem generateMap();
+
 }
