@@ -13,7 +13,7 @@ import fargoal.model.entity.monsters.ai.Ai;
  * A Monster is an abstraction of anything that will try
  * to attack and kill the player.
  * Every object that will attack and kill the player must
- * extends this abstract class.
+ * extend this abstract class.
  */
 public abstract class AbstractMonster implements Monster {
 
