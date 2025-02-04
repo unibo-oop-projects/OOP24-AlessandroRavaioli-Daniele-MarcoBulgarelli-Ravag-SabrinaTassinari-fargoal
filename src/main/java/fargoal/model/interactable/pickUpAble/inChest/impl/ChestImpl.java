@@ -2,6 +2,7 @@ package fargoal.model.interactable.pickUpAble.inChest.impl;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.pickUpAble.inChest.api.Chest;
+import fargoal.model.manager.api.FloorManager;
 
 public class ChestImpl implements Chest{
 
@@ -47,6 +48,12 @@ public class ChestImpl implements Chest{
     public void interact() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interact'");
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
     
 }

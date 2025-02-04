@@ -2,6 +2,7 @@ package fargoal.model.interactable.beacon;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
+import fargoal.model.manager.api.FloorManager;
 
 public class Beacon implements Interactable{
 
@@ -31,6 +32,12 @@ public class Beacon implements Interactable{
     public void interact() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interact'");
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
     
 }

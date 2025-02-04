@@ -2,6 +2,7 @@ package fargoal.model.interactable.pickUpAble.onGround;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
+import fargoal.model.manager.api.FloorManager;
 
 public class SackOfMoney implements Interactable{
 
@@ -46,6 +47,12 @@ public class SackOfMoney implements Interactable{
 
     private int generateAmountOfMoney(){
         return 0;
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
     
 }
