@@ -81,6 +81,7 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public void increaseFloorLevel() {
         this.floorLevel++;
+        this.map = new FloorConstructorImpl().createFloor();
     }
 
     @Override
@@ -89,6 +90,7 @@ public class FloorManagerImpl implements FloorManager {
             throw new  IllegalStateException("cannot go to level -1");
         }
         this.floorLevel--;
+        this.map = new FloorConstructorImpl().createFloor();
     }
 
 }
