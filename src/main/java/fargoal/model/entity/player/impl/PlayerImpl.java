@@ -31,12 +31,6 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public boolean isColliding() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isColliding'");
-    }
-
-    @Override
     public String getTag() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getTag'");
