@@ -13,7 +13,7 @@ import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.impl.FloorConstructorImpl;
 
 /**
- * A class that implements the entirety of the floor and all its elements
+ * A class that implements the entirety of the floor and all its elements.
  */
 public class FloorManagerImpl implements FloorManager {
 
@@ -24,10 +24,10 @@ public class FloorManagerImpl implements FloorManager {
     private int floorLevel;
 
     /**
-     * Constructor that inizializes all of its fields
-     * @param context
+     * Constructor that inizializes all of its fields.
+     * @param context - the structure in which the reference to the view is contained
      */
-    public FloorManagerImpl(GameContext context) {
+    public FloorManagerImpl(final GameContext context) {
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl(context.getView());
         this.map = new FloorConstructorImpl().createFloor();
@@ -38,7 +38,7 @@ public class FloorManagerImpl implements FloorManager {
      * {@inheritDoc}
      */
     @Override
-    public void update(GameContext context) {
+    public void update(final GameContext context) {
         List<FloorElement> elements = new LinkedList<>();
         elements.addAll(this.monsters);
         elements.add(player);

@@ -14,19 +14,23 @@ import fargoal.view.impl.SwingRenderFactoryImpl;
 import fargoal.view.impl.SwingView;
 
 /**
- * A class that implements the map covering effect
+ * A class that implements the map covering effect.
  */
-public class FloorMaskImpl implements FloorMask{
+public class FloorMaskImpl implements FloorMask {
 
-    private final static int FLOOR_HEIGTH = 25;
-    private final static int FLOOR_LENGTH = 40;
+    private static final int FLOOR_HEIGTH = 25;
+    private static final int FLOOR_LENGTH = 40;
 
     private final Map<Position, Boolean> mask;
     private final SwingRenderFactory renderFac;
 
-    public FloorMaskImpl(View view) {
+    /**
+     * Constrctor that inizializes the mask as complete darkness and defines the renderers.
+     * @param view - the view in which the renderers are called
+     */
+    public FloorMaskImpl(final View view) {
         this.mask = new HashMap<>();
-        renderFac = new SwingRenderFactoryImpl((SwingView)view);
+        renderFac = new SwingRenderFactoryImpl((SwingView) view);
         resetMask();
     }
 
@@ -46,7 +50,7 @@ public class FloorMaskImpl implements FloorMask{
      * {@inheritDoc}
      */
     @Override
-    public void update(GameContext context, FloorManager manager) {
+    public void update(final GameContext context, final FloorManager manager) {
         List<Position> lightUp = this.mask.keySet().stream()
                 .filter(e -> Math.abs(e.x() - manager.getPlayer().getPosition().x()) <= 1
                         && Math.abs(e.y() - manager.getPlayer().getPosition().y()) <= 1)
@@ -66,5 +70,5 @@ public class FloorMaskImpl implements FloorMask{
             }
         }
     }
-    
+
 }
