@@ -33,7 +33,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     @Override
     public SwingRenderer tile(Position pos) {
         return new SwingRenderer(g2d -> {
-            g2d.setColor(Color.BLACK);
+            g2d.setColor(Color.WHITE);
             g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
                          pos.y() * this.view.getTilePixelDim(),
                          this.view.getTilePixelDim(),
@@ -63,6 +63,17 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     public SwingRenderer pickup(Position pos) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'pickup'");
+    }
+
+    @Override
+    public SwingRenderer fog(Position pos) {
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.BLACK);
+            g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
+                    pos.y() * this.view.getTilePixelDim(),
+                    this.view.getTilePixelDim(),
+                    this.view.getTilePixelDim());
+        });
     }
     
 }

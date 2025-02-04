@@ -18,4 +18,6 @@ public interface SwingRenderFactory {
     SwingRenderer temple(Position pos);
 
     SwingRenderer pickup(Position pos);
+
+    SwingRenderer fog(Position pos);
 }
