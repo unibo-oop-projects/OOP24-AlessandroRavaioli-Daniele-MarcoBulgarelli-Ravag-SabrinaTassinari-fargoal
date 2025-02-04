@@ -78,4 +78,17 @@ public class FloorManagerImpl implements FloorManager {
         return this.floorLevel;
     }
 
+    @Override
+    public void increaseFloorLevel() {
+        this.floorLevel++;
+    }
+
+    @Override
+    public void decreaseFloorLevel() {
+        if (this.floorLevel <= 0) {
+            throw new  IllegalStateException("cannot go to level -1");
+        }
+        this.floorLevel--;
+    }
+
 }

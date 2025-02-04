@@ -42,4 +42,13 @@ public interface FloorManager {
      */
     int getFloorLevel();
 
+    /**
+     * Method to increase the level of the floor
+     */
+    void increaseFloorLevel();
+
+    /**
+     * Method to decrease the level of the floor
+     */
+    void decreaseFloorLevel();
 }
