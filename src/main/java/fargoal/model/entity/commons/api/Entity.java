@@ -1,6 +1,5 @@
 package fargoal.model.entity.commons.api;
 
-
 import fargoal.model.commons.FloorElement;
 
 /**
