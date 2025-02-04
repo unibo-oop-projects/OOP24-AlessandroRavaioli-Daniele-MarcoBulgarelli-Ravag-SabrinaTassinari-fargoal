@@ -8,7 +8,6 @@ import fargoal.model.manager.api.FloorManager;
  * in the map.
  */
 public interface FloorElement {
-    
     /**
      * Return the position of the element selected.
      * 

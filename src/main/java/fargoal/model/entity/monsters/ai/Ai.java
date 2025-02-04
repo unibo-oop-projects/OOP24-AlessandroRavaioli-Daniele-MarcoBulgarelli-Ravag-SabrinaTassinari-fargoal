@@ -9,7 +9,7 @@ import fargoal.model.entity.player.api.Player;
  * Class to allow monster to move, trying to reach
  * the player (if in range of visibility).
  */
-public class Ai {
+public final class Ai {
 
     private static final Integer POSSIBLE_DIRECTIONS = 2;
     private static final Integer MAX_DISTANCE = 10;
