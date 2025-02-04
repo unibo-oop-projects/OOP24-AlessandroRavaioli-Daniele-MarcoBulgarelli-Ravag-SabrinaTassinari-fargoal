@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class Map implements Utility {
 
+    public Map() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.UTILITY.getName();

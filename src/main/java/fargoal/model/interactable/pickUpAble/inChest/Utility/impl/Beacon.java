@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class Beacon implements Utility {
 
+    public Beacon() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.UTILITY.getName();

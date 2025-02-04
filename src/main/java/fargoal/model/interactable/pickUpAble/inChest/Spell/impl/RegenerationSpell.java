@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class RegenerationSpell implements Spell {
 
+    public RegenerationSpell() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.SPELL.getName();

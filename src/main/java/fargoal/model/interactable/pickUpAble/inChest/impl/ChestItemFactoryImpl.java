@@ -1,5 +1,6 @@
 package fargoal.model.interactable.pickUpAble.inChest.impl;
 
+import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.DriftSpell;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.InvisibilitySpell;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.LightSpell;
@@ -21,7 +22,7 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemFactory;
 public class ChestItemFactoryImpl implements ChestItemFactory{
 
     @Override
-    public ChestItem generateDriftSpell() {
+    public Spell generateDriftSpell() {
         return new DriftSpell();
     }
 

@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class HealingPotion implements Utility {
 
+    public HealingPotion() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.UTILITY.getName();
