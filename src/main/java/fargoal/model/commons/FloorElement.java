@@ -1,4 +1,4 @@
-package fargoal.model;
+package fargoal.model.commons;
 
 import fargoal.commons.api.Position;
 import fargoal.model.manager.api.FloorManager;
