@@ -17,8 +17,8 @@ import fargoal.model.entity.monsters.ai.Ai;
  */
 public abstract class AbstractMonster implements Monster {
 
-    private final static Integer POSSIBLE_DIRECTIONS = 2;
-    private final static Integer MONSTER_ATTACK = 4;
+    private static final Integer POSSIBLE_DIRECTIONS = 2;
+    private static final Integer MONSTER_ATTACK = 4;
     private FloorMap floorMap;
     private MonsterType monsterType;
     private Health health;
@@ -63,7 +63,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param monsterType the MonsterType of the Monster
      */
-    public void setMonsterType(MonsterType monsterType) {
+    public void setMonsterType(final MonsterType monsterType) {
         this.monsterType = monsterType;
     }
 
@@ -72,7 +72,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param position - the new Position
      */
-    public void setPosition(Position position) {
+    public void setPosition(final Position position) {
         this.position = position;
     }
 
@@ -82,8 +82,8 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param level - the level where the Monster is
      */
-    public void setSkill(Integer level) {
-        this.skill = level * getRandom(level);
+    public void setSkill(final Integer level) {
+        this.skill = level * (getRandom(level) + 1);
     }
 
     /**
@@ -93,7 +93,7 @@ public abstract class AbstractMonster implements Monster {
      * @param num - the max number of the random
      * @return a random number
      */
-    public Integer getRandom(int num) {
+    public Integer getRandom(final Integer num) {
         return random.nextInt(num);
     }
 
@@ -102,7 +102,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param floorMap - the FloorMap where the Monster is
      */
-    public void setFloorMap(FloorMap floorMap) {
+    public void setFloorMap(final FloorMap floorMap) {
         this.floorMap = floorMap;
     }
 
@@ -134,8 +134,10 @@ public abstract class AbstractMonster implements Monster {
     /**
      * Move the Monster to a new Position, the choice of
      * new location is random.
+     * 
+     * @param floorManager - to get infos about the player
      */
-    public void move(FloorManager floorManager) {
+    public void move(final FloorManager floorManager) {
         Ai.move(this, floorManager.getPlayer());
     }
 
@@ -145,7 +147,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param player - the attacked Entity
      */
-    public void attack(Player player) {
+    public void attack(final Player player) {
         var ratio = player.getSkill() / this.getSkill();
         player.getHealth().decreaseHealth(getRandom(MONSTER_ATTACK * player.getLevel() * ratio));
     }
@@ -157,7 +159,7 @@ public abstract class AbstractMonster implements Monster {
      * @param amount - the Integer to set the proximity area
      * @return if the monster is near the player
      */
-    public boolean areNeighbours(FloorManager floorManager, Integer amount) {
+    public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
         return (floorManager.getPlayer().getPosition().x() - this.getPosition().x() <= amount
                 && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount);
     }

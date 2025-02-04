@@ -40,7 +40,7 @@ public interface Health {
 
     /**
      * Method to check if the Entity current Health value
-     * is equals to the max Health value 
+     * is equals to the max Health value. 
      * 
      * @return if the Entity has all hp
      */

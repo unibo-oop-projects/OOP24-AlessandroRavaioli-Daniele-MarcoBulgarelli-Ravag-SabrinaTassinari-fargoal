@@ -14,9 +14,9 @@ public class HealthImpl implements Health {
      * Creates a new instance of Health, the initial health value
      * equals maxHealth.
      * 
-     * @param maxHealth - the maximum health value
+     * @param amount - the maximum health value
      */
-    public HealthImpl(Integer amount) {
+    public HealthImpl(final Integer amount) {
         this.maxHealth = amount;
         this.currentHealth = amount;
     }
@@ -29,19 +29,19 @@ public class HealthImpl implements Health {
 
     /** {@inheritDoc} */
     @Override
-    public void decreaseHealth(Integer amount) {
+    public void decreaseHealth(final Integer amount) {
         this.currentHealth = this.currentHealth - amount;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void increaseHealth(Integer amount) {
+    public void increaseHealth(final Integer amount) {
         this.currentHealth = this.currentHealth + amount;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void setHealth(Integer amount) {
+    public void setHealth(final Integer amount) {
         this.currentHealth = amount;
     }
 

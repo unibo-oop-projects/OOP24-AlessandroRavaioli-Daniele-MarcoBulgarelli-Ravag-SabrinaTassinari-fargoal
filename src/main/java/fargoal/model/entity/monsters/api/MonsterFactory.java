@@ -12,7 +12,7 @@ public interface MonsterFactory {
 
     /**
      * Method to generate a random monster, based on the floor where the 
-     * player is currently located
+     * player is currently located.
      * 
      * @param position - the starting position
      * @param floorMap - the floormap where the monster is located
