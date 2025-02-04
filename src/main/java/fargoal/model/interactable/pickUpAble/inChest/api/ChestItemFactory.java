@@ -30,4 +30,6 @@ public interface ChestItemFactory {
 
     public ChestItem generateMap();
 
+    public ChestItem generateMagicSack();
+
 }
