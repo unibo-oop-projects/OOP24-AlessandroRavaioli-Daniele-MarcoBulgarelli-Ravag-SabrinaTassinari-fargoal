@@ -17,7 +17,6 @@ import fargoal.model.entity.monsters.ai.Ai;
  */
 public abstract class AbstractMonster implements Monster {
 
-    private static final Integer POSSIBLE_DIRECTIONS = 2;
     private static final Integer MONSTER_ATTACK = 4;
     private FloorMap floorMap;
     private MonsterType monsterType;
