@@ -37,9 +37,8 @@ public class Rogue extends AbstractMonster {
 
     /** {@inheritDoc} */
     @Override
-    public void steal(final Player player) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'steal'");
+    public void steal() {
+        final Player player = this.getFloorManager().getPlayer();
     }
 
     /** {@inheritDoc} */
@@ -47,7 +46,7 @@ public class Rogue extends AbstractMonster {
     public void update(final FloorManager floorManager) {
         if (this.areNeighbours(floorManager, 1)) {
             this.attack();
-            this.steal(floorManager.getPlayer());
+            this.steal();
         } else {
             Ai.move(this, floorManager.getPlayer());
         }

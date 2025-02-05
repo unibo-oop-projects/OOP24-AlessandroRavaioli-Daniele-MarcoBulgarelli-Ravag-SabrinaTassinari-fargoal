@@ -20,5 +20,12 @@ public interface Entity extends FloorElement {
      */
     Integer getSkill();
 
+    /**
+     * The Entity selected with the call of this
+     * method will receive the damage. For example if it's
+     * called on a monster, he will receives the damages from the
+     * player; instead if it's called on the player, he will receives
+     * damages from a monster who is attacking him.
+     */
     void receiveDamage();
 }

@@ -4,7 +4,6 @@ import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
-import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.entity.monsters.ai.Ai;
@@ -70,6 +69,7 @@ public abstract class AbstractMonster implements Monster {
         return this.skill;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void receiveDamage() {
         final int damage = this.getFloorManager().getPlayer().attack();
@@ -194,8 +194,6 @@ public abstract class AbstractMonster implements Monster {
     /**
      * The Monster steals from the Player and takes
      * spell or potions from his inventory.
-     * 
-     * @param player - the player robbed
      */
-    public abstract void steal(Player player);
+    public abstract void steal();
 }
