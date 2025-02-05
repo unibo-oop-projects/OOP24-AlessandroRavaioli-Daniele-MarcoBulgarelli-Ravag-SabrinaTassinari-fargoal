@@ -151,7 +151,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addFloorMap(Integer floorNumber) {
-        if(floorNumber <= 0 || floorNumber == null) {
+        if(floorNumber == null || floorNumber <= 0) {
             throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
         }
         if(!this.listOfMaps.contains(floorNumber)) {
@@ -162,7 +162,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void removeFloorMap(Integer floorNumber) {
-        if(floorNumber <= 0 || floorNumber == null) {
+        if(floorNumber == null || floorNumber <= 0) {
             throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
         }
         this.listOfMaps.remove(floorNumber); 
