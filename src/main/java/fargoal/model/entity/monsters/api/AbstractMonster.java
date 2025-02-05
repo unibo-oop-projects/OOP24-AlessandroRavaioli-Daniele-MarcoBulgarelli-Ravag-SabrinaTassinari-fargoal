@@ -189,6 +189,17 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
+     * Return the visibility of the monster.
+     * Assassin for example are often invisible for the 
+     * player.
+     * 
+     * @return the field isVisible of the Monster
+     */
+    public boolean getVisibility() {
+        return this.isVisible;
+    }
+
+    /**
      * Move the Monster to a new Position, the choice of
      * new location is random.
      * 
