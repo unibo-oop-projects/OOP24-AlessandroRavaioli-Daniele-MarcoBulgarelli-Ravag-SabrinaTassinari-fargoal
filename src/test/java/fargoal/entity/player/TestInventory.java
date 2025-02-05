@@ -18,7 +18,7 @@ public class TestInventory {
     private Inventory inventory;
 
     @BeforeEach
-    void setUp(){
+    void setUp() {
         inventory = new InventoryImpl();
     }
 
