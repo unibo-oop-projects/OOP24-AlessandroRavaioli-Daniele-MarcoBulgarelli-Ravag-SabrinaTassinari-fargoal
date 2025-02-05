@@ -20,6 +20,13 @@ public interface Gold {
     Integer getMaxCapacity();
 
     /**
+     * Setter for the maximum gold capacity.
+     * 
+     * @param - the maximum gold the player can carry now.
+     */
+    void setMaxCapacity(Integer amount);
+
+    /**
      * Sets current gold amount to 0.
      */
     void resetGold();

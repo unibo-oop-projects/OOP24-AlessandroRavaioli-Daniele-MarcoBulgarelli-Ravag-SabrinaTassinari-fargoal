@@ -34,6 +34,12 @@ public class GoldImpl implements Gold{
 
     /**{@inheritDoc} */
     @Override
+    public void setMaxCapacity(final Integer amount) {
+        this.maxCapacity = amount;
+    }
+
+    /**{@inheritDoc} */
+    @Override
     public Integer addGold(Integer amount) {
         if(amount == null || amount < 0) {
             throw new IllegalArgumentException("You cannot add a negative or null amount");
