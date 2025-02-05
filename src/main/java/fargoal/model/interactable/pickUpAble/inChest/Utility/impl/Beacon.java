@@ -8,14 +8,15 @@ import fargoal.model.interactable.pickUpAble.onGround.BeaconOnGround;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This class implements a Beacon, when it is in the player's inventory.
+ * This class implements a Beacon, when it is in the player's inventory. 
+ * The player found the beacon in a chest.
  */
 public class Beacon implements Utility {
 
     final Position position;
 
     /**
-     * This is the constructor of the class. It store right away the ebacon in the player's inventory.
+     * This is the constructor of the class. It store right away the beacon in the player's inventory.
      * @param floorManager - in it there are all the information about the floor the item is.
      * @param position - the position of the chest the beacon has been found.
      */
