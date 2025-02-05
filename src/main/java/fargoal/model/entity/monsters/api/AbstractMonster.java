@@ -238,6 +238,17 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
+     * Method to check if the monster is still
+     * alive or is dead.
+     * 
+     * @return true if the health of the monster is still positive,
+     * false otherwise
+     */
+    public boolean isDead() {
+        return this.getHealth().getCurrentHealth() <= 0;
+    }
+
+    /**
      * The Monster steals from the Player and takes
      * spell or potions from his inventory.
      */
