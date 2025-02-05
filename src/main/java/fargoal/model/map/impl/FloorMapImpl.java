@@ -1,5 +1,8 @@
 package fargoal.model.map.impl;
 
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import fargoal.commons.api.Position;
@@ -40,6 +43,8 @@ public class FloorMapImpl implements FloorMap {
      */
     @Override
     public Position getRandomTile() {
-        return this.tiles.iterator().next();
+        List<Position> list = new LinkedList<>(this.tiles);
+        Collections.shuffle(list);
+        return list.getFirst();
     }
 }

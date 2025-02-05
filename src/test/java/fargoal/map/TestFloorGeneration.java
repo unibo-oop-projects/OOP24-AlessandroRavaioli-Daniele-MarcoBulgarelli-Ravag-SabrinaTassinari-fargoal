@@ -1,5 +1,7 @@
 package fargoal.map;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -32,5 +34,18 @@ public class TestFloorGeneration {
         }
     }
 
-    
+    @Test
+    void testRandom() {
+        Position pos = map.getRandomTile();
+        int timesHappend = 0;
+        for(int i = 0; i < 100; i++) {
+            if (map.getRandomTile().equals(pos)) {
+                timesHappend++;
+            }
+        }
+        assertTrue(timesHappend < 90);
+        assertTrue(timesHappend < 70);
+        assertTrue(timesHappend < 50);
+        assertTrue(timesHappend < 20);
+    }    
 }
