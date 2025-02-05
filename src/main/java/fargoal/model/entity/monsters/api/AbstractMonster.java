@@ -217,7 +217,7 @@ public abstract class AbstractMonster implements Monster {
      */
     public Integer attack() {
         final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();
-        return getRandom(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio);
+        return getRandom(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio) + 1;
     }
 
     /**
