@@ -2,23 +2,54 @@ package fargoal.model.entity.player.impl;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
+import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
 
-    private Integer level;
-    private Health health;
     private Position position;
+    private Integer level;
+    private Integer experiencePoints;
+    private Health health;
     private Integer skill;
+    private final Inventory inventory;
+    private final boolean hasSword;
 
-    private final Inventory inventory = new InventoryImpl();
-    
+    public PlayerImpl() {
+        this.position = null; //TODO
+        this.level = 1;
+        this.experiencePoints = 0;
+        this.health = null; //TODO
+        this.skill = null; //TODO
+        this.inventory = new InventoryImpl();
+        this.hasSword = false;
+    }
+
+    @Override
+    public Position getPosition() {
+        return this.position;
+    }
+
+    @Override
+    public Integer getLevel() {
+        return this.level;
+    }
+
+    @Override
+    public Integer getExperiencePoints() {
+        return this.experiencePoints;
+    }
+
     @Override
     public Health getHealth() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getHealth'");
+        return this.health;
+    }
+
+    @Override
+    public Integer getSkill() {
+        return this.skill;
     }
 
     @Override
@@ -27,21 +58,13 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public Position getPosition() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
-    }
-
-    @Override
-    public Integer getSkill() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSkill'");
-    }
-
-    @Override
     public String getTag() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+        return "PLAYER";
+    }
+
+    @Override
+    public boolean hasSword() {
+        return this.hasSword;
     }
 
     @Override
@@ -51,15 +74,9 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public Integer attack() {
+    public Integer doDamage(Monster monster) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'attack'");
-    }
-
-    @Override
-    public Integer getLevel() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLevel'");
     }
 
     @Override
