@@ -23,6 +23,7 @@ public abstract class AbstractMonster implements Monster {
     private Health health;
     private Position position;
     private Integer skill;
+    private FloorManager floorManager;
     private boolean isVisible = false;
     private final Random random = new Random();
 
@@ -48,6 +49,11 @@ public abstract class AbstractMonster implements Monster {
     @Override
     public Integer getSkill() {
         return this.skill;
+    }
+
+    @Override
+    public Integer receiveDamage() {
+        return this.getFloorManager().getPlayer().attack();
     }
 
     /**
@@ -108,6 +114,14 @@ public abstract class AbstractMonster implements Monster {
         return this.floorMap;
     }
 
+    public void setFloorManager(FloorManager floorManager) {
+        this.floorManager = floorManager;
+    }
+
+    public FloorManager getFloorManager() {
+        return this.floorManager;
+    }
+
     /**
      * Set the Monster's visibility to true,
      * which means that the Monster is visible.
@@ -140,9 +154,9 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param player - the attacked Entity
      */
-    public void attack(final Player player) {
-        final var ratio = player.getSkill() / this.getSkill();
-        player.getHealth().decreaseHealth(getRandom(MONSTER_ATTACK * player.getLevel() * ratio));
+    public Integer attack() {
+        final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();
+        return getRandom(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio);
     }
 
     /**

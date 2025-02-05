@@ -19,4 +19,6 @@ public interface Entity extends FloorElement {
      * @return the skill
      */
     Integer getSkill();
+
+    Integer receiveDamage();
 }

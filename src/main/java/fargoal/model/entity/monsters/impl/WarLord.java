@@ -15,6 +15,8 @@ import fargoal.model.map.api.FloorMap;
  */
 public class WarLord extends AbstractMonster {
 
+    private final int shield;
+
     /**
      * A constructor to set the field that the monster needs
      * to be able to walk in the map, interacts with the items
@@ -31,6 +33,7 @@ public class WarLord extends AbstractMonster {
         setFloorMap(floorMap);
         setSkill(level);
         //this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
+        this.shield = this.getHealth().getCurrentHealth() / 5 * 2;
     }
 
     /** {@inheritDoc} */

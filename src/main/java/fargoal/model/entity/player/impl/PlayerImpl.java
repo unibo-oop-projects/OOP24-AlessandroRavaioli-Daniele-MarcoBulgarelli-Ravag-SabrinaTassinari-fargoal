@@ -43,7 +43,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public void attack() {
+    public Integer attack() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'attack'");
     }

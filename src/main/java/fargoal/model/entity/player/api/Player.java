@@ -8,5 +8,5 @@ public interface Player extends Entity {
     
     void move();
 
-    void attack();
+    Integer attack();
 }
