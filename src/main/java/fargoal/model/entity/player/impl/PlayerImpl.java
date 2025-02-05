@@ -1,5 +1,7 @@
 package fargoal.model.entity.player.impl;
 
+import java.util.Random;
+
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.monsters.api.Monster;
@@ -11,6 +13,8 @@ import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
 
+    private static final int DAMAGE_MULTIPLIER = 4;
+    private static final int MINIMUM_DAMAGE = 1;
     private static final int INITIAL_LEVEL = 1;
 
     private Position position;
@@ -28,7 +32,7 @@ public class PlayerImpl implements Player {
         this.position = null; //TODO
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
-        this.health.setHealth(0); //TODO
+        this.health.setHealth(new Random().nextInt(1, 100)); 
         this.skill = null; //TODO
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
@@ -93,6 +97,11 @@ public class PlayerImpl implements Player {
     }
 
     @Override
+    public void setHasSword(boolean condition) {
+        this.hasSword = condition;
+    }
+
+    @Override
     public void move() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'move'");
@@ -100,8 +109,9 @@ public class PlayerImpl implements Player {
 
     @Override
     public Integer doDamage(Monster monster) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'attack'");
+        int ratio = this.getSkill() / monster.getSkill();
+        Random random = new Random();
+        return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
     }
 
     @Override

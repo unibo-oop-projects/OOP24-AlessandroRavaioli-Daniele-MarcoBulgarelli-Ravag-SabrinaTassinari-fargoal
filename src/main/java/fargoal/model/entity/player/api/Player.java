@@ -50,6 +50,14 @@ public interface Player extends Entity {
     boolean hasSword();
 
     /**
+     * Setter for the hasSword condition: it changes wether the
+     * player has the legendary sword or not.
+     * 
+     * @param condition - True if player found the sword, false otherwise.
+     */
+    void setHasSword(boolean condition);
+
+    /**
      * Makes the player move one tile in the map.
      */
     void move();
