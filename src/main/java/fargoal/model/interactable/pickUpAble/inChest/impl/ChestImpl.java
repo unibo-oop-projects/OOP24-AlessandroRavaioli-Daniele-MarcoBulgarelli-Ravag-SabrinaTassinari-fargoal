@@ -7,32 +7,44 @@ import fargoal.model.interactable.pickUpAble.inChest.api.Chest;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.manager.api.FloorManager;
 
-public class ChestImpl implements Chest{
+/**
+ * The implementation of the interface Chest.
+ */
+public class ChestImpl implements Chest {
 
     final static int N_CHEST_ITEM = 15;
     final private Position position;
     private boolean open;
 
+    /**
+     * The constructor of thi class. It set all the field of the class.
+     * @param position - the position of the chest
+     */
     public ChestImpl(final Position position) {
         this.position = position;
         this.open = false;
     }
 
+    /**
+     * With this method it can be checked if the chest is open or not. 
+     * @return a boolean that indicate if the chest is open or not.
+     */
     public boolean isOpen() {
         return this.open;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Position getPosition() {
         return this.position;
     }
-
+    /** {@inheritDoc} */
     @Override
     public String getTag() {
         return "CHEST";
     }
 
-    /*generare casualmente un chestItem (lo faccio quando la cassa viene aperta) */
+    /** {@inheritDoc} */
     @Override
     public String getChestItem() {
         int num = new Random().nextInt(N_CHEST_ITEM);
@@ -74,11 +86,13 @@ public class ChestImpl implements Chest{
     }
 
     /*apri la cesta con barra spaziatrice quando ci sei vicino*/
+    /** {@inheritDoc} */
     @Override
     public void interact() {
         String item = this.getChestItem();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
         // TODO Auto-generated method stub

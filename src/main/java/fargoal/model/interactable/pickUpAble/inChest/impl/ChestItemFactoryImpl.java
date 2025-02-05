@@ -19,78 +19,96 @@ import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.Map;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemFactory;
 
+/**
+ * This class implements the interface ChestItemFactory. It generate the chest items.
+ */
 public class ChestItemFactoryImpl implements ChestItemFactory{
 
+    /** {@inheritDoc} */
     @Override
     public Spell generateDriftSpell() {
         return new DriftSpell();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateInvisibilitySpell() {
         return new InvisibilitySpell();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateLightSpell() {
         return new LightSpell();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateRegenerationSpell() {
         return new RegenerationSpell();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateShieldSpell() {
         return new ShieldSpell();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateTeleportSpell() {
         return new TeleportSpell();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateCeilingTrap() {
         return new CeilingTrap();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateExplosion() {
         return new Explosion();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generatePit() {
         return new Pit();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateTeleport() {
         return new Teleport();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateBeacon() {
         return new Beacon();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateEnchantedWeapon() {
         return new EnchantedWeapon();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateHealingPotion() {
         return new HealingPotion();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateMap() {
         return new Map();
     }
 
+    /** {@inheritDoc} */
     @Override
     public ChestItem generateMagicSack(){
         return new MagicSack();
