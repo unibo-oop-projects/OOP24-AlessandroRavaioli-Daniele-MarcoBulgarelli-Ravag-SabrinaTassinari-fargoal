@@ -16,9 +16,8 @@ import fargoal.model.map.api.FloorMap;
 public class Rogue extends AbstractMonster {
 
     /**
-     * A constructor to set the field that the monster needs
-     * to be able to walk in the map, interacts with the items
-     * and, in case, attacks the player.
+     * A constructor for the Rogue; it uses the
+     * super of the AbstractMonster constructor.
      * 
      * @param position - the starting position
      * @param level - the level of the monster
@@ -26,11 +25,8 @@ public class Rogue extends AbstractMonster {
      * @param floorManager - to get infos about the other entities/items
      */
     public Rogue(final Position position, final Integer level, final FloorMap floorMap, final FloorManager floorManager) {
+        super(position, level, floorMap, floorManager);
         setMonsterType(MonsterType.ROGUE);
-        setPosition(position);
-        setFloorMap(floorMap);
-        setSkill(level);
-        //this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
     }
 
     /** {@inheritDoc} */
@@ -50,7 +46,7 @@ public class Rogue extends AbstractMonster {
     @Override
     public void update(final FloorManager floorManager) {
         if (this.areNeighbours(floorManager, 1)) {
-            this.attack(floorManager.getPlayer());
+            this.attack();
             this.steal(floorManager.getPlayer());
         } else {
             Ai.move(this, floorManager.getPlayer());

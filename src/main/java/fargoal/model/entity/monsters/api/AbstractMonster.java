@@ -27,6 +27,25 @@ public abstract class AbstractMonster implements Monster {
     private boolean isVisible = false;
     private final Random random = new Random();
 
+    /**
+     * A constructor to set the field that the monster needs
+     * to be able to walk in the map, interacts with the items
+     * and, in case, attacks the player.
+     * 
+     * @param position - the starting position
+     * @param level - the level of the monster
+     * @param floorMap - the floorMap where the monster is located
+     * @param floorManager - to get infos about the other entities/items
+     */
+    public AbstractMonster(final Position position, final Integer level, final FloorMap floorMap, final FloorManager floorManager) {
+        this.setPosition(position);
+        this.setFloorMap(floorMap);
+        this.setFloorManager(floorManager);
+        this.setSkill(level);
+        this.setVisibilityOn();
+        this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
+    }
+
     /** {@inheritDoc} */
     @Override
     public MonsterType getMonsterType() {

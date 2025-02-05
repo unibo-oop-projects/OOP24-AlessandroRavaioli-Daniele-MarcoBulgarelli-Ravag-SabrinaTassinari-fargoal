@@ -15,9 +15,9 @@ import fargoal.model.map.api.FloorMap;
 public class Assassin extends AbstractMonster {
 
     /**
-     * A constructor to set the field that the monster needs
-     * to be able to walk in the map, interacts with the items
-     * and, in case, attacks the player.
+     * A constructor for the Assassin, it uses the
+     * super of the AbstractMonster constructor but with 
+     * his visibility off.
      * 
      * @param position - the starting position
      * @param level - the level of the monster
@@ -25,12 +25,9 @@ public class Assassin extends AbstractMonster {
      * @param floorManager - to get infos about the other entities/items
      */
     public Assassin(final Position position, final Integer level, final FloorMap floorMap, final FloorManager floorManager) {
-        setMonsterType(MonsterType.ASSASSIN);
-        setPosition(position); 
-        setFloorMap(floorMap);
-        setSkill(level); 
-        setVisibilityOff();
-        //this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
+        super(position, level, floorMap, floorManager);
+        this.setMonsterType(MonsterType.ASSASSIN);
+        this.setVisibilityOff();
     }
 
     /** {@inheritDoc} */
@@ -50,7 +47,7 @@ public class Assassin extends AbstractMonster {
     @Override
     public void update(final FloorManager floorManager) {
         if (this.areNeighbours(floorManager, 1)) {
-            this.attack(floorManager.getPlayer());
+            this.attack();
         } else {
             Ai.move(this, floorManager.getPlayer());
         }

@@ -59,4 +59,10 @@ public class PlayerImpl implements Player {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
+
+    @Override
+    public Integer receiveDamage() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'receiveDamage'");
+    }
 }
