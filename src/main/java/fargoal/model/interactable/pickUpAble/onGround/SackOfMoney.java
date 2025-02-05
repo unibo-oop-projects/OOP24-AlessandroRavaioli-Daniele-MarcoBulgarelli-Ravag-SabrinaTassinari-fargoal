@@ -34,7 +34,7 @@ public class SackOfMoney implements Interactable{
      * Se il tesoro è nascosto nel suolo ci vai sopra e premi la barra spaziatrice
      */
     @Override
-    public void interact() {
+    public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interact'");
     }

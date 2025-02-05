@@ -14,7 +14,7 @@ public class TempleImpl implements Interactable {
 
     //dona al tempio e non può essere attaccato
     @Override
-    public void interact() {
+    public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interact'");
     }

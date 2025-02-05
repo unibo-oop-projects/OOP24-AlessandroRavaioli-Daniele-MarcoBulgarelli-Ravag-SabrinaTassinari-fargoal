@@ -1,6 +1,7 @@
 package fargoal.model.interactable.stair.impl;
 
 import fargoal.commons.api.Position;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.manager.api.FloorManager;
 
@@ -16,7 +17,7 @@ public class UpStairs implements Stairs {
     }
 
     @Override
-    public void interact() {
+    public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interact'");
     }
