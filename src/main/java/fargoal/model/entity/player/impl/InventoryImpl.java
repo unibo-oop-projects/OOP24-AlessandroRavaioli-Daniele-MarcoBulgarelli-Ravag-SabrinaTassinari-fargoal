@@ -117,9 +117,12 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeHealingPotion() {
+    public boolean removeHealingPotion() {
         if(this.getHealingPotions() > 0) {
             this.healingPotions --;
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -131,9 +134,13 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeBeacon() {
-        if(this.getBeacons() > 0)
+    public boolean removeBeacon() {
+        if(this.getBeacons() > 0){
             this.beacons --;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**{@inheritDoc} */
@@ -161,11 +168,16 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeFloorMap(Integer floorNumber) {
+    public boolean removeFloorMap(Integer floorNumber) {
         if(floorNumber == null || floorNumber <= 0) {
             throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
         }
-        this.listOfMaps.remove(floorNumber); 
+        if(this.listOfMaps.contains(floorNumber)){
+            this.listOfMaps.remove(floorNumber); 
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**{@inheritDoc} */
@@ -176,9 +188,13 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeInvisibilityScroll() {
-        if(this.getInvisibilityScrolls() > 0)
+    public boolean removeInvisibilityScroll() {
+        if(this.getInvisibilityScrolls() > 0) {
             this.invisibilityScrolls --;    
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**{@inheritDoc} */
@@ -190,9 +206,13 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeTeleportScroll() {
-        if(this.getTeleportScrolls() > 0)
+    public boolean removeTeleportScroll() {
+        if(this.getTeleportScrolls() > 0) {
             this.teleportScrolls --;
+            return true;
+        } else {
+            return false;
+        }
         
     }
 
@@ -204,9 +224,13 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeShieldScroll() {
-        if(this.getShieldScrolls() > 0)
+    public boolean removeShieldScroll() {
+        if(this.getShieldScrolls() > 0) {
             this.shieldScrolls --;   
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**{@inheritDoc} */
@@ -217,9 +241,12 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeRegenerationScroll() {
+    public boolean removeRegenerationScroll() {
         if(this.getRegenerationScrolls() > 0) {
             this.regenerationScrolls --;
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -231,10 +258,13 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeDriftScroll() {
+    public boolean removeDriftScroll() {
         if(this.getDriftScrolls() > 0) {
             this.driftScrolls --;
-        } 
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**{@inheritDoc} */
@@ -245,9 +275,12 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public void removeLightScroll() {
+    public boolean removeLightScroll() {
         if(this.getLightScrolls() > 0) {
             this.lightScrolls --;
+            return true;
+        } else {
+            return false;
         }
         
     }

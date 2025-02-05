@@ -92,8 +92,10 @@ public interface Inventory {
     /**
      * Removes a single healing potion from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeHealingPotion();
+    boolean removeHealingPotion();
 
     /**
      * Adds a single invisibility scroll to player's inventory.
@@ -103,8 +105,10 @@ public interface Inventory {
     /**
      * Removes a single invisibility scroll from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeInvisibilityScroll();
+    boolean removeInvisibilityScroll();
 
     /**
      * Adds a single teleport scroll to player's inventory.
@@ -114,8 +118,10 @@ public interface Inventory {
     /**
      * Removes a single teleport scroll from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeTeleportScroll();
+    boolean removeTeleportScroll();
 
     /**
      * Adds a single shield scroll to player's inventory.
@@ -125,8 +131,10 @@ public interface Inventory {
     /**
      * Removes a single shield scroll from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeShieldScroll();
+    boolean removeShieldScroll();
 
     /**
      * Adds a single magic sack to player's inventory.
@@ -149,8 +157,10 @@ public interface Inventory {
      * Removes a map of a single floor from player's inventory.
      * 
      * @param - the floor number that the map is for.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeFloorMap(Integer floorNumber);
+    boolean removeFloorMap(Integer floorNumber);
 
     /**
      * Adds a single beacon scroll to player's inventory.
@@ -160,8 +170,10 @@ public interface Inventory {
     /**
      * Removes a single beacon scroll from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeBeacon();
+    boolean removeBeacon();
 
     /**
      * Adds a single drift scroll to player's inventory.
@@ -171,8 +183,10 @@ public interface Inventory {
     /**
      * Removes a single beacon scroll from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeDriftScroll();
+    boolean removeDriftScroll();
 
     /**
      * Adds a single light scroll to player's inventory.
@@ -182,8 +196,10 @@ public interface Inventory {
     /**
      * Removes a single light scroll from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeLightScroll();
+    boolean removeLightScroll();
 
     /**
      * Adds a single regeneration scroll to player's inventory.
@@ -193,6 +209,8 @@ public interface Inventory {
     /**
      * Removes a single regeneration scroll from player's inventory,
      * if it is available.
+     * 
+     * @return true if the item can be removed, false otherwise.
      */
-    void removeRegenerationScroll();
+    boolean removeRegenerationScroll();
 }
