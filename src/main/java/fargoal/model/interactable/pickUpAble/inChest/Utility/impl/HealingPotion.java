@@ -25,6 +25,8 @@ public class HealingPotion implements Utility {
         return UtilityType.HEALING_POTION.getName();
     }
 
+
+    //rnd(0, 19)+3*list[id].current_level
     @Override
     public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
