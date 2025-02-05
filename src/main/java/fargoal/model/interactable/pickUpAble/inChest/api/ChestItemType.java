@@ -1,7 +1,7 @@
 package fargoal.model.interactable.pickUpAble.inChest.api;
 
 /**
- * this is an enumeration of the type the player can found in a chest. 
+ * This is an enumeration of the types the player can found in a chest. 
  * Inside he can found traps, spells or utilities.
  */
 public enum ChestItemType {
