@@ -33,14 +33,12 @@ public class EnchantedWeapon implements Utility {
 
     @Override
     public Position getPosition() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+        return this.position;
     }
 
     @Override
     public String getTag() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+        return this.getChestItemName();
     }
 
     @Override

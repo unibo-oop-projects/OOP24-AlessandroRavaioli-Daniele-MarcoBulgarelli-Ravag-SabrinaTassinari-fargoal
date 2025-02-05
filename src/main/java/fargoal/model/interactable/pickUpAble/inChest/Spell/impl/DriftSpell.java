@@ -50,15 +50,13 @@ public class DriftSpell implements Spell{
     /** {@inheritDoc} */
     @Override
     public Position getPosition() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+        return this.position;
     }
 
     /** {@inheritDoc} */
     @Override
     public String getTag() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+        return this.getChestItemName();
     }
 
     /** {@inheritDoc} */

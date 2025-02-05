@@ -11,12 +11,15 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class InvisibilitySpell implements Spell {
 
+    final Position position;
+
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
-    public InvisibilitySpell(FloorManager floorManager) {
+    public InvisibilitySpell(FloorManager floorManager, final Position position) {
         this.store(floorManager);
+        this.position = position;
     }
 
     /** {@inheritDoc} */
@@ -47,15 +50,13 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Position getPosition() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+        return this.position;
     }
 
     /** {@inheritDoc} */
     @Override
     public String getTag() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+        return this.getChestItemName();
     }
 
     /** {@inheritDoc} */

@@ -35,31 +35,31 @@ public class ChestItemFactoryImpl implements ChestItemFactory{
     /** {@inheritDoc} */
     @Override
     public ChestItem generateInvisibilitySpell(FloorManager floorManager, final Position position) {
-        return new InvisibilitySpell(floorManager);
+        return new InvisibilitySpell(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateLightSpell(FloorManager floorManager, final Position position) {
-        return new LightSpell(floorManager);
+        return new LightSpell(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateRegenerationSpell(FloorManager floorManager, final Position position) {
-        return new RegenerationSpell(floorManager);
+        return new RegenerationSpell(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateShieldSpell(FloorManager floorManager, final Position position) {
-        return new ShieldSpell(floorManager);
+        return new ShieldSpell(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateTeleportSpell(FloorManager floorManager, final Position position) {
-        return new TeleportSpell(floorManager);
+        return new TeleportSpell(floorManager, position);
     }
 
     /** {@inheritDoc} */
