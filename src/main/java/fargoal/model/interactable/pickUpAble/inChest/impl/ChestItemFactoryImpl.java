@@ -27,8 +27,8 @@ public class ChestItemFactoryImpl implements ChestItemFactory{
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateDriftSpell(FloorManager floorManager) {
-        return new DriftSpell(floorManager);
+    public Spell generateDriftSpell(FloorManager floorManager, final Position position) {
+        return new DriftSpell(floorManager, position);
     }
 
     /** {@inheritDoc} */

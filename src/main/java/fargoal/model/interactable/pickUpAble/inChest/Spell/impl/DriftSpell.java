@@ -1,5 +1,7 @@
 package fargoal.model.interactable.pickUpAble.inChest.Spell.impl;
 
+import fargoal.commons.api.Position;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -9,12 +11,15 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class DriftSpell implements Spell{
 
+    final Position position;
+
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
-    public DriftSpell(FloorManager floorManager) {
+    public DriftSpell(FloorManager floorManager, final Position position) {
         this.store(floorManager);
+        this.position = position;
     }
 
     /** {@inheritDoc} */
@@ -35,11 +40,28 @@ public class DriftSpell implements Spell{
        floorManager.getPlayer().getInventory().addDriftScroll();
     }
 
-    /** {@inheritDoc} */
     @Override
-    public void cast() {
+    public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cast'");
+        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+    }
+
+    @Override
+    public Position getPosition() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+    }
+
+    @Override
+    public String getTag() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     

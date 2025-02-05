@@ -35,7 +35,7 @@ public class BeaconOnGround implements Interactable{
     /** {@inheritDoc} */
     //unattackable
     @Override
-    public void interact(FloorManager floorManager) {
+    public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interact'");
     }

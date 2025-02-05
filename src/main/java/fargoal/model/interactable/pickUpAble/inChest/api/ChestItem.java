@@ -1,9 +1,12 @@
 package fargoal.model.interactable.pickUpAble.inChest.api;
 
+import fargoal.model.commons.FloorElement;
+import fargoal.model.interactable.api.Interactable;
+
 /**
  * The interface for the items in the chest, such as spells, traps and utilities. 
  */
-public interface ChestItem {
+public interface ChestItem extends Interactable{
 
     /**
      * With this method, the type of the chest item is known.
