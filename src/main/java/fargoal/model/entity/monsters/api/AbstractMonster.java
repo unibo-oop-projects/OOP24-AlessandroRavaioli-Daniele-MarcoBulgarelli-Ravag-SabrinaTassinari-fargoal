@@ -71,8 +71,9 @@ public abstract class AbstractMonster implements Monster {
     }
 
     @Override
-    public Integer receiveDamage() {
-        return this.getFloorManager().getPlayer().attack();
+    public void receiveDamage() {
+        final int damage = this.getFloorManager().getPlayer().attack();
+        this.getHealth().decreaseHealth(damage);
     }
 
     /**

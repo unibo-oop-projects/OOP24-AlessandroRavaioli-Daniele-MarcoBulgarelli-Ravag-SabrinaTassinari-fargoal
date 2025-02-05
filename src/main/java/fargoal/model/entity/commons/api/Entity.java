@@ -20,5 +20,5 @@ public interface Entity extends FloorElement {
      */
     Integer getSkill();
 
-    Integer receiveDamage();
+    void receiveDamage();
 }

@@ -15,7 +15,7 @@ import fargoal.model.map.api.FloorMap;
  */
 public class WarLord extends AbstractMonster {
 
-    private final boolean shield;
+    private boolean shield;
 
     /**
      * A constructor for the War Lord; it uses the
@@ -31,6 +31,16 @@ public class WarLord extends AbstractMonster {
         super(position, level, floorMap, floorManager);
         setMonsterType(MonsterType.WAR_LORD);
         this.shield = true;
+    }
+
+    @Override
+    public void receiveDamage() {
+        final int damage = this.getFloorManager().getPlayer().attack();
+        if(shield) {
+            shield = false;
+        } else {
+            this.getHealth().decreaseHealth(damage);
+        }
     }
 
     /** {@inheritDoc} */
