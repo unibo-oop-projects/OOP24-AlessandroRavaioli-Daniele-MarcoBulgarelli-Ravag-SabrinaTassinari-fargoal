@@ -29,6 +29,12 @@ public class HealthImpl implements Health {
 
     /** {@inheritDoc} */
     @Override
+    public Integer getMaxHealth() {
+        return this.maxHealth;
+    }
+
+    /** {@inheritDoc} */
+    @Override
     public void decreaseHealth(final Integer amount) {
         this.currentHealth = this.currentHealth - amount;
     }

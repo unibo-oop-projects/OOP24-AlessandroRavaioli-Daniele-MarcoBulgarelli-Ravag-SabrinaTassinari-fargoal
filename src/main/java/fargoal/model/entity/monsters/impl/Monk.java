@@ -48,7 +48,10 @@ public class Monk extends AbstractMonster {
      * to recover hp.
      */
     private void heal() {
-        this.getHealth().setToMaxHealth();
+        this.getHealth().increaseHealth(this.getRandom(19) + 3 * this.getLevel());
+        if(this.getHealth().getCurrentHealth() > this.getHealth().getMaxHealth()) {
+            this.getHealth().setHealth(this.getHealth().getMaxHealth());
+        }
     }
 
     /** {@inheritDoc} */

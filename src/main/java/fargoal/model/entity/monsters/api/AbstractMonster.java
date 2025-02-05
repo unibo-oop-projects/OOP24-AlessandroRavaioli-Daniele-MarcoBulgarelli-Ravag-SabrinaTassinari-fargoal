@@ -23,6 +23,7 @@ public abstract class AbstractMonster implements Monster {
     private Health health;
     private Position position;
     private Integer skill;
+    private Integer level;
     private FloorManager floorManager;
     private boolean isVisible = false;
     private final Random random = new Random();
@@ -46,6 +47,7 @@ public abstract class AbstractMonster implements Monster {
         this.setFloorMap(floorMap);
         this.setFloorManager(floorManager);
         this.setSkill(level);
+        this.setLevel(level);
         this.setVisibilityOn();
         this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
         this.setTimer();
@@ -80,6 +82,25 @@ public abstract class AbstractMonster implements Monster {
     public void receiveDamage() {
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
         this.getHealth().decreaseHealth(damage);
+    }
+
+    /**
+     * Method to set the level of the Monster.
+     * 
+     * @param level - the level that the monster has
+     */
+    private void setLevel(final Integer level) {
+        this.level = level;
+    }
+
+    /**
+     * Method that returns the level of the
+     * Monster selected.
+     * 
+     * @return the level of the Monster
+     */
+    public Integer getLevel() {
+        return this.level;
     }
 
     /**

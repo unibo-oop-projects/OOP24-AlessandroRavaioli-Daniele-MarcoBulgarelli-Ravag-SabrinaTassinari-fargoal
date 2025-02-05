@@ -12,6 +12,13 @@ public interface Health {
     Integer getCurrentHealth();
 
     /**
+     * Getter for the max helth value.
+     * 
+     * @return the max health
+     */
+    Integer getMaxHealth();
+
+    /**
      * Decreases the current health value.
      * 
      * @param amount to subtract to the current health value.
