@@ -12,7 +12,7 @@ public interface Health {
     Integer getCurrentHealth();
 
     /**
-     * Getter for the max helth value.
+     * Getter for the max health value.
      * 
      * @return the max health
      */
