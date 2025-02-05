@@ -58,6 +58,20 @@ public interface Player extends Entity {
     void setHasSword(boolean condition);
 
     /**
+     * This method controls if player is immune or not.
+     * 
+     * @return true if the player is immune, false otherwise.
+     */
+    public boolean isImmune();
+
+    /**
+     * Setter for the isImmune condition.
+     * 
+     * @param condition - True if player is immune, false otherwise.
+     */
+    public void setIsImmune(boolean condition);
+
+    /**
      * Makes the player move one tile in the map.
      */
     void move();

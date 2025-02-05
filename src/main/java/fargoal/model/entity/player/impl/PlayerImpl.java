@@ -27,6 +27,7 @@ public class PlayerImpl implements Player {
     private boolean hasSword;
     private boolean isFighting;
     private boolean isAttacked;
+    private boolean isImmune;
 
     public PlayerImpl() {
         this.position = null; //TODO
@@ -39,6 +40,7 @@ public class PlayerImpl implements Player {
         this.hasSword = false;
         this.isFighting = false;
         this.isAttacked = false;
+        this.isImmune = false;
     }
 
     @Override
@@ -99,6 +101,14 @@ public class PlayerImpl implements Player {
     @Override
     public void setHasSword(boolean condition) {
         this.hasSword = condition;
+    }
+
+    public boolean isImmune() {
+        return this.isImmune;
+    }
+
+    public void setIsImmune(boolean condition) {
+        this.isImmune = condition;
     }
 
     @Override
