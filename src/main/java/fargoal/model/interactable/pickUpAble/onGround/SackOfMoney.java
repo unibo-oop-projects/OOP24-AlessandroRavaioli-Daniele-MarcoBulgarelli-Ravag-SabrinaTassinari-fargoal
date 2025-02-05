@@ -46,12 +46,10 @@ public class SackOfMoney implements Interactable{
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        int spaceForMoney = floorManager.getPlayer().getMaxGoldCapacity() - floorManager.getPlayer().getCurrentGold();
-        if(spaceForMoney < this.goldInSack) {
+        this.goldInSack = floorManager.getPlayer().getPlayerGold().addGold(this.goldInSack);
+        if(this.goldInSack > 0) {
             this.hiddenInGround = true;
-            this.goldInSack = goldInSack - spaceForMoney;
-        } 
-        floorManager.getPlayer().getPlayerGold().addGold(this.goldInSack);
+        }
         return this;
     }
 
