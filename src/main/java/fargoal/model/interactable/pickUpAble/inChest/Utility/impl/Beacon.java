@@ -2,9 +2,9 @@ package fargoal.model.interactable.pickUpAble.inChest.Utility.impl;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.beacon.BeaconOnGround;
 import fargoal.model.interactable.pickUpAble.inChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
+import fargoal.model.interactable.pickUpAble.onGround.BeaconOnGround;
 import fargoal.model.manager.api.FloorManager;
 
 /**

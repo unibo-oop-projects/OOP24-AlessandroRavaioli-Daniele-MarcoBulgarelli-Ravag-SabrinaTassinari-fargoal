@@ -1,4 +1,4 @@
-package fargoal.model.interactable.beacon;
+package fargoal.model.interactable.pickUpAble.onGround;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
