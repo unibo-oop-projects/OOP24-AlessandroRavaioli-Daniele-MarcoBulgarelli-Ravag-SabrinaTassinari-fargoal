@@ -13,6 +13,7 @@ import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
 
+    private static final int INITIAL_STAT_MAX_COUNTER = 3;
     private static final int DAMAGE_MULTIPLIER = 4;
     private static final int MINIMUM_DAMAGE = 1;
     private static final int INITIAL_LEVEL = 1;
@@ -35,7 +36,7 @@ public class PlayerImpl implements Player {
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
         this.health.setHealth(setInitialStat());
-        this.skill.setSkill(setInitialStat());
+        this.skill = setInitialStat();
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
         this.hasSword = false;
@@ -47,7 +48,7 @@ public class PlayerImpl implements Player {
     private Integer setInitialStat() {
         Integer stat = 0;
         Integer d6;
-        for(int i = 0; i <= 3; i ++) {
+        for(int i = 0; i <= INITIAL_STAT_MAX_COUNTER; i ++) {
             d6 = new Random().nextInt(1, 6);
             stat = stat + d6;
         }
@@ -56,7 +57,22 @@ public class PlayerImpl implements Player {
 
     @Override
     public void setSkill(final Integer skill) {
-        this.skill = skill;
+        if(skill == null || skill < 0) {
+            throw new IllegalArgumentException("The skill cannot be set to a null or negative value.");
+        } else {
+            this.skill = skill;
+        }
+    }
+
+    @Override
+    public void increaseSkill(final Integer amount) {
+        if(skill == null) {
+            throw new IllegalArgumentException("The skill cannot be increased of a null value.");
+        } else if(amount > this.skill) {
+            throw new IllegalArgumentException("The amount in input can not decrease the skill below 0.");
+        } else {
+            this.skill = this.skill + amount;
+        }
     }
 
     @Override
@@ -135,9 +151,13 @@ public class PlayerImpl implements Player {
 
     @Override
     public Integer doDamage(final Monster monster) {
-        int ratio = this.getSkill() / monster.getSkill();
-        Random random = new Random();
-        return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
+        if(monster == null) {
+            throw new IllegalArgumentException("The monster passed to this method can not be null");
+        } else {
+            int ratio = this.getSkill() / monster.getSkill();
+            Random random = new Random();
+            return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
+        }
     }
 
     @Override

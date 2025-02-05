@@ -73,6 +73,8 @@ public interface Player extends Entity {
 
     public void setSkill(Integer skill);
 
+    void increaseSkill(final Integer amount);
+
     /**
      * Makes the player move one tile in the map.
      */
