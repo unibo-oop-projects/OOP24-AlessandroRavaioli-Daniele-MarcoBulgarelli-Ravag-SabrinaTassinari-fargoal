@@ -40,6 +40,7 @@ public class Beacon implements Utility {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
+        floorManager.getPlayer().getInventory().removeBeacon();
         return new BeaconOnGround(floorManager.getPlayer().getPosition());
     }
 

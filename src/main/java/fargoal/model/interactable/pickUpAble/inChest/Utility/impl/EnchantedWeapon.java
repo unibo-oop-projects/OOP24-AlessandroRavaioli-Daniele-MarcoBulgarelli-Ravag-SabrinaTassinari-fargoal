@@ -10,6 +10,7 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This is the class that implements an Enchanted Weapon, which the player found in a chest.
+ * It increase the combat skill of the player.
  */
 public class EnchantedWeapon implements Utility {
 
@@ -67,7 +68,7 @@ public class EnchantedWeapon implements Utility {
     public void store(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().addEnchantedWeapon();
         int skillToAdd = new Random().nextInt(9) + 5;
-        floorManager.getPlayer().setSkill(floorManager.getPlayer().getSkill() + skillToAdd);
+        floorManager.getPlayer().increaseSkill(skillToAdd);
     }
     
 }

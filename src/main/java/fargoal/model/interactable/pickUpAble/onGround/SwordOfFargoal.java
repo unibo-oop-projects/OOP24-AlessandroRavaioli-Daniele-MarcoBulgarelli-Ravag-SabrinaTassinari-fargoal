@@ -5,7 +5,7 @@ import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This is the class that implements the Sword of Fargoal, the target if the player.
+ * This is the class that implements the Sword of Fargoal, the target of the player.
  */
 public class SwordOfFargoal implements Interactable{
 

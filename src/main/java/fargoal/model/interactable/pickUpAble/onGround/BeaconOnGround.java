@@ -6,6 +6,8 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * A class that implements the item Beacon, when it is on the ground.
+ * When the player is near it he can not be attacked by monster. 
+ * When the player cast a teleport spell he is teleported near it.
  */
 public class BeaconOnGround implements Interactable{
 
