@@ -126,7 +126,7 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * Return the FloorMap where the Monster is.
+     * Return the FloorMap where the Monster is located.
      * 
      * @return the FloorMap
      */
@@ -134,10 +134,20 @@ public abstract class AbstractMonster implements Monster {
         return this.floorMap;
     }
 
+    /**
+     * Set the Floormanager of the Monster.
+     * 
+     * @param floorManager - the FloorManager of the Floor where the Monster is located
+     */
     public void setFloorManager(FloorManager floorManager) {
         this.floorManager = floorManager;
     }
 
+    /**
+     * Return the Floormanager where the Monster is located.
+     * 
+     * @return the Floormanager
+     */
     public FloorManager getFloorManager() {
         return this.floorManager;
     }
