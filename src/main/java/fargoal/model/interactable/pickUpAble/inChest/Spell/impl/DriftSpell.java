@@ -40,24 +40,28 @@ public class DriftSpell implements Spell{
        floorManager.getPlayer().getInventory().addDriftScroll();
     }
 
+    /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'interact'");
     }
 
+    /** {@inheritDoc} */
     @Override
     public Position getPosition() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getTag() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getTag'");
     }
 
+    /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
         // TODO Auto-generated method stub

@@ -1,5 +1,7 @@
 package fargoal.model.interactable.pickUpAble.inChest.Spell.impl;
 
+import fargoal.commons.api.Position;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -37,9 +39,30 @@ public class LightSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public void cast() {
+    public Interactable interact(FloorManager floorManager) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cast'");
+        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Position getPosition() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public String getTag() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
     
 }
