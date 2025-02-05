@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
@@ -21,6 +22,8 @@ import fargoal.model.map.impl.FloorConstructorImpl;
  * A class that implements the entirety of the floor and all its elements.
  */
 public class FloorManagerImpl implements FloorManager {
+
+    private static final int MAX_MONSTERS = 7;
 
     private FloorMap map;
     private List<Monster> monsters;
@@ -108,8 +111,18 @@ public class FloorManagerImpl implements FloorManager {
         this.monsters.clear();
         this.items.clear();
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
-        this.monsters = IntStream.range(0, 7)
-                .mapToObj(e -> this.monstFact.generate(this.map.getRandomTile(), this.map, this))
-                .collect(Collectors.toList());
+        while (this.monsters.size() < MAX_MONSTERS) {
+            Position pos = this.map.getRandomTile();
+            Monster temp = monstFact.generate(pos, this.map, this);
+            boolean alreadyPresent = false;
+            for (int i = 0; i < this.monsters.size(); i++) {
+                if (this.monsters.get(i).getPosition().equals(pos)) {
+                    alreadyPresent = true;
+                }
+            }
+            if (!alreadyPresent) {
+                this.monsters.add(temp);
+            }
+        }
     }
 }

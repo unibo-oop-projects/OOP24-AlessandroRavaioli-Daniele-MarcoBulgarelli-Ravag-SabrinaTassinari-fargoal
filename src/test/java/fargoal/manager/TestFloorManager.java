@@ -1,14 +1,19 @@
 package fargoal.manager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import fargoal.model.core.GameContext;
+import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
+import fargoal.model.map.api.FloorMap;
 import fargoal.view.impl.SwingView;
 
 public class TestFloorManager {
@@ -33,5 +38,23 @@ public class TestFloorManager {
         manager.decreaseFloorLevel();
         manager.decreaseFloorLevel();
         assertThrows(IllegalStateException.class, () -> manager.decreaseFloorLevel());
+    }
+
+    @Test
+    void testInitFloor() {
+        for (long k = 0; k < 1000; k++) {
+            FloorMap map = manager.getFloorMap();
+            manager.increaseFloorLevel();
+            assertNotEquals(map, manager.getFloorMap());
+            List<Monster> monsters = manager.getMonsters();
+            assertEquals(7, monsters.size());
+            for (int i = 0; i < monsters.size(); i++) {
+                for (int j = 0; j < monsters.size(); j++) {
+                    if (i != j) {
+                        assertNotEquals(monsters.get(i).getPosition(), monsters.get(j).getPosition());
+                    }
+                }
+            }
+        }
     }
 }
