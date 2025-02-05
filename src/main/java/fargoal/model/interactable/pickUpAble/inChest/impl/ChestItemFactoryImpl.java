@@ -89,31 +89,31 @@ public class ChestItemFactoryImpl implements ChestItemFactory{
     /** {@inheritDoc} */
     @Override
     public ChestItem generateBeacon(FloorManager floorManager, final Position position) {
-        return new Beacon();
+        return new Beacon(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateEnchantedWeapon(FloorManager floorManager, final Position position) {
-        return new EnchantedWeapon();
+        return new EnchantedWeapon(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateHealingPotion(FloorManager floorManager, final Position position) {
-        return new HealingPotion();
+        return new HealingPotion(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateMap(FloorManager floorManager, final Position position) {
-        return new Map();
+        return new Map(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
     public ChestItem generateMagicSack(FloorManager floorManager, final Position position){
-        return new MagicSack();
+        return new MagicSack(floorManager, position);
     }
 
 }

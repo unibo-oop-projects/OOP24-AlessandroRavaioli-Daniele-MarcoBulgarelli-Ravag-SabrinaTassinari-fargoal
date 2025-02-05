@@ -1,12 +1,18 @@
 package fargoal.model.interactable.pickUpAble.inChest.Utility.impl;
 
+import fargoal.commons.api.Position;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.inChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
+import fargoal.model.manager.api.FloorManager;
 
 public class Beacon implements Utility {
 
-    public Beacon() {
-        this.store();
+    final Position position;
+
+    public Beacon(FloorManager floorManager, final Position position) {
+        this.store(floorManager);
+        this.position = position;
     }
 
     @Override
@@ -20,13 +26,32 @@ public class Beacon implements Utility {
     }
 
     @Override
-    public void store() {
+    public Interactable interact(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+    }
+
+    @Override
+    public Position getPosition() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPosition'");
+    }
+
+    @Override
+    public String getTag() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTag'");
+    }
+
+    @Override
+    public void update(FloorManager floorManager) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    @Override
+    public void store(FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'store'");
-    }
-    
-    //il giocatore mette a terra la torcia
-    public void putOnGround() {
-
     }
 }
