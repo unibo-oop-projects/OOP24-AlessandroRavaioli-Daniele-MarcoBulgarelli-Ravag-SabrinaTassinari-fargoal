@@ -1,5 +1,6 @@
 package fargoal.model.interactable.pickUpAble.inChest.impl;
 
+import fargoal.commons.api.Position;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.DriftSpell;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.InvisibilitySpell;
@@ -33,85 +34,85 @@ public class ChestItemFactoryImpl implements ChestItemFactory{
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateInvisibilitySpell(FloorManager floorManager) {
+    public ChestItem generateInvisibilitySpell(FloorManager floorManager, final Position position) {
         return new InvisibilitySpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateLightSpell(FloorManager floorManager) {
+    public ChestItem generateLightSpell(FloorManager floorManager, final Position position) {
         return new LightSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateRegenerationSpell(FloorManager floorManager) {
+    public ChestItem generateRegenerationSpell(FloorManager floorManager, final Position position) {
         return new RegenerationSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateShieldSpell(FloorManager floorManager) {
+    public ChestItem generateShieldSpell(FloorManager floorManager, final Position position) {
         return new ShieldSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateTeleportSpell(FloorManager floorManager) {
+    public ChestItem generateTeleportSpell(FloorManager floorManager, final Position position) {
         return new TeleportSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateCeilingTrap(FloorManager floorManager) {
-        return new CeilingTrap();
+    public ChestItem generateCeilingTrap(FloorManager floorManager, final Position position) {
+        return new CeilingTrap(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateExplosion(FloorManager floorManager) {
-        return new Explosion();
+    public ChestItem generateExplosion(FloorManager floorManager, final Position position) {
+        return new Explosion(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generatePit(FloorManager floorManager) {
-        return new Pit();
+    public ChestItem generatePit(FloorManager floorManager, final Position position) {
+        return new Pit(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateTeleport(FloorManager floorManager) {
-        return new Teleport();
+    public ChestItem generateTeleport(FloorManager floorManager, final Position position) {
+        return new Teleport(floorManager, position);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateBeacon(FloorManager floorManager) {
+    public ChestItem generateBeacon(FloorManager floorManager, final Position position) {
         return new Beacon();
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateEnchantedWeapon(FloorManager floorManager) {
+    public ChestItem generateEnchantedWeapon(FloorManager floorManager, final Position position) {
         return new EnchantedWeapon();
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateHealingPotion(FloorManager floorManager) {
+    public ChestItem generateHealingPotion(FloorManager floorManager, final Position position) {
         return new HealingPotion();
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateMap(FloorManager floorManager) {
+    public ChestItem generateMap(FloorManager floorManager, final Position position) {
         return new Map();
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateMagicSack(FloorManager floorManager){
+    public ChestItem generateMagicSack(FloorManager floorManager, final Position position){
         return new MagicSack();
     }
 
