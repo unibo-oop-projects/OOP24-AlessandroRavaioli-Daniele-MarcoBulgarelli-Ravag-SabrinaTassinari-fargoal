@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
 
@@ -12,7 +13,7 @@ public class PlayerImpl implements Player {
     private Position position;
     private Integer skill;
 
-    private InventoryImpl inventory = new InventoryImpl();
+    private final Inventory inventory = new InventoryImpl();
     
     @Override
     public Health getHealth() {
@@ -21,7 +22,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public InventoryImpl getInventory() {
+    public Inventory getInventory() {
         return this.inventory;
     }
 
@@ -68,7 +69,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public Integer receiveDamage() {
+    public void receiveDamage() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'receiveDamage'");
     }

@@ -11,5 +11,5 @@ public interface Player extends Entity {
 
     Integer attack();
 
-    InventoryImpl getInventory();
+    Inventory getInventory();
 }
