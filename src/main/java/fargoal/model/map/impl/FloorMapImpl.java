@@ -34,4 +34,12 @@ public class FloorMapImpl implements FloorMap {
     public Dimension getSize() {
         return size;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Position getRandomTile() {
+        return this.tiles.iterator().next();
+    }
 }

@@ -20,4 +20,10 @@ public interface FloorMap {
      * @return
      */
     Dimension getSize();
+
+    /**
+     * A method that returns a random tile of the map
+     * @return
+     */
+    Position getRandomTile();
 }

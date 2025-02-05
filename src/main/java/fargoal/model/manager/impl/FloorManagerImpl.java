@@ -2,11 +2,16 @@ package fargoal.model.manager.impl;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import fargoal.model.commons.FloorElement;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
+import fargoal.model.entity.monsters.api.MonsterFactory;
+import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
 import fargoal.model.map.api.FloorMap;
@@ -22,6 +27,8 @@ public class FloorManagerImpl implements FloorManager {
     private Player player;
     private final FloorMask mask;
     private int floorLevel;
+    private List<Interactable> items;
+    private MonsterFactory monstFact;
 
     /**
      * Constructor that inizializes all of its fields.
@@ -30,8 +37,9 @@ public class FloorManagerImpl implements FloorManager {
     public FloorManagerImpl(final GameContext context) {
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl(context.getView());
-        this.map = new FloorConstructorImpl().createFloor();
         this.floorLevel = 1;
+        this.items = new LinkedList<>();
+        initializeFloor();
     }
 
     /**
@@ -42,6 +50,7 @@ public class FloorManagerImpl implements FloorManager {
         List<FloorElement> elements = new LinkedList<>();
         elements.addAll(this.monsters);
         elements.add(player);
+        elements.addAll(items);
         elements.forEach(e -> e.update(this));
         this.mask.update(context, this);
     }
@@ -81,7 +90,7 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public void increaseFloorLevel() {
         this.floorLevel++;
-        this.map = new FloorConstructorImpl().createFloor();
+        initializeFloor();
     }
 
     @Override
@@ -90,7 +99,17 @@ public class FloorManagerImpl implements FloorManager {
             throw new  IllegalStateException("cannot go to level -1");
         }
         this.floorLevel--;
-        this.map = new FloorConstructorImpl().createFloor();
+        initializeFloor();
     }
 
+    private void initializeFloor() {
+        this.map = new FloorConstructorImpl().createFloor();
+        this.mask.resetMask();
+        this.monsters.clear();
+        this.items.clear();
+        this.monstFact = new MonsterFactoryImpl(this.floorLevel);
+        this.monsters = IntStream.range(0, 7)
+                .mapToObj(e -> this.monstFact.generate(this.map.getRandomTile(), this.map, this))
+                .collect(Collectors.toList());
+    }
 }
