@@ -13,6 +13,7 @@ import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
 
+    private static final int INITIAL_EXPERIENCE_POINTS_REQUIRED = 200;
     private static final int INITIAL_STAT_MAX_COUNTER = 3;
     private static final int DAMAGE_MULTIPLIER = 4;
     private static final int MINIMUM_DAMAGE = 1;
@@ -21,9 +22,10 @@ public class PlayerImpl implements Player {
     private Position position;
     private Integer level;
     private Integer experiencePoints;
+    private Integer experiencePointsRequired;
     private Health health;
     private Integer skill;
-    private final Gold gold;    //fai il get gold
+    private final Gold gold;
     private final Inventory inventory;
 
     private boolean hasSword;
@@ -35,6 +37,7 @@ public class PlayerImpl implements Player {
         this.position = null; //TODO
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
+        this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
         this.health.setHealth(setInitialStat());
         this.skill = setInitialStat();
         this.gold = new GoldImpl();
@@ -75,6 +78,21 @@ public class PlayerImpl implements Player {
         }
     }
 
+    private boolean isLevellingUp() {
+        return this.getExperiencePoints() >= this.getExperiencePointsRequired();
+    }
+
+    @Override
+    public void levelUp() {
+        if(!this.isLevellingUp()) {
+            throw new IllegalStateException("Player does not have enough experience points to level up.");
+        } else {
+            this.level ++;
+            // maxhealth += random (1, 15) + 4
+            // skill += random (1, 10)
+        }
+    }
+
     @Override
     public Position getPosition() {
         return this.position;
@@ -88,6 +106,11 @@ public class PlayerImpl implements Player {
     @Override
     public Integer getExperiencePoints() {
         return this.experiencePoints;
+    }
+
+    @Override
+    public Integer getExperiencePointsRequired() {
+        return this.experiencePointsRequired;
     }
 
     @Override

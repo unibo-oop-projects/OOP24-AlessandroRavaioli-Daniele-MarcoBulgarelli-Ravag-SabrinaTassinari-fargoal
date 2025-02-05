@@ -6,7 +6,7 @@ import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.monsters.api.Monster;
 
 /**
- * Interface that manages the player character
+ * Interface that manages the player character.
  */
 
 public interface Player extends Entity {
@@ -26,6 +26,8 @@ public interface Player extends Entity {
      * player currently has.
      */
     Integer getExperiencePoints();
+
+    Integer getExperiencePointsRequired();
 
     /**
      * Getter for the player's inventory.
