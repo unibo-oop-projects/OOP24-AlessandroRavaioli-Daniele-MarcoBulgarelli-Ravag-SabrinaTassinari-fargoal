@@ -35,8 +35,8 @@ public class GoldImpl implements Gold{
     /**{@inheritDoc} */
     @Override
     public Integer addGold(Integer amount) {
-        if(amount < 0) {
-            throw new IllegalArgumentException("You cannot add a negative amount");
+        if(amount == null || amount < 0) {
+            throw new IllegalArgumentException("You cannot add a negative or null amount");
         }
 
         int spaceAvailable = this.getMaxCapacity() - this.getCurrentGold();
