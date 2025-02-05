@@ -1,6 +1,5 @@
 package fargoal.model.interactable.pickUpAble.inChest.api;
 
-import fargoal.model.commons.FloorElement;
 import fargoal.model.interactable.api.Interactable;
 
 /**
