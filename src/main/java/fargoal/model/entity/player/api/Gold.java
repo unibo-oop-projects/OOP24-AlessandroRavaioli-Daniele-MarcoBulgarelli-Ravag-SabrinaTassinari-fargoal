@@ -31,6 +31,7 @@ public interface Gold {
      * and the leftover gold is returned.
      * 
      * @param amount - the amount of gold to add.
+     * 
      * @return the leftover gold amount that could not be added.
      */
     Integer addGold(Integer amount);

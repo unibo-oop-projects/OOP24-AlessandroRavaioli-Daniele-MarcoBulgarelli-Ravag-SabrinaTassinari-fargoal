@@ -24,6 +24,7 @@ public class PlayerImpl implements Player {
     private Integer skill;
     private final Gold gold;    //fai il get gold
     private final Inventory inventory;
+
     private boolean hasSword;
     private boolean isFighting;
     private boolean isAttacked;
@@ -33,14 +34,29 @@ public class PlayerImpl implements Player {
         this.position = null; //TODO
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
-        this.health.setHealth(new Random().nextInt(1, 100)); 
-        this.skill = null; //TODO
+        this.health.setHealth(setInitialStat());
+        this.skill.setSkill(setInitialStat());
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
         this.hasSword = false;
         this.isFighting = false;
         this.isAttacked = false;
         this.isImmune = false;
+    }
+
+    private Integer setInitialStat() {
+        Integer stat = 0;
+        Integer d6;
+        for(int i = 0; i <= 3; i ++) {
+            d6 = new Random().nextInt(1, 6);
+            stat = stat + d6;
+        }
+        return stat;
+    }
+
+    @Override
+    public void setSkill(final Integer skill) {
+        this.skill = skill;
     }
 
     @Override
@@ -99,7 +115,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public void setHasSword(boolean condition) {
+    public void setHasSword(final boolean condition) {
         this.hasSword = condition;
     }
 
@@ -107,7 +123,7 @@ public class PlayerImpl implements Player {
         return this.isImmune;
     }
 
-    public void setIsImmune(boolean condition) {
+    public void setIsImmune(final boolean condition) {
         this.isImmune = condition;
     }
 
@@ -118,14 +134,14 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public Integer doDamage(Monster monster) {
+    public Integer doDamage(final Monster monster) {
         int ratio = this.getSkill() / monster.getSkill();
         Random random = new Random();
         return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
     }
 
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
@@ -145,7 +161,7 @@ public class PlayerImpl implements Player {
      * 
      * @return true if player won the battle, false if they lose it.
      */
-    private boolean battle(Monster monster) {
+    private boolean battle(final Monster monster) {
         //TODO
         throw new UnsupportedOperationException("Unimplemented method 'battle'");
     }

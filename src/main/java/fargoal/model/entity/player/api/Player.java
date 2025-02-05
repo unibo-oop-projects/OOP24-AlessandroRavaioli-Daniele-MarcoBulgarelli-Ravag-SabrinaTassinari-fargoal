@@ -71,6 +71,8 @@ public interface Player extends Entity {
      */
     public void setIsImmune(boolean condition);
 
+    public void setSkill(Integer skill);
+
     /**
      * Makes the player move one tile in the map.
      */
@@ -90,4 +92,6 @@ public interface Player extends Entity {
     Integer getCurrentGold();
 
     Integer getMaxGoldCapacity();
+
+    void levelUp();
 }
