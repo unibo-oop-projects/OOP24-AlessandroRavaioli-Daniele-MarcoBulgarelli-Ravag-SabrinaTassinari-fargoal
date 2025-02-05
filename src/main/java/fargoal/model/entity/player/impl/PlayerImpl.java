@@ -6,6 +6,7 @@ import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.entity.player.api.Gold;
+import fargoal.model.entity.player.impl.GoldImpl;
 import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
@@ -17,9 +18,11 @@ public class PlayerImpl implements Player {
     private Integer experiencePoints;
     private Health health;
     private Integer skill;
-    private final Gold gold;
+    private final Gold gold;    //fai il get gold
     private final Inventory inventory;
-    private final boolean hasSword;
+    private boolean hasSword;
+    private boolean isFighting;
+    private boolean isAttacked;
 
     public PlayerImpl() {
         this.position = null; //TODO
@@ -30,6 +33,8 @@ public class PlayerImpl implements Player {
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
         this.hasSword = false;
+        this.isFighting = false;
+        this.isAttacked = false;
     }
 
     @Override
@@ -58,8 +63,23 @@ public class PlayerImpl implements Player {
     }
 
     @Override
+    public Integer getCurrentGold() {
+        return this.gold.getCurrentGold();
+    }
+
+    @Override
+    public Integer getMaxGoldCapacity() {
+        return this.gold.getMaxCapacity();
+    }
+
+    @Override
     public Inventory getInventory() {
         return this.inventory;
+    }
+
+    @Override
+    public Gold getPlayerGold() {
+        return this.gold;
     }
 
     @Override
@@ -123,6 +143,16 @@ public class PlayerImpl implements Player {
             return this.health.getCurrentHealth() == 0;
         } else {
             return this.health.getCurrentHealth() < -5;
+        }
+    }
+
+    /**
+     * This method calculates the passive health regeneration of the player.
+     * It should be 1 health for 10 t.u.(time unity).
+     */
+    private void pasiveRegeneration() {
+        while(!isFighting) {
+            //TODO
         }
     }
 }

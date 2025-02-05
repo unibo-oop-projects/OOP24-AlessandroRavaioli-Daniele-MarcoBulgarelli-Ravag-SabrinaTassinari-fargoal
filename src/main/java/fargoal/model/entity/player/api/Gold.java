@@ -13,6 +13,13 @@ public interface Gold {
     Integer getCurrentGold();
 
     /**
+     * Getter for the maximum gold capacity.
+     * 
+     * @return the maximum amount of gold transportable.
+     */
+    Integer getMaxCapacity();
+
+    /**
      * Sets current gold amount to 0.
      */
     void resetGold();

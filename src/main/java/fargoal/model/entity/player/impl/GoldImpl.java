@@ -26,6 +26,8 @@ public class GoldImpl implements Gold{
         return this.currentGold;
     }
 
+    /**{@inheritDoc} */
+    @Override
     public Integer getMaxCapacity() {
         return this.maxCapacity;
     }

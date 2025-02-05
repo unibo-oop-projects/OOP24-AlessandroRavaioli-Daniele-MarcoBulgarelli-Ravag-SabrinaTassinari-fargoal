@@ -35,6 +35,13 @@ public interface Player extends Entity {
     Inventory getInventory();
 
     /**
+     * Getter for player gold object.
+     * 
+     * @return the player gold object.
+     */
+    Gold getPlayerGold();
+
+    /**
      * This method controls if player has aquired the
      * legendary sword.
      * 
@@ -57,4 +64,8 @@ public interface Player extends Entity {
      * @return the amount of damage dealt.
      */
     Integer doDamage(Monster monster);
+
+    Integer getCurrentGold();
+
+    Integer getMaxGoldCapacity();
 }
