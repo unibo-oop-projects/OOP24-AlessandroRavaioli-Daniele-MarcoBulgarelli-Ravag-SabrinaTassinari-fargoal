@@ -237,13 +237,8 @@ public abstract class AbstractMonster implements Monster {
                 && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount;
     }
 
-    /**
-     * Method to check if the monster is still
-     * alive or is dead.
-     * 
-     * @return true if the health of the monster is still positive,
-     * false otherwise
-     */
+    /** {@inheritDoc} */
+    @Override
     public boolean isDead() {
         return this.getHealth().getCurrentHealth() <= 0;
     }
