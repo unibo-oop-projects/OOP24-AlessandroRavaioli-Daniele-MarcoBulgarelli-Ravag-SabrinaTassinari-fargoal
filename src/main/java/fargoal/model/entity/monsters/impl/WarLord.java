@@ -58,10 +58,14 @@ public class WarLord extends AbstractMonster {
     /** {@inheritDoc} */
     @Override
     public void update(final FloorManager floorManager) {
-        if (this.areNeighbours(floorManager, 1)) {
-            this.attack();
-        } else {
-            Ai.move(this, floorManager.getPlayer());
+        final long temp = System.currentTimeMillis();
+        if(Math.abs(this.getTimer() - temp) >= 2000) {
+            this.setTimer();
+            if (this.areNeighbours(floorManager, 1)) {
+                this.attack();
+            } else {
+                Ai.move(this, floorManager.getPlayer());
+            }
         }
     }
 }

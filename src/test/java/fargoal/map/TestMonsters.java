@@ -1,5 +1,7 @@
 package fargoal.map;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -36,6 +38,7 @@ public class TestMonsters {
     @Test
     void visualizeMonster() {
         System.out.println(monster.getSkill() + " " + monster.getHealth() + " " + monster.getPosition() + " " + monster.getTag());
+        assertEquals("MONK", monster.getTag());
         //Ai.move((AbstractMonster)monster, manager.getPlayer());
         //System.out.println(monster.getPosition());
     }

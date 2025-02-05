@@ -17,6 +17,7 @@ import fargoal.model.entity.monsters.ai.Ai;
 public abstract class AbstractMonster implements Monster {
 
     private static final Integer MONSTER_ATTACK = 4;
+    private long timer;
     private FloorMap floorMap;
     private MonsterType monsterType;
     private Health health;
@@ -43,6 +44,7 @@ public abstract class AbstractMonster implements Monster {
         this.setSkill(level);
         this.setVisibilityOn();
         this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
+        this.setTimer();
     }
 
     /** {@inheritDoc} */
@@ -114,6 +116,24 @@ public abstract class AbstractMonster implements Monster {
      */
     public Integer getRandom(final Integer num) {
         return random.nextInt(num);
+    }
+
+    /**
+     * Method to set the last time when the monster
+     * was created or moved.
+     */
+    public void setTimer() {
+        this.timer = System.currentTimeMillis();
+    }
+
+    /**
+     * Method that return the time when the monster
+     * last moved or was created.
+     * 
+     * @return a long indicating the last update
+     */
+    public long getTimer() {
+        return this.timer;
     }
 
     /**
