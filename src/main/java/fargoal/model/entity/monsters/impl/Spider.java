@@ -15,6 +15,8 @@ import fargoal.model.map.api.FloorMap;
  */
 public class Spider extends AbstractMonster {
 
+    private static final int NEXT_MOVE = 2000;
+
     /**
      * A constructor for the Spider; it uses the
      * super of the AbstractMonster constructor.
@@ -52,7 +54,7 @@ public class Spider extends AbstractMonster {
     @Override
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
-        if(Math.abs(this.getTimer() - temp) >= 2000) {
+        if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)) {
                 this.attack();

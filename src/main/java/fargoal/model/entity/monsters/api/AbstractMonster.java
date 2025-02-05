@@ -37,7 +37,11 @@ public abstract class AbstractMonster implements Monster {
      * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
      */
-    public AbstractMonster(final Position position, final Integer level, final FloorMap floorMap, final FloorManager floorManager) {
+    public AbstractMonster(
+                final Position position,
+                final Integer level, 
+                final FloorMap floorMap, 
+                final FloorManager floorManager) {
         this.setPosition(position);
         this.setFloorMap(floorMap);
         this.setFloorManager(floorManager);
@@ -159,7 +163,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param floorManager - the FloorManager of the Floor where the Monster is located
      */
-    public void setFloorManager(FloorManager floorManager) {
+    public void setFloorManager(final FloorManager floorManager) {
         this.floorManager = floorManager;
     }
 
@@ -213,7 +217,8 @@ public abstract class AbstractMonster implements Monster {
      * The Monster attack the Player and deals damage
      * based on their skill.
      * 
-     * @param player - the attacked Entity
+     * @return the int indicating the damage dealt to
+     * the player
      */
     public Integer attack() {
         final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();

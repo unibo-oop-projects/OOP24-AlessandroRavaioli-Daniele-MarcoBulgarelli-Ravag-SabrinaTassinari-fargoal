@@ -14,6 +14,8 @@ import fargoal.model.map.api.FloorMap;
  */
 public class Mage extends AbstractMonster {
 
+    private static final int NEXT_MOVE = 2000;
+
     /**
      * A constructor for the Mage; it uses the
      * super of the AbstractMonster constructor.
@@ -45,7 +47,7 @@ public class Mage extends AbstractMonster {
     @Override
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
-        if(Math.abs(this.getTimer() - temp) >= 2000) {
+        if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)) {
                 this.attack();
