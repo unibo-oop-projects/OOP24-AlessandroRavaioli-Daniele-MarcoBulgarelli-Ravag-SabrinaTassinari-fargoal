@@ -2,6 +2,7 @@ package fargoal.model.interactable.pickUpAble.inChest.Spell.impl;
 
 import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
+import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Light Spell from the interface spell.
@@ -12,8 +13,8 @@ public class LightSpell implements Spell {
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
-    public LightSpell() {
-        this.store();
+    public LightSpell(FloorManager floorManager) {
+        this.store(floorManager);
     }
 
     /** {@inheritDoc} */
@@ -30,9 +31,8 @@ public class LightSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public void store() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'store'");
+    public void store(FloorManager floorManager) {
+        floorManager.getPlayer().getInventory().addLightScroll();
     }
 
     /** {@inheritDoc} */

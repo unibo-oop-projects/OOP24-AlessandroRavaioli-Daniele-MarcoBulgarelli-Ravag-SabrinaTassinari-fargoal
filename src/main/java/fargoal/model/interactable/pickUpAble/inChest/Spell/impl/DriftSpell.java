@@ -1,8 +1,8 @@
 package fargoal.model.interactable.pickUpAble.inChest.Spell.impl;
 
-import fargoal.model.entity.player.impl.InventoryImpl;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
+import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Drift Spell from the interface Spell.
@@ -13,8 +13,8 @@ public class DriftSpell implements Spell{
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
-    public DriftSpell() {
-        this.store();
+    public DriftSpell(FloorManager floorManager) {
+        this.store(floorManager);
     }
 
     /** {@inheritDoc} */
@@ -31,8 +31,8 @@ public class DriftSpell implements Spell{
 
     /** {@inheritDoc} */
     @Override
-    public void store() {
-       
+    public void store(FloorManager floorManager) {
+       floorManager.getPlayer().getInventory().addDriftScroll();
     }
 
     /** {@inheritDoc} */
