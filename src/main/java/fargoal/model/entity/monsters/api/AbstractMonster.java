@@ -78,7 +78,7 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public void receiveDamage() {
-        final int damage = this.getFloorManager().getPlayer().attack();
+        final int damage = this.getFloorManager().getPlayer().doDamage(this);
         this.getHealth().decreaseHealth(damage);
     }
 
@@ -235,6 +235,17 @@ public abstract class AbstractMonster implements Monster {
     public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
         return floorManager.getPlayer().getPosition().x() - this.getPosition().x() <= amount
                 && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount;
+    }
+
+    /**
+     * Method to check if the monster is still
+     * alive or is dead.
+     * 
+     * @return true if the health of the monster is still positive,
+     * false otherwise
+     */
+    public boolean isDead() {
+        return this.getHealth().getCurrentHealth() <= 0;
     }
 
     /**
