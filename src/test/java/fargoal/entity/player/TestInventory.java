@@ -1,12 +1,12 @@
 package fargoal.entity.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
-import java.util.Random;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -136,5 +136,15 @@ public class TestInventory {
         assertEquals(0, inventory.getRegenerationScrolls());
         assertEquals(0, inventory.getDriftScrolls());
         assertEquals(0, inventory.getLightScrolls());
+
+        assertFalse(inventory.removeHealingPotion());
+        assertFalse(inventory.removeBeacon());
+        assertTrue(inventory.removeFloorMap(3));
+        assertTrue(inventory.removeInvisibilityScroll());
+        assertTrue(inventory.removeTeleportScroll());
+        assertFalse(inventory.removeShieldScroll());
+        assertFalse(inventory.removeRegenerationScroll());
+        assertFalse(inventory.removeDriftScroll());
+        assertFalse(inventory.removeLightScroll());
     }
 }
