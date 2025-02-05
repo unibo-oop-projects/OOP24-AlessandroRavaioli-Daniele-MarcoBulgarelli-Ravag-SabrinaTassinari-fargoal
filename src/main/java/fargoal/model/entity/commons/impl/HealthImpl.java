@@ -7,7 +7,7 @@ import fargoal.model.entity.commons.api.Health;
  */
 public class HealthImpl implements Health {
 
-    private Integer maxHealth;
+    private final Integer maxHealth;
     private Integer currentHealth;
 
     /**
@@ -54,6 +54,6 @@ public class HealthImpl implements Health {
     /** {@inheritDoc} */
     @Override
     public boolean isHealthy() {
-        return (this.currentHealth == this.maxHealth);
+        return this.currentHealth.equals(this.maxHealth);
     }
 }

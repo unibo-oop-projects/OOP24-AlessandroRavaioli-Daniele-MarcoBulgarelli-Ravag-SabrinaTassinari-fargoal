@@ -26,7 +26,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
     private static final int SPIDER_FLOOR = 5;
     private static final int MONK_FLOOR = 4;
     private static final int MIN_FLOOR = 3;
-    private Integer level;
+    final private Integer level;
     private final Random random = new Random();
 
     /**
@@ -41,7 +41,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
     /** {@inheritDoc} */
     @Override
     public Monster generate(final Position position, final FloorMap floorMap, final FloorManager floorManager) {
-        int num;
+        final int num;
         if (floorManager.getFloorLevel() >= MAX_FLOOR) {
             num = random.nextInt(4) + 4;
             if (num == WAR_LORD) {

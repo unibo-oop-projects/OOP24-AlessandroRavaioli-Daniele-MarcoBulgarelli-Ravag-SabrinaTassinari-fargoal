@@ -141,7 +141,7 @@ public abstract class AbstractMonster implements Monster {
      * @param player - the attacked Entity
      */
     public void attack(final Player player) {
-        var ratio = player.getSkill() / this.getSkill();
+        final var ratio = player.getSkill() / this.getSkill();
         player.getHealth().decreaseHealth(getRandom(MONSTER_ATTACK * player.getLevel() * ratio));
     }
 
@@ -153,8 +153,8 @@ public abstract class AbstractMonster implements Monster {
      * @return if the monster is near the player
      */
     public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
-        return (floorManager.getPlayer().getPosition().x() - this.getPosition().x() <= amount
-                && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount);
+        return floorManager.getPlayer().getPosition().x() - this.getPosition().x() <= amount
+                && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount;
     }
 
     /**
