@@ -7,7 +7,7 @@ import fargoal.view.impl.SwingView;
 
 public class GameEngine {
 
-    private static final int period = 20; 
+    private static final int PERIOD = 20; 
     private final FloorManager manager;
     private final View view;
 
@@ -18,7 +18,7 @@ public class GameEngine {
     
     public void start() {
         while (true) {
-            long currentCycleStartTime = System.currentTimeMillis();
+            final long currentCycleStartTime = System.currentTimeMillis();
             manager.update(new GameContext(view));
             view.update();
             waitToNextFrame(currentCycleStartTime);
@@ -26,10 +26,10 @@ public class GameEngine {
     }
 
     private void waitToNextFrame(final long startTime) {
-        long delta = System.currentTimeMillis() - startTime;
-        if (delta < period) {
+        final long delta = System.currentTimeMillis() - startTime;
+        if (delta < PERIOD) {
             try {
-                Thread.sleep(period - delta);
+                Thread.sleep(PERIOD - delta);
             } catch (Exception e) { }
         }
     }

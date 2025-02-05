@@ -27,8 +27,8 @@ public final class Ai {
      * @param player - the player to be reached
      */
     public static void move(final AbstractMonster monster, final Player player) {
-        int xDistance = Math.abs(monster.getPosition().x() - player.getPosition().x());
-        int yDistance = Math.abs(monster.getPosition().y() - player.getPosition().y());
+        final int xDistance = Math.abs(monster.getPosition().x() - player.getPosition().x());
+        final int yDistance = Math.abs(monster.getPosition().y() - player.getPosition().y());
         boolean xMonsterBigger = false;
         boolean yMonsterBigger = false;
         Position pos;
@@ -150,8 +150,8 @@ public final class Ai {
      * @param player - the player to be reached
      */
     public static void moveSpider(final Spider spider, final Player player) {
-        int xDistance = Math.abs(spider.getPosition().x() - player.getPosition().x());
-        int yDistance = Math.abs(spider.getPosition().y() - player.getPosition().y());
+        final int xDistance = Math.abs(spider.getPosition().x() - player.getPosition().x());
+        final int yDistance = Math.abs(spider.getPosition().y() - player.getPosition().y());
         boolean xMonsterBigger = false;
         boolean yMonsterBigger = false;
         Position pos;
