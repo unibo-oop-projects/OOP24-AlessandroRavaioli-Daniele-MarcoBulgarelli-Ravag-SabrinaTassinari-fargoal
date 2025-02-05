@@ -36,8 +36,10 @@ public class BeaconOnGround implements Interactable{
     //unattackable
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        while (floorManager.getPlayer().getPosition() == this.position) {
+            floorManager.getPlayer().setIsImmune(true);
+        }
+        return this;
     }
 
     /** {@inheritDoc} */
