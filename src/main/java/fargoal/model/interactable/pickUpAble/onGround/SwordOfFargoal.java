@@ -42,6 +42,7 @@ public class SwordOfFargoal implements Interactable{
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().setHasSword(true);
+        
         return this;
     }
     

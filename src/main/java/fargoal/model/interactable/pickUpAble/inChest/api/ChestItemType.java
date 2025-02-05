@@ -12,7 +12,7 @@ public enum ChestItemType {
     private final String name;
 
     /**
-     * This is the constructor of the enumeration.
+     * This is the constructor of the enumeration. It set all the names for the chest items types.
      * @param name - it is the name of the chest item type.
      */
     private ChestItemType(final String name){
