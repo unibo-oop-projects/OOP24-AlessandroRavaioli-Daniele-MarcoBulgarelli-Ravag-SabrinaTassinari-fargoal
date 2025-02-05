@@ -129,6 +129,42 @@ public interface Inventory {
     void removeShieldScroll();
 
     /**
+     * Adds a single magic sack to player's inventory.
+     */
+    void addMagicSack();
+
+    /**
+     * Removes a single magic sack from player's inventory,
+     * if it is available.
+     */
+    void removeMagicSack();
+
+    /**
+     * Adds a single enchanted weapon to player's inventory.
+     */
+    void addEnchantedWeapon();
+
+    /**
+     * Removes a single enchanted weapon from player's inventory,
+     * if it is available.
+     */
+    void removeEnchantedWeapon();
+
+    /**
+     * Adds a map of a single floor to player's inventory.
+     * 
+     * @param - the floor number that the map is for.
+     */
+    void addFloorMap(Integer floorNumber);
+
+    /**
+     * Removes a map of a single floor from player's inventory.
+     * 
+     * @param - the floor number that the map is for.
+     */
+    void removeFloorMap(Integer floorNumber);
+
+    /**
      * Adds a single beacon scroll to player's inventory.
      */
     void addBeacon();
