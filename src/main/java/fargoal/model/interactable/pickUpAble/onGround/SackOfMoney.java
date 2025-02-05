@@ -1,5 +1,7 @@
 package fargoal.model.interactable.pickUpAble.onGround;
 
+import java.util.Random;
+
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
@@ -38,7 +40,7 @@ public class SackOfMoney implements Interactable{
     }
 
     private int generateAmountOfMoney(){
-        return 0;
+        return new Random().nextInt(130) + 20;
     }
 
     @Override
