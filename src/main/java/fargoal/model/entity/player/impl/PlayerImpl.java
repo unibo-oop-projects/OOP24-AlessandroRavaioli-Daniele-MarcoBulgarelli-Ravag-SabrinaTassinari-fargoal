@@ -5,24 +5,29 @@ import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.entity.player.api.Gold;
 import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
 
+    private static final int INITIAL_LEVEL = 1;
+    
     private Position position;
     private Integer level;
     private Integer experiencePoints;
     private Health health;
     private Integer skill;
+    private final Gold gold;
     private final Inventory inventory;
     private final boolean hasSword;
 
     public PlayerImpl() {
         this.position = null; //TODO
-        this.level = 1;
+        this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
         this.health = null; //TODO
         this.skill = null; //TODO
+        this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
         this.hasSword = false;
     }
