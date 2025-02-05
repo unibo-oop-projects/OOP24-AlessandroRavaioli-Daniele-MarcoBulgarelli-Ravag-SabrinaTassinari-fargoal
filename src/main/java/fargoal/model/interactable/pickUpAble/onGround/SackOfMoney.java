@@ -6,43 +6,64 @@ import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
+/**
+ * A class that implement the sack of money the player can find in the dungeon.
+ */
 public class SackOfMoney implements Interactable{
 
     final private Position position;
     private boolean hiddenInGround;
+    private int goldInSack;
 
+    /**
+     * The constructor of the class. The position of the sack is the parameter 
+     * and the sack is not hidden in the ground in the beginning.
+     * @param position - the position of the sack of money.
+     */
     public SackOfMoney(final Position position) {
         this.position = position;
         this.hiddenInGround = false;
+        this.goldInSack = this.generateAmountOfMoney();
     }
 
+    /** {@inheritDoc} */
     @Override
     public Position getPosition() {
         return this.position;
     }
 
+    /** {@inheritDoc} */
     public boolean isHiddenInGround() {
         return this.hiddenInGround;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getTag() {
         return "SACK OF GOLD";
     }
 
-    /*quando ci passi sopra prendi i soldi (se la barra spaziatrice è premuta non li prendi)
-     * Se il tesoro è nascosto nel suolo ci vai sopra e premi la barra spaziatrice
-     */
+    /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        int spaceForMoney = floorManager.getPlayer().getMaxGoldCapacity() - floorManager.getPlayer().getCurrentGold();
+        if(spaceForMoney < this.goldInSack) {
+            this.hiddenInGround = true;
+            this.goldInSack = goldInSack - spaceForMoney;
+        } 
+        floorManager.getPlayer().getPlayerGold().addGold(this.goldInSack);
+        return this;
     }
 
+    /**
+     * This private method calculates the amount of money the sack contains.
+     * @return the amount of money the sack contains.
+     */
     private int generateAmountOfMoney(){
         return new Random().nextInt(130) + 20;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
         // TODO Auto-generated method stub
