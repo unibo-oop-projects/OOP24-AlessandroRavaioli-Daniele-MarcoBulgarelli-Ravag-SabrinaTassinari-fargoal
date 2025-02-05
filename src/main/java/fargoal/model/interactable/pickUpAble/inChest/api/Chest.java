@@ -11,6 +11,6 @@ public interface Chest extends Interactable{
      * Generate randomly an item in the chest
      * @return the name of the item that is in the chest
      */
-    public String getChestItem();
+    public ChestItem getChestItem();
 
 }

@@ -46,7 +46,7 @@ public class ChestImpl implements Chest {
 
     /** {@inheritDoc} */
     @Override
-    public String getChestItem() {
+    public ChestItem getChestItem() {
         int num = new Random().nextInt(N_CHEST_ITEM);
         ChestItem item;
         if (num == 0) {
@@ -82,14 +82,14 @@ public class ChestImpl implements Chest {
         } else {
             item = new ChestItemFactoryImpl().generateMagicSack();
         }
-        return item.getChestItemName();
+        return item;
     }
 
     /*apri la cesta con barra spaziatrice quando ci sei vicino*/
     /** {@inheritDoc} */
     @Override
     public void interact() {
-        String item = this.getChestItem();
+        
     }
 
     /** {@inheritDoc} */

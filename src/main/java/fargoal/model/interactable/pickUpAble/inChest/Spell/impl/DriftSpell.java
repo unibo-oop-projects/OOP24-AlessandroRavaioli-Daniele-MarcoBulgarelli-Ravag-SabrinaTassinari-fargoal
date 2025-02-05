@@ -1,5 +1,6 @@
 package fargoal.model.interactable.pickUpAble.inChest.Spell.impl;
 
+import fargoal.model.entity.player.impl.InventoryImpl;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
@@ -31,8 +32,7 @@ public class DriftSpell implements Spell{
     /** {@inheritDoc} */
     @Override
     public void store() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'store'");
+       
     }
 
     /** {@inheritDoc} */
