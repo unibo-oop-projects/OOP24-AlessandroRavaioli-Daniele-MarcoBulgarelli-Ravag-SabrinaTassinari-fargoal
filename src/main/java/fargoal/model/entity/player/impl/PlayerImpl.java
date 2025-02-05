@@ -138,7 +138,8 @@ public class PlayerImpl implements Player {
      * 
      * @return true if player is dead, false otherwise.
      */
-    private boolean isDead() {
+    @Override
+    public boolean isDead() {
         if(inventory.getHealingPotions() == 0){
             return this.health.getCurrentHealth() == 0;
         } else {
