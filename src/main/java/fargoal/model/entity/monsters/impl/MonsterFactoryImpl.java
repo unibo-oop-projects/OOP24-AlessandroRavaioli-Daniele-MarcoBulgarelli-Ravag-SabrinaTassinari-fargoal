@@ -26,7 +26,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
     private static final int SPIDER_FLOOR = 5;
     private static final int MONK_FLOOR = 4;
     private static final int MIN_FLOOR = 3;
-    final private Integer level;
+    private final Integer level;
     private final Random random = new Random();
 
     /**
