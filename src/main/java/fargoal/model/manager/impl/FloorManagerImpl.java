@@ -2,6 +2,7 @@ package fargoal.model.manager.impl;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
@@ -11,6 +12,9 @@ import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.interactable.api.Interactable;
+import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
+import fargoal.model.interactable.pickUpAble.inChest.impl.ChestImpl;
+import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
 import fargoal.model.map.api.FloorMap;
@@ -22,6 +26,7 @@ import fargoal.model.map.impl.FloorConstructorImpl;
 public class FloorManagerImpl implements FloorManager {
 
     private static final int MAX_MONSTERS = 7;
+    private static final int MAX_NUMBER_OF_TREASURES = 25;
 
     private FloorMap map;
     private List<Monster> monsters;
@@ -116,9 +121,24 @@ public class FloorManagerImpl implements FloorManager {
         this.items.clear();
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
         while (this.monsters.size() < MAX_MONSTERS) {
+            generateMonster();
+        }
+        int goldSpots = new Random().nextInt(4) + 6;
+        int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel-1) + 3);
+        while (this.items.size() < goldSpots) {
+            generateGold();
+        }
+        while (this.items.size() < goldSpots + treasures) {
+            generateItems();
+        }
+    }
+
+    private void generateMonster() {
+        boolean alreadyPresent = false;
+        do {
             Position pos = this.map.getRandomTile();
             Monster temp = monstFact.generate(pos, this.map, this);
-            boolean alreadyPresent = false;
+            alreadyPresent = false;
             for (int i = 0; i < this.monsters.size(); i++) {
                 if (this.monsters.get(i).getPosition().equals(pos)) {
                     alreadyPresent = true;
@@ -127,6 +147,40 @@ public class FloorManagerImpl implements FloorManager {
             if (!alreadyPresent) {
                 this.monsters.add(temp);
             }
-        }
+        } while (alreadyPresent);
+    }
+    
+    private void generateItems() {
+        boolean alreadyPresent = false;
+        do {
+            Position pos = this.map.getRandomTile();
+            ChestItem temp = new ChestImpl(pos).getChestItem();
+            alreadyPresent = false;
+            for (int i = 0; i < this.items.size(); i++) {
+                if (this.items.get(i).getPosition().equals(pos)) {
+                    alreadyPresent = true;
+                }
+            }
+            if (!alreadyPresent) {
+                this.items.add(temp);
+            }
+        } while (alreadyPresent);
+    }
+
+    private void generateGold() {
+        boolean alreadyPresent = false;
+        do {
+            Position pos = this.map.getRandomTile();
+            SackOfMoney temp = new SackOfMoney(pos);
+            alreadyPresent = false;
+            for (int i = 0; i < this.items.size(); i++) {
+                if (this.items.get(i).getPosition().equals(pos)) {
+                    alreadyPresent = true;
+                }
+            }
+            if (!alreadyPresent) {
+                this.items.add(temp);
+            }
+        } while (alreadyPresent);
     }
 }

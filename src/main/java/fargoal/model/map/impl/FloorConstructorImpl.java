@@ -12,7 +12,7 @@ import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;
 
 /**
- * class that creates a random floor
+ * class that creates a random floor.
  */
 public class FloorConstructorImpl implements FloorConstructor {
 
@@ -34,7 +34,7 @@ public class FloorConstructorImpl implements FloorConstructor {
         private static final int VARIABLE_CORRIDOR_LENGTH = 8;
         private static final int FLOOR_LENGTH = 40;
         private static final int FLOOR_HEIGHT = 25;
-        
+
         private Set<Position> temporaryTiles = new HashSet<>();
         private List<Position> centers = new ArrayList<>();
         private final Random rnd = new Random();
@@ -62,14 +62,14 @@ public class FloorConstructorImpl implements FloorConstructor {
             List<Position> directions = new ArrayList<>(List.of(
                         new Position(1, 0),
                         new Position(0, 1),
-                        new Position(-1, 0),
-                        new Position(0, -1)));
+                        new Position(0, -1),
+                        new Position(-1, 0)));
             FloorState state = FloorState.CONTINUE;
             Random rnd = new Random();
             int direction = rnd.nextInt(directions.size());
             Position currentPosition = pos;
 
-            while (state.equals(FloorState.CONTINUE)) {
+            while (!state.equals(FloorState.HIT_PATH)) {
                 state = FloorState.CONTINUE;
                 int length = rnd.nextInt(VARIABLE_CORRIDOR_LENGTH) + MINIMUM_CORRIDOR_LENGTH;
 

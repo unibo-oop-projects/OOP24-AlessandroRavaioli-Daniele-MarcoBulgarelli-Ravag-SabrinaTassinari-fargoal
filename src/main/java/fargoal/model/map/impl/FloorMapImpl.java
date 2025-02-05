@@ -10,7 +10,7 @@ import fargoal.model.map.api.Dimension;
 import fargoal.model.map.api.FloorMap;
 
 /**
- * A class that models a floor
+ * A class that models a floor.
  */
 public class FloorMapImpl implements FloorMap {
 
