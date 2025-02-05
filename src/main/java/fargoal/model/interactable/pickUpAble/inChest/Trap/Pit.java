@@ -1,17 +1,17 @@
-package fargoal.model.interactable.pickUpAble.inChest.Trap.impl;
+package fargoal.model.interactable.pickUpAble.inChest.Trap;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.inChest.Trap.api.AbstractTrap;
+import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
-public class Pit extends AbstractTrap {
+public class Pit implements ChestItem {
 
     final Position position;
 
     public Pit(FloorManager floorManager, final Position position) {
-        this.damage(floorManager);
+        this.interact(floorManager);
         this.position = position;
     }
 

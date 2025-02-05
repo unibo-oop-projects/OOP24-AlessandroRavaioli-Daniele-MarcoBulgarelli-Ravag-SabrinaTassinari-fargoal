@@ -1,4 +1,4 @@
-package fargoal.model.interactable.pickUpAble.inChest.Trap.impl;
+package fargoal.model.interactable.pickUpAble.inChest.Trap;
 
 public enum TrapType {
     EXPLOSION("EXPLOSION"),

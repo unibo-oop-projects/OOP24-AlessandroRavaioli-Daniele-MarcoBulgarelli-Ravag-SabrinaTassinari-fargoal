@@ -1,17 +1,17 @@
-package fargoal.model.interactable.pickUpAble.inChest.Trap.impl;
+package fargoal.model.interactable.pickUpAble.inChest.Trap;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.inChest.Trap.api.AbstractTrap;
+import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
-public class Teleport extends AbstractTrap {
+public class Explosion implements ChestItem {
 
     final Position position;
 
-    public Teleport(FloorManager floorManager, final Position position) {
-        this.damage(floorManager);
+    public Explosion(FloorManager floorManager, final Position position) {
+        this.interact(floorManager);
         this.position = position;
     }
 
@@ -22,7 +22,7 @@ public class Teleport extends AbstractTrap {
 
     @Override
     public String getChestItemName() {
-        return TrapType.TELEPORT.getName();
+        return TrapType.EXPLOSION.getName();
     }
 
     @Override
@@ -45,6 +45,6 @@ public class Teleport extends AbstractTrap {
     public void update(FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
+    }  
     
 }

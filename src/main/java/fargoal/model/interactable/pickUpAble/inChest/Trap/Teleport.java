@@ -1,17 +1,17 @@
-package fargoal.model.interactable.pickUpAble.inChest.Trap.impl;
+package fargoal.model.interactable.pickUpAble.inChest.Trap;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.inChest.Trap.api.AbstractTrap;
+import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
-public class CeilingTrap extends AbstractTrap {
+public class Teleport implements ChestItem {
 
     final Position position;
 
-    public CeilingTrap(FloorManager floorManager, final Position position) {
-        this.damage(floorManager);
+    public Teleport(FloorManager floorManager, final Position position) {
+        this.interact(floorManager);
         this.position = position;
     }
 
@@ -22,7 +22,7 @@ public class CeilingTrap extends AbstractTrap {
 
     @Override
     public String getChestItemName() {
-        return TrapType.CEILING_TRAP.getName();
+        return TrapType.TELEPORT.getName();
     }
 
     @Override
