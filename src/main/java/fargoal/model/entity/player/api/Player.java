@@ -1,6 +1,7 @@
 package fargoal.model.entity.player.api;
 
 import fargoal.model.entity.commons.api.Entity;
+import fargoal.model.entity.player.impl.InventoryImpl;
 
 public interface Player extends Entity {
 
@@ -9,4 +10,6 @@ public interface Player extends Entity {
     void move();
 
     Integer attack();
+
+    InventoryImpl getInventory();
 }

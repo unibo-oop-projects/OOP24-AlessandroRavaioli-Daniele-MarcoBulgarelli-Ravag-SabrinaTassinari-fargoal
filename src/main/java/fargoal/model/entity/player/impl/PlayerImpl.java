@@ -11,11 +11,18 @@ public class PlayerImpl implements Player {
     private Health health;
     private Position position;
     private Integer skill;
+
+    private InventoryImpl inventory = new InventoryImpl();
     
     @Override
     public Health getHealth() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getHealth'");
+    }
+
+    @Override
+    public InventoryImpl getInventory() {
+        return this.inventory;
     }
 
     @Override
