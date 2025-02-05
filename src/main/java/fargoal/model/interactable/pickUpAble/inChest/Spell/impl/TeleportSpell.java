@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class TeleportSpell implements Spell {
 
+    public TeleportSpell() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.SPELL.getName();

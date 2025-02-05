@@ -1,6 +1,7 @@
 package fargoal.manager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ public class TestFloorManager {
     private static FloorManager manager;
 
     @BeforeAll
-    void init() {
+    static void init() {
         manager = new FloorManagerImpl(new GameContext(new SwingView()));
     }
 
@@ -31,10 +32,6 @@ public class TestFloorManager {
         assertEquals(2, manager.getFloorLevel());
         manager.decreaseFloorLevel();
         manager.decreaseFloorLevel();
-        try {
-            manager.decreaseFloorLevel();
-        } catch (IllegalStateException e) {
-            System.out.println("Passato");
-        }
+        assertThrows(IllegalStateException.class, () -> manager.decreaseFloorLevel());
     }
 }

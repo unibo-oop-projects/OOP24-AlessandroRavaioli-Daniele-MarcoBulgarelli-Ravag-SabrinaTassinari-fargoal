@@ -1,10 +1,10 @@
-package fargoal.model.interactable.temple.impl;
+package fargoal.model.interactable.temple;
 
 import fargoal.commons.api.Position;
-import fargoal.model.interactable.temple.api.Temple;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
-public class TempleImpl implements Temple{
+public class TempleImpl implements Interactable {
 
     final Position position;
 
@@ -12,6 +12,7 @@ public class TempleImpl implements Temple{
         this.position = position;
     }
 
+    //dona al tempio e non può essere attaccato
     @Override
     public void interact() {
         // TODO Auto-generated method stub
@@ -23,20 +24,10 @@ public class TempleImpl implements Temple{
         return this.position;
     }
 
-    @Override
-    public boolean isColliding() {
-        return false;
-    }
 
     @Override
     public String getTag() {
         return "TEMPLE";
-    }
-
-    @Override
-    public void unattackable() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'donate'");
     }
 
     @Override

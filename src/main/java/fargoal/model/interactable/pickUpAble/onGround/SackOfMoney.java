@@ -6,10 +6,11 @@ import fargoal.model.manager.api.FloorManager;
 
 public class SackOfMoney implements Interactable{
 
-    private Position position;
+    final private Position position;
     private boolean hiddenInGround;
 
-    public SackOfMoney() {
+    public SackOfMoney(final Position position) {
+        this.position = position;
         this.hiddenInGround = false;
     }
 
@@ -18,17 +19,8 @@ public class SackOfMoney implements Interactable{
         return this.position;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
-
     public boolean isHiddenInGround() {
         return this.hiddenInGround;
-    }
-
-    @Override
-    public boolean isColliding() {
-        return false;
     }
 
     @Override

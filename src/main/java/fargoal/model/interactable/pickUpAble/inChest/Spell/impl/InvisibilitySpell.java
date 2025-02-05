@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class InvisibilitySpell implements Spell {
 
+    public InvisibilitySpell() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.SPELL.getName();

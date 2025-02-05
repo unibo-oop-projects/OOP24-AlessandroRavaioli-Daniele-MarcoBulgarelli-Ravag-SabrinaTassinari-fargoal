@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class Beacon implements Utility {
 
+    public Beacon() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.UTILITY.getName();
@@ -21,4 +25,8 @@ public class Beacon implements Utility {
         throw new UnsupportedOperationException("Unimplemented method 'store'");
     }
     
+    //il giocatore mette a terra la torcia
+    public void putOnGround() {
+
+    }
 }

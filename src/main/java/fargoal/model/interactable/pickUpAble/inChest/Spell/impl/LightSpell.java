@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class LightSpell implements Spell {
 
+    public LightSpell() {
+        this.store();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.SPELL.getName();

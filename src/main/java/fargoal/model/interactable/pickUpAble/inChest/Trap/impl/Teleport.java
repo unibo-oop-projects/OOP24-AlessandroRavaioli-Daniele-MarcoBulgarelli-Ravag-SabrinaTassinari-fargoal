@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class Teleport implements Trap {
 
+    public Teleport() {
+        this.damage();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.TRAP.getName();

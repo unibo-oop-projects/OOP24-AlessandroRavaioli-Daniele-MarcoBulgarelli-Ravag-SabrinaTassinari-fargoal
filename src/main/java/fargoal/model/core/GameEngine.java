@@ -25,7 +25,7 @@ public class GameEngine {
         }
     }
 
-    private void waitToNextFrame(long startTime) {
+    private void waitToNextFrame(final long startTime) {
         long delta = System.currentTimeMillis() - startTime;
         if (delta < period) {
             try {

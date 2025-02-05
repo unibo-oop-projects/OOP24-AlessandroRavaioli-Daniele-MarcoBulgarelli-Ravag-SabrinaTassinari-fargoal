@@ -51,16 +51,10 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * 
-     */
-    public boolean isColliding() {
-        return false;
-    }
-
-    /**
      * Set the MonsterType of the Monster selected.
      * 
      * @param monsterType the MonsterType of the Monster
+     * @return
      */
     public void setMonsterType(final MonsterType monsterType) {
         this.monsterType = monsterType;

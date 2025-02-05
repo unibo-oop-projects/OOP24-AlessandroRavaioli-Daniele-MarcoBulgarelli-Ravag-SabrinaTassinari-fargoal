@@ -5,6 +5,10 @@ import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 
 public class Pit implements Trap {
 
+    public Pit() {
+        this.damage();
+    }
+
     @Override
     public String getChestItemType() {
         return ChestItemType.TRAP.getName();
