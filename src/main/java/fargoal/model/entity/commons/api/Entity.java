@@ -28,4 +28,11 @@ public interface Entity extends FloorElement {
      * damages from a monster who is attacking him.
      */
     void receiveDamage();
+
+    /**
+     * This method is used to check wether the Entity is dead or not.
+     * 
+     * @return true if player is dead, false otherwise.
+     */
+    boolean isDead();
 }
