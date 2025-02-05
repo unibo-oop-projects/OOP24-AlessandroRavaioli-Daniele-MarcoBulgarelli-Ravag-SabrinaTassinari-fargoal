@@ -2,8 +2,6 @@ package fargoal.model.manager.impl;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
@@ -90,12 +88,18 @@ public class FloorManagerImpl implements FloorManager {
         return this.floorLevel;
     }
 
+    /**
+     * {@inheritDOc}
+     */
     @Override
     public void increaseFloorLevel() {
         this.floorLevel++;
         initializeFloor();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void decreaseFloorLevel() {
         if (this.floorLevel <= 0) {
