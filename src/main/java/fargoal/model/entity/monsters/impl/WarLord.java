@@ -36,7 +36,7 @@ public class WarLord extends AbstractMonster {
     /** {@inheritDoc} */
     @Override
     public void receiveDamage() {
-        final int damage = this.getFloorManager().getPlayer().attack();
+        final int damage = this.getFloorManager().getPlayer().doDamage(this);
         if (shield) {
             shield = false;
         } else {
