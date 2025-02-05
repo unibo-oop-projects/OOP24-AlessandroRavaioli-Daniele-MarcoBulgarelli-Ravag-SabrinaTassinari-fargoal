@@ -12,7 +12,6 @@ import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.inChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 import fargoal.model.manager.api.FloorManager;
@@ -154,7 +153,7 @@ public class FloorManagerImpl implements FloorManager {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
-            ChestItem temp = new ChestImpl(pos).getChestItem();
+            Interactable temp = new ChestImpl(pos).interact(this);
             alreadyPresent = false;
             for (int i = 0; i < this.items.size(); i++) {
                 if (this.items.get(i).getPosition().equals(pos)) {

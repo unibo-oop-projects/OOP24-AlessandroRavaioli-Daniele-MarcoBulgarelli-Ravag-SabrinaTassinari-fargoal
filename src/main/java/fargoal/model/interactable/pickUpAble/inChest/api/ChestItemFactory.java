@@ -10,12 +10,16 @@ public interface ChestItemFactory {
     
     /**
      * This method generate a Drift Spell, which is a Spell.
+     * @param floorManager - 
+     * @param position - 
      * @return the chest item "Drift Spell".
      */
     public ChestItem generateDriftSpell(FloorManager floorManager, final Position position);
 
     /**
      * This method generate an Invisibility Spell, which is a Spell.
+     * @param floorManager -
+     * @param position - 
      * @return the chest item "Invisibility Spell".
      */
     public ChestItem generateInvisibilitySpell(FloorManager floorManager, final Position position);
