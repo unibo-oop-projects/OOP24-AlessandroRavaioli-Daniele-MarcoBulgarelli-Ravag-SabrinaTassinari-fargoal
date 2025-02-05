@@ -68,7 +68,7 @@ public class EnchantedWeapon implements Utility {
     public void store(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().addEnchantedWeapon();
         int skillToAdd = new Random().nextInt(9) + 5;
-        floorManager.getPlayer().increaseSkill(skillToAdd);
+        floorManager.getPlayer().increasePlayerSkill(skillToAdd);
     }
     
 }

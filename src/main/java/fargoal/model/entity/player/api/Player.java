@@ -27,6 +27,12 @@ public interface Player extends Entity {
      */
     Integer getExperiencePoints();
 
+    /**
+     * Getter for the amount of experience points required to
+     * gain a level.
+     * 
+     * @return the amount of experience points required to gain a level.
+     */
     Integer getExperiencePointsRequired();
 
     /**
@@ -42,6 +48,20 @@ public interface Player extends Entity {
      * @return the player gold object.
      */
     Gold getPlayerGold();
+
+    /**
+     * Getter for player current carried gold.
+     * 
+     * @return the gold amount player is currently carrying.
+     */
+    Integer getCurrentGold();
+
+    /**
+     * Getter for player maximum gold capacity.
+     * 
+     * @return the amount player is able to carry.
+     */
+    Integer getMaxGoldCapacity();
 
     /**
      * This method controls if player has aquired the
@@ -73,9 +93,19 @@ public interface Player extends Entity {
      */
     public void setIsImmune(boolean condition);
 
-    public void setSkill(Integer skill);
+    /**
+     * Sets the player skill to the amount given.
+     * 
+     * @param amount - the value to set player skill to.
+     */
+    public void setPlayerSkill(Integer amount);
 
-    void increaseSkill(final Integer amount);
+    /**
+     * Increases the player's skill of the amount given.
+     * 
+     * @param amount - the value to add to player's skill.
+     */
+    void increasePlayerSkill(final Integer amount);
 
     /**
      * Makes the player move one tile in the map.
@@ -93,9 +123,12 @@ public interface Player extends Entity {
      */
     Integer doDamage(Monster monster);
 
-    Integer getCurrentGold();
-
-    Integer getMaxGoldCapacity();
-
+    /**
+     * This method manages the character level up, given
+     * they have enough experience points.
+     * Whenever the player levels up their max health and
+     * their skill increase, the level increases by one and
+     * the next required experience points double.
+     */
     void levelUp();
 }

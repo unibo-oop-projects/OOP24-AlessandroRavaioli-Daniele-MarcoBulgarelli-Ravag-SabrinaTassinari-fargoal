@@ -40,6 +40,13 @@ public interface Health {
     void setHealth(Integer amount);
 
     /**
+     * Sets the maximum health value to the given amount value.
+     * 
+     * @param amount to set as entity's max health.
+     */
+    void setMaxHealth(Integer amount);
+
+    /**
      * Set the current health to the max health value possible
      * for the current entity.
      */

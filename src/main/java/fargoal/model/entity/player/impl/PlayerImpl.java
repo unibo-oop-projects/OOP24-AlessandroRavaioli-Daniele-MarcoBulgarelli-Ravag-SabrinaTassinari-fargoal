@@ -8,11 +8,13 @@ import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.entity.player.api.Gold;
-import fargoal.model.entity.player.impl.GoldImpl;
 import fargoal.model.entity.player.api.Inventory;
 
 public class PlayerImpl implements Player {
 
+    private static final int CONSTANT_ADDED_TO_MAX_HEALTH_IN_LEVEL_UP = 4;
+    private static final int MAX_LEVEL_UP_ADDED_MAX_HEALTH = 15;
+    private static final int MIN_LEVEL_UP_ADDED_MAX_HEALTH = 1;
     private static final int INITIAL_EXPERIENCE_POINTS_REQUIRED = 200;
     private static final int INITIAL_STAT_MAX_COUNTER = 3;
     private static final int DAMAGE_MULTIPLIER = 4;
@@ -39,6 +41,7 @@ public class PlayerImpl implements Player {
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
         this.health.setHealth(setInitialStat());
+        this.health.setMaxHealth(this.health.getCurrentHealth());
         this.skill = setInitialStat();
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
@@ -59,7 +62,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public void setSkill(final Integer skill) {
+    public void setPlayerSkill(final Integer skill) {
         if(skill == null || skill < 0) {
             throw new IllegalArgumentException("The skill cannot be set to a null or negative value.");
         } else {
@@ -68,7 +71,7 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public void increaseSkill(final Integer amount) {
+    public void increasePlayerSkill(final Integer amount) {
         if(skill == null) {
             throw new IllegalArgumentException("The skill cannot be increased of a null value.");
         } else if(amount > this.skill) {
@@ -88,8 +91,9 @@ public class PlayerImpl implements Player {
             throw new IllegalStateException("Player does not have enough experience points to level up.");
         } else {
             this.level ++;
-            // maxhealth += random (1, 15) + 4
-            // skill += random (1, 10)
+            this.health.setMaxHealth(this.health.getMaxHealth() + new Random().nextInt(MIN_LEVEL_UP_ADDED_MAX_HEALTH, MAX_LEVEL_UP_ADDED_MAX_HEALTH) + CONSTANT_ADDED_TO_MAX_HEALTH_IN_LEVEL_UP);
+            this.increasePlayerSkill(new Random().nextInt(1, 10));
+            this.experiencePointsRequired = this.experiencePointsRequired * 2;
         }
     }
 
