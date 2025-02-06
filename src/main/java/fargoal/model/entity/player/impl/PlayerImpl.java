@@ -7,6 +7,7 @@ import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.map.api.FloorMap;
 import fargoal.model.entity.player.api.Gold;
 import fargoal.model.entity.player.api.Inventory;
 
@@ -35,8 +36,8 @@ public class PlayerImpl implements Player {
     private boolean isAttacked;
     private boolean isImmune;
 
-    public PlayerImpl() {
-        this.position = null; //TODO
+    public PlayerImpl(FloorMap floorMap) {
+        startingPosition(floorMap);
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
@@ -49,6 +50,19 @@ public class PlayerImpl implements Player {
         this.isFighting = false;
         this.isAttacked = false;
         this.isImmune = false;
+    }
+
+    private void setPosition(Position position) {
+        this.position = position;
+    }
+
+    private void startingPosition(FloorMap floorMap) {
+        Random random = new Random();
+        Position pos;
+        do {
+            pos = new Position(random.nextInt(floorMap.getSize().length()), floorMap.getSize().height());
+        } while (floorMap.isTile(pos));
+        this.setPosition(pos);
     }
 
     private Integer setInitialStat() {

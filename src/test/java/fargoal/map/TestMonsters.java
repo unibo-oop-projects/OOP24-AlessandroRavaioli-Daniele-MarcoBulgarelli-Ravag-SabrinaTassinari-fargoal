@@ -12,6 +12,7 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
+import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.map.api.FloorMap;
@@ -39,8 +40,8 @@ public class TestMonsters {
     void visualizeMonster() {
         System.out.println(monster.getSkill() + " " + monster.getHealth() + " " + monster.getPosition() + " " + monster.getTag());
         assertEquals("MONK", monster.getTag());
-        //Ai.move((AbstractMonster)monster, manager.getPlayer());
-        //System.out.println(monster.getPosition());
+        Ai.move((AbstractMonster)monster, manager.getPlayer());
+        System.out.println(monster.getPosition());
     }
     
 }
