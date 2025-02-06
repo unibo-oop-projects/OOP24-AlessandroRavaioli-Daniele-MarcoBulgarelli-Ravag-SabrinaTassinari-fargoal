@@ -11,6 +11,7 @@ import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.entity.player.impl.PlayerImpl;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.inChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
@@ -118,6 +119,7 @@ public class FloorManagerImpl implements FloorManager {
         this.mask.resetMask();
         this.monsters.clear();
         this.items.clear();
+        this.player = new PlayerImpl(map);
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
         while (this.monsters.size() < MAX_MONSTERS) {
             generateMonster();
