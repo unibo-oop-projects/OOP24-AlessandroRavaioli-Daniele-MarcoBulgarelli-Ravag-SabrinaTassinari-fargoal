@@ -28,7 +28,7 @@ public class WarLord extends AbstractMonster {
      * @param floorManager - to get infos about the other entities/items
      */
     public WarLord(final Position position, final Integer level, final FloorMap floorMap, final FloorManager floorManager) {
-        super(position, level, floorMap, floorManager);
+        super(position, level, floorManager);
         setMonsterType(MonsterType.WAR_LORD);
         this.shield = true;
     }
