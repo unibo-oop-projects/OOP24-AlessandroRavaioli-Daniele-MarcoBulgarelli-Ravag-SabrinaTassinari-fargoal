@@ -5,19 +5,35 @@ import fargoal.view.impl.SwingRenderer;
 
 public interface SwingRenderFactory {
     
-    SwingRenderer player(Position pos);
+    SwingRenderer playerRenderer(Position pos);
 
-    SwingRenderer wall(Position pos);
+    SwingRenderer wallRenderer(Position pos);
 
-    SwingRenderer tile(Position pos);
+    SwingRenderer tileRenderer(Position pos);
 
-    SwingRenderer monster(Position pos);
+    SwingRenderer upstairRenderer(Position pos);
+    
+    SwingRenderer downstairRenderer(Position pos);
 
-    SwingRenderer stair(Position pos);
+    SwingRenderer templeRenderer(Position pos);
 
-    SwingRenderer temple(Position pos);
+    SwingRenderer chestRenderer(Position pos);
 
-    SwingRenderer pickup(Position pos);
+    SwingRenderer fogRenderer(Position pos);
 
-    SwingRenderer fog(Position pos);
+    SwingRenderer goldRenderer(Position pos);
+
+    SwingRenderer assassinRenderer(Position pos);
+
+    SwingRenderer barbarianRenderer(Position pos);
+
+    SwingRenderer mageRenderer(Position pos);
+
+    SwingRenderer monkRenderer(Position pos);
+
+    SwingRenderer rogueRenderer(Position pos);
+
+    SwingRenderer spiderRenderer(Position pos);
+
+    SwingRenderer warlordRenderer(Position pos);
 }

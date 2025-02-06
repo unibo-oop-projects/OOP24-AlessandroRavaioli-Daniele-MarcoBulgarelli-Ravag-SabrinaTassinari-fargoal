@@ -61,10 +61,10 @@ public class FloorMaskImpl implements FloorMask {
                 var pos = new Position(x, y);
                 if (this.mask.get(pos)) {
                     (manager.getFloorMap().isTile(pos)
-                        ? this.renderFac.tile(pos)
-                        : this.renderFac.wall(pos)).render();
+                        ? this.renderFac.tileRenderer(pos)
+                        : this.renderFac.wallRenderer(pos)).render();
                 } else {
-                    this.renderFac.fog(pos).render();
+                    this.renderFac.fogRenderer(pos).render();
                 }
             }
         }

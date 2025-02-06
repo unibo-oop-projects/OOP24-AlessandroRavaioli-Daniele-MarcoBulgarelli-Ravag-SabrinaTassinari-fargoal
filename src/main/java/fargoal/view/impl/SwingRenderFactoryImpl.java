@@ -15,66 +15,114 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     }
 
     @Override
-    public SwingRenderer player(Position pos) {
+    public SwingRenderer playerRenderer(Position pos) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'player'");
     }
 
     @Override
-    public SwingRenderer wall(Position pos) {
+    public SwingRenderer wallRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
                 g2d.setColor(Color.RED);
                 g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
                             pos.y() * this.view.getTilePixelDim(),
                             this.view.getTilePixelDim(),
                             this.view.getTilePixelDim());
-            }, view);
+            }, this.view);
     }
 
     @Override
-    public SwingRenderer tile(Position pos) {
+    public SwingRenderer tileRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.WHITE);
             g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
                          pos.y() * this.view.getTilePixelDim(),
                          this.view.getTilePixelDim(),
                          this.view.getTilePixelDim());
-            }, view);
+            }, this.view);
     }
 
     @Override
-    public SwingRenderer monster(Position pos) {
+    public SwingRenderer upstairRenderer(Position pos) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moster'");
+        throw new UnsupportedOperationException("Unimplemented method 'upstairRenderer'");
     }
 
     @Override
-    public SwingRenderer stair(Position pos) {
+    public SwingRenderer downstairRenderer(Position pos) {
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'stair'");
+        throw new UnsupportedOperationException("Unimplemented method 'downstairRenderer'");
     }
 
     @Override
-    public SwingRenderer temple(Position pos) {
+    public SwingRenderer templeRenderer(Position pos) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'temple'");
     }
 
     @Override
-    public SwingRenderer pickup(Position pos) {
+    public SwingRenderer chestRenderer(Position pos) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'pickup'");
     }
 
     @Override
-    public SwingRenderer fog(Position pos) {
+    public SwingRenderer fogRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.BLACK);
             g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
                     pos.y() * this.view.getTilePixelDim(),
                     this.view.getTilePixelDim(),
                     this.view.getTilePixelDim());
-            }, view);
+            }, this.view);
+    }
+
+    @Override
+    public SwingRenderer goldRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'goldRenderer'");
+    }
+
+    @Override
+    public SwingRenderer assassinRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'assassinRenderer'");
+    }
+
+    @Override
+    public SwingRenderer barbarianRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'barbarianRenderer'");
+    }
+
+    @Override
+    public SwingRenderer mageRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'mageRenderer'");
+    }
+
+    @Override
+    public SwingRenderer monkRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'monkRenderer'");
+    }
+
+    @Override
+    public SwingRenderer rogueRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'rogueRenderer'");
+    }
+
+    @Override
+    public SwingRenderer spiderRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'spiderRenderer'");
+    }
+
+    @Override
+    public SwingRenderer warlordRenderer(Position pos) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'warlordRenderer'");
     }
     
 }
