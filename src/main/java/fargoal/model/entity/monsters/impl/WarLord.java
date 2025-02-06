@@ -50,12 +50,11 @@ public class WarLord extends AbstractMonster {
         return "WAR_LORD";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * The War Lord never steal anything from the player.
+    */
     @Override
-    public void steal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'steal'");
-    }
+    public void steal() {}
 
     /** {@inheritDoc} */
     @Override

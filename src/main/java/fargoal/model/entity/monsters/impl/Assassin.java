@@ -37,11 +37,11 @@ public class Assassin extends AbstractMonster {
         return "ASSASSIN";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * The Assassin never steal anything from the player.
+    */
     @Override
-    public void steal() {
-        
-    }
+    public void steal() {}
 
     /** {@inheritDoc} */
     @Override

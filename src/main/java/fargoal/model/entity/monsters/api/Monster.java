@@ -57,12 +57,6 @@ public interface Monster extends Entity {
     public Integer attack();
 
     /**
-     * The Monster steals from the Player and takes
-     * spell or potions from his inventory.
-     */
-    public abstract void steal();
-
-    /**
      * Return the FloorMap where the Monster is located.
      * 
      * @return the FloorMap

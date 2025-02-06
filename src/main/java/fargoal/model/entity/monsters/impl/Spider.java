@@ -37,12 +37,11 @@ public class Spider extends AbstractMonster {
         return "SPIDER";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * The Spider never steal anything from the player.
+    */
     @Override
-    public void steal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'steal'");
-    }
+    public void steal() {}
 
     /** {@inheritDoc} */
     @Override

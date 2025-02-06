@@ -36,12 +36,11 @@ public class Monk extends AbstractMonster {
         return "MONK";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * The Monk never steal anything from the player.
+    */
     @Override
-    public void steal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'steal'");
-    }
+    public void steal() {}
 
     /**
      * The Monster heal himself with a HealingPotion

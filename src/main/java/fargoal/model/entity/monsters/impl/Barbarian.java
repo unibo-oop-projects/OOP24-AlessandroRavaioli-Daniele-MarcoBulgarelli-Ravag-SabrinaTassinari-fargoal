@@ -36,12 +36,11 @@ public class Barbarian extends AbstractMonster {
         return "BARBARIAN";
     }
 
-    /** {@inheritDoc} */
+    /**
+     * The Barbarian never steal anything from the player.
+    */
     @Override
-    public void steal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'steal'");
-    }
+    public void steal() {}
 
     /** {@inheritDoc} */
     @Override
