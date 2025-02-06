@@ -188,7 +188,7 @@ public final class Ai {
         if (!check) {
             int cont = -1;
             do {
-                System.out.println("sono bloccato nell'Ai");
+                System.out.println("Non vedo il player, mi muovo a caso");
                 pos = monster.getPosition()
                         .add(new Position(list.get(random.nextInt(LIST_SIZE)), list.get(random.nextInt(LIST_SIZE))));
                 cont++;
