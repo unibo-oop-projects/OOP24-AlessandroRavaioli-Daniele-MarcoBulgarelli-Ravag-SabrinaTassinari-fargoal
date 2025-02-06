@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
+import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
@@ -46,8 +47,8 @@ public class PlayerImpl implements Player {
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
-        this.health.setHealth(setInitialStat());
-        this.health.setMaxHealth(this.health.getCurrentHealth());
+        this.health = new HealthImpl(this.setInitialStat());
+        /* this.health.setMaxHealth(this.health.getCurrentHealth()); */
         this.skill = setInitialStat();
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
@@ -63,10 +64,7 @@ public class PlayerImpl implements Player {
 
     private void startingPosition(FloorMap floorMap) {
         Random random = new Random();
-        Position pos;
-        do {
-            pos = new Position(random.nextInt(floorMap.getSize().length()), floorMap.getSize().height());
-        } while (floorMap.isTile(pos));
+        Position pos = floorMap.getRandomTile();
         this.setPosition(pos);
     }
 
