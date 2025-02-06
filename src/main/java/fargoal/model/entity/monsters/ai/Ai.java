@@ -1,5 +1,8 @@
 package fargoal.model.entity.monsters.ai;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.impl.Spider;
@@ -11,9 +14,10 @@ import fargoal.model.entity.player.api.Player;
  */
 public final class Ai {
 
-    private static final Integer POSSIBLE_DIRECTIONS = 2;
+    private static final Integer LIST_SIZE = 2;
     private static final Integer MAX_DISTANCE = 10;
     private static final Integer MAX_TRY = 15;
+    private static final List<Integer> list = new ArrayList<>(List.of(-1, 1));
 
     private Ai() {
 
@@ -132,10 +136,11 @@ public final class Ai {
         if (!check) {
             int cont = -1;
             do {
+                System.out.println("sono bloccato nell'Ai");
                 pos = monster.getPosition()
-                        .add(new Position(monster.getRandom(POSSIBLE_DIRECTIONS), monster.getRandom(POSSIBLE_DIRECTIONS)));
+                        .add(new Position(list.get(monster.getRandom(LIST_SIZE)), list.get(monster.getRandom(LIST_SIZE))));
                 cont++;
-            } while (monster.getFloorMap().isTile(pos) || cont == MAX_TRY);
+            } while (!monster.getFloorMap().isTile(pos) && cont != MAX_TRY);
             if (cont != MAX_TRY) {
                 monster.setPosition(pos);
             }
@@ -200,11 +205,11 @@ public final class Ai {
         } else {
             do {
                 pos = spider.getPosition()
-                        .add(new Position(spider.getRandom(POSSIBLE_DIRECTIONS), spider.getRandom(POSSIBLE_DIRECTIONS)));
-            } while (pos.x() < spider.getFloorMap().getSize().length()
-                    && pos.y() < spider.getFloorMap().getSize().height()
-                    && pos.x() >= 0
-                    && pos.y() >= 0);
+                        .add(new Position(list.get(spider.getRandom(LIST_SIZE)), list.get(spider.getRandom(LIST_SIZE))));
+            } while (pos.x() > spider.getFloorMap().getSize().length()
+                    && pos.y() > spider.getFloorMap().getSize().height()
+                    && pos.x() <= 0
+                    && pos.y() <= 0);
             spider.setPosition(pos);
             if (spider.getFloorMap().isTile(pos)) {
                 spider.setVisibilityOn();

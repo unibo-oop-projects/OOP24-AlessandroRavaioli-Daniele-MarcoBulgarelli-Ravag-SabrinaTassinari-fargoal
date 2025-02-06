@@ -4,6 +4,7 @@ import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
+import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.entity.monsters.ai.Ai;
@@ -49,7 +50,8 @@ public abstract class AbstractMonster implements Monster {
         this.setSkill(level);
         this.setLevel(level);
         this.setVisibilityOn();
-        this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
+        this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
+        /* this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1)); */
         this.setTimer();
     }
 
