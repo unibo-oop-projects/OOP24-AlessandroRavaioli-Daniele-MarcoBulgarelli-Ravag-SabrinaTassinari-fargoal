@@ -93,6 +93,11 @@ public class FloorManagerImpl implements FloorManager {
         return this.floorLevel;
     }
 
+    @Override
+    public FloorMask getFloorMask() {
+        return this.mask;
+    }
+
     /**
      * {@inheritDOc}
      */

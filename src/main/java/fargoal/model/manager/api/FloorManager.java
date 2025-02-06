@@ -51,4 +51,10 @@ public interface FloorManager {
      * Method to decrease the level of the floor
      */
     void decreaseFloorLevel();
+
+    /**
+     * A method to obtain the mask of the floor 
+     * @return - the current mask
+     */
+    FloorMask getFloorMask();
 }
