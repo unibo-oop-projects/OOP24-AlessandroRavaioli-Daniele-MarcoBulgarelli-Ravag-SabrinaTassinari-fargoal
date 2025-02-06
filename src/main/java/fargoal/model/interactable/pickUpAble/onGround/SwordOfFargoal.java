@@ -40,7 +40,7 @@ public class SwordOfFargoal implements Interactable{
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().setHasSword(true);
-        
+        //guarda cosa fa la spada a chi la prende (quanta esperienza o skill dà)
         return this;
     }
     

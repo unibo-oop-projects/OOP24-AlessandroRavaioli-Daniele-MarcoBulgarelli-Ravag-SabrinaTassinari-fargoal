@@ -17,7 +17,8 @@ public class SackOfMoney implements Interactable{
 
     /**
      * The constructor of the class. The position of the sack is the parameter 
-     * and the sack is not hidden in the ground in the beginning.
+     * and the sack is not hidden in the ground in the beginning. In this constructor a certain 
+     * amount of money is put in the sack. 
      * @param position - the position of the sack of money.
      */
     public SackOfMoney(final Position position) {

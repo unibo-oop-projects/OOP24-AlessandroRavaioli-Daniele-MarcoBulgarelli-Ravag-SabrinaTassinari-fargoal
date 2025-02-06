@@ -4,36 +4,50 @@ import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
+/**
+ * This class implements the temple of the floor.
+ * In the temple the player can not be attacked and 
+ * he can donate the gold he has to gain experience.
+ */
 public class TempleImpl implements Interactable {
 
     final Position position;
 
+    /**
+     * This is the constructor of the class. It set the position of the temple.
+     * @param position - the position of the temple.
+     */
     public TempleImpl(final Position position) {
         this.position = position;
     }
 
-    //dona al tempio e non può essere attaccato
+    /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        if (floorManager.getPlayer().getPosition() == this.position) {
+            floorManager.getPlayer().setIsImmune(true);
+            //incrementa l'esperienza aggiungendo le monete
+        } else {
+            floorManager.getPlayer().setIsImmune(false);
+        }
+        return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Position getPosition() {
         return this.position;
     }
 
-
+    /** {@inheritDoc} */
     @Override
     public String getTag() {
         return "TEMPLE";
     }
 
+    /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
     
 }

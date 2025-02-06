@@ -35,11 +35,12 @@ public class BeaconOnGround implements Interactable{
     }
 
     /** {@inheritDoc} */
-    //unattackable
     @Override
     public Interactable interact(FloorManager floorManager) {
-        while (floorManager.getPlayer().getPosition() == this.position) {
+        if (floorManager.getPlayer().getPosition() == this.position) {
             floorManager.getPlayer().setIsImmune(true);
+        } else {
+            floorManager.getPlayer().setIsImmune(false);
         }
         return this;
     }
