@@ -6,8 +6,8 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the temple of the floor.
- * In the temple the player can not be attacked and 
- * he can donate the gold he has to gain experience.
+ * In the temple the player can not be attacked and he can donate 
+ * the gold he has to gain experience (as much experience as the gold he has).
  */
 public class Temple implements Interactable {
 
@@ -26,7 +26,8 @@ public class Temple implements Interactable {
     public Interactable interact(FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition() == this.position) {
             floorManager.getPlayer().setIsImmune(true);
-            //incrementa l'esperienza aggiungendo le monete
+            floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
+            floorManager.getPlayer().getPlayerGold().resetGold();
         } else {
             floorManager.getPlayer().setIsImmune(false);
         }

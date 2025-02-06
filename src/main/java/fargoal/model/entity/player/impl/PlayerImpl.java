@@ -137,6 +137,11 @@ public class PlayerImpl implements Player {
     }
 
     @Override
+    public void addExperiencePoints(final Integer experiencePointsToAdd) {
+        this.experiencePoints += experiencePointsToAdd;
+    }
+
+    @Override
     public Health getHealth() {
         return this.health;
     }

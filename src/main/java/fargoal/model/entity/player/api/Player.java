@@ -43,6 +43,12 @@ public interface Player extends Entity {
     Integer getExperiencePointsRequired();
 
     /**
+     * This method add an amount of experience point to the experience the player has already got.
+     * @param experiencePointToAdd - the experience point the player gained.
+     */
+    void addExperiencePoints(Integer experiencePointsToAdd);
+
+    /**
      * Getter for the player's inventory.
      * 
      * @return the inventory associated to the player.
