@@ -124,14 +124,14 @@ public class FloorManagerImpl implements FloorManager {
         while (this.monsters.size() < MAX_MONSTERS) {
             generateMonster();
         }
-       /*  int goldSpots = new Random().nextInt(4) + 6;
+         int goldSpots = new Random().nextInt(4) + 6;
         int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel-1) + 3);
         while (this.items.size() < goldSpots) {
             generateGold();
         }
         while (this.items.size() < goldSpots + treasures) {
             generateItems();
-        } */
+        } 
     }
 
     private void generateMonster() {
@@ -154,7 +154,7 @@ public class FloorManagerImpl implements FloorManager {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
-            Interactable temp = new ChestImpl(pos).interact(this);
+            Interactable temp = new ChestImpl(pos);
             alreadyPresent = false;
             for (int i = 0; i < this.items.size(); i++) {
                 if (this.items.get(i).getPosition().equals(pos)) {

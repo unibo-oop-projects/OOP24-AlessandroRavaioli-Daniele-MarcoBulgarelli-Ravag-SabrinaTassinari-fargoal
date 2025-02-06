@@ -18,8 +18,8 @@ public class DownStairs implements Stairs {
 
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        floorManager.increaseFloorLevel();
+        return this;
     }
 
     @Override
