@@ -3,6 +3,7 @@ package fargoal.model.entity.player.api;
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
 import fargoal.model.entity.commons.api.Health;
+import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 
 /**
@@ -122,6 +123,8 @@ public interface Player extends Entity {
      * @return the amount of damage dealt.
      */
     Integer doDamage(Monster monster);
+
+    void receiveDamage(AbstractMonster monster);
 
     /**
      * This method manages the character level up, given

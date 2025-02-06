@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.commons.impl.HealthImpl;
+import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.manager.api.FloorManager;
@@ -219,9 +220,8 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public void receiveDamage() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'receiveDamage'");
+    public void receiveDamage(AbstractMonster monster) {
+        monster.attack();
     }
 
     /**
