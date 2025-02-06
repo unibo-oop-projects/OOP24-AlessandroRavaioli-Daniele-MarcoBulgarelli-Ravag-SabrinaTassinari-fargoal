@@ -43,8 +43,9 @@ public class LightSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
+        floorManager.getPlayer().getInventory().removeLightScroll();
+        return this;
     }
 
     /** {@inheritDoc} */

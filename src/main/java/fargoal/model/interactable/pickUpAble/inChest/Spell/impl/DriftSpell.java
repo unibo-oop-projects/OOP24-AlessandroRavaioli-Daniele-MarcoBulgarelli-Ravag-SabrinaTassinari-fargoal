@@ -43,7 +43,8 @@ public class DriftSpell implements Spell{
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        //TODO
+        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), true);
+        floorManager.getPlayer().getInventory().removeDriftScroll();
         return this;
     }
 

@@ -51,6 +51,7 @@ public class TeleportSpell implements Spell {
             newPlayerPosition = floorManager.getFloorMap().getRandomTile();
         }
         floorManager.getPlayer().setPosition(newPlayerPosition);
+        floorManager.getPlayer().getInventory().removeTeleportScroll();
         return this;
     }
 

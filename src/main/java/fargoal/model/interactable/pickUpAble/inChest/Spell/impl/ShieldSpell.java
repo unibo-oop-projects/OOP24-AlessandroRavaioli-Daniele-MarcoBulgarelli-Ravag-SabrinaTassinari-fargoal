@@ -43,8 +43,9 @@ public class ShieldSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);
+        floorManager.getPlayer().getInventory().removeShieldScroll();
+        return this;
     }
 
     /** {@inheritDoc} */

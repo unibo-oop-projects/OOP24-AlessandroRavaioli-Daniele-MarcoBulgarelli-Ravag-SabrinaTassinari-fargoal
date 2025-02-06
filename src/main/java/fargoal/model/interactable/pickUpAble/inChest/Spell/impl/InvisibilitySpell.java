@@ -43,7 +43,9 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        //TODO
+        //TODO (i mostri non lo vedono)
+        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), true);
+        floorManager.getPlayer().getInventory().removeInvisibilityScroll();
         return this;
     }
 

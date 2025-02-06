@@ -4,6 +4,7 @@ import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.SpellType;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -46,8 +47,10 @@ public class Pit implements ChestItem {
         if (chanceOfMapLost == 0) {
             floorManager.getFloorMask().resetMask();
         }
-        if (/* non ho attivato l'incantesimo drift */) {
+        if (!floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName())) {
             floorManager.getPlayer().getHealth().decreaseHealth(damage);
+        } else {
+            floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
         }
         return this;
     }
