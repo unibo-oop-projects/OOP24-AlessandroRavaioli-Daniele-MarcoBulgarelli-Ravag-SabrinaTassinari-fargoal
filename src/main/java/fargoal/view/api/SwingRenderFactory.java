@@ -1,39 +1,40 @@
 package fargoal.view.api;
 
 import fargoal.commons.api.Position;
+import fargoal.model.commons.FloorElement;
 import fargoal.view.impl.SwingRenderer;
 
 public interface SwingRenderFactory {
     
-    SwingRenderer playerRenderer(Position pos);
+    SwingRenderer playerRenderer(FloorElement obj);
 
     SwingRenderer wallRenderer(Position pos);
 
     SwingRenderer tileRenderer(Position pos);
 
-    SwingRenderer upstairRenderer(Position pos);
+    SwingRenderer upstairRenderer(FloorElement obj);
     
-    SwingRenderer downstairRenderer(Position pos);
+    SwingRenderer downstairRenderer(FloorElement obj);
 
-    SwingRenderer templeRenderer(Position pos);
+    SwingRenderer templeRenderer(FloorElement obj);
 
-    SwingRenderer chestRenderer(Position pos);
+    SwingRenderer chestRenderer(FloorElement obj);
 
     SwingRenderer fogRenderer(Position pos);
 
-    SwingRenderer goldRenderer(Position pos);
+    SwingRenderer goldRenderer(FloorElement obj);
 
-    SwingRenderer assassinRenderer(Position pos);
+    SwingRenderer assassinRenderer(FloorElement obj);
 
-    SwingRenderer barbarianRenderer(Position pos);
+    SwingRenderer barbarianRenderer(FloorElement obj);
 
-    SwingRenderer mageRenderer(Position pos);
+    SwingRenderer mageRenderer(FloorElement obj);
 
-    SwingRenderer monkRenderer(Position pos);
+    SwingRenderer monkRenderer(FloorElement obj);
 
-    SwingRenderer rogueRenderer(Position pos);
+    SwingRenderer rogueRenderer(FloorElement obj);
 
-    SwingRenderer spiderRenderer(Position pos);
+    SwingRenderer spiderRenderer(FloorElement obj);
 
-    SwingRenderer warlordRenderer(Position pos);
+    SwingRenderer warlordRenderer(FloorElement obj);
 }
