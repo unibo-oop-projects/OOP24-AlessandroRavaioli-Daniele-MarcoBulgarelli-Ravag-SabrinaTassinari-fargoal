@@ -212,16 +212,17 @@ public class PlayerImpl implements Player {
             return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
         }
     }
+ 
+    @Override
+    public void receiveDamage(AbstractMonster monster) {
+        Integer monsterDamage = monster.attack();
+
+    }
 
     @Override
     public void update(final FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    @Override
-    public void receiveDamage(AbstractMonster monster) {
-        monster.attack();
     }
 
     /**
@@ -235,6 +236,11 @@ public class PlayerImpl implements Player {
      */
     private boolean battle(final Monster monster) {
         //TODO
+        //isFighting = true
+        //if isAttacked == false -> Player can flee
+        //if isAttacked == true -> player cannot flee
+        //for each turn -> doDamage to monster; recieveDamage from monster
+        //check isDead (for both sides)
         throw new UnsupportedOperationException("Unimplemented method 'battle'");
     }
 
