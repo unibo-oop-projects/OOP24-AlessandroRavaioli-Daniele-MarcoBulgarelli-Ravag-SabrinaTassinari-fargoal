@@ -4,6 +4,7 @@ import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
+import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.entity.monsters.ai.Ai;
@@ -18,7 +19,6 @@ public abstract class AbstractMonster implements Monster {
 
     private static final Integer MONSTER_ATTACK = 4;
     private long timer;
-    private FloorMap floorMap;
     private MonsterType monsterType;
     private Health health;
     private Position position;
@@ -41,15 +41,13 @@ public abstract class AbstractMonster implements Monster {
     public AbstractMonster(
                 final Position position,
                 final Integer level, 
-                final FloorMap floorMap, 
                 final FloorManager floorManager) {
         this.setPosition(position);
-        this.setFloorMap(floorMap);
         this.setFloorManager(floorManager);
         this.setSkill(level);
         this.setLevel(level);
         this.setVisibilityOn();
-        this.getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
+        this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
         this.setTimer();
     }
 
@@ -162,21 +160,12 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * Set the FloorMap of the Monster.
-     * 
-     * @param floorMap - the FloorMap where the Monster is
-     */
-    public void setFloorMap(final FloorMap floorMap) {
-        this.floorMap = floorMap;
-    }
-
-    /**
      * Return the FloorMap where the Monster is located.
      * 
      * @return the FloorMap
      */
     public FloorMap getFloorMap() {
-        return this.floorMap;
+        return this.floorManager.getFloorMap();
     }
 
     /**
