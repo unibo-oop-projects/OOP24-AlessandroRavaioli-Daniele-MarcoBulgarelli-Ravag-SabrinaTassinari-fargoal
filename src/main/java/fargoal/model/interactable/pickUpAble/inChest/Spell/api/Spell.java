@@ -11,6 +11,6 @@ public interface Spell extends ChestItem {
     /**
      * This method put the spell the player found in a chest in his inventory.
      */
-    public void store(FloorManager floorManager);
+    void store(FloorManager floorManager);
     
 }

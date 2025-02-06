@@ -11,12 +11,12 @@ public interface ChestItem extends Interactable{
      * With this method, the type of the chest item is known.
      * @return the type of the chest item (if it is a trap, a spell or a utility).
      */
-    public String getChestItemType();
+    String getChestItemType();
 
     /**
      * with this method, the name of the chest item is known.
      * @return the name of the chest item.
      */
-    public String getChestItemName();
+    String getChestItemName();
     
 }

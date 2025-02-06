@@ -9,7 +9,7 @@ import fargoal.model.manager.api.FloorManager;
  * In the temple the player can not be attacked and 
  * he can donate the gold he has to gain experience.
  */
-public class TempleImpl implements Interactable {
+public class Temple implements Interactable {
 
     final Position position;
 
@@ -17,7 +17,7 @@ public class TempleImpl implements Interactable {
      * This is the constructor of the class. It set the position of the temple.
      * @param position - the position of the temple.
      */
-    public TempleImpl(final Position position) {
+    public Temple(final Position position) {
         this.position = position;
     }
 
