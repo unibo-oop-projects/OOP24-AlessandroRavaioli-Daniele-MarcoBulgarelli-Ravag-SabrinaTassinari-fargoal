@@ -4,13 +4,14 @@ import java.awt.Color;
 
 import fargoal.commons.api.Position;
 import fargoal.view.api.SwingRenderFactory;
+import fargoal.view.api.View;
 
 public class SwingRenderFactoryImpl implements SwingRenderFactory {
 
     private final SwingView view;
 
-    public SwingRenderFactoryImpl(SwingView view){
-        this.view = view;
+    public SwingRenderFactoryImpl(View view){
+        this.view = (SwingView)view;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
                             pos.y() * this.view.getTilePixelDim(),
                             this.view.getTilePixelDim(),
                             this.view.getTilePixelDim());
-            });
+            }, view);
     }
 
     @Override
@@ -38,7 +39,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
                          pos.y() * this.view.getTilePixelDim(),
                          this.view.getTilePixelDim(),
                          this.view.getTilePixelDim());
-        });
+            }, view);
     }
 
     @Override
@@ -73,7 +74,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
                     pos.y() * this.view.getTilePixelDim(),
                     this.view.getTilePixelDim(),
                     this.view.getTilePixelDim());
-        });
+            }, view);
     }
     
 }

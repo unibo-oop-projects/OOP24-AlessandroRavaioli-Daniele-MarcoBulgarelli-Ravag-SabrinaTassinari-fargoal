@@ -138,7 +138,6 @@ public class FloorManagerImpl implements FloorManager {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
-            Monster temp = monstFact.generate(pos, this.map, this);
             alreadyPresent = false;
             for (int i = 0; i < this.monsters.size(); i++) {
                 if (this.monsters.get(i).getPosition().equals(pos)) {
@@ -146,7 +145,7 @@ public class FloorManagerImpl implements FloorManager {
                 }
             }
             if (!alreadyPresent) {
-                this.monsters.add(temp);
+                this.monsters.add(monstFact.generate(pos, this.map, this));
             }
         } while (alreadyPresent);
     }

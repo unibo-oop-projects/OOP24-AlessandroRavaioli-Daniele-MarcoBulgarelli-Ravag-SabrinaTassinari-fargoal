@@ -8,16 +8,17 @@ import fargoal.view.api.View;
 
 public class SwingRenderer implements Renderer {
 
-    Consumer<Graphics2D> drawingAction;
+    private final Consumer<Graphics2D> drawingAction;
+    private final SwingView view;
 
-    public SwingRenderer(Consumer<Graphics2D> drawing) {
+    public SwingRenderer(Consumer<Graphics2D> drawing, View view) {
         this.drawingAction = drawing;
+        this.view = (SwingView)view;
     }
 
     @Override
-    public void render(View view) {
-        SwingView sview = (SwingView)view;
-        sview.registerDrawingAction(drawingAction);
+    public void render() {
+        this.view.registerDrawingAction(drawingAction);
     }
     
 }
