@@ -40,8 +40,7 @@ public class Assassin extends AbstractMonster {
     /** {@inheritDoc} */
     @Override
     public void steal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'steal'");
+        
     }
 
     /** {@inheritDoc} */

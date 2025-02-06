@@ -16,6 +16,7 @@ import fargoal.model.map.api.FloorMap;
 public class Rogue extends AbstractMonster {
 
     private static final int NEXT_MOVE = 2000;
+    private static final int GOLD_REMOVE = 4;
 
     /**
      * A constructor for the Rogue; it uses the
@@ -41,6 +42,7 @@ public class Rogue extends AbstractMonster {
     @Override
     public void steal() {
         final Player player = this.getFloorManager().getPlayer();
+        player.getPlayerGold().removeGold(player.getCurrentGold() / GOLD_REMOVE);
     }
 
     /** {@inheritDoc} */

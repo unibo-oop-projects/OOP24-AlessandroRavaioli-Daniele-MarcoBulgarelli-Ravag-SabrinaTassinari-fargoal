@@ -39,8 +39,8 @@ public class Spider extends AbstractMonster {
 
     /** {@inheritDoc} */
     @Override
-    public void move(final FloorManager floorManager) {
-        Ai.moveSpider(this, floorManager.getPlayer());
+    public void move() {
+        Ai.moveSpider(this, getFloorManager().getPlayer());
     }
 
     /** {@inheritDoc} */

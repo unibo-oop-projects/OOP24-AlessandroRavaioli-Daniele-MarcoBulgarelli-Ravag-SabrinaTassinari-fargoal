@@ -42,4 +42,11 @@ public interface Gold {
      * @return the leftover gold amount that could not be added.
      */
     Integer addGold(Integer amount);
+
+    /**
+     * Decreases the current gold amount.
+     * 
+     * @param amount - the amount of gold to remove
+     */
+    void removeGold(Integer amount);
 }

@@ -57,5 +57,13 @@ public class GoldImpl implements Gold{
     public void resetGold() {
         this.currentGold = 0;
     }
+
+    @Override
+    public void removeGold(Integer amount) {
+        this.currentGold = this.currentGold - amount;
+        if(this.currentGold < 0) {
+            this.currentGold = 0;
+        }
+    }
     
 }

@@ -1,5 +1,6 @@
 package fargoal.model.entity.monsters.api;
 
+import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
 
 /**
@@ -13,5 +14,51 @@ public interface Monster extends Entity {
      * @return the MonsterType
      */
     MonsterType getMonsterType();
+
+    /**
+     * The Monster selected with the call of this
+     * method will receive the damage. For example if it's
+     * called on a monster, he will receives the damages from the
+     * player.
+     */
+    public void receiveDamage();
+
+    /**
+     * Method that returns the level of the
+     * Monster selected.
+     * 
+     * @return the level of the Monster
+     */
+    public Integer getLevel();
+
+    /**
+     * Set the new Position of the Monster.
+     * 
+     * @param position - the new Position
+     */
+    public void setPosition(final Position position);
+
+    /**
+     * Move the Monster to a new Position, the choice of
+     * new location is random.
+     * 
+     * @param floorManager - to get infos about the player
+     */
+    public void move();
+
+    /**
+     * The Monster attack the Player and deals damage
+     * based on their skill.
+     * 
+     * @return the int indicating the damage dealt to
+     * the player
+     */
+    public Integer attack();
+
+    /**
+     * The Monster steals from the Player and takes
+     * spell or potions from his inventory.
+     */
+    public abstract void steal();
 
 }

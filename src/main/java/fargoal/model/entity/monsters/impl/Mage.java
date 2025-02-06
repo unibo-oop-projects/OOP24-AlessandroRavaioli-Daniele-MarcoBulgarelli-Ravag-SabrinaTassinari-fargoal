@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
+import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 
@@ -39,8 +40,10 @@ public class Mage extends AbstractMonster {
     /** {@inheritDoc} */
     @Override
     public void steal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'steal'");
+        Inventory inventory = this.getFloorManager().getPlayer().getInventory();
+        if (inventory.getHealingPotions() != 0) {
+            inventory.removeHealingPotion();
+        }
     }
 
     /** {@inheritDoc} */
@@ -51,6 +54,9 @@ public class Mage extends AbstractMonster {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)) {
                 this.attack();
+                if(this.getRandom(2) == 0) {
+                    this.steal();
+                }
             } else {
                 Ai.move(this, floorManager.getPlayer());
             }

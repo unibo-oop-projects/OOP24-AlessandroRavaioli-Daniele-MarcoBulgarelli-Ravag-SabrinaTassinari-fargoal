@@ -75,15 +75,42 @@ public abstract class AbstractMonster implements Monster {
         return this.skill;
     }
 
-    /**
-     * The Monster selected with the call of this
-     * method will receive the damage. For example if it's
-     * called on a monster, he will receives the damages from the
-     * player.
-     */
+    /** {@inheritDoc} */
+    @Override
     public void receiveDamage() {
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
         this.getHealth().decreaseHealth(damage);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Integer getLevel() {
+        return this.level;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setPosition(final Position position) {
+        this.position = position;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void move() {
+        Ai.move(this, floorManager.getPlayer());
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Integer attack() {
+        final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();
+        return getRandom(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio) + 1;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isDead() {
+        return this.getHealth().getCurrentHealth() <= 0;
     }
 
     /**
@@ -96,13 +123,22 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * Method that returns the level of the
-     * Monster selected.
+     * Set the skill of the Monster, based on the 
+     * level where the Monster is.
      * 
-     * @return the level of the Monster
+     * @param level - the level where the Monster is
      */
-    public Integer getLevel() {
-        return this.level;
+    private void setSkill(final Integer level) {
+        this.skill = level * (getRandom(level) + 1);
+    }
+
+    /**
+     * Set the Floormanager of the Monster.
+     * 
+     * @param floorManager - the FloorManager of the Floor where the Monster is located
+     */
+    private void setFloorManager(final FloorManager floorManager) {
+        this.floorManager = floorManager;
     }
 
     /**
@@ -113,25 +149,6 @@ public abstract class AbstractMonster implements Monster {
      */
     public void setMonsterType(final MonsterType monsterType) {
         this.monsterType = monsterType;
-    }
-
-    /**
-     * Set the new Position of the Monster.
-     * 
-     * @param position - the new Position
-     */
-    public void setPosition(final Position position) {
-        this.position = position;
-    }
-
-    /**
-     * Set the skill of the Monster, based on the 
-     * level where the Monster is.
-     * 
-     * @param level - the level where the Monster is
-     */
-    public void setSkill(final Integer level) {
-        this.skill = level * (getRandom(level) + 1);
     }
 
     /**
@@ -173,15 +190,6 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * Set the Floormanager of the Monster.
-     * 
-     * @param floorManager - the FloorManager of the Floor where the Monster is located
-     */
-    public void setFloorManager(final FloorManager floorManager) {
-        this.floorManager = floorManager;
-    }
-
-    /**
      * Return the Floormanager where the Monster is located.
      * 
      * @return the Floormanager
@@ -218,28 +226,6 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * Move the Monster to a new Position, the choice of
-     * new location is random.
-     * 
-     * @param floorManager - to get infos about the player
-     */
-    public void move(final FloorManager floorManager) {
-        Ai.move(this, floorManager.getPlayer());
-    }
-
-    /**
-     * The Monster attack the Player and deals damage
-     * based on their skill.
-     * 
-     * @return the int indicating the damage dealt to
-     * the player
-     */
-    public Integer attack() {
-        final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();
-        return getRandom(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio) + 1;
-    }
-
-    /**
      * Return if the monster and the player are near(based on the given amount).
      * 
      * @param floorManager - which can give all the information we need
@@ -249,12 +235,6 @@ public abstract class AbstractMonster implements Monster {
     public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
         return floorManager.getPlayer().getPosition().x() - this.getPosition().x() <= amount
                 && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public boolean isDead() {
-        return this.getHealth().getCurrentHealth() <= 0;
     }
 
     /**
