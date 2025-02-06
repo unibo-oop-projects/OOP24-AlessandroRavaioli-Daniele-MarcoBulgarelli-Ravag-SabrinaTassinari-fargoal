@@ -75,8 +75,12 @@ public abstract class AbstractMonster implements Monster {
         return this.skill;
     }
 
-    /** {@inheritDoc} */
-    @Override
+    /**
+     * The Monster selected with the call of this
+     * method will receive the damage. For example if it's
+     * called on a monster, he will receives the damages from the
+     * player.
+     */
     public void receiveDamage() {
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
         this.getHealth().decreaseHealth(damage);
