@@ -1,6 +1,9 @@
 package fargoal.model.entity.player.impl;
 
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
@@ -35,6 +38,8 @@ public class PlayerImpl implements Player {
     private boolean isFighting;
     private boolean isAttacked;
     private boolean isImmune;
+
+    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     public PlayerImpl(FloorMap floorMap) {
         startingPosition(floorMap);
@@ -171,6 +176,14 @@ public class PlayerImpl implements Player {
         return this.hasSword;
     }
 
+    public boolean isFighting() {
+        return this.isFighting;
+    }
+
+    public boolean isAttacked() {
+        return this.isAttacked;
+    }
+
     @Override
     public void setHasSword(final boolean condition) {
         this.hasSword = condition;
@@ -248,9 +261,20 @@ public class PlayerImpl implements Player {
      * This method calculates the passive health regeneration of the player.
      * It should be 1 health for 10 t.u.(time unity).
      */
-    private void pasiveRegeneration() {
-        while(!isFighting) {
-            //TODO
-        }
+    public void startPasiveRegeneration() {
+        Integer amountToRegenerate = 1;
+        Runnable regenerationTask = () -> {
+            if(!isFighting) {
+                //If it isn't on temple
+                //If it isn't under the regeneration spell
+                this.health.increaseHealth(amountToRegenerate);
+            }
+        };
+
+        scheduler.scheduleAtFixedRate(regenerationTask, 0, 10, TimeUnit.SECONDS);
+    }
+
+    public void stopRegeneration() {
+        scheduler.shutdown();
     }
 }
