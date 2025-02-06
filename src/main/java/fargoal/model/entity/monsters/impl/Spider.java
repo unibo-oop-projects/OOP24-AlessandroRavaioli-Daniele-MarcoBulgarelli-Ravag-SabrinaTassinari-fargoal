@@ -39,12 +39,6 @@ public class Spider extends AbstractMonster {
 
     /** {@inheritDoc} */
     @Override
-    public void move() {
-        Ai.moveSpider(this, getFloorManager().getPlayer());
-    }
-
-    /** {@inheritDoc} */
-    @Override
     public void steal() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'steal'");

@@ -113,6 +113,24 @@ public abstract class AbstractMonster implements Monster {
         return this.getHealth().getCurrentHealth() <= 0;
     }
 
+    /** {@inheritDoc} */
+    @Override
+    public void setVisibilityOn() {
+        this.isVisible = true;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setVisibilityOff() {
+        this.isVisible = false;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean getVisibility() {
+        return this.isVisible;
+    }
+
     /**
      * Method to set the level of the Monster.
      * 
@@ -193,29 +211,6 @@ public abstract class AbstractMonster implements Monster {
      */
     public FloorManager getFloorManager() {
         return this.floorManager;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void setVisibilityOn() {
-        this.isVisible = true;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void setVisibilityOff() {
-        this.isVisible = false;
-    }
-
-    /**
-     * Return the visibility of the monster.
-     * Assassin for example are often invisible for the 
-     * player.
-     * 
-     * @return the field isVisible of the Monster
-     */
-    public boolean getVisibility() {
-        return this.isVisible;
     }
 
     /**

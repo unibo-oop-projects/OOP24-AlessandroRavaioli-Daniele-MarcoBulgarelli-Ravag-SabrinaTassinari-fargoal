@@ -80,4 +80,13 @@ public interface Monster extends Entity {
      * which means that the Monster isn't visible.
      */
     public void setVisibilityOff();
+
+    /**
+     * Return the visibility of the monster.
+     * Assassin for example are often invisible for the 
+     * player.
+     * 
+     * @return the field isVisible of the Monster
+     */
+    public boolean getVisibility();
 }
