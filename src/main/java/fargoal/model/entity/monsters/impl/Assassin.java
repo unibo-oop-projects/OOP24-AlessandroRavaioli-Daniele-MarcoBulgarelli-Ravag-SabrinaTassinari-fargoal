@@ -26,7 +26,7 @@ public class Assassin extends AbstractMonster {
      * @param floorManager - to get infos about the other entities/items
      */
     public Assassin(final Position position, final Integer level, final FloorMap floorMap, final FloorManager floorManager) {
-        super(position, level, floorMap, floorManager);
+        super(position, level, floorManager);
         this.setMonsterType(MonsterType.ASSASSIN);
         this.setVisibilityOff();
     }
