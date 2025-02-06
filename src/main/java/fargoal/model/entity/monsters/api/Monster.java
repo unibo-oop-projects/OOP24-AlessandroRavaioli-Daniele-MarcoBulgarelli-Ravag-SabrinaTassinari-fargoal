@@ -2,6 +2,7 @@ package fargoal.model.entity.monsters.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
+import fargoal.model.map.api.FloorMap;
 
 /**
  * A monster represent an Entity who will try to attack
@@ -61,4 +62,22 @@ public interface Monster extends Entity {
      */
     public abstract void steal();
 
+    /**
+     * Return the FloorMap where the Monster is located.
+     * 
+     * @return the FloorMap
+     */
+    public FloorMap getFloorMap();
+
+    /**
+     * Set the Monster's visibility to true,
+     * which means that the Monster is visible.
+     */
+    public void setVisibilityOn();
+
+    /**
+     * Set the Monster's visibility to false,
+     * which means that the Monster isn't visible.
+     */
+    public void setVisibilityOff();
 }

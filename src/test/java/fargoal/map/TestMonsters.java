@@ -71,7 +71,7 @@ public class TestMonsters {
         assertEquals("MONK", monster.getTag());
         System.out.println(manager.getPlayer().getPosition());
         for(int i = 0; i < 15; i++) {
-            Ai.move((AbstractMonster)monster, manager.getPlayer());
+            Ai.move(monster, manager.getPlayer());
             System.out.println("ciao2");
             System.out.println(monster.getPosition());
         }

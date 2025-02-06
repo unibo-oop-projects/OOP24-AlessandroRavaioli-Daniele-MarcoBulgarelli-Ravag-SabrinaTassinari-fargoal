@@ -180,11 +180,8 @@ public abstract class AbstractMonster implements Monster {
         return this.timer;
     }
 
-    /**
-     * Return the FloorMap where the Monster is located.
-     * 
-     * @return the FloorMap
-     */
+    /** {@inheritDoc} */
+    @Override
     public FloorMap getFloorMap() {
         return this.floorManager.getFloorMap();
     }
@@ -198,18 +195,14 @@ public abstract class AbstractMonster implements Monster {
         return this.floorManager;
     }
 
-    /**
-     * Set the Monster's visibility to true,
-     * which means that the Monster is visible.
-     */
+    /** {@inheritDoc} */
+    @Override
     public void setVisibilityOn() {
         this.isVisible = true;
     }
 
-    /**
-     * Set the Monster's visibility to false,
-     * which means that the Monster isn't visible.
-     */
+    /** {@inheritDoc} */
+    @Override
     public void setVisibilityOff() {
         this.isVisible = false;
     }
