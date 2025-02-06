@@ -62,8 +62,6 @@ public class LightSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
     
 }

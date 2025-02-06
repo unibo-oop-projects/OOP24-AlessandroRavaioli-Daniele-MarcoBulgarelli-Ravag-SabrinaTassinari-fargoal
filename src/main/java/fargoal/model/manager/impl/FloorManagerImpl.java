@@ -98,6 +98,12 @@ public class FloorManagerImpl implements FloorManager {
         return this.mask;
     }
 
+    /** {@inheritDoc} */
+    @Override
+    public List<Interactable> getItems() {
+        return this.items;
+    }
+
     /**
      * {@inheritDOc}
      */
@@ -188,4 +194,12 @@ public class FloorManagerImpl implements FloorManager {
             }
         } while (alreadyPresent);
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void addItem(Interactable item) {
+        this.items.add(item);
+    }
+
+    
 }

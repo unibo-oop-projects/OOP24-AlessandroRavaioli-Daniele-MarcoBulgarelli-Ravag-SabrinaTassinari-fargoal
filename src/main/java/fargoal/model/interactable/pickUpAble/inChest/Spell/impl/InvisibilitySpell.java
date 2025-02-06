@@ -43,8 +43,8 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        //TODO
+        return this;
     }
 
     /** {@inheritDoc} */

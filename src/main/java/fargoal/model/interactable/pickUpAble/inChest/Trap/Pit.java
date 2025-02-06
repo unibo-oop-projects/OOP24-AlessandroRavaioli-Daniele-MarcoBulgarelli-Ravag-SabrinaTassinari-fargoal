@@ -46,7 +46,9 @@ public class Pit implements ChestItem {
         if (chanceOfMapLost == 0) {
             floorManager.getFloorMask().resetMask();
         }
-        floorManager.getPlayer().getHealth().decreaseHealth(damage);
+        if (/* non ho attivato l'incantesimo drift */) {
+            floorManager.getPlayer().getHealth().decreaseHealth(damage);
+        }
         return this;
     }
 

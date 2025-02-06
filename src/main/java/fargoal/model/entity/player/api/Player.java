@@ -13,6 +13,12 @@ import fargoal.model.entity.monsters.api.Monster;
 public interface Player extends Entity {
 
     /**
+     * Setter for player's current position.
+     * @param position - the new position of the player.
+     */
+    void setPosition(Position position);
+    
+    /**
      * Getter for player's current level.
      * 
      * @return player's current level.

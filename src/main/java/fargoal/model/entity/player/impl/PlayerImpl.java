@@ -59,7 +59,8 @@ public class PlayerImpl implements Player {
         this.isImmune = false;
     }
 
-    private void setPosition(Position position) {
+    @Override
+    public void setPosition(Position position) {
         this.position = position;
     }
 

@@ -43,8 +43,15 @@ public class TeleportSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        Position newPlayerPosition;
+        if (floorManager.getItems().stream().filter(i -> i.getTag() == "BEACON").count() > 0) {
+            newPlayerPosition = 
+                floorManager.getItems().stream().filter(i -> i.getTag() == "BEACON").toList().getFirst().getPosition();
+        } else {
+            newPlayerPosition = floorManager.getFloorMap().getRandomTile();
+        }
+        floorManager.getPlayer().setPosition(newPlayerPosition);
+        return this;
     }
 
     /** {@inheritDoc} */
@@ -62,8 +69,6 @@ public class TeleportSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
     
 }
