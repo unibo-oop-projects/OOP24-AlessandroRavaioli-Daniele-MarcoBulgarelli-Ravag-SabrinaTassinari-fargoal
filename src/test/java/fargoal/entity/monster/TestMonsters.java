@@ -24,16 +24,12 @@ public class TestMonsters {
     @BeforeAll
     static void init() {
         manager = new FloorManagerImpl(new GameContext(new SwingView()));
-        System.out.println("ciao");
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 3; i++) {
             manager.increaseFloorLevel();
         }
-        System.out.println("ho passato il floorlevel");
         monster = monsterFactory.generate(manager.getFloorMap().getRandomTile(), manager.getFloorMap(), manager);
-        System.out.println("porcaccio");
     }
 
-    @Test
     void visualizeFloor() {
         System.out.print(" ");
         for(int i = 0; i < 40; i++) {
@@ -67,16 +63,19 @@ public class TestMonsters {
         System.out.println(manager.getPlayer().getPosition());
         for(int i = 0; i < 15; i++) {
             Ai.move(monster, manager.getPlayer());
-            System.out.println("ciao2");
-            System.out.println(monster.getPosition());
         }
         System.out.println(monster.getPosition());
     }
 
     @Test
     void moveMonsters() {
-        while(true) {
-            this.manager.getMonsters().forEach(p -> p.update(manager));
+        visualizeFloor();
+        for(int i = 0; i < 20; i++) {
+            try {
+                Thread.sleep(2100);
+            } catch (Exception e) {}
+            this.manager.getMonsters().forEach(p -> p.move());
+            //this.manager.getMonsters().forEach(p -> p.update(manager));
             visualizeFloor();
         }
     }    
