@@ -70,6 +70,10 @@ public class LightSpell implements Spell {
         return this.getChestItemName();
     }
 
+    /**
+     * Setter for the field floorLevelSpellCast, which indicates in which floor the spell has been cast
+     * @param floorLevelSpellCasted - the level in which the spell has been cast
+     */
     private void setFloorLevelSpellCast(int floorLevelSpellCasted) {
         this.floorLevelSpellCasted = floorLevelSpellCasted;
     }
