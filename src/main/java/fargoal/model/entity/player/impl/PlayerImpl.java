@@ -380,11 +380,13 @@ public class PlayerImpl implements Player {
         //for each turn -> doDamage to monster; recieveDamage from monster
         //check isDead (for both sides)
         this.isFighting = true;
+        this.stopRegeneration();
         
         do {
             if(isMovingAwayFrom(monster) && !this.isAttacked) {
                 this.isFighting = false;
                 unlockInputs();
+                this.startPasiveRegeneration();
                 return true;
             }
 
@@ -417,21 +419,57 @@ public class PlayerImpl implements Player {
         } while(!this.isDead() && !monster.isDead());
 
         unlockInputs();
+        this.startPasiveRegeneration();
         
         return !this.isDead();
     }
 
+    /**
+     * Determinies if the player is moving away from the specified monster.
+     * This method should check the player's movement direction relative to the monster
+     * and return {@code true} if the player is retreating.
+     * <p>
+     * Currently, this method is not implemented and will throw an
+     * {@link UnsupportedOperationException} when called.
+     * </p>
+     * 
+     * @param monster - The {@link AbstractMonster} to check the player's movement against.
+     *  
+     * @return {@code true} if the player is moving away from the monster, {@code false} otherwise.
+     * 
+     * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
+     */
     private boolean isMovingAwayFrom(AbstractMonster monster) {
         throw new UnsupportedOperationException("Unimplemented method 'isMovingAwayFrom'");
     }
 
     /**
-     * Locks all inputs except from teleport one.
+     * Locks all player inputs except for the teleport action.
+     * This method is responsible for disabling user interactions during certain events,
+     * such as when the player is attacked by an enemy, but still allows the 
+     * player to teleport if needed.
+     * <p>
+     * Currently, this method is not implemented and will throw an
+     * {@link UnsupportedOperationException} when called.
+     * </p>
+     * 
+     * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
      */
     private void lockInputs() {
         throw new UnsupportedOperationException("Unimplemented method 'lockInputs'");
     }
 
+    /**
+     * Unlocks all previously locked player inputs.
+     * This method allows the player to resume normal interactions after a period of input restriction,
+     * enabling actions like movement, interactions or other player inputs.
+     * <p>
+     * Currently, this method is not implemented and will throw an
+     * {@link UnsupportedOperationException} when called.
+     * </p>
+     * 
+     * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
+     */
     private void unlockInputs() {
         throw new UnsupportedOperationException("Unimplemented method 'lockInputs'");
     }
@@ -449,9 +487,11 @@ public class PlayerImpl implements Player {
     }
 
     /**
-     * Subtracts player's health from a monster attack.
+     * Subtracts health from the player when attacked by a monster.
+     * If the player is not protected by a shield spell, the player's health is decreased based on the monster's attack.
+     * If the player has a shield spell active, it is deactivated instead of taking damage.
      * 
-     * @param monster - current foe.
+     * @param monster - The {@link AbstractMonster} that is attacking the player.
      */
     private void receiveDamage(AbstractMonster monster) {
         //if player hasn't shield
@@ -473,8 +513,15 @@ public class PlayerImpl implements Player {
     }
 
     /**
-     * This method calculates the passive health regeneration of the player.
-     * It should be 1 health for 10 t.u.(time unity).
+     * Initiates the passive health regeneration for the player.
+     * The player will regenerate 1 health every 10 seconds, provided they are not fighting and
+     * not affected by any regeneration spells.
+     * The regeneration occurs at fixed intervals managed by a scheduled task.
+     * <p>
+     * The method uses a scheduler to execute the regeneration task every 10 seconds.
+     * It checks whether the player is in combat (not regenerating during battle) and when the player
+     * is under the effect of a regeneration spell.
+     * </p>
      */
     public void startPasiveRegeneration() {
         Integer amountToRegenerate = 1;
@@ -489,6 +536,14 @@ public class PlayerImpl implements Player {
         scheduler.scheduleAtFixedRate(regenerationTask, 0, 10, TimeUnit.SECONDS);
     }
 
+    /**
+     * Stops the passive health regeneration by shutting down the scheduler.
+     * This method halts the scheduled task responsible for the player's health regeneration.
+     * Once invoked, no further health regeneration will occour until the regeneration process is started again.
+     * <p>
+     * Calling this method will terminate any ongoing regeneration tasks managed by the scheduler.
+     * </p>
+     */
     public void stopRegeneration() {
         scheduler.shutdown();
     }
