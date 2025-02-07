@@ -8,8 +8,10 @@ import fargoal.model.entity.player.api.Gold;
 public class GoldImpl implements Gold{
 
     private static final int INITIAL_GOLD_MAX_CAPACITY = 100;
+
     private Integer currentGold;
     private Integer maxCapacity;
+    private Integer goldDonated;
 
     /**
      * Creates an instance of Gold, the initial gold is 
@@ -18,12 +20,17 @@ public class GoldImpl implements Gold{
     public GoldImpl(){
         this.currentGold = 0;
         this.maxCapacity = INITIAL_GOLD_MAX_CAPACITY;
+        this.goldDonated = 0;
     }
 
     /**{@inheritDoc} */
     @Override
     public Integer getCurrentGold() {
         return this.currentGold;
+    }
+
+    public Integer getGoldDonated() {
+        return this.goldDonated;
     }
 
     /**{@inheritDoc} */
@@ -36,6 +43,14 @@ public class GoldImpl implements Gold{
     @Override
     public void setMaxCapacity(final Integer amount) {
         this.maxCapacity = amount;
+    }
+
+    public void setGoldDonated(Integer amount) {
+        if(amount == null || amount < 0) {
+            throw new IllegalArgumentException("Gold donated cannot be set to a null or negative value.");
+        } else {
+            this.goldDonated = amount;
+        }
     }
 
     /**{@inheritDoc} */
