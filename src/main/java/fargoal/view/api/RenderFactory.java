@@ -2,6 +2,7 @@ package fargoal.view.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
+import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 
 public interface RenderFactory {
     
@@ -21,7 +22,7 @@ public interface RenderFactory {
 
     Renderer fogRenderer(Position pos);
 
-    Renderer goldRenderer(FloorElement obj);
+    Renderer goldRenderer(SackOfMoney obj);
 
     Renderer assassinRenderer(FloorElement obj);
 

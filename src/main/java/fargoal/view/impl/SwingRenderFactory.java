@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
+import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
@@ -62,32 +63,61 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer upstairRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'upstairRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.LIGHT_GRAY);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
+            obj.getPosition().y() * this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
     public Renderer downstairRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'downstairRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.DARK_GRAY);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
+            obj.getPosition().y() * this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
     public Renderer templeRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'templeRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.MAGENTA);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
+            obj.getPosition().y() * this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
     public Renderer chestRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'chestRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.GRAY);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
+            obj.getPosition().y() * this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
-    public Renderer goldRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'goldRenderer'");
+    public Renderer goldRenderer(SackOfMoney obj) {
+        return new SwingRenderer(g2d -> {
+            if(obj.isHiddenInGround()) {
+                g2d.setColor(Color.GREEN);
+            } else {
+                g2d.setColor(Color.YELLOW);
+            }
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
+            obj.getPosition().y() * this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
@@ -154,8 +184,13 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer swordRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'swordRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.PINK);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
+            obj.getPosition().y() * this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim(), 
+            this.view.getTilePixelDim());
+        }, this.view);
     }
     
 }

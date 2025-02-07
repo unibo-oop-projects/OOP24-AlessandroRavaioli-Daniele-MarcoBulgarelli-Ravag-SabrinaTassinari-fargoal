@@ -21,9 +21,8 @@ public class BeaconOnGround implements Interactable{
      * it assign the position in which he had been put.
      * @param position - the position where the player put the beacon.
      */
-    public BeaconOnGround(final Position position, final RenderFactory renderFactory) {
+    public BeaconOnGround(final Position position) {
         this.position = position;
-        this.setRender(renderFactory.);
     }
 
     /** {@inheritDoc} */
