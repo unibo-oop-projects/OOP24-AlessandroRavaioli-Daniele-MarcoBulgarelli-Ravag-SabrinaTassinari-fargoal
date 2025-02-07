@@ -8,7 +8,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.core.GameContext;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
-import fargoal.view.api.SwingRenderFactory;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.View;
 import fargoal.view.impl.SwingRenderFactoryImpl;
 
@@ -21,7 +21,7 @@ public class FloorMaskImpl implements FloorMask {
     private static final int FLOOR_LENGTH = 40;
 
     private final Map<Position, Boolean> mask;
-    private final SwingRenderFactory renderFac;
+    private final RenderFactory renderFac;
 
     /**
      * Constrctor that inizializes the mask as complete darkness and defines the renderers.
