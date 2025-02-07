@@ -1,6 +1,7 @@
 package fargoal.view.impl;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.function.Consumer;
 import javax.swing.WindowConstants;
@@ -25,6 +26,7 @@ public class SwingView implements View {
         this.canvas = new SwingViewCanvas();
         this.frame.setLayout(new BorderLayout());
         this.frame.setSize(3500, 3000);
+        this.frame.setMinimumSize(new Dimension(3500, 3000));
         this.frame.getContentPane().add(canvas, BorderLayout.CENTER);
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
