@@ -87,20 +87,35 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer assassinRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'assassinRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.DARK_GRAY);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
+                    obj.getPosition().y() * this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
     public Renderer barbarianRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'barbarianRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.RED);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
+                    obj.getPosition().y() * this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
     public Renderer mageRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mageRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.GREEN);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
+                    obj.getPosition().y() * this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
@@ -111,8 +126,13 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer rogueRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'rogueRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.ORANGE);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
+                    obj.getPosition().y() * this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override

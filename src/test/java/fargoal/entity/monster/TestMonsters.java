@@ -25,7 +25,6 @@ public class TestMonsters {
         for(int i = 0; i < 3; i++) {
             manager.increaseFloorLevel();
         }
-        monster = monsterFactory.generate(manager.getFloorMap().getRandomTile(), manager.getFloorMap(), manager);
     }
 
     void visualizeFloor() {
