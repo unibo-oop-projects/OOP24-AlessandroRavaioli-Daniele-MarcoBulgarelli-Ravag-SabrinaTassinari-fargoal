@@ -8,7 +8,9 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Teleport Spell from the interface spell.
- */
+ * When the player cast this spell he teleports himself near a beacon he had 
+ * previously put on the ground. If there is not a beacon he is teleported in a random position.
+*/
 public class TeleportSpell implements Spell {
 
     final Position position;

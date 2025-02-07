@@ -8,6 +8,8 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Light Spell from the interface spell.
+ * When the player cast this spell he can uncover more map of the floor: 
+ * he can see two tiles near him. If the player is not visible, it makes him visible.
  */
 public class LightSpell implements Spell {
 
@@ -45,6 +47,9 @@ public class LightSpell implements Spell {
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
         floorManager.getPlayer().getInventory().removeLightScroll();
+        if (!floorManager.getPlayer().isVisible()) {
+            floorManager.getPlayer().setIsVisible(true);
+        }
         return this;
     }
 

@@ -8,6 +8,7 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Shield Spell from the interface spell.
+ * When the player casts this spell he does not damage himself in the next fight.
  */
 public class ShieldSpell implements Spell {
 

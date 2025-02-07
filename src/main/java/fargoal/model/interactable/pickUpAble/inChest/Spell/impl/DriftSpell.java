@@ -8,6 +8,7 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Drift Spell from the interface Spell.
+ * When the player cast this spell if he falls in a pit he does not damage himself.
  */
 public class DriftSpell implements Spell{
 
