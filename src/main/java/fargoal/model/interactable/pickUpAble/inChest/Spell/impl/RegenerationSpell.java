@@ -8,6 +8,7 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Regeneration Spell from the interface spell.
+ * When the player cast this spell his hit points increases faster.
  */
 public class RegenerationSpell implements Spell {
 

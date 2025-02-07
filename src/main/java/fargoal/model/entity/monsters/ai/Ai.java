@@ -25,6 +25,25 @@ public final class Ai {
 
     }
 
+    private static boolean isNeighbourTile(final Monster monster, Position pos) {
+        return monster.getFloorMap().isTile(pos.add(new Position(1, 0)))
+                || monster.getFloorMap().isTile(pos.add(new Position(0, 1)))
+                || monster.getFloorMap().isTile(pos.add(new Position(-1, 0)))
+                || monster.getFloorMap().isTile(pos.add(new Position(0, -1)))
+                || monster.getFloorMap().isTile(pos.add(new Position(1, 1)))
+                || monster.getFloorMap().isTile(pos.add(new Position(-1, -1)))
+                || monster.getFloorMap().isTile(pos.add(new Position(-1, 1)))
+                || monster.getFloorMap().isTile(pos.add(new Position(1, -1))); 
+    }
+
+    private static boolean isInsideMap(final Monster monster, Position pos) {
+        return pos.x() < monster.getFloorMap().getSize().length()
+                && pos.y() < monster.getFloorMap().getSize().height()
+                && pos.x() >= 0
+                && pos.y() >=0
+                && isNeighbourTile(monster, pos);
+    }
+
     /**
      * Method that actualy moves the monster towards the
      * player, or otherwise randomly.
@@ -47,41 +66,58 @@ public final class Ai {
         }
         //controllo se il mostro vede il player
         if (monster.getMonsterType().equals(MonsterType.SPIDER)) {
-            if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE) {
+            if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && monster.getFloorManager().getPlayer().isVisible()) {
                 if (xDistance >= yDistance) {
                     if (xMonsterBigger) {
                         pos = monster.getPosition().decreaseX();
-                        if (!monster.getFloorMap().isTile(pos)) {
-                            monster.setVisibilityOff();
-                        } else {
-                            monster.setVisibilityOn();
+                        if (isInsideMap(monster, pos)) {
+                            check = true;
+                            monster.setPosition(pos);
+                            if (!monster.getFloorMap().isTile(pos)) {
+                                monster.setVisibilityOff();
+                            } else {
+                                monster.setVisibilityOn();
+                            }
                         }
                     } else {
                         pos = monster.getPosition().increaseX();
-                        if (!monster.getFloorMap().isTile(pos)) {
-                            monster.setVisibilityOff();
-                        } else {
-                            monster.setVisibilityOn();
+                        if (isInsideMap(monster, pos)) {
+                            check = true;
+                            monster.setPosition(pos);
+                            if (!monster.getFloorMap().isTile(pos)) {
+                                monster.setVisibilityOff();
+                            } else {
+                                monster.setVisibilityOn();
+                            }
                         }
                     }
                 } else {
                     if (yMonsterBigger) {
                         pos = monster.getPosition().decreaseY();
-                        if (!monster.getFloorMap().isTile(pos)) {
-                            monster.setVisibilityOff();
-                        } else {
-                            monster.setVisibilityOn();
+                        if (isInsideMap(monster, pos)) {
+                            check = true;
+                            monster.setPosition(pos);
+                            if (!monster.getFloorMap().isTile(pos)) {
+                                monster.setVisibilityOff();
+                            } else {
+                                monster.setVisibilityOn();
+                            }
                         }
                     } else {
                         pos = monster.getPosition().increaseY();
-                        if (!monster.getFloorMap().isTile(pos)) {
-                            monster.setVisibilityOff();
-                        } else {
-                            monster.setVisibilityOn();
+                        if (isInsideMap(monster, pos)) {
+                            check = true;
+                            monster.setPosition(pos);
+                            if (!monster.getFloorMap().isTile(pos)) {
+                                monster.setVisibilityOff();
+                            } else {
+                                monster.setVisibilityOn();
+                            }
                         }
                     }
                 }
-            } else {
+            }
+            if (!check) {
                 do {
                     pos = monster.getPosition()
                             .add(new Position(list.get(random.nextInt(LIST_SIZE)), list.get(random.nextInt(LIST_SIZE))));
@@ -96,7 +132,7 @@ public final class Ai {
                     monster.setVisibilityOff();
                 }
             }
-        } else if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE) {
+        } else if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && monster.getFloorManager().getPlayer().isVisible()) {
             //nel caso sia piu lontano nelle ascisse
             if (xDistance >= yDistance) {
                 //controllo se l'ascissa del mostro è maggiore di quella del player

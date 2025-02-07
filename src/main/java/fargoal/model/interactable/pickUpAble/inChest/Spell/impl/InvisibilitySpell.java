@@ -8,6 +8,7 @@ import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements the Invisibility Spell from the interface spell.
+ * When the player cast this spell the monsters can not see him.
  */
 public class InvisibilitySpell implements Spell {
 
@@ -43,7 +44,7 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        //TODO (i mostri non lo vedono)
+        floorManager.getPlayer().setIsVisible(false);
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), true);
         floorManager.getPlayer().getInventory().removeInvisibilityScroll();
         return this;
