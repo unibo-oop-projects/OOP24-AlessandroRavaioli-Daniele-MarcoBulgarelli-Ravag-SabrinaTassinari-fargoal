@@ -9,18 +9,24 @@ import fargoal.model.manager.api.FloorManager;
 /**
  * This class implements the Shield Spell from the interface spell.
  * When the player casts this spell he does not damage himself in the next fight.
+ * If the player is not damaged and when he change floor level the spell is still 
+ * casted, the spell ends.
  */
 public class ShieldSpell implements Spell {
 
-    final Position position;
+    final private static int SPELL_NOT_CASTED = -1;
+    final private Position position;
+    private int floorLevelSpellCasted;
 
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
+     * 
      */
     public ShieldSpell(FloorManager floorManager, final Position position) {
         this.store(floorManager);
         this.position = position;
+        this.floorLevelSpellCasted = SPELL_NOT_CASTED;
     }
 
     /** {@inheritDoc} */
@@ -46,6 +52,7 @@ public class ShieldSpell implements Spell {
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);
         floorManager.getPlayer().getInventory().removeShieldScroll();
+        this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }
 
@@ -61,11 +68,18 @@ public class ShieldSpell implements Spell {
         return this.getChestItemName();
     }
 
+    private void setFloorLevelSpellCast(int floorLevelSpellCasted) {
+        this.floorLevelSpellCasted = floorLevelSpellCasted;
+    }
+
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        if (this.floorLevelSpellCasted != SPELL_NOT_CASTED) {
+            if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
+                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
+            }
+        }
     }
     
 }

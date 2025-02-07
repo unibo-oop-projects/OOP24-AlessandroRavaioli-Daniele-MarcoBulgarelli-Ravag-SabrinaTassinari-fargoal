@@ -12,15 +12,20 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class DriftSpell implements Spell{
 
-    final Position position;
+    final private static int SPELL_NOT_CASTED = -1;
+    final private Position position;
+    private int floorLevelSpellCasted;
 
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
+     * If the spell was cast and player did not fall in a pit when he change the floor
+     * the spell ends.
      */
     public DriftSpell(FloorManager floorManager, final Position position) {
         this.store(floorManager);
         this.position = position;
+        this.floorLevelSpellCasted = SPELL_NOT_CASTED;
     }
 
     /** {@inheritDoc} */
@@ -46,6 +51,7 @@ public class DriftSpell implements Spell{
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), true);
         floorManager.getPlayer().getInventory().removeDriftScroll();
+        this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }
 
@@ -61,10 +67,18 @@ public class DriftSpell implements Spell{
         return this.getChestItemName();
     }
 
+    private void setFloorLevelSpellCast(int floorLevelSpellCasted) {
+        this.floorLevelSpellCasted = floorLevelSpellCasted;
+    }
+
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
+        if (this.floorLevelSpellCasted != SPELL_NOT_CASTED) {
+            if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
+                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
+            }
+        }
     }
 
-    
 }

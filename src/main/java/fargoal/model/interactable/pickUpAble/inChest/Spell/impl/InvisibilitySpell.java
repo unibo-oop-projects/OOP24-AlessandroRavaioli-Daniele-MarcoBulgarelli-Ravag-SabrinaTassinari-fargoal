@@ -9,10 +9,14 @@ import fargoal.model.manager.api.FloorManager;
 /**
  * This class implements the Invisibility Spell from the interface spell.
  * When the player cast this spell the monsters can not see him.
+ * If the light spell is active the player can be seen.
+ * The spell ends when the player change floor level.
  */
 public class InvisibilitySpell implements Spell {
 
-    final Position position;
+    final private static int SPELL_NOT_CASTED = -1;
+    final private Position position;
+    private int floorLevelSpellCasted;
 
     /**
      * The constructor of the class. When The spell is found in a chest 
@@ -21,6 +25,7 @@ public class InvisibilitySpell implements Spell {
     public InvisibilitySpell(FloorManager floorManager, final Position position) {
         this.store(floorManager);
         this.position = position;
+        this.floorLevelSpellCasted = SPELL_NOT_CASTED;
     }
 
     /** {@inheritDoc} */
@@ -47,6 +52,7 @@ public class InvisibilitySpell implements Spell {
         floorManager.getPlayer().setIsVisible(false);
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), true);
         floorManager.getPlayer().getInventory().removeInvisibilityScroll();
+        this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }
 
@@ -62,11 +68,19 @@ public class InvisibilitySpell implements Spell {
         return this.getChestItemName();
     }
 
+    private void setFloorLevelSpellCast(int floorLevelSpellCasted) {
+        this.floorLevelSpellCasted = floorLevelSpellCasted;
+    }
+
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        if (this.floorLevelSpellCasted != SPELL_NOT_CASTED) {
+            if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
+                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
+                floorManager.getPlayer().setIsVisible(true);
+            }
+        }
     }
     
 }

@@ -10,7 +10,7 @@ import fargoal.model.manager.api.FloorManager;
 /**
  * The implementation of the interface Chest.
  */
-public class ChestImpl implements ChestItem {
+public class ChestImpl implements Interactable {
 
     final static int N_CHEST_ITEM = 15;
     final private Position position;
@@ -82,26 +82,13 @@ public class ChestImpl implements ChestItem {
         } else {
             item = new ChestItemFactoryImpl().generateMagicSack(floorManager, this.position);
         }
+        this.open = true;
         return item;
     }
 
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
-    @Override
-    public String getChestItemType() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getChestItemType'");
-    }
-
-    @Override
-    public String getChestItemName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getChestItemName'");
     }
     
 }
