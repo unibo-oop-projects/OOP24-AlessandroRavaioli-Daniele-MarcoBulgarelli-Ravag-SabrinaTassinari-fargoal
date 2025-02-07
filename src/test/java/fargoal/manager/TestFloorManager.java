@@ -3,6 +3,7 @@ package fargoal.manager;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
 
@@ -52,6 +53,15 @@ public class TestFloorManager {
                 for (int j = 0; j < monsters.size(); j++) {
                     if (i != j) {
                         assertNotEquals(monsters.get(i).getPosition(), monsters.get(j).getPosition());
+                    }
+                }
+            }
+            assertTrue(manager.getItems().size() > 3);
+            var item = manager.getItems();
+            for (int i = 0; i < manager.getItems().size(); i++) {
+                for(int j = 0; j < manager.getItems().size(); j++) {
+                    if (i != j) {
+                        assertNotEquals(item.get(i).getPosition(), manager.getItems().get(j).getPosition());   
                     }
                 }
             }

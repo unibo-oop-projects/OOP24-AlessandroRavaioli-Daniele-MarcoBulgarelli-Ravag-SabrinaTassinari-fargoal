@@ -40,7 +40,7 @@ public class FloorMaskImpl implements FloorMask {
     public void resetMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
             for (int j = 0; j < FLOOR_HEIGTH; j++) {
-                mask.put(new Position(i, j), true);
+                mask.put(new Position(i, j), false);
             }
         }
     }
@@ -50,11 +50,11 @@ public class FloorMaskImpl implements FloorMask {
      */
     @Override
     public void update(final GameContext context, final FloorManager manager) {
-        // List<Position> lightUp = this.mask.keySet().stream()
-        //         .filter(e -> Math.abs(e.x() - manager.getPlayer().getPosition().x()) <= 1
-        //                 && Math.abs(e.y() - manager.getPlayer().getPosition().y()) <= 1)
-        //         .toList();
-        // lightUp.forEach(p -> this.mask.replace(p, true));
+        List<Position> lightUp = this.mask.keySet().stream()
+                .filter(e -> Math.abs(e.x() - manager.getPlayer().getPosition().x()) <= 1
+                        && Math.abs(e.y() - manager.getPlayer().getPosition().y()) <= 1)
+                .toList();
+        lightUp.forEach(p -> this.mask.replace(p, true));
         for (int x = 0; x < FLOOR_LENGTH; x++) {
             for (int y = 0; y < FLOOR_HEIGTH; y++) {
                 var pos = new Position(x, y);
