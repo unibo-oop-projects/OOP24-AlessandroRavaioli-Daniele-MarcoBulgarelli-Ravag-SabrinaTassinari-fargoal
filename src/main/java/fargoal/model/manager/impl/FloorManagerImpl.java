@@ -21,6 +21,8 @@ import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.impl.FloorConstructorImpl;
+import fargoal.view.api.RenderFactory;
+import fargoal.view.impl.SwingRenderFactoryImpl;
 import fargoal.model.interactable.temple.Temple;
 
 /**
@@ -42,6 +44,7 @@ public class FloorManagerImpl implements FloorManager {
     private MonsterFactory monstFact;
     private Temple temple;
     private List<Stairs> stairs;
+    private final RenderFactory renderFactory;
 
     /**
      * Constructor that inizializes all of its fields.
@@ -53,6 +56,7 @@ public class FloorManagerImpl implements FloorManager {
         this.floorLevel = 1;
         this.items = new LinkedList<>();
         this.stairs = new LinkedList<>();
+        this.renderFactory = new SwingRenderFactoryImpl(context.getView());
         dungeonStart();
     }
 
@@ -167,7 +171,7 @@ public class FloorManagerImpl implements FloorManager {
                 }
             }
             if (!alreadyPresent) {
-                this.monsters.add(monstFact.generate(pos, this.map, this));
+                this.monsters.add(monstFact.generate(pos, this.map, this, renderFactory));
             }
         } while (alreadyPresent);
     }
