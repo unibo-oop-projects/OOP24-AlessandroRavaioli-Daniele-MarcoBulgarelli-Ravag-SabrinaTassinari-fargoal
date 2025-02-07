@@ -54,8 +54,7 @@ public class FloorMaskImpl implements FloorMask {
                 .filter(e -> Math.abs(e.x() - manager.getPlayer().getPosition().x()) <= 1
                         && Math.abs(e.y() - manager.getPlayer().getPosition().y()) <= 1)
                 .toList();
-        lightUp.forEach(p -> this.mask.put(p, true));
-
+        lightUp.forEach(p -> this.mask.replace(p, true));
         for (int x = 0; x < FLOOR_LENGTH; x++) {
             for (int y = 0; y < FLOOR_HEIGTH; y++) {
                 var pos = new Position(x, y);
