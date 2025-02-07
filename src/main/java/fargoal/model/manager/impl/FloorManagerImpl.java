@@ -135,8 +135,8 @@ public class FloorManagerImpl implements FloorManager {
         while (this.monsters.size() < MAX_MONSTERS) {
             generateMonster();
         }
-         int goldSpots = new Random().nextInt(4) + 6;
-         int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel-1) + 3);
+        int goldSpots = new Random().nextInt(4) + 6;
+        int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel-1) + 3);
         while (this.items.size() < goldSpots) {
             generateGold();
         }
