@@ -34,6 +34,7 @@ public class FloorConstructorImpl implements FloorConstructor {
         private static final int VARIABLE_CORRIDOR_LENGTH = 8;
         private static final int FLOOR_LENGTH = 40;
         private static final int FLOOR_HEIGHT = 25;
+        private static final int MAX_TURNS = 10;
 
         private Set<Position> temporaryTiles = new HashSet<>();
         private List<Position> centers = new ArrayList<>();
@@ -68,8 +69,9 @@ public class FloorConstructorImpl implements FloorConstructor {
             Random rnd = new Random();
             int direction = rnd.nextInt(directions.size());
             Position currentPosition = pos;
+            int turns = 0;
 
-            while (!state.equals(FloorState.HIT_PATH)) {
+            while (!state.equals(FloorState.HIT_PATH) &&  turns < MAX_TURNS) {
                 int length = rnd.nextInt(VARIABLE_CORRIDOR_LENGTH) + MINIMUM_CORRIDOR_LENGTH;
 
                 for (int j = 0; j < length; j++) {
@@ -89,6 +91,7 @@ public class FloorConstructorImpl implements FloorConstructor {
                     this.temporaryTiles.add(currentPosition);
                 }
 
+                turns++;
                 int last = direction;
                 do {
                     direction = rnd.nextInt(directions.size());
