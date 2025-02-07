@@ -80,7 +80,7 @@ public final class Ai {
                     .collect(Collectors.toList());
         }
         
-
+        //se è vuota, la ririempio senza togliere le posizioni della cache
         if(possibleDirections.isEmpty()) {
             possibleDirections = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),
                     new Position(-1, 0), new Position(1, 0),
@@ -355,17 +355,6 @@ public final class Ai {
             }
         }
         if (!check) {
-            /* int cont = -1;
-            do {
-                System.out.println("sono bloccato qui" + " " + monster.getPosition() + " " + cont);
-                pos = monster.getPosition()
-                        .add(new Position(list.get(random.nextInt(LIST_SIZE)), list.get(random.nextInt(LIST_SIZE))));
-                System.out.println("provo questa posizione: " + pos);
-                cont++;
-            } while ((!monster.getFloorMap().isTile(pos) 
-                    || monster.getPosition().equals(pos)
-                    || monster.getLastPositions().contains(pos)) 
-                    && cont < MAX_TRY); */
             pos = possibleDirections.get(random.nextInt(possibleDirections.size()));
             monster.setPosition(pos);
             if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
@@ -374,15 +363,6 @@ public final class Ai {
             } else {
                 monster.addFirstPosition(pos);
             }
-            /* if (cont < MAX_TRY) {
-                monster.setPosition(pos);
-                if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
-                    monster.removeLastPosition();
-                    monster.addFirstPosition(pos);
-                } else {
-                    monster.addFirstPosition(pos);
-                }
-            } */
         }
         System.out.println("Mi sono mosso" + monster.getFloorManager().getMonsters().indexOf(monster)); 
     }
