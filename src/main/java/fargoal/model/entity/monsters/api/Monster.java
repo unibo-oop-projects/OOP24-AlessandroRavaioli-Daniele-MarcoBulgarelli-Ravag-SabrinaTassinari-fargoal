@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
+import fargoal.view.api.Renderer;
 
 /**
  * A monster represent an Entity who will try to attack
@@ -32,6 +33,13 @@ public interface Monster extends Entity {
      * @return the level of the Monster
      */
     public Integer getLevel();
+
+    /**
+     * Method that return the render of this Monster.
+     * 
+     * @return the render field
+     */
+    public Renderer getRender();
 
     /**
      * Set the new Position of the Monster.

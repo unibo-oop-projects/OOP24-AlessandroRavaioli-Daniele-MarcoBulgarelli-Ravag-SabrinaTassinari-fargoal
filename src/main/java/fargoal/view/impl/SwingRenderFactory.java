@@ -90,8 +90,8 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(), 
-                    this.view.getTilePixelDim(), 
+                    obj.getPosition().y() * this.view.getTilePixelDim(),
+                    this.view.getTilePixelDim(),
                     this.view.getTilePixelDim());
         }, this.view);
     }
@@ -101,8 +101,8 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.RED);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(), 
-                    this.view.getTilePixelDim(), 
+                    obj.getPosition().y() * this.view.getTilePixelDim(),
+                    this.view.getTilePixelDim(),
                     this.view.getTilePixelDim());
         }, this.view);
     }
@@ -112,8 +112,8 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.GREEN);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(), 
-                    this.view.getTilePixelDim(), 
+                    obj.getPosition().y() * this.view.getTilePixelDim(),
+                    this.view.getTilePixelDim(),
                     this.view.getTilePixelDim());
         }, this.view);
     }
@@ -130,7 +130,7 @@ public class SwingRenderFactory implements RenderFactory {
             g2d.setColor(Color.ORANGE);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
                     obj.getPosition().y() * this.view.getTilePixelDim(), 
-                    this.view.getTilePixelDim(), 
+                    this.view.getTilePixelDim(),
                     this.view.getTilePixelDim());
         }, this.view);
     }

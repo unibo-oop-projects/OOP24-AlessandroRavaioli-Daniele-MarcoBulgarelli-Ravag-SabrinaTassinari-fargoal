@@ -142,11 +142,8 @@ public abstract class AbstractMonster implements Monster {
         this.render = render;
     }
 
-    /**
-     * Method that return the render of this Monster.
-     * 
-     * @return the render field
-     */
+    /** {@inheritDoc} */
+    @Override
     public Renderer getRender() {
         return this.render;
     }
