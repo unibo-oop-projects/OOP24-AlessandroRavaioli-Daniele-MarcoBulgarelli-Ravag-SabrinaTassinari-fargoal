@@ -43,7 +43,6 @@ public class PlayerImpl implements Player {
     private boolean hasSword;
     private boolean isFighting;
     private boolean isAttacked;
-    private boolean isImmune;
     private boolean isVisible;
     private boolean hasLight;
 
@@ -62,7 +61,6 @@ public class PlayerImpl implements Player {
         this.hasSword = false;
         this.isFighting = false;
         this.isAttacked = false;
-        this.isImmune = false;
         this.isVisible = true;
         this.hasLight = false;
     }
@@ -80,7 +78,6 @@ public class PlayerImpl implements Player {
         this.hasSword = false;
         this.isFighting = false;
         this.isAttacked = false;
-        this.isImmune = false;
         this.isVisible = true;
         this.hasLight = false;
         this.render = renderFactory.playerRenderer(this);
@@ -227,18 +224,6 @@ public class PlayerImpl implements Player {
     @Override
     public void setHasSword(final boolean condition) {
         this.hasSword = condition;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public boolean isImmune() {
-        return this.isImmune;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void setIsImmune(final boolean condition) {
-        this.isImmune = condition;
     }
 
     /** {@inheritDoc} */
