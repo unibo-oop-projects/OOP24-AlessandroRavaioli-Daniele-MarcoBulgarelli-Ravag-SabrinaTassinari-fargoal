@@ -136,13 +136,7 @@ public class PlayerImpl implements Player {
         return stat;
     }
 
-    /**
-     * Sets the player's skill level.
-     * The skill value must be a non-null, non-negative integer.
-     * 
-     * @param skill - The skill level to assign to the player.
-     * @throws IllegalArgumentException If the skill value is null or negative.
-     */
+    /**{@inheritDoc}*/
     @Override
     public void setPlayerSkill(final Integer skill) {
         if(skill == null || skill < 0) {
@@ -152,15 +146,7 @@ public class PlayerImpl implements Player {
         }
     }
 
-    /**
-     * Increases the player's skill by the specified amount.
-     * The skill can only be increased if the provided amount is valid.
-     * Specifically, the amount must not be null nor negative, as this method 
-     * is designed to only increase the skill and not decrease it.
-     * 
-     * @param amount - The amount by which to increase the player's skill.
-     * @throws IllegalArgumentException If the amount is negative or null.
-     */
+    /**{@inheritDoc}*/
     @Override
     public void increasePlayerSkill(final Integer amount) {
         if(amount == null) {
@@ -184,18 +170,7 @@ public class PlayerImpl implements Player {
         return this.getExperiencePoints() >= this.getExperiencePointsRequired();
     }
 
-    /**
-     * Levels up the player if they have enough experience points.
-     * If the player has sufficient experience points, their level is increased,
-     * their maximum health is adjusted by a random amount within a specified range,
-     * their skill is increased by a random value, and the experience points required
-     * for the next level are doubled.
-     * <p>
-     * If the player does not have enough experience points to level up, an exception is thrown.
-     * </p>
-     * 
-     * @throws IllegalStateException If the player does not have enough experience points to level up.
-     */
+    /**{@inheritDoc}*/
     @Override
     public void levelUp() {
         if(!this.isLevellingUp()) {
@@ -208,128 +183,174 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**
+     * Retrieves the current renderer associated with the player.
+     * This method returns the renderer responsible for rendering the player's visuals.
+     * 
+     * @return The {@link Renderer} instance currently assigned to the player.
+     */
     public Renderer getRenderer() {
         return this.render;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Position getPosition() {
         return this.position;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getLevel() {
         return this.level;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getExperiencePoints() {
         return this.experiencePoints;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getExperiencePointsRequired() {
         return this.experiencePointsRequired;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void addExperiencePoints(final Integer experiencePointsToAdd) {
-        this.experiencePoints += experiencePointsToAdd;
+        if(experiencePointsToAdd == null || experiencePointsToAdd < 0) {
+            throw new IllegalArgumentException("The amount of experience points to add cannot be null nor negative.");
+        } else {
+            this.experiencePoints += experiencePointsToAdd;
+        }
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Health getHealth() {
         return this.health;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getSkill() {
         return this.skill;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getCurrentGold() {
         return this.gold.getCurrentGold();
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getMaxGoldCapacity() {
         return this.gold.getMaxCapacity();
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Inventory getInventory() {
         return this.inventory;
     }
 
-    @Override
+    /**
+     * Retrieves the number of monsters the player has defeated.
+     * This method returns the total count of enemies slain by the player.
+     * 
+     * @return The {@link Integer} representing the number of slain foes.
+     */
     public Integer getNumberOfSlainFoes() {
         return this.numberOfSlainFoes;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Gold getPlayerGold() {
         return this.gold;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public String getTag() {
         return "PLAYER";
     }
 
+    /**{@inheritDoc}*/
     @Override
     public boolean hasSword() {
         return this.hasSword;
     }
 
+    /**
+     * Checks if the player is currently engaged in combat.
+     * This method returns {@code true} if the player is in a fight, otherwise {@code false}.
+     * 
+     * @return {@code true} if the player is fighting, {@code false} otherwise.
+     */
     public boolean isFighting() {
         return this.isFighting;
     }
 
+    /**
+     * Checks if the player has been attacked.
+     * This method returns {@code true} if the player has been attacked, otherwise {@code false}.
+     * 
+     * @return {@code true} if the player has been attacked, {@code false} otherwise.
+     */
     public boolean isAttacked() {
         return this.isAttacked;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void setHasSword(final boolean condition) {
         this.hasSword = condition;
     }
 
-    /** {@inheritDoc} */
+    /**{@inheritDoc} */
     @Override
     public boolean isVisible() {
         return this.isVisible;
     }
 
-    /** {@inheritDoc} */
+    /**{@inheritDoc} */
     @Override
     public void setIsVisible(boolean condition) {
         this.isVisible = condition;
     }
 
-    /** {@inheritDoc} */
+    /**{@inheritDoc} */
     @Override
     public boolean hasLight() {
         return this.hasLight;
     }
 
-    /** {@inheritDoc} */
+    /**{@inheritDoc} */
     @Override
     public void setHasLight(final boolean condition) {
         this.hasLight = condition;
     }
 
-    @Override
-    public void increaseNumberOfSlainFoes(Integer amount) {
+    /**
+     * Increases the count of enemies defeated by the player.
+     * This method increments the number of slain monsters by one.
+     */
+    public void increaseNumberOfSlainFoes() {
         this.numberOfSlainFoes ++;
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void move() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'move'");
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
         // TODO Auto-generated method stub
@@ -337,13 +358,19 @@ public class PlayerImpl implements Player {
     }
 
     /**
-     * This method manages the entire fight: it should check if player can and wants to flee
-     * it should manage player automatic turn and monster turn and return true if battle
-     * is won.
+     * Manages the entire fight sequence between the player and the given monster.
+     * This method handles the combat mechanics, including attacks, fleeing conditions,
+     * and input locking. The battle continues until either the player or the monster is defeated.
+     * <p>
+     * If the player is moving away from the monster and was the one that started the fight,
+     * the battle ends immediately, allowing the player to flee.
+     * If the player has been attacked, inputs are locked between turns.
+     * Otherwise, the combat continues in an automated fashion.
+     * </p>
      * 
-     * @param monster - The enemy monster.
+     * @param monster - The enemy {@link AbstractMonster} the player is fighting.
      * 
-     * @return true if player won the battle, false if they lose it.
+     * @return {@code true} if the player wins the battle, {@code false} if they lose.
      */
     private boolean battle(final AbstractMonster monster) {
         //TODO
@@ -355,7 +382,7 @@ public class PlayerImpl implements Player {
         this.isFighting = true;
         
         do {
-            if(isMovingAwayFrom(monster)) {
+            if(isMovingAwayFrom(monster) && !this.isAttacked) {
                 this.isFighting = false;
                 unlockInputs();
                 return true;
@@ -409,6 +436,7 @@ public class PlayerImpl implements Player {
         throw new UnsupportedOperationException("Unimplemented method 'lockInputs'");
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer doDamage(final Monster monster) {
         if(monster == null) {
@@ -434,14 +462,7 @@ public class PlayerImpl implements Player {
         }
     }
 
-    /**
-     * This method is used to check wether the player character is dead or not.
-     * If the player has at least one healing potion and their health is not
-     * below a critical limit, then they should be able to automatically use 
-     * the healing potion and do not die.
-     * 
-     * @return true if player is dead, false otherwise.
-     */
+    /**{@inheritDoc}*/
     @Override
     public boolean isDead() {
         if(inventory.getHealingPotions() == 0){
