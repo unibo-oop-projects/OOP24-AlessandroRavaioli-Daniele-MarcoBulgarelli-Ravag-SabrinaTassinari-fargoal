@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.Renderer;
 
 /**
  * A class that implements an object that allows to go back up the dungeon
@@ -11,6 +12,7 @@ import fargoal.model.manager.api.FloorManager;
 public class UpStairs implements Stairs {
 
     private final Position position;
+    private Renderer renderer;
 
     public UpStairs(Position pos) {
         this.position = pos;
@@ -30,6 +32,22 @@ public class UpStairs implements Stairs {
     @Override
     public String getTag() {
         return "UpStairs";
+    }
+
+    /**
+     * Getter for field renderer.
+     * @return the renderer.
+     */
+    public Renderer getRenderer() {
+        return this.renderer;
+    }
+
+    /**
+     * Setter for field renderer.
+     * @param renderer - the new renderer.
+     */
+    public void setRenderer(final Renderer renderer) {
+        this.renderer = renderer;
     }
 
     @Override

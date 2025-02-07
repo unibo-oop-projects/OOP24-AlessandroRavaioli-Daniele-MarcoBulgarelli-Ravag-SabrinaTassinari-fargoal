@@ -6,6 +6,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.Renderer;
 
 /**
  * The implementation of the interface Chest.
@@ -15,6 +16,7 @@ public class ChestImpl implements Interactable {
     final static int N_CHEST_ITEM = 15;
     final private Position position;
     private boolean open;
+    private Renderer renderer;
 
     /**
      * The constructor of thi class. It set all the field of the class.
@@ -84,6 +86,22 @@ public class ChestImpl implements Interactable {
         }
         this.open = true;
         return item;
+    }
+
+    /**
+     * Getter for the field renderer.
+     * @return the renderer.
+     */
+    public Renderer getRenderer() {
+        return this.renderer;
+    }
+
+    /**
+     * Setter for field renderer.
+     * @param renderer - the new renderer.
+     */
+    public void setRender(final Renderer renderer) {
+        this.renderer = renderer;
     }
 
     /** {@inheritDoc} */

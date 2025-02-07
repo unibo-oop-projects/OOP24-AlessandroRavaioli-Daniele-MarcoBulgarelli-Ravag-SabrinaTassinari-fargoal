@@ -3,6 +3,8 @@ package fargoal.model.interactable.temple;
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.Renderer;
+import fargoal.view.impl.SwingRenderer;
 
 /**
  * This class implements the temple of the floor.
@@ -11,7 +13,8 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class Temple implements Interactable {
 
-    final Position position;
+    final private Position position;
+    private Renderer renderer;
 
     /**
      * This is the constructor of the class. It set the position of the temple.
@@ -19,6 +22,7 @@ public class Temple implements Interactable {
      */
     public Temple(final Position position) {
         this.position = position;
+        this.renderer = new SwingRenderer(null, null);
     }
 
     /** {@inheritDoc} */
@@ -44,6 +48,22 @@ public class Temple implements Interactable {
     @Override
     public String getTag() {
         return "TEMPLE";
+    }
+
+    /**
+     * Getter for field renderer.
+     * @return the renderer.
+     */
+    public Renderer getRenderer() {
+        return this.renderer;
+    }
+
+    /**
+     * Setter for field renderer.
+     * @param renderer - the new renderer.
+     */
+    public void setRender(final Renderer renderer) {
+        this.renderer = renderer;
     }
 
     /** {@inheritDoc} */
