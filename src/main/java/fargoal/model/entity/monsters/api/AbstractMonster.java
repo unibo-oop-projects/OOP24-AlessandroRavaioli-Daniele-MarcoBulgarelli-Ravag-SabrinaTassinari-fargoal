@@ -1,5 +1,7 @@
 package fargoal.model.entity.monsters.api;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
@@ -20,6 +22,7 @@ public abstract class AbstractMonster implements Monster {
 
     private static final Integer MONSTER_ATTACK = 4;
     private long timer;
+    private List<Position> lastPositions = new ArrayList<>();
     private Renderer render;
     private MonsterType monsterType;
     private Health health;
@@ -45,6 +48,7 @@ public abstract class AbstractMonster implements Monster {
                 final Integer level, 
                 final FloorManager floorManager) {
         this.setPosition(position);
+        this.addFirstPosition(position);
         this.setFloorManager(floorManager);
         this.setSkill(level);
         this.setLevel(level);
@@ -131,6 +135,24 @@ public abstract class AbstractMonster implements Monster {
     @Override
     public boolean getVisibility() {
         return this.isVisible;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public List<Position> getLastPositions() {
+        return this.lastPositions;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void addFirstPosition(Position position) {
+        this.lastPositions.addFirst(position);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void removeLastPosition() {
+        this.lastPositions.removeLast();
     }
 
     /**
@@ -235,8 +257,9 @@ public abstract class AbstractMonster implements Monster {
      * @return if the monster is near the player
      */
     public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
-        return floorManager.getPlayer().getPosition().x() - this.getPosition().x() <= amount
-                && floorManager.getPlayer().getPosition().y() - this.getPosition().y() <= amount;
+        System.out.println(this.getPosition() + " " + floorManager.getPlayer().getPosition());
+        return Math.abs(floorManager.getPlayer().getPosition().x() - this.getPosition().x()) <= amount
+                && Math.abs(floorManager.getPlayer().getPosition().y() - this.getPosition().y()) <= amount;
     }
 
     /**

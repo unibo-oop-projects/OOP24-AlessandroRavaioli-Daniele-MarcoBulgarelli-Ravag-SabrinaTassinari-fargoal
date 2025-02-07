@@ -19,7 +19,7 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer wallRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
-                g2d.setColor(Color.RED);
+                g2d.setColor(Color.BLACK);
                 g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
                             pos.y() * this.view.getTilePixelDim(),
                             this.view.getTilePixelDim(),

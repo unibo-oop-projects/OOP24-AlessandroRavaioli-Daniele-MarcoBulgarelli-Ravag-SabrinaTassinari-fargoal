@@ -1,5 +1,7 @@
 package fargoal.model.entity.monsters.api;
 
+import java.util.List;
+
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
 import fargoal.model.manager.api.FloorManager;
@@ -99,4 +101,28 @@ public interface Monster extends Entity {
      * @return the field isVisible of the Monster
      */
     public boolean getVisibility();
+
+    /**
+     * Return the list containing the last 5
+     * position where the monster was.
+     * 
+     * @return a list of positions
+     */
+    public List<Position> getLastPositions();
+
+    /**
+     * Method that remove the position in the 
+     * index n.5 in the list that contains 
+     * the cache with the last movements of the Monster.
+     */
+    public void removeLastPosition();
+
+    /**
+     * Method that add the position at the top
+     * of the list containing the cache of the last
+     * movements of the Monster.
+     * 
+     * @param position - the position to addFirst in the cacheList
+     */
+    public void addFirstPosition(Position position);
 }
