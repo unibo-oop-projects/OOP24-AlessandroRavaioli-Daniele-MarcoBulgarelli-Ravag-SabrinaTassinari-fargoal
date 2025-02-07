@@ -41,6 +41,7 @@ public class PlayerImpl implements Player {
     private boolean isAttacked;
     private boolean isImmune;
     private boolean isVisible;
+    private boolean hasLight;
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
@@ -58,6 +59,7 @@ public class PlayerImpl implements Player {
         this.isAttacked = false;
         this.isImmune = false;
         this.isVisible = true;
+        this.hasLight = false;
     }
 
     public PlayerImpl(FloorMap floorMap) {
@@ -75,6 +77,7 @@ public class PlayerImpl implements Player {
         this.isAttacked = false;
         this.isImmune = false;
         this.isVisible = true;
+        this.hasLight = false;
     }
 
     @Override
@@ -234,6 +237,16 @@ public class PlayerImpl implements Player {
     @Override
     public void setIsVisible(boolean condition) {
         this.isVisible = condition;
+    }
+
+    /** {@inheritDoc} */
+    public boolean hasLight() {
+        return this.hasLight;
+    }
+
+    /** {@inheritDoc} */
+    public void setHasLight(final boolean condition) {
+        this.hasLight = condition;
     }
 
     @Override
