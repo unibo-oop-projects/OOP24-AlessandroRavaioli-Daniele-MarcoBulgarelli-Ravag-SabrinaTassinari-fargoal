@@ -109,9 +109,7 @@ public final class Ai {
                 if (xDistance >= yDistance) {
                     if (xMonsterBigger) {
                         pos = monster.getPosition().decreaseX();
-                        if (isInsideMap(monster, pos) 
-                                && !positionList.contains(pos)
-                                && !monster.getLastPositions().contains(pos)) {
+                        if (possibleDirections.contains(pos)) {
                             check = true;
                             monster.setPosition(pos);
                             //aggiorno la cache delle posizioni del mostro
@@ -129,9 +127,7 @@ public final class Ai {
                         }
                     } else {
                         pos = monster.getPosition().increaseX();
-                        if (isInsideMap(monster, pos) 
-                                && !positionList.contains(pos)
-                                && !monster.getLastPositions().contains(pos)) {
+                        if (possibleDirections.contains(pos)) {
                             check = true;
                             monster.setPosition(pos);
                             if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
@@ -150,9 +146,7 @@ public final class Ai {
                 } else {
                     if (yMonsterBigger) {
                         pos = monster.getPosition().decreaseY();
-                        if (isInsideMap(monster, pos) 
-                                && !positionList.contains(pos)
-                                && !monster.getLastPositions().contains(pos)) {
+                        if (possibleDirections.contains(pos)) {
                             check = true;
                             monster.setPosition(pos);
                             if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
@@ -169,9 +163,7 @@ public final class Ai {
                         }
                     } else {
                         pos = monster.getPosition().increaseY();
-                        if (isInsideMap(monster, pos) 
-                                && !positionList.contains(pos)
-                                && !monster.getLastPositions().contains(pos)) {
+                        if (possibleDirections.contains(pos)) {
                             check = true;
                             monster.setPosition(pos);
                             if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
