@@ -3,6 +3,7 @@ package fargoal.model.interactable.pickUpAble.onGround;
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 
 /**
@@ -17,8 +18,9 @@ public class SwordOfFargoal implements Interactable{
      * This is the constructor of the class. 
      * @param position - the position of the Sword in the map.
      */
-    public SwordOfFargoal(final Position position) {
+    public SwordOfFargoal(final Position position, final RenderFactory renderFactory) {
         this.position = position;
+        this.setRender(renderFactory.swordRenderer(this));
     }
 
     /** {@inheritDoc} */

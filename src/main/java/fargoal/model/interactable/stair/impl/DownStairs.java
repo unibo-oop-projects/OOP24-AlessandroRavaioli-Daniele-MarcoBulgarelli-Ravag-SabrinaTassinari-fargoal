@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 
 /**
@@ -15,8 +16,9 @@ public class DownStairs implements Stairs {
     private Renderer renderer;
 
 
-    public DownStairs(Position pos) {
+    public DownStairs(Position pos, RenderFactory renderFactory) {
         this.position = pos;
+        this.setRender(renderFactory.downstairRenderer(this));
     }
 
     @Override

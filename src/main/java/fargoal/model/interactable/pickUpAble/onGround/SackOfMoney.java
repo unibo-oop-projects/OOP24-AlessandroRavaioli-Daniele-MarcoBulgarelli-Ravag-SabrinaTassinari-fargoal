@@ -5,6 +5,7 @@ import java.util.Random;
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 
 /**
@@ -23,10 +24,11 @@ public class SackOfMoney implements Interactable{
      * amount of money is put in the sack. 
      * @param position - the position of the sack of money.
      */
-    public SackOfMoney(final Position position) {
+    public SackOfMoney(final Position position, final RenderFactory renderFactory) {
         this.position = position;
         this.hiddenInGround = false;
         this.goldInSack = this.generateAmountOfMoney();
+        this.setRender(renderFactory.goldRenderer(this));
     }
 
     /** {@inheritDoc} */

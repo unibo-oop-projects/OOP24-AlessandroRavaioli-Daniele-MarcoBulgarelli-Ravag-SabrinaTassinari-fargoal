@@ -6,6 +6,7 @@ import fargoal.model.interactable.pickUpAble.inChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemType;
 import fargoal.model.interactable.pickUpAble.onGround.BeaconOnGround;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 
 /**
  * This class implements a Beacon, when it is in the player's inventory. 

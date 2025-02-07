@@ -3,6 +3,7 @@ package fargoal.model.interactable.pickUpAble.onGround;
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 
 /**
@@ -20,8 +21,9 @@ public class BeaconOnGround implements Interactable{
      * it assign the position in which he had been put.
      * @param position - the position where the player put the beacon.
      */
-    public BeaconOnGround(final Position position) {
+    public BeaconOnGround(final Position position, final RenderFactory renderFactory) {
         this.position = position;
+        this.setRender(renderFactory.);
     }
 
     /** {@inheritDoc} */

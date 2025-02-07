@@ -124,7 +124,7 @@ public class FloorManagerImpl implements FloorManager {
     public void increaseFloorLevel() {
         this.floorLevel++;
         initializeFloor();
-        this.stairs.add(new UpStairs(this.player.getPosition()));
+        this.stairs.add(new UpStairs(this.player.getPosition(), this.renderFactory));
     }
 
     /**
@@ -137,7 +137,7 @@ public class FloorManagerImpl implements FloorManager {
         }
         this.floorLevel--;
         initializeFloor();
-        this.stairs.add(new DownStairs(this.player.getPosition()));
+        this.stairs.add(new DownStairs(this.player.getPosition(), this.renderFactory));
     }
 
     private void initializeFloor() {
@@ -159,7 +159,7 @@ public class FloorManagerImpl implements FloorManager {
             generateItems();
         }  
         do {
-            this.temple = new Temple(this.map.getRandomTile());
+            this.temple = new Temple(this.map.getRandomTile(), this.renderFactory);
         } while (this.items.stream().anyMatch(item -> item.getPosition().equals(this.temple.getPosition())) 
                 || this.player.getPosition().equals(this.temple.getPosition()));
         int downStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
@@ -188,7 +188,7 @@ public class FloorManagerImpl implements FloorManager {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
-            Interactable temp = new ChestImpl(pos);
+            Interactable temp = new ChestImpl(pos, this.renderFactory);
             alreadyPresent = false;
             for (int i = 0; i < this.items.size(); i++) {
                 if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
@@ -205,7 +205,7 @@ public class FloorManagerImpl implements FloorManager {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
-            SackOfMoney temp = new SackOfMoney(pos);
+            SackOfMoney temp = new SackOfMoney(pos, this.renderFactory);
             alreadyPresent = false;
             for (int i = 0; i < this.items.size(); i++) {
                 if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {

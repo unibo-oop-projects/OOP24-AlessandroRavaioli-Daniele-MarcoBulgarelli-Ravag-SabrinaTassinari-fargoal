@@ -6,6 +6,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 
 /**
@@ -21,10 +22,12 @@ public class ChestImpl implements Interactable {
     /**
      * The constructor of thi class. It set all the field of the class.
      * @param position - the position of the chest
+     * @param renderFactory - 
      */
-    public ChestImpl(final Position position) {
+    public ChestImpl(final Position position, final RenderFactory renderFactory) {
         this.position = position;
         this.open = false;
+        this.setRender(renderFactory.chestRenderer(this));
     }
 
     /**

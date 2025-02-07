@@ -20,6 +20,7 @@ import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.Map;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.inChest.api.ChestItemFactory;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 
 /**
  * This class implements the interface ChestItemFactory. It generate the chest items.
