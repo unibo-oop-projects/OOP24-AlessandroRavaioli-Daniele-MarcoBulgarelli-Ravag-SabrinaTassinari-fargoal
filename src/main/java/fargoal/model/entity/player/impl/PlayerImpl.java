@@ -40,6 +40,7 @@ public class PlayerImpl implements Player {
     private boolean isFighting;
     private boolean isAttacked;
     private boolean isImmune;
+    private boolean isVisible;
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
@@ -57,6 +58,7 @@ public class PlayerImpl implements Player {
         this.isFighting = false;
         this.isAttacked = false;
         this.isImmune = false;
+        this.isVisible = true;
     }
 
     @Override
@@ -194,12 +196,28 @@ public class PlayerImpl implements Player {
         this.hasSword = condition;
     }
 
+    /** {@inheritDoc} */
+    @Override
     public boolean isImmune() {
         return this.isImmune;
     }
 
+    /** {@inheritDoc} */
+    @Override
     public void setIsImmune(final boolean condition) {
         this.isImmune = condition;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isVisible() {
+        return this.isVisible;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setIsVisible(boolean condition) {
+        this.isVisible = condition;
     }
 
     @Override

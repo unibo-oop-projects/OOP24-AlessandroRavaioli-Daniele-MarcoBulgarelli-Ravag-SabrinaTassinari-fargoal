@@ -107,6 +107,20 @@ public interface Player extends Entity {
     public void setIsImmune(boolean condition);
 
     /**
+     * This method control if the player is visble to monster or not.
+     * 
+     * @return true if the player is visible, false otherwise.
+     */
+    public boolean isVisible();
+
+    /**
+     * Setter fot the isVisible condition.
+     * 
+     * @param condition - true if the player is visible, false otherwise.
+     */
+    public void setIsVisible(boolean condition);
+
+    /**
      * Sets the player skill to the amount given.
      * 
      * @param amount - the value to set player skill to.
