@@ -72,5 +72,12 @@ public class TestMonsters {
         }
         System.out.println(monster.getPosition());
     }
-    
+
+    @Test
+    void moveMonsters() {
+        while(true) {
+            this.manager.getMonsters().forEach(p -> p.update(manager));
+            visualizeFloor();
+        }
+    }    
 }
