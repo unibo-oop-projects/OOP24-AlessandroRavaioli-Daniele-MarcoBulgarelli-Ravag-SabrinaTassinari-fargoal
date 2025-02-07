@@ -288,11 +288,17 @@ public class PlayerImpl implements Player {
                 this.receiveDamage(monster);
 
                 //Player Attack
-                this.doDamage(monster);
+                monster.receiveDamage();
 
 
             } else {
                 //TODO block the inputs for the whole fight
+
+                //Player Attack
+                monster.receiveDamage();
+
+                //Monster Attack
+                this.receiveDamage(monster);
 
             }
         } while(!this.isDead() || !monster.isDead());
