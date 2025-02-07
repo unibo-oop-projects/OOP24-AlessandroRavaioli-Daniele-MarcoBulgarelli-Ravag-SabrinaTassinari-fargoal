@@ -1,7 +1,5 @@
 package fargoal.entity.monster;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -74,7 +72,8 @@ public class TestMonsters {
             try {
                 Thread.sleep(2100);
             } catch (Exception e) {}
-            this.manager.getMonsters().forEach(p -> p.move());
+            manager.getMonsters().forEach(p -> p.move());
+            manager.getMonsters().forEach(p -> System.out.println(p.getTag() + " " + p.getPosition()));
             //this.manager.getMonsters().forEach(p -> p.update(manager));
             visualizeFloor();
         }

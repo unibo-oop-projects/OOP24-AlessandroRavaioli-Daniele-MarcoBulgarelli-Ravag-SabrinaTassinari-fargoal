@@ -204,11 +204,8 @@ public abstract class AbstractMonster implements Monster {
         return this.floorManager.getFloorMap();
     }
 
-    /**
-     * Return the Floormanager where the Monster is located.
-     * 
-     * @return the Floormanager
-     */
+    /** {@inheritDoc} */
+    @Override
     public FloorManager getFloorManager() {
         return this.floorManager;
     }

@@ -2,6 +2,7 @@ package fargoal.model.entity.monsters.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
+import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 
 /**
@@ -62,6 +63,13 @@ public interface Monster extends Entity {
      * @return the FloorMap
      */
     public FloorMap getFloorMap();
+
+    /**
+     * Return the Floormanager where the Monster is located.
+     * 
+     * @return the Floormanager
+     */
+    public FloorManager getFloorManager();
 
     /**
      * Set the Monster's visibility to true,
