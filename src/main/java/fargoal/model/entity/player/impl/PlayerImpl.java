@@ -11,6 +11,8 @@ import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.SpellType;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.entity.player.api.Gold;
@@ -243,23 +245,6 @@ public class PlayerImpl implements Player {
     }
 
     @Override
-    public Integer doDamage(final Monster monster) {
-        if(monster == null) {
-            throw new IllegalArgumentException("The monster passed to this method can not be null");
-        } else {
-            int ratio = this.getSkill() / monster.getSkill();
-            Random random = new Random();
-            return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
-        }
-    }
- 
-    @Override
-    public void receiveDamage(AbstractMonster monster) {
-        Integer monsterDamage = monster.attack();
-
-    }
-
-    @Override
     public void update(final FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
@@ -274,14 +259,59 @@ public class PlayerImpl implements Player {
      * 
      * @return true if player won the battle, false if they lose it.
      */
-    private boolean battle(final Monster monster) {
+    private boolean battle(final AbstractMonster monster) {
         //TODO
         //isFighting = true
         //if isAttacked == false -> Player can flee
         //if isAttacked == true -> player cannot flee
         //for each turn -> doDamage to monster; recieveDamage from monster
         //check isDead (for both sides)
+        this.isFighting = true;
+        do {
+            if(this.isAttacked) {
+                //TODO do not block the inputs between turns.
+
+                //Monster Attack
+                this.receiveDamage(monster);
+
+                //Player Attack
+                this.doDamage(monster);
+
+
+            } else {
+                //TODO block the inputs for the whole fight
+
+            }
+        } while(!this.isDead() || !monster.isDead());
+        
+
+
         throw new UnsupportedOperationException("Unimplemented method 'battle'");
+    }
+
+    @Override
+    public Integer doDamage(final Monster monster) {
+        if(monster == null) {
+            throw new IllegalArgumentException("The monster passed to this method can not be null");
+        } else {
+            int ratio = this.getSkill() / monster.getSkill();
+            Random random = new Random();
+            return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
+        }
+    }
+
+    /**
+     * Subtracts player's health from a monster attack.
+     * 
+     * @param monster - current foe.
+     */
+    private void receiveDamage(AbstractMonster monster) {
+        //if player hasn't shield
+        if(!this.inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
+            this.health.decreaseHealth(monster.attack());
+        } else {
+            this.inventory.getSpellCasted().replace(SpellType.SHIELD.getName(), false);
+        }
     }
 
     /**

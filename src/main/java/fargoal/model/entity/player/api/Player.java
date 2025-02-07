@@ -150,8 +150,6 @@ public interface Player extends Entity {
      */
     Integer doDamage(Monster monster);
 
-    void receiveDamage(AbstractMonster monster);
-
     /**
      * This method manages the character level up, given
      * they have enough experience points.
