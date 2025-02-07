@@ -58,10 +58,19 @@ public class LightSpell implements Spell {
         return this;
     }
 
+    /**
+     * This method can turn on and off the light spell of the player.
+     * @param floorManager - it contains all the elements of the floor.
+     */
     public void turnLight(FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName())) {
-            if (floorManager.getPlayer().isVisible()) {
-                
+            if (floorManager.getPlayer().hasLight()) {
+                floorManager.getPlayer().setHasLight(false);
+                if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
+                    floorManager.getPlayer().setIsVisible(false);
+                }
+            } else {
+                floorManager.getPlayer().setHasLight(true);
             }
         }
     }
@@ -92,6 +101,7 @@ public class LightSpell implements Spell {
         if (this.floorLevelSpellCasted != SPELL_NOT_CASTED) {
             if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
+                floorManager.getPlayer().setHasLight(false);
             }
         }
     }
