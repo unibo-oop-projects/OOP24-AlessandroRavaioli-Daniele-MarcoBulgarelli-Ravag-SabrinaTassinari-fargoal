@@ -292,19 +292,26 @@ public class PlayerImpl implements Player {
         //for each turn -> doDamage to monster; recieveDamage from monster
         //check isDead (for both sides)
         this.isFighting = true;
+        
         do {
+            if(isMovingAwayFrom(monster)) {
+                this.isFighting = false;
+                unlockInputs();
+                return true;
+            }
+
             if(this.isAttacked) {
-                //TODO do not block the inputs between turns.
+                //TODO block the inputs between turns.
+                lockInputs();
 
                 //Monster Attack
                 this.receiveDamage(monster);
 
                 //Player Attack
                 monster.receiveDamage();
-
 
             } else {
-                //TODO block the inputs for the whole fight
+                //TODO do not block the inputs for the whole fight
 
                 //Player Attack
                 monster.receiveDamage();
@@ -312,12 +319,33 @@ public class PlayerImpl implements Player {
                 //Monster Attack
                 this.receiveDamage(monster);
 
+                try {
+                    Thread.sleep(1000);
+                } catch(InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+
             }
-        } while(!this.isDead() || !monster.isDead());
+        } while(!this.isDead() && !monster.isDead());
+
+        unlockInputs();
         
+        return !this.isDead();
+    }
 
+    private boolean isMovingAwayFrom(AbstractMonster monster) {
+        throw new UnsupportedOperationException("Unimplemented method 'isMovingAwayFrom'");
+    }
 
-        throw new UnsupportedOperationException("Unimplemented method 'battle'");
+    /**
+     * Locks all inputs except from teleport one.
+     */
+    private void lockInputs() {
+        throw new UnsupportedOperationException("Unimplemented method 'lockInputs'");
+    }
+
+    private void unlockInputs() {
+        throw new UnsupportedOperationException("Unimplemented method 'lockInputs'");
     }
 
     @Override
