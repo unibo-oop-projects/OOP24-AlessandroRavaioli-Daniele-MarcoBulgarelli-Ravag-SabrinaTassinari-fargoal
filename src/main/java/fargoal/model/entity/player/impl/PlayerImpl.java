@@ -20,6 +20,15 @@ import fargoal.view.api.Renderer;
 import fargoal.model.entity.player.api.Gold;
 import fargoal.model.entity.player.api.Inventory;
 
+/**
+ * Manages the player's state, actions, and interactions within the game world.
+ * This includes handling movement, combat mechanics, health management,
+ * inventory operations, and interactions with other entitires.
+ * <p>
+ * The class also tracks the player's status, such as whether they are engaged
+ * in battle, their ability to flee, and the effects of recieved or inflicted damage.
+ * </p>
+ */
 public class PlayerImpl implements Player {
 
     private static final int CONSTANT_ADDED_TO_MAX_HEALTH_IN_LEVEL_UP = 4;
@@ -39,6 +48,7 @@ public class PlayerImpl implements Player {
     private Integer skill;
     private final Gold gold;
     private final Inventory inventory;
+    private Integer numberOfSlainFoes;
 
     private boolean hasSword;
     private boolean isFighting;
@@ -54,10 +64,10 @@ public class PlayerImpl implements Player {
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
         this.health = new HealthImpl(this.setInitialStat());
-        /* this.health.setMaxHealth(this.health.getCurrentHealth()); */
         this.skill = setInitialStat();
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
+        this.numberOfSlainFoes = 0;
         this.hasSword = false;
         this.isFighting = false;
         this.isAttacked = false;
@@ -71,10 +81,10 @@ public class PlayerImpl implements Player {
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
         this.health = new HealthImpl(this.setInitialStat());
-        /* this.health.setMaxHealth(this.health.getCurrentHealth()); */
         this.skill = setInitialStat();
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl();
+        this.numberOfSlainFoes = 0;
         this.hasSword = false;
         this.isFighting = false;
         this.isAttacked = false;
@@ -83,21 +93,39 @@ public class PlayerImpl implements Player {
         this.render = renderFactory.playerRenderer(this);
     }
 
+    /**
+     * Sets the renderer responsible for rendering the player.
+     * This method allows updating the current rendering engine or system.
+     * 
+     * @param renderer - The {@link Renderer} instance to be assigned to the player.
+     */
     public void setRender(final Renderer renderer) {
         this.render = renderer;
     }
 
+    /**{@inheritDoc} */
     @Override
     public void setPosition(Position position) {
         this.position = position;
     }
 
+    /**
+     * Sets the player's starting position on the given floor map.
+     * The position is determined by selecting a random valid tile from the map.
+     * 
+     * @param floorMap - The {@link Floormap} instance from which a random tile is chosen.
+     */
     private void startingPosition(FloorMap floorMap) {
-        Random random = new Random();
         Position pos = floorMap.getRandomTile();
         this.setPosition(pos);
     }
 
+    /**
+     * Generates the initial stat value by rolling a six-sided die (d6) multiple times.
+     * The total value is determined by summing up a series of random d6 rolls.
+     * 
+     * @return The computed initial stat value as an {@link Integer}.
+     */
     private Integer setInitialStat() {
         Integer stat = 0;
         Integer d6;
@@ -108,6 +136,13 @@ public class PlayerImpl implements Player {
         return stat;
     }
 
+    /**
+     * Sets the player's skill level.
+     * The skill value must be a non-null, non-negative integer.
+     * 
+     * @param skill - The skill level to assign to the player.
+     * @throws IllegalArgumentException If the skill value is null or negative.
+     */
     @Override
     public void setPlayerSkill(final Integer skill) {
         if(skill == null || skill < 0) {
@@ -117,21 +152,50 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**
+     * Increases the player's skill by the specified amount.
+     * The skill can only be increased if the provided amount is valid.
+     * Specifically, the amount must not be null nor negative, as this method 
+     * is designed to only increase the skill and not decrease it.
+     * 
+     * @param amount - The amount by which to increase the player's skill.
+     * @throws IllegalArgumentException If the amount is negative or null.
+     */
     @Override
     public void increasePlayerSkill(final Integer amount) {
-        if(skill == null) {
+        if(amount == null) {
             throw new IllegalArgumentException("The skill cannot be increased of a null value.");
-        } else if(amount > this.skill) {
-            throw new IllegalArgumentException("The amount in input can not decrease the skill below 0.");
+        } else if(amount < 0) {
+            throw new IllegalArgumentException("The skill cannot be decreased with this method.");
         } else {
             this.skill = this.skill + amount;
         }
     }
 
+    /**
+     * Checks if the player has enough experience points to level up.
+     * The player is considered ready to level up if their current experience points
+     * are greater than or equal to the experience points required for the next level.
+     * 
+     * @return {@code true} if the player has enough experience points to level up,
+     *         {@code false} otherwise.
+     */
     private boolean isLevellingUp() {
         return this.getExperiencePoints() >= this.getExperiencePointsRequired();
     }
 
+    /**
+     * Levels up the player if they have enough experience points.
+     * If the player has sufficient experience points, their level is increased,
+     * their maximum health is adjusted by a random amount within a specified range,
+     * their skill is increased by a random value, and the experience points required
+     * for the next level are doubled.
+     * <p>
+     * If the player does not have enough experience points to level up, an exception is thrown.
+     * </p>
+     * 
+     * @throws IllegalStateException If the player does not have enough experience points to level up.
+     */
     @Override
     public void levelUp() {
         if(!this.isLevellingUp()) {
@@ -199,6 +263,11 @@ public class PlayerImpl implements Player {
     }
 
     @Override
+    public Integer getNumberOfSlainFoes() {
+        return this.numberOfSlainFoes;
+    }
+
+    @Override
     public Gold getPlayerGold() {
         return this.gold;
     }
@@ -239,13 +308,20 @@ public class PlayerImpl implements Player {
     }
 
     /** {@inheritDoc} */
+    @Override
     public boolean hasLight() {
         return this.hasLight;
     }
 
     /** {@inheritDoc} */
+    @Override
     public void setHasLight(final boolean condition) {
         this.hasLight = condition;
+    }
+
+    @Override
+    public void increaseNumberOfSlainFoes(Integer amount) {
+        this.numberOfSlainFoes ++;
     }
 
     @Override
