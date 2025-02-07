@@ -17,6 +17,7 @@ import fargoal.model.interactable.pickUpAble.inChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.interactable.stair.impl.DownStairs;
+import fargoal.model.interactable.stair.impl.UpStairs;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
 import fargoal.model.map.api.FloorMap;
@@ -123,6 +124,7 @@ public class FloorManagerImpl implements FloorManager {
     public void increaseFloorLevel() {
         this.floorLevel++;
         initializeFloor();
+        this.stairs.add(new UpStairs(this.player.getPosition()));
     }
 
     /**
@@ -135,6 +137,7 @@ public class FloorManagerImpl implements FloorManager {
         }
         this.floorLevel--;
         initializeFloor();
+        this.stairs.add(new DownStairs(this.player.getPosition()));
     }
 
     private void initializeFloor() {
@@ -142,7 +145,7 @@ public class FloorManagerImpl implements FloorManager {
         this.mask.resetMask();
         this.monsters.clear();
         this.items.clear();
-        this.player = new PlayerImpl(map);
+        this.player.setPosition(this.map.getRandomTile());
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
         while (this.monsters.size() < MAX_MONSTERS) {
             generateMonster();
@@ -157,7 +160,12 @@ public class FloorManagerImpl implements FloorManager {
         }  
         do {
             this.temple = new Temple(this.map.getRandomTile());
-        } while (this.items.stream().anyMatch(item -> item.getPosition().equals(temple.getPosition())));
+        } while (this.items.stream().anyMatch(item -> item.getPosition().equals(this.temple.getPosition())) 
+                || this.player.getPosition().equals(this.temple.getPosition()));
+        int downStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+        if (this.floorLevel != 1 || this.player.hasSword()) {
+            int upStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+        }
     }
 
     private void generateMonster() {
@@ -166,7 +174,7 @@ public class FloorManagerImpl implements FloorManager {
             Position pos = this.map.getRandomTile();
             alreadyPresent = false;
             for (int i = 0; i < this.monsters.size(); i++) {
-                if (this.monsters.get(i).getPosition().equals(pos)) {
+                if (this.monsters.get(i).getPosition().equals(pos) || pos.equals(this.player.getPosition())) {
                     alreadyPresent = true;
                 }
             }
@@ -183,7 +191,7 @@ public class FloorManagerImpl implements FloorManager {
             Interactable temp = new ChestImpl(pos);
             alreadyPresent = false;
             for (int i = 0; i < this.items.size(); i++) {
-                if (this.items.get(i).getPosition().equals(pos)) {
+                if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
                     alreadyPresent = true;
                 }
             }
@@ -200,7 +208,7 @@ public class FloorManagerImpl implements FloorManager {
             SackOfMoney temp = new SackOfMoney(pos);
             alreadyPresent = false;
             for (int i = 0; i < this.items.size(); i++) {
-                if (this.items.get(i).getPosition().equals(pos)) {
+                if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
                     alreadyPresent = true;
                 }
             }
@@ -212,11 +220,24 @@ public class FloorManagerImpl implements FloorManager {
 
     private void dungeonStart() {
         int nStairs = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
-        this.map = new FloorConstructorImpl().createFloor(); 
-        this.player = new PlayerImpl(this.map);
-        while (this.stairs.size() < nStairs) {
-            this.stairs.add(new DownStairs(this.map.getRandomTile()));
-        }
+        this.player = new PlayerImpl();
         initializeFloor();
+    }
+
+    private void generateStairs(Stairs type) {
+        boolean alreadyPresent = false;
+        do {
+            Position pos = this.map.getRandomTile();
+            Stairs temp = type;
+            alreadyPresent = false;
+            for (int i = 0; i < this.items.size(); i++) {
+                if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
+                    alreadyPresent = true;
+                }
+            }
+            if (!alreadyPresent) {
+                this.items.add(temp);
+            }
+        } while (alreadyPresent);
     }
 }

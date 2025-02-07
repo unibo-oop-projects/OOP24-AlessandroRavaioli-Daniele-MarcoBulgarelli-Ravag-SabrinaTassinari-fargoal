@@ -20,4 +20,9 @@ public interface FloorMask {
      * @param manager - the manager to have every possible
      */
     void update(GameContext context, FloorManager manager);
+
+    /**
+     * A method to fully clear the mask.
+     */
+    void clearMask();
 }

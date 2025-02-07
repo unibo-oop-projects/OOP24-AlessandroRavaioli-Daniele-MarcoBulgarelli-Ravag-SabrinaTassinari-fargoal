@@ -75,4 +75,13 @@ public class FloorMaskImpl implements FloorMask {
         }
     }
 
+    @Override
+    public void clearMask() {
+        for (int i = 0; i < FLOOR_LENGTH; i++) {
+            for (int j = 0; j < FLOOR_HEIGTH; j++) {
+                mask.replace(new Position(i, j), true);
+            }
+        }
+    }
+
 }
