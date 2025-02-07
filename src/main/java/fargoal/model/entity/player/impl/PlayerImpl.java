@@ -44,6 +44,22 @@ public class PlayerImpl implements Player {
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
+    public PlayerImpl() {
+        this.level = INITIAL_LEVEL;
+        this.experiencePoints = 0;
+        this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
+        this.health = new HealthImpl(this.setInitialStat());
+        /* this.health.setMaxHealth(this.health.getCurrentHealth()); */
+        this.skill = setInitialStat();
+        this.gold = new GoldImpl();
+        this.inventory = new InventoryImpl();
+        this.hasSword = false;
+        this.isFighting = false;
+        this.isAttacked = false;
+        this.isImmune = false;
+        this.isVisible = true;
+    }
+
     public PlayerImpl(FloorMap floorMap) {
         startingPosition(floorMap);
         this.level = INITIAL_LEVEL;
