@@ -5,6 +5,7 @@ import java.util.List;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.map.api.FloorMap;
 
 /**
@@ -43,6 +44,11 @@ public interface FloorManager {
     int getFloorLevel();
 
     /**
+     * A method that return the list of all the items present.
+     */
+    List<Interactable> getItems();
+
+    /**
      * Method to increase the level of the floor
      */
     void increaseFloorLevel();
@@ -57,4 +63,5 @@ public interface FloorManager {
      * @return - the current mask
      */
     FloorMask getFloorMask();
+
 }

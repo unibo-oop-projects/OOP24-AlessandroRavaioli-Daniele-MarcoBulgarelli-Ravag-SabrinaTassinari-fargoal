@@ -14,14 +14,14 @@ public enum UtilityType {
 
     /**
      * This is the constructor of the enumeration. It set all the names for the many types of utilities.
-     * @param name - it is the name of the utility,
+     * @param name - it is the name of the utility.
      */
     private UtilityType(final String name){
         this.name = name;
     }
 
     /**
-     * With this method the actual name of the utilities is revealed.
+     * With this method the actual name of the utility is revealed.
      * @return the name of the utility.
      */
     public String getName(){

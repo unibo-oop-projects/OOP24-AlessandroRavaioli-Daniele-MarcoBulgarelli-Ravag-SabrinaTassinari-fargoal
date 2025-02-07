@@ -59,7 +59,8 @@ public class PlayerImpl implements Player {
         this.isImmune = false;
     }
 
-    private void setPosition(Position position) {
+    @Override
+    public void setPosition(Position position) {
         this.position = position;
     }
 
@@ -133,6 +134,11 @@ public class PlayerImpl implements Player {
     @Override
     public Integer getExperiencePointsRequired() {
         return this.experiencePointsRequired;
+    }
+
+    @Override
+    public void addExperiencePoints(final Integer experiencePointsToAdd) {
+        this.experiencePoints += experiencePointsToAdd;
     }
 
     @Override

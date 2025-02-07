@@ -1,6 +1,7 @@
 package fargoal.model.entity.player.api;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Interface to manage player's items.
@@ -83,6 +84,12 @@ public interface Inventory {
      * @return the list of floors for which the player has a map.
      */
     List<Integer> getListOfMaps();
+
+    /**
+     * Getter for the map which indicates which spells' effects are happening in this momenti.
+     * @return the map that indicates which spells' effects are happening in this moment. 
+     */
+    Map<String, Boolean> getSpellCasted();
 
     /**
      * Adds a single healing potion to player's inventory.

@@ -34,15 +34,13 @@ public class SwordOfFargoal implements Interactable{
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().setHasSword(true);
-        
+        //guarda cosa fa la spada a chi la prende (quanta esperienza o skill dà)
         return this;
     }
     

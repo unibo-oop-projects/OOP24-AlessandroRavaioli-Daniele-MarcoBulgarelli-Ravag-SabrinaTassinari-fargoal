@@ -2,8 +2,10 @@ package fargoal.model.entity.player.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import fargoal.model.entity.player.api.Inventory;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.SpellType;
 
 /**
  * Inventory class, it manages player's inventory
@@ -24,6 +26,7 @@ public class InventoryImpl implements Inventory {
     private Integer driftScrolls;
     private Integer lightScrolls;
 
+    private final Map<String, Boolean> SpellCasted;
 
     /**
      * Creates a new instance of Inventory, every number of available
@@ -41,6 +44,9 @@ public class InventoryImpl implements Inventory {
         this.regenerationScrolls = 0;
         this.driftScrolls = 0;
         this.lightScrolls = 0;
+        this.SpellCasted = Map.of(SpellType.DRIFT.getName(), false, SpellType.INVISIBILITY.getName(), false, 
+            SpellType.LIGHT.getName(), false, SpellType.REGENERATION.getName(), false, 
+            SpellType.SHIELD.getName(), false);
     }
 
     /**{@inheritDoc} */
@@ -107,6 +113,12 @@ public class InventoryImpl implements Inventory {
     @Override
     public Integer getLightScrolls() {
         return this.lightScrolls;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Map<String, Boolean> getSpellCasted() {
+        return this.SpellCasted;
     }
 
     /**{@inheritDoc} */

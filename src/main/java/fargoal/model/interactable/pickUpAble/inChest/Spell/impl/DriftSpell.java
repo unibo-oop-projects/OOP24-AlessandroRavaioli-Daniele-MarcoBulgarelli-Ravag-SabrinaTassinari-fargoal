@@ -43,8 +43,9 @@ public class DriftSpell implements Spell{
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), true);
+        floorManager.getPlayer().getInventory().removeDriftScroll();
+        return this;
     }
 
     /** {@inheritDoc} */
@@ -62,8 +63,6 @@ public class DriftSpell implements Spell{
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
     

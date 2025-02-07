@@ -4,10 +4,11 @@ import java.awt.Color;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
-import fargoal.view.api.SwingRenderFactory;
+import fargoal.view.api.RenderFactory;
+import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 
-public class SwingRenderFactoryImpl implements SwingRenderFactory {
+public class SwingRenderFactoryImpl implements RenderFactory {
 
     private final SwingView view;
 
@@ -16,7 +17,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     }
 
     @Override
-    public SwingRenderer wallRenderer(Position pos) {
+    public Renderer wallRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
                 g2d.setColor(Color.RED);
                 g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
@@ -27,7 +28,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     }
 
     @Override
-    public SwingRenderer tileRenderer(Position pos) {
+    public Renderer tileRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.WHITE);
             g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
@@ -38,7 +39,7 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     }
 
     @Override
-    public SwingRenderer fogRenderer(Position pos) {
+    public Renderer fogRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.BLACK);
             g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
@@ -49,79 +50,79 @@ public class SwingRenderFactoryImpl implements SwingRenderFactory {
     }
 
     @Override
-    public SwingRenderer playerRenderer(FloorElement obj) {
+    public Renderer playerRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'playerRenderer'");
     }
 
     @Override
-    public SwingRenderer upstairRenderer(FloorElement obj) {
+    public Renderer upstairRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'upstairRenderer'");
     }
 
     @Override
-    public SwingRenderer downstairRenderer(FloorElement obj) {
+    public Renderer downstairRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'downstairRenderer'");
     }
 
     @Override
-    public SwingRenderer templeRenderer(FloorElement obj) {
+    public Renderer templeRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'templeRenderer'");
     }
 
     @Override
-    public SwingRenderer chestRenderer(FloorElement obj) {
+    public Renderer chestRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'chestRenderer'");
     }
 
     @Override
-    public SwingRenderer goldRenderer(FloorElement obj) {
+    public Renderer goldRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'goldRenderer'");
     }
 
     @Override
-    public SwingRenderer assassinRenderer(FloorElement obj) {
+    public Renderer assassinRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'assassinRenderer'");
     }
 
     @Override
-    public SwingRenderer barbarianRenderer(FloorElement obj) {
+    public Renderer barbarianRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'barbarianRenderer'");
     }
 
     @Override
-    public SwingRenderer mageRenderer(FloorElement obj) {
+    public Renderer mageRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'mageRenderer'");
     }
 
     @Override
-    public SwingRenderer monkRenderer(FloorElement obj) {
+    public Renderer monkRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'monkRenderer'");
     }
 
     @Override
-    public SwingRenderer rogueRenderer(FloorElement obj) {
+    public Renderer rogueRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'rogueRenderer'");
     }
 
     @Override
-    public SwingRenderer spiderRenderer(FloorElement obj) {
+    public Renderer spiderRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'spiderRenderer'");
     }
 
     @Override
-    public SwingRenderer warlordRenderer(FloorElement obj) {
+    public Renderer warlordRenderer(FloorElement obj) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'warlordRenderer'");
     }

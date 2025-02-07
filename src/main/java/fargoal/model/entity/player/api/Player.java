@@ -13,6 +13,12 @@ import fargoal.model.entity.monsters.api.Monster;
 public interface Player extends Entity {
 
     /**
+     * Setter for player's current position.
+     * @param position - the new position of the player.
+     */
+    void setPosition(Position position);
+    
+    /**
      * Getter for player's current level.
      * 
      * @return player's current level.
@@ -35,6 +41,12 @@ public interface Player extends Entity {
      * @return the amount of experience points required to gain a level.
      */
     Integer getExperiencePointsRequired();
+
+    /**
+     * This method add an amount of experience point to the experience the player has already got.
+     * @param experiencePointToAdd - the experience point the player gained.
+     */
+    void addExperiencePoints(Integer experiencePointsToAdd);
 
     /**
      * Getter for the player's inventory.

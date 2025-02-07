@@ -12,6 +12,6 @@ public interface Utility extends ChestItem {
      * This method store the utility in the player's inventory.
      * @param floorManager - it contains all the element of the floor.
      */
-    public void store(FloorManager floorManager);
+    void store(FloorManager floorManager);
 
 }

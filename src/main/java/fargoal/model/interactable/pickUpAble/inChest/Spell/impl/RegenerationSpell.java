@@ -43,8 +43,9 @@ public class RegenerationSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'interact'");
+        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), true);
+        floorManager.getPlayer().getInventory().removeRegenerationScroll();
+        return this;
     }
 
     /** {@inheritDoc} */
