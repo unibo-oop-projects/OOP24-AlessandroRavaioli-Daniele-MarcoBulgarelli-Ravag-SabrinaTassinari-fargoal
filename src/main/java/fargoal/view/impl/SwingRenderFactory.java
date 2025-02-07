@@ -146,5 +146,11 @@ public class SwingRenderFactory implements RenderFactory {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'warlordRenderer'");
     }
+
+    @Override
+    public Renderer swordRenderer(FloorElement obj) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'swordRenderer'");
+    }
     
 }

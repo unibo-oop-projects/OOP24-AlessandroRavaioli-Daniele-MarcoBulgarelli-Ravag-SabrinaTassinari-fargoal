@@ -36,4 +36,6 @@ public interface RenderFactory {
     Renderer spiderRenderer(FloorElement obj);
 
     Renderer warlordRenderer(FloorElement obj);
+
+    Renderer swordRenderer(FloorElement obj);
 }
