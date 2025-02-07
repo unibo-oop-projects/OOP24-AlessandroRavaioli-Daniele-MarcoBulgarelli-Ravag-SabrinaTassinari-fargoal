@@ -114,11 +114,24 @@ public interface Player extends Entity {
     public boolean isVisible();
 
     /**
-     * Setter fot the isVisible condition.
+     * Setter for the isVisible condition.
      * 
      * @param condition - true if the player is visible, false otherwise.
      */
     public void setIsVisible(boolean condition);
+
+    /**
+     * Getter for the hasLight condition. This refers to the light spell, if it is true the light is on,
+     * otherwise false.
+     * @return true if the light is on, false otherwise.
+     */
+    public boolean hasLight();
+
+    /**
+     * Setter for the hasLight condition.
+     * @param condition - true if the light is on, false otherwise.
+     */
+    public void setHasLight(boolean condition);
 
     /**
      * Sets the player skill to the amount given.

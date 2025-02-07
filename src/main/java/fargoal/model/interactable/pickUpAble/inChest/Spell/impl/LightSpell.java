@@ -58,6 +58,14 @@ public class LightSpell implements Spell {
         return this;
     }
 
+    public void turnLight(FloorManager floorManager) {
+        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName())) {
+            if (floorManager.getPlayer().isVisible()) {
+                
+            }
+        }
+    }
+
     /** {@inheritDoc} */
     @Override
     public Position getPosition() {
