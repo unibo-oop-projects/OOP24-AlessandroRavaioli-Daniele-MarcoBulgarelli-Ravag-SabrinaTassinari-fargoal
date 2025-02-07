@@ -8,11 +8,11 @@ import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 
-public class SwingRenderFactoryImpl implements RenderFactory {
+public class SwingRenderFactory implements RenderFactory {
 
     private final SwingView view;
 
-    public SwingRenderFactoryImpl(View view){
+    public SwingRenderFactory(View view){
         this.view = (SwingView)view;
     }
 

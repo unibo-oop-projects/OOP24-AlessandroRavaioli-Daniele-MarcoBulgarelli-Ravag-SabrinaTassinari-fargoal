@@ -10,7 +10,7 @@ import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.View;
-import fargoal.view.impl.SwingRenderFactoryImpl;
+import fargoal.view.impl.SwingRenderFactory;
 
 /**
  * A class that implements the map covering effect.
@@ -29,7 +29,7 @@ public class FloorMaskImpl implements FloorMask {
      */
     public FloorMaskImpl(final View view) {
         this.mask = new HashMap<>();
-        renderFac = new SwingRenderFactoryImpl(view);
+        renderFac = new SwingRenderFactory(view);
         resetMask();
     }
 

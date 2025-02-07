@@ -22,7 +22,7 @@ import fargoal.model.manager.api.FloorMask;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.impl.FloorConstructorImpl;
 import fargoal.view.api.RenderFactory;
-import fargoal.view.impl.SwingRenderFactoryImpl;
+import fargoal.view.impl.SwingRenderFactory;
 import fargoal.model.interactable.temple.Temple;
 
 /**
@@ -56,7 +56,7 @@ public class FloorManagerImpl implements FloorManager {
         this.floorLevel = 1;
         this.items = new LinkedList<>();
         this.stairs = new LinkedList<>();
-        this.renderFactory = new SwingRenderFactoryImpl(context.getView());
+        this.renderFactory = new SwingRenderFactory(context.getView());
         dungeonStart();
     }
 
