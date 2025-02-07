@@ -7,6 +7,7 @@ import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
+import fargoal.view.api.Renderer;
 import fargoal.model.entity.monsters.ai.Ai;
 
 /**
@@ -19,6 +20,7 @@ public abstract class AbstractMonster implements Monster {
 
     private static final Integer MONSTER_ATTACK = 4;
     private long timer;
+    private Renderer render;
     private MonsterType monsterType;
     private Health health;
     private Position position;
@@ -129,6 +131,24 @@ public abstract class AbstractMonster implements Monster {
     @Override
     public boolean getVisibility() {
         return this.isVisible;
+    }
+
+    /**
+     * Method to set the render field of the Monster.
+     * 
+     * @param render - the render that the monster will use
+     */
+    public void setRender(Renderer render) {
+        this.render = render;
+    }
+
+    /**
+     * Method that return the render of this Monster.
+     * 
+     * @return the render field
+     */
+    public Renderer getRender() {
+        return this.render;
     }
 
     /**

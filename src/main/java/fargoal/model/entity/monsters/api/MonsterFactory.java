@@ -3,6 +3,7 @@ package fargoal.model.entity.monsters.api;
 import fargoal.commons.api.Position;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
+import fargoal.view.api.RenderFactory;
 
 /**
  * A factory to generate any type of monster that may be present
@@ -19,6 +20,6 @@ public interface MonsterFactory {
      * @param floorManager - to get infos also about other entities
      * @return a Monster
      */
-    Monster generate(Position position, FloorMap floorMap, FloorManager floorManager);
+    Monster generate(Position position, FloorMap floorMap, FloorManager floorManager, RenderFactory renderFactory);
 
 }
