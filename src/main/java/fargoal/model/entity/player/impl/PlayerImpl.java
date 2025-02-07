@@ -15,6 +15,8 @@ import fargoal.model.interactable.pickUpAble.inChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.SpellType;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
+import fargoal.view.api.RenderFactory;
+import fargoal.view.api.Renderer;
 import fargoal.model.entity.player.api.Gold;
 import fargoal.model.entity.player.api.Inventory;
 
@@ -46,6 +48,7 @@ public class PlayerImpl implements Player {
     private boolean hasLight;
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private Renderer render;
 
     public PlayerImpl() {
         this.level = INITIAL_LEVEL;
@@ -64,7 +67,7 @@ public class PlayerImpl implements Player {
         this.hasLight = false;
     }
 
-    public PlayerImpl(FloorMap floorMap) {
+    public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory) {
         startingPosition(floorMap);
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
@@ -80,6 +83,11 @@ public class PlayerImpl implements Player {
         this.isImmune = false;
         this.isVisible = true;
         this.hasLight = false;
+        this.render = renderFactory.playerRenderer(this);
+    }
+
+    public void setRender(final Renderer renderer) {
+        this.render = renderer;
     }
 
     @Override
@@ -137,6 +145,10 @@ public class PlayerImpl implements Player {
             this.increasePlayerSkill(new Random().nextInt(1, 10));
             this.experiencePointsRequired = this.experiencePointsRequired * 2;
         }
+    }
+
+    public Renderer getRenderer() {
+        return this.render;
     }
 
     @Override

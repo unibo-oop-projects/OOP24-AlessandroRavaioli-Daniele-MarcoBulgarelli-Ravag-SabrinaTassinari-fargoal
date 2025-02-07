@@ -51,8 +51,13 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer playerRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'playerRenderer'");
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.BLUE);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
+                    obj.getPosition().y() * this.view.getTilePixelDim(),
+                    this.view.getTilePixelDim(),
+                    this.view.getTilePixelDim());
+        }, this.view);
     }
 
     @Override
