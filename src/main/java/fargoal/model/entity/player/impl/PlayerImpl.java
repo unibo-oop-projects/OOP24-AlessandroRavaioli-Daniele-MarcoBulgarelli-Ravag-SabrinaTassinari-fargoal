@@ -55,6 +55,7 @@ public class PlayerImpl implements Player {
     private boolean isAttacked;
     private boolean isVisible;
     private boolean hasLight;
+    private boolean isImmune;
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private Renderer render;
@@ -90,6 +91,7 @@ public class PlayerImpl implements Player {
         this.isAttacked = false;
         this.isVisible = true;
         this.hasLight = false;
+        this.isImmune = false;
         this.render = renderFactory.playerRenderer(this);
     }
 
@@ -355,6 +357,11 @@ public class PlayerImpl implements Player {
     public void update(final FloorManager floorManager) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'update'");
+    }
+
+    @Override
+    public void setIsImmune(Boolean condition) {
+        this.isImmune = condition;
     }
 
     /**

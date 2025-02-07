@@ -157,4 +157,6 @@ public interface Player extends Entity {
      * the next required experience points double.
      */
     void levelUp();
+
+    void setIsImmune(Boolean condition);
 }
