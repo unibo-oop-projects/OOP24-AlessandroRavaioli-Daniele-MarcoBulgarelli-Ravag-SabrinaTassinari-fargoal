@@ -64,8 +64,4 @@ public interface FloorManager {
      */
     FloorMask getFloorMask();
 
-    /**
-     * Method that add an item to the floor.
-     */
-    void addItem(Interactable item);
 }

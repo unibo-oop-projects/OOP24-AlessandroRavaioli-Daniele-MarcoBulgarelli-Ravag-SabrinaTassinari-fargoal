@@ -193,13 +193,5 @@ public class FloorManagerImpl implements FloorManager {
                 this.items.add(temp);
             }
         } while (alreadyPresent);
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void addItem(Interactable item) {
-        this.items.add(item);
-    }
-
-    
+    }    
 }
