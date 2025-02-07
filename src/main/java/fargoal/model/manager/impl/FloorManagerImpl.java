@@ -67,8 +67,8 @@ public class FloorManagerImpl implements FloorManager {
     public void update(final GameContext context) {
         List<FloorElement> elements = new LinkedList<>();
         elements.addAll(this.monsters);
-        elements.add(player);
-        elements.addAll(items);
+        // elements.add(player);
+        // elements.addAll(items);
         elements.forEach(e -> e.update(this));
         this.mask.update(context, this);
     }
@@ -147,17 +147,17 @@ public class FloorManagerImpl implements FloorManager {
         while (this.monsters.size() < MAX_MONSTERS) {
             generateMonster();
         }
-        int goldSpots = new Random().nextInt(4) + 6;
-        int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
-        while (this.items.size() < goldSpots) {
-            generateGold();
-        }
-        while (this.items.size() < goldSpots + treasures) {
-            generateItems();
-        }  
-        do {
-            this.temple = new Temple(this.map.getRandomTile());
-        } while (this.items.stream().anyMatch(item -> item.getPosition().equals(temple.getPosition())));
+        // int goldSpots = new Random().nextInt(4) + 6;
+        // int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
+        // while (this.items.size() < goldSpots) {
+        //     generateGold();
+        // }
+        // while (this.items.size() < goldSpots + treasures) {
+        //     generateItems();
+        // }  
+        // do {
+        //     this.temple = new Temple(this.map.getRandomTile());
+        // } while (this.items.stream().anyMatch(item -> item.getPosition().equals(temple.getPosition())));
     }
 
     private void generateMonster() {
@@ -211,7 +211,8 @@ public class FloorManagerImpl implements FloorManager {
     }    
 
     private void dungeonStart() {
-        int nStairs = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS; 
+        int nStairs = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+        this.map = new FloorConstructorImpl().createFloor(); 
         this.player = new PlayerImpl(this.map);
         while (this.stairs.size() < nStairs) {
             this.stairs.add(new DownStairs(this.map.getRandomTile()));
