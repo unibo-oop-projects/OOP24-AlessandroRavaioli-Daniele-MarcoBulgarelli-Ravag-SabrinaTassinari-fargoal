@@ -70,7 +70,6 @@ public class FloorConstructorImpl implements FloorConstructor {
             Position currentPosition = pos;
 
             while (!state.equals(FloorState.HIT_PATH)) {
-                state = FloorState.CONTINUE;
                 int length = rnd.nextInt(VARIABLE_CORRIDOR_LENGTH) + MINIMUM_CORRIDOR_LENGTH;
 
                 for (int j = 0; j < length; j++) {
