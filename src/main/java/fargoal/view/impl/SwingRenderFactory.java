@@ -108,7 +108,7 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer goldRenderer(SackOfMoney obj) {
         return new SwingRenderer(g2d -> {
-            if(obj.isHiddenInGround()) {
+            if (obj.isHiddenInGround()) {
                 g2d.setColor(Color.GREEN);
             } else {
                 g2d.setColor(Color.YELLOW);
@@ -117,6 +117,17 @@ public class SwingRenderFactory implements RenderFactory {
             obj.getPosition().y() * this.view.getTilePixelDim(), 
             this.view.getTilePixelDim(), 
             this.view.getTilePixelDim());
+        }, this.view);
+    }
+
+    @Override
+    public Renderer beaconRenderer(FloorElement obj) {
+        return new SwingRenderer(g2d -> {
+            g2d.setColor(Color.CYAN);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
+                obj.getPosition().y() * this.view.getTilePixelDim(), 
+                this.view.getTilePixelDim(), 
+                this.view.getTilePixelDim());
         }, this.view);
     }
 
