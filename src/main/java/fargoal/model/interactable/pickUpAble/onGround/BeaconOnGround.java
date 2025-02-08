@@ -53,7 +53,7 @@ public class BeaconOnGround implements Interactable{
 
     /** {@inheritDoc} */
     @Override
-    public void Render() {
+    public void render() {
         this.renderer.render();
     }
 

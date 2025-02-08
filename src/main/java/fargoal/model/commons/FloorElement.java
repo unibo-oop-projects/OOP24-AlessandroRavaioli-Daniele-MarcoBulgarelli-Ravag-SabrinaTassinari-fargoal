@@ -35,5 +35,5 @@ public interface FloorElement {
      * Entity and put the Object in the queue of
      * the Object to be drawn.
      */
-    void Render();
+    void render();
 }

@@ -69,5 +69,5 @@ public class Teleport implements ChestItem {
     
     /** {@inheritDoc} */
     @Override
-    public void Render() {}
+    public void render() {}
 }

@@ -41,10 +41,9 @@ public class FloorManagerImpl implements FloorManager {
     private Player player;
     private final FloorMask mask;
     private int floorLevel;
-    private List<Interactable> items;
+    private List<Interactable> interactables;
     private MonsterFactory monstFact;
     private Temple temple;
-    private List<Stairs> stairs;
     private final RenderFactory renderFactory;
 
     /**
@@ -55,8 +54,7 @@ public class FloorManagerImpl implements FloorManager {
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl(context.getView());
         this.floorLevel = 1;
-        this.items = new LinkedList<>();
-        this.stairs = new LinkedList<>();
+        this.interactables = new LinkedList<>();
         this.renderFactory = new SwingRenderFactory(context.getView());
         dungeonStart();
     }
@@ -66,11 +64,7 @@ public class FloorManagerImpl implements FloorManager {
      */
     @Override
     public void update(final GameContext context) {
-        List<FloorElement> elements = new LinkedList<>();
-        elements.addAll(this.monsters);
-        elements.add(player);
-        elements.addAll(items);
-        elements.forEach(e -> e.update(this));
+        this.getAllElements().forEach(e -> e.update(this));
         this.mask.update(context, this);
     }
 
@@ -113,8 +107,23 @@ public class FloorManagerImpl implements FloorManager {
 
     /** {@inheritDoc} */
     @Override
-    public List<Interactable> getItems() {
-        return this.items;
+    public List<Interactable> getInteractables() {
+        return this.interactables;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Temple getTemple() {
+        return this.temple;
+    }
+
+    @Override
+    public List<FloorElement> getAllElements() {
+        List<FloorElement> elements = new LinkedList<>(this.interactables);
+        //elements.add(this.player);
+        elements.add(this.temple);
+        elements.addAll(this.monsters);
+        return elements;
     }
 
     /**
@@ -124,7 +133,7 @@ public class FloorManagerImpl implements FloorManager {
     public void increaseFloorLevel() {
         this.floorLevel++;
         initializeFloor();
-        this.stairs.add(new UpStairs(this.player.getPosition(), this.renderFactory));
+        this.interactables.add(new UpStairs(this.player.getPosition(), this.renderFactory));
     }
 
     /**
@@ -137,15 +146,14 @@ public class FloorManagerImpl implements FloorManager {
         }
         this.floorLevel--;
         initializeFloor();
-        this.stairs.add(new DownStairs(this.player.getPosition(), this.renderFactory));
+        this.interactables.add(new DownStairs(this.player.getPosition(), this.renderFactory));
     }
 
     private void initializeFloor() {
         this.map = new FloorConstructorImpl().createFloor();
         this.mask.resetMask();
         this.monsters.clear();
-        this.items.clear();
-        this.stairs.clear();
+        this.interactables.clear();
         this.player.setPosition(this.map.getRandomTile());
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
         while (this.monsters.size() < MAX_MONSTERS) {
@@ -153,23 +161,25 @@ public class FloorManagerImpl implements FloorManager {
         }
         int goldSpots = new Random().nextInt(4) + 6;
         int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
-        while (this.items.size() < goldSpots) {
+        while (this.interactables.size() < goldSpots) {
             generateGold();
         }
-        while (this.items.size() < goldSpots + treasures) {
+        while (this.interactables.size() < goldSpots + treasures) {
             generateItems();
-        }  
+        } 
+
         do {
             this.temple = new Temple(this.map.getRandomTile(), this.renderFactory);
-        } while (this.items.stream().anyMatch(item -> item.getPosition().equals(this.temple.getPosition())) 
+        } while (this.interactables.stream().anyMatch(item -> item.getPosition().equals(this.temple.getPosition())) 
                 || this.player.getPosition().equals(this.temple.getPosition()));
+
         int downStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
-        while (this.stairs.size() < downStair) {
+        while (this.interactables.size() < downStair + goldSpots + treasures) {
             generateStairs(new DownStairs(new Position(0, 0), renderFactory));
         }
         if (this.floorLevel != 1 || this.player.hasSword()) {
             int upStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
-            while (this.stairs.size() < downStair + upStair) {
+            while (this.interactables.size() < downStair + upStair + goldSpots + treasures) {
                 generateStairs(new UpStairs(new Position(0, 0), renderFactory));
             }
         }
@@ -197,13 +207,13 @@ public class FloorManagerImpl implements FloorManager {
             Position pos = this.map.getRandomTile();
             Interactable temp = new ChestImpl(pos, this.renderFactory);
             alreadyPresent = false;
-            for (int i = 0; i < this.items.size(); i++) {
-                if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
+            for (int i = 0; i < this.interactables.size(); i++) {
+                if (this.interactables.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
                     alreadyPresent = true;
                 }
             }
             if (!alreadyPresent) {
-                this.items.add(temp);
+                this.interactables.add(temp);
             }
         } while (alreadyPresent);
     }
@@ -214,13 +224,13 @@ public class FloorManagerImpl implements FloorManager {
             Position pos = this.map.getRandomTile();
             SackOfMoney temp = new SackOfMoney(pos, this.renderFactory);
             alreadyPresent = false;
-            for (int i = 0; i < this.items.size(); i++) {
-                if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
+            for (int i = 0; i < this.interactables.size(); i++) {
+                if (this.interactables.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
                     alreadyPresent = true;
                 }
             }
             if (!alreadyPresent) {
-                this.items.add(temp);
+                this.interactables.add(temp);
             }
         } while (alreadyPresent);
     }    
@@ -238,14 +248,13 @@ public class FloorManagerImpl implements FloorManager {
                     ? new DownStairs(pos, this.renderFactory)
                     : new UpStairs(pos, this.renderFactory));
             alreadyPresent = false;
-            if (this.items.stream().anyMatch(item -> item.getPosition().equals(pos))
+            if (this.interactables.stream().anyMatch(item -> item.getPosition().equals(pos))
                     || this.player.getPosition().equals(pos)
-                    || this.stairs.stream().anyMatch(stair -> stair.getPosition().equals(pos))
                     || this.temple.getPosition().equals(pos)) {
                 alreadyPresent = true;
             }
             if (!alreadyPresent) {
-                this.stairs.add(temp);
+                this.interactables.add(temp);
             }
         } while (alreadyPresent);
     }

@@ -38,7 +38,7 @@ public class UpStairs implements Stairs {
 
     /** {@inheritDoc} */
     @Override
-    public void Render() {
+    public void render() {
         this.renderer.render();
     }
 
@@ -52,7 +52,6 @@ public class UpStairs implements Stairs {
 
     @Override
     public void update(FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        
     }
 }

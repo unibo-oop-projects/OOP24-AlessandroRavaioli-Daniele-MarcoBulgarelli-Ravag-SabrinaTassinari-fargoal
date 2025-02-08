@@ -95,7 +95,7 @@ public class ChestImpl implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public void Render() {
+    public void render() {
         this.renderer.render();
     }
 

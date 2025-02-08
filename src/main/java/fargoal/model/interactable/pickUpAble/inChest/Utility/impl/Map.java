@@ -80,5 +80,5 @@ public class Map implements Utility {
     
     /** {@inheritDoc} */
     @Override
-    public void Render() {}
+    public void render() {}
 }

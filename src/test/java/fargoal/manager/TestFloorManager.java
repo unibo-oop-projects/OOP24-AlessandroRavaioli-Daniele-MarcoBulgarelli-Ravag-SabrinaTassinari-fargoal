@@ -56,15 +56,16 @@ public class TestFloorManager {
                     }
                 }
             }
-            assertTrue(manager.getItems().size() > 3);
-            var item = manager.getItems();
-            for (int i = 0; i < manager.getItems().size(); i++) {
-                for(int j = 0; j < manager.getItems().size(); j++) {
+            assertTrue(manager.getInteractables().size() > 3);
+            var item = manager.getInteractables();
+            for (int i = 0; i < manager.getInteractables().size(); i++) {
+                for(int j = 0; j < manager.getInteractables().size(); j++) {
                     if (i != j) {
-                        assertNotEquals(item.get(i).getPosition(), manager.getItems().get(j).getPosition());   
+                        assertNotEquals(item.get(i).getPosition(), manager.getInteractables().get(j).getPosition());   
                     }
                 }
             }
+            assertTrue(manager.getFloorMap().isTile(manager.getTemple().getPosition()));
         }
     }
 }

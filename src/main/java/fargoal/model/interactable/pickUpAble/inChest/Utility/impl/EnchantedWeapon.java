@@ -71,6 +71,6 @@ public class EnchantedWeapon implements Utility {
 
     /** {@inheritDoc} */
     @Override
-    public void Render() {}
+    public void render() {}
     
 }

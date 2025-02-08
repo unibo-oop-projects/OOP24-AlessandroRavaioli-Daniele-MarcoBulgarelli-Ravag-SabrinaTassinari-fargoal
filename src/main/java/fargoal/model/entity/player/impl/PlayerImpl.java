@@ -187,7 +187,7 @@ public class PlayerImpl implements Player {
 
     /** {@inheritDoc} */
     @Override
-    public void Render() {
+    public void render() {
         this.render.render();
     }
 

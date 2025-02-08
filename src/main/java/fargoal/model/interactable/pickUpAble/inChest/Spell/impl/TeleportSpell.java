@@ -46,9 +46,9 @@ public class TeleportSpell implements Spell {
     @Override
     public Interactable interact(FloorManager floorManager) {
         Position newPlayerPosition;
-        if (floorManager.getItems().stream().filter(i -> i.getTag() == "BEACON").count() > 0) {
+        if (floorManager.getInteractables().stream().filter(i -> i.getTag() == "BEACON").count() > 0) {
             newPlayerPosition = 
-                floorManager.getItems().stream().filter(i -> i.getTag() == "BEACON").toList().getFirst().getPosition();
+                floorManager.getInteractables().stream().filter(i -> i.getTag() == "BEACON").toList().getFirst().getPosition();
         } else {
             newPlayerPosition = floorManager.getFloorMap().getRandomTile();
         }
@@ -76,5 +76,5 @@ public class TeleportSpell implements Spell {
     
     /** {@inheritDoc} */
     @Override
-    public void Render() {}
+    public void render() {}
 }

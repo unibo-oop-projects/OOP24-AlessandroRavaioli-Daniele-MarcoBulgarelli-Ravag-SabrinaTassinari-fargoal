@@ -68,6 +68,6 @@ public class MagicSack implements Utility{
 
     /** {@inheritDoc} */
     @Override
-    public void Render() {}
+    public void render() {}
     
 }

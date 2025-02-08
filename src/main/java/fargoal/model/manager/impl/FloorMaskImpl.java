@@ -68,15 +68,9 @@ public class FloorMaskImpl implements FloorMask {
             }
         }
 
-        for(var monst: manager.getMonsters()) {
-            if (this.mask.get(monst.getPosition())) {
-                monst.Render();
-            }
-        }
-
-        for(var item : manager.getItems()) {
-            if (this.mask.get(item.getPosition())) {
-                item.Render();
+        for(var element : manager.getAllElements()) {
+            if (this.mask.get(element.getPosition())) {
+                element.render();
             }
         }
     }
