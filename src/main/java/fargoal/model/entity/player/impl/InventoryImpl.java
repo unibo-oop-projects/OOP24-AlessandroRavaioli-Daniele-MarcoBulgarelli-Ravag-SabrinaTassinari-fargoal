@@ -1,7 +1,6 @@
 package fargoal.model.entity.player.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -34,17 +33,17 @@ public class InventoryImpl implements Inventory {
     private final List<Integer> listOfMaps;
 
     private Integer invisibilityScrolls;
-    private InvisibilitySpell invisible = new InvisibilitySpell(null);
+    private InvisibilitySpell invisible = new InvisibilitySpell(floorManager);
     private Integer teleportScrolls;
-    private TeleportSpell teleport = new TeleportSpell(null);
+    private TeleportSpell teleport = new TeleportSpell(floorManager);
     private Integer shieldScrolls;
-    private ShieldSpell shield = new ShieldSpell(null);
+    private ShieldSpell shield = new ShieldSpell(floorManager);
     private Integer regenerationScrolls;
-    private RegenerationSpell regeneration = new RegenerationSpell(null);
+    private RegenerationSpell regeneration = new RegenerationSpell(floorManager);
     private Integer driftScrolls;
-    private DriftSpell drift = new DriftSpell(null);
+    private DriftSpell drift = new DriftSpell(floorManager);
     private Integer lightScrolls;
-    private LightSpell light = new LightSpell(null);
+    private LightSpell light = new LightSpell(floorManager);
     //private Map<InvisibilitySpell, Integer> invisibilityScrolls;
     //private Map<TeleportSpell, Integer> teleportScrolls;
     //private Map<ShieldSpell, Integer> shieldScrolls;
@@ -71,6 +70,7 @@ public class InventoryImpl implements Inventory {
      * </p>
      */
     public InventoryImpl(FloorManager floorManager) {
+        this.floorManager = floorManager;
         this.healingPotions = new LinkedList<>(List.of(new HealingPotion(), new HealingPotion(), new HealingPotion()));
         this.beacons = new LinkedList<>();
         this.magicSacks = 0;

@@ -243,7 +243,7 @@ public class FloorManagerImpl implements FloorManager {
     }    
 
     private void dungeonStart() {
-        this.player = new PlayerImpl();
+        this.player = new PlayerImpl(this);
         initializeFloor();
     }
 

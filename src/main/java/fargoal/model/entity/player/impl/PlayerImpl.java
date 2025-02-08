@@ -60,14 +60,14 @@ public class PlayerImpl implements Player {
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private Renderer render;
 
-    public PlayerImpl() {
+    public PlayerImpl(FloorManager floorManager) {
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
         this.health = new HealthImpl(this.setInitialStat());
         this.skill = setInitialStat();
         this.gold = new GoldImpl();
-        this.inventory = new InventoryImpl();
+        this.inventory = new InventoryImpl(floorManager);
         this.numberOfSlainFoes = 0;
         this.hasSword = false;
         this.isFighting = false;
@@ -76,7 +76,7 @@ public class PlayerImpl implements Player {
         this.hasLight = false;
     }
 
-    public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory) {
+    public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager) {
         startingPosition(floorMap);
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
@@ -84,7 +84,7 @@ public class PlayerImpl implements Player {
         this.health = new HealthImpl(this.setInitialStat());
         this.skill = setInitialStat();
         this.gold = new GoldImpl();
-        this.inventory = new InventoryImpl();
+        this.inventory = new InventoryImpl(floorManager);
         this.numberOfSlainFoes = 0;
         this.hasSword = false;
         this.isFighting = false;
@@ -554,42 +554,42 @@ public class PlayerImpl implements Player {
     @Override
     public void useInvisibilitySpell() {
         if (this.getInventory().getInvisibilityScrolls() > 0) {
-            this.getInventory().getInvisibilitySpell().interact(null);
+            this.getInventory().getInvisibilitySpell().use(null);
         }
     }
 
     @Override
     public void useTeleportSpell() {
         if (this.getInventory().getTeleportScrolls() > 0) {
-            this.getInventory().getTeleportSpell().interact(null);
+            this.getInventory().getTeleportSpell().use(null);
         }
     }
 
     @Override
     public void useShieldSpell() {
         if (this.getInventory().getShieldScrolls() > 0) {
-            this.getInventory().getShieldSpell().interact(null);
+            this.getInventory().getShieldSpell().use(null);
         }
     }
 
     @Override
     public void useRegenerationSpell() {
         if (this.getInventory().getRegenerationScrolls() > 0) {
-            this.getInventory().getRegenerationSpell().interact(null);
+            this.getInventory().getRegenerationSpell().use(null);
         }
     }
 
     @Override
     public void useDriftSpell() {
         if (this.getInventory().getDriftScrolls() > 0) {
-            this.getInventory().getDriftSpell().interact(null);
+            this.getInventory().getDriftSpell().use(null);
         }
     }
 
     @Override
     public void useLightSpell() {
         if (this.getInventory().getLightScrolls() > 0) {
-            this.getInventory().getLightSpell().interact(null);
+            this.getInventory().getLightSpell().use(null);
         }
     }
 }
