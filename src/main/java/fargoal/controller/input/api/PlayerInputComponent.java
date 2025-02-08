@@ -3,6 +3,7 @@ package fargoal.controller.input.api;
 import java.util.Optional;
 
 import fargoal.commons.api.Position;
+import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.impl.PlayerImpl;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
@@ -51,6 +52,11 @@ public class PlayerInputComponent implements InputComponent{
             }
         } else if(controller.isMoveUp() && controller.isMoveRight()) {
             var pos = player.getPosition().add(new Position(1, -1));
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        //TODO
+                    }
             if(manager.getFloorMap().isTile(pos)) {
                 player.setPosition(pos);
             }
