@@ -1,7 +1,6 @@
 package fargoal.view.impl;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.function.Consumer;
 import javax.swing.WindowConstants;

@@ -145,6 +145,7 @@ public class FloorManagerImpl implements FloorManager {
         this.mask.resetMask();
         this.monsters.clear();
         this.items.clear();
+        this.stairs.clear();
         this.player.setPosition(this.map.getRandomTile());
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
         while (this.monsters.size() < MAX_MONSTERS) {
@@ -163,8 +164,14 @@ public class FloorManagerImpl implements FloorManager {
         } while (this.items.stream().anyMatch(item -> item.getPosition().equals(this.temple.getPosition())) 
                 || this.player.getPosition().equals(this.temple.getPosition()));
         int downStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+        while (this.stairs.size() < downStair) {
+            generateStairs(new DownStairs(new Position(0, 0), renderFactory));
+        }
         if (this.floorLevel != 1 || this.player.hasSword()) {
             int upStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+            while (this.stairs.size() < downStair + upStair) {
+                generateStairs(new UpStairs(new Position(0, 0), renderFactory));
+            }
         }
     }
 
@@ -219,7 +226,6 @@ public class FloorManagerImpl implements FloorManager {
     }    
 
     private void dungeonStart() {
-        int nStairs = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
         this.player = new PlayerImpl();
         initializeFloor();
     }
@@ -228,15 +234,18 @@ public class FloorManagerImpl implements FloorManager {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
-            Stairs temp = type;
+            Stairs temp = (type.getTag().equals("DownStairs")
+                    ? new DownStairs(pos, this.renderFactory)
+                    : new UpStairs(pos, this.renderFactory));
             alreadyPresent = false;
-            for (int i = 0; i < this.items.size(); i++) {
-                if (this.items.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
-                    alreadyPresent = true;
-                }
+            if (this.items.stream().anyMatch(item -> item.getPosition().equals(pos))
+                    || this.player.getPosition().equals(pos)
+                    || this.stairs.stream().anyMatch(stair -> stair.getPosition().equals(pos))
+                    || this.temple.getPosition().equals(pos)) {
+                alreadyPresent = true;
             }
             if (!alreadyPresent) {
-                this.items.add(temp);
+                this.stairs.add(temp);
             }
         } while (alreadyPresent);
     }
