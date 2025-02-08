@@ -1,7 +1,6 @@
 package fargoal.model.interactable.pickUpAble.insideChest.impl;
 
 import fargoal.commons.api.Position;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.InvisibilitySpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
