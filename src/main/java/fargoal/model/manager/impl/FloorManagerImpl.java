@@ -123,6 +123,7 @@ public class FloorManagerImpl implements FloorManager {
         return this.renderFactory;
     }
 
+    /** {@inheritDoc} */
     @Override
     public List<FloorElement> getAllElements() {
         List<FloorElement> elements = new LinkedList<>(this.interactables);
