@@ -90,7 +90,7 @@ public final class Ai {
                     .collect(Collectors.toList());
             possibleDirections.removeAll(positionList);
         }
-
+        
         final int xDistance = Math.abs(monster.getPosition().x() - player.getPosition().x());
         final int yDistance = Math.abs(monster.getPosition().y() - player.getPosition().y());
         boolean xMonsterBigger = false;
@@ -364,6 +364,5 @@ public final class Ai {
                 monster.addFirstPosition(pos);
             }
         }
-        System.out.println("Mi sono mosso" + monster.getFloorManager().getMonsters().indexOf(monster)); 
     }
 }

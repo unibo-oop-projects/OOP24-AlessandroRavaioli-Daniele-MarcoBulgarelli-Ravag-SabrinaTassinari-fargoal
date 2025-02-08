@@ -40,7 +40,7 @@ public class FloorMaskImpl implements FloorMask {
     public void resetMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
             for (int j = 0; j < FLOOR_HEIGTH; j++) {
-                mask.put(new Position(i, j), false);
+                mask.put(new Position(i, j), true);
             }
         }
     }
