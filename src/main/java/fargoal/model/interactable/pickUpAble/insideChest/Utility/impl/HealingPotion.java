@@ -52,6 +52,7 @@ public class HealingPotion implements Utility {
         this.addUtility();
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getNumberInInventory() {
         return this.numberInInventory;
@@ -61,6 +62,7 @@ public class HealingPotion implements Utility {
         this.numberInInventory++;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeUtility() {
         this.numberInInventory--;

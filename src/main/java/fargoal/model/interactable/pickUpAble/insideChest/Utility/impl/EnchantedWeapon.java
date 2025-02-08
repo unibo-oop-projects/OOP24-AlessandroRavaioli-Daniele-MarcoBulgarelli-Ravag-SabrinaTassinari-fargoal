@@ -48,6 +48,7 @@ public class EnchantedWeapon implements Utility {
         floorManager.getPlayer().increasePlayerSkill(skillToAdd);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getNumberInInventory() {
         return this.numberInInventory;
@@ -57,6 +58,7 @@ public class EnchantedWeapon implements Utility {
         this.numberInInventory++;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeUtility() {
         this.numberInInventory--;

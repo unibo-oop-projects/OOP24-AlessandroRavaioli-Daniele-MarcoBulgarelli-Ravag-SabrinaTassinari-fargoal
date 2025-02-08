@@ -57,6 +57,7 @@ public class Map implements Utility {
         this.addUtility(this.getMapLevel());
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getNumberInInventory() {
         return this.listOfMaps.size();
@@ -75,6 +76,7 @@ public class Map implements Utility {
         }   
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeUtility() {
         this.listOfMaps.removeFirst();

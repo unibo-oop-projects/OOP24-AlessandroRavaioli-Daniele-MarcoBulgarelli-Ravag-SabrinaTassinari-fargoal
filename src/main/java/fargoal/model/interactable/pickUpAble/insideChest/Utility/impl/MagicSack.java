@@ -44,6 +44,7 @@ public class MagicSack implements Utility {
         floorManager.getPlayer().getPlayerGold().setMaxCapacity(floorManager.getPlayer().getMaxGoldCapacity() + GOLD_CARRIED_BY_MAGIC_SACK);
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getNumberInInventory() {
         return this.numberInInventory;
@@ -53,6 +54,7 @@ public class MagicSack implements Utility {
         this.numberInInventory++;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeUtility() {
         this.numberInInventory--;

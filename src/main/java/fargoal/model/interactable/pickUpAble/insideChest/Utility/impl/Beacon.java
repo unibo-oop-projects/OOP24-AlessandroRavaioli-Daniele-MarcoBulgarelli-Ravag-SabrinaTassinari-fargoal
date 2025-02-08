@@ -48,6 +48,7 @@ public class Beacon implements Utility {
         this.addUtility();
     }
 
+    /** {@inheritDoc} */
     @Override
     public int getNumberInInventory() {
         return this.numberInInventory;
@@ -57,6 +58,7 @@ public class Beacon implements Utility {
         this.numberInInventory++;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeUtility() {
         if (this.numberInInventory > 0) {
