@@ -159,4 +159,18 @@ public interface Player extends Entity {
     void levelUp();
 
     void setIsImmune(Boolean condition);
+
+    void removeRegenerationScroll();
+
+    void useInvisibilitySpell();
+
+    void useTeleportSpell();
+
+    void useShieldSpell();
+
+    void useRegenerationSpell();
+
+    void useDriftSpell();
+
+    void useLightSpell();
 }

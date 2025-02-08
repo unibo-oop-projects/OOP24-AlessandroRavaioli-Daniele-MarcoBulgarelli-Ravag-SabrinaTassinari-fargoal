@@ -126,7 +126,7 @@ public interface Inventory {
      * 
      * @param scroll - The invisibility scroll to be added, must not be null.
      */
-    public void addInvisibilityScroll(InvisibilitySpell scroll);
+    public void addInvisibilityScroll();
 
     /**
      * Removes an invisibility scroll from the player's inventory.
@@ -140,7 +140,7 @@ public interface Inventory {
      * 
      * @param scroll - The teleportation scroll to be added, must not be null.
      */
-    public void addTeleportScroll(TeleportSpell scroll);
+    public void addTeleportScroll();
 
     /**
      * Removes a teleportation scroll from the player's inventory.
@@ -154,7 +154,7 @@ public interface Inventory {
      * 
      * @param scroll - The shield scroll to be added, must not be null.
      */
-    public void addShieldScroll(ShieldSpell scroll);
+    public void addShieldScroll();
 
     /**
      * Removes a shield scroll from the player's inventory.
@@ -212,7 +212,7 @@ public interface Inventory {
      * 
      * @param scroll - The drift scroll to be added, must not be null.
      */
-    public void addDriftScroll(DriftSpell scroll);
+    public void addDriftScroll();
 
     /**
      * Removes a drift scroll from the player's inventory.
@@ -226,7 +226,7 @@ public interface Inventory {
      * 
      * @param scroll - The light scroll to be added, must not be null.
      */
-    public void addLightScroll(LightSpell scroll);
+    public void addLightScroll();
 
     /**
      * Removes a light scroll from the player's inventory.
@@ -240,12 +240,24 @@ public interface Inventory {
      * 
      * @param scroll - The regeneration scroll to be added, must not be null.
      */
-    public void addRegenerationScroll(RegenerationSpell scroll);
+    public void addRegenerationScroll();
 
     /**
      * Removes a regeneration scroll from the player's inventory.
      * 
      * @throws IllegalStateException if there are no regeneration scrolls in the inventory.
     */
-    public void removeRegenerationScroll();
+    void removeRegenerationScroll();
+
+    InvisibilitySpell getInvisibilitySpell();
+
+    TeleportSpell getTeleportSpell();
+
+    ShieldSpell getShieldSpell();
+
+    RegenerationSpell getRegenerationSpell();
+
+    DriftSpell getDriftSpell();
+
+    LightSpell getLightSpell();
 }

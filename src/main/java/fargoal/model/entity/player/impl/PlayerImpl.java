@@ -550,4 +550,46 @@ public class PlayerImpl implements Player {
     public void stopRegeneration() {
         scheduler.shutdown();
     }
+
+    @Override
+    public void useInvisibilitySpell() {
+        if (this.getInventory().getInvisibilityScrolls() > 0) {
+            this.getInventory().getInvisibilitySpell().interact(null);
+        }
+    }
+
+    @Override
+    public void useTeleportSpell() {
+        if (this.getInventory().getTeleportScrolls() > 0) {
+            this.getInventory().getTeleportSpell().interact(null);
+        }
+    }
+
+    @Override
+    public void useShieldSpell() {
+        if (this.getInventory().getShieldScrolls() > 0) {
+            this.getInventory().getShieldSpell().interact(null);
+        }
+    }
+
+    @Override
+    public void useRegenerationSpell() {
+        if (this.getInventory().getRegenerationScrolls() > 0) {
+            this.getInventory().getRegenerationSpell().interact(null);
+        }
+    }
+
+    @Override
+    public void useDriftSpell() {
+        if (this.getInventory().getDriftScrolls() > 0) {
+            this.getInventory().getDriftSpell().interact(null);
+        }
+    }
+
+    @Override
+    public void useLightSpell() {
+        if (this.getInventory().getLightScrolls() > 0) {
+            this.getInventory().getLightSpell().interact(null);
+        }
+    }
 }

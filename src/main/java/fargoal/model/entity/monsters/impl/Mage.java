@@ -12,7 +12,7 @@ import fargoal.view.api.RenderFactory;
 /**
  * A class that develops the monster Mage:
  * an enemy who steals spells at the player when he's close
- * and looks like one of the other monsters. 
+ * and looks like one of the other monsters.
  */
 public class Mage extends AbstractMonster {
 
