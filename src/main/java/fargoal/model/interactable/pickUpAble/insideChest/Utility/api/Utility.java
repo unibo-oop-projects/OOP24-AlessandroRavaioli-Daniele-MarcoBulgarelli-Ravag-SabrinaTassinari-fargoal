@@ -4,8 +4,18 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 
 public interface Utility extends ItemsForInventory {
     
+    /**
+     * Method to check how many utility of
+     * this type are present.
+     * 
+     * @return the number of utility the type is called on
+     */
     int getNumberInInventory();
 
+    /**
+     * Remove a single utility of the type is called on
+     * from the Inventory.
+     */
     void removeUtility();
 
 }
