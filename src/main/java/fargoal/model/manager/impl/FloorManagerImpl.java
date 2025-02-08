@@ -56,7 +56,7 @@ public class FloorManagerImpl implements FloorManager {
         this.floorLevel = 1;
         this.interactables = new LinkedList<>();
         this.renderFactory = new SwingRenderFactory(context.getView());
-        dungeonStart();
+        this.dungeonStart();
     }
 
     /**

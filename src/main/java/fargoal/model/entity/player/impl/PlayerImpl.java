@@ -11,7 +11,6 @@ import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;

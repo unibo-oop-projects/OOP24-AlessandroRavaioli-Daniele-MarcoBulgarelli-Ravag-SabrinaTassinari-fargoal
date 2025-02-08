@@ -33,17 +33,17 @@ public class InventoryImpl implements Inventory {
     private final List<Integer> listOfMaps;
 
     private Integer invisibilityScrolls;
-    private InvisibilitySpell invisible = new InvisibilitySpell(floorManager);
+    private InvisibilitySpell invisible;
     private Integer teleportScrolls;
-    private TeleportSpell teleport = new TeleportSpell(floorManager);
+    private TeleportSpell teleport;
     private Integer shieldScrolls;
-    private ShieldSpell shield = new ShieldSpell(floorManager);
+    private ShieldSpell shield;
     private Integer regenerationScrolls;
-    private RegenerationSpell regeneration = new RegenerationSpell(floorManager);
+    private RegenerationSpell regeneration;
     private Integer driftScrolls;
-    private DriftSpell drift = new DriftSpell(floorManager);
+    private DriftSpell drift;
     private Integer lightScrolls;
-    private LightSpell light = new LightSpell(floorManager);
+    private LightSpell light;
     //private Map<InvisibilitySpell, Integer> invisibilityScrolls;
     //private Map<TeleportSpell, Integer> teleportScrolls;
     //private Map<ShieldSpell, Integer> shieldScrolls;
@@ -77,11 +77,17 @@ public class InventoryImpl implements Inventory {
         this.enchantedWeapons = 0;
         this.listOfMaps = new ArrayList<>();
         this.invisibilityScrolls = 0;
+        this.invisible = new InvisibilitySpell(floorManager);
         this.teleportScrolls = 0;
+        this.teleport = new TeleportSpell(floorManager);
         this.shieldScrolls = 0;
+        this.shield = new ShieldSpell(floorManager);
         this.regenerationScrolls = 0;
+        this.regeneration = new RegenerationSpell(floorManager);
         this.driftScrolls = 0;
+        this.drift = new DriftSpell(floorManager);
         this.lightScrolls = 0;
+        this.light = new LightSpell(floorManager);
         this.SpellCasted = Map.of(SpellType.DRIFT.getName(), false, SpellType.INVISIBILITY.getName(), false, 
             SpellType.LIGHT.getName(), false, SpellType.REGENERATION.getName(), false, 
             SpellType.SHIELD.getName(), false);
