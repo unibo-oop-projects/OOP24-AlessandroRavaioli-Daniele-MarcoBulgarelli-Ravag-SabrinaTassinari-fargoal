@@ -47,7 +47,7 @@ public class RegenerationSpell implements Spell {
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), true);
-        floorManager.getPlayer().getInventory().removeRegenerationScroll(this);
+        floorManager.getPlayer().getInventory().removeRegenerationScroll();
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }

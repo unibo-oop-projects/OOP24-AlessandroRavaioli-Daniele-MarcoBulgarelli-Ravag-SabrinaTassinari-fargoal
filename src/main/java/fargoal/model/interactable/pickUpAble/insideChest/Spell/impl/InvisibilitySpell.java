@@ -49,7 +49,7 @@ public class InvisibilitySpell implements Spell {
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().setIsVisible(false);
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), true);
-        floorManager.getPlayer().getInventory().removeInvisibilityScroll(this);
+        floorManager.getPlayer().getInventory().removeInvisibilityScroll();
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }

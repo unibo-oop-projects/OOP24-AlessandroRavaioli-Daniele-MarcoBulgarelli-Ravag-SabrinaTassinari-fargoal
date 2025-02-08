@@ -49,7 +49,7 @@ public class ShieldSpell implements Spell {
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);
-        floorManager.getPlayer().getInventory().removeShieldScroll(this);
+        floorManager.getPlayer().getInventory().removeShieldScroll();
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }

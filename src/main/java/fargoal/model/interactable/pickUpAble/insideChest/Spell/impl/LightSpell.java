@@ -48,7 +48,7 @@ public class LightSpell implements Spell {
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
-        floorManager.getPlayer().getInventory().removeLightScroll(this);
+        floorManager.getPlayer().getInventory().removeLightScroll();
         if (!floorManager.getPlayer().isVisible()) {
             floorManager.getPlayer().setIsVisible(true);
         }

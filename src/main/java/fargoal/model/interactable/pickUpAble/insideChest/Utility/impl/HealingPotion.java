@@ -47,7 +47,7 @@ public class HealingPotion implements Utility {
     public Interactable interact(FloorManager floorManager) {
         int healthToAdd = new Random().nextInt(19) + 3 * floorManager.getPlayer().getLevel();
         floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd);
-        floorManager.getPlayer().getInventory().removeHealingPotion(this);
+        floorManager.getPlayer().getInventory().removeHealingPotion();
         return this;
     }
 

@@ -116,11 +116,10 @@ public interface Inventory {
     /**
      * Removes a healing potion from the player's inventory.
      * 
-     * @param h - The healing potion to be removed, must not be null.
      * 
      * @throws IllegalStateException if there are no healing potions in the inventory.
     */
-    public void removeHealingPotion(HealingPotion h);
+    public void removeHealingPotion();
 
     /**
      * Adds an invisibility scroll to the player's inventory.
@@ -132,11 +131,9 @@ public interface Inventory {
     /**
      * Removes an invisibility scroll from the player's inventory.
      * 
-     * @param scroll - The invisibility scroll to be removed, must not be null.
-     * 
      * @throws IllegalStateException if there are no invisibility scrolls in the inventory.
     */
-    public void removeInvisibilityScroll(InvisibilitySpell scroll);
+    public void removeInvisibilityScroll();
 
     /**
      * Adds a teleportation scroll to the player's inventory.
@@ -148,11 +145,9 @@ public interface Inventory {
     /**
      * Removes a teleportation scroll from the player's inventory.
      * 
-     * @param scroll - The teleportation scroll to be removed, must not be null.
-     * 
      * @throws IllegalStateException if there are no teleportation scrolls in the inventory.
     */
-    public void removeTeleportScroll(TeleportSpell scroll);
+    public void removeTeleportScroll();
 
     /**
      * Adds a shield scroll to the player's inventory.
@@ -164,11 +159,9 @@ public interface Inventory {
     /**
      * Removes a shield scroll from the player's inventory.
      * 
-     * @param scroll - The shield scroll to be removed, must not be null.
-     * 
      * @throws IllegalStateException if there are no shield scrolls in the inventory.
     */
-    public void removeShieldScroll(ShieldSpell scroll);
+    public void removeShieldScroll();
 
     /**
      * Adds a magic sack to the player's inventory.
@@ -210,11 +203,9 @@ public interface Inventory {
     /**
      * Removes a beacon from the player's inventory.
      * 
-     * @param b - The beacon to be removed, must not be null.
-     * 
      * @throws IllegalStateException if there are no beacons in the inventory.
     */
-    public void removeBeacon(Beacon b);
+    public void removeBeacon();
 
     /**
      * Adds a drift scroll to the player's inventory.
@@ -226,11 +217,9 @@ public interface Inventory {
     /**
      * Removes a drift scroll from the player's inventory.
      * 
-     * @param scroll - The drift scroll to be removed, must not be null.
-     * 
      * @throws IllegalStateException if there are no drift scrolls in the inventory.
     */
-    public void removeDriftScroll(DriftSpell scroll);
+    public void removeDriftScroll();
 
     /**
      * Adds a light scroll to the player's inventory.
@@ -242,11 +231,9 @@ public interface Inventory {
     /**
      * Removes a light scroll from the player's inventory.
      * 
-     * @param scroll - The light scroll to be removed, must not be null.
-     * 
      * @throws IllegalStateException if there are no light scrolls in the inventory.
     */
-    public void removeLightScroll(LightSpell scroll);
+    public void removeLightScroll();
 
     /**
      * Adds a regeneration scroll to the player's inventory.
@@ -258,9 +245,7 @@ public interface Inventory {
     /**
      * Removes a regeneration scroll from the player's inventory.
      * 
-     * @param scroll - The regeneration scroll to be removed, must not be null.
-     * 
      * @throws IllegalStateException if there are no regeneration scrolls in the inventory.
     */
-    public void removeRegenerationScroll(RegenerationSpell scroll);
+    public void removeRegenerationScroll();
 }
