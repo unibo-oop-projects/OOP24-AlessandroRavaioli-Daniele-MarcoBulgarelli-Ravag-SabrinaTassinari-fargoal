@@ -12,6 +12,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class LightSpell implements Spell {
 
+    private int cont;
     private int floorLevelSpellCasted;
 
     /**
@@ -19,7 +20,7 @@ public class LightSpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public LightSpell(FloorManager floorManager) {
-    
+        this.cont = 0;
     }
 
     /** {@inheritDoc} */
@@ -84,6 +85,23 @@ public class LightSpell implements Spell {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), false);
                 floorManager.getPlayer().setHasLight(false);
             }
+        }
+    }
+
+    @Override
+    public Integer getQuantity() {
+        return this.cont;
+    }
+
+    @Override
+    public void addSpell() {
+        this.cont++;
+    }
+
+    @Override
+    public void removeSpell() {
+        if (this.cont > 0) {
+            this.cont--;
         }
     }
     

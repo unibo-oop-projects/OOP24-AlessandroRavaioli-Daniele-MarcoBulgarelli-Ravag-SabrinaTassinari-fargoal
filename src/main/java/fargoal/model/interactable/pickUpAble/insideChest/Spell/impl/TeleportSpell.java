@@ -12,12 +12,14 @@ import fargoal.model.manager.api.FloorManager;
 */
 public class TeleportSpell implements Spell {
 
+    private int cont;
+
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
     public TeleportSpell(FloorManager floorManager) {
-        
+        this.cont = 0;
     }
 
     /** {@inheritDoc} */
@@ -55,6 +57,23 @@ public class TeleportSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
+    }
+
+    @Override
+    public Integer getQuantity() {
+        return this.cont;
+    }
+
+    @Override
+    public void addSpell() {
+        this.cont++;
+    }
+
+    @Override
+    public void removeSpell() {
+        if (this.cont > 0) {
+            this.cont--;
+        }
     }
     
 }

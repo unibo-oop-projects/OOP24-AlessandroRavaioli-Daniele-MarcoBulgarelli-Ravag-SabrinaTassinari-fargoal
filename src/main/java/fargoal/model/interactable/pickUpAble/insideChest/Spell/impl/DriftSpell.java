@@ -10,6 +10,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class DriftSpell implements Spell{
 
+    private int cont;
     private int floorLevelSpellCasted;
 
     /**
@@ -19,7 +20,7 @@ public class DriftSpell implements Spell{
      * the spell ends.
      */
     public DriftSpell(FloorManager floorManager) {
-    
+        this.cont = 0;
     }
 
     /** {@inheritDoc} */
@@ -63,6 +64,23 @@ public class DriftSpell implements Spell{
             if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
             }
+        }
+    }
+
+    @Override
+    public Integer getQuantity() {
+        return this.cont;
+    }
+
+    @Override
+    public void addSpell() {
+        this.cont++;
+    }
+
+    @Override
+    public void removeSpell() {
+        if (this.cont > 0) {
+            this.cont--;
         }
     }
 

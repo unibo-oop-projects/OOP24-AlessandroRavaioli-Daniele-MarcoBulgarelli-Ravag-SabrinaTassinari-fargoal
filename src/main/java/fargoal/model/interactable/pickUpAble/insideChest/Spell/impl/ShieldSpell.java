@@ -12,6 +12,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class ShieldSpell implements Spell {
 
+    private int cont;
     private int floorLevelSpellCasted;
 
     /**
@@ -20,7 +21,7 @@ public class ShieldSpell implements Spell {
      * 
      */
     public ShieldSpell(FloorManager floorManager) {
-    
+        this.cont = 0;
     }
 
     /** {@inheritDoc} */
@@ -64,6 +65,23 @@ public class ShieldSpell implements Spell {
             if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), false);
             }
+        }
+    }
+
+    @Override
+    public Integer getQuantity() {
+        return this.cont;
+    }
+
+    @Override
+    public void addSpell() {
+        this.cont++;
+    }
+
+    @Override
+    public void removeSpell() {
+        if (this.cont > 0) {
+            this.cont--;
         }
     }
 

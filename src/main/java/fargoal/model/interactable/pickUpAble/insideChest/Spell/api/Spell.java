@@ -7,6 +7,12 @@ import fargoal.model.manager.api.FloorManager;
  * This is the interface for the spells the player can find in a chest.
  */
 public interface Spell extends ItemsForInventory {
-    
+
     void update(FloorManager floorManager);
+
+    Integer getQuantity();
+
+    void addSpell();
+
+    void removeSpell();
 }

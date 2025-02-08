@@ -11,6 +11,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class RegenerationSpell implements Spell {
 
+    private int cont;
     private int floorLevelSpellCasted;
 
     /**
@@ -18,7 +19,7 @@ public class RegenerationSpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public RegenerationSpell(FloorManager floorManager) {
-    
+        this.cont = 0;
     }
 
     /** {@inheritDoc} */
@@ -62,6 +63,23 @@ public class RegenerationSpell implements Spell {
             if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), false);
             }
+        }
+    }
+
+    @Override
+    public Integer getQuantity() {
+        return this.cont;
+    }
+
+    @Override
+    public void addSpell() {
+        this.cont++;
+    }
+
+    @Override
+    public void removeSpell() {
+        if (this.cont > 0) {
+            this.cont--;
         }
     }
 
