@@ -69,4 +69,8 @@ public class Beacon implements Utility {
     public void store(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().addBeacon();
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }

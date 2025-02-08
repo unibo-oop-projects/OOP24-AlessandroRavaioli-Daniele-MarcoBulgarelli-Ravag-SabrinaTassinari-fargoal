@@ -74,4 +74,7 @@ public class TeleportSpell implements Spell {
     public void update(FloorManager floorManager) {
     }
     
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }

@@ -82,5 +82,9 @@ public class RegenerationSpell implements Spell {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), false);
             }
         }
-    }    
+    }
+    
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }

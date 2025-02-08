@@ -57,12 +57,10 @@ public class Temple implements Interactable {
         return "TEMPLE";
     }
 
-    /**
-     * Getter for field renderer.
-     * @return the renderer.
-     */
-    public Renderer getRenderer() {
-        return this.renderer;
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {
+        this.renderer.render();
     }
 
     /**

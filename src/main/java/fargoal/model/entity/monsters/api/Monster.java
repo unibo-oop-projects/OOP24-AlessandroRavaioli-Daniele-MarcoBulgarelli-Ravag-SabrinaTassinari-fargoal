@@ -37,13 +37,6 @@ public interface Monster extends Entity {
     public Integer getLevel();
 
     /**
-     * Method that return the render of this Monster.
-     * 
-     * @return the render field
-     */
-    public Renderer getRender();
-
-    /**
      * Set the new Position of the Monster.
      * 
      * @param position - the new Position

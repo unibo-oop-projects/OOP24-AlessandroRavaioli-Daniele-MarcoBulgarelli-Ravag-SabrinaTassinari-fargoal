@@ -166,8 +166,8 @@ public abstract class AbstractMonster implements Monster {
 
     /** {@inheritDoc} */
     @Override
-    public Renderer getRender() {
-        return this.render;
+    public void Render() {
+        render.render();
     }
 
     /**

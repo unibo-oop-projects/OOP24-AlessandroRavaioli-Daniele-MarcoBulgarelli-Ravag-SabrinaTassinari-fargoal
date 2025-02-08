@@ -86,4 +86,7 @@ public class ShieldSpell implements Spell {
         }
     }
     
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }

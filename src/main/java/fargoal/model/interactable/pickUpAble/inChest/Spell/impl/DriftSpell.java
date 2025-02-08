@@ -85,4 +85,8 @@ public class DriftSpell implements Spell{
         }
     }
 
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
+
 }

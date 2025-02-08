@@ -29,4 +29,11 @@ public interface FloorElement {
      * @param floorManager - to get infos about all the other elements in the map
      */
     void update(FloorManager floorManager);
+
+    /**
+     * Method that call the method render of the
+     * Entity and put the Object in the queue of
+     * the Object to be drawn.
+     */
+    void Render();
 }

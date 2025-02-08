@@ -72,4 +72,7 @@ public class Pit implements ChestItem {
     public void update(FloorManager floorManager) {
     }
     
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }

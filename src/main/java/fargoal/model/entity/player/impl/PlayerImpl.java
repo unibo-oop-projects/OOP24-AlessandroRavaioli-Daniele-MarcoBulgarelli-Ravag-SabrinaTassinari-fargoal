@@ -185,14 +185,10 @@ public class PlayerImpl implements Player {
         }
     }
 
-    /**
-     * Retrieves the current renderer associated with the player.
-     * This method returns the renderer responsible for rendering the player's visuals.
-     * 
-     * @return The {@link Renderer} instance currently assigned to the player.
-     */
-    public Renderer getRenderer() {
-        return this.render;
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {
+        this.render.render();
     }
 
     /**{@inheritDoc}*/

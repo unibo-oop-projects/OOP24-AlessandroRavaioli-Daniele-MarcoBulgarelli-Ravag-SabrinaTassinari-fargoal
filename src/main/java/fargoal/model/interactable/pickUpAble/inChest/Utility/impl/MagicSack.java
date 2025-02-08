@@ -66,6 +66,8 @@ public class MagicSack implements Utility{
         floorManager.getPlayer().getPlayerGold().setMaxCapacity(floorManager.getPlayer().getMaxGoldCapacity() + GOLD_CARRIED_BY_MAGIC_SACK);
     }
 
-    
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
     
 }

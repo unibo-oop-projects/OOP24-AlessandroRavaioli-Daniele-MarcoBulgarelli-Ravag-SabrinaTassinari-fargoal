@@ -106,4 +106,7 @@ public class LightSpell implements Spell {
         }
     }
     
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }

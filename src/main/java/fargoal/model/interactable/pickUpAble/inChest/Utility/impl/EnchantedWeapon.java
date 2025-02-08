@@ -68,5 +68,9 @@ public class EnchantedWeapon implements Utility {
         int skillToAdd = new Random().nextInt(9) + 5;
         floorManager.getPlayer().increasePlayerSkill(skillToAdd);
     }
+
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
     
 }

@@ -70,4 +70,7 @@ public class HealingPotion implements Utility {
         floorManager.getPlayer().getInventory().addHealingPotion();
     }
     
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }

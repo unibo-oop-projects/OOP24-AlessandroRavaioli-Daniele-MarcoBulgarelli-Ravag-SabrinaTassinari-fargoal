@@ -40,7 +40,7 @@ public class FloorMaskImpl implements FloorMask {
     public void resetMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
             for (int j = 0; j < FLOOR_HEIGTH; j++) {
-                mask.put(new Position(i, j), false);
+                mask.put(new Position(i, j), true);
             }
         }
     }
@@ -70,7 +70,13 @@ public class FloorMaskImpl implements FloorMask {
 
         for(var monst: manager.getMonsters()) {
             if (this.mask.get(monst.getPosition())) {
-                monst.getRender().render();
+                monst.Render();
+            }
+        }
+
+        for(var item : manager.getItems()) {
+            if (this.mask.get(item.getPosition())) {
+                item.Render();
             }
         }
     }

@@ -68,12 +68,10 @@ public class SackOfMoney implements Interactable{
         return new Random().nextInt(130) + 20;
     }
 
-    /**
-     * Getter for the field renderer.
-     * @return the renderer.
-     */
-    public Renderer getRenderer() {
-        return this.renderer;
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {
+        this.renderer.render();
     }
 
     /**

@@ -77,4 +77,8 @@ public class Map implements Utility {
     public void store(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().addFloorMap(this.mapLevel);
     }
+    
+    /** {@inheritDoc} */
+    @Override
+    public void Render() {}
 }
