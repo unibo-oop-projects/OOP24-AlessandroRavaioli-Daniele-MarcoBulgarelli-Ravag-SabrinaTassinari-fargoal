@@ -1,27 +1,22 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
+package fargoal.model.interactable.pickUpAble.insideChest.Utility;
 
-import fargoal.commons.api.Position;
-import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
+import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements a Magic Sack, which the player found in a chest.
  */
-public class MagicSack implements Utility{
+public class MagicSack implements ItemsForInventory{
 
     final static int GOLD_CARRIED_BY_MAGIC_SACK = 100;
-    final Position position;
 
     /**
      * This is the constructor of the class. It stores right away the item in the player's inventory.
      * @param floorManager - it contains all the element of the floor in which the item was found.
-     * @param position - this is the position of the chest that contained the item.
      */
-    public MagicSack(FloorManager floorManager, final Position position) {
+    public MagicSack(FloorManager floorManager) {
         this.store(floorManager);
-        this.position = position;
     }
 
     /** {@inheritDoc} */
@@ -38,25 +33,7 @@ public class MagicSack implements Utility{
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
-        return this;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public Position getPosition() {
-        return this.position;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getTag() {
-        return this.getChestItemName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void update(FloorManager floorManager) {
+    public void use(FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -66,8 +43,4 @@ public class MagicSack implements Utility{
         floorManager.getPlayer().getPlayerGold().setMaxCapacity(floorManager.getPlayer().getMaxGoldCapacity() + GOLD_CARRIED_BY_MAGIC_SACK);
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public void render() {}
-    
 }

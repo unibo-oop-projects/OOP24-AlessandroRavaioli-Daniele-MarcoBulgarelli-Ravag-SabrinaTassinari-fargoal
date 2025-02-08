@@ -1,11 +1,9 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
+package fargoal.model.interactable.pickUpAble.insideChest.Utility;
 
 import java.util.Random;
 
-import fargoal.commons.api.Position;
-import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
+import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 import fargoal.model.manager.api.FloorManager;
 
 /**
@@ -13,9 +11,8 @@ import fargoal.model.manager.api.FloorManager;
  * The map reveal a determined floor (between first floor and twenth floor) and when the player 
  * goes in that specific floor he knows all the element in it.
  */
-public class Map implements Utility {
+public class Map implements ItemsForInventory {
 
-    final Position position;
     final int mapLevel;
 
     /**
@@ -23,9 +20,8 @@ public class Map implements Utility {
      * @param floorManager - it contains all the element of the floor.
      * @param position - this is the position of the chest the map was found in.
      */
-    public Map(FloorManager floorManager, final Position position) {
+    public Map(FloorManager floorManager) {
         this.store(floorManager);
-        this.position = position;
         this.mapLevel = this.getMapLevel();
     }
 
@@ -51,25 +47,7 @@ public class Map implements Utility {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
-        return this;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public Position getPosition() {
-        return this.position;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getTag() {
-        return this.getChestItemName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void update(FloorManager floorManager) {
+    public void use(FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -78,7 +56,4 @@ public class Map implements Utility {
         floorManager.getPlayer().getInventory().addFloorMap(this.mapLevel);
     }
     
-    /** {@inheritDoc} */
-    @Override
-    public void render() {}
 }

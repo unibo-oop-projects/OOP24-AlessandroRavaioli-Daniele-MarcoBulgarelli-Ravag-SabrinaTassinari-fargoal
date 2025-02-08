@@ -1,7 +1,5 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 
-import fargoal.commons.api.Position;
-import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -14,7 +12,6 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class ShieldSpell implements Spell {
 
-    final private Position position;
     private int floorLevelSpellCasted;
 
     /**
@@ -22,9 +19,8 @@ public class ShieldSpell implements Spell {
      * it is stored immediately in the player's inventory.
      * 
      */
-    public ShieldSpell(FloorManager floorManager, final Position position) {
+    public ShieldSpell(FloorManager floorManager) {
         this.store(floorManager);
-        this.position = position;
     }
 
     /** {@inheritDoc} */
@@ -47,23 +43,10 @@ public class ShieldSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public void use(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);
         floorManager.getPlayer().getInventory().removeShieldScroll();
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
-        return this;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public Position getPosition() {
-        return this.position;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getTag() {
-        return this.getChestItemName();
     }
 
     /**
@@ -83,8 +66,5 @@ public class ShieldSpell implements Spell {
             }
         }
     }
-    
-    /** {@inheritDoc} */
-    @Override
-    public void render() {}
+
 }

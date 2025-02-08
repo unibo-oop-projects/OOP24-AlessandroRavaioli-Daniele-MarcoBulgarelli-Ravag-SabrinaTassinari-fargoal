@@ -1,7 +1,6 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 
 import fargoal.commons.api.Position;
-import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -13,15 +12,12 @@ import fargoal.model.manager.api.FloorManager;
 */
 public class TeleportSpell implements Spell {
 
-    final Position position;
-
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
-    public TeleportSpell(FloorManager floorManager, final Position position) {
+    public TeleportSpell(FloorManager floorManager) {
         this.store(floorManager);
-        this.position = position;
     }
 
     /** {@inheritDoc} */
@@ -44,7 +40,7 @@ public class TeleportSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public void use(FloorManager floorManager) {
         Position newPlayerPosition;
         if (floorManager.getInteractables().stream().filter(i -> i.getTag() == "BEACON").count() > 0) {
             newPlayerPosition = 
@@ -54,19 +50,6 @@ public class TeleportSpell implements Spell {
         }
         floorManager.getPlayer().setPosition(newPlayerPosition);
         floorManager.getPlayer().getInventory().removeTeleportScroll();
-        return this;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public Position getPosition() {
-        return this.position;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getTag() {
-        return this.getChestItemName();
     }
 
     /** {@inheritDoc} */
@@ -74,7 +57,4 @@ public class TeleportSpell implements Spell {
     public void update(FloorManager floorManager) {
     }
     
-    /** {@inheritDoc} */
-    @Override
-    public void render() {}
 }

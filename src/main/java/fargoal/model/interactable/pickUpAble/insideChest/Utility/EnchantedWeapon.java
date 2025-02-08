@@ -1,29 +1,24 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
+package fargoal.model.interactable.pickUpAble.insideChest.Utility;
 
 import java.util.Random;
 
-import fargoal.commons.api.Position;
-import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
+import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 import fargoal.model.manager.api.FloorManager;
 
 /**
  * This is the class that implements an Enchanted Weapon, which the player found in a chest.
  * It increase the combat skill of the player.
  */
-public class EnchantedWeapon implements Utility {
-
-    final Position position;
+public class EnchantedWeapon implements ItemsForInventory {
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
      * @param floorManager - it contains all the element of the floor the item is.
      * @param position - this is the position of the chest the item was found.
      */
-    public EnchantedWeapon(FloorManager floorManager, final Position position) {
+    public EnchantedWeapon(FloorManager floorManager) {
         this.store(floorManager);
-        this.position = position;
     }
 
     /** {@inheritDoc} */
@@ -40,25 +35,7 @@ public class EnchantedWeapon implements Utility {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
-        return this;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public Position getPosition() {
-        return this.position;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getTag() {
-        return this.getChestItemName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void update(FloorManager floorManager) {
+    public void use(FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -69,8 +46,4 @@ public class EnchantedWeapon implements Utility {
         floorManager.getPlayer().increasePlayerSkill(skillToAdd);
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public void render() {}
-    
 }

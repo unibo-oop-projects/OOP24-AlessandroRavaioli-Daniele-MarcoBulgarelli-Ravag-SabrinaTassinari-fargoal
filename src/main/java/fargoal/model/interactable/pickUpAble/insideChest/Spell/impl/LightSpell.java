@@ -1,7 +1,5 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 
-import fargoal.commons.api.Position;
-import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -14,16 +12,14 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class LightSpell implements Spell {
 
-    final private  Position position;
     private int floorLevelSpellCasted;
 
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
-    public LightSpell(FloorManager floorManager, final Position position) {
+    public LightSpell(FloorManager floorManager) {
         this.store(floorManager);
-        this.position = position;
     }
 
     /** {@inheritDoc} */
@@ -46,14 +42,13 @@ public class LightSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public void use(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
         floorManager.getPlayer().getInventory().removeLightScroll();
         if (!floorManager.getPlayer().isVisible()) {
             floorManager.getPlayer().setIsVisible(true);
         }
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
-        return this;
     }
 
     /**
@@ -71,18 +66,6 @@ public class LightSpell implements Spell {
                 floorManager.getPlayer().setHasLight(true);
             }
         }
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public Position getPosition() {
-        return this.position;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getTag() {
-        return this.getChestItemName();
     }
 
     /**
@@ -104,7 +87,4 @@ public class LightSpell implements Spell {
         }
     }
     
-    /** {@inheritDoc} */
-    @Override
-    public void render() {}
 }
