@@ -1,6 +1,7 @@
 package fargoal.view.impl;
 
 import java.awt.Color;
+import java.util.HashMap;
 import java.util.Map;
 
 import fargoal.commons.api.Position;
@@ -17,39 +18,52 @@ public class SwingRenderFactory implements RenderFactory {
 
     public SwingRenderFactory(View view){
         this.view = (SwingView)view;
+        cache = new HashMap<>();
     }
 
     @Override
     public Renderer wallRenderer(Position pos) {
-        return new SwingRenderer(g2d -> {
-                g2d.setColor(Color.BLACK);
-                g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
-                    pos.y() * this.view.getTilePixelHeight(),
-                    this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
-            }, this.view);
+        if (this.cache.containsKey(pos)) {
+            return this.cache.get(pos);
+        }
+        cache.put(pos, new SwingRenderer(g2d -> {
+                    g2d.setColor(Color.BLACK);
+                    g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
+                        pos.y() * this.view.getTilePixelHeight(),
+                        this.view.getTilePixelWidth(),
+                        this.view.getTilePixelHeight());
+                }, this.view));
+        return this.cache.get(pos);
     }
 
     @Override
     public Renderer tileRenderer(Position pos) {
-        return new SwingRenderer(g2d -> {
-            g2d.setColor(Color.WHITE);
-            g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
-                    pos.y() * this.view.getTilePixelHeight(),
-                    this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
-            }, this.view);
+        if (this.cache.containsKey(pos)) {
+            return this.cache.get(pos);
+        }
+        this.cache.put(pos, new SwingRenderer(g2d -> {
+                g2d.setColor(Color.WHITE);
+                g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
+                        pos.y() * this.view.getTilePixelHeight(),
+                        this.view.getTilePixelWidth(),
+                        this.view.getTilePixelHeight());
+                }, this.view));
+        return this.cache.get(pos);
     }
 
     @Override
     public Renderer fogRenderer(Position pos) {
-        return new SwingRenderer(g2d -> {
-            g2d.setColor(Color.BLACK);
-            g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
-                    pos.y() * this.view.getTilePixelHeight(),
-                    this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
-            }, this.view);
+        if (this.cache.containsKey(pos)) {
+            return this.cache.get(pos);
+        }
+        this.cache.put(pos, new SwingRenderer(g2d -> {
+                g2d.setColor(Color.BLACK);
+                g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
+                        pos.y() * this.view.getTilePixelHeight(),
+                        this.view.getTilePixelWidth(),
+                        this.view.getTilePixelHeight());
+                }, this.view));
+        return this.cache.get(pos);
     }
 
     @Override
