@@ -56,11 +56,11 @@ public class SwingView implements View {
 
     @Override
     public void update() {
+        this.canvas.enableDraw(true);
         calculateDimensions();
         SwingUtilities.invokeLater(() -> this.canvas.repaint());
     }
     
-    @Override
     public void registerDrawingAction(Consumer<Graphics2D> g2d) {
         this.canvas.addToList(g2d);
     }
@@ -74,7 +74,7 @@ public class SwingView implements View {
     }
 
     private void calculateDimensions() {
-        this.tilePixelDimHeight = Math.round(this.getMapHeight() / FLOOR_HEIGHT);
-        this.tilePixelDimWidth = Math.round(this.getMapWidth() / FLOOR_LENGTH);
+        this.tilePixelDimHeight = (int) (this.getMapHeight() / FLOOR_HEIGHT);
+        this.tilePixelDimWidth = (int) (this.getMapWidth() / FLOOR_LENGTH);
     }
 }

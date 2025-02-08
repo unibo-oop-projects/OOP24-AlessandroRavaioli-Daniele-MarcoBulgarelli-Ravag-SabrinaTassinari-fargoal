@@ -1,6 +1,7 @@
 package fargoal.view.impl;
 
 import java.awt.Color;
+import java.util.Map;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
@@ -12,6 +13,7 @@ import fargoal.view.api.View;
 public class SwingRenderFactory implements RenderFactory {
 
     private final SwingView view;
+    private Map<Position, Renderer> cache;
 
     public SwingRenderFactory(View view){
         this.view = (SwingView)view;

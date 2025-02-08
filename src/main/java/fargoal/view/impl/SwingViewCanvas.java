@@ -12,9 +12,11 @@ import javax.swing.SwingUtilities;
 public class SwingViewCanvas extends JPanel {
     
     private List<Consumer<Graphics2D>> list;
+    private boolean canDraw;
 
     SwingViewCanvas() {
         list = new LinkedList<>();
+        canDraw = true;
     }
 
     public void addToList(Consumer<Graphics2D> g2d) {
@@ -23,9 +25,16 @@ public class SwingViewCanvas extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D)g;
-        this.list.forEach(d -> d.accept(g2d));
-        this.list.clear();
+        if (this.canDraw) {
+            this.canDraw = false;
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D)g;
+            this.list.forEach(d -> d.accept(g2d));
+            this.list.clear();   
+        }
+    }
+
+    public void enableDraw(boolean canDraw) {
+        this.canDraw = canDraw;
     }
 }
