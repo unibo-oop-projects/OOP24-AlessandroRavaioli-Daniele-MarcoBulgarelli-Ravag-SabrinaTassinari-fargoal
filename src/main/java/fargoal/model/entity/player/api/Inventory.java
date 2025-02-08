@@ -13,218 +13,254 @@ import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.Beacon;
 import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.HealingPotion;
 
 /**
- * Interface to manage player's items.
+ * Represents the player's inventory, managing various items, spells and resources.
+ * This interface provides methods to add, remove, and retrieve different types of items.
+ * <p>
+ * Implementing classes should provide mechanisms to track and modify 
+ * the player's inventory dynamically during gameplay.
+ * </p>
  */
-
 public interface Inventory {
+
     /**
-     * Getter for the current number of available healing potions.
+     * Retrieves the number of healing potions available in the inventory.
      *  
-     * @return current number of available healing potions.
+     * @return the number of healing potions.
      */
     Integer getHealingPotions();
 
     /**
-     * Getter for the current number of available invisibility scrolls.
-     * 
-     * @return current number of available invisibility scrolls.
+     * Retrieves the number of invisibility scrolls available in the inventory.
+     *  
+     * @return the number of invisibility scrolls.
      */
     Integer getInvisibilityScrolls();
 
     /**
-     * Getter for the current number of available teleport scrolls.
-     * 
-     * @return current number of available teleport scrolls.
+     * Retrieves the number of teleportation scrolls available in the inventory.
+     *  
+     * @return the number of teleportation scrolls.
      */
     Integer getTeleportScrolls();
 
     /**
-     * Getter for the current number of available shield scrolls.
-     * 
-     * @return current number of available shield scrolls.
+     * Retrieves the number of shield scrolls available in the inventory.
+     *  
+     * @return the number of shield scrolls.
      */
     Integer getShieldScrolls();
 
     /**
-     * Getter for the current number of available drift scrolls.
-     * 
-     * @return current number of available drift scrolls.
+     * Retrieves the number of drift scrolls available in the inventory.
+     *  
+     * @return the number of drift scrolls.
      */
     Integer getDriftScrolls();
 
     /**
-     * Getter for the current number of available light scrolls.
-     * 
-     * @return current number of available light scrolls.
+     * Retrieves the number of light scrolls available in the inventory.
+     *  
+     * @return the number of light scrolls.
      */
     Integer getLightScrolls();
 
     /**
-     * Getter for the current number of available regeneration scrolls.
-     * 
-     * @return current number of available regeneration scrolls.
+     * Retrieves the number of regeneration scrolls available in the inventory.
+     *  
+     * @return the number of regeneration scrolls.
      */
     Integer getRegenerationScrolls();
 
     /**
-     * Getter for the current number of available beacons.
-     * 
-     * @return current number of available beacons.
+     * Retrieves the number of beacons available in the inventory.
+     *  
+     * @return the number of beacons.
      */
     Integer getBeacons();
 
     /**
-     * Getter for the current number of available magic sacks.
-     * 
-     * @return current number of available magic sacks.
+     * Retrieves the number of magic sacks available in the inventory.
+     *  
+     * @return the number of magic sacks.
      */
     Integer getMagicSacks();
 
     /**
-     * Getter for the current number of available enchanted weapons.
-     * 
-     * @return current number of available enchaned weapons.
+     * Retrieves the number of enchanted weapons available in the inventory.
+     *  
+     * @return the number of enchanted weapons.
      */
     Integer getEnchantedWeapons();
 
     /**
-     * Getter for the list containing the array list of maps the player has.
-     * 
-     * @return the list of floors for which the player has a map.
+     * Retrieves the list of floor maps collected by the player.
+     *  
+     * @return a list of integers representing the floor numbers of the collected maps.
      */
     List<Integer> getListOfMaps();
 
     /**
-     * Getter for the map which indicates which spells' effects are happening in this momenti.
-     * @return the map that indicates which spells' effects are happening in this moment. 
+     * Retrieves the current status of casted spells.
+     * 
+     * @return a map where the keys are spell names and the values indicate whether the spell is currently active (true) or not (false).
      */
     Map<String, Boolean> getSpellCasted();
 
     /**
-     * Adds a single healing potion to player's inventory.
+     * Adds a healing potion to the player's inventory.
+     * 
+     * @param h - The healing potion to be added, must not be null.
      */
     void addHealingPotion(HealingPotion h);
 
     /**
-     * Removes a single healing potion from player's inventory,
-     * if it is available.
+     * Removes a healing potion from the player's inventory.
+     * 
+     * @param h - The healing potion to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no healing potions in the inventory.
     */
     public void removeHealingPotion(HealingPotion h);
 
     /**
-     * Adds a single invisibility scroll to player's inventory.
+     * Adds an invisibility scroll to the player's inventory.
+     * 
+     * @param scroll - The invisibility scroll to be added, must not be null.
      */
     public void addInvisibilityScroll(InvisibilitySpell scroll);
 
     /**
-     * Removes a single invisibility scroll from player's inventory,
-     * if it is available.
+     * Removes an invisibility scroll from the player's inventory.
      * 
-     * @return true if the item can be removed, false otherwise.
-     */
+     * @param scroll - The invisibility scroll to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no invisibility scrolls in the inventory.
+    */
     public void removeInvisibilityScroll(InvisibilitySpell scroll);
 
     /**
-     * Adds a single teleport scroll to player's inventory.
+     * Adds a teleportation scroll to the player's inventory.
+     * 
+     * @param scroll - The teleportation scroll to be added, must not be null.
      */
     public void addTeleportScroll(TeleportSpell scroll);
 
     /**
-     * Removes a single teleport scroll from player's inventory,
-     * if it is available.
+     * Removes a teleportation scroll from the player's inventory.
      * 
-     * @return true if the item can be removed, false otherwise.
-     */
+     * @param scroll - The teleportation scroll to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no teleportation scrolls in the inventory.
+    */
     public void removeTeleportScroll(TeleportSpell scroll);
 
     /**
-     * Adds a single shield scroll to player's inventory.
+     * Adds a shield scroll to the player's inventory.
+     * 
+     * @param scroll - The shield scroll to be added, must not be null.
      */
     public void addShieldScroll(ShieldSpell scroll);
 
     /**
-     * Removes a single shield scroll from player's inventory,
-     * if it is available.
+     * Removes a shield scroll from the player's inventory.
      * 
-     * @return true if the item can be removed, false otherwise.
-     */
+     * @param scroll - The shield scroll to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no shield scrolls in the inventory.
+    */
     public void removeShieldScroll(ShieldSpell scroll);
 
     /**
-     * Adds a single magic sack to player's inventory.
+     * Adds a magic sack to the player's inventory.
      */
     void addMagicSack();
 
     /**
-     * Adds a single enchanted weapon to player's inventory.
+     * Adds an enchanted weapon to the player's inventory.
      */
     void addEnchantedWeapon();
 
     /**
-     * Adds a map of a single floor to player's inventory.
+     * Adds floor map to player's inventory.
      * 
-     * @param - the floor number that the map is for.
+     * @param floorNumber - The number of the floor map to be added.
+     * 
+     * @throws IllegalArgumentException if the floor number is null, negative or zero.
      */
     void addFloorMap(Integer floorNumber);
 
     /**
-     * Removes a map of a single floor from player's inventory.
+     * Removes a floor map from the player's inventory.
      * 
-     * @param - the floor number that the map is for.
+     * @param floorNumber - the number of the floor map to be removed.
      * 
-     * @return true if the item can be removed, false otherwise.
+     * @return {@code true} if the floor map was successfully removed, {@code false} if the floor map was not found in the inventory.
+     * 
+     * @throws IllegalArgumentExceptin if the floor number is null, negative or zero.
      */
     boolean removeFloorMap(Integer floorNumber);
 
     /**
-     * Adds a single beacon scroll to player's inventory.
+     * Adds a beacon to the player's inventory.
+     * 
+     * @param b - The beacon to be added, must not be null.
      */
     public void addBeacon(Beacon b);
 
     /**
-     * Removes a single beacon scroll from player's inventory,
-     * if it is available.
+     * Removes a beacon from the player's inventory.
      * 
-     * @return true if the item can be removed, false otherwise.
-     */
+     * @param b - The beacon to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no beacons in the inventory.
+    */
     public void removeBeacon(Beacon b);
 
     /**
-     * Adds a single drift scroll to player's inventory.
+     * Adds a drift scroll to the player's inventory.
+     * 
+     * @param scroll - The drift scroll to be added, must not be null.
      */
     public void addDriftScroll(DriftSpell scroll);
 
     /**
-     * Removes a single beacon scroll from player's inventory,
-     * if it is available.
+     * Removes a drift scroll from the player's inventory.
      * 
-     * @return true if the item can be removed, false otherwise.
-     */
+     * @param scroll - The drift scroll to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no drift scrolls in the inventory.
+    */
     public void removeDriftScroll(DriftSpell scroll);
 
     /**
-     * Adds a single light scroll to player's inventory.
+     * Adds a light scroll to the player's inventory.
+     * 
+     * @param scroll - The light scroll to be added, must not be null.
      */
     public void addLightScroll(LightSpell scroll);
 
     /**
-     * Removes a single light scroll from player's inventory,
-     * if it is available.
+     * Removes a light scroll from the player's inventory.
      * 
-     * @return true if the item can be removed, false otherwise.
-     */
-    public void removelightScroll(LightSpell scroll);
+     * @param scroll - The light scroll to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no light scrolls in the inventory.
+    */
+    public void removeLightScroll(LightSpell scroll);
 
     /**
-     * Adds a single regeneration scroll to player's inventory.
+     * Adds a regeneration scroll to the player's inventory.
+     * 
+     * @param scroll - The regeneration scroll to be added, must not be null.
      */
     public void addRegenerationScroll(RegenerationSpell scroll);
 
     /**
-     * Removes a single regeneration scroll from player's inventory,
-     * if it is available.
+     * Removes a regeneration scroll from the player's inventory.
      * 
-     * @return true if the item can be removed, false otherwise.
-     */
+     * @param scroll - The regeneration scroll to be removed, must not be null.
+     * 
+     * @throws IllegalStateException if there are no regeneration scrolls in the inventory.
+    */
     public void removeRegenerationScroll(RegenerationSpell scroll);
 }

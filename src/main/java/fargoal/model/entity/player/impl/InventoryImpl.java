@@ -147,6 +147,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addHealingPotion(HealingPotion h) {
+        Objects.requireNonNull(h);
         this.healingPotions.add(h);
     }
 
@@ -164,6 +165,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addBeacon(Beacon b) {
+        Objects.requireNonNull(b);
         this.beacons.add(b); 
     }
 
@@ -218,6 +220,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addInvisibilityScroll(InvisibilitySpell scroll) {
+        Objects.requireNonNull(scroll);
         this.invisibilityScrolls.add(scroll);  
     }
 
@@ -235,6 +238,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addTeleportScroll(TeleportSpell scroll) {
+        Objects.requireNonNull(scroll);
         this.teleportScrolls.add(scroll);  
     }
 
@@ -252,6 +256,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addShieldScroll(ShieldSpell scroll) {
+        Objects.requireNonNull(scroll);
         this.shieldScrolls.add(scroll);  
     }
 
@@ -269,6 +274,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addRegenerationScroll(RegenerationSpell scroll) {
+        Objects.requireNonNull(scroll);
         this.regenerationScrolls.add(scroll);  
     }
 
@@ -286,6 +292,7 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addDriftScroll(DriftSpell scroll) {
+        Objects.requireNonNull(scroll);
         this.driftScrolls.add(scroll);  
     }
 
@@ -303,12 +310,13 @@ public class InventoryImpl implements Inventory {
     /**{@inheritDoc} */
     @Override
     public void addLightScroll(LightSpell scroll) {
+        Objects.requireNonNull(scroll);
         this.lightScrolls.add(scroll);  
     }
 
     /**{@inheritDoc} */
     @Override
-    public void removelightScroll(LightSpell scroll) {
+    public void removeLightScroll(LightSpell scroll) {
         Objects.requireNonNull(scroll);
         if(this.getLightScrolls() > 0) {
             this.lightScrolls.remove(scroll);
