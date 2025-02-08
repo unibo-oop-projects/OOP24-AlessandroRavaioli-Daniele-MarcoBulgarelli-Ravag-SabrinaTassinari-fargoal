@@ -90,7 +90,7 @@ public class ChestImpl implements Interactable {
             }
             this.open = true;
         }
-        return item;
+        return this;
     }
 
     /** {@inheritDoc} */

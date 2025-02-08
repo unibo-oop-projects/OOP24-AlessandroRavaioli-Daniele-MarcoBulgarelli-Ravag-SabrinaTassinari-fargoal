@@ -1,4 +1,4 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
+package fargoal.model.interactable.pickUpAble.insideChest.Utility;
 
 /**
  * This is an enumeration of the name of the utilities the player can found in a chest. 

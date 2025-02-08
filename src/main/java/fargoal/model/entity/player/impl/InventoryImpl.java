@@ -15,9 +15,14 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.Regeneration
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.ShieldSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.TeleportSpell;
+<<<<<<< HEAD
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.HealingPotion;
 import fargoal.model.manager.api.FloorManager;
+=======
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.Beacon;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.HealingPotion;
+>>>>>>> 8d76ce0e7ad707cbeb201a180943024493403cdb
 
 /**
  * Implementation of the {@link Inventory} interface that manages the player's inventory.

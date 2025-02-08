@@ -9,8 +9,8 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.RegenerationSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.ShieldSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.TeleportSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.HealingPotion;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.Beacon;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.HealingPotion;
 
 /**
  * Represents the player's inventory, managing various items, spells and resources.
