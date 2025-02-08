@@ -40,7 +40,7 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addInvisibilityScroll();
+        this.addSpell();
     }
 
     /** {@inheritDoc} */
@@ -48,7 +48,7 @@ public class InvisibilitySpell implements Spell {
     public void use(FloorManager floorManager) {
         floorManager.getPlayer().setIsVisible(false);
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), true);
-        floorManager.getPlayer().getInventory().removeInvisibilityScroll();
+        this.removeSpell();
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
     }
 
@@ -71,21 +71,14 @@ public class InvisibilitySpell implements Spell {
         }
     }
 
-
-
     @Override
     public Integer getQuantity() {
         return this.cont;
     }
 
-
-
-    @Override
-    public void addSpell() {
+    private void addSpell() {
         this.cont++;
     }
-
-
 
     @Override
     public void removeSpell() {

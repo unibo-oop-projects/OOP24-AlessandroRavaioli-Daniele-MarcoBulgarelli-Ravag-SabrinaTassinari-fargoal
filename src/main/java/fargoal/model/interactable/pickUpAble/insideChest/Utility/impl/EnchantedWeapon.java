@@ -1,16 +1,19 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Utility;
+package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
 
 import java.util.Random;
 
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.UtilityType;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 import fargoal.model.manager.api.FloorManager;
 
 /**
  * This is the class that implements an Enchanted Weapon, which the player found in a chest.
  * It increase the combat skill of the player.
  */
-public class EnchantedWeapon implements ItemsForInventory {
+public class EnchantedWeapon implements Utility {
+
+    private int numberInInventory;
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
@@ -18,7 +21,7 @@ public class EnchantedWeapon implements ItemsForInventory {
      * @param position - this is the position of the chest the item was found.
      */
     public EnchantedWeapon(FloorManager floorManager) {
-        this.store(floorManager);
+        numberInInventory = 0;
     }
 
     /** {@inheritDoc} */
@@ -41,9 +44,23 @@ public class EnchantedWeapon implements ItemsForInventory {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addEnchantedWeapon();
+        this.addUtility();
         int skillToAdd = new Random().nextInt(9) + 5;
         floorManager.getPlayer().increasePlayerSkill(skillToAdd);
+    }
+
+    @Override
+    public int getNumberInInventory() {
+        return this.numberInInventory;
+    }
+
+    private void addUtility() {
+        this.numberInInventory++;
+    }
+
+    @Override
+    public void removeUtility() {
+        this.numberInInventory--;
     }
 
 }

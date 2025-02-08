@@ -1,22 +1,23 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Utility;
+package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
 
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements a Magic Sack, which the player found in a chest.
  */
-public class MagicSack implements ItemsForInventory{
+public class MagicSack implements Utility {
 
     final static int GOLD_CARRIED_BY_MAGIC_SACK = 100;
+    private int numberInInventory;
 
     /**
      * This is the constructor of the class. It stores right away the item in the player's inventory.
      * @param floorManager - it contains all the element of the floor in which the item was found.
      */
     public MagicSack(FloorManager floorManager) {
-        this.store(floorManager);
+        this.numberInInventory = 0;
     }
 
     /** {@inheritDoc} */
@@ -39,8 +40,22 @@ public class MagicSack implements ItemsForInventory{
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().getMagicSacks();
+        this.addUtility();
         floorManager.getPlayer().getPlayerGold().setMaxCapacity(floorManager.getPlayer().getMaxGoldCapacity() + GOLD_CARRIED_BY_MAGIC_SACK);
+    }
+
+    @Override
+    public int getNumberInInventory() {
+        return this.numberInInventory;
+    }
+
+    private void addUtility() {
+        this.numberInInventory++;
+    }
+
+    @Override
+    public void removeUtility() {
+        this.numberInInventory--;
     }
 
 }

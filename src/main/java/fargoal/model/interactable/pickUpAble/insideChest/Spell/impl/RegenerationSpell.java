@@ -37,14 +37,14 @@ public class RegenerationSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addRegenerationScroll();
+        this.addSpell();
     }
 
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), true);
-        floorManager.getPlayer().getInventory().removeRegenerationScroll();
+        this.removeSpell();
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
     }
 
@@ -71,8 +71,7 @@ public class RegenerationSpell implements Spell {
         return this.cont;
     }
 
-    @Override
-    public void addSpell() {
+    private void addSpell() {
         this.cont++;
     }
 

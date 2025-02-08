@@ -39,14 +39,14 @@ public class ShieldSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addShieldScroll();
+        this.addSpell();
     }
 
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);
-        floorManager.getPlayer().getInventory().removeShieldScroll();
+        this.removeSpell();
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
     }
 
@@ -73,8 +73,7 @@ public class ShieldSpell implements Spell {
         return this.cont;
     }
 
-    @Override
-    public void addSpell() {
+    private void addSpell() {
         this.cont++;
     }
 

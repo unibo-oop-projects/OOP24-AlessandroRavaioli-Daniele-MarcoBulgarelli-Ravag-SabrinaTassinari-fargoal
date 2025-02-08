@@ -12,7 +12,5 @@ public interface Spell extends ItemsForInventory {
 
     Integer getQuantity();
 
-    void addSpell();
-
     void removeSpell();
 }

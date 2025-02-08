@@ -1,10 +1,6 @@
 package fargoal.model.entity.player.impl;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
@@ -14,8 +10,10 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.Regeneration
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.ShieldSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.TeleportSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.Beacon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.HealingPotion;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.EnchantedWeapon;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.HealingPotion;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.MagicSack;
 import fargoal.model.manager.api.FloorManager;
 
 /**
@@ -28,9 +26,9 @@ public class InventoryImpl implements Inventory {
     private FloorManager floorManager;
     private HealingPotion healingPotions;
     private Beacon beacons;
-    private Integer magicSacks;
-    private Integer enchantedWeapons;
-    private final List<Integer> listOfMaps;
+    private MagicSack magicSacks;
+    private EnchantedWeapon enchantedWeapons;
+    private fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map levelMaps;
 
     private InvisibilitySpell invisibilityScroll;
     private TeleportSpell teleportScroll;
@@ -61,9 +59,9 @@ public class InventoryImpl implements Inventory {
         this.floorManager = floorManager;
         this.healingPotions = new HealingPotion(floorManager);
         this.beacons = new Beacon(floorManager);
-        this.magicSacks = 0;
-        this.enchantedWeapons = 0;
-        this.listOfMaps = new ArrayList<>();
+        this.magicSacks = new MagicSack(floorManager);
+        this.enchantedWeapons = new EnchantedWeapon(floorManager);
+        this.levelMaps = new fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map(floorManager);
         this.invisibilityScroll = new InvisibilitySpell(floorManager);
         this.teleportScroll = new TeleportSpell(floorManager);
         this.shieldScroll = new ShieldSpell(floorManager);
@@ -89,63 +87,26 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public Integer getMagicSacks() {
+    public MagicSack getMagicSacks() {
         return this.magicSacks;
     }
 
     /**{@inheritDoc} */
     @Override
-    public Integer getEnchantedWeapons() {
+    public EnchantedWeapon getEnchantedWeapons() {
         return this.enchantedWeapons;
     }
 
     /**{@inheritDoc} */
     @Override
-    public List<Integer> getListOfMaps() {
-        return this.listOfMaps;
+    public fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map getListOfMaps() {
+        return this.levelMaps;
     }
 
     /** {@inheritDoc} */
     @Override
     public Map<String, Boolean> getSpellCasted() {
         return this.SpellCasted;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addMagicSack() {
-        this.magicSacks ++;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addEnchantedWeapon() {
-        this.enchantedWeapons ++;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addFloorMap(Integer floorNumber) {
-        if(floorNumber == null || floorNumber <= 0) {
-            throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
-        }
-        if(!this.listOfMaps.contains(floorNumber)) {
-            this.listOfMaps.add(floorNumber);
-        }   
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public boolean removeFloorMap(Integer floorNumber) {
-        if(floorNumber == null || floorNumber <= 0) {
-            throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
-        }
-        if(this.listOfMaps.contains(floorNumber)){
-            this.listOfMaps.remove(floorNumber); 
-            return true;
-        } else {
-            return false;
-        }
     }
 
     @Override

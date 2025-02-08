@@ -38,14 +38,14 @@ public class LightSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addLightScroll();
+        this.addSpell();
     }
 
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
-        floorManager.getPlayer().getInventory().removeLightScroll();
+        this.removeSpell();
         if (!floorManager.getPlayer().isVisible()) {
             floorManager.getPlayer().setIsVisible(true);
         }
@@ -93,8 +93,7 @@ public class LightSpell implements Spell {
         return this.cont;
     }
 
-    @Override
-    public void addSpell() {
+    private void addSpell() {
         this.cont++;
     }
 

@@ -1,7 +1,8 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Utility;
+package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
 
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.UtilityType;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 import fargoal.model.interactable.pickUpAble.onGround.BeaconOnGround;
 import fargoal.model.manager.api.FloorManager;
 
@@ -9,7 +10,9 @@ import fargoal.model.manager.api.FloorManager;
  * This class implements a Beacon, when it is in the player's inventory. 
  * The player found the beacon in a chest.
  */
-public class Beacon implements ItemsForInventory {
+public class Beacon implements Utility {
+
+    private int numberInInventory;
 
     /**
      * This is the constructor of the class. It store right away the beacon in the player's inventory.
@@ -17,7 +20,7 @@ public class Beacon implements ItemsForInventory {
      * @param position - the position of the chest the beacon has been found.
      */
     public Beacon(FloorManager floorManager) {
-        this.store(floorManager);
+        this.numberInInventory = 0;
     }
 
     /** {@inheritDoc} */
@@ -35,7 +38,7 @@ public class Beacon implements ItemsForInventory {
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().removeBeacon();
+        this.removeUtility();
         BeaconOnGround beaconOnGround = new BeaconOnGround(floorManager.getPlayer().getPosition(), floorManager);
         floorManager.getInteractables().add(beaconOnGround);
     }
@@ -43,7 +46,25 @@ public class Beacon implements ItemsForInventory {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addBeacon(this);
+        this.addUtility();
     }
+
+    @Override
+    public int getNumberInInventory() {
+        return this.numberInInventory;
+    }
+
+    private void addUtility() {
+        this.numberInInventory++;
+    }
+
+    @Override
+    public void removeUtility() {
+        if (this.numberInInventory > 0) {
+            this.numberInInventory--;
+        }
+    }
+
+
 
 }
