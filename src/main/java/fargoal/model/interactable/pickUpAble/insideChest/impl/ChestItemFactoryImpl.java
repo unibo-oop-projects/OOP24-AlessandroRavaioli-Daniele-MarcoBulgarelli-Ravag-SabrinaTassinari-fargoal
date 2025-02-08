@@ -1,6 +1,7 @@
 package fargoal.model.interactable.pickUpAble.insideChest.impl;
 
 import fargoal.commons.api.Position;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.InvisibilitySpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
@@ -11,11 +12,12 @@ import fargoal.model.interactable.pickUpAble.insideChest.Trap.CeilingTrap;
 import fargoal.model.interactable.pickUpAble.insideChest.Trap.Explosion;
 import fargoal.model.interactable.pickUpAble.insideChest.Trap.Pit;
 import fargoal.model.interactable.pickUpAble.insideChest.Trap.Teleport;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.Beacon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.EnchantedWeapon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.HealingPotion;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.MagicSack;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.Map;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.EnchantedWeapon;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.HealingPotion;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.MagicSack;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemFactory;
 import fargoal.model.manager.api.FloorManager;
@@ -27,37 +29,37 @@ public class ChestItemFactoryImpl implements ChestItemFactory{
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateDriftSpell(FloorManager floorManager, final Position position) {
+    public Spell generateDriftSpell(FloorManager floorManager, final Position position) {
         return new DriftSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateInvisibilitySpell(FloorManager floorManager, final Position position) {
+    public Spell generateInvisibilitySpell(FloorManager floorManager, final Position position) {
         return new InvisibilitySpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateLightSpell(FloorManager floorManager, final Position position) {
+    public Spell generateLightSpell(FloorManager floorManager, final Position position) {
         return new LightSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateRegenerationSpell(FloorManager floorManager, final Position position) {
+    public Spell generateRegenerationSpell(FloorManager floorManager, final Position position) {
         return new RegenerationSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateShieldSpell(FloorManager floorManager, final Position position) {
+    public Spell generateShieldSpell(FloorManager floorManager, final Position position) {
         return new ShieldSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateTeleportSpell(FloorManager floorManager, final Position position) {
+    public Spell generateTeleportSpell(FloorManager floorManager, final Position position) {
         return new TeleportSpell(floorManager);
     }
 
@@ -87,31 +89,31 @@ public class ChestItemFactoryImpl implements ChestItemFactory{
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateBeacon(FloorManager floorManager, final Position position) {
+    public Utility generateBeacon(FloorManager floorManager, final Position position) {
         return new Beacon(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateEnchantedWeapon(FloorManager floorManager, final Position position) {
+    public Utility generateEnchantedWeapon(FloorManager floorManager, final Position position) {
         return new EnchantedWeapon(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateHealingPotion(FloorManager floorManager, final Position position) {
+    public Utility generateHealingPotion(FloorManager floorManager, final Position position) {
         return new HealingPotion(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateMap(FloorManager floorManager, final Position position) {
+    public Utility generateMap(FloorManager floorManager, final Position position) {
         return new Map(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateMagicSack(FloorManager floorManager, final Position position){
+    public Utility generateMagicSack(FloorManager floorManager, final Position position){
         return new MagicSack(floorManager);
     }
 

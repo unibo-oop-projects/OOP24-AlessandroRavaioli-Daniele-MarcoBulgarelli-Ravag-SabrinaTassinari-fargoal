@@ -4,6 +4,8 @@ import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.interactable.api.Interactable;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
@@ -54,17 +56,29 @@ public class ChestImpl implements Interactable {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
             int num = new Random().nextInt(N_CHEST_ITEM);
             if (num == 0) {
-                new ChestItemFactoryImpl().generateDriftSpell(floorManager, this.position);
+                Spell item;
+                item = new ChestItemFactoryImpl().generateDriftSpell(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 1) {
-                new ChestItemFactoryImpl().generateInvisibilitySpell(floorManager, this.position);
+                Spell item;
+                item = new ChestItemFactoryImpl().generateInvisibilitySpell(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 2) {
-                new ChestItemFactoryImpl().generateLightSpell(floorManager, this.position);
+                Spell item;
+                item = new ChestItemFactoryImpl().generateLightSpell(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 3) {
-                new ChestItemFactoryImpl().generateRegenerationSpell(floorManager, this.position);
+                Spell item;
+                item = new ChestItemFactoryImpl().generateRegenerationSpell(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 4) {
-                new ChestItemFactoryImpl().generateShieldSpell(floorManager, this.position);
+                Spell item;
+                item = new ChestItemFactoryImpl().generateShieldSpell(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 5) {
-                new ChestItemFactoryImpl().generateTeleportSpell(floorManager, this.position);
+                Spell item;
+                item = new ChestItemFactoryImpl().generateTeleportSpell(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 6) {
                 new ChestItemFactoryImpl().generateCeilingTrap(floorManager, this.position);
             } else if (num == 7) {
@@ -74,17 +88,29 @@ public class ChestImpl implements Interactable {
             } else if (num == 9) {
                 new ChestItemFactoryImpl().generateTeleport(floorManager, this.position);
             } else if (num == 10) {
-                new ChestItemFactoryImpl().generateBeacon(floorManager, this.position);
+                Utility item;
+                item = new ChestItemFactoryImpl().generateBeacon(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 11) {
-                new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager, this.position);
+                Utility item;
+                item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 12) {
-                new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager, this.position);
+                Utility item;
+                item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 13) {
-                new ChestItemFactoryImpl().generateHealingPotion(floorManager, this.position);
+                Utility item;
+                item = new ChestItemFactoryImpl().generateHealingPotion(floorManager, this.position);
+                item.store(floorManager);
             } else if (num == 14) {
-                new ChestItemFactoryImpl().generateMap(floorManager, this.position);
+                Utility item;
+                item = new ChestItemFactoryImpl().generateMap(floorManager, this.position);
+                item.store(floorManager);
             } else {
-                new ChestItemFactoryImpl().generateMagicSack(floorManager, this.position);
+                Utility item;
+                item = new ChestItemFactoryImpl().generateMagicSack(floorManager, this.position);
+                item.store(floorManager);
             }
             this.open = true;
         }

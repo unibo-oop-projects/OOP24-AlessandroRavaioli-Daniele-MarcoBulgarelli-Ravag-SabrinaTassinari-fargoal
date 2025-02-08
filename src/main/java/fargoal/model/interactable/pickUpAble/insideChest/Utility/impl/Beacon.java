@@ -1,6 +1,5 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
 
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.UtilityType;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.interactable.pickUpAble.onGround.BeaconOnGround;
