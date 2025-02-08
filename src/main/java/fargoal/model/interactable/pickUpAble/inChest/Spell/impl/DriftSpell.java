@@ -41,14 +41,14 @@ public class DriftSpell implements Spell{
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-       floorManager.getPlayer().getInventory().addDriftScroll();
+       floorManager.getPlayer().getInventory().addDriftScroll(this);
     }
 
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), true);
-        floorManager.getPlayer().getInventory().removeDriftScroll();
+        floorManager.getPlayer().getInventory().removeDriftScroll(this);
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }

@@ -42,14 +42,14 @@ public class ShieldSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addShieldScroll();
+        floorManager.getPlayer().getInventory().addShieldScroll(this);
     }
 
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);
-        floorManager.getPlayer().getInventory().removeShieldScroll();
+        floorManager.getPlayer().getInventory().removeShieldScroll(this);
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }

@@ -40,14 +40,14 @@ public class RegenerationSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addRegenerationScroll();
+        floorManager.getPlayer().getInventory().addRegenerationScroll(this);
     }
 
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), true);
-        floorManager.getPlayer().getInventory().removeRegenerationScroll();
+        floorManager.getPlayer().getInventory().removeRegenerationScroll(this);
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
         return this;
     }

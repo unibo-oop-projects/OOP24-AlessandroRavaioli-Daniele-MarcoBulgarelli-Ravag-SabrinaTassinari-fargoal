@@ -41,14 +41,14 @@ public class LightSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addLightScroll();
+        floorManager.getPlayer().getInventory().addLightScroll(this);
     }
 
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
-        floorManager.getPlayer().getInventory().removeLightScroll();
+        floorManager.getPlayer().getInventory().removeLightScroll(this);
         if (!floorManager.getPlayer().isVisible()) {
             floorManager.getPlayer().setIsVisible(true);
         }

@@ -39,7 +39,7 @@ public class TeleportSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addTeleportScroll();
+        floorManager.getPlayer().getInventory().addTeleportScroll(this);
     }
 
     /** {@inheritDoc} */
@@ -53,7 +53,7 @@ public class TeleportSpell implements Spell {
             newPlayerPosition = floorManager.getFloorMap().getRandomTile();
         }
         floorManager.getPlayer().setPosition(newPlayerPosition);
-        floorManager.getPlayer().getInventory().removeTeleportScroll();
+        floorManager.getPlayer().getInventory().removeTeleportScroll(this);
         return this;
     }
 
