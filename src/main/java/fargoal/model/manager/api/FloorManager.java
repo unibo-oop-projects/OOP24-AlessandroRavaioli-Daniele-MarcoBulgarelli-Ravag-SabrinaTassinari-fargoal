@@ -9,6 +9,7 @@ import fargoal.model.entity.player.api.Player;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.temple.Temple;
 import fargoal.model.map.api.FloorMap;
+import fargoal.view.api.RenderFactory;
 
 /**
  * An interface to model the entirety of the floor.
@@ -77,4 +78,10 @@ public interface FloorManager {
      * @return - a list of all the current FloorElements
      */
     List<FloorElement> getAllElements();
+
+    /**
+     * A method to obtain a factory to all the renderers currently used
+     * @return - the render factory
+     */
+    RenderFactory getRenderFactory();
 }

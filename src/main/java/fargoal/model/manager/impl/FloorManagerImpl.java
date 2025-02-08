@@ -117,6 +117,12 @@ public class FloorManagerImpl implements FloorManager {
         return this.temple;
     }
 
+    /** {@inheritDoc} */
+    @Override
+    public RenderFactory getRenderFactory() {
+        return this.renderFactory;
+    }
+
     @Override
     public List<FloorElement> getAllElements() {
         List<FloorElement> elements = new LinkedList<>(this.interactables);
