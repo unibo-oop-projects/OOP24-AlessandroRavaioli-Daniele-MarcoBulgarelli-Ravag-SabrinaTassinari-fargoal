@@ -21,10 +21,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer wallRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
                 g2d.setColor(Color.BLACK);
-                g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
-                            pos.y() * this.view.getTilePixelDim(),
-                            this.view.getTilePixelDim(),
-                            this.view.getTilePixelDim());
+                g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
+                    pos.y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
             }, this.view);
     }
 
@@ -32,10 +32,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer tileRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.WHITE);
-            g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
-                         pos.y() * this.view.getTilePixelDim(),
-                         this.view.getTilePixelDim(),
-                         this.view.getTilePixelDim());
+            g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
+                    pos.y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
             }, this.view);
     }
 
@@ -43,10 +43,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer fogRenderer(Position pos) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.BLACK);
-            g2d.fillRect(pos.x() * this.view.getTilePixelDim(),
-                    pos.y() * this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim());
+            g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
+                    pos.y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
             }, this.view);
     }
 
@@ -54,10 +54,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer playerRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.BLUE);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -65,10 +65,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer upstairRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.LIGHT_GRAY);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
-            obj.getPosition().y() * this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -76,10 +76,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer downstairRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
-            obj.getPosition().y() * this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -87,10 +87,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer templeRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.MAGENTA);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
-            obj.getPosition().y() * this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -98,10 +98,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer chestRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.GRAY);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
-            obj.getPosition().y() * this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -113,10 +113,10 @@ public class SwingRenderFactory implements RenderFactory {
             } else {
                 g2d.setColor(Color.YELLOW);
             }
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
-            obj.getPosition().y() * this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -124,10 +124,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer beaconRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.CYAN);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
-                obj.getPosition().y() * this.view.getTilePixelDim(), 
-                this.view.getTilePixelDim(), 
-                this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -135,10 +135,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer assassinRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -146,10 +146,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer barbarianRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.RED);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -157,10 +157,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer mageRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.GREEN);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -174,10 +174,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer rogueRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.ORANGE);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(),
-                    obj.getPosition().y() * this.view.getTilePixelDim(), 
-                    this.view.getTilePixelDim(),
-                    this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -197,10 +197,10 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer swordRenderer(FloorElement obj) {
         return new SwingRenderer(g2d -> {
             g2d.setColor(Color.PINK);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelDim(), 
-            obj.getPosition().y() * this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim(), 
-            this.view.getTilePixelDim());
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
         }, this.view);
     }
     

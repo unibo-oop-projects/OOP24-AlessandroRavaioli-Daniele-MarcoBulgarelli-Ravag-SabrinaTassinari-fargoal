@@ -16,14 +16,15 @@ import fargoal.view.api.View;
 public class SwingView implements View {
 
     private static final int FLOOR_LENGTH = 40;
-    private static final int FLOOR_HEIGTH = 25;
+    private static final int FLOOR_HEIGHT = 25;
 
     private SwingViewCanvas canvas;
     private JPanel top;
     private JPanel bottom;
     private JFrame frame;
 
-    private int tilePixelDim;
+    private int tilePixelDimWidth;
+    private int tilePixelDimHeight;
 
     public SwingView() {
         this.frame = new JFrame();
@@ -31,7 +32,7 @@ public class SwingView implements View {
         this.top = new JPanel();
         this.bottom = new JPanel();
         this.frame.setLayout(new BorderLayout());
-        this.frame.setSize(3500, 3000);
+        this.frame.setSize(1500, 1000);
         var text = new JTextArea("TOP");
         text.setEditable(false);
         this.top.add(text);
@@ -45,8 +46,12 @@ public class SwingView implements View {
         this.frame.setVisible(true);
     }
 
-    public int getTilePixelDim() {
-        return this.tilePixelDim;
+    public int getTilePixelHeight() {
+        return this.tilePixelDimHeight;
+    }
+
+    public int getTilePixelWidth() {
+        return this.tilePixelDimWidth;
     }
 
     @Override
@@ -69,6 +74,7 @@ public class SwingView implements View {
     }
 
     private void calculateDimensions() {
-        this.tilePixelDim = Math.min(this.getMapHeight()/FLOOR_HEIGTH, this.getMapWidth()/FLOOR_LENGTH);
+        this.tilePixelDimHeight = Math.round(this.getMapHeight() / FLOOR_HEIGHT);
+        this.tilePixelDimWidth = Math.round(this.getMapWidth() / FLOOR_LENGTH);
     }
 }
