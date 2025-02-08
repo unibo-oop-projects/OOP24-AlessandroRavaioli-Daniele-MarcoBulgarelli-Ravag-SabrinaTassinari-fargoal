@@ -15,7 +15,7 @@ public class PlayerInputComponent implements InputComponent{
             Optional<Interactable> interacting = manager.getInteractables().stream().filter(element -> player.getPosition().equals(element.getPosition())).findAny();
             interacting.ifPresent(element -> element.interact(manager));
         } else if(controller.isUsingHealingPotion()) {
-            if(player.getInventory().getHealingPotions() > 0) {
+            if(player.getInventory().getHealingPotions().getNumberInInventory() > 0) {
                 //TODO
             }
         } else if(controller.isPlacingBeacon()) {
