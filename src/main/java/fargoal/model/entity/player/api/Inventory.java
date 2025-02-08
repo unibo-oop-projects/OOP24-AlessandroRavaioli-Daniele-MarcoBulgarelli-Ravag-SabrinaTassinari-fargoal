@@ -3,6 +3,15 @@ package fargoal.model.entity.player.api;
 import java.util.List;
 import java.util.Map;
 
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.DriftSpell;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.InvisibilitySpell;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.LightSpell;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.RegenerationSpell;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.ShieldSpell;
+import fargoal.model.interactable.pickUpAble.inChest.Spell.impl.TeleportSpell;
+import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.Beacon;
+import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.HealingPotion;
+
 /**
  * Interface to manage player's items.
  */
@@ -94,20 +103,18 @@ public interface Inventory {
     /**
      * Adds a single healing potion to player's inventory.
      */
-    void addHealingPotion();
+    void addHealingPotion(HealingPotion h);
 
     /**
      * Removes a single healing potion from player's inventory,
      * if it is available.
-     * 
-     * @return true if the item can be removed, false otherwise.
-     */
-    boolean removeHealingPotion();
+    */
+    public void removeHealingPotion(HealingPotion h);
 
     /**
      * Adds a single invisibility scroll to player's inventory.
      */
-    void addInvisibilityScroll();
+    public void addInvisibilityScroll(InvisibilitySpell scroll);
 
     /**
      * Removes a single invisibility scroll from player's inventory,
@@ -115,12 +122,12 @@ public interface Inventory {
      * 
      * @return true if the item can be removed, false otherwise.
      */
-    boolean removeInvisibilityScroll();
+    public void removeInvisibilityScroll(InvisibilitySpell scroll);
 
     /**
      * Adds a single teleport scroll to player's inventory.
      */
-    void addTeleportScroll();
+    public void addTeleportScroll(TeleportSpell scroll);
 
     /**
      * Removes a single teleport scroll from player's inventory,
@@ -128,12 +135,12 @@ public interface Inventory {
      * 
      * @return true if the item can be removed, false otherwise.
      */
-    boolean removeTeleportScroll();
+    public void removeTeleportScroll(TeleportSpell scroll);
 
     /**
      * Adds a single shield scroll to player's inventory.
      */
-    void addShieldScroll();
+    public void addShieldScroll(ShieldSpell scroll);
 
     /**
      * Removes a single shield scroll from player's inventory,
@@ -141,7 +148,7 @@ public interface Inventory {
      * 
      * @return true if the item can be removed, false otherwise.
      */
-    boolean removeShieldScroll();
+    public void removeShieldScroll(ShieldSpell scroll);
 
     /**
      * Adds a single magic sack to player's inventory.
@@ -172,7 +179,7 @@ public interface Inventory {
     /**
      * Adds a single beacon scroll to player's inventory.
      */
-    void addBeacon();
+    public void addBeacon(Beacon b);
 
     /**
      * Removes a single beacon scroll from player's inventory,
@@ -180,12 +187,12 @@ public interface Inventory {
      * 
      * @return true if the item can be removed, false otherwise.
      */
-    boolean removeBeacon();
+    public void removeBeacon(Beacon b);
 
     /**
      * Adds a single drift scroll to player's inventory.
      */
-    void addDriftScroll();
+    public void addDriftScroll(DriftSpell scroll);
 
     /**
      * Removes a single beacon scroll from player's inventory,
@@ -193,12 +200,12 @@ public interface Inventory {
      * 
      * @return true if the item can be removed, false otherwise.
      */
-    boolean removeDriftScroll();
+    public void removeDriftScroll(DriftSpell scroll);
 
     /**
      * Adds a single light scroll to player's inventory.
      */
-    void addLightScroll();
+    public void addLightScroll(LightSpell scroll);
 
     /**
      * Removes a single light scroll from player's inventory,
@@ -206,12 +213,12 @@ public interface Inventory {
      * 
      * @return true if the item can be removed, false otherwise.
      */
-    boolean removeLightScroll();
+    public void removelightScroll(LightSpell scroll);
 
     /**
      * Adds a single regeneration scroll to player's inventory.
      */
-    void addRegenerationScroll();
+    public void addRegenerationScroll(RegenerationSpell scroll);
 
     /**
      * Removes a single regeneration scroll from player's inventory,
@@ -219,5 +226,5 @@ public interface Inventory {
      * 
      * @return true if the item can be removed, false otherwise.
      */
-    boolean removeRegenerationScroll();
+    public void removeRegenerationScroll(RegenerationSpell scroll);
 }

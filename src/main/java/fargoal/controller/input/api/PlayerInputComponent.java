@@ -1,15 +1,23 @@
 package fargoal.controller.input.api;
 
+import java.util.Optional;
+
 import fargoal.model.commons.FloorElement;
+import fargoal.model.entity.player.impl.PlayerImpl;
+import fargoal.model.interactable.api.Interactable;
+import fargoal.model.manager.api.FloorManager;
 
 public class PlayerInputComponent implements InputComponent{
 
-    public void update(FloorElement player, InputController controller) {
+    public void update(FloorManager manager, PlayerImpl player, InputController controller) {
         
         if(controller.isInteracting()) {
-            //TODO
+            Optional<Interactable> interacting = manager.getInteractables().stream().filter(element -> player.getPosition().equals(element.getPosition())).findAny();
+            interacting.ifPresent(element -> element.interact(manager));
         } else if(controller.isUsingHealingPotion()) {
-            //TODO
+            if(player.getInventory().getHealingPotions() > 0) {
+                //TODO
+            }
         } else if(controller.isPlacingBeacon()) {
             //TODO
         } else if(controller.isUsingDriftSpell()) {
