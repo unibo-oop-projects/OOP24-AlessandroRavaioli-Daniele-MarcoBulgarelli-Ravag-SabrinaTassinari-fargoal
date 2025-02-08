@@ -19,7 +19,7 @@ public class DriftSpell implements Spell{
      * the spell ends.
      */
     public DriftSpell(FloorManager floorManager) {
-        this.store(floorManager);
+    
     }
 
     /** {@inheritDoc} */

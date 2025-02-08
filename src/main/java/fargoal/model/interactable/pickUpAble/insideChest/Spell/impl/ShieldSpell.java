@@ -20,7 +20,7 @@ public class ShieldSpell implements Spell {
      * 
      */
     public ShieldSpell(FloorManager floorManager) {
-        this.store(floorManager);
+    
     }
 
     /** {@inheritDoc} */

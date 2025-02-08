@@ -18,7 +18,7 @@ public class RegenerationSpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public RegenerationSpell(FloorManager floorManager) {
-        this.store(floorManager);
+    
     }
 
     /** {@inheritDoc} */

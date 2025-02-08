@@ -73,6 +73,7 @@ public class PlayerImpl implements Player {
         this.isAttacked = false;
         this.isVisible = true;
         this.hasLight = false;
+        this.setRender(floorManager.getRenderFactory().playerRenderer(this));
     }
 
     public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager) {

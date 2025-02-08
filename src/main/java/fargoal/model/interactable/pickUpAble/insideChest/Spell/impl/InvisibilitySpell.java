@@ -19,7 +19,7 @@ public class InvisibilitySpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public InvisibilitySpell(FloorManager floorManager) {
-        this.store(floorManager);
+        
     }
 
     /** {@inheritDoc} */

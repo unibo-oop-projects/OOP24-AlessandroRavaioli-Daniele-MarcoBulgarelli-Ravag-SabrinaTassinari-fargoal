@@ -17,7 +17,7 @@ public class TeleportSpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public TeleportSpell(FloorManager floorManager) {
-        this.store(floorManager);
+        
     }
 
     /** {@inheritDoc} */
