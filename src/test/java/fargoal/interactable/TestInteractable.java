@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import fargoal.commons.api.Position;
 import fargoal.model.core.GameContext;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.inChest.impl.ChestImpl;
+import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.view.impl.SwingView;

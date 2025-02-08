@@ -13,7 +13,7 @@ import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.entity.player.impl.PlayerImpl;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.inChest.impl.ChestImpl;
+import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.interactable.stair.impl.DownStairs;
