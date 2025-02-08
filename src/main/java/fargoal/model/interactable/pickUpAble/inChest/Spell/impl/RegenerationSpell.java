@@ -13,7 +13,6 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class RegenerationSpell implements Spell {
 
-    final private static int SPELL_NOT_CASTED = -1;
     final private Position position;
     private int floorLevelSpellCasted;
 
@@ -24,7 +23,6 @@ public class RegenerationSpell implements Spell {
     public RegenerationSpell(FloorManager floorManager, final Position position) {
         this.store(floorManager);
         this.position = position;
-        this.floorLevelSpellCasted = SPELL_NOT_CASTED;
     }
 
     /** {@inheritDoc} */
@@ -77,7 +75,7 @@ public class RegenerationSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        if (this.floorLevelSpellCasted != SPELL_NOT_CASTED) {
+        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.REGENERATION.getName())) {
             if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), false);
             }

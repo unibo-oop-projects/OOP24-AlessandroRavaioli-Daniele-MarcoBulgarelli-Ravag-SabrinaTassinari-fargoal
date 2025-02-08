@@ -14,7 +14,6 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class InvisibilitySpell implements Spell {
 
-    final private static int SPELL_NOT_CASTED = -1;
     final private Position position;
     private int floorLevelSpellCasted;
 
@@ -25,7 +24,6 @@ public class InvisibilitySpell implements Spell {
     public InvisibilitySpell(FloorManager floorManager, final Position position) {
         this.store(floorManager);
         this.position = position;
-        this.floorLevelSpellCasted = SPELL_NOT_CASTED;
     }
 
     /** {@inheritDoc} */
@@ -79,9 +77,9 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        if (this.floorLevelSpellCasted != SPELL_NOT_CASTED) {
+        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
             if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
-                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
+                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), false);
                 floorManager.getPlayer().setIsVisible(true);
             }
         }
