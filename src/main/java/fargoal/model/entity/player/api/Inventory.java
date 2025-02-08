@@ -24,30 +24,34 @@ import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.MagicSack;
 public interface Inventory {
 
     /**
-     * Retrieves the number of healing potions available in the inventory.
+     * Retrieves the HealingPotion Object on which the methods 
+     * inherent in that utility can be called.
      *  
-     * @return the number of healing potions.
+     * @return the HealingPotion Object
      */
     HealingPotion getHealingPotions();
 
     /**
-     * Retrieves the number of beacons available in the inventory.
+     * Retrieves the Beacon Object on which the methods 
+     * inherent in that utility can be called.
      *  
-     * @return the number of beacons.
+     * @return the Beacon Object
      */
     Beacon getBeacons();
 
     /**
-     * Retrieves the number of magic sacks available in the inventory.
+     * Retrieves the MagicSack Object on which the methods 
+     * inherent in that utility can be called.
      *  
-     * @return the number of magic sacks.
+     * @return the MagicSack Object
      */
     MagicSack getMagicSacks();
 
     /**
-     * Retrieves the number of enchanted weapons available in the inventory.
+     * Retrieves the EnchantedWeapon Object on which the methods 
+     * inherent in that utility can be called.
      *  
-     * @return the number of enchanted weapons.
+     * @return the EnchantedWeapon Object
      */
     EnchantedWeapon getEnchantedWeapons();
 
@@ -65,15 +69,51 @@ public interface Inventory {
      */
     Map<String, Boolean> getSpellCasted();
 
+    /**
+     * Retrieves the InvisibilitySpell Object on which the methods 
+     * inherent in that spell can be called.
+     *  
+     * @return the InvisibilitySpell Object
+     */
     InvisibilitySpell getInvisibilitySpell();
 
+    /**
+     * Retrieves the TeleportSpell Object on which the methods 
+     * inherent in that spell can be called.
+     *  
+     * @return the TeleportSpell Object
+     */
     TeleportSpell getTeleportSpell();
 
+    /**
+     * Retrieves the ShieldSpell Object on which the methods 
+     * inherent in that spell can be called.
+     *  
+     * @return the ShieldSpell Object
+     */
     ShieldSpell getShieldSpell();
 
+    /**
+     * Retrieves the RegenerationSpell Object on which the methods 
+     * inherent in that spell can be called.
+     *  
+     * @return the RegenerationSpell Object
+     */
     RegenerationSpell getRegenerationSpell();
 
+    /**
+     * Retrieves the DriftSpell Object on which the methods 
+     * inherent in that spell can be called.
+     *  
+     * @return the DriftSpell Object
+     */
     DriftSpell getDriftSpell();
 
+    /**
+     * Retrieves the LightSpell Object on which the methods 
+     * inherent in that spell can be called.
+     *  
+     * @return the LightSpell Object
+     */
     LightSpell getLightSpell();
 }

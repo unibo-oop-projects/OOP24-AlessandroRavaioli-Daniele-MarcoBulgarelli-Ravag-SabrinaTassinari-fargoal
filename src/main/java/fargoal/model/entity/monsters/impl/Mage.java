@@ -48,7 +48,7 @@ public class Mage extends AbstractMonster {
     public void steal() {
         Inventory inventory = this.getFloorManager().getPlayer().getInventory();
         if (inventory.getHealingPotions().getNumberInInventory() != 0) {
-            inventory.getHealingPotions().removeUtility();;
+            inventory.getHealingPotions().removeUtility();
         }
     }
 

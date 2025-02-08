@@ -91,13 +91,13 @@ public class InventoryImpl implements Inventory {
         return this.magicSacks;
     }
 
-    /**{@inheritDoc} */
+    /** {@inheritDoc} */
     @Override
     public EnchantedWeapon getEnchantedWeapons() {
         return this.enchantedWeapons;
     }
 
-    /**{@inheritDoc} */
+    /** {@inheritDoc} */
     @Override
     public fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map getListOfMaps() {
         return this.levelMaps;
