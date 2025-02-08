@@ -38,7 +38,7 @@ public class ShieldSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addShieldScroll(this);
+        floorManager.getPlayer().getInventory().addShieldScroll();
     }
 
     /** {@inheritDoc} */

@@ -37,7 +37,7 @@ public class LightSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addLightScroll(this);
+        floorManager.getPlayer().getInventory().addLightScroll();
     }
 
     /** {@inheritDoc} */

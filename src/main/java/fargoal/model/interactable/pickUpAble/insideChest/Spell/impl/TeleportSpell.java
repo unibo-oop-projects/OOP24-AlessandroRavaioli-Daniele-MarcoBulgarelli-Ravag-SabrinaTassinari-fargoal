@@ -35,7 +35,7 @@ public class TeleportSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addTeleportScroll(this);
+        floorManager.getPlayer().getInventory().addTeleportScroll();
     }
 
     /** {@inheritDoc} */

@@ -36,7 +36,7 @@ public class RegenerationSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addRegenerationScroll(this);
+        floorManager.getPlayer().getInventory().addRegenerationScroll();
     }
 
     /** {@inheritDoc} */

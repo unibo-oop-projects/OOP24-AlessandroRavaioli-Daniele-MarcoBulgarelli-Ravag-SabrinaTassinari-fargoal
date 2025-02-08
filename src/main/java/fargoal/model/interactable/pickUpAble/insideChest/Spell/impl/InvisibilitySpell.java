@@ -37,7 +37,7 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-        floorManager.getPlayer().getInventory().addInvisibilityScroll(this);
+        floorManager.getPlayer().getInventory().addInvisibilityScroll();
     }
 
     /** {@inheritDoc} */

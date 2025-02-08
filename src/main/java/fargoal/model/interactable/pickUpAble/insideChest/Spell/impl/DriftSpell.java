@@ -37,7 +37,7 @@ public class DriftSpell implements Spell{
     /** {@inheritDoc} */
     @Override
     public void store(FloorManager floorManager) {
-       floorManager.getPlayer().getInventory().addDriftScroll(this);
+       floorManager.getPlayer().getInventory().addDriftScroll();
     }
 
     /** {@inheritDoc} */

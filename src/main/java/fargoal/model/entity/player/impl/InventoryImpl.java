@@ -15,14 +15,9 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.Regeneration
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.ShieldSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.TeleportSpell;
-<<<<<<< HEAD
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.HealingPotion;
-import fargoal.model.manager.api.FloorManager;
-=======
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.Beacon;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.HealingPotion;
->>>>>>> 8d76ce0e7ad707cbeb201a180943024493403cdb
+import fargoal.model.manager.api.FloorManager;
 
 /**
  * Implementation of the {@link Inventory} interface that manages the player's inventory.
@@ -39,17 +34,17 @@ public class InventoryImpl implements Inventory {
     private final List<Integer> listOfMaps;
 
     private Integer invisibilityScrolls;
-    private InvisibilitySpell invisible = new InvisibilitySpell(null, null);
+    private InvisibilitySpell invisible = new InvisibilitySpell(null);
     private Integer teleportScrolls;
-    private TeleportSpell teleport = new TeleportSpell(null, null);
+    private TeleportSpell teleport = new TeleportSpell(null);
     private Integer shieldScrolls;
-    private ShieldSpell shield = new ShieldSpell(null, null);
+    private ShieldSpell shield = new ShieldSpell(null);
     private Integer regenerationScrolls;
-    private RegenerationSpell regeneration = new RegenerationSpell(null, null);
+    private RegenerationSpell regeneration = new RegenerationSpell(null);
     private Integer driftScrolls;
-    private DriftSpell drift = new DriftSpell(null, null);
+    private DriftSpell drift = new DriftSpell(null);
     private Integer lightScrolls;
-    private LightSpell light = new LightSpell(null, null);
+    private LightSpell light = new LightSpell(null);
     //private Map<InvisibilitySpell, Integer> invisibilityScrolls;
     //private Map<TeleportSpell, Integer> teleportScrolls;
     //private Map<ShieldSpell, Integer> shieldScrolls;

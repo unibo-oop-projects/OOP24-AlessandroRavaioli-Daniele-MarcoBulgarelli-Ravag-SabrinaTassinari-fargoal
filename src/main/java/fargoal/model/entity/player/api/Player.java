@@ -160,8 +160,6 @@ public interface Player extends Entity {
 
     void setIsImmune(Boolean condition);
 
-    void removeRegenerationScroll();
-
     void useInvisibilitySpell();
 
     void useTeleportSpell();
