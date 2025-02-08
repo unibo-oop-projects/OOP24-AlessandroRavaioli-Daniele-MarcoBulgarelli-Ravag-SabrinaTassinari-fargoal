@@ -26,6 +26,10 @@ public class HealingPotion implements Utility {
         this.position = position;
     }
 
+    public HealingPotion() {
+        this.position = null;
+    } 
+
     /** {@inheritDoc} */
     @Override
     public String getChestItemType() {
