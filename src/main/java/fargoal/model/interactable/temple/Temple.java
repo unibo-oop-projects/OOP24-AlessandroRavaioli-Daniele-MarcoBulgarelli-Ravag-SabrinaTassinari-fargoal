@@ -5,7 +5,6 @@ import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
-import fargoal.view.impl.SwingRenderer;
 
 /**
  * This class implements the temple of the floor.

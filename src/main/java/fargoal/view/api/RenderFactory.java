@@ -24,6 +24,8 @@ public interface RenderFactory {
 
     Renderer goldRenderer(SackOfMoney obj);
 
+    Renderer beaconRenderer(FloorElement obj);
+
     Renderer assassinRenderer(FloorElement obj);
 
     Renderer barbarianRenderer(FloorElement obj);
