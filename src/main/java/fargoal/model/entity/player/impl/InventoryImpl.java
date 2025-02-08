@@ -18,9 +18,10 @@ import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.Beacon;
 import fargoal.model.interactable.pickUpAble.inChest.Utility.impl.HealingPotion;
 
 /**
- * Inventory class, it manages player's inventory
+ * Implementation of the {@link Inventory} interface that manages the player's inventory.
+ * This class handles various types of items, such as healing potions, spell scrolls, beacons and
+ * magical artifacts, allowing the player to store, add and remove them as needed.
  */
-
 public class InventoryImpl implements Inventory {
 
     private List<HealingPotion> healingPotions;
@@ -39,8 +40,20 @@ public class InventoryImpl implements Inventory {
     private final Map<String, Boolean> SpellCasted;
 
     /**
-     * Creates a new instance of Inventory, every number of available
-     * items is set to 0.
+     * Initializes a new instance of the {@code InventoryImpl} class.
+     * All item quantities are set to their default values.
+     * <p>
+     * The inventory includes various item categories, such as:
+     * </p>
+     * <ul>
+     *  <li><b>Consumables</b>: healing potions, beacons.</li>
+     *  <li><b>Magical artifacts</b>: enchanted weapons, magic sacks.</li>
+     *  <li><b>Spells</b>: various spell scrolls (invisibility, teleportation, shield, regeneration, drift, light).</li>
+     *  <li><b>Exploration maps</b>: a list of discovered dungeon maps.</li>
+     * </ul>
+     * <p>
+     * A map is used to track the active state of spells, initially setting them as inactive.
+     * </p>
      */
     public InventoryImpl() {
         this.healingPotions = new LinkedList<>(List.of(new HealingPotion(), new HealingPotion(), new HealingPotion()));
