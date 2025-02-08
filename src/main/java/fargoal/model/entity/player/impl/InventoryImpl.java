@@ -26,30 +26,18 @@ import fargoal.model.manager.api.FloorManager;
 public class InventoryImpl implements Inventory {
 
     private FloorManager floorManager;
-    private List<HealingPotion> healingPotions;
-    private List<Beacon> beacons;
+    private HealingPotion healingPotions;
+    private Beacon beacons;
     private Integer magicSacks;
     private Integer enchantedWeapons;
     private final List<Integer> listOfMaps;
 
-    private Integer invisibilityScrolls;
-    private InvisibilitySpell invisible;
-    private Integer teleportScrolls;
-    private TeleportSpell teleport;
-    private Integer shieldScrolls;
-    private ShieldSpell shield;
-    private Integer regenerationScrolls;
-    private RegenerationSpell regeneration;
-    private Integer driftScrolls;
-    private DriftSpell drift;
-    private Integer lightScrolls;
-    private LightSpell light;
-    //private Map<InvisibilitySpell, Integer> invisibilityScrolls;
-    //private Map<TeleportSpell, Integer> teleportScrolls;
-    //private Map<ShieldSpell, Integer> shieldScrolls;
-    //private Map<RegenerationSpell, Integer> regenerationScrolls;
-    //private Map<DriftSpell, Integer> driftScrolls;
-    //private Map<LightSpell, Integer> lightScrolls;
+    private InvisibilitySpell invisibilityScroll;
+    private TeleportSpell teleportScroll;
+    private ShieldSpell shieldScroll;
+    private RegenerationSpell regenerationScroll;
+    private DriftSpell driftScroll;
+    private LightSpell lightScroll;
 
     private final Map<String, Boolean> SpellCasted;
 
@@ -71,23 +59,17 @@ public class InventoryImpl implements Inventory {
      */
     public InventoryImpl(FloorManager floorManager) {
         this.floorManager = floorManager;
-        this.healingPotions = new LinkedList<>(List.of(new HealingPotion(), new HealingPotion(), new HealingPotion()));
-        this.beacons = new LinkedList<>();
+        this.healingPotions = new HealingPotion(floorManager);
+        this.beacons = new Beacon(floorManager);
         this.magicSacks = 0;
         this.enchantedWeapons = 0;
         this.listOfMaps = new ArrayList<>();
-        this.invisibilityScrolls = 0;
-        this.invisible = new InvisibilitySpell(floorManager);
-        this.teleportScrolls = 0;
-        this.teleport = new TeleportSpell(floorManager);
-        this.shieldScrolls = 0;
-        this.shield = new ShieldSpell(floorManager);
-        this.regenerationScrolls = 0;
-        this.regeneration = new RegenerationSpell(floorManager);
-        this.driftScrolls = 0;
-        this.drift = new DriftSpell(floorManager);
-        this.lightScrolls = 0;
-        this.light = new LightSpell(floorManager);
+        this.invisibilityScroll = new InvisibilitySpell(floorManager);
+        this.teleportScroll = new TeleportSpell(floorManager);
+        this.shieldScroll = new ShieldSpell(floorManager);
+        this.regenerationScroll = new RegenerationSpell(floorManager);
+        this.driftScroll = new DriftSpell(floorManager);
+        this.lightScroll = new LightSpell(floorManager);
         this.SpellCasted = Map.of(SpellType.DRIFT.getName(), false, SpellType.INVISIBILITY.getName(), false, 
             SpellType.LIGHT.getName(), false, SpellType.REGENERATION.getName(), false, 
             SpellType.SHIELD.getName(), false);
@@ -95,14 +77,14 @@ public class InventoryImpl implements Inventory {
 
     /**{@inheritDoc} */
     @Override
-    public Integer getHealingPotions() {
-        return this.healingPotions.size();
+    public HealingPotion getHealingPotions() {
+        return this.healingPotions;
     }
 
     /**{@inheritDoc} */
     @Override
-    public Integer getBeacons() {
-        return this.beacons.size();
+    public Beacon getBeacons() {
+        return this.beacons;
     }
 
     /**{@inheritDoc} */
@@ -122,81 +104,11 @@ public class InventoryImpl implements Inventory {
     public List<Integer> getListOfMaps() {
         return this.listOfMaps;
     }
-    
-    /**{@inheritDoc} */
-    @Override
-    public Integer getInvisibilityScrolls() {
-        return this.invisibilityScrolls;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public Integer getTeleportScrolls() {
-        return this.teleportScrolls;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public Integer getShieldScrolls() {
-        return shieldScrolls;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public Integer getRegenerationScrolls() {
-        return this.regenerationScrolls;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public Integer getDriftScrolls() {
-        return this.driftScrolls;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public Integer getLightScrolls() {
-        return this.lightScrolls;
-    }
 
     /** {@inheritDoc} */
     @Override
     public Map<String, Boolean> getSpellCasted() {
         return this.SpellCasted;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addHealingPotion(HealingPotion h) {
-        Objects.requireNonNull(h);
-        this.healingPotions.add(h);
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeHealingPotion() {
-        if(this.getHealingPotions() > 0) {
-            this.healingPotions.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough healing potions.");
-        }
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addBeacon(Beacon b) {
-        Objects.requireNonNull(b);
-        this.beacons.add(b); 
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeBeacon() {
-        if(this.getBeacons() > 0) {
-            this.beacons.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough beacons.");
-        }
     }
 
     /**{@inheritDoc} */
@@ -236,135 +148,35 @@ public class InventoryImpl implements Inventory {
         }
     }
 
-    /**{@inheritDoc} */
-    @Override
-    public void addInvisibilityScroll() {
-        this.invisibilityScrolls++; 
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeInvisibilityScroll() {
-        this.invisibilityScrolls--;
-        /* if(this.getInvisibilityScrolls() > 0) {
-            this.beacons.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough invisibility scrolls.");
-        } */
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addTeleportScroll() {
-        this.teleportScrolls++;  
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeTeleportScroll() {
-        this.teleportScrolls--;
-        /* if(this.getTeleportScrolls() > 0) {
-            this.beacons.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough teleport scrolls.");
-        } */
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addShieldScroll() {
-        this.shieldScrolls++;  
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeShieldScroll() {
-        this.shieldScrolls--;
-        /* if(this.getShieldScrolls() > 0) {
-            this.shieldScrolls.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough shield scrolls.");
-        } */
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addRegenerationScroll() {
-        this.regenerationScrolls++;  
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeRegenerationScroll() {
-        this.regenerationScrolls--;
-        /* if(this.getRegenerationScrolls() > 0) {
-            this.regenerationScrolls.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough regeneration scrolls.");
-        } */
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addDriftScroll() {
-        this.driftScrolls++;  
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeDriftScroll() {
-        this.driftScrolls--;
-        /* if(this.getDriftScrolls() > 0) {
-            this.driftScrolls.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough drift scrolls.");
-        } */
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void addLightScroll() {
-        this.lightScrolls++;  
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public void removeLightScroll() {
-        this.lightScrolls--;
-        /* if(this.getLightScrolls() > 0) {
-            this.lightScrolls.removeFirst();
-        } else {
-            throw new IllegalStateException("Not enough light scrolls.");
-        } */
-    }
-
     @Override
     public InvisibilitySpell getInvisibilitySpell() {
-        return this.invisible;
+        return this.invisibilityScroll;
     }
 
     @Override
     public TeleportSpell getTeleportSpell() {
-        return this.teleport;
+        return this.teleportScroll;
     }
 
     @Override
     public ShieldSpell getShieldSpell() {
-        return this.shield;
+        return this.shieldScroll;
     }
 
     @Override
     public RegenerationSpell getRegenerationSpell() {
-        return this.regeneration;
+        return this.regenerationScroll;
     }
 
     @Override
     public DriftSpell getDriftSpell() {
-        return this.drift;
+        return this.driftScroll;
     }
 
     @Override
     public LightSpell getLightSpell() {
-        return this.light;
+        return this.lightScroll;
     }
+
+    
 }

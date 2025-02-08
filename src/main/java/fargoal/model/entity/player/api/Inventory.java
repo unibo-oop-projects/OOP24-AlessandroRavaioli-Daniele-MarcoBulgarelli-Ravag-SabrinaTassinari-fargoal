@@ -27,56 +27,14 @@ public interface Inventory {
      *  
      * @return the number of healing potions.
      */
-    Integer getHealingPotions();
-
-    /**
-     * Retrieves the number of invisibility scrolls available in the inventory.
-     *  
-     * @return the number of invisibility scrolls.
-     */
-    Integer getInvisibilityScrolls();
-
-    /**
-     * Retrieves the number of teleportation scrolls available in the inventory.
-     *  
-     * @return the number of teleportation scrolls.
-     */
-    Integer getTeleportScrolls();
-
-    /**
-     * Retrieves the number of shield scrolls available in the inventory.
-     *  
-     * @return the number of shield scrolls.
-     */
-    Integer getShieldScrolls();
-
-    /**
-     * Retrieves the number of drift scrolls available in the inventory.
-     *  
-     * @return the number of drift scrolls.
-     */
-    Integer getDriftScrolls();
-
-    /**
-     * Retrieves the number of light scrolls available in the inventory.
-     *  
-     * @return the number of light scrolls.
-     */
-    Integer getLightScrolls();
-
-    /**
-     * Retrieves the number of regeneration scrolls available in the inventory.
-     *  
-     * @return the number of regeneration scrolls.
-     */
-    Integer getRegenerationScrolls();
+    HealingPotion getHealingPotions();
 
     /**
      * Retrieves the number of beacons available in the inventory.
      *  
      * @return the number of beacons.
      */
-    Integer getBeacons();
+    Beacon getBeacons();
 
     /**
      * Retrieves the number of magic sacks available in the inventory.
@@ -106,62 +64,6 @@ public interface Inventory {
      */
     Map<String, Boolean> getSpellCasted();
 
-    /**
-     * Adds a healing potion to the player's inventory.
-     * 
-     * @param h - The healing potion to be added, must not be null.
-     */
-    void addHealingPotion(HealingPotion h);
-
-    /**
-     * Removes a healing potion from the player's inventory.
-     * 
-     * 
-     * @throws IllegalStateException if there are no healing potions in the inventory.
-    */
-    public void removeHealingPotion();
-
-    /**
-     * Adds an invisibility scroll to the player's inventory.
-     * 
-     * @param scroll - The invisibility scroll to be added, must not be null.
-     */
-    public void addInvisibilityScroll();
-
-    /**
-     * Removes an invisibility scroll from the player's inventory.
-     * 
-     * @throws IllegalStateException if there are no invisibility scrolls in the inventory.
-    */
-    public void removeInvisibilityScroll();
-
-    /**
-     * Adds a teleportation scroll to the player's inventory.
-     * 
-     * @param scroll - The teleportation scroll to be added, must not be null.
-     */
-    public void addTeleportScroll();
-
-    /**
-     * Removes a teleportation scroll from the player's inventory.
-     * 
-     * @throws IllegalStateException if there are no teleportation scrolls in the inventory.
-    */
-    public void removeTeleportScroll();
-
-    /**
-     * Adds a shield scroll to the player's inventory.
-     * 
-     * @param scroll - The shield scroll to be added, must not be null.
-     */
-    public void addShieldScroll();
-
-    /**
-     * Removes a shield scroll from the player's inventory.
-     * 
-     * @throws IllegalStateException if there are no shield scrolls in the inventory.
-    */
-    public void removeShieldScroll();
 
     /**
      * Adds a magic sack to the player's inventory.
@@ -192,62 +94,6 @@ public interface Inventory {
      * @throws IllegalArgumentExceptin if the floor number is null, negative or zero.
      */
     boolean removeFloorMap(Integer floorNumber);
-
-    /**
-     * Adds a beacon to the player's inventory.
-     * 
-     * @param b - The beacon to be added, must not be null.
-     */
-    public void addBeacon(Beacon b);
-
-    /**
-     * Removes a beacon from the player's inventory.
-     * 
-     * @throws IllegalStateException if there are no beacons in the inventory.
-    */
-    public void removeBeacon();
-
-    /**
-     * Adds a drift scroll to the player's inventory.
-     * 
-     * @param scroll - The drift scroll to be added, must not be null.
-     */
-    public void addDriftScroll();
-
-    /**
-     * Removes a drift scroll from the player's inventory.
-     * 
-     * @throws IllegalStateException if there are no drift scrolls in the inventory.
-    */
-    public void removeDriftScroll();
-
-    /**
-     * Adds a light scroll to the player's inventory.
-     * 
-     * @param scroll - The light scroll to be added, must not be null.
-     */
-    public void addLightScroll();
-
-    /**
-     * Removes a light scroll from the player's inventory.
-     * 
-     * @throws IllegalStateException if there are no light scrolls in the inventory.
-    */
-    public void removeLightScroll();
-
-    /**
-     * Adds a regeneration scroll to the player's inventory.
-     * 
-     * @param scroll - The regeneration scroll to be added, must not be null.
-     */
-    public void addRegenerationScroll();
-
-    /**
-     * Removes a regeneration scroll from the player's inventory.
-     * 
-     * @throws IllegalStateException if there are no regeneration scrolls in the inventory.
-    */
-    void removeRegenerationScroll();
 
     InvisibilitySpell getInvisibilitySpell();
 
