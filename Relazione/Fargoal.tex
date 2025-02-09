@@ -35,36 +35,34 @@ La nostra versione cercherà di essere il più fedele possibile al gioco origina
     \item Il piano è caratterizzato dalla presenza di mostri. Questi possono apparire in luoghi specifici o in punti casuali, aumentando gradualmente con il passare del tempo, rendendo l’ambiente sempre più pericoloso.
     \item All’interno del piano saranno presenti due tipologie di oggetti di cui il giocatore potrà usufruire: dei bauli, che possono contenere degli oggetti magici o delle trappole, oppure delle sacche di monete.
     \item Il sistema di progresso del personaggio è legato all’accumulo di esperienza, che contribuisce all’aumentare del suo livello. Questa può essere ottenuta sia combattendo contro i mostri che offrendo donazioni in oro ai templi.
-    \item In ogni piano sarà presente almeno un tempio, dove è possibile donare oro per salire di livello, rigenerare punti ferita e ottenere una probabilità di essere curati completamente. Inoltre, i templi garantiscono temporanea inattaccabilità ed una rigenerazione accelerata.
+    \item In ogni piano sarà presente almeno un tempio, dove è possibile donare oro per salire di livello, rigenerare punti ferita e, ogni volta che sono state donate 2000 monete, di essere curati completamente. Inoltre, i templi garantiscono temporanea inattaccabilità ed una rigenerazione accelerata.
     \item Una volta recuperata la spada, è necessario riportarla in superficie, ritornando al primo piano e salendo le scale per uscire dal labirinto. La sfida sta nel fatto che, se il giocatore viene attaccato da un mostro, perde la spada, che ritornerà automaticamente nel piano in cui è stata trovata.
 \end{itemize}
 
 \subsection{Modello del dominio}
 
-Il labirinto (dungeon) è formato da più piani (floor). 
+Il labirinto (\textit{dungeon}) è formato da più piani (\textit{Floor}). 
 %
 Per muoversi fra un piano e l’altro si utilizzeranno delle rampe di scale; in uno stesso piano saranno presenti più rampe per risalire o per scendere. 
 %
 Ogni volta che si entra in un nuovo piano, che sia antecedente o successivo, esso verrà generato casualmente. 
 %
-All’interno di ogni piano saranno presenti vari elementi: alcuni hanno la caratteristica di essere interagibili (interactable), mentre gli altri elementi sono delle entità (entity), che si muovono all’interno del piano. 
+All’interno di ogni piano saranno presenti vari elementi (in \ref{Figura 1.1} si chiamano \textit{FloorElement}): alcuni hanno la caratteristica di essere interagibili (\textit{Interactable}), mentre gli altri elementi sono delle entità (\textit{Entity}), che si muovono all’interno del piano. 
 %
-I primi, che sono fissi nella mappa, sono l’insieme formato dalle ceste (che contengono oggetti magici), le scale e il tempio, che è unico all’interno del piano. 
+I primi, che sono fissi nella mappa, sono l’insieme formato dalle ceste (che contengono oggetti magici), le scale (in \ref{Figura 1.1} \textit{Stairs}) e il tempio (in \ref{Figura 1.1} \textit{Temple}) , che è unico all’interno del piano. 
 %
-Le entità, invece, sono l’insieme dei mostri e del giocatore; entrambi si muovono liberamente all’interno del piano e possono entrare in combattimento l’uno con l’altro. 
+Le entità, invece, sono l’insieme dei mostri (in \ref{Figura 1.1} \textit{Monster}) e del giocatore (in \ref{Figura 1.1} \textit{Player}); entrambi si muovono liberamente all’interno del piano e possono entrare in combattimento l’uno con l’altro. 
 
 \begin{figure}
     \centering
-    \includegraphics[width=12cm]{DiagrammaAnalisi.png}
+    \includegraphics[width=12cm]{DiagrammaUMLGenerale.png}
     \caption{Schema UML dell'analisi del problema, con rappresentate le entità principali ed i rapporti fra di loro}
-    \label{Figura 1.1:}
+    \label{Figura 1.1}
 \end{figure}
 
 \chapter{Design}
 
 \section{Architettura}
-
-
 
 \section{Design dettagliato}
 

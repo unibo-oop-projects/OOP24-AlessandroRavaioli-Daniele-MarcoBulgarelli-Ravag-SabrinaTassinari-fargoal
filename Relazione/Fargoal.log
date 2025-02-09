@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  9 FEB 2025 18:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  9 FEB 2025 19:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -150,12 +150,12 @@ Capitolo 1.
 [2
 
 ]
-<DiagrammaAnalisi.png, id=17, 1120.185pt x 783.92876pt>
-File: DiagrammaAnalisi.png Graphic file (type png)
-<use DiagrammaAnalisi.png>
-Package pdftex.def Info: DiagrammaAnalisi.png  used on input line 58.
-(pdftex.def)             Requested size: 341.43306pt x 238.93643pt.
- [3 <./DiagrammaAnalisi.png>]
+<DiagrammaUMLGenerale.png, id=17, 1295.84125pt x 663.47874pt>
+File: DiagrammaUMLGenerale.png Graphic file (type png)
+<use DiagrammaUMLGenerale.png>
+Package pdftex.def Info: DiagrammaUMLGenerale.png  used on input line 58.
+(pdftex.def)             Requested size: 341.43306pt x 174.81876pt.
+ [3 <./DiagrammaUMLGenerale.png>]
 Capitolo 2.
 [4
 
@@ -185,17 +185,17 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4569 strings out of 474486
- 86835 string characters out of 5742811
+ 4571 strings out of 474486
+ 86882 string characters out of 5742811
  1931542 words of memory out of 5000000
- 26855 multiletter control sequences out of 15000+600000
- 563871 words of font info for 55 fonts, out of 8000000 for 9000
+ 26856 multiletter control sequences out of 15000+600000
+ 564217 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,400b,488s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\sabrina\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on Fargoal.pdf (9 pages, 128739 bytes).
+ <C:\Users\sabrina\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on Fargoal.pdf (9 pages, 131766 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
+ 70 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
