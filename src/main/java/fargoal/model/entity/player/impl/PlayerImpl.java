@@ -64,7 +64,7 @@ public class PlayerImpl implements Player {
     private boolean hasLight;
     private boolean isImmune;
 
-    private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private Renderer render;
     private FloorManager floorManager;
 
@@ -523,28 +523,48 @@ public class PlayerImpl implements Player {
     }
 
     /**
-     * Initiates the passive health regeneration for the player.
-     * The player will regenerate 1 health every 10 seconds, provided they are not fighting and
-     * not affected by any regeneration spells.
-     * The regeneration occurs at fixed intervals managed by a scheduled task.
+     * Starts the passive health regeneration for the player.
+     * The player will regenerate health over time unless they are in combat
+     * or have already reached their maximum health. Regeneration can be influenced
+     * by certain conditions such as being in the temple or having a regeneration spell active.
      * <p>
-     * The method uses a scheduler to execute the regeneration task every 10 seconds.
-     * It checks whether the player is in combat (not regenerating during battle) and when the player
-     * is under the effect of a regeneration spell.
+     * Currently, this method is not implemented and will throw an
+     * {@link UnsupportedOperationException} when called.
      * </p>
      */
     public void startPasiveRegeneration() {
-        Integer amountToRegenerate = 1;
-        int period = 10;
+        throw new UnsupportedOperationException("Unimplemented method 'startPassiveRegeneration");
+        /* 
+        int baseHealingAmount = 1;
+        int basePeriod = 10;
+        int healingTime = 0;
+
         Runnable regenerationTask = () -> {
-            if(!isFighting && this.position != floorManager.getTemple().getPosition() && !this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
-                //If it isn't on temple
-                //If it isn't under the regeneration spell
-                this.health.increaseHealth(amountToRegenerate);
-            } else if()
+            if(isFighting || this.health.getCurrentHealth() >= this.health.getMaxHealth()) {
+                return; //Does not regenerate if in combat or has maximum health
+            }
+
+            //Multiplier calculation
+            int multiplier = (this.position.equals(floorManager.getTemple().getPosition()) ? 1 : 0);
+            boolean hasRegenerationSpell = this.inventory.getSpellCasted().getOrDefault(SpellType.REGENERATION.getName(), false);
+            
+            if(hasRegenerationSpell) {
+                multiplier ++;
+            }
+            double finalMultiplier = Math.pow(2, multiplier);
+
+            //Time between healing calculation
+            double healingRate = (basePeriod * fps * this.health.getCurrentHealth()) / (this.health.getMaxHealth() * finalMultiplier);
+
+            healingTime ++;
+            if(healingTime > healingRate) {
+                healingTime = 0;
+                this.health.increaseHealth(baseHealingAmount);
+            }
         };
 
-        scheduler.scheduleAtFixedRate(regenerationTask, 0, period, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(regenerationTask, 0, basePeriod, TimeUnit.SECONDS);
+        */
     }
 
     /**
