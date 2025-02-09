@@ -178,4 +178,8 @@ public interface Player extends Entity {
     void useDriftSpell();
 
     void useLightSpell();
+
+    void useHealingPotion();
+
+    void useBeacon();
 }

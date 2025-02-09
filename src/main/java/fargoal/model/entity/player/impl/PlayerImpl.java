@@ -30,6 +30,7 @@ import fargoal.model.entity.player.api.Inventory;
  */
 public class PlayerImpl implements Player {
 
+    private static final int DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE = -5;
     private static final int CONSTANT_ADDED_TO_MAX_HEALTH_IN_LEVEL_UP = 4;
     private static final int MAX_LEVEL_UP_ADDED_MAX_HEALTH = 15;
     private static final int MIN_LEVEL_UP_ADDED_MAX_HEALTH = 1;
@@ -376,7 +377,7 @@ public class PlayerImpl implements Player {
      * 
      * @return {@code true} if the player wins the battle, {@code false} if they lose.
      */
-    private boolean battle(final AbstractMonster monster) {
+    private void battle(final AbstractMonster monster) {
         //TODO
         //isFighting = true
         //if isAttacked == false -> Player can flee
@@ -391,7 +392,7 @@ public class PlayerImpl implements Player {
                 this.isFighting = false;
                 unlockInputs();
                 this.startPasiveRegeneration();
-                return true;
+                return;
             }
 
             if(this.isAttacked) {
@@ -423,9 +424,7 @@ public class PlayerImpl implements Player {
         } while(!this.isDead() && !monster.isDead());
 
         unlockInputs();
-        this.startPasiveRegeneration();
-        
-        return !this.isDead();
+        this.startPasiveRegeneration();      
     }
 
     /**
@@ -504,9 +503,9 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public boolean isDead() {
-        if (inventory.getHealingPotions().getNumberInInventory() == 0 && this.health.getCurrentHealth() <= -5) {
+        if (inventory.getHealingPotions().getNumberInInventory() == 0 && this.health.getCurrentHealth() <= 0) {
             return true;
-        } else if (inventory.getHealingPotions().getNumberInInventory() > 0 && this.health.getCurrentHealth() <= -5) {
+        } else if (inventory.getHealingPotions().getNumberInInventory() > 0 && this.health.getCurrentHealth() <= DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
             this.inventory.getHealingPotions().use(floorManager);
             return false;
         }
@@ -552,42 +551,56 @@ public class PlayerImpl implements Player {
     @Override
     public void useInvisibilitySpell() {
         if (this.getInventory().getInvisibilitySpell().getNumberInInventory() > 0) {
-            this.getInventory().getInvisibilitySpell().use(null);
+            this.getInventory().getInvisibilitySpell().use(floorManager);
         }
     }
 
     @Override
     public void useTeleportSpell() {
         if (this.getInventory().getTeleportSpell().getNumberInInventory() > 0) {
-            this.getInventory().getTeleportSpell().use(null);
+            this.getInventory().getTeleportSpell().use(floorManager);
         }
     }
 
     @Override
     public void useShieldSpell() {
         if (this.getInventory().getShieldSpell().getNumberInInventory() > 0) {
-            this.getInventory().getShieldSpell().use(null);
+            this.getInventory().getShieldSpell().use(floorManager);
         }
     }
 
     @Override
     public void useRegenerationSpell() {
         if (this.getInventory().getRegenerationSpell().getNumberInInventory() > 0) {
-            this.getInventory().getRegenerationSpell().use(null);
+            this.getInventory().getRegenerationSpell().use(floorManager);
         }
     }
 
     @Override
     public void useDriftSpell() {
         if (this.getInventory().getDriftSpell().getNumberInInventory() > 0) {
-            this.getInventory().getDriftSpell().use(null);
+            this.getInventory().getDriftSpell().use(floorManager);
         }
     }
 
     @Override
     public void useLightSpell() {
         if (this.getInventory().getLightSpell().getNumberInInventory() > 0) {
-            this.getInventory().getLightSpell().use(null);
+            this.getInventory().getLightSpell().use(floorManager);
+        }
+    }
+
+    @Override
+    public void useHealingPotion() {
+        if (this.getInventory().getHealingPotions().getNumberInInventory() > 0) {
+            this.getInventory().getHealingPotions().use(floorManager);
+        }
+    }
+
+    @Override
+    public void useBeacon() {
+        if (this.getInventory().getBeacons().getNumberInInventory() > 0) {
+            this.getInventory().getBeacons().use(floorManager);
         }
     }
 }
