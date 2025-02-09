@@ -346,15 +346,14 @@ public class PlayerImpl implements Player {
 
     /**{@inheritDoc}*/
     @Override
-    public void move() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'move'");
+    public void move(Position newPosition) {
+        this.setPosition(newPosition);
     }
 
     /**{@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
-        
+        throw new UnsupportedOperationException("Unimplemented method 'move'");
     }
 
     @Override
@@ -377,7 +376,7 @@ public class PlayerImpl implements Player {
      * 
      * @return {@code true} if the player wins the battle, {@code false} if they lose.
      */
-    private void battle(final AbstractMonster monster) {
+    public void battle(final Monster monster) {
         //TODO
         //isFighting = true
         //if isAttacked == false -> Player can flee
@@ -442,7 +441,7 @@ public class PlayerImpl implements Player {
      * 
      * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
      */
-    private boolean isMovingAwayFrom(AbstractMonster monster) {
+    private boolean isMovingAwayFrom(Monster monster) {
         throw new UnsupportedOperationException("Unimplemented method 'isMovingAwayFrom'");
     }
 
