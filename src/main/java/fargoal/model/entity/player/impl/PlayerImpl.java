@@ -351,8 +351,7 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        
     }
 
     @Override

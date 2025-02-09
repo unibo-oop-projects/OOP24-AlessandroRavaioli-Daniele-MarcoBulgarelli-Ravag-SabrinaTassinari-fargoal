@@ -127,7 +127,7 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public List<FloorElement> getAllElements() {
         List<FloorElement> elements = new LinkedList<>(this.interactables);
-        //elements.add(this.player);
+        elements.add(this.player);
         elements.add(this.temple);
         elements.addAll(this.monsters);
         return elements;

@@ -17,6 +17,26 @@ public class KeyboardInputController implements InputController {
     private boolean isUsingInvisibilitySpell;
     private boolean isUsingLightSpell;
 
+    public KeyboardInputController() {
+        this.reset();
+    }
+
+    public void reset() {
+        this.notifyNoMoreMoveDown();
+        this.notifyNoMoreInteracting();
+        this.notifyNoMoreMoveLeft();
+        this.notifyNoMoreMoveRight();
+        this.notifyNoMoreMoveUp();
+        this.notifyNoMorePlacingBeacon();
+        this.notifyNoMoreUsingDriftSpell();
+        this.notifyNoMoreUsingHealingPotion();
+        this.notifyNoMoreUsingInvisibilitySpell();
+        this.notifyNoMoreUsingLightSpell();
+        this.notifyNoMoreUsingRegenerationSpell();
+        this.notifyNoMoreUsingShieldSpell();
+        this.notifyNoMoreUsingTeleportSpell();
+    }
+
     @Override
     public boolean isInteracting() {
         return isInteracting;
