@@ -50,6 +50,9 @@ public class MagicSack implements Utility {
         return this.numberInInventory;
     }
 
+    /**
+     * This method add an utility in the player's inventory.
+     */
     private void addUtility() {
         this.numberInInventory++;
     }

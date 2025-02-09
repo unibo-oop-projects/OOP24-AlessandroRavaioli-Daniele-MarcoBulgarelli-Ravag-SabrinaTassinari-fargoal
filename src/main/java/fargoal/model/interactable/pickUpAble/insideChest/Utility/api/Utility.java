@@ -2,6 +2,10 @@ package fargoal.model.interactable.pickUpAble.insideChest.Utility.api;
 
 import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
 
+/**
+ * This is the interface fot the items that the player can found in a chest. 
+ * This type of item are utilities, that the player can put in his inventory.
+ */
 public interface Utility extends ItemsForInventory {
     
     /**

@@ -547,42 +547,42 @@ public class PlayerImpl implements Player {
 
     @Override
     public void useInvisibilitySpell() {
-        if (this.getInventory().getInvisibilitySpell().getQuantity() > 0) {
+        if (this.getInventory().getInvisibilitySpell().getNumberInInventory() > 0) {
             this.getInventory().getInvisibilitySpell().use(null);
         }
     }
 
     @Override
     public void useTeleportSpell() {
-        if (this.getInventory().getTeleportSpell().getQuantity() > 0) {
+        if (this.getInventory().getTeleportSpell().getNumberInInventory() > 0) {
             this.getInventory().getTeleportSpell().use(null);
         }
     }
 
     @Override
     public void useShieldSpell() {
-        if (this.getInventory().getShieldSpell().getQuantity() > 0) {
+        if (this.getInventory().getShieldSpell().getNumberInInventory() > 0) {
             this.getInventory().getShieldSpell().use(null);
         }
     }
 
     @Override
     public void useRegenerationSpell() {
-        if (this.getInventory().getRegenerationSpell().getQuantity() > 0) {
+        if (this.getInventory().getRegenerationSpell().getNumberInInventory() > 0) {
             this.getInventory().getRegenerationSpell().use(null);
         }
     }
 
     @Override
     public void useDriftSpell() {
-        if (this.getInventory().getDriftSpell().getQuantity() > 0) {
+        if (this.getInventory().getDriftSpell().getNumberInInventory() > 0) {
             this.getInventory().getDriftSpell().use(null);
         }
     }
 
     @Override
     public void useLightSpell() {
-        if (this.getInventory().getLightSpell().getQuantity() > 0) {
+        if (this.getInventory().getLightSpell().getNumberInInventory() > 0) {
             this.getInventory().getLightSpell().use(null);
         }
     }

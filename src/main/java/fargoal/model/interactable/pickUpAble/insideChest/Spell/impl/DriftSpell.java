@@ -10,7 +10,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class DriftSpell implements Spell{
 
-    private int cont;
+    private int numberInInventory;
     private int floorLevelSpellCasted;
 
     /**
@@ -20,7 +20,7 @@ public class DriftSpell implements Spell{
      * the spell ends.
      */
     public DriftSpell(FloorManager floorManager) {
-        this.cont = 0;
+        this.numberInInventory = 0;
     }
 
     /** {@inheritDoc} */
@@ -67,19 +67,24 @@ public class DriftSpell implements Spell{
         }
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Integer getQuantity() {
-        return this.cont;
+    public Integer getNumberInInventory() {
+        return this.numberInInventory;
     }
 
+    /**
+     * This method add a spell in the player's inventory.
+     */
     private void addSpell() {
-        this.cont++;
+        this.numberInInventory++;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeSpell() {
-        if (this.cont > 0) {
-            this.cont--;
+        if (this.numberInInventory > 0) {
+            this.numberInInventory--;
         }
     }
 
