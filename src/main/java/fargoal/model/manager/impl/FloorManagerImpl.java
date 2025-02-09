@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
+import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.commons.Timer;
 import fargoal.model.core.GameContext;
@@ -51,12 +52,14 @@ public class FloorManagerImpl implements FloorManager {
     private Temple temple;
     private final RenderFactory renderFactory;
     private final Timer timer;
+    private final KeyboardInputController controller;
 
     /**
      * Constructor that inizializes all of its fields.
      * @param context - the structure in which the reference to the view is contained
      */
-    public FloorManagerImpl(final GameContext context) {
+    public FloorManagerImpl(final GameContext context, final KeyboardInputController controller) {
+        this.controller = controller;
         this.listener = new RenderEventListener(context.getView());
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl(context.getView());

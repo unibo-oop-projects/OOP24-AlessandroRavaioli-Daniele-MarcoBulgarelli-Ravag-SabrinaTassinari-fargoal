@@ -353,7 +353,7 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
-        throw new UnsupportedOperationException("Unimplemented method 'move'");
+        
     }
 
     @Override
