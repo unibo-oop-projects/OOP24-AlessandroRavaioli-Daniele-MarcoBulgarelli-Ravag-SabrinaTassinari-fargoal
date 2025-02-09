@@ -57,7 +57,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
@@ -71,7 +72,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
@@ -85,7 +87,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
@@ -99,7 +102,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
@@ -113,7 +117,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
@@ -127,7 +132,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
@@ -141,7 +147,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
@@ -155,7 +162,8 @@ public class PlayerInputComponent implements InputComponent{
                     .anyMatch(p -> p.getPosition().equals(pos))) {
                         for (var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
-                                player.doDamage(monster);
+                                monster.receiveDamage();
+                                player.receiveDamage(monster);
                                 break;
                             }
                         }
