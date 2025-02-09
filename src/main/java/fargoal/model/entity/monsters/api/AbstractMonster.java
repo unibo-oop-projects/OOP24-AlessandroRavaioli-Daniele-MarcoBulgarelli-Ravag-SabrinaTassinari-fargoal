@@ -257,7 +257,6 @@ public abstract class AbstractMonster implements Monster {
      * @return if the monster is near the player
      */
     public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
-        System.out.println(this.getPosition() + " " + floorManager.getPlayer().getPosition());
         return Math.abs(floorManager.getPlayer().getPosition().x() - this.getPosition().x()) <= amount
                 && Math.abs(floorManager.getPlayer().getPosition().y() - this.getPosition().y()) <= amount;
     }
