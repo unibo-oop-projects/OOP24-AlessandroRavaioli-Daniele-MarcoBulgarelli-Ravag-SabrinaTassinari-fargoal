@@ -26,27 +26,27 @@ public class PlayerInputComponent implements InputComponent{
                 player.getInventory().getBeacons().use(manager);
             }
         } else if(controller.isUsingDriftSpell()) {
-            if (player.getInventory().getDriftSpell().getQuantity() > 0) {
+            if (player.getInventory().getDriftSpell().getNumberInInventory() > 0) {
                 player.getInventory().getDriftSpell().use(manager);
             }
         } else if(controller.isUsingInvisibilitySpell()) {
-            if (player.getInventory().getInvisibilitySpell().getQuantity() > 0) {
+            if (player.getInventory().getInvisibilitySpell().getNumberInInventory() > 0) {
                 player.getInventory().getInvisibilitySpell().use(manager);
             }
         } else if(controller.isUsingLightSpell()) {
-            if (player.getInventory().getLightSpell().getQuantity() > 0) {
+            if (player.getInventory().getLightSpell().getNumberInInventory() > 0) {
                 player.getInventory().getLightSpell().use(manager);
             }
         } else if(controller.isUsingRegenerationSpell()) {
-            if (player.getInventory().getRegenerationSpell().getQuantity() > 0) {
+            if (player.getInventory().getRegenerationSpell().getNumberInInventory() > 0) {
                 player.getInventory().getRegenerationSpell().use(manager);
             }
         } else if(controller.isUsingShieldSpell()) {
-            if (player.getInventory().getShieldSpell().getQuantity() > 0) {
+            if (player.getInventory().getShieldSpell().getNumberInInventory() > 0) {
                 player.getInventory().getShieldSpell().use(manager);
             }
         } else if(controller.isUsingTeleportSpell()) {
-            if (player.getInventory().getTeleportSpell().getQuantity() > 0) {
+            if (player.getInventory().getTeleportSpell().getNumberInInventory() > 0) {
                 player.getInventory().getTeleportSpell().use(manager);
             }
         } else if(controller.isMoveUp() && controller.isMoveRight()) {

@@ -15,22 +15,30 @@ public class UpStairs implements Stairs {
     private final Position position;
     private Renderer renderer;
 
+    /**
+     * This is the constructor of the class. It set the position of the stair.
+     * @param pos - the position of the stairs.
+     * @param renderFactory - a factory to create the renderer of all the elements of the floor.
+     */
     public UpStairs(Position pos, final RenderFactory renderFactory) {
         this.position = pos;
         this.setRenderer(renderFactory.upstairRenderer(this));
     }
 
+    /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
         floorManager.decreaseFloorLevel();
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public Position getPosition() {
         return this.position;
     }
 
+    /** {@inheritDoc} */
     @Override
     public String getTag() {
         return "UpStairs";
@@ -50,6 +58,7 @@ public class UpStairs implements Stairs {
         this.renderer = renderer;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
         

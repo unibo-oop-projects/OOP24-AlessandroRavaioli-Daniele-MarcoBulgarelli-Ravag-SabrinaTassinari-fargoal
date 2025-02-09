@@ -12,7 +12,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class LightSpell implements Spell {
 
-    private int cont;
+    private int numberInInventory;
     private int floorLevelSpellCasted;
 
     /**
@@ -20,7 +20,7 @@ public class LightSpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public LightSpell(FloorManager floorManager) {
-        this.cont = 0;
+        this.numberInInventory = 0;
     }
 
     /** {@inheritDoc} */
@@ -54,7 +54,7 @@ public class LightSpell implements Spell {
 
     /**
      * This method can turn on and off the light spell of the player.
-     * @param floorManager - it contains all the elements of the floor.
+     * @param floorManager - it numberInInventoryains all the elements of the floor.
      */
     public void turnLight(FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName())) {
@@ -88,19 +88,24 @@ public class LightSpell implements Spell {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Integer getQuantity() {
-        return this.cont;
+    public Integer getNumberInInventory() {
+        return this.numberInInventory;
     }
 
+    /**
+     * This method add a spell in the player's inventory.
+     */
     private void addSpell() {
-        this.cont++;
+        this.numberInInventory++;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeSpell() {
-        if (this.cont > 0) {
-            this.cont--;
+        if (this.numberInInventory > 0) {
+            this.numberInInventory--;
         }
     }
     

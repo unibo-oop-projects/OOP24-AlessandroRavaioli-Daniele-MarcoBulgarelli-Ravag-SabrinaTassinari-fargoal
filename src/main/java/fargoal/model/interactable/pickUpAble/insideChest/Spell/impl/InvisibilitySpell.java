@@ -12,7 +12,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class InvisibilitySpell implements Spell {
 
-    private int cont;
+    private int numberInInventory;
     private int floorLevelSpellCasted;
 
     /**
@@ -20,10 +20,8 @@ public class InvisibilitySpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public InvisibilitySpell(FloorManager floorManager) {
-        this.cont = 0;
+        this.numberInInventory = 0;
     }
-
-    
 
     /** {@inheritDoc} */
     @Override
@@ -71,19 +69,24 @@ public class InvisibilitySpell implements Spell {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Integer getQuantity() {
-        return this.cont;
+    public Integer getNumberInInventory() {
+        return this.numberInInventory;
     }
 
+    /**
+     * This method add a spell in the player's inventory.
+     */
     private void addSpell() {
-        this.cont++;
+        this.numberInInventory++;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeSpell() {
-        if (this.cont > 0) {
-            this.cont--;
+        if (this.numberInInventory > 0) {
+            this.numberInInventory--;
         }
     }
 

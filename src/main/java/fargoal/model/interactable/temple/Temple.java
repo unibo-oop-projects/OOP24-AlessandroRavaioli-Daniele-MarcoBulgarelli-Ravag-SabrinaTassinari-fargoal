@@ -21,6 +21,7 @@ public class Temple implements Interactable {
     /**
      * This is the constructor of the class. It set the position of the temple.
      * @param position - the position of the temple.
+     * @param renderFactory - - a factory to create the renderer of all the elements of the floor.
      */
     public Temple(final Position position, final RenderFactory renderFactory) {
         this.position = position;

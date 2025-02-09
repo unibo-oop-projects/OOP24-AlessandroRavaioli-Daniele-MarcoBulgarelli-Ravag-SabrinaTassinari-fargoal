@@ -63,10 +63,17 @@ public class Map implements Utility {
         return this.listOfMaps.size();
     }
 
+    /**
+     * Getter for the list of the maps the player has.
+     * @return the list of the maps.
+     */
     public List<Integer> getListOfMaps() {
         return this.listOfMaps;
     }
 
+    /**
+     * This method add an utility in the player's inventory.
+     */
     private void addUtility(Integer floorNumber) {
         if(floorNumber == null || floorNumber <= 0) {
             throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
@@ -82,6 +89,11 @@ public class Map implements Utility {
         this.listOfMaps.removeFirst();
     }
 
+    /**
+     * This method removes a map of a specific level from the player's inventory.
+     * @param floorNumber - it contains all the element of the floor.
+     * @return true if the map has been removed, false otherwise.
+     */
     public boolean removeMapLevel(Integer floorNumber) {
         if(floorNumber == null || floorNumber <= 0) {
             throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
