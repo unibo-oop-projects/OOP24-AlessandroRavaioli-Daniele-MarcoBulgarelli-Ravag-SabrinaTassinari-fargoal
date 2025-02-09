@@ -58,6 +58,7 @@ public class PlayerImpl implements Player {
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private Renderer render;
+    private FloorManager floorManager;
 
     public PlayerImpl(FloorManager floorManager) {
         this.level = INITIAL_LEVEL;
@@ -73,6 +74,7 @@ public class PlayerImpl implements Player {
         this.isAttacked = false;
         this.isVisible = true;
         this.hasLight = false;
+        this.floorManager = floorManager;
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
     }
 
@@ -505,7 +507,11 @@ public class PlayerImpl implements Player {
         if(inventory.getHealingPotions().getNumberInInventory() == 0){
             return this.health.getCurrentHealth() == 0;
         } else {
-            return this.health.getCurrentHealth() < -5;
+            if(this.health.getCurrentHealth() < -5) {
+                return true;
+            } else {
+                this.inventory.getHealingPotions().use(null);
+            }
         }
     }
 
@@ -548,42 +554,48 @@ public class PlayerImpl implements Player {
     @Override
     public void useInvisibilitySpell() {
         if (this.getInventory().getInvisibilitySpell().getQuantity() > 0) {
-            this.getInventory().getInvisibilitySpell().use(null);
+            this.getInventory().getInvisibilitySpell().use(floorManager);
         }
     }
 
     @Override
     public void useTeleportSpell() {
         if (this.getInventory().getTeleportSpell().getQuantity() > 0) {
-            this.getInventory().getTeleportSpell().use(null);
+            this.getInventory().getTeleportSpell().use(floorManager);
         }
     }
 
     @Override
     public void useShieldSpell() {
         if (this.getInventory().getShieldSpell().getQuantity() > 0) {
-            this.getInventory().getShieldSpell().use(null);
+            this.getInventory().getShieldSpell().use(floorManager);
         }
     }
 
     @Override
     public void useRegenerationSpell() {
         if (this.getInventory().getRegenerationSpell().getQuantity() > 0) {
-            this.getInventory().getRegenerationSpell().use(null);
+            this.getInventory().getRegenerationSpell().use(floorManager);
         }
     }
 
     @Override
     public void useDriftSpell() {
         if (this.getInventory().getDriftSpell().getQuantity() > 0) {
-            this.getInventory().getDriftSpell().use(null);
+            this.getInventory().getDriftSpell().use(floorManager);
         }
     }
 
     @Override
     public void useLightSpell() {
         if (this.getInventory().getLightSpell().getQuantity() > 0) {
-            this.getInventory().getLightSpell().use(null);
+            this.getInventory().getLightSpell().use(floorManager);
+        }
+    }
+
+    public void useHealingPotion() {
+        if(this.getInventory().getHealingPotions().getNumberInInventory() > 0) {
+            this.getInventory().getHealingPotions().use(floorManager);
         }
     }
 }
