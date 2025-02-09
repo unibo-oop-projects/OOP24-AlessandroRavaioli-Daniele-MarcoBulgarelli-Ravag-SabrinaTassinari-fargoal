@@ -26,7 +26,7 @@ public class SwingRenderFactory implements RenderFactory {
         if (this.cache.containsKey(pos)) {
             return this.cache.get(pos);
         }
-        cache.put(pos, new SwingRenderer(g2d -> {
+        cache.put(pos, new SwingRendererMiddle(g2d -> {
                     g2d.setColor(Color.BLACK);
                     g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
                         pos.y() * this.view.getTilePixelHeight(),
@@ -41,7 +41,7 @@ public class SwingRenderFactory implements RenderFactory {
         if (this.cache.containsKey(pos)) {
             return this.cache.get(pos);
         }
-        this.cache.put(pos, new SwingRenderer(g2d -> {
+        this.cache.put(pos, new SwingRendererMiddle(g2d -> {
                 g2d.setColor(Color.WHITE);
                 g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
                         pos.y() * this.view.getTilePixelHeight(),
@@ -56,7 +56,7 @@ public class SwingRenderFactory implements RenderFactory {
         if (this.cache.containsKey(pos)) {
             return this.cache.get(pos);
         }
-        this.cache.put(pos, new SwingRenderer(g2d -> {
+        this.cache.put(pos, new SwingRendererMiddle(g2d -> {
                 g2d.setColor(Color.BLACK);
                 g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
                         pos.y() * this.view.getTilePixelHeight(),
@@ -68,7 +68,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer playerRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.BLUE);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -79,7 +79,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer upstairRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.LIGHT_GRAY);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -90,7 +90,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer downstairRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -101,7 +101,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer templeRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.MAGENTA);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -112,7 +112,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer chestRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.GRAY);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -123,7 +123,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer goldRenderer(SackOfMoney obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             if (obj.isHiddenInGround()) {
                 g2d.setColor(Color.GREEN);
             } else {
@@ -138,7 +138,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer beaconRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.CYAN);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -149,7 +149,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer assassinRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -160,7 +160,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer barbarianRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.RED);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -171,7 +171,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer mageRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.GREEN);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -188,7 +188,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer rogueRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.ORANGE);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -211,7 +211,7 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer swordRenderer(FloorElement obj) {
-        return new SwingRenderer(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.PINK);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
