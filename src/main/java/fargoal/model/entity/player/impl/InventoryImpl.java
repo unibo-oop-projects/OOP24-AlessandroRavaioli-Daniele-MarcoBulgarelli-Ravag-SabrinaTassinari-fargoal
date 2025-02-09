@@ -23,7 +23,6 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class InventoryImpl implements Inventory {
 
-    private FloorManager floorManager;
     private HealingPotion healingPotions;
     private Beacon beacons;
     private MagicSack magicSacks;
@@ -56,7 +55,6 @@ public class InventoryImpl implements Inventory {
      * </p>
      */
     public InventoryImpl(FloorManager floorManager) {
-        this.floorManager = floorManager;
         this.healingPotions = new HealingPotion(floorManager);
         this.beacons = new Beacon(floorManager);
         this.magicSacks = new MagicSack(floorManager);
