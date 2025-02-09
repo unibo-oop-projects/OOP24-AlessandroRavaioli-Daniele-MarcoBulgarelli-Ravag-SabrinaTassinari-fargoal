@@ -134,7 +134,7 @@ public interface Player extends Entity {
     /**
      * Makes the player move one tile in the map.
      */
-    void move();
+    void move(Position newPosition);
 
     /**
      * This method calculates the amount of damage the player
