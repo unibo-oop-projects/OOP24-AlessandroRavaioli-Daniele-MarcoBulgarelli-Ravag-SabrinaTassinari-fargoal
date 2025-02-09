@@ -1,5 +1,6 @@
 package fargoal.model.entity.player.impl;
 
+import java.util.Optional;
 import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -11,6 +12,7 @@ import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
@@ -524,15 +526,16 @@ public class PlayerImpl implements Player {
      */
     public void startPasiveRegeneration() {
         Integer amountToRegenerate = 1;
+        int period = 10;
         Runnable regenerationTask = () -> {
-            if(!isFighting) {
+            if(!isFighting && this.position != floorManager.getTemple().getPosition() && !this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
                 //If it isn't on temple
                 //If it isn't under the regeneration spell
                 this.health.increaseHealth(amountToRegenerate);
-            }
+            } else if()
         };
 
-        scheduler.scheduleAtFixedRate(regenerationTask, 0, 10, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(regenerationTask, 0, period, TimeUnit.SECONDS);
     }
 
     /**
@@ -545,6 +548,15 @@ public class PlayerImpl implements Player {
      */
     public void stopRegeneration() {
         scheduler.shutdown();
+    }
+
+    private Optional<Interactable> getStandingTile() {
+        Optional<Interactable> tileObject = floorManager.getInteractables()
+                    .stream()
+                    .filter(element -> this.getPosition().equals(element.getPosition()))
+                    .findAny();
+
+        return tileObject;
     }
 
     @Override
