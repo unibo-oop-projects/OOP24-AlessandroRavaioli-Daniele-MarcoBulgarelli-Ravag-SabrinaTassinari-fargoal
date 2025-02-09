@@ -52,14 +52,12 @@ public class FloorManagerImpl implements FloorManager {
     private Temple temple;
     private final RenderFactory renderFactory;
     private final Timer timer;
-    private final KeyboardInputController controller;
 
     /**
      * Constructor that inizializes all of its fields.
      * @param context - the structure in which the reference to the view is contained
      */
     public FloorManagerImpl(final GameContext context, final KeyboardInputController controller) {
-        this.controller = controller;
         this.listener = new RenderEventListener(context.getView());
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl(context.getView());
@@ -67,7 +65,8 @@ public class FloorManagerImpl implements FloorManager {
         this.interactables = new LinkedList<>();
         this.renderFactory = new SwingRenderFactory(context.getView());
         this.timer = new Timer();
-        this.dungeonStart();
+        this.player = new PlayerImpl(this, controller);
+        initializeFloor();
     }
 
     /**
@@ -256,11 +255,6 @@ public class FloorManagerImpl implements FloorManager {
             }
         } while (alreadyPresent);
     }    
-
-    private void dungeonStart() {
-        this.player = new PlayerImpl(this);
-        initializeFloor();
-    }
 
     private void generateStairs(Stairs type) {
         boolean alreadyPresent = false;

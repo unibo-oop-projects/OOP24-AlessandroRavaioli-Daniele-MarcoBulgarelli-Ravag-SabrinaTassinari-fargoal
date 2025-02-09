@@ -6,6 +6,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 import fargoal.commons.api.Position;
+import fargoal.controller.input.api.InputComponent;
+import fargoal.controller.input.api.KeyboardInputController;
+import fargoal.controller.input.api.PlayerInputComponent;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.entity.monsters.api.AbstractMonster;
@@ -40,6 +43,8 @@ public class PlayerImpl implements Player {
     private static final int MINIMUM_DAMAGE = 1;
     private static final int INITIAL_LEVEL = 1;
 
+    private final InputComponent input;
+    private final KeyboardInputController controller;
     private Position position;
     private Integer level;
     private Integer experiencePoints;
@@ -61,7 +66,9 @@ public class PlayerImpl implements Player {
     private Renderer render;
     private FloorManager floorManager;
 
-    public PlayerImpl(FloorManager floorManager) {
+    public PlayerImpl(FloorManager floorManager, KeyboardInputController controller) {
+        this.input = new PlayerInputComponent();
+        this.controller = controller;
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
@@ -79,7 +86,9 @@ public class PlayerImpl implements Player {
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
     }
 
-    public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager) {
+    public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager, KeyboardInputController controller) {
+        this.input = new PlayerInputComponent();
+        this.controller = controller;
         startingPosition(floorMap);
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
@@ -353,7 +362,7 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
-        
+        input.update(floorManager, this, controller);
     }
 
     @Override

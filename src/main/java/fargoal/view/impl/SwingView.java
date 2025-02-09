@@ -119,19 +119,19 @@ public class SwingView implements View, KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
 
-            case KeyEvent.VK_UP:
+            case 38:
                 input.notifyMoveUp();
                 break;
             
-            case KeyEvent.VK_DOWN:
+            case 40:
                 input.notifyMoveDown();
                 break;
 
-            case KeyEvent.VK_LEFT:
+            case 37:
                 input.notifyMoveLeft();
                 break;
 
-            case KeyEvent.VK_RIGHT:
+            case 39:
                 input.notifyMoveRight();
                 break;
         
@@ -143,19 +143,20 @@ public class SwingView implements View, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) { 
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
+
+            case 38:
                 input.notifyNoMoreMoveUp();
                 break;
         
-            case KeyEvent.VK_DOWN:
+            case 40:
                 input.notifyNoMoreMoveDown();
                 break;
             
-            case KeyEvent.VK_LEFT:
+            case 37:
                 input.notifyNoMoreMoveLeft();
                 break;
 
-            case KeyEvent.VK_RIGHT:
+            case 39:
                 input.notifyNoMoreMoveRight();
                 break;
 

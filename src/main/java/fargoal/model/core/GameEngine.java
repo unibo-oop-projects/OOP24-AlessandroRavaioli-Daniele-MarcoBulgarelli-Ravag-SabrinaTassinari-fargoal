@@ -14,6 +14,7 @@ public class GameEngine {
     private KeyboardInputController controller;
 
     public GameEngine() {
+        this.controller = new KeyboardInputController();
         this.view = new SwingView(controller);
         this.manager = new FloorManagerImpl(new GameContext(view), controller);
     }
