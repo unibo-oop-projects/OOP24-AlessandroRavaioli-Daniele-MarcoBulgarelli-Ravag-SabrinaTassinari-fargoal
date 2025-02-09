@@ -55,46 +55,113 @@ public class PlayerInputComponent implements InputComponent{
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        //TODO
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
                     }
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
         } else if(controller.isMoveRight() && controller.isMoveDown()) {
             var pos = player.getPosition().add(new Position(1, 1));
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
+                    }
         } else if(controller.isMoveDown() && controller.isMoveLeft()) {
             var pos = player.getPosition().add(new Position(-1, 1));
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
+                    }
         } else if(controller.isMoveLeft() && controller.isMoveUp()) {
             var pos = player.getPosition().add(new Position(-1, -1));
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
+                    }
         } else if(controller.isMoveDown()) {
             var pos = player.getPosition().add(new Position(0, 1));
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
+                    }
         } else if(controller.isMoveUp()) {
             var pos = player.getPosition().add(new Position(0, -1));
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
+                    }
         } else if(controller.isMoveLeft()) {
             var pos = player.getPosition().add(new Position(-1, 0));
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
+                    }
         } else if(controller.isMoveRight()) {
             var pos = player.getPosition().add(new Position(1, 0));
-            if(manager.getFloorMap().isTile(pos)) {
-                player.setPosition(pos);
-            }
+            if (manager.getMonsters()
+                    .stream()
+                    .anyMatch(p -> p.getPosition().equals(pos))) {
+                        for (var monster : manager.getMonsters()) {
+                            if (monster.getPosition().equals(player.getPosition())) {
+                                player.doDamage(monster);
+                                break;
+                            }
+                        }
+                    } else if (manager.getFloorMap().isTile(pos)) {
+                        player.setPosition(pos);
+                    }
         }
 
     }

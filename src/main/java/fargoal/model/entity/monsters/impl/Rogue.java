@@ -16,7 +16,7 @@ import fargoal.view.api.RenderFactory;
  */
 public class Rogue extends AbstractMonster {
 
-    private static final int NEXT_MOVE = 1000;
+    private static final int NEXT_MOVE = 200;
     private static final int GOLD_REMOVE = 4;
 
     /**
