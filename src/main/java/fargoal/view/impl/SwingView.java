@@ -37,13 +37,11 @@ public class SwingView implements View {
         this.bottom = new SwingViewCanvas();
         this.frame.setLayout(new BorderLayout());
         this.frame.setSize(1500, 1000);
-        this.bottom.add(new JTextField("BOTTOM"));
         this.frame.getContentPane().add(canvas, BorderLayout.CENTER);
-        this.top.add(new JTextArea("\n\n\n\\n\n"));
-        this.canvas.setMaximumSize(new Dimension(1000, 900));
         this.frame.getContentPane().add(this.top, BorderLayout.NORTH);
         this.frame.getContentPane().add(this.bottom, BorderLayout.SOUTH);
-        this.top.setMinimumSize(new Dimension(1000, 300));
+        this.top.setPreferredSize(new Dimension(1000, 100));
+        this.bottom.setPreferredSize(new Dimension(1000, 270));
         this.top.setBackground(Color.GREEN);
         this.bottom.setBackground(Color.YELLOW);
         this.frame.setResizable(true);
