@@ -10,7 +10,7 @@ import fargoal.view.api.Renderer;
  * This class implements the temple of the floor.
  * In the temple the player can not be attacked and he can donate 
  * the gold he has to gain experience (as much experience as the gold he has).
- * If the player has donated more than 200 gold he is blessed: all his health is 
+ * If the player has donated more than 2000 gold he is blessed: all his health is 
  * restored.
  */
 public class Temple implements Interactable {
@@ -36,6 +36,7 @@ public class Temple implements Interactable {
             floorManager.getPlayer().getPlayerGold().setGoldDonated(floorManager.getPlayer().getCurrentGold());
             if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= 2000) {
                 floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
+                floorManager.getPlayer().getPlayerGold().resetGold();
             }
             floorManager.getPlayer().getPlayerGold().resetGold();
         } else {
