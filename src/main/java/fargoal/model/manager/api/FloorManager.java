@@ -21,7 +21,7 @@ public interface FloorManager {
      * The main method that updates everythin that has happend in the last frame.
      * @param context - the context of the floor
      */
-    void update(GameContext context);
+    void update(GameContext context, long timeElapsed);
 
     /**
      * A method to return the instance of the Player.

@@ -1,5 +1,6 @@
 package fargoal.model.core;
 
+import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.view.api.View;
@@ -7,21 +8,26 @@ import fargoal.view.impl.SwingView;
 
 public class GameEngine {
 
-    private static final int PERIOD = 20; 
+    private static final int PERIOD = 20;
     private final FloorManager manager;
     private final View view;
+    private KeyboardInputController controller;
 
     public GameEngine() {
-        this.view = new SwingView();
-        this.manager = new FloorManagerImpl(new GameContext(view));
+        this.controller = new KeyboardInputController();
+        this.view = new SwingView(controller);
+        this.manager = new FloorManagerImpl(new GameContext(view), controller);
     }
     
     public void start() {
+        long previousCycleStartTime = System.currentTimeMillis();
         while (true) {
             final long currentCycleStartTime = System.currentTimeMillis();
-            manager.update(new GameContext(view));
+            long elapsed = currentCycleStartTime - previousCycleStartTime;
+            manager.update(new GameContext(view), elapsed);
             view.update();
             waitToNextFrame(currentCycleStartTime);
+            previousCycleStartTime = currentCycleStartTime;
         }
     }
 

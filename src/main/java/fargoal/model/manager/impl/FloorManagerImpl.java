@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
+import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.commons.FloorElement;
+import fargoal.model.commons.Timer;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
@@ -37,6 +39,7 @@ public class FloorManagerImpl implements FloorManager {
     private static final int MAX_NUMBER_OF_TREASURES = 25;
     private static final int FIXED_NUMBER_OF_STAIRS = 2;
     private static final int VARIABLE_NUMBER_OF_STAIRS = 2;
+    private static final int TIME_TO_WAIT_ON_EVENT = 1500;
 
     private final RenderEventListener listener;
     private FloorMap map;
@@ -48,29 +51,35 @@ public class FloorManagerImpl implements FloorManager {
     private MonsterFactory monstFact;
     private Temple temple;
     private final RenderFactory renderFactory;
+    private final Timer timer;
 
     /**
      * Constructor that inizializes all of its fields.
      * @param context - the structure in which the reference to the view is contained
      */
-    public FloorManagerImpl(final GameContext context) {
+    public FloorManagerImpl(final GameContext context, final KeyboardInputController controller) {
         this.listener = new RenderEventListener(context.getView());
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl(context.getView());
         this.floorLevel = 1;
         this.interactables = new LinkedList<>();
         this.renderFactory = new SwingRenderFactory(context.getView());
-        this.dungeonStart();
+        this.timer = new Timer();
+        this.player = new PlayerImpl(this, controller);
+        initializeFloor();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void update(final GameContext context) {
-        this.getAllElements().forEach(e -> e.update(this));
+    public void update(final GameContext context, final long elapsed) {
+        if (timer.updateTime(elapsed) == 0) {
+            this.getAllElements().forEach(e -> e.update(this));   
+        } else {
+            this.listener.render();
+        }
         this.mask.update(context, this);
-        this.listener.render();
     }
 
     /**
@@ -247,11 +256,6 @@ public class FloorManagerImpl implements FloorManager {
         } while (alreadyPresent);
     }    
 
-    private void dungeonStart() {
-        this.player = new PlayerImpl(this);
-        initializeFloor();
-    }
-
     private void generateStairs(Stairs type) {
         boolean alreadyPresent = false;
         do {
@@ -274,5 +278,6 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public void notifyFloorEvent(FloorEvent floorEvent) {
         listener.notifyEvent(floorEvent);
+        timer.setTime(TIME_TO_WAIT_ON_EVENT);
     }
 }
