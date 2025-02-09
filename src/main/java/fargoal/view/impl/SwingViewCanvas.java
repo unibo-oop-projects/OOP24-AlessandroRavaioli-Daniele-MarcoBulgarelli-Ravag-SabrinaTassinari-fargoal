@@ -15,7 +15,7 @@ import fargoal.controller.input.api.KeyboardInputController;
 
 public class SwingViewCanvas extends JPanel implements KeyListener{
     
-    private KeyboardInputController input = new KeyboardInputController();
+    private KeyboardInputController input;
     private List<Consumer<Graphics2D>> list;
     private boolean canDraw;
 

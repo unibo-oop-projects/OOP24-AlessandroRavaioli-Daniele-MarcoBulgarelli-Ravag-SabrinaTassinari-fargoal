@@ -7,15 +7,18 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.function.Consumer;
 import javax.swing.WindowConstants;
 
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
+import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.view.api.View;
 
-public class SwingView implements View {
+public class SwingView implements View, KeyListener {
 
     private static final int FLOOR_LENGTH = 40;
     private static final int FLOOR_HEIGHT = 25;
@@ -24,11 +27,12 @@ public class SwingView implements View {
     private SwingViewCanvas top;
     private SwingViewCanvas bottom;
     private JFrame frame;
+    private KeyboardInputController input;
 
     private int tilePixelDimWidth;
     private int tilePixelDimHeight;
 
-    public SwingView() {
+    public SwingView(KeyboardInputController c) {
         this.frame = new JFrame();
         this.canvas = new SwingViewCanvas();
         this.top = new SwingViewCanvas();
@@ -45,6 +49,7 @@ public class SwingView implements View {
         this.bottom.setBackground(Color.YELLOW);
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.input = c;
 
         this.frame.addComponentListener(new ComponentAdapter() {
             @Override
@@ -105,5 +110,57 @@ public class SwingView implements View {
 
     public void registerDrawingActionBottom(Consumer<Graphics2D> g2d) {
         this.bottom.addToList(g2d);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) { }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()) {
+
+            case KeyEvent.VK_UP:
+                input.notifyMoveUp();
+                break;
+            
+            case KeyEvent.VK_DOWN:
+                input.notifyMoveDown();
+                break;
+
+            case KeyEvent.VK_LEFT:
+                input.notifyMoveLeft();
+                break;
+
+            case KeyEvent.VK_RIGHT:
+                input.notifyMoveRight();
+                break;
+        
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) { 
+        switch (e.getKeyCode()) {
+            case KeyEvent.VK_UP:
+                input.notifyNoMoreMoveUp();
+                break;
+        
+            case KeyEvent.VK_DOWN:
+                input.notifyNoMoreMoveDown();
+                break;
+            
+            case KeyEvent.VK_LEFT:
+                input.notifyNoMoreMoveLeft();
+                break;
+
+            case KeyEvent.VK_RIGHT:
+                input.notifyNoMoreMoveRight();
+                break;
+
+            default:
+                break;
+        }
     }
 }

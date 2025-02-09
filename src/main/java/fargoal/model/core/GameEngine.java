@@ -7,7 +7,7 @@ import fargoal.view.impl.SwingView;
 
 public class GameEngine {
 
-    private static final int PERIOD = 20; 
+    private static final int PERIOD = 20;
     private final FloorManager manager;
     private final View view;
 
