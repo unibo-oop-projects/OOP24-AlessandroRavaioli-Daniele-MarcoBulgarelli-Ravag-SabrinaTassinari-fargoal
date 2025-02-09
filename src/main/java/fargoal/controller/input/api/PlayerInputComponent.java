@@ -3,7 +3,6 @@ package fargoal.controller.input.api;
 import java.util.Optional;
 
 import fargoal.commons.api.Position;
-import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.impl.PlayerImpl;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
