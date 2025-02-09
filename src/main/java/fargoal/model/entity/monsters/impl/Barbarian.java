@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
+import fargoal.model.events.impl.MonsterEncounterEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
@@ -55,6 +56,7 @@ public class Barbarian extends AbstractMonster {
         if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)) {
+                this.getFloorManager().notifyFloorEvent(new MonsterEncounterEvent(this));
                 this.attack();
             } else {
                 Ai.move(this, floorManager.getPlayer());

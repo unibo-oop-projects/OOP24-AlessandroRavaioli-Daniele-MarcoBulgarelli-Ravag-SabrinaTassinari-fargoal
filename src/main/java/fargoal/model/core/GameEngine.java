@@ -5,6 +5,7 @@ import java.util.List;
 
 import fargoal.model.events.api.FloorEvent;
 import fargoal.model.events.api.FloorEventListener;
+import fargoal.model.events.impl.MonsterEncounterEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.view.api.View;
@@ -27,6 +28,7 @@ public class GameEngine implements FloorEventListener {
         while (true) {
             final long currentCycleStartTime = System.currentTimeMillis();
             manager.update(new GameContext(view));
+            checkEvents();
             view.update();
             waitToNextFrame(currentCycleStartTime);
         }
@@ -47,6 +49,13 @@ public class GameEngine implements FloorEventListener {
     }
 
     private void checkEvents() {
-        
+        this.eventQueue.stream()
+                .forEach(p -> {
+                    if (p instanceof MonsterEncounterEvent) {
+                        MonsterEncounterEvent event = (MonsterEncounterEvent)p;
+                        System.out.println("Hai incontrato " + event.monsterEncountered().getTag());
+                    }
+                });
+        eventQueue.clear();
     }
 }
