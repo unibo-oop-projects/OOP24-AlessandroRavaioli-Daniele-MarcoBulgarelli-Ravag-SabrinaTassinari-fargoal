@@ -1,12 +1,18 @@
 package fargoal.model.core;
 
+import java.util.LinkedList;
+import java.util.List;
+
+import fargoal.model.events.api.FloorEvent;
+import fargoal.model.events.api.FloorEventListener;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.view.api.View;
 import fargoal.view.impl.SwingView;
 
-public class GameEngine {
+public class GameEngine implements FloorEventListener {
 
+    private final List<FloorEvent> eventQueue;
     private static final int PERIOD = 20; 
     private final FloorManager manager;
     private final View view;
@@ -14,6 +20,7 @@ public class GameEngine {
     public GameEngine() {
         this.view = new SwingView();
         this.manager = new FloorManagerImpl(new GameContext(view));
+        this.eventQueue = new LinkedList<>();
     }
     
     public void start() {
@@ -32,5 +39,14 @@ public class GameEngine {
                 Thread.sleep(PERIOD - delta);
             } catch (Exception e) { }
         }
+    }
+
+    @Override
+    public void notifyEvent(FloorEvent floorEvent) {
+        this.eventQueue.add(floorEvent);
+    }
+
+    private void checkEvents() {
+        
     }
 }

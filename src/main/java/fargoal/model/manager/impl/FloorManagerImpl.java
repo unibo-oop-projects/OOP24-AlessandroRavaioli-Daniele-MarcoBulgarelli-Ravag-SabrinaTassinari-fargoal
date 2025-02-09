@@ -66,6 +66,7 @@ public class FloorManagerImpl implements FloorManager {
     public void update(final GameContext context) {
         this.getAllElements().forEach(e -> e.update(this));
         this.mask.update(context, this);
+        System.out.println(player.getPosition());
     }
 
     /**
