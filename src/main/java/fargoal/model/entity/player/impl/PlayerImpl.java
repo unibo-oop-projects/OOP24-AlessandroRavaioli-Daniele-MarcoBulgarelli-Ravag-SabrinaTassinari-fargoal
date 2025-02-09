@@ -489,14 +489,9 @@ public class PlayerImpl implements Player {
         }
     }
 
-    /**
-     * Subtracts health from the player when attacked by a monster.
-     * If the player is not protected by a shield spell, the player's health is decreased based on the monster's attack.
-     * If the player has a shield spell active, it is deactivated instead of taking damage.
-     * 
-     * @param monster - The {@link AbstractMonster} that is attacking the player.
-     */
-    private void receiveDamage(AbstractMonster monster) {
+    /** {@inheritDoc} */
+    @Override
+    public void receiveDamage(Monster monster) {
         //if player hasn't shield
         if(!this.inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
             this.health.decreaseHealth(monster.attack());

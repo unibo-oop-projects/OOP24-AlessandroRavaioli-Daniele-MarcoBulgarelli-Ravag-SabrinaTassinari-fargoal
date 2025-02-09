@@ -2,6 +2,7 @@ package fargoal.model.entity.player.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
+import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 
 /**
@@ -146,6 +147,15 @@ public interface Player extends Entity {
      * @return the amount of damage dealt.
      */
     Integer doDamage(Monster monster);
+
+    /**
+     * Subtracts health from the player when attacked by a monster.
+     * If the player is not protected by a shield spell, the player's health is decreased based on the monster's attack.
+     * If the player has a shield spell active, it is deactivated instead of taking damage.
+     * 
+     * @param monster - The {@link Monster} that is attacking the player.
+     */
+    void receiveDamage(Monster monster);
 
     /**
      * This method manages the character level up, given
