@@ -5,13 +5,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.function.Consumer;
 import javax.swing.WindowConstants;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import fargoal.view.api.View;
@@ -46,6 +45,19 @@ public class SwingView implements View {
         this.bottom.setBackground(Color.YELLOW);
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        this.frame.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                calculateDimensions();
+                if (tilePixelDimHeight > tilePixelDimWidth) {
+                    tilePixelDimHeight = tilePixelDimWidth * 3/4; 
+                } else {
+                    tilePixelDimWidth = tilePixelDimHeight * 4/3;
+                }
+            }
+        });
+
         calculateDimensions();
         this.frame.setVisible(true);
     }
@@ -63,7 +75,6 @@ public class SwingView implements View {
         this.top.enableDraw(true);
         this.bottom.enableDraw(true);
         this.canvas.enableDraw(true);
-        calculateDimensions();
         SwingUtilities.invokeLater(() -> {
             this.canvas.repaint();
             this.top.repaint();
