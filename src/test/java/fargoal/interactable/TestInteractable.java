@@ -5,10 +5,12 @@ import org.junit.jupiter.api.Test;
 
 import fargoal.commons.api.Position;
 import fargoal.model.core.GameContext;
+import fargoal.model.events.api.FloorEventListener;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.impl.SwingView;
 
 public class TestInteractable {
@@ -19,7 +21,7 @@ public class TestInteractable {
 
     @BeforeAll
     static void init() {
-        floorManager = new FloorManagerImpl(new GameContext(new SwingView()));
+        floorManager = new FloorManagerImpl(null);
     }
 
     void visualizeFloor() {
@@ -44,7 +46,7 @@ public class TestInteractable {
 
     @Test
     public void checkItem() {
-        chest = new ChestImpl(floorManager.getFloorMap().getRandomTile());
+        chest = new ChestImpl(null, null);
         item = chest.interact(floorManager);
         System.out.println("You found a " + item.getTag());
         visualizeFloor();
