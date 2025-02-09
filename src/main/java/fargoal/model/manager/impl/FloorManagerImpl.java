@@ -6,6 +6,7 @@ import java.util.Random;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
+import fargoal.model.commons.Timer;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
@@ -37,6 +38,7 @@ public class FloorManagerImpl implements FloorManager {
     private static final int MAX_NUMBER_OF_TREASURES = 25;
     private static final int FIXED_NUMBER_OF_STAIRS = 2;
     private static final int VARIABLE_NUMBER_OF_STAIRS = 2;
+    private static final int TIME_TO_WAIT_ON_EVENT = 1500;
 
     private final RenderEventListener listener;
     private FloorMap map;
@@ -48,6 +50,7 @@ public class FloorManagerImpl implements FloorManager {
     private MonsterFactory monstFact;
     private Temple temple;
     private final RenderFactory renderFactory;
+    private final Timer timer;
 
     /**
      * Constructor that inizializes all of its fields.
@@ -60,6 +63,7 @@ public class FloorManagerImpl implements FloorManager {
         this.floorLevel = 1;
         this.interactables = new LinkedList<>();
         this.renderFactory = new SwingRenderFactory(context.getView());
+        this.timer = new Timer();
         this.dungeonStart();
     }
 
@@ -67,10 +71,13 @@ public class FloorManagerImpl implements FloorManager {
      * {@inheritDoc}
      */
     @Override
-    public void update(final GameContext context) {
-        this.getAllElements().forEach(e -> e.update(this));
+    public void update(final GameContext context, final long elapsed) {
+        if (timer.updateTime(elapsed) == 0) {
+            this.getAllElements().forEach(e -> e.update(this));   
+        } else {
+            this.listener.render();
+        }
         this.mask.update(context, this);
-        this.listener.render();
     }
 
     /**
@@ -274,5 +281,6 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public void notifyFloorEvent(FloorEvent floorEvent) {
         listener.notifyEvent(floorEvent);
+        timer.setTime(TIME_TO_WAIT_ON_EVENT);
     }
 }

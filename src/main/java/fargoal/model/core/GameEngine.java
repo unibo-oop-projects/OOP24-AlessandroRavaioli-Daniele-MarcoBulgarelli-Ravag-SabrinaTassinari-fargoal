@@ -17,11 +17,14 @@ public class GameEngine {
     }
     
     public void start() {
+        long previousCycleStartTime = System.currentTimeMillis();
         while (true) {
             final long currentCycleStartTime = System.currentTimeMillis();
-            manager.update(new GameContext(view));
+            long elapsed = currentCycleStartTime - previousCycleStartTime;
+            manager.update(new GameContext(view), elapsed);
             view.update();
             waitToNextFrame(currentCycleStartTime);
+            previousCycleStartTime = currentCycleStartTime;
         }
     }
 

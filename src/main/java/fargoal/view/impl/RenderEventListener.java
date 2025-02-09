@@ -22,6 +22,7 @@ public class RenderEventListener implements FloorEventListener, Renderer{
     private SwingRendererTop renderer;
 
     public RenderEventListener(View view) {
+        this.text = " ";
         renderer = new SwingRendererTop(g2d -> {
             g2d.setFont(new Font("Arial", Font.ITALIC, 15));
             g2d.drawString(this.text, 15, 15);
