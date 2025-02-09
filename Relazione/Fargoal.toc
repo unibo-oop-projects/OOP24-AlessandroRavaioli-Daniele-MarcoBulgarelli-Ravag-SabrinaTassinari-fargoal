@@ -1,0 +1,29 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{\numberline {1}Analisi}{2}{}%
+\contentsline {section}{\numberline {1.1}Desctizione e requisiti}{2}{}%
+\contentsline {subsection}{\numberline {1.1.1}Requisiti funzionali}{2}{}%
+\contentsline {subsection}{\numberline {1.1.2}Modello del dominio}{3}{}%
+\contentsline {chapter}{\numberline {2}Design}{4}{}%
+\contentsline {section}{\numberline {2.1}Architettura}{4}{}%
+\contentsline {section}{\numberline {2.2}Design dettagliato}{4}{}%
+\contentsline {subsection}{\numberline {2.2.1}Bulgarelli Marco}{4}{}%
+\contentsline {subsection}{\numberline {2.2.2}Ravaioli Alessandro}{4}{}%
+\contentsline {subsection}{\numberline {2.2.3}Tassinari Sabrina}{4}{}%
+\contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{4}{}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{5}{}%
+\contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{5}{}%
+\contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{5}{}%
+\contentsline {subsubsection}{Bulgarelli Marco}{5}{}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{5}{}%
+\contentsline {subsection}{\numberline {3.0.3}Tassinari Sabrina}{5}{}%
+\contentsline {subsection}{\numberline {3.0.4}Tramonti Daniele}{5}{}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{6}{}%
+\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{6}{}%
+\contentsline {subsubsection}{Bulgarelli Marco}{6}{}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{6}{}%
+\contentsline {subsubsection}{Tassinari Sabrina}{6}{}%
+\contentsline {subsubsection}{Tramonti Daniele}{6}{}%
+\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{6}{}%
+\contentsline {chapter}{\numberline {A}Guida utente}{7}{}%
+\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{8}{}%
