@@ -12,6 +12,8 @@ import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.entity.player.impl.PlayerImpl;
+import fargoal.model.events.api.FloorEvent;
+import fargoal.model.events.api.FloorEventListener;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
@@ -36,6 +38,7 @@ public class FloorManagerImpl implements FloorManager {
     private static final int FIXED_NUMBER_OF_STAIRS = 2;
     private static final int VARIABLE_NUMBER_OF_STAIRS = 2;
 
+    private final FloorEventListener listener;
     private FloorMap map;
     private List<Monster> monsters;
     private Player player;
@@ -50,7 +53,8 @@ public class FloorManagerImpl implements FloorManager {
      * Constructor that inizializes all of its fields.
      * @param context - the structure in which the reference to the view is contained
      */
-    public FloorManagerImpl(final GameContext context) {
+    public FloorManagerImpl(final GameContext context, FloorEventListener listener) {
+        this.listener = listener;
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl(context.getView());
         this.floorLevel = 1;
@@ -265,5 +269,10 @@ public class FloorManagerImpl implements FloorManager {
                 this.interactables.add(temp);
             }
         } while (alreadyPresent);
+    }
+
+    @Override
+    public void notifyFloorEvent(FloorEvent floorEvent) {
+        listener.notifyEvent(floorEvent);
     }
 }

@@ -19,7 +19,7 @@ public class GameEngine implements FloorEventListener {
 
     public GameEngine() {
         this.view = new SwingView();
-        this.manager = new FloorManagerImpl(new GameContext(view));
+        this.manager = new FloorManagerImpl(new GameContext(view), this);
         this.eventQueue = new LinkedList<>();
     }
     

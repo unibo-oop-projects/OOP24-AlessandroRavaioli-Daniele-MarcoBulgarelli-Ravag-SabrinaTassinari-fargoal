@@ -6,6 +6,7 @@ import fargoal.model.commons.FloorElement;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.events.api.FloorEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.temple.Temple;
 import fargoal.model.map.api.FloorMap;
@@ -84,4 +85,6 @@ public interface FloorManager {
      * @return - the render factory
      */
     RenderFactory getRenderFactory();
+
+    void notifyFloorEvent(FloorEvent floorEvent);
 }
