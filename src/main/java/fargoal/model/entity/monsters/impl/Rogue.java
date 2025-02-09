@@ -6,6 +6,7 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.events.impl.MonsterEncounterEvent;
+import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
@@ -59,7 +60,7 @@ public class Rogue extends AbstractMonster {
         if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)) {
-                this.getFloorManager().notifyFloorEvent(new MonsterEncounterEvent(this));
+                this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
                 this.attack();
                 this.steal();
             } else {
