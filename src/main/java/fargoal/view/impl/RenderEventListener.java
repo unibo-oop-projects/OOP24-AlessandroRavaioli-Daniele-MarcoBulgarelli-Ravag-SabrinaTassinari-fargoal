@@ -1,5 +1,6 @@
 package fargoal.view.impl;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import fargoal.model.events.api.FloorEvent;
@@ -20,9 +21,11 @@ public class RenderEventListener implements FloorEventListener, Renderer{
 
     public RenderEventListener(View view) {
         this.text = " ";
+        SwingView swing = (SwingView)view;
         renderer = new SwingRendererTop(g2d -> {
-            g2d.setFont(new Font("Arial", Font.ITALIC, 15));
-            g2d.drawString(this.text, 15, 15);
+            g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / 110));
+            g2d.setColor(Color.WHITE);
+            g2d.drawString(this.text, 15, swing.getFrame().getBounds().height * 2 / 55);
         }, view);
     }
 

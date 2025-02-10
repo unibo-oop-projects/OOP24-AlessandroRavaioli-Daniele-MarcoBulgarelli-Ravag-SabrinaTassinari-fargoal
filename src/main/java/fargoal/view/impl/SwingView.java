@@ -38,14 +38,12 @@ public class SwingView implements View, KeyListener {
         this.bottom = new SwingViewCanvas();
         this.mapPanel.setBackground(Color.BLACK);
         this.frame.setLayout(new BorderLayout());
-        this.frame.setSize(1500, 1000);
+        this.frame.setMinimumSize(new Dimension(650, 550));
         this.frame.getContentPane().add(mapPanel, BorderLayout.CENTER);
         this.frame.getContentPane().add(this.top, BorderLayout.NORTH);
         this.frame.getContentPane().add(this.bottom, BorderLayout.SOUTH);
-        this.top.setPreferredSize(new Dimension(1000, 100));
-        this.bottom.setPreferredSize(new Dimension(1000, 270));
-        this.top.setBackground(Color.GREEN);
-        this.bottom.setBackground(Color.YELLOW);
+        this.top.setBackground(Color.BLACK);
+        this.bottom.setBackground(Color.GRAY);
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.input = c;
@@ -65,6 +63,10 @@ public class SwingView implements View, KeyListener {
 
         calculateDimensions();
         this.frame.setVisible(true);
+    }
+
+    public JFrame getFrame() {
+        return this.frame;
     }
 
     public int getTilePixelHeight() {
@@ -102,6 +104,8 @@ public class SwingView implements View, KeyListener {
     private void calculateDimensions() {
         this.tilePixelDimHeight = (int) (this.getMapHeight() / FLOOR_HEIGHT);
         this.tilePixelDimWidth = (int) (this.getMapWidth() / FLOOR_LENGTH);
+        this.top.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 13 / 55));
+        this.bottom.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 13 / 55));
     }
 
     public void registerDrawingActionTop(Consumer<Graphics2D> g2d) {
