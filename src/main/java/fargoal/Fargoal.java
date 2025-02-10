@@ -1,4 +1,4 @@
-package fargoal;
+ package fargoal;
 
 import fargoal.model.core.GameEngine;
 
