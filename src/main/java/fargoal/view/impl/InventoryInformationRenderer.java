@@ -12,7 +12,7 @@ public class InventoryInformationRenderer implements Renderer{
     private SwingRendererBottom renderer;
     private SwingView view;
 
-    public InventoryInformationRenderer(View view, Inventory inventory) {
+    public InventoryInformationRenderer(View view) {
         this.view = (SwingView) view;
     }
 
@@ -23,11 +23,20 @@ public class InventoryInformationRenderer implements Renderer{
     
     public void setRenderer(Inventory inventory) {
         renderer = new SwingRendererBottom(g2d -> {
-            g2d.setFont(new Font("Arial", Font.BOLD, 15));
+            g2d.setFont(new Font("Arial", Font.BOLD, this.view.getInformationPanel().getBounds().height * 1/10));
             g2d.setColor(Color.WHITE);
-            g2d.drawString("ENCHANTED SWORD+ " + inventory.getEnchantedWeapons(),
-                    this.view.getFrame().getBounds().width / 4 + 15,
-                    this.view.getFrame().getBounds().height * 94 / 110);
+            g2d.drawString("ENCHANTED SWORD+ " + inventory.getEnchantedWeapons().getNumberInInventory(),
+                    this.view.getInformationPanel().getBounds().width / 4,
+                    this.view.getInformationPanel().getBounds().height * 2/6);
+            g2d.drawString("BEACONS " + inventory.getBeacons().getNumberInInventory(),
+                    this.view.getInformationPanel().getBounds().width / 2,
+                    this.view.getInformationPanel().getBounds().height * 1 / 6);
+            g2d.drawString("MAGIC SACKS " + inventory.getMagicSacks().getNumberInInventory(),
+                    this.view.getInformationPanel().getBounds().width / 2,
+                    this.view.getInformationPanel().getBounds().height * 3 / 6);
+            g2d.drawString("HEALING POTIONS " + inventory.getHealingPotions().getNumberInInventory(),
+                    this.view.getInformationPanel().getBounds().width / 2,
+                    this.view.getInformationPanel().getBounds().height * 5 / 6);
         },view);
     } 
 }

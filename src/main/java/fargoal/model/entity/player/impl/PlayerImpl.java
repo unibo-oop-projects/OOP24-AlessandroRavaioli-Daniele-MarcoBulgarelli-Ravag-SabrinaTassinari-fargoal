@@ -21,6 +21,7 @@ import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
+import fargoal.view.impl.InventoryInformationRenderer;
 import fargoal.view.impl.PlayerInformationRenderer;
 import fargoal.model.entity.player.api.Gold;
 import fargoal.model.entity.player.api.Inventory;
@@ -67,10 +68,14 @@ public class PlayerImpl implements Player {
 
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private PlayerInformationRenderer playerInformationRender;
+    private final InventoryInformationRenderer infoRenderer;
     private Renderer render;
     private FloorManager floorManager;
 
-    public PlayerImpl(FloorManager floorManager, KeyboardInputController controller, PlayerInformationRenderer playerInformationRenderer) {
+    public PlayerImpl(FloorManager floorManager,
+        KeyboardInputController controller,
+        PlayerInformationRenderer playerInformationRenderer,
+        InventoryInformationRenderer infoRenderer) {
         this.input = new PlayerInputComponent();
         this.controller = controller;
         this.level = INITIAL_LEVEL;
@@ -88,29 +93,31 @@ public class PlayerImpl implements Player {
         this.hasLight = false;
         this.playerInformationRender = playerInformationRenderer;
         this.playerInformationRender.setRender(floorManager);
+        this.infoRenderer = infoRenderer;
+        this.infoRenderer.setRenderer(this.inventory);
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
     }
 
-    public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager, KeyboardInputController controller) {
-        this.input = new PlayerInputComponent();
-        this.controller = controller;
-        startingPosition(floorMap);
-        this.level = INITIAL_LEVEL;
-        this.experiencePoints = 0;
-        this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
-        this.health = new HealthImpl(this.setInitialStat());
-        this.skill = setInitialStat();
-        this.gold = new GoldImpl();
-        this.inventory = new InventoryImpl(floorManager);
-        this.numberOfSlainFoes = 0;
-        this.hasSword = false;
-        this.isFighting = false;
-        this.isAttacked = false;
-        this.isVisible = true;
-        this.hasLight = false;
-        this.isImmune = false;
-        this.render = renderFactory.playerRenderer(this);
-    }
+    // public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager, KeyboardInputController controller) {
+    //     this.input = new PlayerInputComponent();
+    //     this.controller = controller;
+    //     startingPosition(floorMap);
+    //     this.level = INITIAL_LEVEL;
+    //     this.experiencePoints = 0;
+    //     this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
+    //     this.health = new HealthImpl(this.setInitialStat());
+    //     this.skill = setInitialStat();
+    //     this.gold = new GoldImpl();
+    //     this.inventory = new InventoryImpl(floorManager);
+    //     this.numberOfSlainFoes = 0;
+    //     this.hasSword = false;
+    //     this.isFighting = false;
+    //     this.isAttacked = false;
+    //     this.isVisible = true;
+    //     this.hasLight = false;
+    //     this.isImmune = false;
+    //     this.render = renderFactory.playerRenderer(this);
+    // }
 
     /**
      * Sets the renderer responsible for rendering the player.
@@ -207,6 +214,7 @@ public class PlayerImpl implements Player {
     public void render() {
         this.render.render();
         this.playerInformationRender.render();
+        this.infoRenderer.render();
     }
 
     /**{@inheritDoc}*/

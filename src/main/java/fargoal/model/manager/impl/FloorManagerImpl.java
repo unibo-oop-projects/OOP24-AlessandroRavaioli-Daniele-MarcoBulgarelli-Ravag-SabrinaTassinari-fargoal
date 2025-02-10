@@ -26,6 +26,7 @@ import fargoal.model.manager.api.FloorMask;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.impl.FloorConstructorImpl;
 import fargoal.view.api.RenderFactory;
+import fargoal.view.impl.InventoryInformationRenderer;
 import fargoal.view.impl.PlayerInformationRenderer;
 import fargoal.view.impl.RenderEventListener;
 import fargoal.view.impl.SwingRenderFactory;
@@ -66,7 +67,10 @@ public class FloorManagerImpl implements FloorManager {
         this.interactables = new LinkedList<>();
         this.renderFactory = new SwingRenderFactory(context.getView());
         this.timer = new Timer();
-        this.player = new PlayerImpl(this, controller, new PlayerInformationRenderer(context.getView()));
+        this.player = new PlayerImpl(this,
+                controller,
+                new PlayerInformationRenderer(context.getView()),
+                new InventoryInformationRenderer(context.getView()));
         initializeFloor();
     }
 
