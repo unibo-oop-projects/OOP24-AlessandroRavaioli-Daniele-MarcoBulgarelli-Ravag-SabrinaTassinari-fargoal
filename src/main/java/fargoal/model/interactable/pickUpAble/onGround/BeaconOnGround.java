@@ -1,6 +1,7 @@
 package fargoal.model.interactable.pickUpAble.onGround;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.Renderer;
@@ -14,6 +15,7 @@ public class BeaconOnGround implements Interactable{
 
     final Position position; 
     private Renderer renderer;
+    private Position lastPlayerPosition;
 
     /**
      * The constructor of the class. When the player put on the ground a beacon that he has in the inventory 
@@ -40,14 +42,7 @@ public class BeaconOnGround implements Interactable{
     /** {@inheritDoc} */
     @Override
     public Interactable interact(FloorManager floorManager) {
-        if (this.getPosition().equals(floorManager.getPlayer().getPosition())) {
-            if (floorManager.getPlayer().getPosition() == this.position) {
-                floorManager.getPlayer().setIsImmune(true);
-            } else {
-                floorManager.getPlayer().setIsImmune(false);
-            }
-        }
-        
+        floorManager.getPlayer().setIsImmune(true);
         return this;
     }
 
@@ -68,6 +63,14 @@ public class BeaconOnGround implements Interactable{
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
+        if (floorManager.getPlayer().getPosition().equals(this.position)) {
+            if (!floorManager.getPlayer().getPosition().equals(this.lastPlayerPosition)) {
+                floorManager.notifyFloorEvent(new WalkOverEvent(this));
+            }
+            this.interact(floorManager);
+        } else {
+            floorManager.getPlayer().setIsImmune(false);
+        }
     }
     
 }
