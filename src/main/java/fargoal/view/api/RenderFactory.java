@@ -20,8 +20,6 @@ public interface RenderFactory {
 
     Renderer chestRenderer(FloorElement obj);
 
-    Renderer fogRenderer(Position pos);
-
     Renderer goldRenderer(SackOfMoney obj);
 
     Renderer beaconRenderer(FloorElement obj);

@@ -5,6 +5,7 @@ import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Inventory;
+import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
@@ -59,6 +60,7 @@ public class Mage extends AbstractMonster {
         if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)) {
+                this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
                 this.attack();
                 if(this.getRandom(2) == 0) {
                     this.steal();

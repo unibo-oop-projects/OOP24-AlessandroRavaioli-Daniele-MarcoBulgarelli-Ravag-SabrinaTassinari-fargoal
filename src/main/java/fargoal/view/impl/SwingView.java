@@ -118,8 +118,6 @@ public class SwingView implements View, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
 
-        System.out.println(e.getKeyCode());
-
         switch (e.getKeyCode()) {
 
             case 38:

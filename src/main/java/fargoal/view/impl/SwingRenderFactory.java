@@ -40,17 +40,6 @@ public class SwingRenderFactory implements RenderFactory {
     }
 
     @Override
-    public Renderer fogRenderer(Position pos) {
-        return new SwingRendererMiddle(g2d -> {
-                g2d.setColor(Color.BLACK);
-                g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
-                        pos.y() * this.view.getTilePixelHeight(),
-                        this.view.getTilePixelWidth(),
-                        this.view.getTilePixelHeight());
-                }, this.view);
-    }
-
-    @Override
     public Renderer playerRenderer(FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.BLUE);
@@ -166,8 +155,13 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer monkRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'monkRenderer'");
+        return new SwingRendererMiddle(g2d -> {
+            g2d.setColor(Color.CYAN);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
+        }, this.view);
     }
 
     @Override
@@ -183,14 +177,24 @@ public class SwingRenderFactory implements RenderFactory {
 
     @Override
     public Renderer spiderRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'spiderRenderer'");
+        return new SwingRendererMiddle(g2d -> {
+            g2d.setColor(Color.BLACK);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
+        }, this.view);
     }
 
     @Override
     public Renderer warlordRenderer(FloorElement obj) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'warlordRenderer'");
+        return new SwingRendererMiddle(g2d -> {
+            g2d.setColor(Color.PINK);
+            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight());
+        }, this.view);
     }
 
     @Override
