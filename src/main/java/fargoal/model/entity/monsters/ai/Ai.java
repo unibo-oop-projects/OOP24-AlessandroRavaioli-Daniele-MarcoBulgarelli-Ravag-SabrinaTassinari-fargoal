@@ -64,8 +64,12 @@ public final class Ai {
         final List<Position> positionList = new ArrayList<>();
         monster.getFloorManager().getMonsters().forEach(p -> positionList.add(p.getPosition()));
 
-        //rimuovo le posizioni deglia altri mostri
+        //rimuovo le posizioni deglia altri mostri e del player
         possibleDirections.removeAll(positionList);
+        if (possibleDirections.stream()
+                .anyMatch(p -> p.equals(player.getPosition()))) {
+                    possibleDirections.remove(player.getPosition());
+                }
 
         //se è un ragno...
         if(monster.getMonsterType().equals(MonsterType.SPIDER)) {
@@ -89,6 +93,10 @@ public final class Ai {
                     .filter(p -> monster.getFloorMap().isTile(p))
                     .collect(Collectors.toList());
             possibleDirections.removeAll(positionList);
+            if (possibleDirections.stream()
+                .anyMatch(p -> p.equals(player.getPosition()))) {
+                    possibleDirections.remove(player.getPosition());
+                }
         }
         
         final int xDistance = Math.abs(monster.getPosition().x() - player.getPosition().x());
@@ -355,13 +363,15 @@ public final class Ai {
             }
         }
         if (!check) {
-            pos = possibleDirections.get(random.nextInt(possibleDirections.size()));
-            monster.setPosition(pos);
-            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
-                monster.removeLastPosition();
-                monster.addFirstPosition(pos);
-            } else {
-                monster.addFirstPosition(pos);
+            if (!possibleDirections.isEmpty()) {
+                pos = possibleDirections.get(random.nextInt(possibleDirections.size()));
+                monster.setPosition(pos);
+                if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                    monster.removeLastPosition();
+                    monster.addFirstPosition(pos);
+                } else {
+                    monster.addFirstPosition(pos);
+                }
             }
         }
     }
