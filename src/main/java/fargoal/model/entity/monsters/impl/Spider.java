@@ -17,7 +17,7 @@ import fargoal.view.api.RenderFactory;
  */
 public class Spider extends AbstractMonster {
 
-    private static final int NEXT_MOVE = 2000;
+    private static final int NEXT_MOVE = 5000;
 
     /**
      * A constructor for the Spider; it uses the

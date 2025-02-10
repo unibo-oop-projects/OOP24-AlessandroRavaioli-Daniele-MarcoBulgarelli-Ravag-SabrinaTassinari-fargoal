@@ -4,7 +4,6 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
-import fargoal.model.events.impl.MonsterEncounterEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
@@ -17,7 +16,7 @@ import fargoal.view.api.RenderFactory;
  */
 public class Barbarian extends AbstractMonster {
 
-    private static final int NEXT_MOVE = 2000;
+    private static final int NEXT_MOVE = 5000;
 
     /**
      * A constructor for the Barbarian; it uses the

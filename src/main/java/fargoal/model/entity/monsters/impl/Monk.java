@@ -16,7 +16,7 @@ import fargoal.view.api.RenderFactory;
  */
 public class Monk extends AbstractMonster {
 
-    private static final int NEXT_MOVE = 2000;
+    private static final int NEXT_MOVE = 5000;
 
     /**
      * A constructor for the Monk; it uses the
