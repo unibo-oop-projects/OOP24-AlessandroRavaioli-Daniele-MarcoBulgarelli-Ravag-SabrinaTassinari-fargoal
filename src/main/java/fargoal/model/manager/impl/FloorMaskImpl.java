@@ -8,9 +8,6 @@ import fargoal.commons.api.Position;
 import fargoal.model.core.GameContext;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
-import fargoal.view.api.RenderFactory;
-import fargoal.view.api.View;
-import fargoal.view.impl.SwingRenderFactory;
 
 /**
  * A class that implements the map covering effect.

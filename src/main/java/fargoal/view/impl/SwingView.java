@@ -23,8 +23,8 @@ public class SwingView implements View, KeyListener {
     private static final int FLOOR_HEIGHT = 25;
 
     private SwingViewCanvas mapPanel;
-    private SwingViewCanvas top;
-    private SwingViewCanvas bottom;
+    private SwingViewCanvas eventPanel;
+    private SwingViewCanvas informationPanel;
     private JFrame frame;
     private KeyboardInputController input;
 
@@ -34,16 +34,16 @@ public class SwingView implements View, KeyListener {
     public SwingView(KeyboardInputController c) {
         this.frame = new JFrame();
         this.mapPanel = new SwingViewCanvas();
-        this.top = new SwingViewCanvas();
-        this.bottom = new SwingViewCanvas();
+        this.eventPanel = new SwingViewCanvas();
+        this.informationPanel = new SwingViewCanvas();
         this.mapPanel.setBackground(Color.BLACK);
         this.frame.setLayout(new BorderLayout());
         this.frame.setMinimumSize(new Dimension(650, 550));
         this.frame.getContentPane().add(mapPanel, BorderLayout.CENTER);
-        this.frame.getContentPane().add(this.top, BorderLayout.NORTH);
-        this.frame.getContentPane().add(this.bottom, BorderLayout.SOUTH);
-        this.top.setBackground(Color.BLACK);
-        this.bottom.setBackground(Color.GRAY);
+        this.frame.getContentPane().add(this.eventPanel, BorderLayout.NORTH);
+        this.frame.getContentPane().add(this.informationPanel, BorderLayout.SOUTH);
+        this.eventPanel.setBackground(Color.BLACK);
+        this.informationPanel.setBackground(Color.GRAY);
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.input = c;
@@ -79,13 +79,13 @@ public class SwingView implements View, KeyListener {
 
     @Override
     public void update() {
-        this.top.enableDraw(true);
-        this.bottom.enableDraw(true);
+        this.eventPanel.enableDraw(true);
+        this.informationPanel.enableDraw(true);
         this.mapPanel.enableDraw(true);
         SwingUtilities.invokeLater(() -> {
             this.mapPanel.repaint();
-            this.top.repaint();
-            this.bottom.repaint();
+            this.eventPanel.repaint();
+            this.informationPanel.repaint();
         });
     }
     
@@ -104,16 +104,24 @@ public class SwingView implements View, KeyListener {
     private void calculateDimensions() {
         this.tilePixelDimHeight = (int) (this.getMapHeight() / FLOOR_HEIGHT);
         this.tilePixelDimWidth = (int) (this.getMapWidth() / FLOOR_LENGTH);
-        this.top.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 11 / 55));
-        this.bottom.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 13 / 55));
+        this.eventPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 11 / 55));
+        this.informationPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 13 / 55));
     }
 
     public void registerDrawingActionTop(Consumer<Graphics2D> g2d) {
-        this.top.addToList(g2d);
+        this.eventPanel.addToList(g2d);
     }
 
     public void registerDrawingActionBottom(Consumer<Graphics2D> g2d) {
-        this.bottom.addToList(g2d);
+        this.informationPanel.addToList(g2d);
+    }
+
+    public SwingViewCanvas getInformationPanel() {
+        return this.informationPanel;
+    }
+
+    public SwingViewCanvas getEventPanel() {
+        return this.eventPanel;
     }
 
     @Override
