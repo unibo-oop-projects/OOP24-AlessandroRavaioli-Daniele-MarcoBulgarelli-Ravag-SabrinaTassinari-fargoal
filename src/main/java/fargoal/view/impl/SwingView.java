@@ -118,6 +118,9 @@ public class SwingView implements View, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+
+        System.out.println(e.getKeyCode());
+
         switch (e.getKeyCode()) {
 
             case 38:
@@ -136,6 +139,42 @@ public class SwingView implements View, KeyListener {
                 input.notifyMoveRight();
                 break;
         
+            case 32:
+                input.notifyInteracting();
+                break;
+
+            case 72:
+                input.notifyUsingHealingPotion();
+                break;
+
+            case 66:
+                input.notifyPlacingBeacon();
+                break;
+            
+            case 84:
+                input.notifyUsingTeleportSpell();
+                break;
+
+            case 83:
+                input.notifyUsingShieldSpell();
+                break;
+
+            case 68:
+                input.notifyUsingDriftSpell();
+                break;
+
+            case 82:
+                input.notifyUsingHealingPotion();
+                break;
+
+            case 73:
+                input.notifyUsingInvisibilitySpell();
+                break;
+
+            case 76:
+                input.notifyUsingLightSpell();
+                break;
+            
             default:
                 break;
         }
@@ -161,6 +200,42 @@ public class SwingView implements View, KeyListener {
                 input.notifyNoMoreMoveRight();
                 break;
 
+            case 32:
+                input.notifyNoMoreInteracting();
+                break;
+
+            case 72:
+                input.notifyNoMoreUsingHealingPotion();
+                break;
+
+            case 66:
+                input.notifyNoMorePlacingBeacon();
+                break;
+
+            case 84:
+                input.notifyNoMoreUsingTeleportSpell();
+                break;
+            
+            case 83:
+                input.notifyNoMoreUsingShieldSpell();
+                break;
+
+            case 68:
+                input.notifyNoMoreUsingDriftSpell();
+                break;
+            
+            case 82:
+                input.notifyNoMoreUsingHealingPotion();
+                break;
+
+            case 73:
+                input.notifyNoMoreUsingInvisibilitySpell();
+                break;
+            
+            case 76:
+                input.notifyNoMoreUsingLightSpell();
+                break;
+            
             default:
                 break;
         }
