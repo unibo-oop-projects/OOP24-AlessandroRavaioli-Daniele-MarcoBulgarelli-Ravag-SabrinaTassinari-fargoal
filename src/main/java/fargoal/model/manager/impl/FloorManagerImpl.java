@@ -160,7 +160,6 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public void increaseFloorLevel() {
         this.floorLevel++;
-        System.out.println(this.floorLevel);
         initializeFloor();
         this.interactables.add(new UpStairs(this.player.getPosition(), this.renderFactory));
     }
@@ -174,7 +173,6 @@ public class FloorManagerImpl implements FloorManager {
             throw new  IllegalStateException("cannot go to level -1");
         }
         this.floorLevel--;
-        System.out.println(this.floorLevel);
         initializeFloor();
         this.interactables.add(new DownStairs(this.player.getPosition(), this.renderFactory));
     }

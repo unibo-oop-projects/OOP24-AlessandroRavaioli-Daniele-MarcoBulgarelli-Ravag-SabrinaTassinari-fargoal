@@ -1,6 +1,5 @@
 package fargoal.controller.input.api;
 
-import fargoal.model.commons.FloorElement;
 import fargoal.model.entity.player.impl.PlayerImpl;
 import fargoal.model.manager.api.FloorManager;
 
