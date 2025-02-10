@@ -26,4 +26,4 @@
 \contentsline {subsubsection}{Tramonti Daniele}{6}{}%
 \contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{6}{}%
 \contentsline {chapter}{\numberline {A}Guida utente}{7}{}%
-\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{8}{}%
+\contentsline {chapter}{\numberline {B}Esercitazioni di laboratorio}{9}{}%
