@@ -2,6 +2,7 @@ package fargoal.view.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
+import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 
 public interface RenderFactory {
@@ -18,7 +19,7 @@ public interface RenderFactory {
 
     Renderer templeRenderer(FloorElement obj);
 
-    Renderer chestRenderer(FloorElement obj);
+    Renderer chestRenderer(ChestImpl obj);
 
     Renderer goldRenderer(SackOfMoney obj);
 

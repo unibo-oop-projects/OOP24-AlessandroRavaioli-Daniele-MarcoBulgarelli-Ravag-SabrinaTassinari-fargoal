@@ -36,7 +36,7 @@ public class RenderEventListener implements FloorEventListener, Renderer{
             text = ev.TypeOfTrap().getChestItemName();
         } else if (floorEvent instanceof PickUpGoldEvent) {
             PickUpGoldEvent ev = (PickUpGoldEvent) floorEvent;
-            text = "Picked up " + ev.GoldFound() + " gold";
+            text = "Found " + ev.GoldFound() + " gold";
         } else if (floorEvent instanceof PickUpNewItemEvent) {
             PickUpNewItemEvent ev = (PickUpNewItemEvent) floorEvent;
             text = "Found " + ev.PickedUpWhat().getChestItemName();

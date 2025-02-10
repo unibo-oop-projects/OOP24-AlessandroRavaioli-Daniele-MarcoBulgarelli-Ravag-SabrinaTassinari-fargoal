@@ -1,6 +1,7 @@
 package fargoal.model.interactable.temple;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
@@ -32,6 +33,7 @@ public class Temple implements Interactable {
     @Override
     public Interactable interact(FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition() == this.position) {
+            floorManager.notifyFloorEvent(new WalkOverEvent(this));
             floorManager.getPlayer().setIsImmune(true);
             floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
             floorManager.getPlayer().getPlayerGold().setGoldDonated(floorManager.getPlayer().getCurrentGold());

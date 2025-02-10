@@ -17,7 +17,7 @@ public class MagicSack implements Utility {
      * @param floorManager - it contains all the element of the floor in which the item was found.
      */
     public MagicSack(FloorManager floorManager) {
-        this.numberInInventory = 0;
+        this.numberInInventory = 1;
     }
 
     /** {@inheritDoc} */

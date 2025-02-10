@@ -16,6 +16,7 @@ public class SackOfMoney implements Interactable{
 
     final private Position position;
     private boolean hiddenInGround;
+    private boolean open;
     private int goldInSack;
     private Renderer renderer;
 
@@ -28,6 +29,7 @@ public class SackOfMoney implements Interactable{
     public SackOfMoney(final Position position, final RenderFactory renderFactory) {
         this.position = position;
         this.hiddenInGround = false;
+        this.open = false;
         this.goldInSack = this.generateAmountOfMoney();
         this.setRender(renderFactory.goldRenderer(this));
     }
@@ -38,9 +40,20 @@ public class SackOfMoney implements Interactable{
         return this.position;
     }
 
-    /** {@inheritDoc} */
+    /** 
+     * Getter for the field isHiddenInGround.
+     * @return true if the sackOfGold is hidden in the ground, false otherwise.
+     */
     public boolean isHiddenInGround() {
         return this.hiddenInGround;
+    }
+
+    /**
+     * Getter for the field open
+     * @return true if the player opened the sack of gold.
+     */
+    public boolean isOpen() {
+        return this.open;
     }
 
     /** {@inheritDoc} */
@@ -53,12 +66,14 @@ public class SackOfMoney implements Interactable{
     @Override
     public Interactable interact(FloorManager floorManager) {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
+            floorManager.notifyFloorEvent(new PickUpGoldEvent(this.goldInSack));
+            this.open = true;
             this.goldInSack = floorManager.getPlayer().getPlayerGold().addGold(this.goldInSack);
             if(this.goldInSack > 0) {
                 this.hiddenInGround = true;
             }
         }
-        floorManager.notifyFloorEvent(new PickUpGoldEvent(this.goldInSack));
+        
         return this;
     }
 

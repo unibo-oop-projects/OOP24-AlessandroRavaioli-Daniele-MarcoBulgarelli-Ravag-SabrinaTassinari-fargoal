@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
+import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
@@ -84,9 +85,13 @@ public class SwingRenderFactory implements RenderFactory {
     }
 
     @Override
-    public Renderer chestRenderer(FloorElement obj) {
+    public Renderer chestRenderer(ChestImpl obj) {
         return new SwingRendererMiddle(g2d -> {
-            g2d.setColor(Color.GRAY);
+            if (obj.isOpen()) {
+                g2d.setColor(Color.WHITE);
+            } else {
+                g2d.setColor(Color.GRAY);
+            }
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
@@ -97,11 +102,16 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer goldRenderer(SackOfMoney obj) {
         return new SwingRendererMiddle(g2d -> {
-            if (obj.isHiddenInGround()) {
-                g2d.setColor(Color.GREEN);
+            if (obj.isOpen()) {
+                if (obj.isHiddenInGround()) {
+                    g2d.setColor(Color.GREEN);
+                } else {
+                    g2d.setColor(Color.WHITE);
+                }
             } else {
                 g2d.setColor(Color.YELLOW);
             }
+            
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
