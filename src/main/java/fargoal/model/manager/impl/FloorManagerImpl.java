@@ -54,6 +54,7 @@ public class FloorManagerImpl implements FloorManager {
     private Temple temple;
     private final RenderFactory renderFactory;
     private final Timer timer;
+    private long elapsed;
 
     /**
      * Constructor that inizializes all of its fields.
@@ -79,7 +80,8 @@ public class FloorManagerImpl implements FloorManager {
      */
     @Override
     public void update(final GameContext context, final long elapsed) {
-        if (timer.updateTime(elapsed) == 0) {
+        this.elapsed = elapsed;
+        if (timer.updateTime(this.elapsed) == 0) {
             this.getAllElements().forEach(e -> e.update(this));   
         } else {
             this.listener.render();
@@ -286,5 +288,10 @@ public class FloorManagerImpl implements FloorManager {
     public void notifyFloorEvent(FloorEvent floorEvent) {
         listener.notifyEvent(floorEvent);
         timer.setTime(TIME_TO_WAIT_ON_EVENT);
+    }
+
+    @Override
+    public long getTimePassed() {
+        return this.elapsed;
     }
 }

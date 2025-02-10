@@ -10,6 +10,7 @@ import fargoal.commons.api.Position;
 import fargoal.controller.input.api.InputComponent;
 import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.controller.input.api.PlayerInputComponent;
+import fargoal.model.commons.Timer;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.entity.monsters.api.AbstractMonster;
@@ -46,6 +47,7 @@ public class PlayerImpl implements Player {
     private static final int DAMAGE_MULTIPLIER = 4;
     private static final int MINIMUM_DAMAGE = 1;
     private static final int INITIAL_LEVEL = 1;
+    private static final long MILLIS_BETWEEN_MOVES = 200;
 
     private final InputComponent input;
     private final KeyboardInputController controller;
@@ -58,6 +60,7 @@ public class PlayerImpl implements Player {
     private final Gold gold;
     private final Inventory inventory;
     private Integer numberOfSlainFoes;
+    private final Timer moveTimer;
 
     private boolean hasSword;
     private boolean isFighting;
@@ -96,6 +99,7 @@ public class PlayerImpl implements Player {
         this.infoRenderer = infoRenderer;
         this.infoRenderer.setRenderer(this.inventory);
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
+        this.moveTimer = new Timer();
     }
 
     // public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager, KeyboardInputController controller) {
@@ -376,7 +380,10 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
-        input.update(floorManager, this, controller);
+        if (this.moveTimer.updateTime(floorManager.getTimePassed()) == 0) {
+            input.update(floorManager, this, controller);
+            moveTimer.setTime(MILLIS_BETWEEN_MOVES);
+        }
     }
 
     @Override

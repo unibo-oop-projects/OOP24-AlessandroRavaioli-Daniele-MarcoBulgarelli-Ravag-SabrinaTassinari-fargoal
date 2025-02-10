@@ -87,4 +87,6 @@ public interface FloorManager {
     RenderFactory getRenderFactory();
 
     void notifyFloorEvent(FloorEvent floorEvent);
+
+    long getTimePassed();
 }
