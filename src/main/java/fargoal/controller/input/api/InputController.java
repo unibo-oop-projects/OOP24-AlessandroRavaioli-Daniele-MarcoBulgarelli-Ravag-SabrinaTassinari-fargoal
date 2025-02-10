@@ -12,6 +12,7 @@ package fargoal.controller.input.api;
  * R -> REGENERATION SPELL
  * I -> INVISIBILITY SPELL
  * L -> LIGHT SPELL
+ * O -> if the LIGHT SPELL is on it turns on and off the light
  */
 public interface InputController {
 
@@ -29,4 +30,5 @@ public interface InputController {
     boolean isUsingRegenerationSpell();
     boolean isUsingInvisibilitySpell();
     boolean isUsingLightSpell();
+    boolean isTurningLight();
 }

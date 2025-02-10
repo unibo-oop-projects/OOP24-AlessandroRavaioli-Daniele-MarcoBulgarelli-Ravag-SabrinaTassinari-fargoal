@@ -129,7 +129,6 @@ public class SwingView implements View, KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-
         switch (e.getKeyCode()) {
 
             case 38:
@@ -182,6 +181,10 @@ public class SwingView implements View, KeyListener {
 
             case 76:
                 input.notifyUsingLightSpell();
+                break;
+
+            case 79:
+                input.notifyTurnLight();
                 break;
             
             default:
@@ -243,6 +246,10 @@ public class SwingView implements View, KeyListener {
             
             case 76:
                 input.notifyNoMoreUsingLightSpell();
+                break;
+
+            case 79:
+                input.notifyNotTurnLight();
                 break;
             
             default:

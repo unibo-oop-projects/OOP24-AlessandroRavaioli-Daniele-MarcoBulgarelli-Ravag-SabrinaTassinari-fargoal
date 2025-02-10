@@ -16,6 +16,7 @@ public class KeyboardInputController implements InputController {
     private boolean isUsingRegenerationSpell;
     private boolean isUsingInvisibilitySpell;
     private boolean isUsingLightSpell;
+    private boolean isTurningLight;
 
     public KeyboardInputController() {
         this.reset();
@@ -32,6 +33,7 @@ public class KeyboardInputController implements InputController {
         this.notifyNoMoreUsingHealingPotion();
         this.notifyNoMoreUsingInvisibilitySpell();
         this.notifyNoMoreUsingLightSpell();
+        this.notifyNotTurnLight();
         this.notifyNoMoreUsingRegenerationSpell();
         this.notifyNoMoreUsingShieldSpell();
         this.notifyNoMoreUsingTeleportSpell();
@@ -85,6 +87,11 @@ public class KeyboardInputController implements InputController {
     @Override
     public boolean isUsingLightSpell() {
         return isUsingLightSpell;
+    }
+
+    @Override
+    public boolean isTurningLight() {
+        return isTurningLight;
     }
 
     @Override
@@ -180,6 +187,14 @@ public class KeyboardInputController implements InputController {
 
     public void notifyNoMoreUsingLightSpell() {
         isUsingLightSpell = false;;
+    }
+
+    public void notifyTurnLight() {
+        isTurningLight = true;
+    }
+
+    public void notifyNotTurnLight() {
+        isTurningLight = false;
     }
 
     public void notifyUsingRegenerationSpell() {
