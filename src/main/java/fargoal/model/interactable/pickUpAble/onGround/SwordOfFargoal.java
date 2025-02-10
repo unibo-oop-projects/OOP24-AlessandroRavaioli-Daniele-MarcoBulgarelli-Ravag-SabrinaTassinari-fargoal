@@ -1,6 +1,7 @@
 package fargoal.model.interactable.pickUpAble.onGround;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.PickUpSword;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
@@ -59,6 +60,7 @@ public class SwordOfFargoal implements Interactable{
     public Interactable interact(FloorManager floorManager) {
         floorManager.getPlayer().setHasSword(true);
         //guarda cosa fa la spada a chi la prende (quanta esperienza o skill dà)
+        floorManager.notifyFloorEvent(new PickUpSword(this));
         return this;
     }
     

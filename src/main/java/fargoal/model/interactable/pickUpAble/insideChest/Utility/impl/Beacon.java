@@ -1,5 +1,6 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
 
+import fargoal.model.events.impl.PlacedABeacon;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.interactable.pickUpAble.onGround.BeaconOnGround;
@@ -40,6 +41,7 @@ public class Beacon implements Utility {
         this.removeUtility();
         BeaconOnGround beaconOnGround = new BeaconOnGround(floorManager.getPlayer().getPosition(), floorManager);
         floorManager.getInteractables().add(beaconOnGround);
+        floorManager.notifyFloorEvent(new PlacedABeacon(beaconOnGround));
     }
 
     /** {@inheritDoc} */

@@ -3,6 +3,7 @@ package fargoal.model.interactable.pickUpAble.onGround;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.PickUpGoldEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
@@ -57,6 +58,7 @@ public class SackOfMoney implements Interactable{
                 this.hiddenInGround = true;
             }
         }
+        floorManager.notifyFloorEvent(new PickUpGoldEvent(this.goldInSack));
         return this;
     }
 
