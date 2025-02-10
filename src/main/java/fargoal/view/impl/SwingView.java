@@ -36,7 +36,7 @@ public class SwingView implements View, KeyListener {
         this.mapPanel = new SwingViewCanvas();
         this.eventPanel = new SwingViewCanvas();
         this.informationPanel = new SwingViewCanvas();
-        this.mapPanel.setBackground(Color.BLACK);
+        this.mapPanel.setBackground(Color.DARK_GRAY);
         this.frame.setLayout(new BorderLayout());
         this.frame.setMinimumSize(new Dimension(650, 550));
         this.frame.getContentPane().add(mapPanel, BorderLayout.CENTER);
