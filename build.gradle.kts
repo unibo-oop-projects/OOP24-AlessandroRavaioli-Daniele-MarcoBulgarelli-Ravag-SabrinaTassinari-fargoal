@@ -24,8 +24,8 @@ dependencies {
     compileOnly("com.github.spotbugs:spotbugs-annotations:4.9.0")
 
     // Maven dependencies are composed by a group name, a name and a version, separated by colons
-    implementation("com.omertron:API-OMDB:1.5")
-    implementation("org.jooq:jool:0.9.15")
+    // implementation("com.omertron:API-OMDB:1.5")
+    // implementation("org.jooq:jool:0.9.15")
 
     /*
      * Simple Logging Facade for Java (SLF4J) with Apache Log4j
@@ -45,7 +45,8 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass.set("it.unibo.sampleapp.RateAMovie")
+    // mainClass.set("it.unibo.sampleapp.RateAMovie")
+    mainClass.set("fargoal.Fargoal")
 }
 
 tasks.test {
