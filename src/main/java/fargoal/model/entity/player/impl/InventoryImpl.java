@@ -1,9 +1,12 @@
 package fargoal.model.entity.player.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import fargoal.model.entity.player.api.Inventory;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.InvisibilitySpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
@@ -141,5 +144,16 @@ public class InventoryImpl implements Inventory {
         return this.lightScroll;
     }
 
+    @Override
+    public List<Spell> getListAllSpell() {
+        List<Spell> list = new ArrayList<>();
+        list.add(this.driftScroll);
+        list.add(invisibilityScroll);
+        list.add(lightScroll);
+        list.add(regenerationScroll);
+        list.add(shieldScroll);
+        list.add(teleportScroll);
+        return list;
+    }
     
 }

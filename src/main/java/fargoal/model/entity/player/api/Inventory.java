@@ -1,7 +1,9 @@
 package fargoal.model.entity.player.api;
 
+import java.util.List;
 import java.util.Map;
 
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.InvisibilitySpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
@@ -116,4 +118,10 @@ public interface Inventory {
      * @return the LightSpell Object
      */
     LightSpell getLightSpell();
+
+    /**
+     * This method return a list of all types of spell in the inventory
+     * @return a list of spell.
+     */
+    List<Spell> getListAllSpell();
 }

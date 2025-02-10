@@ -82,7 +82,8 @@ public class FloorManagerImpl implements FloorManager {
     public void update(final GameContext context, final long elapsed) {
         this.elapsed = elapsed;
         if (timer.updateTime(this.elapsed) == 0) {
-            this.getAllElements().forEach(e -> e.update(this));   
+            this.getAllElements().forEach(e -> e.update(this));  
+            this.player.getInventory().getListAllSpell().forEach(s -> s.update(this)); 
         } else {
             this.listener.render();
         }
