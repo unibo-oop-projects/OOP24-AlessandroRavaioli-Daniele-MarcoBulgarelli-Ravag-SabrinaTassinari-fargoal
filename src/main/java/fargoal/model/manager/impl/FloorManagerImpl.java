@@ -60,7 +60,7 @@ public class FloorManagerImpl implements FloorManager {
     public FloorManagerImpl(final GameContext context, final KeyboardInputController controller) {
         this.listener = new RenderEventListener(context.getView());
         this.monsters = new LinkedList<>();
-        this.mask = new FloorMaskImpl(context.getView());
+        this.mask = new FloorMaskImpl();
         this.floorLevel = 1;
         this.interactables = new LinkedList<>();
         this.renderFactory = new SwingRenderFactory(context.getView());

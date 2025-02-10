@@ -1,8 +1,6 @@
 package fargoal.view.impl;
 
 import java.awt.Color;
-import java.util.HashMap;
-import java.util.Map;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
@@ -14,56 +12,42 @@ import fargoal.view.api.View;
 public class SwingRenderFactory implements RenderFactory {
 
     private final SwingView view;
-    private Map<Position, Renderer> cache;
 
     public SwingRenderFactory(View view){
         this.view = (SwingView)view;
-        cache = new HashMap<>();
     }
 
     @Override
     public Renderer wallRenderer(Position pos) {
-        if (this.cache.containsKey(pos)) {
-            return this.cache.get(pos);
-        }
-        cache.put(pos, new SwingRendererMiddle(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
                     g2d.setColor(Color.BLACK);
                     g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
                         pos.y() * this.view.getTilePixelHeight(),
                         this.view.getTilePixelWidth(),
                         this.view.getTilePixelHeight());
-                }, this.view));
-        return this.cache.get(pos);
+                }, this.view);
     }
 
     @Override
     public Renderer tileRenderer(Position pos) {
-        if (this.cache.containsKey(pos)) {
-            return this.cache.get(pos);
-        }
-        this.cache.put(pos, new SwingRendererMiddle(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
                 g2d.setColor(Color.WHITE);
                 g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
                         pos.y() * this.view.getTilePixelHeight(),
                         this.view.getTilePixelWidth(),
                         this.view.getTilePixelHeight());
-                }, this.view));
-        return this.cache.get(pos);
+                }, this.view);
     }
 
     @Override
     public Renderer fogRenderer(Position pos) {
-        if (this.cache.containsKey(pos)) {
-            return this.cache.get(pos);
-        }
-        this.cache.put(pos, new SwingRendererMiddle(g2d -> {
+        return new SwingRendererMiddle(g2d -> {
                 g2d.setColor(Color.BLACK);
                 g2d.fillRect(pos.x() * this.view.getTilePixelWidth(),
                         pos.y() * this.view.getTilePixelHeight(),
                         this.view.getTilePixelWidth(),
                         this.view.getTilePixelHeight());
-                }, this.view));
-        return this.cache.get(pos);
+                }, this.view);
     }
 
     @Override

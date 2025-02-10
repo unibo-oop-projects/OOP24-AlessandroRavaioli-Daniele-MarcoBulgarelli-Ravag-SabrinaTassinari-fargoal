@@ -3,7 +3,6 @@ package fargoal.view.impl;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -23,7 +22,7 @@ public class SwingView implements View, KeyListener {
     private static final int FLOOR_LENGTH = 40;
     private static final int FLOOR_HEIGHT = 25;
 
-    private SwingViewCanvas canvas;
+    private SwingViewCanvas mapPanel;
     private SwingViewCanvas top;
     private SwingViewCanvas bottom;
     private JFrame frame;
@@ -34,13 +33,13 @@ public class SwingView implements View, KeyListener {
 
     public SwingView(KeyboardInputController c) {
         this.frame = new JFrame();
-        this.canvas = new SwingViewCanvas();
+        this.mapPanel = new SwingViewCanvas();
         this.top = new SwingViewCanvas();
-        this.top.setFont(new Font("Arial", Font.PLAIN, 10));
         this.bottom = new SwingViewCanvas();
+        this.mapPanel.setBackground(Color.BLACK);
         this.frame.setLayout(new BorderLayout());
         this.frame.setSize(1500, 1000);
-        this.frame.getContentPane().add(canvas, BorderLayout.CENTER);
+        this.frame.getContentPane().add(mapPanel, BorderLayout.CENTER);
         this.frame.getContentPane().add(this.top, BorderLayout.NORTH);
         this.frame.getContentPane().add(this.bottom, BorderLayout.SOUTH);
         this.top.setPreferredSize(new Dimension(1000, 100));
@@ -80,24 +79,24 @@ public class SwingView implements View, KeyListener {
     public void update() {
         this.top.enableDraw(true);
         this.bottom.enableDraw(true);
-        this.canvas.enableDraw(true);
+        this.mapPanel.enableDraw(true);
         SwingUtilities.invokeLater(() -> {
-            this.canvas.repaint();
+            this.mapPanel.repaint();
             this.top.repaint();
             this.bottom.repaint();
         });
     }
     
     public void registerDrawingActionMiddle(Consumer<Graphics2D> g2d) {
-        this.canvas.addToList(g2d);
+        this.mapPanel.addToList(g2d);
     }
 
     public int getMapHeight() {
-        return this.canvas.getBounds().height;
+        return this.mapPanel.getBounds().height;
     }
 
     public int getMapWidth() {
-        return this.canvas.getBounds().width;
+        return this.mapPanel.getBounds().width;
     }
 
     private void calculateDimensions() {

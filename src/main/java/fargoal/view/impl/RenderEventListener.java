@@ -1,9 +1,6 @@
 package fargoal.view.impl;
 
-import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics2D;
-import java.util.function.Consumer;
 
 import fargoal.model.events.api.FloorEvent;
 import fargoal.model.events.api.FloorEventListener;
