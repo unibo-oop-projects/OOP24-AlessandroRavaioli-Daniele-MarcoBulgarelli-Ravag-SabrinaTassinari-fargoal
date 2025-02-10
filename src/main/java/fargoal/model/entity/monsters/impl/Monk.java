@@ -68,7 +68,7 @@ public class Monk extends AbstractMonster {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1) && !floorManager.getPlayer().isImmune()) {
                 this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                this.attack();
+                floorManager.getPlayer().receiveDamage(this);
             } else if (!this.getHealth().isHealthy() && !this.areNeighbours(floorManager, 2)) {
                 this.heal();
             } else {
