@@ -62,7 +62,7 @@ public class InvisibilitySpell implements Spell {
     @Override
     public void update(FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
-            if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
+            if (this.floorLevelSpellCasted != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), false);
                 floorManager.getPlayer().setIsVisible(true);
             }

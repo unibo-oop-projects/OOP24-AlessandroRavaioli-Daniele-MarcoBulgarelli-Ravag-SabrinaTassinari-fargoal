@@ -60,7 +60,7 @@ public class RegenerationSpell implements Spell {
     @Override
     public void update(FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.REGENERATION.getName())) {
-            if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
+            if (this.floorLevelSpellCasted != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), false);
             }
         }

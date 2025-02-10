@@ -19,10 +19,10 @@ public class TestInteractable {
     private static Interactable chest;
     private static Interactable item;
 
-    @BeforeAll
+    /*@BeforeAll
     static void init() {
         floorManager = new FloorManagerImpl(null);
-    }
+    }*/
 
     void visualizeFloor() {
         System.out.print(" ");

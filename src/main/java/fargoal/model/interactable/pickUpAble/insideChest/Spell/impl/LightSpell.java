@@ -81,7 +81,7 @@ public class LightSpell implements Spell {
     @Override
     public void update(FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName())) {
-            if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
+            if (this.floorLevelSpellCasted != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), false);
                 floorManager.getPlayer().setHasLight(false);
             }

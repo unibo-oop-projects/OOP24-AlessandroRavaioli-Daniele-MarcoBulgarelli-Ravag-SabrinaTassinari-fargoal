@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import fargoal.model.entity.player.api.Inventory;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 
@@ -58,9 +59,11 @@ public class InventoryInformationRenderer implements Renderer{
             g2d.drawString(String.valueOf(inventory.getHealingPotions().getNumberInInventory()), 
                     this.view.getInformationPanel().getBounds().width * 23 / 32, 
                     this.view.getInformationPanel().getBounds().height * 5 / 6);
-            if (inventory.getInvisibilitySpell().getNumberInInventory() > 0) {
+            if (inventory.getInvisibilitySpell().getNumberInInventory() > 0 && !inventory.getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
                 g2d.setColor(Color.WHITE);
-            } else {
+            } else if (inventory.getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
+                g2d.setColor(Color.CYAN);
+            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 && !inventory.getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
                 g2d.setColor(Color.BLACK);
             }
             g2d.drawString("INVISIBILITY", 
@@ -69,9 +72,11 @@ public class InventoryInformationRenderer implements Renderer{
             g2d.drawString(String.valueOf(inventory.getInvisibilitySpell().getNumberInInventory()),
                     this.view.getInformationPanel().getBounds().width * 31 / 32, 
                     this.view.getInformationPanel().getBounds().height * 3 / 24);
-            if (inventory.getRegenerationSpell().getNumberInInventory() > 0) {
+            if (inventory.getRegenerationSpell().getNumberInInventory() > 0 && !inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
                 g2d.setColor(Color.WHITE);
-            } else {
+            } else if (inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
+                g2d.setColor(Color.CYAN);
+            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 && !inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
                 g2d.setColor(Color.BLACK);
             }
             g2d.drawString("REGENERATION", 
@@ -91,9 +96,11 @@ public class InventoryInformationRenderer implements Renderer{
             g2d.drawString(String.valueOf(inventory.getTeleportSpell().getNumberInInventory()),
                     this.view.getInformationPanel().getBounds().width * 31 / 32, 
                     this.view.getInformationPanel().getBounds().height * 11 / 24);
-            if (inventory.getShieldSpell().getNumberInInventory() > 0) {
+            if (inventory.getShieldSpell().getNumberInInventory() > 0 && !inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
                 g2d.setColor(Color.WHITE);
-            } else {
+            } else if (inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
+                g2d.setColor(Color.CYAN);
+            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 && !inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
                 g2d.setColor(Color.BLACK);
             }
             g2d.drawString("SHIELD", 
@@ -102,9 +109,11 @@ public class InventoryInformationRenderer implements Renderer{
             g2d.drawString(String.valueOf(inventory.getShieldSpell().getNumberInInventory()),
                     this.view.getInformationPanel().getBounds().width * 31 / 32, 
                     this.view.getInformationPanel().getBounds().height * 15 / 24);
-            if (inventory.getLightSpell().getNumberInInventory() > 0) {
+            if (inventory.getLightSpell().getNumberInInventory() > 0 && !inventory.getSpellCasted().get(SpellType.LIGHT.getName())) {
                 g2d.setColor(Color.WHITE);
-            } else {
+            } else if (inventory.getSpellCasted().get(SpellType.LIGHT.getName())) {
+                g2d.setColor(Color.CYAN);
+            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 && !inventory.getSpellCasted().get(SpellType.LIGHT.getName())) {
                 g2d.setColor(Color.BLACK);
             }
             g2d.drawString("LIGHT", 
@@ -113,9 +122,11 @@ public class InventoryInformationRenderer implements Renderer{
             g2d.drawString(String.valueOf(inventory.getLightSpell().getNumberInInventory()),
                     this.view.getInformationPanel().getBounds().width * 31 / 32, 
                     this.view.getInformationPanel().getBounds().height * 19 / 24);
-            if (inventory.getDriftSpell().getNumberInInventory() > 0) {
+            if (inventory.getDriftSpell().getNumberInInventory() > 0 && !inventory.getSpellCasted().get(SpellType.DRIFT.getName())) {
                 g2d.setColor(Color.WHITE);
-            } else {
+            } else if (inventory.getSpellCasted().get(SpellType.DRIFT.getName())) {
+                g2d.setColor(Color.CYAN);
+            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 && !inventory.getSpellCasted().get(SpellType.DRIFT.getName())) {
                 g2d.setColor(Color.BLACK);
             }
             g2d.drawString("DRIFT", 

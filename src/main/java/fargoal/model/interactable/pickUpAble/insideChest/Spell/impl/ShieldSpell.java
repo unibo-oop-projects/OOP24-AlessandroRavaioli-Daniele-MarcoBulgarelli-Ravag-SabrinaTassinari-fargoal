@@ -62,7 +62,7 @@ public class ShieldSpell implements Spell {
     @Override
     public void update(FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.SHIELD.getName())) {
-            if (this.floorLevelSpellCasted < floorManager.getFloorLevel()) {
+            if (this.floorLevelSpellCasted != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), false);
             }
         }
