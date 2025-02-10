@@ -20,7 +20,7 @@ public class HealingPotion implements Utility {
      * @param position - this is the position of the chest the item was found.
      */
     public HealingPotion(FloorManager floorManager) {
-        this.numberInInventory = 0;
+        this.numberInInventory = 1;
     }
 
     public HealingPotion() {
