@@ -19,7 +19,7 @@ import fargoal.view.api.Renderer;
  */
 public class ChestImpl implements Interactable {
 
-    final static int N_CHEST_ITEM = 15;
+    final static int N_CHEST_ITEM = 14;
     final private Position position;
     private boolean open;
     private Renderer renderer;
@@ -63,22 +63,22 @@ public class ChestImpl implements Interactable {
                 Spell spell;
                 if (num == 0) {
                     spell = new ChestItemFactoryImpl().generateDriftSpell(floorManager);
-                    spell.store(floorManager);
+                    floorManager.getPlayer().getInventory().getDriftSpell().store(floorManager);
                 } else if (num == 1) {
                     spell = new ChestItemFactoryImpl().generateInvisibilitySpell(floorManager);
-                    spell.store(floorManager);
+                    floorManager.getPlayer().getInventory().getInvisibilitySpell().store(floorManager);
                 } else if (num == 2) {
                     spell = new ChestItemFactoryImpl().generateLightSpell(floorManager);
-                    spell.store(floorManager);
+                    floorManager.getPlayer().getInventory().getLightSpell().store(floorManager);
                 } else if (num == 3) {
                     spell = new ChestItemFactoryImpl().generateRegenerationSpell(floorManager);
-                    spell.store(floorManager);
+                    floorManager.getPlayer().getInventory().getRegenerationSpell().store(floorManager);
                 } else if (num == 4) {
                     spell = new ChestItemFactoryImpl().generateShieldSpell(floorManager);
-                    spell.store(floorManager);
+                    floorManager.getPlayer().getInventory().getShieldSpell().store(floorManager);
                 } else {
                     spell = new ChestItemFactoryImpl().generateTeleportSpell(floorManager);
-                    spell.store(floorManager);
+                    floorManager.getPlayer().getInventory().getTeleportSpell().store(floorManager);
                 } 
                 floorManager.notifyFloorEvent(new PickUpNewItemEvent(spell));
             } else if (num >= 6 && num <= 9) {
@@ -97,22 +97,19 @@ public class ChestImpl implements Interactable {
                 Utility item;
                 if (num == 10) {
                     item = new ChestItemFactoryImpl().generateBeacon(floorManager);
-                    item.store(floorManager);
+                    floorManager.getPlayer().getInventory().getBeacons().store(floorManager);
                 } else if (num == 11) {
                     item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
-                    item.store(floorManager);
+                    floorManager.getPlayer().getInventory().getEnchantedWeapons().store(floorManager);
                 } else if (num == 12) {
-                    item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
-                    item.store(floorManager);
-                } else if (num == 13) {
                     item = new ChestItemFactoryImpl().generateHealingPotion(floorManager);
-                    item.store(floorManager);
-                } else if (num == 14) {
+                    floorManager.getPlayer().getInventory().getHealingPotions().store(floorManager);
+                } else if (num == 13) {
                     item = new ChestItemFactoryImpl().generateMap(floorManager);
-                    item.store(floorManager);
+                    floorManager.getPlayer().getInventory().getListOfMaps().store(floorManager);
                 } else {
                     item = new ChestItemFactoryImpl().generateMagicSack(floorManager);
-                    item.store(floorManager);
+                    floorManager.getPlayer().getInventory().getMagicSacks().store(floorManager);
                 }
                 floorManager.notifyFloorEvent(new PickUpNewItemEvent(item));
             }
@@ -138,6 +135,9 @@ public class ChestImpl implements Interactable {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
+        if (this.isOpen()) {
+            floorManager.getAllElements().remove(this);
+        }
     }
     
 }

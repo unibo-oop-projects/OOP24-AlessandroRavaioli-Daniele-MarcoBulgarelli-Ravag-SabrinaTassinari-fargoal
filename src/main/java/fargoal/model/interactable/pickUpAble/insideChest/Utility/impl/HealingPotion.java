@@ -42,7 +42,12 @@ public class HealingPotion implements Utility {
     @Override
     public void use(FloorManager floorManager) {
         int healthToAdd = new Random().nextInt(19) + 3 * floorManager.getPlayer().getLevel();
-        floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd);
+        int healthToSet = floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd;
+        if (healthToSet >= floorManager.getPlayer().getHealth().getMaxHealth()) {
+            floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
+        } else {
+            floorManager.getPlayer().getHealth().setHealth(healthToSet);
+        }
         this.removeUtility();
     }
 
