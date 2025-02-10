@@ -3,9 +3,12 @@ package fargoal.model.interactable.pickUpAble.insideChest.impl;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.FoundTrapEvent;
+import fargoal.model.events.impl.PickUpNewItemEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
+import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
@@ -56,62 +59,62 @@ public class ChestImpl implements Interactable {
     public Interactable interact(FloorManager floorManager) {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
             int num = new Random().nextInt(N_CHEST_ITEM);
-            if (num == 0) {
-                Spell item;
-                item = new ChestItemFactoryImpl().generateDriftSpell(floorManager);
-                item.store(floorManager);
-            } else if (num == 1) {
-                Spell item;
-                item = new ChestItemFactoryImpl().generateInvisibilitySpell(floorManager);
-                item.store(floorManager);
-            } else if (num == 2) {
-                Spell item;
-                item = new ChestItemFactoryImpl().generateLightSpell(floorManager);
-                item.store(floorManager);
-            } else if (num == 3) {
-                Spell item;
-                item = new ChestItemFactoryImpl().generateRegenerationSpell(floorManager);
-                item.store(floorManager);
-            } else if (num == 4) {
-                Spell item;
-                item = new ChestItemFactoryImpl().generateShieldSpell(floorManager);
-                item.store(floorManager);
-            } else if (num == 5) {
-                Spell item;
-                item = new ChestItemFactoryImpl().generateTeleportSpell(floorManager);
-                item.store(floorManager);
-            } else if (num == 6) {
-                new ChestItemFactoryImpl().generateCeilingTrap(floorManager);
-            } else if (num == 7) {
-                new ChestItemFactoryImpl().generateExplosion(floorManager);
-            } else if (num == 8) {
-                new ChestItemFactoryImpl().generatePit(floorManager);
-            } else if (num == 9) {
-                new ChestItemFactoryImpl().generateTeleport(floorManager);
-            } else if (num == 10) {
+            if (num >= 0 && num <= 5 || num >= 11) {
+                Spell spell;
+                if (num == 0) {
+                    spell = new ChestItemFactoryImpl().generateDriftSpell(floorManager);
+                    spell.store(floorManager);
+                } else if (num == 1) {
+                    spell = new ChestItemFactoryImpl().generateInvisibilitySpell(floorManager);
+                    spell.store(floorManager);
+                } else if (num == 2) {
+                    spell = new ChestItemFactoryImpl().generateLightSpell(floorManager);
+                    spell.store(floorManager);
+                } else if (num == 3) {
+                    spell = new ChestItemFactoryImpl().generateRegenerationSpell(floorManager);
+                    spell.store(floorManager);
+                } else if (num == 4) {
+                    spell = new ChestItemFactoryImpl().generateShieldSpell(floorManager);
+                    spell.store(floorManager);
+                } else {
+                    spell = new ChestItemFactoryImpl().generateTeleportSpell(floorManager);
+                    spell.store(floorManager);
+                } 
+                floorManager.notifyFloorEvent(new PickUpNewItemEvent(spell));
+            } else if (num >= 6 && num <= 9) {
+                ChestItem trap;
+                if (num == 6) {
+                    trap = new ChestItemFactoryImpl().generateCeilingTrap(floorManager);
+                } else if (num == 7) {
+                    trap = new ChestItemFactoryImpl().generateExplosion(floorManager);
+                } else if (num == 8) {
+                    trap = new ChestItemFactoryImpl().generatePit(floorManager);
+                } else {
+                    trap = new ChestItemFactoryImpl().generateTeleport(floorManager);
+                } 
+                floorManager.notifyFloorEvent(new FoundTrapEvent(trap));
+            } else if (num >= 11 ) {
                 Utility item;
-                item = new ChestItemFactoryImpl().generateBeacon(floorManager);
-                item.store(floorManager);
-            } else if (num == 11) {
-                Utility item;
-                item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
-                item.store(floorManager);
-            } else if (num == 12) {
-                Utility item;
-                item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
-                item.store(floorManager);
-            } else if (num == 13) {
-                Utility item;
-                item = new ChestItemFactoryImpl().generateHealingPotion(floorManager);
-                item.store(floorManager);
-            } else if (num == 14) {
-                Utility item;
-                item = new ChestItemFactoryImpl().generateMap(floorManager);
-                item.store(floorManager);
-            } else {
-                Utility item;
-                item = new ChestItemFactoryImpl().generateMagicSack(floorManager);
-                item.store(floorManager);
+                if (num == 10) {
+                    item = new ChestItemFactoryImpl().generateBeacon(floorManager);
+                    item.store(floorManager);
+                } else if (num == 11) {
+                    item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
+                    item.store(floorManager);
+                } else if (num == 12) {
+                    item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
+                    item.store(floorManager);
+                } else if (num == 13) {
+                    item = new ChestItemFactoryImpl().generateHealingPotion(floorManager);
+                    item.store(floorManager);
+                } else if (num == 14) {
+                    item = new ChestItemFactoryImpl().generateMap(floorManager);
+                    item.store(floorManager);
+                } else {
+                    item = new ChestItemFactoryImpl().generateMagicSack(floorManager);
+                    item.store(floorManager);
+                }
+                floorManager.notifyFloorEvent(new PickUpNewItemEvent(item));
             }
             this.open = true;
         }
