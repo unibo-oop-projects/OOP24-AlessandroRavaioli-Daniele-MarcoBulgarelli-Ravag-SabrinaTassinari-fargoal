@@ -59,9 +59,7 @@ public class FloorMaskImpl implements FloorMask {
             for (int y = 0; y < FLOOR_HEIGTH; y++) {
                 var pos = new Position(x, y);
                 if (this.mask.get(pos)) {
-                    (manager.getFloorMap().isTile(pos)
-                        ? this.renderFac.tileRenderer(pos)
-                        : this.renderFac.wallRenderer(pos)).render();
+                    manager.getFloorMap().render(pos);
                 } else {
                     this.renderFac.fogRenderer(pos).render();
                 }
