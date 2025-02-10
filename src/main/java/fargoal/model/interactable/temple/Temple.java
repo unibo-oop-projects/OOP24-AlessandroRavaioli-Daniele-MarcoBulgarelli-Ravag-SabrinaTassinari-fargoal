@@ -18,6 +18,7 @@ public class Temple implements Interactable {
 
     final private Position position;
     private Renderer renderer;
+    private Position lastPlayerPosition;
 
     /**
      * This is the constructor of the class. It set the position of the temple.
@@ -33,15 +34,14 @@ public class Temple implements Interactable {
     @Override
     public Interactable interact(FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition() == this.position) {
-            floorManager.notifyFloorEvent(new WalkOverEvent(this));
             floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
             floorManager.getPlayer().getPlayerGold().setGoldDonated(floorManager.getPlayer().getCurrentGold());
             if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= 2000) {
                 floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
-                floorManager.getPlayer().getPlayerGold().resetGold();
+                floorManager.getPlayer().getPlayerGold().setGoldDonated(0);
             }
             floorManager.getPlayer().getPlayerGold().resetGold();
-        }
+        } 
         return this;
     }
 
@@ -76,9 +76,14 @@ public class Temple implements Interactable {
     public void update(FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition().equals(this.position)) {
             floorManager.getPlayer().setIsImmune(true);
+            if (!floorManager.getPlayer().getPosition().equals(this.lastPlayerPosition)) {
+                this.interact(floorManager);
+                floorManager.notifyFloorEvent(new WalkOverEvent(this));
+            }
         } else {
             floorManager.getPlayer().setIsImmune(false);
         }
+        this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
     
 }
