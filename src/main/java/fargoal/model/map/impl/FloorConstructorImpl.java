@@ -1,15 +1,17 @@
 package fargoal.model.map.impl;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import fargoal.commons.api.Position;
 import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;
+import fargoal.view.api.RenderFactory;
+import fargoal.view.api.Renderer;
 
 /**
  * class that creates a random floor.
@@ -20,8 +22,8 @@ public class FloorConstructorImpl implements FloorConstructor {
      * {@inheritDoc}
      */
     @Override
-    public FloorMap createFloor() {
-        return new FloorMapBuilder().buildRooms().buildCorridors().build();
+    public FloorMap createFloor(RenderFactory renderFactory) {
+        return new FloorMapBuilder(renderFactory).buildRooms().buildCorridors().build();
     }
 
     private class FloorMapBuilder {
@@ -36,22 +38,38 @@ public class FloorConstructorImpl implements FloorConstructor {
         private static final int FLOOR_HEIGHT = 25;
         private static final int MAX_TURNS = 10;
 
-        private Set<Position> temporaryTiles = new HashSet<>();
-        private List<Position> centers = new ArrayList<>();
-        private final Random rnd = new Random();
+        private Map<Position, Renderer> temporaryTiles;
+        private Map<Position, Renderer> temporaryWalls;
+        private List<Position> centers;
+        private final Random rnd;
+        private final RenderFactory rf;
+
+        public FloorMapBuilder(RenderFactory renderFactory) {
+            this.rf = renderFactory;
+            this.rnd = new Random();
+            this.temporaryTiles = new HashMap<>();
+            this.temporaryWalls = new HashMap<>();
+            this.centers = new ArrayList<>();
+            for(int i = 0; i < FLOOR_LENGTH; i++) {
+                for(int j = 0; j < FLOOR_HEIGHT; j++) {
+                    this.temporaryWalls.put(new Position(i, j), rf.wallRenderer(new Position(i, j)));
+                }
+            }
+        }
 
         private FloorMap build() {
-            temporaryTiles = temporaryTiles.stream()
+            temporaryTiles = temporaryTiles.keySet().stream()
                     .filter(p -> p.x() >= 1 && p.y() >= 1)
                     .filter(p -> p.x() < FLOOR_LENGTH - 1 && p.y() < FLOOR_HEIGHT - 1)
-                    .collect(Collectors.toSet());
-            return new FloorMapImpl(temporaryTiles, FLOOR_LENGTH, FLOOR_HEIGHT);
+                    .collect(Collectors.toMap(p -> p,p ->  rf.tileRenderer(p)));
+            return new FloorMapImpl(temporaryTiles, temporaryWalls, FLOOR_LENGTH, FLOOR_HEIGHT);
         }
 
         private void buildRoom(final Position pos, final int height, final int length) {
             for (int i = pos.x(); i < pos.x() + length; i++) {
                 for (int j = pos.y(); j < pos.y() + height; j++) {
-                    this.temporaryTiles.add(new Position(i, j));
+                    this.temporaryTiles.put(new Position(i, j), rf.tileRenderer(pos));
+                    this.temporaryWalls.remove(pos);
                 }
             }
         }
@@ -76,19 +94,20 @@ public class FloorConstructorImpl implements FloorConstructor {
 
                 for (int j = 0; j < length; j++) {
                     currentPosition = currentPosition.add(directions.get(direction));
-                    if (!this.temporaryTiles.contains(currentPosition)) {
+                    if (!this.temporaryTiles.containsKey(currentPosition)) {
                         state = FloorState.WALL;
                     }
                     if (currentPosition.x() < 1 || currentPosition.y() < 1 
                         || currentPosition.x() >= FLOOR_LENGTH - 1 || currentPosition.y() >= FLOOR_HEIGHT - 1) {
                         break;
                     }
-                    if (state.equals(FloorState.WALL) && this.temporaryTiles.contains(currentPosition)) {
+                    if (state.equals(FloorState.WALL) && this.temporaryTiles.containsKey(currentPosition)) {
                         state = FloorState.HIT_PATH;
                         break;
                     }
 
-                    this.temporaryTiles.add(currentPosition);
+                    this.temporaryTiles.put(currentPosition, rf.tileRenderer(currentPosition));
+                    this.temporaryWalls.remove(currentPosition);
                 }
 
                 turns++;

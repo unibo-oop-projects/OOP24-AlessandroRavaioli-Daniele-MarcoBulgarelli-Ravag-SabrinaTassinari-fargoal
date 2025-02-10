@@ -171,7 +171,7 @@ public class FloorManagerImpl implements FloorManager {
     }
 
     private void initializeFloor() {
-        this.map = new FloorConstructorImpl().createFloor();
+        this.map = new FloorConstructorImpl().createFloor(this.renderFactory);
         this.mask.resetMask();
         this.monsters.clear();
         this.interactables.clear();
