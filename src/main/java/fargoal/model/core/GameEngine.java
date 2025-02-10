@@ -21,7 +21,7 @@ public class GameEngine {
     
     public void start() {
         long previousCycleStartTime = System.currentTimeMillis();
-        while (true) {
+        while (!manager.getPlayer().isDead()) {
             final long currentCycleStartTime = System.currentTimeMillis();
             long elapsed = currentCycleStartTime - previousCycleStartTime;
             manager.update(new GameContext(view), elapsed);
@@ -29,6 +29,7 @@ public class GameEngine {
             waitToNextFrame(currentCycleStartTime);
             previousCycleStartTime = currentCycleStartTime;
         }
+        System.exit(0);
     }
 
     private void waitToNextFrame(final long startTime) {

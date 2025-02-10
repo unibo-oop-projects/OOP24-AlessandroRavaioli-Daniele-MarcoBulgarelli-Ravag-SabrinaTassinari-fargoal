@@ -79,6 +79,7 @@ public class PlayerImpl implements Player {
         KeyboardInputController controller,
         PlayerInformationRenderer playerInformationRenderer,
         InventoryInformationRenderer infoRenderer) {
+        this.floorManager = floorManager;
         this.input = new PlayerInputComponent();
         this.controller = controller;
         this.level = INITIAL_LEVEL;
@@ -537,11 +538,13 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public boolean isDead() {
-        if (inventory.getHealingPotions().getNumberInInventory() == 0 && this.health.getCurrentHealth() <= 0) {
+        if (inventory.getHealingPotions().getNumberInInventory() == 0 
+                && this.health.getCurrentHealth() <= DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
             return true;
-        } else if (inventory.getHealingPotions().getNumberInInventory() > 0 && this.health.getCurrentHealth() <= DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
+        } else if (inventory.getHealingPotions().getNumberInInventory() > 0 
+                && this.health.getCurrentHealth() <= DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
             this.inventory.getHealingPotions().use(floorManager);
-            return false;
+            return this.getHealth().getCurrentHealth() < DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE;
         }
         return false;
     }
