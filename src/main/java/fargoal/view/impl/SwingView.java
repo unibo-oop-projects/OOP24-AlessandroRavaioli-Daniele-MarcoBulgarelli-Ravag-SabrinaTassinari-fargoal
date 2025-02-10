@@ -50,6 +50,7 @@ public class SwingView implements View, KeyListener {
         this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.input = c;
+        this.frame.addKeyListener(this);
 
         this.frame.addComponentListener(new ComponentAdapter() {
             @Override

@@ -139,7 +139,7 @@ public class KeyboardInputController implements InputController {
     }
 
     public void notifyNoMoreMoveUp() {
-        isMoveRight = false;
+        isMoveUp = false;
     }
 
     public void notifyPlacingBeacon() {
