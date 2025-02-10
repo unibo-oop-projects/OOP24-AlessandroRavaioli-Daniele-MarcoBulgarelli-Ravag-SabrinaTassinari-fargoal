@@ -26,4 +26,10 @@ public interface FloorMap {
      * @return
      */
     Position getRandomTile();
+
+    /**
+     * A method that renders the given position
+     * @param pos - the position to be rendered
+     */
+    void render(Position pos);
 }

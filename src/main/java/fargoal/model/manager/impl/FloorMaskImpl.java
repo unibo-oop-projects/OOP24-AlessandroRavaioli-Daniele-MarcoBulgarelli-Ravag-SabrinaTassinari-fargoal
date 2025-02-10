@@ -21,15 +21,13 @@ public class FloorMaskImpl implements FloorMask {
     private static final int FLOOR_LENGTH = 40;
 
     private final Map<Position, Boolean> mask;
-    private final RenderFactory renderFac;
 
     /**
      * Constrctor that inizializes the mask as complete darkness and defines the renderers.
      * @param view - the view in which the renderers are called
      */
-    public FloorMaskImpl(final View view) {
+    public FloorMaskImpl() {
         this.mask = new HashMap<>();
-        renderFac = new SwingRenderFactory(view);
         resetMask();
     }
 
@@ -40,7 +38,7 @@ public class FloorMaskImpl implements FloorMask {
     public void resetMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
             for (int j = 0; j < FLOOR_HEIGTH; j++) {
-                mask.put(new Position(i, j), true);
+                mask.put(new Position(i, j), false);
             }
         }
     }
@@ -59,11 +57,7 @@ public class FloorMaskImpl implements FloorMask {
             for (int y = 0; y < FLOOR_HEIGTH; y++) {
                 var pos = new Position(x, y);
                 if (this.mask.get(pos)) {
-                    (manager.getFloorMap().isTile(pos)
-                        ? this.renderFac.tileRenderer(pos)
-                        : this.renderFac.wallRenderer(pos)).render();
-                } else {
-                    this.renderFac.fogRenderer(pos).render();
+                    manager.getFloorMap().render(pos);
                 }
             }
         }
