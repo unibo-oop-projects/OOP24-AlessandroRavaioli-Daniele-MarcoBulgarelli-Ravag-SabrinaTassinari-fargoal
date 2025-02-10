@@ -71,9 +71,10 @@ public class SackOfMoney implements Interactable{
             this.goldInSack = floorManager.getPlayer().getPlayerGold().addGold(this.goldInSack);
             if(this.goldInSack > 0) {
                 this.hiddenInGround = true;
+            } else {
+                this.hiddenInGround = false;
             }
         }
-        
         return this;
     }
 

@@ -13,14 +13,16 @@ import fargoal.view.api.Renderer;
 public class SwordOfFargoal implements Interactable{
 
     final Position position;
+    final Integer mapLevel;
     private Renderer renderer;
 
     /**
      * This is the constructor of the class. 
      * @param position - the position of the Sword in the map.
      */
-    public SwordOfFargoal(final Position position, final RenderFactory renderFactory) {
+    public SwordOfFargoal(final Position position, final RenderFactory renderFactory, final Integer mapLevel) {
         this.position = position;
+        this.mapLevel = mapLevel;
         this.setRender(renderFactory.swordRenderer(this));
     }
 
@@ -34,6 +36,14 @@ public class SwordOfFargoal implements Interactable{
     @Override
     public String getTag() {
         return "SWORD OF FARGOAL";
+    }
+
+    /**
+     * Getter for the field mapLevel
+     * @return the level the sword can be found.
+     */
+    public Integer getMapLevel() {
+        return this.mapLevel;
     }
 
     /** {@inheritDoc} */
