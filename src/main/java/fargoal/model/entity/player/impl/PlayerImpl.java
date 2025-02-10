@@ -21,6 +21,7 @@ import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
+import fargoal.view.impl.PlayerInformationRenderer;
 import fargoal.model.entity.player.api.Gold;
 import fargoal.model.entity.player.api.Inventory;
 
@@ -65,10 +66,11 @@ public class PlayerImpl implements Player {
     private boolean isImmune;
 
     private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+    private PlayerInformationRenderer playerInformationRender;
     private Renderer render;
     private FloorManager floorManager;
 
-    public PlayerImpl(FloorManager floorManager, KeyboardInputController controller) {
+    public PlayerImpl(FloorManager floorManager, KeyboardInputController controller, PlayerInformationRenderer playerInformationRenderer) {
         this.input = new PlayerInputComponent();
         this.controller = controller;
         this.level = INITIAL_LEVEL;
@@ -84,7 +86,8 @@ public class PlayerImpl implements Player {
         this.isAttacked = false;
         this.isVisible = true;
         this.hasLight = false;
-        this.floorManager = floorManager;
+        this.playerInformationRender = playerInformationRenderer;
+        this.playerInformationRender.setRender(floorManager);
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
     }
 
@@ -203,6 +206,7 @@ public class PlayerImpl implements Player {
     @Override
     public void render() {
         this.render.render();
+        this.playerInformationRender.render();
     }
 
     /**{@inheritDoc}*/

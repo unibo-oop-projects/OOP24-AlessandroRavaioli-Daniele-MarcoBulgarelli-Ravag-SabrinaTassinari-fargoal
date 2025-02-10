@@ -104,7 +104,7 @@ public class SwingView implements View, KeyListener {
     private void calculateDimensions() {
         this.tilePixelDimHeight = (int) (this.getMapHeight() / FLOOR_HEIGHT);
         this.tilePixelDimWidth = (int) (this.getMapWidth() / FLOOR_LENGTH);
-        this.top.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 13 / 55));
+        this.top.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 11 / 55));
         this.bottom.setPreferredSize(new Dimension(this.frame.getBounds().width, this.frame.getBounds().height * 13 / 55));
     }
 
