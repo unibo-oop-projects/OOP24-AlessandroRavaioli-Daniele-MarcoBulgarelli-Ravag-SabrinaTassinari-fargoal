@@ -73,10 +73,12 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer downstairRenderer(FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
-                    obj.getPosition().y() * this.view.getTilePixelHeight(),
-                    this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
+            g2d.drawImage(ImageHolder.downstairs(), 
+                obj.getPosition().x() * this.view.getTilePixelWidth(),
+                obj.getPosition().y() * this.view.getTilePixelHeight(),
+                this.view.getTilePixelWidth(),
+                this.view.getTilePixelHeight(), 
+                null);
         }, this.view);
     }
 
@@ -94,15 +96,15 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer chestRenderer(ChestImpl obj) {
         return new SwingRendererMiddle(g2d -> {
-            if (obj.isOpen()) {
-                g2d.setColor(Color.WHITE);
-            } else {
-                g2d.setColor(Color.GRAY);
-            }
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+            if (!obj.isOpen()) {
+                g2d.drawImage(ImageHolder.chest(), 
+                    obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
+                    this.view.getTilePixelHeight(), 
+                    null);
+            }
+            
         }, this.view);
     }
 
@@ -111,18 +113,23 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             if (obj.isOpen()) {
                 if (obj.isHiddenInGround()) {
-                    g2d.setColor(Color.GREEN);
-                } else {
-                    g2d.setColor(Color.WHITE);
-                }
-            } else {
-                g2d.setColor(Color.YELLOW);
-            }
-            
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    g2d.drawImage(ImageHolder.hiddenGold(), 
+                    obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
+                    this.view.getTilePixelHeight(), 
+                    null);
+                } 
+            } else {
+                g2d.drawImage(ImageHolder.sackOfGold(), 
+                    obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight(), 
+                    null);
+            }
+            
+            
         }, this.view);
     }
 
@@ -218,10 +225,12 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer swordRenderer(FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.PINK);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
-                    obj.getPosition().y() * this.view.getTilePixelHeight(),
-                    this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
+            g2d.drawImage(ImageHolder.sword(), 
+                obj.getPosition().x() * this.view.getTilePixelWidth(),
+                obj.getPosition().y() * this.view.getTilePixelHeight(),
+                this.view.getTilePixelWidth(),
+                this.view.getTilePixelHeight(),
+                null);
         }, this.view);
     }
     
