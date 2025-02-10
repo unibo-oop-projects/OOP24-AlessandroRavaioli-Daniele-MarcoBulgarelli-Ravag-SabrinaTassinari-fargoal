@@ -59,7 +59,7 @@ public class Mage extends AbstractMonster {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
-            if (this.areNeighbours(floorManager, 1)) {
+            if (this.areNeighbours(floorManager, 1) && !floorManager.getPlayer().isImmune()) {
                 this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
                 this.attack();
                 if(this.getRandom(2) == 0) {

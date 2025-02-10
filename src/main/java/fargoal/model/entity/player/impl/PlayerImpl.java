@@ -372,6 +372,11 @@ public class PlayerImpl implements Player {
         this.isImmune = condition;
     }
 
+    @Override
+    public boolean isImmune() {
+        return isImmune;
+    }
+
     /**
      * Manages the entire fight sequence between the player and the given monster.
      * This method handles the combat mechanics, including attacks, fleeing conditions,

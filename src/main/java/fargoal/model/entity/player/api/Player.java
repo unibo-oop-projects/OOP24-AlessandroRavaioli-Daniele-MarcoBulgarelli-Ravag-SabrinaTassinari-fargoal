@@ -165,6 +165,8 @@ public interface Player extends Entity {
      */
     void levelUp();
 
+    boolean isImmune();
+
     void setIsImmune(Boolean condition);
 
     void useInvisibilitySpell();
