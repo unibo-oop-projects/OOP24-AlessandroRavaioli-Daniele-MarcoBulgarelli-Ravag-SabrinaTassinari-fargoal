@@ -1,6 +1,7 @@
 package fargoal.model.interactable.stair.impl;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.manager.api.FloorManager;
@@ -14,6 +15,7 @@ public class DownStairs implements Stairs {
 
     private final Position position;
     private Renderer renderer;
+    private Position lastPlayerPosition;
 
     /**
      * This is the constructor of the class. It set the position of the stair.
@@ -41,7 +43,7 @@ public class DownStairs implements Stairs {
     /** {@inheritDoc} */
     @Override
     public String getTag() {
-        return "DownStairs";
+        return "Stairs going down";
     }
 
     /** {@inheritDoc} */
@@ -61,7 +63,12 @@ public class DownStairs implements Stairs {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
-        
+        if (!floorManager.getPlayer().getPosition().equals(lastPlayerPosition)) {
+            if (floorManager.getPlayer().getPosition().equals(this.position)) {
+                floorManager.notifyFloorEvent(new WalkOverEvent(this));
+            }
+        }
+        this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
     
 }

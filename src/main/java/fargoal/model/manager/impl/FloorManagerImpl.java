@@ -262,7 +262,7 @@ public class FloorManagerImpl implements FloorManager {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
-            Stairs temp = (type.getTag().equals("DownStairs")
+            Stairs temp = (type instanceof DownStairs
                     ? new DownStairs(pos, this.renderFactory)
                     : new UpStairs(pos, this.renderFactory));
             alreadyPresent = false;
