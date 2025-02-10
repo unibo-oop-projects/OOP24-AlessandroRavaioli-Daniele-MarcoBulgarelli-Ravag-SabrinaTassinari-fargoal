@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import fargoal.commons.api.Position;
+import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.Monster;
@@ -15,17 +16,17 @@ import fargoal.view.impl.SwingView;
 
 public class TestMonsters {
 
-    private static FloorManager manager;
+    private static FloorManager manager = new FloorManagerImpl(new GameContext(new SwingView(new KeyboardInputController())), new KeyboardInputController());;
     private static Monster monster;
     private static final MonsterFactory monsterFactory = new MonsterFactoryImpl(7);
 
-    @BeforeAll
-    static void init() {
-        manager = new FloorManagerImpl(new GameContext(new SwingView()));
+    /* @BeforeAll
+    static void setup() {
+        manager = new FloorManagerImpl(new GameContext(new SwingView(new KeyboardInputController())), new KeyboardInputController());
         for(int i = 0; i < 3; i++) {
             manager.increaseFloorLevel();
         }
-    }
+    } */
 
     void visualizeFloor() {
         System.out.print(" ");

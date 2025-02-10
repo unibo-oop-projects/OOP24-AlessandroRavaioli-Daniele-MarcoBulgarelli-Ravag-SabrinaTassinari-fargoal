@@ -61,7 +61,7 @@ public class Mage extends AbstractMonster {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1) && !floorManager.getPlayer().isImmune()) {
                 this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                this.attack();
+                floorManager.getPlayer().receiveDamage(this);
                 if(this.getRandom(2) == 0) {
                     this.steal();
                 }

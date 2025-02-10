@@ -26,30 +26,30 @@ public class PlayerInformationRenderer implements Renderer{
     public void setRender(FloorManager floorManager) {
         SwingView swing = (SwingView)view;
         this.rendererTop = new SwingRendererTop(g2d -> {
-            g2d.setColor(Color.WHITE);
+            g2d.setColor(Color.YELLOW);
             g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / 110));
-            g2d.drawString("HP: " + floorManager.getPlayer().getHealth().getCurrentHealth(), 
-                    swing.getFrame().getBounds().width * 3 / 130, 
-                    swing.getFrame().getBounds().height * 5 / 55);
-            g2d.drawString("MAX HP: " + floorManager.getPlayer().getHealth().getMaxHealth(), 
-                    swing.getFrame().getBounds().width * 8 / 65, 
-                    swing.getFrame().getBounds().height * 5 / 55);
+            g2d.drawString("HP: " 
+                    + floorManager.getPlayer().getHealth().getCurrentHealth() 
+                    + "/" 
+                    + floorManager.getPlayer().getHealth().getMaxHealth(), 
+                    swing.getEventPanel().getBounds().width / 6, 
+                    swing.getEventPanel().getBounds().height * 3 / 5);
             g2d.drawString("GOLD: " + floorManager.getPlayer().getCurrentGold(), 
-                    swing.getFrame().getBounds().width / 2,
-                    swing.getFrame().getBounds().height * 5 / 55);
+                    swing.getEventPanel().getBounds().width / 2,
+                    swing.getEventPanel().getBounds().height * 3 / 5);
         }, view);
         this.rendererBottom = new SwingRendererBottom(g2d -> {
             g2d.setColor(Color.WHITE);
-            g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / 110));
+            g2d.setFont(new Font("Arial", Font.BOLD, swing.getInformationPanel().getBounds().height * 2 / 20));
             g2d.drawString("EXPERIENCE: " + floorManager.getPlayer().getExperiencePoints(),
-                    swing.getFrame().getBounds().width * 3 / 130, 
-                    swing.getFrame().getBounds().height * 40 / 55);
-            g2d.drawString("LEVEL: " + floorManager.getPlayer().getLevel(), 
-                    swing.getFrame().getBounds().width * 3 / 130, 
-                    swing.getFrame().getBounds().height * 45 / 55);
-            g2d.drawString("SKILL: " + floorManager.getPlayer().getSkill(), 
-                    swing.getFrame().getBounds().width * 3 / 150, 
-                    swing.getFrame().getBounds().height * 50 / 55);
+                    swing.getInformationPanel().getBounds().width * 3 / 130,
+                    swing.getInformationPanel().getBounds().height * 15 / 55);
+            g2d.drawString("LEVEL: " + floorManager.getPlayer().getLevel(),
+                    swing.getInformationPanel().getBounds().width * 3 / 130,
+                    swing.getInformationPanel().getBounds().height * 30 / 55);
+            g2d.drawString("SKILL: " + floorManager.getPlayer().getSkill(),
+                    swing.getInformationPanel().getBounds().width * 3 / 130,
+                    swing.getInformationPanel().getBounds().height * 45 / 55);
         }, view);
     }
     

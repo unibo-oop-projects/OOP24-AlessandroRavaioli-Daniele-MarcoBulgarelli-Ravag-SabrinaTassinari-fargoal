@@ -25,7 +25,9 @@ public class RenderEventListener implements FloorEventListener, Renderer{
         renderer = new SwingRendererTop(g2d -> {
             g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / 110));
             g2d.setColor(Color.WHITE);
-            g2d.drawString(this.text, 15, swing.getFrame().getBounds().height * 2 / 55);
+            g2d.drawString(this.text, 
+                    swing.getEventPanel().getBounds().width / 20,
+                    swing.getEventPanel().getBounds().height * 10 / 55); 
         }, view);
     }
 

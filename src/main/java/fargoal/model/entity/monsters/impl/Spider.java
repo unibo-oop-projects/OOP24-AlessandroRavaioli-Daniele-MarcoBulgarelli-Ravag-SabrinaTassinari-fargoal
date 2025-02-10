@@ -58,7 +58,7 @@ public class Spider extends AbstractMonster {
             this.setTimer();
             if (this.areNeighbours(floorManager, 1) && !floorManager.getPlayer().isImmune()) {
                 this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                this.attack();
+                floorManager.getPlayer().receiveDamage(this);
             } else {
                 Ai.move(this, floorManager.getPlayer());
             }

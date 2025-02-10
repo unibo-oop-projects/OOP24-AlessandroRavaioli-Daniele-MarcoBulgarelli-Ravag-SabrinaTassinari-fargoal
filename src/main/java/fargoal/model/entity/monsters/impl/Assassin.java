@@ -59,7 +59,7 @@ public class Assassin extends AbstractMonster {
             if (this.areNeighbours(floorManager, 1) && !floorManager.getPlayer().isImmune()) {
                 this.setVisibilityOn();
                 this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                this.attack();
+                floorManager.getPlayer().receiveDamage(this);
             } else {
                 this.setVisibilityOff();
                 Ai.move(this, floorManager.getPlayer());
