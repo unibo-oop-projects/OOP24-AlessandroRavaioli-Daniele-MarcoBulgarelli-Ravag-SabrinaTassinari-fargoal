@@ -1,5 +1,6 @@
 package fargoal.model.entity.player.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import fargoal.model.entity.player.api.Inventory;
@@ -66,9 +67,12 @@ public class InventoryImpl implements Inventory {
         this.regenerationScroll = new RegenerationSpell(floorManager);
         this.driftScroll = new DriftSpell(floorManager);
         this.lightScroll = new LightSpell(floorManager);
-        this.SpellCasted = Map.of(SpellType.DRIFT.getName(), false, SpellType.INVISIBILITY.getName(), false, 
-            SpellType.LIGHT.getName(), false, SpellType.REGENERATION.getName(), false, 
-            SpellType.SHIELD.getName(), false);
+        this.SpellCasted = new HashMap<>();
+        this.SpellCasted.put(SpellType.DRIFT.getName(), false);
+        this.SpellCasted.put(SpellType.INVISIBILITY.getName(), false);
+        this.SpellCasted.put(SpellType.LIGHT.getName(), false);
+        this.SpellCasted.put(SpellType.REGENERATION.getName(), false);
+        this.SpellCasted.put(SpellType.SHIELD.getName(), false);
     }
 
     /**{@inheritDoc} */
