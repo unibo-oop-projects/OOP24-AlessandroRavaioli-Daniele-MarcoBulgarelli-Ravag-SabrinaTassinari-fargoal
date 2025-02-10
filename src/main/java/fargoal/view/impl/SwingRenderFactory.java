@@ -6,6 +6,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
+import fargoal.view.api.ImageHolder;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
@@ -44,10 +45,16 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer playerRenderer(FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.BLUE);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+            g2d.drawImage(ImageHolder.player(),
+                    obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
+                    this.view.getTilePixelHeight(),
+                    null);
+            // g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+            //         obj.getPosition().y() * this.view.getTilePixelHeight(),
+            //         this.view.getTilePixelWidth(),
+            //         this.view.getTilePixelHeight());
         }, this.view);
     }
 
