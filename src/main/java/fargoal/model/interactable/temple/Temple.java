@@ -34,7 +34,6 @@ public class Temple implements Interactable {
     public Interactable interact(FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition() == this.position) {
             floorManager.notifyFloorEvent(new WalkOverEvent(this));
-            floorManager.getPlayer().setIsImmune(true);
             floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
             floorManager.getPlayer().getPlayerGold().setGoldDonated(floorManager.getPlayer().getCurrentGold());
             if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= 2000) {
@@ -42,8 +41,6 @@ public class Temple implements Interactable {
                 floorManager.getPlayer().getPlayerGold().resetGold();
             }
             floorManager.getPlayer().getPlayerGold().resetGold();
-        } else {
-            floorManager.getPlayer().setIsImmune(false);
         }
         return this;
     }
@@ -77,6 +74,11 @@ public class Temple implements Interactable {
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
+        if (floorManager.getPlayer().getPosition().equals(this.position)) {
+            floorManager.getPlayer().setIsImmune(true);
+        } else {
+            floorManager.getPlayer().setIsImmune(false);
+        }
     }
     
 }
