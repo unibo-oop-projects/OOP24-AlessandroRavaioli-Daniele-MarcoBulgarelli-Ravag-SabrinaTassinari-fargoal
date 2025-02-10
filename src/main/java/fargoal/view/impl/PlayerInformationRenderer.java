@@ -26,9 +26,9 @@ public class PlayerInformationRenderer implements Renderer{
     public void setRender(FloorManager floorManager) {
         SwingView swing = (SwingView)view;
         this.rendererTop = new SwingRendererTop(g2d -> {
-            if (floorManager.getPlayer().getHealth().getCurrentHealth() > 7) {
+            if (floorManager.getPlayer().getHealth().getCurrentHealth() > floorManager.getPlayer().getHealth().getMaxHealth() / 2) {
                 g2d.setColor(Color.GREEN);
-            } else if (floorManager.getPlayer().getHealth().getCurrentHealth() > 1) {
+            } else if (floorManager.getPlayer().getHealth().getCurrentHealth() > floorManager.getPlayer().getHealth().getMaxHealth() / 3) {
                 g2d.setColor(Color.ORANGE);
             } else {
                 g2d.setColor(Color.RED);
