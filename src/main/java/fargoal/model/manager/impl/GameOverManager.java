@@ -19,9 +19,9 @@ public class GameOverManager implements SceneManager, MenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
     private static final long MILLIS_TO_WAIT = 200;
-    private static final int TITLE_DIVISION_WIDTH = 5;
-    private static final int RETURN_MULTIPLIER_WIDTH = 20;
-    private static final int POSSIBILITIES_DIVISOR_WIDTH = 23;
+    private static final int TITLE_DIVISION_WIDTH = 20;
+    private static final int RETURN_MULTIPLIER_WIDTH = 19;
+    private static final int POSSIBILITIES_DIVISOR_WIDTH = 50;
     private static final int POSSIBILITIES_DIVISOR_HEIGHT = 7;
     private static final int GAME_EXIT_MULTIPLIER_WIDTH = 20;
     private static final int DIVISOR_FONT_TOP_HEIGHT = 4;
@@ -106,10 +106,10 @@ public class GameOverManager implements SceneManager, MenuManager {
                         sView.getMapHeight() * 3 / POSSIBILITIES_DIVISOR_HEIGHT);
         }, view);
         this.result = new SwingRendererTop(g2d -> {
-            g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height * 1 / DIVISOR_FONT_TOP_HEIGHT));
+            g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height / DIVISOR_FONT_TOP_HEIGHT));
             g2d.setColor(Color.WHITE);
             g2d.drawString(this.text,
-                    sView.getMapWidth() * 2 / TITLE_DIVISION_WIDTH,
+                    sView.getMapWidth() * 7 / TITLE_DIVISION_WIDTH,
                     sView.getEventPanel().getBounds().height / 2);
         }, view);
     }
