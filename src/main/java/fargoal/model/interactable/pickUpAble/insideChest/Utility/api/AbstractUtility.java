@@ -8,17 +8,17 @@ import fargoal.model.manager.api.FloorManager;
  */
 public abstract class AbstractUtility implements Utility {
 
-    private int numberInInventory = 0;
+    private int numberInInventory;
 
     /** {@inheritDoc} */
     @Override
-    public String getChestItemType() {
+    public final String getChestItemType() {
         return ChestItemType.UTILITY.getName();
     }
 
     /** {@inheritDoc} */
     @Override
-    public void use(final FloorManager floorManager) {
+    public final void use(final FloorManager floorManager) {
         this.effect(floorManager);
     }
 
@@ -64,7 +64,7 @@ public abstract class AbstractUtility implements Utility {
      * Setter for the field numberInInventory.
      * @param numberInInventory - number of this item in inventory.
      */
-    public void setNumberInInventory(final int numberInInventory) {
+    public final void setNumberInInventory(final int numberInInventory) {
         this.numberInInventory = numberInInventory;
     }
 }

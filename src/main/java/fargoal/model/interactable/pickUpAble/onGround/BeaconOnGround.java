@@ -30,26 +30,26 @@ public class BeaconOnGround implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public Position getPosition() {
+    public final Position getPosition() {
         return this.position;
     }
 
     /** {@inheritDoc} */
     @Override
-    public String getTag() {
+    public final String getTag() {
         return "BEACON";
     }
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(final FloorManager floorManager) {
+    public final Interactable interact(final FloorManager floorManager) {
         floorManager.getPlayer().setIsImmune(true);
         return this;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void render() {
+    public final void render() {
         this.renderer.render();
     }
 
@@ -57,13 +57,13 @@ public class BeaconOnGround implements Interactable {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public void setRender(final Renderer renderer) {
+    public final void setRender(final Renderer renderer) {
         this.renderer = renderer;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void update(final FloorManager floorManager) {
+    public final void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition().equals(this.position)) {
             if (!floorManager.getPlayer().getPosition().equals(this.lastPlayerPosition)) {
                 floorManager.notifyFloorEvent(new WalkOverEvent(this));

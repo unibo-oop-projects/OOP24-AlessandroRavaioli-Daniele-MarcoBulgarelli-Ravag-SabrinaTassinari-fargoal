@@ -29,26 +29,26 @@ public class DownStairs implements Stairs {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(final FloorManager floorManager) {
+    public final Interactable interact(final FloorManager floorManager) {
         floorManager.increaseFloorLevel();
         return this;
     }
 
     /** {@inheritDoc} */
     @Override
-    public Position getPosition() {
+    public final Position getPosition() {
         return this.position;
     }
 
     /** {@inheritDoc} */
     @Override
-    public String getTag() {
+    public final String getTag() {
         return "Stairs going down";
     }
 
     /** {@inheritDoc} */
     @Override
-    public void render() {
+    public final void render() {
         this.renderer.render();
     }
 
@@ -56,17 +56,16 @@ public class DownStairs implements Stairs {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public void setRender(final Renderer renderer) {
+    public final void setRender(final Renderer renderer) {
         this.renderer = renderer;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void update(final FloorManager floorManager) {
-        if (!floorManager.getPlayer().getPosition().equals(lastPlayerPosition)) {
-            if (floorManager.getPlayer().getPosition().equals(this.position)) {
-                floorManager.notifyFloorEvent(new WalkOverEvent(this));
-            }
+    public final void update(final FloorManager floorManager) {
+        if (!floorManager.getPlayer().getPosition().equals(lastPlayerPosition)
+                && floorManager.getPlayer().getPosition().equals(this.position) ) {
+            floorManager.notifyFloorEvent(new WalkOverEvent(this));
         }
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }

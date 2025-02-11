@@ -16,6 +16,7 @@ public class Beacon extends AbstractUtility {
      * This is the constructor of the class. It store right away the beacon in the player's inventory.
      */
     public Beacon() {
+        this.setNumberInInventory(0);
     }
 
     /** {@inheritDoc} */

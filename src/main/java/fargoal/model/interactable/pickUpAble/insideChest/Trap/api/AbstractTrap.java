@@ -16,15 +16,15 @@ public abstract class AbstractTrap implements ChestItem {
 
     /** {@inheritDoc} */
     @Override 
-    public String getChestItemType() {
+    public final String getChestItemType() {
         return ChestItemType.TRAP.getName();
     }
 
     /** {@inheritDoc} */
     @Override
-    public void use(final FloorManager floorManager) {
+    public final void use(final FloorManager floorManager) {
         boolean mapLost = false;
-        int chanceOfMapLost = new Random().nextInt(4);
+        final int chanceOfMapLost = new Random().nextInt(4);
         if (chanceOfMapLost == 0) {
             mapLost = true;
             floorManager.getFloorMask().resetMask();

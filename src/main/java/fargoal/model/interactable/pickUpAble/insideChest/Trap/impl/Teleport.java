@@ -28,7 +28,7 @@ public class Teleport extends AbstractTrap {
     /** {@inheritDoc} */
     @Override
     public void effect(final FloorManager floorManager) {
-        Position newPositionPlayer = floorManager.getFloorMap().getRandomTile();
+        final Position newPositionPlayer = floorManager.getFloorMap().getRandomTile();
         floorManager.getPlayer().setPosition(newPositionPlayer);
     }
 

@@ -29,10 +29,9 @@ public class DriftSpell extends AbstractSpell {
     /** {@inheritDoc} */
     @Override
     public void update(final FloorManager floorManager) {
-        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName())) {
-            if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
-                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
-            }
+        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName()) 
+                && this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
+            floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
         }
     }
 

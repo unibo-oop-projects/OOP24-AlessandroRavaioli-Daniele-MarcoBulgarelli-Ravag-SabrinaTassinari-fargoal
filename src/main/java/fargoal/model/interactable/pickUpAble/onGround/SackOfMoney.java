@@ -39,7 +39,7 @@ public class SackOfMoney implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public Position getPosition() {
+    public final Position getPosition() {
         return this.position;
     }
 
@@ -47,7 +47,7 @@ public class SackOfMoney implements Interactable {
      * Getter for the field isHiddenInGround.
      * @return true if the sackOfGold is hidden in the ground, false otherwise.
      */
-    public boolean isHiddenInGround() {
+    public final boolean isHiddenInGround() {
         return this.hiddenInGround;
     }
 
@@ -55,19 +55,19 @@ public class SackOfMoney implements Interactable {
      * Getter for the field open.
      * @return true if the player opened the sack of gold.
      */
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.open;
     }
 
     /** {@inheritDoc} */
     @Override
-    public String getTag() {
+    public final String getTag() {
         return "SACK OF GOLD";
     }
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(final FloorManager floorManager) {
+    public final Interactable interact(final FloorManager floorManager) {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
             floorManager.notifyFloorEvent(new PickUpGoldEvent(this.goldInSack));
             this.open = true;
@@ -91,7 +91,7 @@ public class SackOfMoney implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public void render() {
+    public final void render() {
         this.renderer.render();
     }
 
@@ -99,13 +99,13 @@ public class SackOfMoney implements Interactable {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public void setRender(final Renderer renderer) {
+    public final void setRender(final Renderer renderer) {
         this.renderer = renderer;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void update(final FloorManager floorManager) {
+    public final void update(final FloorManager floorManager) {
         if (this.isOpen()) {
             if (!this.isHiddenInGround()) {
                 floorManager.getAllElements().remove(this);

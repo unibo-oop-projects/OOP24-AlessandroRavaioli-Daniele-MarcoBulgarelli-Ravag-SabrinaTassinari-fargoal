@@ -14,13 +14,13 @@ public abstract class AbstractSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public String getChestItemType() {
+    public final String getChestItemType() {
         return ChestItemType.SPELL.getName();
     }
 
     /** {@inheritDoc} */
     @Override
-    public void store() {
+    public final void store() {
         this.addSpell();
     }
 
@@ -33,7 +33,7 @@ public abstract class AbstractSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public void removeSpell() {
+    public final void removeSpell() {
         if (this.numberInInventory > 0) {
             this.numberInInventory--;
         }
@@ -41,19 +41,19 @@ public abstract class AbstractSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public Integer getNumberInInventory() {
+    public final Integer getNumberInInventory() {
         return this.numberInInventory;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void setNumberInInventory(final int numberInInventory) {
+    public final void setNumberInInventory(final int numberInInventory) {
         this.numberInInventory = numberInInventory;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void use(final FloorManager floorManager) {
+    public final void use(final FloorManager floorManager) {
         floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         this.effect(floorManager);
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
@@ -77,7 +77,7 @@ public abstract class AbstractSpell implements Spell {
      * Getter for the field floorLevelCast, which rapresent the floor level where a spell hs been cast.
      * @return the floor level where a spell has been cast.
      */
-    public int getFloorLevelSpellCast() {
+    public final int getFloorLevelSpellCast() {
         return this.floorLevelSpellCasted;
     }
 }

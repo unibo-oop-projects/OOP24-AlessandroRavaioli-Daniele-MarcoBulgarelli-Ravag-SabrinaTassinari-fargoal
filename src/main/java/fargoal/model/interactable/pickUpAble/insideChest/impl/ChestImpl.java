@@ -72,7 +72,7 @@ public class ChestImpl implements Interactable {
     @Override
     public Interactable interact(final FloorManager floorManager) {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
-            int num = new Random().nextInt(N_CHEST_ITEM);
+            final int num = new Random().nextInt(N_CHEST_ITEM);
             if (num >= 0 && num <= CASE_END_SPELL) {
                 Spell spell;
                 if (num == CASE_DRIFT_SPELL) {
@@ -106,7 +106,7 @@ public class ChestImpl implements Interactable {
                     new ChestItemFactoryImpl().generateTeleport(floorManager);
                 } 
             } else if (num >= CASE_BEGIN_UTILITY) {
-                Utility item;
+                final Utility item;
                 if (num == CASE_BEACONS) {
                     item = new ChestItemFactoryImpl().generateBeacon();
                     floorManager.getPlayer().getInventory().getBeacons().store();

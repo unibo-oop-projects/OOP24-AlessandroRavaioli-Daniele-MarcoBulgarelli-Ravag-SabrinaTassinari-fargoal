@@ -29,10 +29,9 @@ public class ShieldSpell extends AbstractSpell {
     /** {@inheritDoc} */
     @Override
     public void update(final FloorManager floorManager) {
-        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.SHIELD.getName())) {
-            if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
-                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), false);
-            }
+        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.SHIELD.getName()) 
+                && this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
+            floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), false);
         }
     }
 

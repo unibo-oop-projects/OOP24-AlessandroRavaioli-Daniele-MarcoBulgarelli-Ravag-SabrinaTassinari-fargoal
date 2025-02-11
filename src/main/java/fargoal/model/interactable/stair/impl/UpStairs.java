@@ -63,10 +63,9 @@ public class UpStairs implements Stairs {
     /** {@inheritDoc} */
     @Override
     public void update(final FloorManager floorManager) {
-        if (!floorManager.getPlayer().getPosition().equals(lastPlayerPosition)) {
-            if (floorManager.getPlayer().getPosition().equals(this.position)) {
-                floorManager.notifyFloorEvent(new WalkOverEvent(this));
-            }
+        if (!floorManager.getPlayer().getPosition().equals(lastPlayerPosition) 
+                && floorManager.getPlayer().getPosition().equals(this.position)) {
+            floorManager.notifyFloorEvent(new WalkOverEvent(this));
         }
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }

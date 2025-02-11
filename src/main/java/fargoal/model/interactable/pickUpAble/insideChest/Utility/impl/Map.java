@@ -23,6 +23,7 @@ public class Map extends AbstractUtility {
      */
     public Map() {
         listOfMaps = new ArrayList<>();
+        this.setNumberInInventory(0);
     }
 
     /**

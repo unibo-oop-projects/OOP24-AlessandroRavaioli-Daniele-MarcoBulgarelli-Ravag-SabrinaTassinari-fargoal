@@ -21,6 +21,7 @@ public class EnchantedWeapon extends AbstractUtility {
      * @param floorManager - it contains all the element of the floor the item is.
      */
     public EnchantedWeapon(final FloorManager floorManager) {
+        this.setNumberInInventory(0);
         this.floorManager = floorManager;
     }
 

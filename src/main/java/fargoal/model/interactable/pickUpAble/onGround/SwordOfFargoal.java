@@ -31,7 +31,7 @@ public class SwordOfFargoal implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public Position getPosition() {
+    public final Position getPosition() {
         return this.position.get();
     }
 
@@ -39,13 +39,13 @@ public class SwordOfFargoal implements Interactable {
      * Setter for the position of the sword.
      * @param position - the position of the sword in the levelthe player is.
      */
-    public void setPosition(final Position position) {
+    public final void setPosition(final Position position) {
         this.position = Optional.of(position);
     }
 
     /** {@inheritDoc} */
     @Override
-    public String getTag() {
+    public final String getTag() {
         return "SWORD OF FARGOAL";
     }
 
@@ -53,18 +53,18 @@ public class SwordOfFargoal implements Interactable {
      * Getter for the field mapLevel.
      * @return the level the sword can be found.
      */
-    public Integer getMapLevel() {
+    public final Integer getMapLevel() {
         return this.mapLevel;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void update(final FloorManager floorManager) {
+    public final void update(final FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
     @Override
-    public void render() {
+    public final void render() {
         this.renderer.render();
     }
 
@@ -72,13 +72,13 @@ public class SwordOfFargoal implements Interactable {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public void setRender(final Renderer renderer) {
+    public final void setRender(final Renderer renderer) {
         this.renderer = renderer;
     }
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(final FloorManager floorManager) {
+    public final Interactable interact(final FloorManager floorManager) {
         floorManager.getPlayer().setHasSword(true);
         floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getExperiencePoints());
         floorManager.notifyFloorEvent(new PickUpSword(this));
