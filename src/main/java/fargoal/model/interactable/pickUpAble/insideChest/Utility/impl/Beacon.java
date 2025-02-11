@@ -15,9 +15,8 @@ public class Beacon extends AbstractUtility {
     /**
      * This is the constructor of the class. It store right away the beacon in the player's inventory.
      * @param floorManager - in it there are all the information about the floor the item is.
-     * @param position - the position of the chest the beacon has been found.
      */
-    public Beacon(FloorManager floorManager) {
+    public Beacon(final FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -26,20 +25,18 @@ public class Beacon extends AbstractUtility {
         return UtilityType.BEACON.getName();
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
         this.removeUtility();
         BeaconOnGround beaconOnGround = new BeaconOnGround(floorManager.getPlayer().getPosition(), floorManager);
         floorManager.getInteractables().add(beaconOnGround);
         floorManager.notifyFloorEvent(new PlacedABeacon(beaconOnGround));
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void addToPlayer(FloorManager floorManager) {
+    public void addToPlayer(final FloorManager floorManager) {
     }
-
-    
-
-
 
 }

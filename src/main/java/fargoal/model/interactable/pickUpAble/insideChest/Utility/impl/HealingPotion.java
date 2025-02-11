@@ -13,17 +13,20 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class HealingPotion extends AbstractUtility {
 
-    private static int N_HEALING_POTION_TO_START = 1;
+    private static final int N_HEALING_POTION_TO_START = 1;
+    public static final int MAX_HIT_POINTS_TO_ADD = 19;
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
      * @param floorManager - it contains all the element of the floor the item is.
-     * @param position - this is the position of the chest the item was found.
      */
-    public HealingPotion(FloorManager floorManager) {
+    public HealingPotion(final FloorManager floorManager) {
         this.setNumberInInventory(N_HEALING_POTION_TO_START);
     }
 
+    /**
+     * This is an empty constructor.
+     */
     public HealingPotion() {
     } 
 
@@ -35,8 +38,8 @@ public class HealingPotion extends AbstractUtility {
 
     /** {@inheritDoc} */
     @Override
-    public void use(FloorManager floorManager) {
-        int healthToAdd = new Random().nextInt(19) + 3 * floorManager.getPlayer().getLevel();
+    public void effect(final FloorManager floorManager) {
+        int healthToAdd = new Random().nextInt(MAX_HIT_POINTS_TO_ADD) + 3 * floorManager.getPlayer().getLevel();
         int healthToSet = floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd;
         floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         if (healthToSet >= floorManager.getPlayer().getHealth().getMaxHealth()) {
@@ -47,20 +50,8 @@ public class HealingPotion extends AbstractUtility {
         this.removeUtility();
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
-        int healthToAdd = new Random().nextInt(19) + 3 * floorManager.getPlayer().getLevel();
-        int healthToSet = floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd;
-        floorManager.notifyFloorEvent(new PlayerActionEvent(this));
-        if (healthToSet >= floorManager.getPlayer().getHealth().getMaxHealth()) {
-            floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
-        } else {
-            floorManager.getPlayer().getHealth().setHealth(healthToSet);
-        }
-        this.removeUtility();
-    }
-
-    @Override
-    public void addToPlayer(FloorManager floorManager) {
+    public void addToPlayer(final FloorManager floorManager) {
     } 
 }

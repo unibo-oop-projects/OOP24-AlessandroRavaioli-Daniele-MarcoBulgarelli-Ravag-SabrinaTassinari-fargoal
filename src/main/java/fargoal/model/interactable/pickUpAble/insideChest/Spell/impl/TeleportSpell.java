@@ -46,5 +46,5 @@ public class TeleportSpell extends AbstractSpell {
         }
         floorManager.getPlayer().setPosition(newPlayerPosition);
         this.removeSpell();
-    }    
+    }
 }

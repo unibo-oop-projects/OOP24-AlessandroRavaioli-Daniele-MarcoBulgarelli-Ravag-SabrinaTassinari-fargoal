@@ -35,8 +35,8 @@ public class TestInteractable {
      @Test
      void checkCreationItem() {
           final ChestImpl chest = new ChestImpl(new Position(0, 0), floorManager.getRenderFactory());
-          chest.interact(floorManager);        
-     }
+          chest.interact(floorManager);
+    }
 
      /**
      * This test checks if the drift spell works: it checks the amount in the inventory after and before use
@@ -200,7 +200,8 @@ public class TestInteractable {
           final int numberInInventory = floorManager.getPlayer().getInventory().getEnchantedWeapons().getNumberInInventory();
           floorManager.getPlayer().getInventory().getEnchantedWeapons().store(floorManager);
           assertNotEquals(skillBefore, floorManager.getPlayer().getSkill());
-          assertNotEquals(numberInInventory, floorManager.getPlayer().getInventory().getEnchantedWeapons().getNumberInInventory());
+          assertNotEquals(numberInInventory, floorManager.getPlayer().getInventory().
+               getEnchantedWeapons().getNumberInInventory());
      }
 
      /**
@@ -229,7 +230,8 @@ public class TestInteractable {
           assertEquals(100, floorManager.getPlayer().getMaxGoldCapacity());
           floorManager.getPlayer().getInventory().getMagicSacks().store(floorManager);
           assertEquals(2, floorManager.getPlayer().getInventory().getMagicSacks().getNumberInInventory());
-          assertEquals(floorManager.getPlayer().getInventory().getMagicSacks().getNumberInInventory() * 100, floorManager.getPlayer().getMaxGoldCapacity());
+          assertEquals(floorManager.getPlayer().getInventory().getMagicSacks().getNumberInInventory() * 100, 
+               floorManager.getPlayer().getMaxGoldCapacity());
      }
 
      /**
@@ -251,7 +253,8 @@ public class TestInteractable {
      @Test
      void checkSackOfMoney() {
           assertEquals(0, floorManager.getPlayer().getCurrentGold());
-          final Interactable sackOfGold = floorManager.getInteractables().stream().filter(e -> e instanceof SackOfMoney).findFirst().get();
+          final Interactable sackOfGold = floorManager.getInteractables().stream().
+               filter(e -> e instanceof SackOfMoney).findFirst().get();
           floorManager.getPlayer().setPosition(sackOfGold.getPosition());
           sackOfGold.interact(floorManager);
           assertNotEquals(0, floorManager.getPlayer().getCurrentGold());
