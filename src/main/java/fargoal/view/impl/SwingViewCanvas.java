@@ -13,7 +13,7 @@ import javax.swing.SwingUtilities;
  * Is an updater of a panel upgradeable.
  */
 public class SwingViewCanvas extends JPanel {
-    private List<Consumer<Graphics2D>> list;
+    private final List<Consumer<Graphics2D>> list;
     private boolean canDraw;
 
     /**
@@ -40,7 +40,7 @@ public class SwingViewCanvas extends JPanel {
         if (this.canDraw) {
             this.canDraw = false;
             super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g;
+            final Graphics2D g2d = (Graphics2D) g;
             this.list.forEach(d -> d.accept(g2d));
             this.list.clear(); 
         }

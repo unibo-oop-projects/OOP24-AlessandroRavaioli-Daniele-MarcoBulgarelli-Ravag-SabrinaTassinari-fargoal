@@ -29,95 +29,36 @@ public final class ImageHolder {
     private static BufferedImage tileImage;
     private static BufferedImage templeImage;
 
+    private static final String ENTITY_FOLDER = "src" + File.separator
+            + "main" + File.separator
+            + "resources" + File.separator
+            + "entity" + File.separator;
+    private static final String TILES_FOLDER =  "src" + File.separator
+            + "main" + File.separator
+            + "resources" + File.separator
+            + "tiles" + File.separator;
+
     private ImageHolder() { }
 
     static {
         try {
-            playerImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "Player.png" + File.separator));
-            chestImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "Chest.png" + File.separator));
-            downstairsImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "DownStairs.png" + File.separator));
-            hiddenGoldImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "HiddenGold.png" + File.separator));
-            sackOfGoldImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "SackOfGold.png" + File.separator));
-            swordImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "Sword.png" + File.separator));
-            assassinImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "Assassin.png" + File.separator));
-            barbarianImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "Barbarian.png" + File.separator));
-            mageImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "Mage.png" + File.separator));
-            monkImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "Monk.png" + File.separator));
-            rogueImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "Rogue.png" + File.separator));
-            spiderImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "Spider.png" + File.separator));
-            warLordImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "entity" + File.separator
-                + "WarLord.png" + File.separator));
-            wallImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "Wall.png" + File.separator));
-            upStairsImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "UpStairs.png" + File.separator));
-            tileImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "Tile.png" + File.separator));
-            templeImage = ImageIO.read(new File("src" + File.separator 
-                + "main" + File.separator
-                + "resources" + File.separator
-                + "tiles" + File.separator
-                + "Temple.png" + File.separator));
+            playerImage = ImageIO.read(new File(ENTITY_FOLDER + "Player.png" + File.separator));
+            chestImage = ImageIO.read(new File(TILES_FOLDER + "Chest.png" + File.separator));
+            downstairsImage = ImageIO.read(new File(TILES_FOLDER + "DownStairs.png" + File.separator));
+            hiddenGoldImage = ImageIO.read(new File(TILES_FOLDER + "HiddenGold.png" + File.separator));
+            sackOfGoldImage = ImageIO.read(new File(TILES_FOLDER + "SackOfGold.png" + File.separator));
+            swordImage = ImageIO.read(new File(TILES_FOLDER + "Sword.png" + File.separator));
+            assassinImage = ImageIO.read(new File(ENTITY_FOLDER + "Assassin.png" + File.separator));
+            barbarianImage = ImageIO.read(new File(ENTITY_FOLDER + "Barbarian.png" + File.separator));
+            mageImage = ImageIO.read(new File(ENTITY_FOLDER + "Mage.png" + File.separator));
+            monkImage = ImageIO.read(new File(ENTITY_FOLDER + "Monk.png" + File.separator));
+            rogueImage = ImageIO.read(new File(ENTITY_FOLDER + "Rogue.png" + File.separator));
+            spiderImage = ImageIO.read(new File(ENTITY_FOLDER + "Spider.png" + File.separator));
+            warLordImage = ImageIO.read(new File(ENTITY_FOLDER + "WarLord.png" + File.separator));
+            wallImage = ImageIO.read(new File(TILES_FOLDER + "Wall.png" + File.separator));
+            upStairsImage = ImageIO.read(new File(TILES_FOLDER + "UpStairs.png" + File.separator));
+            tileImage = ImageIO.read(new File(TILES_FOLDER + "Tile.png" + File.separator));
+            templeImage = ImageIO.read(new File(TILES_FOLDER + "Temple.png" + File.separator));
         } catch (IOException e) {
             e.printStackTrace();
         }

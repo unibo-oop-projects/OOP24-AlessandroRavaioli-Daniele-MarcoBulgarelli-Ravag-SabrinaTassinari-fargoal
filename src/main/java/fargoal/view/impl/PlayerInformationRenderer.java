@@ -24,7 +24,7 @@ public class PlayerInformationRenderer implements Renderer {
 
     private SwingRendererBottom rendererBottom; 
     private SwingRendererTop rendererTop;
-    private View view;
+    private final View view;
 
     /**
      * Constructor that assigns to the local field view the
@@ -49,7 +49,7 @@ public class PlayerInformationRenderer implements Renderer {
      * @param floorManager - the floormanager to take all the necessary infos
      */
     public void setRender(final FloorManager floorManager) {
-        SwingView swing = (SwingView) view;
+        final SwingView swing = (SwingView) view;
         this.rendererTop = new SwingRendererTop(g2d -> {
             if (floorManager.getPlayer().getHealth().getCurrentHealth() 
                     > floorManager.getPlayer().getHealth().getMaxHealth() / 2) {

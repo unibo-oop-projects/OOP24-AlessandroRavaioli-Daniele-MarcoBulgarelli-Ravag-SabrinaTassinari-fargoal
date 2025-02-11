@@ -28,7 +28,7 @@ public class RenderEventListener implements FloorEventListener, Renderer {
     private static final int MULTIPLIER_HEIGHT = 12;
 
     private String text;
-    private SwingRendererTop renderer;
+    private final SwingRendererTop renderer;
 
     /**
      * Constructor to create the renderer for the events and set
@@ -38,7 +38,7 @@ public class RenderEventListener implements FloorEventListener, Renderer {
      */
     public RenderEventListener(final View view) {
         this.text = " ";
-        SwingView swing = (SwingView) view;
+        final SwingView swing = (SwingView) view;
         renderer = new SwingRendererTop(g2d -> {
             g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / FONT_DIVISOR_HEIGHT));
             g2d.setColor(Color.WHITE);
@@ -52,11 +52,11 @@ public class RenderEventListener implements FloorEventListener, Renderer {
     @Override
     public void notifyEvent(final FloorEvent floorEvent) {
         if (floorEvent instanceof MonsterEncounterEvent) {
-            MonsterEncounterEvent ev = (MonsterEncounterEvent) floorEvent;
+            final MonsterEncounterEvent ev = (MonsterEncounterEvent) floorEvent;
             text = "A " + ev.monsterEncountered().getTag();
         } else if (floorEvent instanceof FoundTrapEvent) {
-            FoundTrapEvent ev = (FoundTrapEvent) floorEvent;
-            String temp;
+            final FoundTrapEvent ev = (FoundTrapEvent) floorEvent;
+            final String temp;
             temp = ev.typeOfTrap().getChestItemName();
             if (ev.hasLostMap()) {
                 text = temp + ", the map has been lost!";
@@ -64,25 +64,25 @@ public class RenderEventListener implements FloorEventListener, Renderer {
                 text = temp;
             }
         } else if (floorEvent instanceof PickUpGoldEvent) {
-            PickUpGoldEvent ev = (PickUpGoldEvent) floorEvent;
+            final PickUpGoldEvent ev = (PickUpGoldEvent) floorEvent;
             text = "Found " + ev.goldFound() + " gold";
         } else if (floorEvent instanceof PickUpNewItemEvent) {
-            PickUpNewItemEvent ev = (PickUpNewItemEvent) floorEvent;
+            final PickUpNewItemEvent ev = (PickUpNewItemEvent) floorEvent;
             text = "Found " + ev.pickedUpWhat().getChestItemName();
         } else if (floorEvent instanceof ReceiveAttackEvent) {
-            ReceiveAttackEvent ev = (ReceiveAttackEvent) floorEvent;
+            final ReceiveAttackEvent ev = (ReceiveAttackEvent) floorEvent;
             text = "Attacked by " + ev.attackedFrom().getTag();
         } else if (floorEvent instanceof WalkOverEvent) {
-            WalkOverEvent ev = (WalkOverEvent) floorEvent;
+            final WalkOverEvent ev = (WalkOverEvent) floorEvent;
             text = ev.getOnWhat().getTag();
         } else if (floorEvent instanceof MonsterStealSpellEvent) {
-            MonsterStealSpellEvent ev = (MonsterStealSpellEvent) floorEvent;
+            final MonsterStealSpellEvent ev = (MonsterStealSpellEvent) floorEvent;
             text = ev.whoStole().getTag() + " stole " + ev.whatMonsterStole().getChestItemName();
         } else if (floorEvent instanceof MonsterStealGoldEvent) {
-            MonsterStealGoldEvent ev = (MonsterStealGoldEvent) floorEvent;
+            final MonsterStealGoldEvent ev = (MonsterStealGoldEvent) floorEvent;
             text = ev.whoStole().getTag() + " stole " + ev.howMuchGold() + " gold coins";
         } else if (floorEvent instanceof PlayerActionEvent) {
-            PlayerActionEvent ev = (PlayerActionEvent) floorEvent;
+            final PlayerActionEvent ev = (PlayerActionEvent) floorEvent;
             text = ev.whatPlayerUsed().getChestItemName() + " has benn used";
         }
     }

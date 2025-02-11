@@ -28,7 +28,7 @@ public class InventoryInformationRenderer implements Renderer {
     private static final int FONT_HEIGHT_DIVISOR = 10;
 
     private SwingRendererBottom renderer;
-    private SwingView view;
+    private final SwingView view;
 
     /**
      * Constructor that assigns to the local field view the

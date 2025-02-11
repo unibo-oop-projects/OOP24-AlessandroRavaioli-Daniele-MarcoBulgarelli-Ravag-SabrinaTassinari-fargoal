@@ -46,11 +46,11 @@ public class SwingView implements View, KeyListener {
     private static final int LETTER_L = 76;
     private static final int LETTER_O = 79;
 
-    private SwingViewCanvas mapPanel;
-    private SwingViewCanvas eventPanel;
-    private SwingViewCanvas informationPanel;
-    private JFrame frame;
-    private KeyboardInputController input;
+    private final SwingViewCanvas mapPanel;
+    private final SwingViewCanvas eventPanel;
+    final private SwingViewCanvas informationPanel;
+    final private JFrame frame;
+    final private KeyboardInputController input;
 
     private int tilePixelDimWidth;
     private int tilePixelDimHeight;
@@ -91,7 +91,12 @@ public class SwingView implements View, KeyListener {
                 }
             }
         });
-        calculateDimensions();
+        tilePixelDimHeight = 12;
+        tilePixelDimWidth = 16;
+        this.eventPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
+                this.frame.getBounds().height * EVENT_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
+        this.informationPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
+                this.frame.getBounds().height * INFORMATION_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
         this.frame.setVisible(true);
     }
 
@@ -167,8 +172,8 @@ public class SwingView implements View, KeyListener {
      * and of the {@link #eventPanel} and {@link #informationPanel}.
      */
     private void calculateDimensions() {
-        this.tilePixelDimHeight = (int) (this.getMapHeight() / FLOOR_HEIGHT);
-        this.tilePixelDimWidth = (int) (this.getMapWidth() / FLOOR_LENGTH);
+        this.tilePixelDimHeight = (this.getMapHeight() / FLOOR_HEIGHT);
+        this.tilePixelDimWidth = (this.getMapWidth() / FLOOR_LENGTH);
         this.eventPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
                 this.frame.getBounds().height * EVENT_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
         this.informationPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
