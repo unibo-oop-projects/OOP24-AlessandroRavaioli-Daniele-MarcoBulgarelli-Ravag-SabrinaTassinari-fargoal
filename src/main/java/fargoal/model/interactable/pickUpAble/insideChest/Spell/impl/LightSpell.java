@@ -1,9 +1,7 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 
-import fargoal.model.events.impl.PlayerActionEvent;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.AbstractSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
@@ -12,47 +10,19 @@ import fargoal.model.manager.api.FloorManager;
  * he can see two tiles near him. If the player is not visible, it makes him visible.
  * The spell ends when the player change floor level.
  */
-public class LightSpell implements Spell {
-
-    private int numberInInventory;
-    private int floorLevelSpellCasted;
+public class LightSpell extends AbstractSpell {
 
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
      */
     public LightSpell(FloorManager floorManager) {
-        this.numberInInventory = 1;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getChestItemType() {
-        return ChestItemType.SPELL.getName();
     }
 
     /** {@inheritDoc} */
     @Override
     public String getChestItemName() {
         return SpellType.LIGHT.getName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void store(FloorManager floorManager) {
-        this.addSpell();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void use(FloorManager floorManager) {
-        floorManager.notifyFloorEvent(new PlayerActionEvent(this));
-        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
-        this.removeSpell();
-        if (!floorManager.getPlayer().isVisible()) {
-            floorManager.getPlayer().setIsVisible(true);
-        }
-        this.setFloorLevelSpellCast(floorManager.getFloorLevel());
     }
 
     /**
@@ -72,44 +42,24 @@ public class LightSpell implements Spell {
         }
     }
 
-    /**
-     * Setter for the field floorLevelSpellCast, which indicates in which floor the spell has been cast
-     * @param floorLevelSpellCasted - the level in which the spell has been cast
-     */
-    private void setFloorLevelSpellCast(int floorLevelSpellCasted) {
-        this.floorLevelSpellCasted = floorLevelSpellCasted;
-    }
-
     /** {@inheritDoc} */
     @Override
     public void update(FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName())) {
-            if (this.floorLevelSpellCasted != floorManager.getFloorLevel()) {
+            if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), false);
                 floorManager.getPlayer().setHasLight(false);
             }
         }
     }
 
-    /** {@inheritDoc} */
     @Override
-    public Integer getNumberInInventory() {
-        return this.numberInInventory;
-    }
-
-    /**
-     * This method add a spell in the player's inventory.
-     */
-    private void addSpell() {
-        this.numberInInventory++;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void removeSpell() {
-        if (this.numberInInventory > 0) {
-            this.numberInInventory--;
+    public void effect(FloorManager floorManager) {
+        floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
+        this.removeSpell();
+        if (!floorManager.getPlayer().isVisible()) {
+            floorManager.getPlayer().setIsVisible(true);
         }
     }
-    
+
 }

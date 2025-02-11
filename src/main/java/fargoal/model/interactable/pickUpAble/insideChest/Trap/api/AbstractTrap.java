@@ -6,6 +6,9 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
+/**
+ * This is the abstract class for the traps. 
+ */
 public abstract class AbstractTrap implements ChestItem {
     
     /** {@inheritDoc} */
@@ -24,6 +27,10 @@ public abstract class AbstractTrap implements ChestItem {
         this.effect(floorManager);
     }
 
+    /**
+     * This method damage or teleport the player.
+     * @param floorManager
+     */
     public abstract void effect(FloorManager floorManager);
 
 }

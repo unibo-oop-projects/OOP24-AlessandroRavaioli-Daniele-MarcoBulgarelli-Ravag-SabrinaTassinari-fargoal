@@ -2,18 +2,15 @@ package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
 
 import java.util.Random;
 
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.AbstractUtility;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.UtilityType;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
  * This is the class that implements an Enchanted Weapon, which the player found in a chest.
  * It increase the combat skill of the player.
  */
-public class EnchantedWeapon implements Utility {
-
-    private int numberInInventory;
+public class EnchantedWeapon extends AbstractUtility {
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
@@ -21,13 +18,6 @@ public class EnchantedWeapon implements Utility {
      * @param position - this is the position of the chest the item was found.
      */
     public EnchantedWeapon(FloorManager floorManager) {
-        numberInInventory = 0;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public String getChestItemType() {
-        return ChestItemType.UTILITY.getName();
     }
 
     /** {@inheritDoc} */
@@ -36,36 +26,14 @@ public class EnchantedWeapon implements Utility {
         return UtilityType.ENCHANTED_WEAPON.getName();
     }
 
-    /** {@inheritDoc} */
     @Override
-    public void use(FloorManager floorManager) {
+    public void effect(FloorManager floorManager) {
     }
 
-    /** {@inheritDoc} */
     @Override
-    public void store(FloorManager floorManager) {
-        this.addUtility();
+    public void addToPlayer(FloorManager floorManager) {
         int skillToAdd = new Random().nextInt(9) + 5;
         floorManager.getPlayer().increasePlayerSkill(skillToAdd);
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public int getNumberInInventory() {
-        return this.numberInInventory;
-    }
-
-    /**
-     * This method add an utility in the player's inventory.
-     */
-    private void addUtility() {
-        this.numberInInventory++;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void removeUtility() {
-        this.numberInInventory--;
     }
 
 }

@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.AbstractUtility;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.UtilityType;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
@@ -14,7 +13,7 @@ import fargoal.model.manager.api.FloorManager;
  * The map reveal a determined floor (between first floor and twenth floor) and when the player 
  * goes in that specific floor he knows all the element in it.
  */
-public class Map implements Utility {
+public class Map extends AbstractUtility{
 
     private List<Integer> listOfMaps;
 
@@ -37,19 +36,8 @@ public class Map implements Utility {
 
     /** {@inheritDoc} */
     @Override
-    public String getChestItemType() {
-        return ChestItemType.UTILITY.getName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
     public String getChestItemName() {
         return UtilityType.MAP.getName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void use(FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -105,6 +93,14 @@ public class Map implements Utility {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void effect(FloorManager floorManager) {
+    }
+
+    @Override
+    public void addToPlayer(FloorManager floorManager) {
     }
     
 }
