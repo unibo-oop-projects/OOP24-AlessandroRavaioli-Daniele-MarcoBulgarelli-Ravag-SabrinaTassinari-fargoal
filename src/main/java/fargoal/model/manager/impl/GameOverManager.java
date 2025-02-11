@@ -19,6 +19,13 @@ public class GameOverManager implements SceneManager, MenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
     private static final long MILLIS_TO_WAIT = 200;
+    private static final int TITLE_DIVISION_WIDTH = 5;
+    private static final int RETURN_MULTIPLIER_WIDTH = 20;
+    private static final int POSSIBILITIES_DIVISOR_WIDTH = 23;
+    private static final int POSSIBILITIES_DIVISOR_HEIGHT = 7;
+    private static final int GAME_EXIT_MULTIPLIER_WIDTH = 20;
+    private static final int DIVISOR_FONT_TOP_HEIGHT = 4;
+    private static final int DIVISOR_FONT_MIDDLE_HEIGHT = 110;
 
     private int selected;
     private final MenuInputComponent inputComp;
@@ -30,7 +37,7 @@ public class GameOverManager implements SceneManager, MenuManager {
     private boolean backToMenu;
     private final Timer wait;
 
-    public GameOverManager(GameEngine engine, String text) {
+    public GameOverManager(final GameEngine engine, final String text) {
         this.text = text;
         this.selected = 1;
         this.quit = false;
@@ -58,7 +65,7 @@ public class GameOverManager implements SceneManager, MenuManager {
     }
 
     @Override
-    public void setSceneManager(GameEngine engine) {
+    public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new TitleScreenManager(engine));
     }
     
@@ -85,24 +92,24 @@ public class GameOverManager implements SceneManager, MenuManager {
         }
     }
 
-    private void setRenderers(View view) {
+    private void setRenderers(final View view) {
         SwingView sView = (SwingView) view;
         this.menu = new SwingRendererMiddle(g2d -> {
-                g2d.setFont(new Font("Arial", Font.BOLD, sView.getFrame().getBounds().height * 3 / 110));
+                g2d.setFont(new Font("Arial", Font.BOLD, sView.getFrame().getBounds().height * 3 / DIVISOR_FONT_MIDDLE_HEIGHT));
                 g2d.setColor((this.selected == 1) ? Color.cyan : Color.red);
                 g2d.drawString("RETURN TO TITLE",
-                        sView.getMapWidth() * 3/7,
-                        sView.getMapHeight() * 1/7);
+                        sView.getMapWidth() * RETURN_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
+                        sView.getMapHeight() * 1 / POSSIBILITIES_DIVISOR_HEIGHT);
                 g2d.setColor((this.selected == 2) ? Color.cyan : Color.red);
                 g2d.drawString("EXIT",
-                        sView.getMapWidth() * 3/7,
-                        sView.getMapHeight() * 3/7);
+                        sView.getMapWidth() * GAME_EXIT_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
+                        sView.getMapHeight() * 3 / POSSIBILITIES_DIVISOR_HEIGHT);
         }, view);
         this.result = new SwingRendererTop(g2d -> {
-            g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height * 1/4));
+            g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height * 1 / DIVISOR_FONT_TOP_HEIGHT));
             g2d.setColor(Color.WHITE);
             g2d.drawString(this.text,
-                    sView.getMapWidth() * 3/7,
+                    sView.getMapWidth() * 2 / TITLE_DIVISION_WIDTH,
                     sView.getEventPanel().getBounds().height / 2);
         }, view);
     }

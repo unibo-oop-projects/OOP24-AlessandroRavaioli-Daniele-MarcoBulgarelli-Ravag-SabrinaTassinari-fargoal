@@ -8,7 +8,6 @@ import fargoal.model.events.api.FloorEvent;
  * sword and takes that.
  */
 public class PickUpSword implements FloorEvent {
-
     private final FloorElement sword;
 
     /**
@@ -30,5 +29,4 @@ public class PickUpSword implements FloorEvent {
     public FloorElement pickedUp() {
         return this.sword;
     }
-    
 }

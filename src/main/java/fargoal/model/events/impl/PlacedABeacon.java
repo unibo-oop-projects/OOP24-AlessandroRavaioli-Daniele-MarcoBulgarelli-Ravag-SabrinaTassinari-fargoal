@@ -9,7 +9,6 @@ import fargoal.model.events.api.FloorEvent;
  * of the next teleport.
  */
 public class PlacedABeacon implements FloorEvent {
-    
     private final FloorElement beaconOnGround;
 
     /**
@@ -31,5 +30,4 @@ public class PlacedABeacon implements FloorEvent {
     public FloorElement getWhatPlaced() {
         return this.beaconOnGround;
     }
-
 }

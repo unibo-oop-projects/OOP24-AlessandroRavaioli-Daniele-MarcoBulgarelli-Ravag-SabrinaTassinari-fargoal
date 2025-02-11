@@ -40,7 +40,7 @@ public interface Monster extends Entity {
      * 
      * @param position - the new Position
      */
-    void setPosition(final Position position);
+    void setPosition(Position position);
 
     /**
      * Move the Monster to a new Position, the choice of

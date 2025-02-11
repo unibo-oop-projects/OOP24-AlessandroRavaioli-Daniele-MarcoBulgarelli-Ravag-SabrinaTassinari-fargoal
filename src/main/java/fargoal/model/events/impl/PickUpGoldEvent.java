@@ -7,7 +7,6 @@ import fargoal.model.events.api.FloorEvent;
  * to interactor with a sack of gold on the ground.
  */
 public class PickUpGoldEvent implements FloorEvent {
-    
     private final Integer gold;
 
     /**
@@ -27,7 +26,7 @@ public class PickUpGoldEvent implements FloorEvent {
      * 
      * @return - the amount of gold that has been found
      */
-    public Integer GoldFound() {
+    public Integer goldFound() {
         return this.gold;
     } 
 }

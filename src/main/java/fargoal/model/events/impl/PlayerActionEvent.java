@@ -8,7 +8,6 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
  * the player use a ChestItem from his inventory.
  */
 public class PlayerActionEvent implements FloorEvent {
-
     private ChestItem item;
 
     /**
@@ -27,8 +26,7 @@ public class PlayerActionEvent implements FloorEvent {
      * 
      * @return - the ChestItem that has been used
      */
-    public ChestItem WhatPlayerUsed() {
+    public ChestItem whatPlayerUsed() {
         return this.item;
     }
-    
 }

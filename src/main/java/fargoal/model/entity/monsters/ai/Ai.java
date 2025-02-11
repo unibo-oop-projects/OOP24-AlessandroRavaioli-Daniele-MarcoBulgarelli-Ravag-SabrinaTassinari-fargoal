@@ -20,8 +20,8 @@ public final class Ai {
     private static final Integer MAX_CACHE_MONSTER = 5;
     private static final Integer LIST_SIZE = 3;
     private static final Integer MAX_DISTANCE = 10;
-    private static final List<Integer> list = new ArrayList<>(List.of(-1, 0, 1));
-    private static final Random random = new Random();
+    private static final List<Integer> LIST = new ArrayList<>(List.of(-1, 0, 1));
+    private static final Random RANDOM = new Random();
 
     private Ai() {
 
@@ -198,7 +198,7 @@ public final class Ai {
             if (!check) {
                 do {
                     pos = monster.getPosition()
-                            .add(new Position(list.get(random.nextInt(LIST_SIZE)), list.get(random.nextInt(LIST_SIZE))));
+                            .add(new Position(LIST.get(RANDOM.nextInt(LIST_SIZE)), LIST.get(RANDOM.nextInt(LIST_SIZE))));
                 } while (isInsideMap(monster, pos) || !positionList.contains(pos) || !monster.getLastPositions().contains(pos));
                 monster.setPosition(pos);
                 if (monster.getFloorMap().isTile(pos)) {
@@ -370,7 +370,7 @@ public final class Ai {
         }
         if (!check) {
             if (!possibleDirections.isEmpty()) {
-                pos = possibleDirections.get(random.nextInt(possibleDirections.size()));
+                pos = possibleDirections.get(RANDOM.nextInt(possibleDirections.size()));
                 monster.setPosition(pos);
                 if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                     monster.removeLastPosition();

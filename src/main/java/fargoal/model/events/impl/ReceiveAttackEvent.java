@@ -8,7 +8,6 @@ import fargoal.model.events.api.FloorEvent;
  * receives an attack from a monster.
  */
 public class ReceiveAttackEvent implements FloorEvent {
-    
     private final FloorElement floorElement;
 
     /**
@@ -27,7 +26,7 @@ public class ReceiveAttackEvent implements FloorEvent {
      * 
      * @return - the monster who attacked the player
      */
-    public FloorElement AttackedFrom() {
+    public FloorElement attackedFrom() {
         return this.floorElement;
     }
 }

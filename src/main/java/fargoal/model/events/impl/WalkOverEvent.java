@@ -9,7 +9,6 @@ import fargoal.model.events.api.FloorEvent;
  * the ground.
  */
 public class WalkOverEvent implements FloorEvent {
-    
     private final FloorElement element;
 
     /**
