@@ -15,6 +15,10 @@ import fargoal.view.impl.SwingRendererMiddle;
 import fargoal.view.impl.SwingRendererTop;
 import fargoal.view.impl.SwingView;
 
+/**
+ * Class that work and implements methods to allow the Menu screen
+ * to work correctly.
+ */
 public class GameOverManager implements SceneManager, MenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
@@ -22,7 +26,7 @@ public class GameOverManager implements SceneManager, MenuManager {
     private static final int TITLE_DIVISION_WIDTH = 20;
     private static final int RETURN_MULTIPLIER_WIDTH = 19;
     private static final int POSSIBILITIES_DIVISOR_WIDTH = 50;
-    private static final int POSSIBILITIES_DIVISOR_HEIGHT = 7;
+    private static final int CONSTANT_SEVEN = 7;
     private static final int GAME_EXIT_MULTIPLIER_WIDTH = 20;
     private static final int DIVISOR_FONT_TOP_HEIGHT = 4;
     private static final int DIVISOR_FONT_MIDDLE_HEIGHT = 110;
@@ -37,6 +41,13 @@ public class GameOverManager implements SceneManager, MenuManager {
     private boolean backToMenu;
     private final Timer wait;
 
+    /**
+     * Constructor that set all the local fields to the starting values,
+     * also based on the result of the game.
+     * 
+     * @param engine - to get the priority in the scene
+     * @param text - to know what to display
+     */
     public GameOverManager(final GameEngine engine, final String text) {
         this.text = text;
         this.selected = 1;
@@ -49,8 +60,9 @@ public class GameOverManager implements SceneManager, MenuManager {
         setRenderers(engine.getView());
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void update(GameEngine engine) {
+    public void update(final GameEngine engine) {
         if (quit) {
             engine.stop();
         } else if (backToMenu) {
@@ -58,17 +70,19 @@ public class GameOverManager implements SceneManager, MenuManager {
         }
         if (this.wait.updateTime(engine.getElapsedTime()) == 0) {
             this.inputComp.update(this, this.ctrl);
-            this.wait.setTime(MILLIS_TO_WAIT);   
+            this.wait.setTime(MILLIS_TO_WAIT); 
         }
         this.menu.render();
         this.result.render();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new TitleScreenManager(engine));
     }
-    
+    /** {@inheritDoc} */
+    @Override
     public void increaseSelected() {
         this.selected++;
         if (this.selected > NUMBER_OF_OPTIONS) {
@@ -76,6 +90,8 @@ public class GameOverManager implements SceneManager, MenuManager {
         }
     }
 
+    /** {@inheritDoc} */
+    @Override
     public void decreaseSelected() {
         this.selected--;
         if (this.selected < 1) {
@@ -83,6 +99,7 @@ public class GameOverManager implements SceneManager, MenuManager {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void select() {
         if (this.selected == 1) {
@@ -92,6 +109,12 @@ public class GameOverManager implements SceneManager, MenuManager {
         }
     }
 
+    /**
+     * Method that set the renderer of the top and middle part about
+     * what they have to display.
+     * 
+     * @param view - the view of entire game
+     */
     private void setRenderers(final View view) {
         SwingView sView = (SwingView) view;
         this.menu = new SwingRendererMiddle(g2d -> {
@@ -99,17 +122,17 @@ public class GameOverManager implements SceneManager, MenuManager {
                 g2d.setColor((this.selected == 1) ? Color.cyan : Color.red);
                 g2d.drawString("RETURN TO TITLE",
                         sView.getMapWidth() * RETURN_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
-                        sView.getMapHeight() * 1 / POSSIBILITIES_DIVISOR_HEIGHT);
+                        sView.getMapHeight() * 1 / CONSTANT_SEVEN);
                 g2d.setColor((this.selected == 2) ? Color.cyan : Color.red);
                 g2d.drawString("EXIT",
                         sView.getMapWidth() * GAME_EXIT_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
-                        sView.getMapHeight() * 3 / POSSIBILITIES_DIVISOR_HEIGHT);
+                        sView.getMapHeight() * 3 / CONSTANT_SEVEN);
         }, view);
         this.result = new SwingRendererTop(g2d -> {
             g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height / DIVISOR_FONT_TOP_HEIGHT));
             g2d.setColor(Color.WHITE);
             g2d.drawString(this.text,
-                    sView.getMapWidth() * 7 / TITLE_DIVISION_WIDTH,
+                    sView.getMapWidth() * CONSTANT_SEVEN / TITLE_DIVISION_WIDTH,
                     sView.getEventPanel().getBounds().height / 2);
         }, view);
     }

@@ -19,15 +19,25 @@ public interface Gold {
      */
     Integer getMaxCapacity();
 
+    /**
+     * Getter for the gold donated to the temple.
+     * 
+     * @return the gold donated to the temple
+     */
     Integer getGoldDonated();
 
     /**
      * Setter for the maximum gold capacity.
      * 
-     * @param - the maximum gold the player can carry now.
+     * @param amount - the maximum gold the player can carry now.
      */
     void setMaxCapacity(Integer amount);
 
+    /**
+     * Setter for the gold to donate to the temple.
+     * 
+     * @param amount - the amount to donate to the temple
+     */
     void setGoldDonated(Integer amount);
 
     /**

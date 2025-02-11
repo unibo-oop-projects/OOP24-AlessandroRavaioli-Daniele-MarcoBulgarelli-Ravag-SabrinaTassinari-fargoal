@@ -15,6 +15,10 @@ import fargoal.view.impl.SwingRendererMiddle;
 import fargoal.view.impl.SwingRendererTop;
 import fargoal.view.impl.SwingView;
 
+/**
+ * Class that work and implements methods to allow the Title screen
+ * to work correctly.
+ */
 public class TitleScreenManager implements SceneManager, MenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
@@ -35,8 +39,11 @@ public class TitleScreenManager implements SceneManager, MenuManager {
     private boolean timeToQuit;
     private boolean start;
     private final Timer wait;
-    
-
+    /**
+     * Constructor that set all the local fields to the starting values.
+     * 
+     * @param engine - to get the priority in the scene
+     */
     public TitleScreenManager(final GameEngine engine) {
         this.selected = 1;
         this.inputComp = new MenuInputComponent();
@@ -48,6 +55,7 @@ public class TitleScreenManager implements SceneManager, MenuManager {
         createRenderers(engine.getView());
     }
 
+    /** {@inheritDoc} */
     @Override
     public void update(final GameEngine engine) {
         if (timeToQuit) {
@@ -57,17 +65,19 @@ public class TitleScreenManager implements SceneManager, MenuManager {
         }
         if (this.wait.updateTime(engine.getElapsedTime()) == 0) {
             this.inputComp.update(this, this.ctrl);
-            this.wait.setTime(MILLIS_TO_WAIT);   
+            this.wait.setTime(MILLIS_TO_WAIT);
         }
         this.menu.render();
         this.title.render();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new FloorManagerImpl(engine));
     }
-    
+    /** {@inheritDoc} */
+    @Override
     public void increaseSelected() {
         selected++;
         if (selected > NUMBER_OF_OPTIONS) {
@@ -75,6 +85,8 @@ public class TitleScreenManager implements SceneManager, MenuManager {
         }
     }
 
+    /** {@inheritDoc} */
+    @Override
     public void decreaseSelected() {
         selected--;
         if (selected < 1) {
@@ -82,6 +94,7 @@ public class TitleScreenManager implements SceneManager, MenuManager {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void select() {
         if (this.selected == 1) {
@@ -91,6 +104,12 @@ public class TitleScreenManager implements SceneManager, MenuManager {
         }
     }
 
+    /**
+     * Method that create and set the renderer of the top and middle part about
+     * what they have to display.
+     * 
+     * @param view - the view of entire game
+     */
     private void createRenderers(final View view) {
         SwingView sView = (SwingView) view;
         this.menu = new SwingRendererMiddle(g2d -> {
