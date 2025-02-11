@@ -42,44 +42,54 @@ public interface FloorManager {
 
     /**
      * A method that return the list of all the items present.
+     * @return - the list of all interactable elements in the floor
      */
     List<Interactable> getInteractables();
 
     /**
-     * Method to increase the level of the floor
+     * Method to increase the level of the floor.
      */
     void increaseFloorLevel();
 
     /**
-     * Method to decrease the level of the floor
+     * Method to decrease the level of the floor.
      */
     void decreaseFloorLevel();
 
     /**
-     * A method to obtain the mask of the floor 
+     * A method to obtain the mask of the floor.
      * @return - the current mask
      */
     FloorMask getFloorMask();
 
     /**
-     * A method to obtain the temple
+     * A method to obtain the temple.
      * @return - the temple
      */
     Temple getTemple();
 
     /**
-     * A method to obtain all the FloorElements present at the current moment in the floor
+     * A method to obtain all the FloorElements present at the current moment in the floor.
      * @return - a list of all the current FloorElements
      */
     List<FloorElement> getAllElements();
 
     /**
-     * A method to obtain a factory to all the renderers currently used
+     * A method to obtain a factory to all the renderers currently used.
      * @return - the render factory
      */
     RenderFactory getRenderFactory();
 
+    /**
+     * A method that notifies the listener that an event has occurred.
+     * @param floorEvent - the event that has happened {@link FloorEvent}
+     * @see FloorEventListener
+     */
     void notifyFloorEvent(FloorEvent floorEvent);
 
+    /**
+     * A method that returns the elapsed time from the last frame.
+     * @return - the elapsed time
+     */
     long getTimePassed();
 }

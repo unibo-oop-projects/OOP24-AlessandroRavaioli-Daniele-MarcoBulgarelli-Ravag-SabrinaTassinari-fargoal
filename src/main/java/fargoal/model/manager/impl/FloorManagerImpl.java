@@ -39,6 +39,7 @@ import fargoal.model.interactable.temple.Temple;
  */
 public class FloorManagerImpl implements FloorManager, SceneManager {
 
+    private static final int MINIMUM_NUMBER_OF_GOLD_SPOTS = 6;
     private static final int MAX_MONSTERS = 7;
     private static final int MAX_NUMBER_OF_TREASURES = 25;
     private static final int FIXED_NUMBER_OF_STAIRS = 2;
@@ -65,9 +66,9 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
 
     /**
      * Constructor that inizializes all of its fields.
-     * @param context - the structure in which the reference to the view is contained
+     * @param engine - the GameEngine in which the program runs {@link GameEngine}
      */
-    public FloorManagerImpl(GameEngine engine) {
+    public FloorManagerImpl(final GameEngine engine) {
         this.listener = new RenderEventListener(engine.getView());
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl();
@@ -89,7 +90,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
      * {@inheritDoc}
      */
     @Override
-    public void update(GameEngine engine) {
+    public void update(final GameEngine engine) {
         if (isOver) {
             this.setSceneManager(engine);
         }
@@ -102,7 +103,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             Collections.shuffle(this.interactables);
         }
         if (timer.updateTime(this.elapsed) == 0) {
-            this.getAllElements().forEach(e -> e.update(this));  
+            this.getAllElements().forEach(e -> e.update(this));
             this.player.getInventory().getListAllSpell().forEach(s -> s.update(this)); 
         } else {
             this.listener.render();
@@ -146,6 +147,9 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
         return this.floorLevel;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public FloorMask getFloorMask() {
         return this.mask;
@@ -179,8 +183,8 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
         return elements;
     }
 
-    /**
-     * {@inheritDOc}
+    /** 
+     * {@inheritDoc}
      */
     @Override
     public void increaseFloorLevel() {
@@ -194,14 +198,13 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
      */
     @Override
     public void decreaseFloorLevel() {
-        
         this.floorLevel--;
         if (this.floorLevel == 0 && this.player.hasSword()) {
             this.isOver = true;
             this.endText = "YOU WIN";
         } else if (this.floorLevel <= 0) {
             throw new  IllegalStateException("cannot go to level -1");
-        } else  {    
+        } else  {
             initializeFloor();
             this.interactables.add(new DownStairs(this.player.getPosition(), this.renderFactory));
         }
@@ -218,7 +221,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             generateMonster(this.map.getRandomTile());
         }
 
-        int goldSpots = new Random().nextInt(4) + 6;
+        int goldSpots = new Random().nextInt(4) + MINIMUM_NUMBER_OF_GOLD_SPOTS;
         int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
         while (this.interactables.size() < goldSpots) {
             generateGold();
@@ -249,16 +252,17 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             this.mask.clearMask();
         }
 
-        if (this.floorLevel == sword.getMapLevel()) {
+        if (this.floorLevel == sword.getMapLevel() && !this.player.hasSword()) {
             do {
                 sword.setPosition(this.map.getRandomTile());
             } while (this.interactables.stream()
                     .anyMatch(in -> in.getPosition().equals(this.sword.getPosition()))
                     || this.temple.getPosition().equals(this.sword.getPosition()));
+            this.interactables.add(sword);
         }
     }
 
-    private void generateMonster(Position pos) {
+    private void generateMonster(final Position pos) {
         boolean alreadyPresent = false;
         alreadyPresent = false;
         for (int i = 0; i < this.monsters.size(); i++) {
@@ -270,7 +274,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             this.monsters.add(monstFact.generate(pos, this.map, this, renderFactory));
         }
     }
-    
+
     private void generateItems() {
         boolean alreadyPresent = false;
         do {
@@ -303,9 +307,9 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
                 this.interactables.add(temp);
             }
         } while (alreadyPresent);
-    }    
+    }
 
-    private void generateStairs(Stairs type) {
+    private void generateStairs(final Stairs type) {
         boolean alreadyPresent = false;
         do {
             Position pos = this.map.getRandomTile();
@@ -324,19 +328,28 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
         } while (alreadyPresent);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void notifyFloorEvent(FloorEvent floorEvent) {
+    public void notifyFloorEvent(final FloorEvent floorEvent) {
         listener.notifyEvent(floorEvent);
         timer.setTime(TIME_TO_WAIT_ON_EVENT);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public long getTimePassed() {
         return this.elapsed;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public void setSceneManager(GameEngine engine) {
+    public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new GameOverManager(engine, endText));
     }
 }
