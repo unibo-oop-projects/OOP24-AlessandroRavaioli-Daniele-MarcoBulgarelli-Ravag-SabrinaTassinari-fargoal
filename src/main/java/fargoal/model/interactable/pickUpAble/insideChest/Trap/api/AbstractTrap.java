@@ -8,7 +8,9 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This is the abstract class for the traps. 
+ * This is the abstract class for the traps. When a trap is found in a chest
+ * there is a small chance that the player loses the map of the floor level he is 
+ * in that moment. 
  */
 public abstract class AbstractTrap implements ChestItem {
     

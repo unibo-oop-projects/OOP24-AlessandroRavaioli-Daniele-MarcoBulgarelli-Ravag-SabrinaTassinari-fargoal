@@ -5,7 +5,7 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This class implements the Invisibility Spell from the interface spell.
+ * This class implements the Invisibility Spell. It extends the abstract class AbstractSpell.
  * When the player cast this spell the monsters can not see him.
  * If the light spell is active the player can be seen.
  * The spell ends when the player change floor level.

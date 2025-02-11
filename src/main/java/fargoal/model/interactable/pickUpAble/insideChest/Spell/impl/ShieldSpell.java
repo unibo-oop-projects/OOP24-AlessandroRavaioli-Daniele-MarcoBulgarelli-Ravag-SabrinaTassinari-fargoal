@@ -5,7 +5,7 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This class implements the Shield Spell from the interface spell.
+ * This class implements the Shield Spell. It extends the abstract class AbstractSpell.
  * When the player casts this spell he does not damage himself in the next fight.
  * If the player is not damaged and when he change floor level the spell is still 
  * casted, the spell ends.
@@ -36,6 +36,7 @@ public class ShieldSpell extends AbstractSpell {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void effect(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);

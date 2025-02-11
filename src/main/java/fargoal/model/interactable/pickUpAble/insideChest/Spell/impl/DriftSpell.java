@@ -5,7 +5,7 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This class implements the Drift Spell from the interface Spell.
+ * This class implements the Drift Spell. It is extended from the abstract class AbstractSpell.
  * When the player cast this spell if he falls in a pit he does not damage himself.
  */
 public class DriftSpell extends AbstractSpell {
@@ -35,6 +35,7 @@ public class DriftSpell extends AbstractSpell {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void effect(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), true);

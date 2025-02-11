@@ -5,7 +5,7 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This class implements the Regeneration Spell from the interface spell.
+ * This class implements the Regeneration Spell. It extends the abstract class AbstractSpell.
  * When the player cast this spell his hit points increases faster. 
  * This spell finishes when the player changes the floor.
  */
@@ -34,6 +34,7 @@ public class RegenerationSpell extends AbstractSpell {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void effect(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), true);

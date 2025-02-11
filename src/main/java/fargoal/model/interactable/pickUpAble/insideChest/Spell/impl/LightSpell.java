@@ -5,7 +5,7 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This class implements the Light Spell from the interface spell.
+ * This class implements the Light Spell. It extends the abstract class AbstractSpell
  * When the player cast this spell he can uncover more map of the floor: 
  * he can see two tiles near him. If the player is not visible, it makes him visible.
  * The spell ends when the player change floor level.
@@ -53,6 +53,7 @@ public class LightSpell extends AbstractSpell {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void effect(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);

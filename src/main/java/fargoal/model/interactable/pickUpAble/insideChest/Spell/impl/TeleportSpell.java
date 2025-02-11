@@ -7,7 +7,7 @@ import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
- * This class implements the Teleport Spell from the interface spell.
+ * This class implements the Teleport Spell. It extends the abstract class AbstractSpell.
  * When the player cast this spell he teleports himself near a beacon he had 
  * previously put on the ground. If there is not a beacon he is teleported in a random position.
 */
@@ -32,6 +32,7 @@ public class TeleportSpell extends AbstractSpell {
     public void update(FloorManager floorManager) {
     }
 
+    /** {@inheritDoc} */
     @Override
     public void effect(FloorManager floorManager) {
         Position newPlayerPosition;

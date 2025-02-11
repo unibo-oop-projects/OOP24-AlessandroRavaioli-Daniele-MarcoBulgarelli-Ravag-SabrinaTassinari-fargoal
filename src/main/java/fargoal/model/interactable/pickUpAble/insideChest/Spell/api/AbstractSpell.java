@@ -4,6 +4,9 @@ import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
+/**
+ * This abstract class implements the interface Spell.
+ */
 public abstract class AbstractSpell implements Spell {
     
     private int numberInInventory = 0;
@@ -50,6 +53,10 @@ public abstract class AbstractSpell implements Spell {
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
     }
 
+    /**
+     * This method make the spell happen. It does what the spell should do.
+     * @param floorManager - it contains all the element of the floor.
+     */
     public abstract void effect(FloorManager floorManager);
 
     /**
@@ -60,6 +67,10 @@ public abstract class AbstractSpell implements Spell {
         this.floorLevelSpellCasted = floorLevelSpellCasted;
     }
 
+    /**
+     * Getter for the field floorLevelCast, which rapresent the floor level where a spell hs been cast.
+     * @return the floor level where a spell has been cast.
+     */
     public int getFloorLevelSpellCast() {
         return this.floorLevelSpellCasted;
     }

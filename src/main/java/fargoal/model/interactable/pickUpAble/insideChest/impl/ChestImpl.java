@@ -3,12 +3,10 @@ package fargoal.model.interactable.pickUpAble.insideChest.impl;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
-import fargoal.model.events.impl.FoundTrapEvent;
 import fargoal.model.events.impl.PickUpNewItemEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
