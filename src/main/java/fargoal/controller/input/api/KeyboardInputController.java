@@ -27,27 +27,20 @@ public class KeyboardInputController implements InputController {
      * {@link #reset}, set all the local fields to false.
      */
     public KeyboardInputController() {
-        this.reset();
-    }
-
-    /**
-     * Method that set all the local fields to false.
-     */
-    public void reset() {
-        this.notifyNoMoreMoveDown();
-        this.notifyNoMoreInteracting();
-        this.notifyNoMoreMoveLeft();
-        this.notifyNoMoreMoveRight();
-        this.notifyNoMoreMoveUp();
-        this.notifyNoMorePlacingBeacon();
-        this.notifyNoMoreUsingDriftSpell();
-        this.notifyNoMoreUsingHealingPotion();
-        this.notifyNoMoreUsingInvisibilitySpell();
-        this.notifyNoMoreUsingLightSpell();
-        this.notifyNotTurnLight();
-        this.notifyNoMoreUsingRegenerationSpell();
-        this.notifyNoMoreUsingShieldSpell();
-        this.notifyNoMoreUsingTeleportSpell();
+        isMoveDown = false;
+        isMoveUp = false;
+        isMoveLeft = false;
+        isMoveRight = false;
+        isInteracting = false;
+        isUsingHealingPotion = false;
+        isPlacingBeacon = false;
+        isUsingTeleportSpell = false;
+        isUsingShieldSpell = false;
+        isUsingDriftSpell = false;
+        isUsingRegenerationSpell = false;
+        isUsingInvisibilitySpell = false;
+        isUsingLightSpell = false;
+        isTurningLight = false;
     }
 
     /** {@inheritDoc} */
