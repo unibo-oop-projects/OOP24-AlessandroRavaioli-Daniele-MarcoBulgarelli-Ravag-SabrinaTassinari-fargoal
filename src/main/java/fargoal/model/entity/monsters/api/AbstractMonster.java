@@ -116,7 +116,11 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public boolean isDead() {
-        return this.getHealth().getCurrentHealth() <= 0;
+        if (this.getHealth().getCurrentHealth() <= 0) {
+            floorManager.getMonsters().remove(this);
+            return true;
+        }
+        return false;
     }
 
     /** {@inheritDoc} */
