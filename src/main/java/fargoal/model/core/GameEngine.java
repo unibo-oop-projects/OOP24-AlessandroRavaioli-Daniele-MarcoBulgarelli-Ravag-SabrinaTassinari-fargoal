@@ -1,5 +1,7 @@
 package fargoal.model.core;
 
+import java.util.logging.Logger;
+
 import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.manager.api.SceneManager;
 import fargoal.model.manager.impl.TitleScreenManager;
@@ -15,7 +17,7 @@ public class GameEngine {
     private static final int PERIOD = 20;
     private SceneManager manager;
     private final View view;
-    private KeyboardInputController controller;
+    private final KeyboardInputController controller;
     private long elapsed;
 
     /**
@@ -48,7 +50,11 @@ public class GameEngine {
         if (delta < PERIOD) {
             try {
                 Thread.sleep(PERIOD - delta);
-            } catch (Exception e) { }
+            } catch (IllegalArgumentException e) { 
+                Logger.getAnonymousLogger().warning("IllegalArgumentException" + e.getMessage());
+            } catch (InterruptedException e) {
+                Logger.getAnonymousLogger().warning("InterruptedException: " + e.getMessage());
+            }
         }
     }
 
