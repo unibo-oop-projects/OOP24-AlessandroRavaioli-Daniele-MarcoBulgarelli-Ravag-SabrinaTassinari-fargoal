@@ -13,7 +13,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class Pit extends AbstractTrap {
 
-    private static int MAX_DAMAGE = 9;
+    private static final int MAX_DAMAGE = 9;
 
     /**
      * This is the constructor of the class. When the player finds the trap in a chest it damages him immediately. 

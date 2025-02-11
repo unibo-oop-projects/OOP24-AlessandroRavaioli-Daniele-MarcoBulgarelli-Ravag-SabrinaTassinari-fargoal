@@ -13,16 +13,16 @@ import fargoal.model.manager.api.FloorManager;
  * The map reveal a determined floor (between first floor and twenth floor) and when the player 
  * goes in that specific floor he knows all the element in it.
  */
-public class Map extends AbstractUtility{
+public class Map extends AbstractUtility {
 
+    private static final int MAX_MAP_LEVEL = 19;
     private List<Integer> listOfMaps;
 
     /**
      * This is the constructor of the class. It store right away the map and it set the level it reveal.
      * @param floorManager - it contains all the element of the floor.
-     * @param position - this is the position of the chest the map was found in.
      */
-    public Map(FloorManager floorManager) {
+    public Map(final FloorManager floorManager) {
         listOfMaps = new ArrayList<>();
     }
 
@@ -31,7 +31,7 @@ public class Map extends AbstractUtility{
      * @return the level the map reveal.
      */
     private int getMapLevel() {
-        return new Random().nextInt(19) + 1;
+        return new Random().nextInt(MAX_MAP_LEVEL) + 1;
     }
 
     /** {@inheritDoc} */
@@ -42,7 +42,7 @@ public class Map extends AbstractUtility{
 
     /** {@inheritDoc} */
     @Override
-    public void store(FloorManager floorManager) {
+    public void store(final FloorManager floorManager) {
         this.addUtility(this.getMapLevel());
     }
 
@@ -63,13 +63,13 @@ public class Map extends AbstractUtility{
     /**
      * This method add an utility in the player's inventory.
      */
-    private void addUtility(Integer floorNumber) {
-        if(floorNumber == null || floorNumber <= 0) {
+    private void addUtility(final Integer floorNumber) {
+        if (floorNumber == null || floorNumber <= 0) {
             throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
         }
-        if(!this.listOfMaps.contains(floorNumber)) {
+        if (!this.listOfMaps.contains(floorNumber)) {
             this.listOfMaps.add(floorNumber);
-        }   
+        }
     }
 
     /** {@inheritDoc} */
@@ -83,24 +83,26 @@ public class Map extends AbstractUtility{
      * @param floorNumber - it contains all the element of the floor.
      * @return true if the map has been removed, false otherwise.
      */
-    public boolean removeMapLevel(Integer floorNumber) {
-        if(floorNumber == null || floorNumber <= 0) {
+    public boolean removeMapLevel(final Integer floorNumber) {
+        if (floorNumber == null || floorNumber <= 0) {
             throw new IllegalArgumentException("Floor number cannot be a negative, null or 0 value.");
         }
-        if(this.listOfMaps.contains(floorNumber)){
-            this.listOfMaps.remove(floorNumber); 
+        if (this.listOfMaps.contains(floorNumber)) {
+            this.listOfMaps.remove(floorNumber);
             return true;
         } else {
             return false;
         }
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void addToPlayer(FloorManager floorManager) {
+    public void addToPlayer(final FloorManager floorManager) {
     }
-    
+
 }

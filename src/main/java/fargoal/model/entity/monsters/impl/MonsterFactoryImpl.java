@@ -49,43 +49,43 @@ public class MonsterFactoryImpl implements MonsterFactory {
         if (floorManager.getFloorLevel() >= MAX_FLOOR) {
             num = random.nextInt(4) + 4;
             if (num == WAR_LORD) {
-                return generateWarLord(position, level, floorMap, floorManager, renderFactory);
+                return generateWarLord(position, level, floorManager, renderFactory);
             } else if (num == SPIDER) {
-                return generateSpider(position, level, floorMap, floorManager, renderFactory);
+                return generateSpider(position, level, floorManager, renderFactory);
             } else if (num == MAGE) {
-                return generateMage(position, level, floorMap, floorManager, renderFactory);
+                return generateMage(position, level, floorManager, renderFactory);
             } else if (num == ASSASSIN) {
-                return generateAssassin(position, level, floorMap, floorManager, renderFactory);
+                return generateAssassin(position, level, floorManager, renderFactory);
             }
         } else if (floorManager.getFloorLevel() >= MAGE_FLOOR) {
             num = random.nextInt(3) + 4;
             if (num == WAR_LORD) {
-                return generateWarLord(position, level, floorMap, floorManager, renderFactory);
+                return generateWarLord(position, level, floorManager, renderFactory);
             } else if (num == SPIDER) {
-                return generateSpider(position, level, floorMap, floorManager, renderFactory);
+                return generateSpider(position, level, floorManager, renderFactory);
             } else if (num == MAGE) {
-                return generateMage(position, level, floorMap, floorManager, renderFactory);
+                return generateMage(position, level, floorManager, renderFactory);
             }
         } else if (floorManager.getFloorLevel() >= SPIDER_FLOOR) {
             num = random.nextInt(3) + 3;
             if (num == MONK) {
-                return generateMonk(position, level, floorMap, floorManager, renderFactory);
+                return generateMonk(position, level, floorManager, renderFactory);
             } else if (num == WAR_LORD) {
-                return generateWarLord(position, level, floorMap, floorManager, renderFactory);
+                return generateWarLord(position, level, floorManager, renderFactory);
             } else if (num == SPIDER) {
-                return generateSpider(position, level, floorMap, floorManager, renderFactory);
+                return generateSpider(position, level, floorManager, renderFactory);
             }
         } else if (floorManager.getFloorLevel() == MONK_FLOOR) {
-            return generateMonk(position, level, floorMap, floorManager, renderFactory);
+            return generateMonk(position, level, floorManager, renderFactory);
         } else if (floorManager.getFloorLevel() <= MIN_FLOOR) {
             num = random.nextInt(2) + 1;
             if (num == ROGUE) {
-                return generateRogue(position, level, floorMap, floorManager, renderFactory);
+                return generateRogue(position, level, floorManager, renderFactory);
             } else if (num == BARBARIAN) {
-                return generateBarbarian(position, level, floorMap, floorManager, renderFactory);
+                return generateBarbarian(position, level, floorManager, renderFactory);
             }
         }
-        return generateBarbarian(position, level, floorMap, floorManager, renderFactory);
+        return generateBarbarian(position, level, floorManager, renderFactory);
     }
 
     /**
@@ -100,11 +100,10 @@ public class MonsterFactoryImpl implements MonsterFactory {
      */
     private Monster generateRogue(
             final Position position, 
-            final Integer level, 
-            final FloorMap floorMap, 
+            final Integer level,
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
-        return new Rogue(position, level, floorMap, floorManager, renderFactory);
+        return new Rogue(position, level, floorManager, renderFactory);
     }
 
     /**
@@ -119,11 +118,10 @@ public class MonsterFactoryImpl implements MonsterFactory {
      */
     private Monster generateBarbarian(
                 final Position position,
-                final Integer level, 
-                final FloorMap floorMap, 
+                final Integer level,
                 final FloorManager floorManager,
                 final RenderFactory renderFactory) {
-        return new Barbarian(position, level, floorMap, floorManager, renderFactory);
+        return new Barbarian(position, level, floorManager, renderFactory);
     }
 
     /**
@@ -138,11 +136,10 @@ public class MonsterFactoryImpl implements MonsterFactory {
      */
     private Monster generateMonk(
                 final Position position, 
-                final Integer level, 
-                final FloorMap floorMap, 
+                final Integer level,
                 final FloorManager floorManager,
                 final RenderFactory renderFactory) {
-        return new Monk(position, level, floorMap, floorManager, renderFactory);
+        return new Monk(position, level, floorManager, renderFactory);
     }
 
     /**
@@ -157,11 +154,10 @@ public class MonsterFactoryImpl implements MonsterFactory {
      */
     private Monster generateAssassin(
                 final Position position, 
-                final Integer level, 
-                final FloorMap floorMap, 
+                final Integer level,
                 final FloorManager floorManager,
                 final RenderFactory renderFactory) {
-        return new Assassin(position, level, floorMap, floorManager, renderFactory);
+        return new Assassin(position, level, floorManager, renderFactory);
     }
 
     /**
@@ -176,11 +172,10 @@ public class MonsterFactoryImpl implements MonsterFactory {
      */
     private Monster generateWarLord(
                 final Position position, 
-                final Integer level, 
-                final FloorMap floorMap, 
+                final Integer level,
                 final FloorManager floorManager,
                 final RenderFactory renderFactory) {
-        return new WarLord(position, level, floorMap, floorManager, renderFactory);
+        return new WarLord(position, level, floorManager, renderFactory);
     }
 
     /**
@@ -195,11 +190,10 @@ public class MonsterFactoryImpl implements MonsterFactory {
      */
     private Monster generateMage(
                 final Position position, 
-                final Integer level, 
-                final FloorMap floorMap, 
+                final Integer level,
                 final FloorManager floorManager,
                 final RenderFactory renderFactory) {
-        return new Mage(position, level, floorMap, floorManager, renderFactory);
+        return new Mage(position, level, floorManager, renderFactory);
     }
 
     /**
@@ -214,10 +208,9 @@ public class MonsterFactoryImpl implements MonsterFactory {
      */
     private Monster generateSpider(
                 final Position position, 
-                final Integer level, 
-                final FloorMap floorMap, 
+                final Integer level,
                 final FloorManager floorManager,
                 final RenderFactory renderFactory) {
-        return new Spider(position, level, floorMap, floorManager, renderFactory);
+        return new Spider(position, level, floorManager, renderFactory);
     }
 }

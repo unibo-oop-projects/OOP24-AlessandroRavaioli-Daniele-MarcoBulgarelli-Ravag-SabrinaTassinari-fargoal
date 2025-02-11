@@ -90,7 +90,7 @@ public interface Monster extends Entity {
      * 
      * @return the field isVisible of the Monster
      */
-    boolean getVisibility();
+    boolean isVisible();
 
     /**
      * Return the list containing the last 5

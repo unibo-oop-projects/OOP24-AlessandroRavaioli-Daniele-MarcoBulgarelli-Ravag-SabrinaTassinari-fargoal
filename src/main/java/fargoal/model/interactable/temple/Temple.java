@@ -16,7 +16,8 @@ import fargoal.view.api.Renderer;
  */
 public class Temple implements Interactable {
 
-    final private Position position;
+    private static final int GOLD_TO_DONATE_FOR_BLESSING = 2000;
+    private final Position position;
     private Renderer renderer;
     private Position lastPlayerPosition;
 
@@ -32,10 +33,11 @@ public class Temple implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public Interactable interact(final FloorManager floorManager) {
         floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
-        floorManager.getPlayer().getPlayerGold().setGoldDonated(floorManager.getPlayer().getPlayerGold().getGoldDonated() + floorManager.getPlayer().getCurrentGold());
-        if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= 2000) {
+        floorManager.getPlayer().getPlayerGold().setGoldDonated(
+                floorManager.getPlayer().getPlayerGold().getGoldDonated() + floorManager.getPlayer().getCurrentGold());
+        if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= GOLD_TO_DONATE_FOR_BLESSING) {
             floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
             floorManager.getPlayer().getPlayerGold().setGoldDonated(0);
         }
@@ -71,7 +73,7 @@ public class Temple implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition().equals(this.position)) {
             floorManager.getPlayer().setIsImmune(true);
             this.interact(floorManager);
@@ -83,5 +85,5 @@ public class Temple implements Interactable {
         }
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
-    
+
 }

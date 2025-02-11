@@ -22,15 +22,15 @@ public abstract class AbstractMonster implements Monster {
 
     private static final Integer MONSTER_ATTACK = 4;
     private long timer;
-    private List<Position> lastPositions = new ArrayList<>();
+    private final List<Position> lastPositions = new ArrayList<>();
     private Renderer render;
     private MonsterType monsterType;
-    private Health health;
+    private final Health health;
     private Position position;
-    private Integer skill;
+    private final Integer skill;
     private Integer level;
     private FloorManager floorManager;
-    private boolean isVisible = false;
+    private boolean isVisible;
     private final Random random = new Random();
 
     /**
@@ -46,14 +46,14 @@ public abstract class AbstractMonster implements Monster {
                 final Position position,
                 final Integer level, 
                 final FloorManager floorManager) {
-        this.setPosition(position);
-        this.addFirstPosition(position);
+        this.position = position;
+        lastPositions.addFirst(position);
         this.setFloorManager(floorManager);
-        this.setSkill(level);
+        this.skill = level * (random.nextInt(level) + 1);
         this.setLevel(level);
-        this.setVisibilityOn();
-        this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
-        this.setTimer();
+        this.isVisible = true;
+        this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (random.nextInt(level) + 1));
+        this.timer = System.currentTimeMillis();
     }
 
     /** {@inheritDoc} */
@@ -136,7 +136,7 @@ public abstract class AbstractMonster implements Monster {
 
     /** {@inheritDoc} */
     @Override
-    public boolean getVisibility() {
+    public boolean isVisible() {
         return this.isVisible;
     }
 
@@ -183,16 +183,6 @@ public abstract class AbstractMonster implements Monster {
     }
 
     /**
-     * Set the skill of the Monster, based on the 
-     * level where the Monster is.
-     * 
-     * @param level - the level where the Monster is
-     */
-    private void setSkill(final Integer level) {
-        this.skill = level * (getRandom(level) + 1);
-    }
-
-    /**
      * Set the Floormanager of the Monster.
      * 
      * @param floorManager - the FloorManager of the Floor where the Monster is located
@@ -205,9 +195,8 @@ public abstract class AbstractMonster implements Monster {
      * Set the MonsterType of the Monster selected.
      * 
      * @param monsterType the MonsterType of the Monster
-     * @return
      */
-    public void setMonsterType(final MonsterType monsterType) {
+    protected final void setMonsterType(final MonsterType monsterType) {
         this.monsterType = monsterType;
     }
 

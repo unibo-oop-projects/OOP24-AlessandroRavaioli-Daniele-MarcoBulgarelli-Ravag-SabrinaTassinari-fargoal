@@ -7,7 +7,7 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ItemsForInventory;
  * This type of item are utilities, that the player can put in his inventory.
  */
 public interface Utility extends ItemsForInventory {
-    
+
     /**
      * Method to check how many utility of
      * this type are present.

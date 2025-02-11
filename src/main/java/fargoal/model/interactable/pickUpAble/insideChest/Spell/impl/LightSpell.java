@@ -56,7 +56,7 @@ public class LightSpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
         floorManager.getPlayer().setHasLight(true);
         this.removeSpell();
