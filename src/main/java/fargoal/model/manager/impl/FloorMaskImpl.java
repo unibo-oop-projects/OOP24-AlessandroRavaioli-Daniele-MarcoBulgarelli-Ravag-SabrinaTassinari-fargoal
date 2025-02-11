@@ -43,7 +43,7 @@ public class FloorMaskImpl implements FloorMask {
      */
     @Override
     public void update(final FloorManager manager) {
-        final int lightRange = (manager.getPlayer().hasLight() ? 2 : 1);
+        final int lightRange = manager.getPlayer().hasLight() ? 2 : 1;
         final List<Position> lightUp = this.mask.keySet().stream()
                 .filter(e -> Math.abs(e.x() - manager.getPlayer().getPosition().x()) <= lightRange
                         && Math.abs(e.y() - manager.getPlayer().getPosition().y()) <= lightRange)
