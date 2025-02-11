@@ -1,0 +1,143 @@
+package fargoal.entity.monster;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import fargoal.commons.api.Position;
+import fargoal.model.core.GameEngine;
+import fargoal.model.entity.monsters.api.Monster;
+import fargoal.model.entity.monsters.api.MonsterFactory;
+import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
+import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.impl.FloorManagerImpl;
+
+public class TestMonsterMovement {
+
+    private static FloorManager manager = new FloorManagerImpl(new GameEngine());
+    private static Monster monster;
+    private static MonsterFactory factory = new MonsterFactoryImpl(1);
+    private static Position pos;
+    private static Random random = new Random();
+
+    @BeforeAll
+    static void setup() {
+        monster = factory.generate(pos, 
+                manager.getFloorMap(), 
+                manager, 
+                manager.getRenderFactory());
+    }
+
+    @Test
+    void visualizeMonster() {
+        assertEquals(pos, monster.getPosition());
+    }
+
+    @Test
+    void moveMonster() {
+        List<Position> positions;
+        do {
+            pos = manager.getFloorMap().getRandomTile();
+            manager.getMonsters().clear();
+            monster = factory.generate(pos, 
+                manager.getFloorMap(), 
+                manager, 
+                manager.getRenderFactory());
+            positions = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),
+                    new Position(-1, 0), new Position(1, 0),
+                    new Position(-1, 1), new Position(0, 1), new Position(1, 1))
+                    .map(p -> p.add(monster.getPosition()))
+                    .filter(p -> manager.getFloorMap().isTile(p))
+                    .collect(Collectors.toList());
+        } while (positions.isEmpty());
+        System.out.println("ciao");
+        manager.getPlayer().setPosition(positions.get(random.nextInt(positions.size())));
+
+        assertTrue(Math.abs(monster.getPosition().x() - manager.getPlayer().getPosition().x()) <= 1
+                && Math.abs(monster.getPosition().y() - manager.getPlayer().getPosition().y()) <= 1);
+
+        //dato che il player è vicino al mostro, il mostro muovendosi non deve cambiare posizione
+        monster.update(manager);
+        assertEquals(monster.getPosition(), pos);
+
+        //controllo che ad ogni move la posizione del mostro cambi
+        Position lastPosition = monster.getPosition();
+        for (int i = 0; i < 25 ; i++) {
+            monster.move();
+            assertNotEquals(lastPosition, monster.getPosition());
+            lastPosition = monster.getPosition();
+        }
+    }
+        
+    @Test
+    void monstersGenerationFirstFloors() {
+        List<String> monsters = Stream.of("ROGUE", "BARBARIAN").collect(Collectors.toList());
+        for (int i = 0; i < 50; i++) {
+            monster = factory.generate(manager.getFloorMap().getRandomTile(), 
+                    manager.getFloorMap(), 
+                    manager, 
+                    manager.getRenderFactory());
+            if (i == 10) {
+                manager.increaseFloorLevel();
+            } else if (i == 25) {
+                manager.increaseFloorLevel();
+            }
+            assertTrue(monsters.stream().anyMatch(p -> p.equals(monster.getTag())));
+        }
+        for(int i = 0; i < 2; i++) {
+            manager.decreaseFloorLevel();
+        }
+    }
+        
+    @Test
+    void monstersGenerationFourthFloor() {
+        for(int i = 0; i < 3; i++) {
+            manager.increaseFloorLevel();
+        }
+        for (int i = 0; i < 50; i++) {
+            monster = factory.generate(manager.getFloorMap().getRandomTile(), 
+                    manager.getFloorMap(), 
+                    manager, 
+                    manager.getRenderFactory());
+            
+            assertEquals("MONK", monster.getTag());
+        }
+        for(int i = 0; i < 3; i++) {
+            manager.decreaseFloorLevel();
+        }
+    }
+
+    @Test
+    void monsterGenerationFifthAndSixthFloor() {
+        List<String> monsters = Stream.of("MONK", "WAR_LORD", "SPIDER").collect(Collectors.toList());
+        for(int i = 0; i < 4; i++) {
+            manager.increaseFloorLevel();
+        }
+        for (int i = 0; i < 50; i++) {
+            monster = factory.generate(manager.getFloorMap().getRandomTile(), 
+                    manager.getFloorMap(), 
+                    manager, 
+                    manager.getRenderFactory());
+            if (i == 25) {
+                manager.increaseFloorLevel();
+            }
+            assertTrue(monsters.stream().anyMatch(p -> p.equals(monster.getTag())));
+        }
+        for(int i = 0; i < 5; i++) {
+            manager.decreaseFloorLevel();;
+        }
+    }
+
+    @Test
+    void monsterGenerationSeventhAndEighthFloor() {
+        
+    }
+}
