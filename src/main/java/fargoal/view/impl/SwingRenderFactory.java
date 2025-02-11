@@ -11,16 +11,25 @@ import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 
+/**
+ * Factory to generate renderers for every type of {@link FloorElement}.
+ */
 public class SwingRenderFactory implements RenderFactory {
 
     private final SwingView view;
 
-    public SwingRenderFactory(View view){
-        this.view = (SwingView)view;
+    /**
+     * Constructor to assigns to the local field {@link #view}.
+     * 
+     * @param view - the general view then casted to {@link SwingView}
+     */
+    public SwingRenderFactory(final View view) {
+        this.view = (SwingView) view;
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer wallRenderer(Position pos) {
+    public Renderer wallRenderer(final Position pos) {
         return new SwingRendererMiddle(g2d -> {
                     g2d.setColor(Color.BLACK);
                     g2d.drawImage(ImageHolder.wall(),
@@ -32,8 +41,9 @@ public class SwingRenderFactory implements RenderFactory {
                 }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer tileRenderer(Position pos) {
+    public Renderer tileRenderer(final Position pos) {
         return new SwingRendererMiddle(g2d -> {
                 g2d.setColor(Color.WHITE);
                 g2d.drawImage(ImageHolder.tile(),
@@ -45,8 +55,9 @@ public class SwingRenderFactory implements RenderFactory {
                 }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer playerRenderer(FloorElement obj) {
+    public Renderer playerRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.BLUE);
             g2d.drawImage(ImageHolder.player(),
@@ -62,8 +73,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer upstairRenderer(FloorElement obj) {
+    public Renderer upstairRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.LIGHT_GRAY);
             g2d.drawImage(ImageHolder.upStair(),
@@ -75,8 +87,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer downstairRenderer(FloorElement obj) {
+    public Renderer downstairRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
             g2d.drawImage(ImageHolder.downstairs(), 
@@ -88,8 +101,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer templeRenderer(FloorElement obj) {
+    public Renderer templeRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.MAGENTA);
             g2d.drawImage(ImageHolder.temple(),
@@ -101,8 +115,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer chestRenderer(ChestImpl obj) {
+    public Renderer chestRenderer(final ChestImpl obj) {
         return new SwingRendererMiddle(g2d -> {
             if (!obj.isOpen()) {
                 g2d.drawImage(ImageHolder.chest(), 
@@ -112,12 +127,12 @@ public class SwingRenderFactory implements RenderFactory {
                     this.view.getTilePixelHeight(), 
                     null);
             }
-            
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer goldRenderer(SackOfMoney obj) {
+    public Renderer goldRenderer(final SackOfMoney obj) {
         return new SwingRendererMiddle(g2d -> {
             if (obj.isOpen()) {
                 if (obj.isHiddenInGround()) {
@@ -136,13 +151,12 @@ public class SwingRenderFactory implements RenderFactory {
                     this.view.getTilePixelHeight(), 
                     null);
             }
-            
-            
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer beaconRenderer(FloorElement obj) {
+    public Renderer beaconRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.CYAN);
             g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
@@ -152,8 +166,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer assassinRenderer(FloorElement obj) {
+    public Renderer assassinRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
             g2d.drawImage(ImageHolder.assassin(),
@@ -165,8 +180,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer barbarianRenderer(FloorElement obj) {
+    public Renderer barbarianRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.RED);
             g2d.drawImage(ImageHolder.barbarian(),
@@ -178,8 +194,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer mageRenderer(FloorElement obj) {
+    public Renderer mageRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.GREEN);
             g2d.drawImage(ImageHolder.mage(),
@@ -191,8 +208,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer monkRenderer(FloorElement obj) {
+    public Renderer monkRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.CYAN);
             g2d.drawImage(ImageHolder.monk(),
@@ -204,8 +222,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer rogueRenderer(FloorElement obj) {
+    public Renderer rogueRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.ORANGE);
             g2d.drawImage(ImageHolder.rogue(),
@@ -217,8 +236,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer spiderRenderer(FloorElement obj) {
+    public Renderer spiderRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.BLACK);
             g2d.drawImage(ImageHolder.spider(),
@@ -230,8 +250,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer warlordRenderer(FloorElement obj) {
+    public Renderer warlordRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.PINK);
             g2d.drawImage(ImageHolder.warlord(),
@@ -243,8 +264,9 @@ public class SwingRenderFactory implements RenderFactory {
         }, this.view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public Renderer swordRenderer(FloorElement obj) {
+    public Renderer swordRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.PINK);
             g2d.drawImage(ImageHolder.sword(), 
@@ -255,5 +277,4 @@ public class SwingRenderFactory implements RenderFactory {
                 null);
         }, this.view);
     }
-    
 }

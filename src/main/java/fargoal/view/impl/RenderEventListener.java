@@ -17,25 +17,40 @@ import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 
-public class RenderEventListener implements FloorEventListener, Renderer{
+/**
+ * Class that work to display to screen the events that
+ * happens to the player.
+ */
+public class RenderEventListener implements FloorEventListener, Renderer {
+    private static final int FONT_DIVISOR_HEIGHT = 110;
+    private static final int DIVISOR_WIDTH = 50;
+    private static final int DIVISOR_HEIGHT = 55;
+    private static final int MULTIPLIER_HEIGHT = 12;
 
     private String text;
     private SwingRendererTop renderer;
 
-    public RenderEventListener(View view) {
+    /**
+     * Constructor to create the renderer for the events and set
+     * the local field {@link #text}.
+     * 
+     * @param view - the general view of the game
+     */
+    public RenderEventListener(final View view) {
         this.text = " ";
-        SwingView swing = (SwingView)view;
+        SwingView swing = (SwingView) view;
         renderer = new SwingRendererTop(g2d -> {
-            g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / 110));
+            g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / FONT_DIVISOR_HEIGHT));
             g2d.setColor(Color.WHITE);
             g2d.drawString(this.text, 
-                    swing.getEventPanel().getBounds().width / 50,
-                    swing.getEventPanel().getBounds().height * 12 / 55); 
+                    swing.getEventPanel().getBounds().width / DIVISOR_WIDTH,
+                    swing.getEventPanel().getBounds().height * MULTIPLIER_HEIGHT / DIVISOR_HEIGHT); 
         }, view);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void notifyEvent(FloorEvent floorEvent) {
+    public void notifyEvent(final FloorEvent floorEvent) {
         if (floorEvent instanceof MonsterEncounterEvent) {
             MonsterEncounterEvent ev = (MonsterEncounterEvent) floorEvent;
             text = "A " + ev.monsterEncountered().getTag();
@@ -72,9 +87,9 @@ public class RenderEventListener implements FloorEventListener, Renderer{
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public void render() {
         this.renderer.render();
     }
-    
 }
