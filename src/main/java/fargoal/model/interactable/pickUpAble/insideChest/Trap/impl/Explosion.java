@@ -12,11 +12,13 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class Explosion extends AbstractTrap {
 
+    private static final int MAX_DAMAGE = 14;
+
     /**
      * This is the constructor of the class. When the player finds the trap in a chest it damages him immediately. 
      * @param floorManager - it contains all the element of the floor the trap was found.
      */
-    public Explosion(FloorManager floorManager) {
+    public Explosion(final FloorManager floorManager) {
         this.use(floorManager);
     }
 
@@ -28,8 +30,8 @@ public class Explosion extends AbstractTrap {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
-        int damage = new Random().nextInt(14) + floorManager.getFloorLevel();
+    public void effect(final FloorManager floorManager) {
+        int damage = new Random().nextInt(MAX_DAMAGE) + floorManager.getFloorLevel();
         floorManager.getPlayer().getHealth().decreaseHealth(damage);
     }
 

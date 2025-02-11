@@ -15,7 +15,7 @@ public class Teleport extends AbstractTrap {
      * This is the constructor of the class. When the player finds the trap in a chest it teleport him immediately. 
      * @param floorManager - it contains all the element of the floor the trap was found.
      */
-    public Teleport(FloorManager floorManager) {
+    public Teleport(final FloorManager floorManager) {
         this.use(floorManager);
     }
 
@@ -27,7 +27,7 @@ public class Teleport extends AbstractTrap {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
         Position newPositionPlayer = floorManager.getFloorMap().getRandomTile();
         floorManager.getPlayer().setPosition(newPositionPlayer);
     }
