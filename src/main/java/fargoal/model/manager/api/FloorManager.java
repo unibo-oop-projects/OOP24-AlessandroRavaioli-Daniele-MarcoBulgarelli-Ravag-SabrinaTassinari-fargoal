@@ -3,7 +3,6 @@ package fargoal.model.manager.api;
 import java.util.List;
 
 import fargoal.model.commons.FloorElement;
-import fargoal.model.core.GameContext;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.events.api.FloorEvent;

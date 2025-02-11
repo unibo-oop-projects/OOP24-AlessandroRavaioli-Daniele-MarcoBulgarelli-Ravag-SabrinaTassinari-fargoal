@@ -36,7 +36,8 @@ public class TitleScreenManager implements SceneManager, MenuManager {
         this.ctrl = engine.getController();
         this.timeToQuit = false;
         this.start = false;
-        wait = new Timer();
+        this.wait = new Timer();
+        this.wait.setTime(MILLIS_TO_WAIT);
         createRenderers(engine.getView());
     }
 
