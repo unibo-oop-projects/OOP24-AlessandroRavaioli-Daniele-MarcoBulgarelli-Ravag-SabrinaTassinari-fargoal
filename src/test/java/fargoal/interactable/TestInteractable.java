@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import fargoal.commons.api.Position;
+import fargoal.model.commons.FloorElement;
 import fargoal.model.core.GameEngine;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
@@ -135,10 +136,15 @@ public class TestInteractable {
         int numberInInventory = floorManager.getPlayer().getInventory().getBeacons().getNumberInInventory();
         floorManager.getPlayer().useBeacon();
         assertNotEquals(numberInInventory, floorManager.getPlayer().getInventory().getBeacons().getNumberInInventory());
-        assertEquals(floorManager.getPlayer().getPosition(), floorManager.getAllElements().stream().
-            filter(e -> e instanceof BeaconOnGround).findFirst().get().getPosition());
+        FloorElement beacon = floorManager.getAllElements().stream().
+          filter(e -> e instanceof BeaconOnGround).findFirst().get();
+        assertEquals(floorManager.getPlayer().getPosition(), beacon.getPosition());
         floorManager.getAllElements().stream().filter(e -> e instanceof BeaconOnGround).findFirst().get().update(floorManager);
         assertTrue(floorManager.getPlayer().isImmune());
+        floorManager.getPlayer().setPosition(floorManager.getFloorMap().getRandomTile());
+        assertNotEquals(floorManager.getPlayer().getPosition(), beacon.getPosition());
+        floorManager.getPlayer().useTeleportSpell();
+        assertEquals(beacon.getPosition(), floorManager.getPlayer().getPosition());
     }
 
     @Test
