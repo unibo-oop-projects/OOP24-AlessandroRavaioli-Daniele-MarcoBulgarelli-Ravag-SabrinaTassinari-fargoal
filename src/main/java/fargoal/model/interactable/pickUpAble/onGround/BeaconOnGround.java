@@ -72,6 +72,7 @@ public class BeaconOnGround implements Interactable {
         } else {
             floorManager.getPlayer().setIsImmune(false);
         }
+        this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
 
 }
