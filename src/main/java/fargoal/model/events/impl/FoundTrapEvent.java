@@ -10,7 +10,6 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
  * in the chest.
  */
 public class FoundTrapEvent implements FloorEvent {
-    
     private final ChestItem chestItem;
     private boolean mapLost;
 
@@ -32,7 +31,7 @@ public class FoundTrapEvent implements FloorEvent {
      * 
      * @return - the Trap found
      */
-    public ChestItem TypeOfTrap() {
+    public ChestItem typeOfTrap() {
         return this.chestItem;
     }
 
@@ -42,7 +41,7 @@ public class FoundTrapEvent implements FloorEvent {
      * 
      * @return - true if the player lost the map, false otherwise
      */
-    public boolean HasLostMap() {
+    public boolean hasLostMap() {
         return this.mapLost;
     }
 }

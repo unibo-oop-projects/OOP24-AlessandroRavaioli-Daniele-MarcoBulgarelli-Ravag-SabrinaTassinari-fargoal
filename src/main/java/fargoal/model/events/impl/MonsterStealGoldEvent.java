@@ -8,7 +8,6 @@ import fargoal.model.events.api.FloorEvent;
  * monster instead of attacking the player steals him some gold.
  */
 public class MonsterStealGoldEvent implements FloorEvent {
-
     private int gold;
     private FloorElement monster;
 
@@ -31,7 +30,7 @@ public class MonsterStealGoldEvent implements FloorEvent {
      * 
      * @return - the amount of gold that has been stolen
      */
-    public Integer HowMuchGold() {
+    public Integer howMuchGold() {
         return this.gold;
     }
 
@@ -41,8 +40,7 @@ public class MonsterStealGoldEvent implements FloorEvent {
      * 
      * @return - the monster who stole the gold
      */
-    public FloorElement WhoStole() {
+    public FloorElement whoStole() {
         return this.monster;
     }
-    
 }

@@ -9,7 +9,6 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
  * instead of attacking the player steals him a spell.
  */
 public class MonsterStealSpellEvent implements FloorEvent {
-    
     private final FloorElement monster;
     private final ChestItem item;
 
@@ -32,7 +31,7 @@ public class MonsterStealSpellEvent implements FloorEvent {
      * 
      * @return - the item that has been stolen
      */
-    public ChestItem WhatMonsterStole() {
+    public ChestItem whatMonsterStole() {
         return this.item;
     }
 
@@ -42,7 +41,7 @@ public class MonsterStealSpellEvent implements FloorEvent {
      * 
      * @return - the monster who stole
      */
-    public FloorElement WhoStole() {
+    public FloorElement whoStole() {
         return this.monster;
     }
 

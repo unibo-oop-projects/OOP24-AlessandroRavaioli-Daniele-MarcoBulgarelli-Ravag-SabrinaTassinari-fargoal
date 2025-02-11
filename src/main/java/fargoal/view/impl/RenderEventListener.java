@@ -42,33 +42,33 @@ public class RenderEventListener implements FloorEventListener, Renderer{
         } else if (floorEvent instanceof FoundTrapEvent) {
             FoundTrapEvent ev = (FoundTrapEvent) floorEvent;
             String temp;
-            temp = ev.TypeOfTrap().getChestItemName();
-            if (ev.HasLostMap()) {
+            temp = ev.typeOfTrap().getChestItemName();
+            if (ev.hasLostMap()) {
                 text = temp + ", the map has been lost!";
             } else {
                 text = temp;
             }
         } else if (floorEvent instanceof PickUpGoldEvent) {
             PickUpGoldEvent ev = (PickUpGoldEvent) floorEvent;
-            text = "Found " + ev.GoldFound() + " gold";
+            text = "Found " + ev.goldFound() + " gold";
         } else if (floorEvent instanceof PickUpNewItemEvent) {
             PickUpNewItemEvent ev = (PickUpNewItemEvent) floorEvent;
-            text = "Found " + ev.PickedUpWhat().getChestItemName();
+            text = "Found " + ev.pickedUpWhat().getChestItemName();
         } else if (floorEvent instanceof ReceiveAttackEvent) {
             ReceiveAttackEvent ev = (ReceiveAttackEvent) floorEvent;
-            text = "Attacked by " + ev.AttackedFrom().getTag();
+            text = "Attacked by " + ev.attackedFrom().getTag();
         } else if (floorEvent instanceof WalkOverEvent) {
             WalkOverEvent ev = (WalkOverEvent) floorEvent;
             text = ev.getOnWhat().getTag();
         } else if (floorEvent instanceof MonsterStealSpellEvent) {
             MonsterStealSpellEvent ev = (MonsterStealSpellEvent) floorEvent;
-            text = ev.WhoStole().getTag() + " stole " + ev.WhatMonsterStole().getChestItemName();
+            text = ev.whoStole().getTag() + " stole " + ev.whatMonsterStole().getChestItemName();
         } else if (floorEvent instanceof MonsterStealGoldEvent) {
             MonsterStealGoldEvent ev = (MonsterStealGoldEvent) floorEvent;
-            text = ev.WhoStole().getTag() + " stole " + ev.HowMuchGold() + " gold coins";
+            text = ev.whoStole().getTag() + " stole " + ev.howMuchGold() + " gold coins";
         } else if (floorEvent instanceof PlayerActionEvent) {
             PlayerActionEvent ev = (PlayerActionEvent) floorEvent;
-            text = ev.WhatPlayerUsed().getChestItemName() + " has benn used";
+            text = ev.whatPlayerUsed().getChestItemName() + " has benn used";
         }
     }
 

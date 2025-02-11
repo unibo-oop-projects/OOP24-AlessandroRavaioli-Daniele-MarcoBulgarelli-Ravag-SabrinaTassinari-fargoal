@@ -8,7 +8,6 @@ import fargoal.model.events.api.FloorEvent;
  * finds a monster near to him.
  */
 public class MonsterEncounterEvent implements FloorEvent {
-    
     private final FloorElement floorElement;
 
     /**

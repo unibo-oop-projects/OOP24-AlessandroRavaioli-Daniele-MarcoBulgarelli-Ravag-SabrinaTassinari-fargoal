@@ -9,7 +9,6 @@ import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
  * and find an item to put in the inventory.
  */
 public class PickUpNewItemEvent implements FloorEvent {
-    
     private final ChestItem item;
 
     /**
@@ -27,7 +26,7 @@ public class PickUpNewItemEvent implements FloorEvent {
      * 
      * @return - the ChestItem found
      */
-    public ChestItem PickedUpWhat() {
+    public ChestItem pickedUpWhat() {
         return this.item;
     }
 }
