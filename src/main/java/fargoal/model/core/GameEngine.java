@@ -2,7 +2,6 @@ package fargoal.model.core;
 
 import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.manager.api.SceneManager;
-import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.manager.impl.TitleScreenManager;
 import fargoal.view.api.View;
 import fargoal.view.impl.SwingView;

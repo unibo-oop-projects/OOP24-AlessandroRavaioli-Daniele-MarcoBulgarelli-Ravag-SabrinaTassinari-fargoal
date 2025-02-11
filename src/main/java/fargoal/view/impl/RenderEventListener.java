@@ -41,7 +41,13 @@ public class RenderEventListener implements FloorEventListener, Renderer{
             text = "A " + ev.monsterEncountered().getTag();
         } else if (floorEvent instanceof FoundTrapEvent) {
             FoundTrapEvent ev = (FoundTrapEvent) floorEvent;
-            text = ev.TypeOfTrap().getChestItemName();
+            String temp;
+            temp = ev.TypeOfTrap().getChestItemName();
+            if (ev.HasLostMap()) {
+                text = temp + ", the map has been lost!";
+            } else {
+                text = temp;
+            }
         } else if (floorEvent instanceof PickUpGoldEvent) {
             PickUpGoldEvent ev = (PickUpGoldEvent) floorEvent;
             text = "Found " + ev.GoldFound() + " gold";

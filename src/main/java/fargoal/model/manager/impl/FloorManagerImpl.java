@@ -60,6 +60,8 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     private final Timer timer;
     private long elapsed;
     private final SwordOfFargoal sword;
+    private boolean isOver;
+    private String endText;
 
     /**
      * Constructor that inizializes all of its fields.
@@ -79,6 +81,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
                 new InventoryInformationRenderer(engine.getView()));
         this.sword = new SwordOfFargoal(renderFactory,
                 new Random().nextInt(VARIABLE_SWORD_LEVEL) + MINIMUM_SWORD_LEVEL);
+        this.isOver = false;
         initializeFloor();
     }
 
@@ -87,6 +90,9 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
      */
     @Override
     public void update(GameEngine engine) {
+        if (isOver) {
+            this.setSceneManager(engine);
+        }
         this.elapsed = engine.getElapsedTime();
         //Try to generate a monster, i don't need it to be guaranteed
         if (this.monsters.size() < MAX_MONSTERS) {
@@ -102,6 +108,10 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             this.listener.render();
         }
         this.mask.update(this);
+        if (this.player.isDead()) {
+            isOver = true;
+            endText = "GAME OVER";
+        }
     }
 
     /**
@@ -186,6 +196,10 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     public void decreaseFloorLevel() {
         if (this.floorLevel <= 0) {
             throw new  IllegalStateException("cannot go to level -1");
+        }
+        if (this.floorLevel == 0 && this.player.hasSword()) {
+            this.isOver = true;
+            this.endText = "YOU WIN";
         }
         this.floorLevel--;
         initializeFloor();
@@ -322,7 +336,6 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
 
     @Override
     public void setSceneManager(GameEngine engine) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setSceneManager'");
+        engine.setSceneManager(new GameOverManager(engine, endText));
     }
 }

@@ -1,7 +1,5 @@
 package fargoal.model.manager.api;
 
-import fargoal.model.core.GameContext;
-
 /**
  * interface that models a cover for the floor.
  */

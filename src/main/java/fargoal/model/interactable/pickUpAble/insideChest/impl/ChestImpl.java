@@ -82,17 +82,15 @@ public class ChestImpl implements Interactable {
                 } 
                 floorManager.notifyFloorEvent(new PickUpNewItemEvent(spell));
             } else if (num >= 6 && num <= 9) {
-                ChestItem trap;
                 if (num == 6) {
-                    trap = new ChestItemFactoryImpl().generateCeilingTrap(floorManager);
+                    new ChestItemFactoryImpl().generateCeilingTrap(floorManager);
                 } else if (num == 7) {
-                    trap = new ChestItemFactoryImpl().generateExplosion(floorManager);
+                    new ChestItemFactoryImpl().generateExplosion(floorManager);
                 } else if (num == 8) {
-                    trap = new ChestItemFactoryImpl().generatePit(floorManager);
+                    new ChestItemFactoryImpl().generatePit(floorManager);
                 } else {
-                    trap = new ChestItemFactoryImpl().generateTeleport(floorManager);
+                    new ChestItemFactoryImpl().generateTeleport(floorManager);
                 } 
-                floorManager.notifyFloorEvent(new FoundTrapEvent(trap));
             } else if (num >= 11 ) {
                 Utility item;
                 if (num == 10) {
