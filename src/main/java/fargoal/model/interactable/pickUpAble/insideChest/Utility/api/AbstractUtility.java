@@ -24,15 +24,14 @@ public abstract class AbstractUtility implements Utility {
 
     /**
      * This method is the effect the utility has when it is used.
-     * @param floorManager - it contains all the element of the floor.
      */
     public abstract void effect(FloorManager floorManager);
 
     /** {@inheritDoc} */
     @Override
-    public void store(final FloorManager floorManager) {
+    public void store() {
         this.addUtility();
-        this.addToPlayer(floorManager);
+        this.addToPlayer();
     }
 
     /**
@@ -40,7 +39,7 @@ public abstract class AbstractUtility implements Utility {
      * is stored.
      * @param floorManager - it contains all the elements of the floor.
      */
-    public abstract void addToPlayer(FloorManager floorManager);
+    public abstract void addToPlayer();
 
     /**
      * This method add an utility in the player's inventory.

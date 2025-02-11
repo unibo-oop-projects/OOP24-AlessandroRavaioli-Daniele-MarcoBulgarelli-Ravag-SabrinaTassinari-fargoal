@@ -15,9 +15,9 @@ public class DriftSpell extends AbstractSpell {
      * it is stored immediately in the player's inventory.
      * If the spell was cast and player did not fall in a pit when he change the floor
      * the spell ends.
-     * @param floorManager - it contains all the elements in the floor. 
      */
-    public DriftSpell(final FloorManager floorManager) {
+    public DriftSpell() {
+        this.setNumberInInventory(0);
     }
 
     /** {@inheritDoc} */

@@ -34,8 +34,8 @@ public class WarLord extends AbstractMonster {
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
         setMonsterType(MonsterType.WAR_LORD);
-        this.setRender(renderFactory.warlordRenderer(this));
         this.shield = true;
+        this.setRender(renderFactory.warlordRenderer(this));
     }
 
     /** {@inheritDoc} */

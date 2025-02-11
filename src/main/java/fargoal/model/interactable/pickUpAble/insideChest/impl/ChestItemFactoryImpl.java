@@ -28,38 +28,38 @@ public class ChestItemFactoryImpl implements ChestItemFactory {
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateDriftSpell(final FloorManager floorManager) {
-        return new DriftSpell(floorManager);
+    public Spell generateDriftSpell() {
+        return new DriftSpell();
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateInvisibilitySpell(final FloorManager floorManager) {
-        return new InvisibilitySpell(floorManager);
+    public Spell generateInvisibilitySpell() {
+        return new InvisibilitySpell();
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateLightSpell(final FloorManager floorManager) {
-        return new LightSpell(floorManager);
+    public Spell generateLightSpell() {
+        return new LightSpell();
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateRegenerationSpell(final FloorManager floorManager) {
-        return new RegenerationSpell(floorManager);
+    public Spell generateRegenerationSpell() {
+        return new RegenerationSpell();
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateShieldSpell(final FloorManager floorManager) {
-        return new ShieldSpell(floorManager);
+    public Spell generateShieldSpell() {
+        return new ShieldSpell();
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateTeleportSpell(final FloorManager floorManager) {
-        return new TeleportSpell(floorManager);
+    public Spell generateTeleportSpell() {
+        return new TeleportSpell();
     }
 
     /** {@inheritDoc} */
@@ -88,8 +88,8 @@ public class ChestItemFactoryImpl implements ChestItemFactory {
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateBeacon(final FloorManager floorManager) {
-        return new Beacon(floorManager);
+    public Utility generateBeacon() {
+        return new Beacon();
     }
 
     /** {@inheritDoc} */
@@ -100,14 +100,14 @@ public class ChestItemFactoryImpl implements ChestItemFactory {
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateHealingPotion(final FloorManager floorManager) {
-        return new HealingPotion(floorManager);
+    public Utility generateHealingPotion() {
+        return new HealingPotion();
     }
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateMap(final FloorManager floorManager) {
-        return new Map(floorManager);
+    public Utility generateMap() {
+        return new Map();
     }
 
     /** {@inheritDoc} */

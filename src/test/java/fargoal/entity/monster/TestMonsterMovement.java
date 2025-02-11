@@ -30,8 +30,7 @@ public class TestMonsterMovement {
 
     @BeforeAll
     static void setup() {
-        monster = factory.generate(pos, 
-                manager.getFloorMap(), 
+        monster = factory.generate(pos,
                 manager, 
                 manager.getRenderFactory());
     }
@@ -47,8 +46,7 @@ public class TestMonsterMovement {
         do {
             pos = manager.getFloorMap().getRandomTile();
             manager.getMonsters().clear();
-            monster = factory.generate(pos, 
-                manager.getFloorMap(), 
+            monster = factory.generate(pos,
                 manager, 
                 manager.getRenderFactory());
             positions = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),

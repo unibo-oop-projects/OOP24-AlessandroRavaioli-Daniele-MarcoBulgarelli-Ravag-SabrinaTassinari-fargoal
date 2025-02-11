@@ -31,8 +31,7 @@ public class TestMonsterDamage {
     static void setup() {
         List<Position> positions;
         do {
-        monster = factory.generate(floorManager.getFloorMap().getRandomTile(), 
-                floorManager.getFloorMap(), 
+        monster = factory.generate(floorManager.getFloorMap().getRandomTile(),  
                 floorManager, 
                 floorManager.getRenderFactory());
         positions = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),

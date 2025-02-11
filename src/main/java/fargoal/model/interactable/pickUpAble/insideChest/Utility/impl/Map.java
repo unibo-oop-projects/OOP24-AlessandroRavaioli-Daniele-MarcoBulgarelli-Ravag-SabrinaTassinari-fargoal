@@ -20,9 +20,8 @@ public class Map extends AbstractUtility {
 
     /**
      * This is the constructor of the class. It store right away the map and it set the level it reveal.
-     * @param floorManager - it contains all the element of the floor.
      */
-    public Map(final FloorManager floorManager) {
+    public Map() {
         listOfMaps = new ArrayList<>();
     }
 
@@ -42,7 +41,7 @@ public class Map extends AbstractUtility {
 
     /** {@inheritDoc} */
     @Override
-    public void store(final FloorManager floorManager) {
+    public void store() {
         this.addUtility(this.getMapLevel());
     }
 
@@ -102,7 +101,7 @@ public class Map extends AbstractUtility {
 
     /** {@inheritDoc} */
     @Override
-    public void addToPlayer(final FloorManager floorManager) {
+    public void addToPlayer() {
     }
 
 }

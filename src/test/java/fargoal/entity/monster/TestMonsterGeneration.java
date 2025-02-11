@@ -29,7 +29,6 @@ public class TestMonsterGeneration {
         monsters = Stream.of("ROGUE", "BARBARIAN").collect(Collectors.toList());
         for (int i = 0; i < 50; i++) {
             monster = factory.generate(manager.getFloorMap().getRandomTile(), 
-                    manager.getFloorMap(), 
                     manager, 
                     manager.getRenderFactory());
             if (i == 10) {
@@ -51,7 +50,6 @@ public class TestMonsterGeneration {
         }
         for (int i = 0; i < 50; i++) {
             monster = factory.generate(manager.getFloorMap().getRandomTile(), 
-                    manager.getFloorMap(), 
                     manager, 
                     manager.getRenderFactory());
             
@@ -71,7 +69,6 @@ public class TestMonsterGeneration {
         }
         for (int i = 0; i < 50; i++) {
             monster = factory.generate(manager.getFloorMap().getRandomTile(), 
-                    manager.getFloorMap(), 
                     manager, 
                     manager.getRenderFactory());
             if (i == 25) {
@@ -92,8 +89,7 @@ public class TestMonsterGeneration {
             manager.increaseFloorLevel();
         }
         for (int i = 0; i < 50; i++) {
-            monster = factory.generate(manager.getFloorMap().getRandomTile(), 
-                    manager.getFloorMap(), 
+            monster = factory.generate(manager.getFloorMap().getRandomTile(),
                     manager, 
                     manager.getRenderFactory());
             if (i == 25) {
@@ -115,7 +111,6 @@ public class TestMonsterGeneration {
         }
         for (int i = 0; i < 50; i++) {
             monster = factory.generate(manager.getFloorMap().getRandomTile(), 
-                    manager.getFloorMap(), 
                     manager, 
                     manager.getRenderFactory());
             if (i == 10) {

@@ -34,8 +34,8 @@ public class Mage extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        this.setRender(renderFactory.mageRenderer(this));
         setMonsterType(MonsterType.MAGE);
+        this.setRender(renderFactory.mageRenderer(this));
     }
 
     /** {@inheritDoc} */
@@ -47,8 +47,8 @@ public class Mage extends AbstractMonster {
     /** {@inheritDoc} */
     @Override
     public void steal() {
-        Inventory inventory = this.getFloorManager().getPlayer().getInventory();
-        int num = this.getRandom(POSSIBLE_SPELLS);
+        final Inventory inventory = this.getFloorManager().getPlayer().getInventory();
+        final int num = this.getRandom(POSSIBLE_SPELLS);
         boolean check = false;
         while (!check) {
             if (num == 0 

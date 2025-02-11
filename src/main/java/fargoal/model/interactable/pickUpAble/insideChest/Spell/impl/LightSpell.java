@@ -15,9 +15,9 @@ public class LightSpell extends AbstractSpell {
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
-     * @param floorManager - it contains al the element in the floor.
      */
-    public LightSpell(final FloorManager floorManager) {
+    public LightSpell() {
+        this.setNumberInInventory(0);
     }
 
     /** {@inheritDoc} */
@@ -46,11 +46,10 @@ public class LightSpell extends AbstractSpell {
     /** {@inheritDoc} */
     @Override
     public void update(final FloorManager floorManager) {
-        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName())) {
-            if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
-                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), false);
-                floorManager.getPlayer().setHasLight(false);
-            }
+        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName()) 
+                && this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
+            floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), false);
+            floorManager.getPlayer().setHasLight(false);
         }
     }
 

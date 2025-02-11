@@ -22,6 +22,12 @@ public interface Spell extends ItemsForInventory {
     Integer getNumberInInventory();
 
     /**
+     * Setter for the field numberInInventory.
+     * @param numberInInventory - number of spell in the inventory
+     */
+    void setNumberInInventory(int numberInINventory);
+
+    /**
      * This method remove a spell from the inventory.
      */
     void removeSpell();

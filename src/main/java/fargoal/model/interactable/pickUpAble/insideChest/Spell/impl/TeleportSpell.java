@@ -16,10 +16,9 @@ public class TeleportSpell extends AbstractSpell {
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
-     * @param floorManager - it contains al the element in the floor.
      */
-    public TeleportSpell(final FloorManager floorManager) {
-        this.store(floorManager);
+    public TeleportSpell() {
+        this.setNumberInInventory(1);
     }
 
     /** {@inheritDoc} */
@@ -38,13 +37,14 @@ public class TeleportSpell extends AbstractSpell {
     public void effect(final FloorManager floorManager) {
         Position newPlayerPosition;
         floorManager.notifyFloorEvent(new PlayerActionEvent(this));
-        if (floorManager.getInteractables().stream().filter(i -> i.getTag() == "BEACON").count() > 0) {
+        if (floorManager.getInteractables().stream().filter(i -> i.getTag().equals("BEACON")).count() > 0) {
             newPlayerPosition = 
-                floorManager.getInteractables().stream().filter(i -> i.getTag() == "BEACON").toList().getFirst().getPosition();
+                floorManager.getInteractables().stream().filter(i -> i.getTag().equals("BEACON")).toList().getFirst().getPosition();
         } else {
             newPlayerPosition = floorManager.getFloorMap().getRandomTile();
         }
         floorManager.getPlayer().setPosition(newPlayerPosition);
         this.removeSpell();
     }
+
 }

@@ -32,8 +32,8 @@ public class Spider extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        this.setRender(renderFactory.spiderRenderer(this));
         setMonsterType(MonsterType.SPIDER);
+        this.setRender(renderFactory.spiderRenderer(this));
     }
 
     /** {@inheritDoc} */
