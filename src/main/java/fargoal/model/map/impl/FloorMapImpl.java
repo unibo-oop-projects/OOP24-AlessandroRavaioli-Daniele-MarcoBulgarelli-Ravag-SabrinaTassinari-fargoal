@@ -58,7 +58,7 @@ public class FloorMapImpl implements FloorMap {
      */
     @Override
     public Position getRandomTile() {
-        List<Position> list = new LinkedList<>(this.tiles.keySet());
+        final List<Position> list = new LinkedList<>(this.tiles.keySet());
         Collections.shuffle(list);
         return list.getFirst();
     }

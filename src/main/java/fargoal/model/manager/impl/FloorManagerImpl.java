@@ -49,16 +49,17 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     private static final int VARIABLE_SWORD_LEVEL = 6;
 
     private final RenderEventListener listener;
-    private FloorMap map;
-    private List<Monster> monsters;
-    private Player player;
+    private final List<Monster> monsters;
+    private final Player player;
     private final FloorMask mask;
-    private int floorLevel;
-    private List<Interactable> interactables;
-    private MonsterFactory monstFact;
-    private Temple temple;
+    private final List<Interactable> interactables;
     private final RenderFactory renderFactory;
     private final Timer timer;
+    private FloorMap map;
+    private int floorLevel;
+    private MonsterFactory monstFact;
+    private Temple temple;
+
     private long elapsed;
     private final SwordOfFargoal sword;
     private boolean isOver;
@@ -176,7 +177,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     /** {@inheritDoc} */
     @Override
     public List<FloorElement> getAllElements() {
-        List<FloorElement> elements = new LinkedList<>(this.interactables);
+        final List<FloorElement> elements = new LinkedList<>(this.interactables);
         elements.add(this.temple);
         elements.add(this.player);
         elements.addAll(this.monsters);
@@ -221,8 +222,8 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             generateMonster(this.map.getRandomTile());
         }
 
-        int goldSpots = new Random().nextInt(4) + MINIMUM_NUMBER_OF_GOLD_SPOTS;
-        int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
+        final int goldSpots = new Random().nextInt(4) + MINIMUM_NUMBER_OF_GOLD_SPOTS;
+        final int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
         while (this.interactables.size() < goldSpots) {
             generateGold();
         }
@@ -235,12 +236,12 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
         } while (this.interactables.stream().anyMatch(item -> item.getPosition().equals(this.temple.getPosition())) 
                 || this.player.getPosition().equals(this.temple.getPosition()));
 
-        int downStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+        final int downStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
         while (this.interactables.size() < downStair + goldSpots + treasures) {
             generateStairs(new DownStairs(new Position(0, 0), renderFactory));
         }
         if (this.floorLevel != 1 || this.player.hasSword()) {
-            int upStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+            final int upStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
             while (this.interactables.size() < downStair + upStair + goldSpots + treasures) {
                 generateStairs(new UpStairs(new Position(0, 0), renderFactory));
             }
@@ -264,11 +265,9 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
 
     private void generateMonster(final Position pos) {
         boolean alreadyPresent = false;
-        alreadyPresent = false;
-        for (int i = 0; i < this.monsters.size(); i++) {
-            if (this.monsters.get(i).getPosition().equals(pos) || pos.equals(this.player.getPosition())) {
-                alreadyPresent = true;
-            }
+        if (this.monsters.stream().anyMatch(m -> m.getPosition().equals(pos))
+                || this.player.getPosition().equals(pos)) {
+            alreadyPresent = true;
         }
         if (!alreadyPresent) {
             this.monsters.add(monstFact.generate(pos, this.map, this, renderFactory));
@@ -276,13 +275,12 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     }
 
     private void generateItems() {
-        boolean alreadyPresent = false;
+        boolean alreadyPresent;
         do {
-            Position pos = this.map.getRandomTile();
-            Interactable temp = new ChestImpl(pos, this.renderFactory);
+            final Position pos = this.map.getRandomTile();
+            final Interactable temp = new ChestImpl(pos, this.renderFactory);
             alreadyPresent = false;
-            if (this.interactables.stream()
-                    .anyMatch(in -> in.getPosition().equals(pos))
+            if (this.interactables.stream().anyMatch(in -> in.getPosition().equals(pos))
                     || this.player.getPosition().equals(pos)) {
                         alreadyPresent = true;
                     }
@@ -293,15 +291,14 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     }
 
     private void generateGold() {
-        boolean alreadyPresent = false;
+        boolean alreadyPresent;
         do {
-            Position pos = this.map.getRandomTile();
-            SackOfMoney temp = new SackOfMoney(pos, this.renderFactory);
+            final Position pos = this.map.getRandomTile();
+            final SackOfMoney temp = new SackOfMoney(pos, this.renderFactory);
             alreadyPresent = false;
-            for (int i = 0; i < this.interactables.size(); i++) {
-                if (this.interactables.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
-                    alreadyPresent = true;
-                }
+            if (this.interactables.stream().anyMatch(in -> in.getPosition().equals(pos))
+                    || this.player.getPosition().equals(pos)) {
+                alreadyPresent = true;
             }
             if (!alreadyPresent) {
                 this.interactables.add(temp);
@@ -310,12 +307,12 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     }
 
     private void generateStairs(final Stairs type) {
-        boolean alreadyPresent = false;
+        boolean alreadyPresent;
         do {
-            Position pos = this.map.getRandomTile();
-            Stairs temp = (type instanceof DownStairs
+            final Position pos = this.map.getRandomTile();
+            final Stairs temp = type instanceof DownStairs
                     ? new DownStairs(pos, this.renderFactory)
-                    : new UpStairs(pos, this.renderFactory));
+                    : new UpStairs(pos, this.renderFactory);
             alreadyPresent = false;
             if (this.interactables.stream().anyMatch(item -> item.getPosition().equals(pos))
                     || this.player.getPosition().equals(pos)
