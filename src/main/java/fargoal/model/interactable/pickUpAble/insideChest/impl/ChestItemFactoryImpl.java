@@ -24,95 +24,95 @@ import fargoal.model.manager.api.FloorManager;
 /**
  * This class implements the interface ChestItemFactory. It generate the chest items.
  */
-public class ChestItemFactoryImpl implements ChestItemFactory{
+public class ChestItemFactoryImpl implements ChestItemFactory {
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateDriftSpell(FloorManager floorManager) {
+    public Spell generateDriftSpell(final FloorManager floorManager) {
         return new DriftSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateInvisibilitySpell(FloorManager floorManager) {
+    public Spell generateInvisibilitySpell(final FloorManager floorManager) {
         return new InvisibilitySpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateLightSpell(FloorManager floorManager) {
+    public Spell generateLightSpell(final FloorManager floorManager) {
         return new LightSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateRegenerationSpell(FloorManager floorManager) {
+    public Spell generateRegenerationSpell(final FloorManager floorManager) {
         return new RegenerationSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateShieldSpell(FloorManager floorManager) {
+    public Spell generateShieldSpell(final FloorManager floorManager) {
         return new ShieldSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Spell generateTeleportSpell(FloorManager floorManager) {
+    public Spell generateTeleportSpell(final FloorManager floorManager) {
         return new TeleportSpell(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateCeilingTrap(FloorManager floorManager) {
+    public ChestItem generateCeilingTrap(final FloorManager floorManager) {
         return new CeilingTrap(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateExplosion(FloorManager floorManager) {
+    public ChestItem generateExplosion(final FloorManager floorManager) {
         return new Explosion(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generatePit(FloorManager floorManager) {
+    public ChestItem generatePit(final FloorManager floorManager) {
         return new Pit(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public ChestItem generateTeleport(FloorManager floorManager) {
+    public ChestItem generateTeleport(final FloorManager floorManager) {
         return new Teleport(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateBeacon(FloorManager floorManager) {
+    public Utility generateBeacon(final FloorManager floorManager) {
         return new Beacon(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateEnchantedWeapon(FloorManager floorManager) {
+    public Utility generateEnchantedWeapon(final FloorManager floorManager) {
         return new EnchantedWeapon(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateHealingPotion(FloorManager floorManager) {
+    public Utility generateHealingPotion(final FloorManager floorManager) {
         return new HealingPotion(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateMap(FloorManager floorManager) {
+    public Utility generateMap(final FloorManager floorManager) {
         return new Map(floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Utility generateMagicSack(FloorManager floorManager){
+    public Utility generateMagicSack(final FloorManager floorManager) {
         return new MagicSack(floorManager);
     }
 

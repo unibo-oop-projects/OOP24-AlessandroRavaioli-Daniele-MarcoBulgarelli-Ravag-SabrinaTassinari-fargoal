@@ -15,8 +15,9 @@ public class DriftSpell extends AbstractSpell {
      * it is stored immediately in the player's inventory.
      * If the spell was cast and player did not fall in a pit when he change the floor
      * the spell ends.
+     * @param floorManager - it contains all the elements in the floor. 
      */
-    public DriftSpell(FloorManager floorManager) {
+    public DriftSpell(final FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -27,7 +28,7 @@ public class DriftSpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName())) {
             if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
@@ -37,7 +38,7 @@ public class DriftSpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), true);
         this.removeSpell();
     }

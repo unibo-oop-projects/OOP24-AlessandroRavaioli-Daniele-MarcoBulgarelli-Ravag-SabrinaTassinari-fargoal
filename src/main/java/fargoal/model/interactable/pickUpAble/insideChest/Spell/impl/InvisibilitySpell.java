@@ -15,8 +15,9 @@ public class InvisibilitySpell extends AbstractSpell {
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
+     * @param floorManager - it contains al the element in the floor.
      */
-    public InvisibilitySpell(FloorManager floorManager) {
+    public InvisibilitySpell(final FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -27,7 +28,7 @@ public class InvisibilitySpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
             if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), false);
@@ -38,7 +39,7 @@ public class InvisibilitySpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
         floorManager.getPlayer().setIsVisible(false);
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), true);
         this.removeSpell();

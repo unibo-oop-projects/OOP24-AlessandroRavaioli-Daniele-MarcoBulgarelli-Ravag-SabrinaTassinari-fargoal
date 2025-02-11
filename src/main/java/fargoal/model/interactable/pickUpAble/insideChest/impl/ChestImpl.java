@@ -17,8 +17,24 @@ import fargoal.view.api.Renderer;
  */
 public class ChestImpl implements Interactable {
 
-    final static int N_CHEST_ITEM = 14;
-    final private Position position;
+    static final int N_CHEST_ITEM = 14;
+    private static final int CASE_DRIFT_SPELL = 0;
+    private static final int CASE_INVISIBILITY_SPELL = 1;
+    private static final int CASE_LIGHT_SPELL = 2;
+    private static final int CASE_REGENERATION_SPELL = 3;
+    private static final int CASE_SHIELD_SPELL = 4;
+    private static final int CASE_END_SPELL = 5;
+    private static final int CASE_BEGIN_TRAP = 6;
+    private static final int CASE_CEILING_TRAP = 6;
+    private static final int CASE_EXPLOSION = 7;
+    private static final int CASE_PIT = 8;
+    private static final int CASE_END_TRAP = 9;
+    private static final int CASE_BEGIN_UTILITY = 10;
+    private static final int CASE_BEACONS = 10;
+    private static final int CASE_ENCHANTED_WEAPONS = 11;
+    private static final int CASE_HEALING_POTION = 12;
+    private static final int CASE_MAP = 13;
+    private final Position position;
     private boolean open;
     private Renderer renderer;
 
@@ -54,53 +70,53 @@ public class ChestImpl implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public Interactable interact(final FloorManager floorManager) {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
             int num = new Random().nextInt(N_CHEST_ITEM);
-            if (num >= 0 && num <= 5 || num >= 11) {
+            if (num >= 0 && num <= CASE_END_SPELL) {
                 Spell spell;
-                if (num == 0) {
+                if (num == CASE_DRIFT_SPELL) {
                     spell = new ChestItemFactoryImpl().generateDriftSpell(floorManager);
                     floorManager.getPlayer().getInventory().getDriftSpell().store(floorManager);
-                } else if (num == 1) {
+                } else if (num == CASE_INVISIBILITY_SPELL) {
                     spell = new ChestItemFactoryImpl().generateInvisibilitySpell(floorManager);
                     floorManager.getPlayer().getInventory().getInvisibilitySpell().store(floorManager);
-                } else if (num == 2) {
+                } else if (num == CASE_LIGHT_SPELL) {
                     spell = new ChestItemFactoryImpl().generateLightSpell(floorManager);
                     floorManager.getPlayer().getInventory().getLightSpell().store(floorManager);
-                } else if (num == 3) {
+                } else if (num == CASE_REGENERATION_SPELL) {
                     spell = new ChestItemFactoryImpl().generateRegenerationSpell(floorManager);
                     floorManager.getPlayer().getInventory().getRegenerationSpell().store(floorManager);
-                } else if (num == 4) {
+                } else if (num == CASE_SHIELD_SPELL) {
                     spell = new ChestItemFactoryImpl().generateShieldSpell(floorManager);
                     floorManager.getPlayer().getInventory().getShieldSpell().store(floorManager);
                 } else {
                     spell = new ChestItemFactoryImpl().generateTeleportSpell(floorManager);
                     floorManager.getPlayer().getInventory().getTeleportSpell().store(floorManager);
-                } 
+                }
                 floorManager.notifyFloorEvent(new PickUpNewItemEvent(spell));
-            } else if (num >= 6 && num <= 9) {
-                if (num == 6) {
+            } else if (num >= CASE_BEGIN_TRAP && num <= CASE_END_TRAP) {
+                if (num == CASE_CEILING_TRAP) {
                     new ChestItemFactoryImpl().generateCeilingTrap(floorManager);
-                } else if (num == 7) {
+                } else if (num == CASE_EXPLOSION) {
                     new ChestItemFactoryImpl().generateExplosion(floorManager);
-                } else if (num == 8) {
+                } else if (num == CASE_PIT) {
                     new ChestItemFactoryImpl().generatePit(floorManager);
                 } else {
                     new ChestItemFactoryImpl().generateTeleport(floorManager);
                 } 
-            } else if (num >= 11 ) {
+            } else if (num >= CASE_BEGIN_UTILITY) {
                 Utility item;
-                if (num == 10) {
+                if (num == CASE_BEACONS) {
                     item = new ChestItemFactoryImpl().generateBeacon(floorManager);
                     floorManager.getPlayer().getInventory().getBeacons().store(floorManager);
-                } else if (num == 11) {
+                } else if (num == CASE_ENCHANTED_WEAPONS) {
                     item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
                     floorManager.getPlayer().getInventory().getEnchantedWeapons().store(floorManager);
-                } else if (num == 12) {
+                } else if (num == CASE_HEALING_POTION) {
                     item = new ChestItemFactoryImpl().generateHealingPotion(floorManager);
                     floorManager.getPlayer().getInventory().getHealingPotions().store(floorManager);
-                } else if (num == 13) {
+                } else if (num == CASE_MAP) {
                     item = new ChestItemFactoryImpl().generateMap(floorManager);
                     floorManager.getPlayer().getInventory().getListOfMaps().store(floorManager);
                 } else {
@@ -130,10 +146,10 @@ public class ChestImpl implements Interactable {
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (this.isOpen()) {
             floorManager.getAllElements().remove(this);
         }
     }
-    
+
 }

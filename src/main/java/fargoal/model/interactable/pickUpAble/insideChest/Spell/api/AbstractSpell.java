@@ -8,7 +8,7 @@ import fargoal.model.manager.api.FloorManager;
  * This abstract class implements the interface Spell.
  */
 public abstract class AbstractSpell implements Spell {
-    
+
     private int numberInInventory = 0;
     private int floorLevelSpellCasted;
 
@@ -20,7 +20,7 @@ public abstract class AbstractSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public void store(FloorManager floorManager) {
+    public void store(final FloorManager floorManager) {
         this.addSpell();
     }
 
@@ -47,7 +47,7 @@ public abstract class AbstractSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public void use(FloorManager floorManager) {
+    public void use(final FloorManager floorManager) {
         floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         this.effect(floorManager);
         this.setFloorLevelSpellCast(floorManager.getFloorLevel());
@@ -60,10 +60,10 @@ public abstract class AbstractSpell implements Spell {
     public abstract void effect(FloorManager floorManager);
 
     /**
-     * Setter for the field floorLevelSpellCast, which indicates in which floor the spell has been cast
-     * @param floorLevelSpellCasted - the level in which the spell has been cast
+     * Setter for the field floorLevelSpellCast, which indicates in which floor the spell has been cast.
+     * @param floorLevelSpellCasted - the level in which the spell has been cast.
      */
-    private void setFloorLevelSpellCast(int floorLevelSpellCasted) {
+    private void setFloorLevelSpellCast(final int floorLevelSpellCasted) {
         this.floorLevelSpellCasted = floorLevelSpellCasted;
     }
 

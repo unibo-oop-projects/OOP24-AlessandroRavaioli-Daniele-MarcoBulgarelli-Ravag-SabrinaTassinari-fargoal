@@ -6,7 +6,7 @@ import fargoal.model.manager.api.FloorManager;
  * The interface of the factory of the chest item.
  */
 public interface ChestItemFactory {
-    
+
     /**
      * This method generate a Drift Spell, which is a Spell.
      * @param floorManager - it contains all the element of the floor. 

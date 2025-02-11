@@ -14,8 +14,9 @@ public class RegenerationSpell extends AbstractSpell {
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
+     * @param floorManager - it contains al the element in the floor.
      */
-    public RegenerationSpell(FloorManager floorManager) {
+    public RegenerationSpell(final FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -26,7 +27,7 @@ public class RegenerationSpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.REGENERATION.getName())) {
             if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), false);
@@ -36,10 +37,9 @@ public class RegenerationSpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), true);
         this.removeSpell();
     }
 
-    
 }

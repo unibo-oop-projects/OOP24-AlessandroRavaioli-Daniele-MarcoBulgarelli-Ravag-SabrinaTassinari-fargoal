@@ -15,9 +15,9 @@ public class ShieldSpell extends AbstractSpell {
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
-     * 
+     * @param floorManager - it contains al the element in the floor.
      */
-    public ShieldSpell(FloorManager floorManager) {
+    public ShieldSpell(final FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */
@@ -28,7 +28,7 @@ public class ShieldSpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.SHIELD.getName())) {
             if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
                 floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), false);
@@ -38,7 +38,7 @@ public class ShieldSpell extends AbstractSpell {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.SHIELD.getName(), true);
         this.removeSpell();
     }
