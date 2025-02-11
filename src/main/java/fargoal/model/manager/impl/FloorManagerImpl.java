@@ -194,16 +194,17 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
      */
     @Override
     public void decreaseFloorLevel() {
-        if (this.floorLevel <= 0) {
-            throw new  IllegalStateException("cannot go to level -1");
-        }
+        
+        this.floorLevel--;
         if (this.floorLevel == 0 && this.player.hasSword()) {
             this.isOver = true;
             this.endText = "YOU WIN";
+        } else if (this.floorLevel <= 0) {
+            throw new  IllegalStateException("cannot go to level -1");
+        } else  {    
+            initializeFloor();
+            this.interactables.add(new DownStairs(this.player.getPosition(), this.renderFactory));
         }
-        this.floorLevel--;
-        initializeFloor();
-        this.interactables.add(new DownStairs(this.player.getPosition(), this.renderFactory));
     }
 
     private void initializeFloor() {
@@ -276,11 +277,11 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             Position pos = this.map.getRandomTile();
             Interactable temp = new ChestImpl(pos, this.renderFactory);
             alreadyPresent = false;
-            for (int i = 0; i < this.interactables.size(); i++) {
-                if (this.interactables.get(i).getPosition().equals(pos) || this.player.getPosition().equals(pos)) {
-                    alreadyPresent = true;
-                }
-            }
+            if (this.interactables.stream()
+                    .anyMatch(in -> in.getPosition().equals(pos))
+                    || this.player.getPosition().equals(pos)) {
+                        alreadyPresent = true;
+                    }
             if (!alreadyPresent) {
                 this.interactables.add(temp);
             }

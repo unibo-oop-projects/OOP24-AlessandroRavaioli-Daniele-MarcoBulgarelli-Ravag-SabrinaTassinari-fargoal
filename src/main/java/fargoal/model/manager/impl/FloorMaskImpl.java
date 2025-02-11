@@ -77,4 +77,29 @@ public class FloorMaskImpl implements FloorMask {
         }
     }
 
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((mask == null) ? 0 : mask.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        FloorMaskImpl other = (FloorMaskImpl) obj;
+        if (mask == null) {
+            if (other.mask != null)
+                return false;
+        } else if (!mask.equals(other.mask))
+            return false;
+        return true;
+    }
+
 }
