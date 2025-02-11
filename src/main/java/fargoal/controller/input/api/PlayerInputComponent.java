@@ -20,6 +20,7 @@ public class PlayerInputComponent implements InputComponent {
      * @param player - to move the player or let him interact with FloorElements
      * @param controller - to receive the processed inputs
      */
+    @Override
     public void update(final FloorManager manager, final PlayerImpl player, final InputController controller) {
         if (controller.isInteracting()) {
             Optional<Interactable> interacting = manager.getInteractables()
