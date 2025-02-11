@@ -22,7 +22,7 @@ public class FloorConstructorImpl implements FloorConstructor {
      * {@inheritDoc}
      */
     @Override
-    public FloorMap createFloor(RenderFactory renderFactory) {
+    public FloorMap createFloor(final RenderFactory renderFactory) {
         return new FloorMapBuilder(renderFactory).buildRooms().buildCorridors().build();
     }
 
@@ -44,14 +44,14 @@ public class FloorConstructorImpl implements FloorConstructor {
         private final Random rnd;
         private final RenderFactory rf;
 
-        public FloorMapBuilder(RenderFactory renderFactory) {
+        FloorMapBuilder(final RenderFactory renderFactory) {
             this.rf = renderFactory;
             this.rnd = new Random();
             this.temporaryTiles = new HashMap<>();
             this.temporaryWalls = new HashMap<>();
             this.centers = new ArrayList<>();
-            for(int i = 0; i < FLOOR_LENGTH; i++) {
-                for(int j = 0; j < FLOOR_HEIGHT; j++) {
+            for (int i = 0; i < FLOOR_LENGTH; i++) {
+                for (int j = 0; j < FLOOR_HEIGHT; j++) {
                     this.temporaryWalls.put(new Position(i, j), rf.wallRenderer(new Position(i, j)));
                 }
             }
@@ -61,7 +61,7 @@ public class FloorConstructorImpl implements FloorConstructor {
             temporaryTiles = temporaryTiles.keySet().stream()
                     .filter(p -> p.x() >= 1 && p.y() >= 1)
                     .filter(p -> p.x() < FLOOR_LENGTH - 1 && p.y() < FLOOR_HEIGHT - 1)
-                    .collect(Collectors.toMap(p -> p,p ->  rf.tileRenderer(p)));
+                    .collect(Collectors.toMap(p -> p, p ->  rf.tileRenderer(p)));
             return new FloorMapImpl(temporaryTiles, temporaryWalls, FLOOR_LENGTH, FLOOR_HEIGHT);
         }
 

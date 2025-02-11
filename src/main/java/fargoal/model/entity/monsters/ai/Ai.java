@@ -39,7 +39,7 @@ public final class Ai {
     }
 
     private static boolean isInsideMap(final Monster monster, Position pos) {
-        return pos.x() < monster.getFloorMap().getSize().length()
+        return pos.x() < monster.getFloorMap().getSize().width()
                 && pos.y() < monster.getFloorMap().getSize().height()
                 && pos.x() >= 0
                 && pos.y() >= 0
