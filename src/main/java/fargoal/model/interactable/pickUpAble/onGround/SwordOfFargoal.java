@@ -1,5 +1,7 @@
 package fargoal.model.interactable.pickUpAble.onGround;
 
+import java.util.Optional;
+
 import fargoal.commons.api.Position;
 import fargoal.model.events.impl.PickUpSword;
 import fargoal.model.interactable.api.Interactable;
@@ -12,7 +14,7 @@ import fargoal.view.api.Renderer;
  */
 public class SwordOfFargoal implements Interactable{
 
-    final Position position;
+    Optional<Position> position;
     final Integer mapLevel;
     private Renderer renderer;
 
@@ -20,8 +22,8 @@ public class SwordOfFargoal implements Interactable{
      * This is the constructor of the class. 
      * @param position - the position of the Sword in the map.
      */
-    public SwordOfFargoal(final Position position, final RenderFactory renderFactory, final Integer mapLevel) {
-        this.position = position;
+    public SwordOfFargoal(final RenderFactory renderFactory, final Integer mapLevel) {
+        this.position = Optional.empty();
         this.mapLevel = mapLevel;
         this.setRender(renderFactory.swordRenderer(this));
     }
@@ -29,7 +31,11 @@ public class SwordOfFargoal implements Interactable{
     /** {@inheritDoc} */
     @Override
     public Position getPosition() {
-        return this.position;
+        return this.position.get();
+    }
+
+    public void setPosition(final Position position) {
+        this.position = Optional.of(position);
     }
 
     /** {@inheritDoc} */

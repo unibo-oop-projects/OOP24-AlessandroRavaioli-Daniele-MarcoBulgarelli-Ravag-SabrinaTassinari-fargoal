@@ -21,7 +21,7 @@ public class LightSpell implements Spell {
      * it is stored immediately in the player's inventory.
      */
     public LightSpell(FloorManager floorManager) {
-        this.numberInInventory = 0;
+        this.numberInInventory = 1;
     }
 
     /** {@inheritDoc} */

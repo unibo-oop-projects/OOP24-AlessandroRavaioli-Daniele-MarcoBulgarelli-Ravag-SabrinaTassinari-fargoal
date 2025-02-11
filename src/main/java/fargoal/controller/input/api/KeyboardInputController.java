@@ -182,7 +182,7 @@ public class KeyboardInputController implements InputController {
     }
 
     public void notifyUsingLightSpell() {
-        isUsingLightSpell = true;
+        isUsingLightSpell = true;  
     }
 
     public void notifyNoMoreUsingLightSpell() {
