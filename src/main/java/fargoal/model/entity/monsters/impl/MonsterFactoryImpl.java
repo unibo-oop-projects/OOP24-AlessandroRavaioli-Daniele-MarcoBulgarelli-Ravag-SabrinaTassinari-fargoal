@@ -95,6 +95,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give a render to the Rogue
      * @return a new Rogue
      */
     private Monster generateRogue(
@@ -113,6 +114,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give a render to the Barbarian
      * @return a new Barbarian
      */
     private Monster generateBarbarian(
@@ -120,7 +122,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
                 final Integer level, 
                 final FloorMap floorMap, 
                 final FloorManager floorManager,
-                RenderFactory renderFactory) {
+                final RenderFactory renderFactory) {
         return new Barbarian(position, level, floorMap, floorManager, renderFactory);
     }
 
@@ -131,6 +133,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give a render to the Monk
      * @return a new Monk
      */
     private Monster generateMonk(
@@ -149,6 +152,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give a render to the Assassin
      * @return a new Assassin
      */
     private Monster generateAssassin(
@@ -167,6 +171,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give a render to the War Lord
      * @return a new War Lord
      */
     private Monster generateWarLord(
@@ -185,6 +190,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give a render to the Mage
      * @return a new Mage
      */
     private Monster generateMage(
@@ -203,6 +209,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * @param level - the level of the floor where the monster is located
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give a render to the Spider
      * @return a new Spider
      */
     private Monster generateSpider(

@@ -27,7 +27,7 @@ public final class Ai {
 
     }
 
-    private static boolean isNeighbourTile(final Monster monster, Position pos) {
+    private static boolean isNeighbourTile(final Monster monster, final Position pos) {
         return monster.getFloorMap().isTile(pos.add(new Position(1, 0)))
                 || monster.getFloorMap().isTile(pos.add(new Position(0, 1)))
                 || monster.getFloorMap().isTile(pos.add(new Position(-1, 0)))
@@ -42,7 +42,7 @@ public final class Ai {
         return pos.x() < monster.getFloorMap().getSize().length()
                 && pos.y() < monster.getFloorMap().getSize().height()
                 && pos.x() >= 0
-                && pos.y() >=0
+                && pos.y() >= 0
                 && isNeighbourTile(monster, pos)
                 && !monster.getPosition().equals(pos);
     }
@@ -85,7 +85,7 @@ public final class Ai {
                 }
 
         //se è un ragno...
-        if(monster.getMonsterType().equals(MonsterType.SPIDER)) {
+        if (monster.getMonsterType().equals(MonsterType.SPIDER)) {
             //solo se è lontano dal player tiene conto della cache
             if (xDistance > MAX_DISTANCE || yDistance > MAX_DISTANCE) {
                 possibleDirections.removeAll(monster.getLastPositions());
@@ -103,9 +103,8 @@ public final class Ai {
                     .filter(p -> monster.getFloorMap().isTile(p))
                     .collect(Collectors.toList());
         }
-        
         //se è vuota, la ririempio senza togliere le posizioni della cache
-        if(possibleDirections.isEmpty()) {
+        if (possibleDirections.isEmpty()) {
             possibleDirections = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),
                     new Position(-1, 0), new Position(1, 0),
                     new Position(1, 1), new Position(0, 1), new Position(-1, 1))
@@ -118,7 +117,6 @@ public final class Ai {
                     possibleDirections.remove(player.getPosition());
                 }
         }
-        
         //controllo se il mostro vede il player
         if (monster.getMonsterType().equals(MonsterType.SPIDER)) {
             if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && monster.getFloorManager().getPlayer().isVisible()) {
@@ -129,7 +127,7 @@ public final class Ai {
                             check = true;
                             monster.setPosition(pos);
                             //aggiorno la cache delle posizioni del mostro
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -146,7 +144,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             check = true;
                             monster.setPosition(pos);
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -165,7 +163,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             check = true;
                             monster.setPosition(pos);
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -182,7 +180,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             check = true;
                             monster.setPosition(pos);
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -218,7 +216,7 @@ public final class Ai {
                     if (possibleDirections.contains(pos)) {
                         monster.setPosition(pos);
                         check = true;
-                        if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                        if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                             monster.removeLastPosition();
                             monster.addFirstPosition(pos);
                         } else {
@@ -230,7 +228,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -242,7 +240,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -256,7 +254,7 @@ public final class Ai {
                     if (possibleDirections.contains(pos)) {
                         monster.setPosition(pos);
                         check = true;
-                        if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                        if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                             monster.removeLastPosition();
                             monster.addFirstPosition(pos);
                         } else {
@@ -268,7 +266,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -280,7 +278,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -297,7 +295,7 @@ public final class Ai {
                     if (possibleDirections.contains(pos)) {
                         monster.setPosition(pos);
                         check = true;
-                        if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                        if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                             monster.removeLastPosition();
                             monster.addFirstPosition(pos);
                         } else {
@@ -309,7 +307,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -321,7 +319,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -335,7 +333,7 @@ public final class Ai {
                     if (possibleDirections.contains(pos)) {
                         monster.setPosition(pos);
                         check = true;
-                        if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                        if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                             monster.removeLastPosition();
                             monster.addFirstPosition(pos);
                         } else {
@@ -347,7 +345,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -359,7 +357,7 @@ public final class Ai {
                         if (possibleDirections.contains(pos)) {
                             monster.setPosition(pos);
                             check = true;
-                            if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                                 monster.removeLastPosition();
                                 monster.addFirstPosition(pos);
                             } else {
@@ -374,7 +372,7 @@ public final class Ai {
             if (!possibleDirections.isEmpty()) {
                 pos = possibleDirections.get(random.nextInt(possibleDirections.size()));
                 monster.setPosition(pos);
-                if(monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
                     monster.removeLastPosition();
                     monster.addFirstPosition(pos);
                 } else {

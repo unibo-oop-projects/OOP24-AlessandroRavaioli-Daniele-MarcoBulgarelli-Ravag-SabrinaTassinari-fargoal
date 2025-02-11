@@ -18,6 +18,7 @@ public interface MonsterFactory {
      * @param position - the starting position
      * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
+     * @param renderFactory - to give the monsters a render
      * @return a Monster
      */
     Monster generate(Position position, FloorMap floorMap, FloorManager floorManager, RenderFactory renderFactory);

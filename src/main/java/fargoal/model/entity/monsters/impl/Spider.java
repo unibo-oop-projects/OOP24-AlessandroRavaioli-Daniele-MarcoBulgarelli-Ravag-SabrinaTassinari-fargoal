@@ -27,6 +27,7 @@ public class Spider extends AbstractMonster {
      * @param level - the level of the monster
      * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
+     * @param renderFactory - to give a render to the Spider
      */
     public Spider(final Position position, 
             final Integer level, 
@@ -43,12 +44,6 @@ public class Spider extends AbstractMonster {
     public String getTag() {
         return "SPIDER";
     }
-
-    /**
-     * The Spider never steal anything from the player.
-    */
-    @Override
-    public void steal() {}
 
     /** {@inheritDoc} */
     @Override
