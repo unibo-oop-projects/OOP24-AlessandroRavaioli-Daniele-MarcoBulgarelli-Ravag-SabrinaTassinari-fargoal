@@ -61,6 +61,7 @@ public class Map extends AbstractUtility {
 
     /**
      * This method add an utility in the player's inventory.
+     * @param floorNumber - the number of the level the map refers to.
      */
     private void addUtility(final Integer floorNumber) {
         if (floorNumber == null || floorNumber <= 0) {

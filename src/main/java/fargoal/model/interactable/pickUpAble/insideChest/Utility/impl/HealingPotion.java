@@ -14,7 +14,7 @@ import fargoal.model.manager.api.FloorManager;
 public class HealingPotion extends AbstractUtility {
 
     private static final int N_HEALING_POTION_TO_START = 1;
-    public static final int MAX_HIT_POINTS_TO_ADD = 19;
+    private static final int MAX_HIT_POINTS_TO_ADD = 19;
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.

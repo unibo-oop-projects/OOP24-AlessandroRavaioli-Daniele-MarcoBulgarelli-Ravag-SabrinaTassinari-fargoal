@@ -73,7 +73,6 @@ public interface ChestItemFactory {
 
     /**
      * This method generate a Beacon, which is an Utility.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Beacon".
      */
     ChestItem generateBeacon();
@@ -87,14 +86,12 @@ public interface ChestItemFactory {
 
     /**
      * This method generate a Healing Potion, which is an Utility.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Healing Potion".
      */
     ChestItem generateHealingPotion();
 
     /**
      * This method generate a Map, which is an Utility.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Map".
      */
     ChestItem generateMap();

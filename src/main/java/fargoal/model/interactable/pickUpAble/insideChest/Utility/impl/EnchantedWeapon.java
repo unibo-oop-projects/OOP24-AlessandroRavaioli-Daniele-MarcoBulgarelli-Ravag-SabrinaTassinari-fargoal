@@ -12,14 +12,13 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class EnchantedWeapon extends AbstractUtility {
 
-    public static final int MAX_SKILL_TO_ADD = 9;
-    public static final int SKILL_TO_ADD = 5;
+    private static final int MAX_SKILL_TO_ADD = 9;
+    private static final int SKILL_TO_ADD = 5;
     private FloorManager floorManager;
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
      * @param floorManager - it contains all the element of the floor the item is.
-     * @param position - this is the position of the chest the item was found.
      */
     public EnchantedWeapon(final FloorManager floorManager) {
         this.floorManager = floorManager;
@@ -33,7 +32,7 @@ public class EnchantedWeapon extends AbstractUtility {
 
     /** {@inheritDoc} */
     @Override
-    public void effect(FloorManager floorManager) {
+    public void effect(final FloorManager floorManager) {
     }
 
     /** {@inheritDoc} */

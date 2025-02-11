@@ -91,7 +91,7 @@ public class TestFloorManager {
         assertNotEquals(items, manager.getInteractables());
 
         //I need to test if the floor for which a map was found gets cleared
-        Map testMap = new Map(manager);
+        Map testMap = new Map();
         testMap.store();
         FloorMask mask = new FloorMaskImpl();
         mask.clearMask();

@@ -8,8 +8,6 @@ public interface ItemsForInventory extends ChestItem {
 
     /**
      * This method put the spell the player found in a chest in his inventory.
-     * 
-     * @param floorManager
      */
     void store();
 }
