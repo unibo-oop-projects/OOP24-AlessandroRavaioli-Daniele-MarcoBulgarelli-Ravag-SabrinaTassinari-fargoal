@@ -64,6 +64,19 @@ public final class Ai {
         final List<Position> positionList = new ArrayList<>();
         monster.getFloorManager().getMonsters().forEach(p -> positionList.add(p.getPosition()));
 
+        final int xDistance = Math.abs(monster.getPosition().x() - player.getPosition().x());
+        final int yDistance = Math.abs(monster.getPosition().y() - player.getPosition().y());
+        boolean xMonsterBigger = false;
+        boolean yMonsterBigger = false;
+        Position pos;
+        boolean check = false;
+        if (monster.getPosition().x() >= player.getPosition().x()) {
+            xMonsterBigger = true;
+        }
+        if (monster.getPosition().y() >= player.getPosition().y()) {
+            yMonsterBigger = true;
+        }
+
         //rimuovo le posizioni deglia altri mostri e del player
         possibleDirections.removeAll(positionList);
         if (possibleDirections.stream()
@@ -73,12 +86,19 @@ public final class Ai {
 
         //se è un ragno...
         if(monster.getMonsterType().equals(MonsterType.SPIDER)) {
+            //solo se è lontano dal player tiene conto della cache
+            if (xDistance > MAX_DISTANCE || yDistance > MAX_DISTANCE) {
+                possibleDirections.removeAll(monster.getLastPositions());
+            }
             possibleDirections = possibleDirections.stream()
                     .filter(p -> isInsideMap(monster, p))
                     .collect(Collectors.toList());
         //altrimenti...
         } else {
-            possibleDirections.removeAll(monster.getLastPositions());
+            //solo se è lontano dal player tiene conto della cache
+            if (xDistance > MAX_DISTANCE || yDistance > MAX_DISTANCE) {
+                possibleDirections.removeAll(monster.getLastPositions());
+            }
             possibleDirections = possibleDirections.stream()
                     .filter(p -> monster.getFloorMap().isTile(p))
                     .collect(Collectors.toList());
@@ -99,18 +119,6 @@ public final class Ai {
                 }
         }
         
-        final int xDistance = Math.abs(monster.getPosition().x() - player.getPosition().x());
-        final int yDistance = Math.abs(monster.getPosition().y() - player.getPosition().y());
-        boolean xMonsterBigger = false;
-        boolean yMonsterBigger = false;
-        Position pos;
-        boolean check = false;
-        if (monster.getPosition().x() >= player.getPosition().x()) {
-            xMonsterBigger = true;
-        }
-        if (monster.getPosition().y() >= player.getPosition().y()) {
-            yMonsterBigger = true;
-        }
         //controllo se il mostro vede il player
         if (monster.getMonsterType().equals(MonsterType.SPIDER)) {
             if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && monster.getFloorManager().getPlayer().isVisible()) {
