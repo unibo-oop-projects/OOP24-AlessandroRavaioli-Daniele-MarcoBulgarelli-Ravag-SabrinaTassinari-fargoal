@@ -3,14 +3,12 @@ package fargoal.model.manager.impl;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
-import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.commons.Timer;
-import fargoal.model.core.GameContext;
+import fargoal.model.core.GameEngine;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
@@ -25,6 +23,7 @@ import fargoal.model.interactable.stair.impl.DownStairs;
 import fargoal.model.interactable.stair.impl.UpStairs;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
+import fargoal.model.manager.api.SceneManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.impl.FloorConstructorImpl;
 import fargoal.view.api.RenderFactory;
@@ -37,7 +36,7 @@ import fargoal.model.interactable.temple.Temple;
 /**
  * A class that implements the entirety of the floor and all its elements.
  */
-public class FloorManagerImpl implements FloorManager {
+public class FloorManagerImpl implements FloorManager, SceneManager {
 
     private static final int MAX_MONSTERS = 7;
     private static final int MAX_NUMBER_OF_TREASURES = 25;
@@ -62,18 +61,18 @@ public class FloorManagerImpl implements FloorManager {
      * Constructor that inizializes all of its fields.
      * @param context - the structure in which the reference to the view is contained
      */
-    public FloorManagerImpl(final GameContext context, final KeyboardInputController controller) {
-        this.listener = new RenderEventListener(context.getView());
+    public FloorManagerImpl(GameEngine engine) {
+        this.listener = new RenderEventListener(engine.getView());
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl();
         this.floorLevel = 1;
         this.interactables = new LinkedList<>();
-        this.renderFactory = new SwingRenderFactory(context.getView());
+        this.renderFactory = new SwingRenderFactory(engine.getView());
         this.timer = new Timer();
         this.player = new PlayerImpl(this,
-                controller,
-                new PlayerInformationRenderer(context.getView()),
-                new InventoryInformationRenderer(context.getView()));
+                engine.getController(),
+                new PlayerInformationRenderer(engine.getView()),
+                new InventoryInformationRenderer(engine.getView()));
         initializeFloor();
     }
 
@@ -81,8 +80,8 @@ public class FloorManagerImpl implements FloorManager {
      * {@inheritDoc}
      */
     @Override
-    public void update(final GameContext context, final long elapsed) {
-        this.elapsed = elapsed;
+    public void update(GameEngine engine) {
+        this.elapsed = engine.getElapsedTime();
         //Try to generate a monster, i don't need it to be guaranteed
         if (this.monsters.size() < MAX_MONSTERS) {
             generateMonster(this.interactables.stream()
@@ -96,7 +95,7 @@ public class FloorManagerImpl implements FloorManager {
         } else {
             this.listener.render();
         }
-        this.mask.update(context, this);
+        this.mask.update(this);
     }
 
     /**
@@ -298,5 +297,11 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public long getTimePassed() {
         return this.elapsed;
+    }
+
+    @Override
+    public void setSceneManager(GameEngine engine) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setSceneManager'");
     }
 }
