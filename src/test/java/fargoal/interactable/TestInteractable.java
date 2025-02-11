@@ -76,7 +76,7 @@ public class TestInteractable {
    @Test
    void checkRegenerationSpell() {
         floorManager.getPlayer().getInventory().getRegenerationSpell().store(floorManager);
-        int numberBefore = floorManager.getPlayer().getInventory().getLightSpell().getNumberInInventory();
+        int numberBefore = floorManager.getPlayer().getInventory().getRegenerationSpell().getNumberInInventory();
         floorManager.getPlayer().useRegenerationSpell();
         assertNotEquals(numberBefore, floorManager.getPlayer().getInventory().getRegenerationSpell().getNumberInInventory());
         assertTrue(floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.REGENERATION.getName()));
@@ -187,5 +187,4 @@ public class TestInteractable {
         sackOfGold.interact(floorManager);
         assertNotEquals(0, floorManager.getPlayer().getCurrentGold());
     }
-
 }
