@@ -19,6 +19,13 @@ public class TitleScreenManager implements SceneManager, MenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
     private static final long MILLIS_TO_WAIT = 200;
+    private static final int POSSIBILITIES_DIVISOR_WIDTH = 50;
+    private static final int POSSIBILITIES_DIVISOR_HEIGHT = 7;
+    private static final int GAME_START_MULTIPLIER_WIDTH = 21;
+    private static final int GAME_EXIT_MULTIPLIER_WIDTH = 23;
+    private static final int TITLE_DIVISION_WIDTH = 5;
+    private static final int DIVISOR_FONT_TOP_HEIGHT = 4;
+    private static final int DIVISOR_FONT_MIDDLE_HEIGHT = 100;
 
     private int selected;
     private final MenuInputComponent inputComp;
@@ -30,7 +37,7 @@ public class TitleScreenManager implements SceneManager, MenuManager {
     private final Timer wait;
     
 
-    public TitleScreenManager(GameEngine engine) {
+    public TitleScreenManager(final GameEngine engine) {
         this.selected = 1;
         this.inputComp = new MenuInputComponent();
         this.ctrl = engine.getController();
@@ -42,7 +49,7 @@ public class TitleScreenManager implements SceneManager, MenuManager {
     }
 
     @Override
-    public void update(GameEngine engine) {
+    public void update(final GameEngine engine) {
         if (timeToQuit) {
             engine.stop();
         } else if (start) {
@@ -57,7 +64,7 @@ public class TitleScreenManager implements SceneManager, MenuManager {
     }
 
     @Override
-    public void setSceneManager(GameEngine engine) {
+    public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new FloorManagerImpl(engine));
     }
     
@@ -84,24 +91,24 @@ public class TitleScreenManager implements SceneManager, MenuManager {
         }
     }
 
-    private void createRenderers(View view) {
+    private void createRenderers(final View view) {
         SwingView sView = (SwingView) view;
         this.menu = new SwingRendererMiddle(g2d -> {
-                g2d.setFont(new Font("Arial", Font.BOLD, sView.getFrame().getBounds().height * 3 / 110));
+                g2d.setFont(new Font("Arial", Font.BOLD, sView.getFrame().getBounds().height * 3 / DIVISOR_FONT_MIDDLE_HEIGHT));
                 g2d.setColor((this.selected == 1) ? Color.cyan : Color.red);
                 g2d.drawString("START GAME",
-                        sView.getMapWidth() * 3/7,
-                        sView.getMapHeight() * 1/7);
+                        sView.getMapWidth() * GAME_START_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
+                        sView.getMapHeight() * 1 / POSSIBILITIES_DIVISOR_HEIGHT);
                 g2d.setColor((this.selected == 2) ? Color.cyan : Color.red);
                 g2d.drawString("EXIT",
-                        sView.getMapWidth() * 3/7,
-                        sView.getMapHeight() * 3/7);
+                        sView.getMapWidth() * GAME_EXIT_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
+                        sView.getMapHeight() * 3 / POSSIBILITIES_DIVISOR_HEIGHT);
         }, view);
         this.title = new SwingRendererTop(g2d -> {
-            g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height * 1/4));
+            g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height * 1 / DIVISOR_FONT_TOP_HEIGHT));
             g2d.setColor(Color.WHITE);
             g2d.drawString("FARGOAL",
-                    sView.getMapWidth() * 3/7,
+                    sView.getMapWidth() * 2 / TITLE_DIVISION_WIDTH,
                     sView.getEventPanel().getBounds().height / 2);
         }, view);
     }

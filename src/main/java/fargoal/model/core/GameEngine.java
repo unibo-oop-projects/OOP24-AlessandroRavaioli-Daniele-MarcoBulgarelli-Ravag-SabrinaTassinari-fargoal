@@ -6,6 +6,10 @@ import fargoal.model.manager.impl.TitleScreenManager;
 import fargoal.view.api.View;
 import fargoal.view.impl.SwingView;
 
+/**
+ * Core of the application, this class contains the update cycle of both model and view.
+ * This class also contains the frame limitations of the application.
+ */
 public class GameEngine {
 
     private static final int PERIOD = 20;
@@ -14,12 +18,19 @@ public class GameEngine {
     private KeyboardInputController controller;
     private long elapsed;
 
+    /**
+     * Constructor that initializes al needed values.
+     */
     public GameEngine() {
         this.controller = new KeyboardInputController();
         this.view = new SwingView(controller);
         this.manager = new TitleScreenManager(this);
     }
-    
+
+    /**
+     * The main method of the engine, it has the update cycle.
+     * Once this method starts it can only be stopped by the method {@link #stop()}
+     */
     public void start() {
         long previousCycleStartTime = System.currentTimeMillis();
         while (true) {
@@ -41,22 +52,41 @@ public class GameEngine {
         }
     }
 
+    /**
+     * The method that stops the application.
+     */
     public void stop() {
         System.exit(0);
     }
 
+    /**
+     * A getter to obtain the amount of elapsed time between two updates.
+     * @return - the elapsed time 
+     */
     public long getElapsedTime() {
         return this.elapsed;
     }
 
-    public void setSceneManager(SceneManager manager) {
+    /**
+     * A method to set the current scene manager that needs to be updated.
+     * @param manager - the manager that needs to be updated {@link SceneManager}
+     */
+    public void setSceneManager(final SceneManager manager) {
         this.manager = manager;
     }
 
+    /**
+     * A method the returns the keyboardController associated with its elements.
+     * @return - The KeyboardInputController of the engines elements {@link KeyboardInputController}
+     */
     public KeyboardInputController getController() {
         return this.controller;
     }
 
+    /**
+     * A method to obtain the View associated with this engine.
+     * @return - The view the engine updates {@link View}
+     */
     public View getView() {
         return this.view;
     }

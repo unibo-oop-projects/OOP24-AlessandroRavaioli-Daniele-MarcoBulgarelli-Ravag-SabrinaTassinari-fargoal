@@ -40,7 +40,6 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param position - the starting position
      * @param level - the level of the monster
-     * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
      */
     public AbstractMonster(
@@ -116,7 +115,11 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public boolean isDead() {
-        return this.getHealth().getCurrentHealth() <= 0;
+        if (this.getHealth().getCurrentHealth() <= 0) {
+            floorManager.getMonsters().remove(this);
+            return true;
+        }
+        return false;
     }
 
     /** {@inheritDoc} */
@@ -145,7 +148,7 @@ public abstract class AbstractMonster implements Monster {
 
     /** {@inheritDoc} */
     @Override
-    public void addFirstPosition(Position position) {
+    public void addFirstPosition(final Position position) {
         this.lastPositions.addFirst(position);
     }
 
@@ -160,7 +163,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param render - the render that the monster will use
      */
-    public void setRender(Renderer render) {
+    public void setRender(final Renderer render) {
         this.render = render;
     }
 
@@ -263,7 +266,7 @@ public abstract class AbstractMonster implements Monster {
 
     /**
      * The Monster steals from the Player and takes
-     * spell or potions from his inventory.
+     * spells or gold from his inventory.
      */
-    public abstract void steal();
+    public void steal() { }
 }

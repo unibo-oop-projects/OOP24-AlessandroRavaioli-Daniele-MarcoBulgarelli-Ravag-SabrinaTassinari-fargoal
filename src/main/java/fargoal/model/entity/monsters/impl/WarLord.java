@@ -28,6 +28,7 @@ public class WarLord extends AbstractMonster {
      * @param level - the level of the monster
      * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
+     * @param renderFactory - to give a render to the War Lord
      */
     public WarLord(final Position position, 
             final Integer level, 
@@ -56,12 +57,6 @@ public class WarLord extends AbstractMonster {
     public String getTag() {
         return "WAR_LORD";
     }
-
-    /**
-     * The War Lord never steal anything from the player.
-    */
-    @Override
-    public void steal() {}
 
     /** {@inheritDoc} */
     @Override

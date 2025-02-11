@@ -17,7 +17,7 @@ public class TestInventory {
     
 /*    private Inventory inventory;
 
-    @BeforeEach
+    /* @BeforeEach
     void setUp() {
         inventory = new InventoryImpl();
     }
@@ -146,5 +146,9 @@ public class TestInventory {
         assertFalse(inventory.removeRegenerationScroll());
         assertFalse(inventory.removeDriftScroll());
         assertFalse(inventory.removeLightScroll());
+<<<<<<< HEAD
     }*/
+=======
+    } */
+>>>>>>> 7e411c8e7d4451fb531a3ad1108081d396bf7c26
 }

@@ -19,6 +19,7 @@ import fargoal.view.api.RenderFactory;
 public class Mage extends AbstractMonster {
 
     private static final int NEXT_MOVE = 5000;
+    private static final int POSSIBLE_SPELLS = 5;
 
     /**
      * A constructor for the Mage; it uses the
@@ -28,6 +29,7 @@ public class Mage extends AbstractMonster {
      * @param level - the level of the monster
      * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
+     * @param renderFactory - to give a render to the Mage
      */
     public Mage(final Position position, 
             final Integer level, 
@@ -49,37 +51,43 @@ public class Mage extends AbstractMonster {
     @Override
     public void steal() {
         Inventory inventory = this.getFloorManager().getPlayer().getInventory();
-        int num = this.getRandom(5);
+        int num = this.getRandom(POSSIBLE_SPELLS);
         boolean check = false;
         while (!check) {
             if (num == 0 
                     && inventory.getInvisibilitySpell().getNumberInInventory() > 0) {
-                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getInvisibilitySpell(), this));
+                        this.getFloorManager()
+                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getInvisibilitySpell(), this));
                         inventory.getInvisibilitySpell().removeSpell();
                         check = true;
             } else if (num == 1
                     && inventory.getRegenerationSpell().getNumberInInventory() > 0) {
-                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getRegenerationSpell(), this));
+                        this.getFloorManager()
+                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getRegenerationSpell(), this));
                         inventory.getRegenerationSpell().removeSpell();
                         check = true;
             } else if (num == 1
                     && inventory.getTeleportSpell().getNumberInInventory() > 0) {
-                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getTeleportSpell(), this));
+                        this.getFloorManager()
+                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getTeleportSpell(), this));
                         inventory.getTeleportSpell().removeSpell();
                         check = true;
             } else if (num == 1
                     && inventory.getShieldSpell().getNumberInInventory() > 0) {
-                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getShieldSpell(), this));
+                        this.getFloorManager()
+                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getShieldSpell(), this));
                         inventory.getShieldSpell().removeSpell();
                         check = true;
             } else if (num == 1
                     && inventory.getLightSpell().getNumberInInventory() > 0) {
-                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getLightSpell(), this));
+                        this.getFloorManager()
+                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getLightSpell(), this));
                         inventory.getLightSpell().removeSpell();
                         check = true;
             } else if (num == 1
                     && inventory.getDriftSpell().getNumberInInventory() > 0) {
-                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getDriftSpell(), this));
+                        this.getFloorManager()
+                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getDriftSpell(), this));
                         inventory.getDriftSpell().removeSpell();
                         check = true;
             }

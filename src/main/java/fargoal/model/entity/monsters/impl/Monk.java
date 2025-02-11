@@ -17,6 +17,7 @@ import fargoal.view.api.RenderFactory;
 public class Monk extends AbstractMonster {
 
     private static final int NEXT_MOVE = 5000;
+    private static final int HEAL_CONSTANT = 19;
 
     /**
      * A constructor for the Monk; it uses the
@@ -26,6 +27,7 @@ public class Monk extends AbstractMonster {
      * @param level - the level of the monster
      * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
+     * @param renderFactory - to give a render to the Monk
      */
     public Monk(final Position position, 
             final Integer level, 
@@ -44,18 +46,12 @@ public class Monk extends AbstractMonster {
     }
 
     /**
-     * The Monk never steal anything from the player.
-    */
-    @Override
-    public void steal() {}
-
-    /**
      * The Monster heal himself with a HealingPotion
      * to recover hp.
      */
     private void heal() {
-        this.getHealth().increaseHealth(this.getRandom(19) + 3 * this.getLevel());
-        if(this.getHealth().getCurrentHealth() > this.getHealth().getMaxHealth()) {
+        this.getHealth().increaseHealth(this.getRandom(HEAL_CONSTANT) + 3 * this.getLevel());
+        if (this.getHealth().getCurrentHealth() > this.getHealth().getMaxHealth()) {
             this.getHealth().setHealth(this.getHealth().getMaxHealth());
         }
     }

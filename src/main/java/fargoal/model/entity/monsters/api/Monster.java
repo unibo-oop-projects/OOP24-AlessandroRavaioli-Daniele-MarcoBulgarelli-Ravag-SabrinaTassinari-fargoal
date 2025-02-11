@@ -25,7 +25,7 @@ public interface Monster extends Entity {
      * called on a monster, he will receives the damages from the
      * player.
      */
-    public void receiveDamage();
+    void receiveDamage();
 
     /**
      * Method that returns the level of the
@@ -33,22 +33,20 @@ public interface Monster extends Entity {
      * 
      * @return the level of the Monster
      */
-    public Integer getLevel();
+    Integer getLevel();
 
     /**
      * Set the new Position of the Monster.
      * 
      * @param position - the new Position
      */
-    public void setPosition(final Position position);
+    void setPosition(Position position);
 
     /**
      * Move the Monster to a new Position, the choice of
      * new location is random.
-     * 
-     * @param floorManager - to get infos about the player
      */
-    public void move();
+    void move();
 
     /**
      * The Monster attack the Player and deals damage
@@ -57,33 +55,33 @@ public interface Monster extends Entity {
      * @return the int indicating the damage dealt to
      * the player
      */
-    public Integer attack();
+    Integer attack();
 
     /**
      * Return the FloorMap where the Monster is located.
      * 
      * @return the FloorMap
      */
-    public FloorMap getFloorMap();
+    FloorMap getFloorMap();
 
     /**
      * Return the Floormanager where the Monster is located.
      * 
      * @return the Floormanager
      */
-    public FloorManager getFloorManager();
+    FloorManager getFloorManager();
 
     /**
      * Set the Monster's visibility to true,
      * which means that the Monster is visible.
      */
-    public void setVisibilityOn();
+    void setVisibilityOn();
 
     /**
      * Set the Monster's visibility to false,
      * which means that the Monster isn't visible.
      */
-    public void setVisibilityOff();
+    void setVisibilityOff();
 
     /**
      * Return the visibility of the monster.
@@ -92,7 +90,7 @@ public interface Monster extends Entity {
      * 
      * @return the field isVisible of the Monster
      */
-    public boolean getVisibility();
+    boolean getVisibility();
 
     /**
      * Return the list containing the last 5
@@ -100,14 +98,14 @@ public interface Monster extends Entity {
      * 
      * @return a list of positions
      */
-    public List<Position> getLastPositions();
+    List<Position> getLastPositions();
 
     /**
      * Method that remove the position in the 
      * index n.5 in the list that contains 
      * the cache with the last movements of the Monster.
      */
-    public void removeLastPosition();
+    void removeLastPosition();
 
     /**
      * Method that add the position at the top
@@ -116,5 +114,5 @@ public interface Monster extends Entity {
      * 
      * @param position - the position to addFirst in the cacheList
      */
-    public void addFirstPosition(Position position);
+    void addFirstPosition(Position position);
 }

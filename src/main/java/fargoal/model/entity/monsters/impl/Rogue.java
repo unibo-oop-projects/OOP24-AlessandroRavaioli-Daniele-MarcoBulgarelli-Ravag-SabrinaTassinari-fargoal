@@ -28,6 +28,7 @@ public class Rogue extends AbstractMonster {
      * @param level - the level of the monster
      * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
+     * @param renderFactory - to give a render to the Rogue
      */
     public Rogue(final Position position, 
             final Integer level, 

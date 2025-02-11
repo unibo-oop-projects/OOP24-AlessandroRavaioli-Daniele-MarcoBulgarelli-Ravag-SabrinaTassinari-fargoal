@@ -26,6 +26,7 @@ public class Assassin extends AbstractMonster {
      * @param level - the level of the monster
      * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
+     * @param renderFactory - to give a render to the Assassin
      */
     public Assassin(final Position position,
             final Integer level, 
@@ -43,12 +44,6 @@ public class Assassin extends AbstractMonster {
     public String getTag() {
         return "ASSASSIN";
     }
-
-    /**
-     * The Assassin never steal anything from the player.
-    */
-    @Override
-    public void steal() {}
 
     /** {@inheritDoc} */
     @Override

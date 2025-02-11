@@ -3,16 +3,30 @@ package fargoal.model.events.impl;
 import fargoal.model.events.api.FloorEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
 
-public class PlayerActionEvent implements FloorEvent{
-
+/**
+ * PlayerActionEvent is a class called everytime that 
+ * the player use a ChestItem from his inventory.
+ */
+public class PlayerActionEvent implements FloorEvent {
     private ChestItem item;
 
-    public PlayerActionEvent(ChestItem item) {
+    /**
+     * Constructor that assigns to the local field item the
+     * corresponding ChestItem that has been used.
+     * 
+     * @param item - the ChestItem that has been used
+     */
+    public PlayerActionEvent(final ChestItem item) {
         this.item = item;
     }
 
-    public ChestItem WhatPlayerUsed() {
+    /**
+     * Method that returns the ChestItem that has been
+     * used by the player.
+     * 
+     * @return - the ChestItem that has been used
+     */
+    public ChestItem whatPlayerUsed() {
         return this.item;
     }
-    
 }
