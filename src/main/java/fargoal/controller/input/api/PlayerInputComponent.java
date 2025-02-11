@@ -22,7 +22,7 @@ public class PlayerInputComponent implements InputComponent {
      */
     public void update(final FloorManager manager, final PlayerImpl player, final InputController controller) {
         if (controller.isInteracting()) {
-            Optional<Interactable> interacting = manager.getInteractables()
+            final Optional<Interactable> interacting = manager.getInteractables()
                     .stream()
                     .filter(element -> player.getPosition().equals(element.getPosition()))
                     .findAny();
@@ -62,11 +62,11 @@ public class PlayerInputComponent implements InputComponent {
                 player.getInventory().getTeleportSpell().use(manager);
             }
         } else if (controller.isMoveUp() && controller.isMoveRight()) {
-            var pos = player.getPosition().add(new Position(1, -1));
+            final var pos = player.getPosition().add(new Position(1, -1));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
@@ -77,11 +77,11 @@ public class PlayerInputComponent implements InputComponent {
                         player.setPosition(pos);
                     }
         } else if (controller.isMoveRight() && controller.isMoveDown()) {
-            var pos = player.getPosition().add(new Position(1, 1));
+            final var pos = player.getPosition().add(new Position(1, 1));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
@@ -92,11 +92,11 @@ public class PlayerInputComponent implements InputComponent {
                         player.setPosition(pos);
                     }
         } else if (controller.isMoveDown() && controller.isMoveLeft()) {
-            var pos = player.getPosition().add(new Position(-1, 1));
+            final var pos = player.getPosition().add(new Position(-1, 1));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
@@ -107,11 +107,11 @@ public class PlayerInputComponent implements InputComponent {
                         player.setPosition(pos);
                     }
         } else if (controller.isMoveLeft() && controller.isMoveUp()) {
-            var pos = player.getPosition().add(new Position(-1, -1));
+            final var pos = player.getPosition().add(new Position(-1, -1));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
@@ -122,11 +122,11 @@ public class PlayerInputComponent implements InputComponent {
                         player.setPosition(pos);
                     }
         } else if (controller.isMoveDown()) {
-            var pos = player.getPosition().add(new Position(0, 1));
+            final var pos = player.getPosition().add(new Position(0, 1));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
@@ -137,11 +137,11 @@ public class PlayerInputComponent implements InputComponent {
                         player.setPosition(pos);
                     }
         } else if (controller.isMoveUp()) {
-            var pos = player.getPosition().add(new Position(0, -1));
+            final var pos = player.getPosition().add(new Position(0, -1));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
@@ -152,11 +152,11 @@ public class PlayerInputComponent implements InputComponent {
                         player.setPosition(pos);
                     }
         } else if (controller.isMoveLeft()) {
-            var pos = player.getPosition().add(new Position(-1, 0));
+            final var pos = player.getPosition().add(new Position(-1, 0));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
@@ -167,11 +167,11 @@ public class PlayerInputComponent implements InputComponent {
                         player.setPosition(pos);
                     }
         } else if (controller.isMoveRight()) {
-            var pos = player.getPosition().add(new Position(1, 0));
+            final var pos = player.getPosition().add(new Position(1, 0));
             if (manager.getMonsters()
                     .stream()
                     .anyMatch(p -> p.getPosition().equals(pos))) {
-                        for (var monster : manager.getMonsters()) {
+                        for (final var monster : manager.getMonsters()) {
                             if (monster.getPosition().equals(player.getPosition())) {
                                 monster.receiveDamage();
                                 player.receiveDamage(monster);
