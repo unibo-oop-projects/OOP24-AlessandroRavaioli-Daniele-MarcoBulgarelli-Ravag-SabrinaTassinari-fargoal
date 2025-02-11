@@ -31,8 +31,8 @@ public class Barbarian extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        this.setRender(renderFactory.barbarianRenderer(this));
         setMonsterType(MonsterType.BARBARIAN);
+        this.setRender(renderFactory.barbarianRenderer(this));
     }
 
     /** {@inheritDoc} */

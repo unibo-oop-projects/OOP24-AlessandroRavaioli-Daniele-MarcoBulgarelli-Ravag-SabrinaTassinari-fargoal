@@ -124,19 +124,19 @@ public abstract class AbstractMonster implements Monster {
 
     /** {@inheritDoc} */
     @Override
-    public void setVisibilityOn() {
+    public final void setVisibilityOn() {
         this.isVisible = true;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void setVisibilityOff() {
+    public final void setVisibilityOff() {
         this.isVisible = false;
     }
 
     /** {@inheritDoc} */
     @Override
-    public boolean isVisible() {
+    public final boolean isVisible() {
         return this.isVisible;
     }
 
@@ -163,7 +163,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param render - the render that the monster will use
      */
-    public void setRender(final Renderer render) {
+    protected final void setRender(final Renderer render) {
         this.render = render;
     }
 

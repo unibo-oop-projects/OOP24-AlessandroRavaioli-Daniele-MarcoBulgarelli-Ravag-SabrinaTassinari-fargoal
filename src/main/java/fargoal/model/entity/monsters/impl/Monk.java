@@ -32,8 +32,8 @@ public class Monk extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        this.setRender(renderFactory.monkRenderer(this));
         setMonsterType(MonsterType.MONK);
+        this.setRender(renderFactory.monkRenderer(this));
     }
 
     /** {@inheritDoc} */

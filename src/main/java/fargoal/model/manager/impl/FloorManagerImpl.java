@@ -271,7 +271,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             }
         }
         if (!alreadyPresent) {
-            this.monsters.add(monstFact.generate(pos, this.map, this, renderFactory));
+            this.monsters.add(monstFact.generate(pos, this, renderFactory));
         }
     }
 

@@ -6,7 +6,6 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.manager.api.FloorManager;
-import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
 
 /**
@@ -41,8 +40,7 @@ public class MonsterFactoryImpl implements MonsterFactory {
 
     /** {@inheritDoc} */
     @Override
-    public Monster generate(final Position position, 
-            final FloorMap floorMap, 
+    public Monster generate(final Position position,
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         final int num;
@@ -93,7 +91,6 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @param renderFactory - to give a render to the Rogue
      * @return a new Rogue
@@ -111,7 +108,6 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @param renderFactory - to give a render to the Barbarian
      * @return a new Barbarian
@@ -129,7 +125,6 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @param renderFactory - to give a render to the Monk
      * @return a new Monk
@@ -147,7 +142,6 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @param renderFactory - to give a render to the Assassin
      * @return a new Assassin
@@ -165,7 +159,6 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @param renderFactory - to give a render to the War Lord
      * @return a new War Lord
@@ -183,7 +176,6 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @param renderFactory - to give a render to the Mage
      * @return a new Mage
@@ -201,7 +193,6 @@ public class MonsterFactoryImpl implements MonsterFactory {
      * 
      * @param position - the starting position
      * @param level - the level of the floor where the monster is located
-     * @param floorMap - the floormap where the monster is located
      * @param floorManager - to get infos also about other entities
      * @param renderFactory - to give a render to the Spider
      * @return a new Spider
