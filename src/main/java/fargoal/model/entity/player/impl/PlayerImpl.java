@@ -286,12 +286,8 @@ public class PlayerImpl implements Player {
         return this.inventory;
     }
 
-    /**
-     * Retrieves the number of monsters the player has defeated.
-     * This method returns the total count of enemies slain by the player.
-     * 
-     * @return The {@link Integer} representing the number of slain foes.
-     */
+    /**{@inheritDoc}*/
+    @Override
     public Integer getNumberOfSlainFoes() {
         return this.numberOfSlainFoes;
     }
