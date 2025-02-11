@@ -111,7 +111,7 @@ public class TitleScreenManager implements SceneManager, MenuManager {
      * @param view - the view of entire game
      */
     private void createRenderers(final View view) {
-        SwingView sView = (SwingView) view;
+        final SwingView sView = (SwingView) view;
         this.menu = new SwingRendererMiddle(g2d -> {
                 g2d.setFont(new Font("Arial", Font.BOLD, sView.getFrame().getBounds().height * 3 / DIVISOR_FONT_MIDDLE_HEIGHT));
                 g2d.setColor((this.selected == 1) ? Color.cyan : Color.red);

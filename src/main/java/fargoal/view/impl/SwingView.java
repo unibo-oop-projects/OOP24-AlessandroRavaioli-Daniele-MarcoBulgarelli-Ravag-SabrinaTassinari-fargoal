@@ -23,6 +23,8 @@ import fargoal.view.api.View;
  */
 public class SwingView implements View, KeyListener {
 
+    private static final int MINIMUM_TILE_WIDTH = 16;
+    private static final int MINIMUM_TILE_HEIGHT = 12;
     private static final int FRAME_WIDTH = 650;
     private static final int FRAME_HEIGHT = 550;
     private static final int CONSTANT_FOUR = 4;
@@ -48,9 +50,9 @@ public class SwingView implements View, KeyListener {
 
     private final SwingViewCanvas mapPanel;
     private final SwingViewCanvas eventPanel;
-    final private SwingViewCanvas informationPanel;
-    final private JFrame frame;
-    final private KeyboardInputController input;
+    private final SwingViewCanvas informationPanel;
+    private final JFrame frame;
+    private final KeyboardInputController input;
 
     private int tilePixelDimWidth;
     private int tilePixelDimHeight;
@@ -91,8 +93,8 @@ public class SwingView implements View, KeyListener {
                 }
             }
         });
-        tilePixelDimHeight = 12;
-        tilePixelDimWidth = 16;
+        tilePixelDimHeight = MINIMUM_TILE_HEIGHT;
+        tilePixelDimWidth = MINIMUM_TILE_WIDTH;
         this.eventPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
                 this.frame.getBounds().height * EVENT_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
         this.informationPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
