@@ -1,5 +1,6 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 
+import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -44,6 +45,7 @@ public class InvisibilitySpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
+        floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         floorManager.getPlayer().setIsVisible(false);
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), true);
         this.removeSpell();

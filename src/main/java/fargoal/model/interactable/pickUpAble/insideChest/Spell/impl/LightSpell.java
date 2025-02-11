@@ -1,5 +1,6 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 
+import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -44,6 +45,7 @@ public class LightSpell implements Spell {
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
+        floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
         this.removeSpell();
         if (!floorManager.getPlayer().isVisible()) {

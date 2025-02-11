@@ -7,9 +7,11 @@ import fargoal.model.events.api.FloorEvent;
 import fargoal.model.events.api.FloorEventListener;
 import fargoal.model.events.impl.FoundTrapEvent;
 import fargoal.model.events.impl.MonsterEncounterEvent;
+import fargoal.model.events.impl.MonsterStealGoldEvent;
 import fargoal.model.events.impl.MonsterStealSpellEvent;
 import fargoal.model.events.impl.PickUpGoldEvent;
 import fargoal.model.events.impl.PickUpNewItemEvent;
+import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.view.api.Renderer;
@@ -55,6 +57,12 @@ public class RenderEventListener implements FloorEventListener, Renderer{
         } else if (floorEvent instanceof MonsterStealSpellEvent) {
             MonsterStealSpellEvent ev = (MonsterStealSpellEvent) floorEvent;
             text = ev.WhoStole().getTag() + " stole " + ev.WhatMonsterStole().getChestItemName();
+        } else if (floorEvent instanceof MonsterStealGoldEvent) {
+            MonsterStealGoldEvent ev = (MonsterStealGoldEvent) floorEvent;
+            text = ev.WhoStole().getTag() + " stole " + ev.HowMuchGold() + " gold coins";
+        } else if (floorEvent instanceof PlayerActionEvent) {
+            PlayerActionEvent ev = (PlayerActionEvent) floorEvent;
+            text = ev.WhatPlayerUsed().getChestItemName() + " has benn used";
         }
     }
 

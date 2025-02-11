@@ -2,6 +2,7 @@ package fargoal.model.interactable.pickUpAble.insideChest.Utility.impl;
 
 import java.util.Random;
 
+import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -43,6 +44,7 @@ public class HealingPotion implements Utility {
     public void use(FloorManager floorManager) {
         int healthToAdd = new Random().nextInt(19) + 3 * floorManager.getPlayer().getLevel();
         int healthToSet = floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd;
+        floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         if (healthToSet >= floorManager.getPlayer().getHealth().getMaxHealth()) {
             floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
         } else {

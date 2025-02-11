@@ -1,6 +1,7 @@
 package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -44,6 +45,7 @@ public class TeleportSpell implements Spell {
     @Override
     public void use(FloorManager floorManager) {
         Position newPlayerPosition;
+        floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         if (floorManager.getInteractables().stream().filter(i -> i.getTag() == "BEACON").count() > 0) {
             newPlayerPosition = 
                 floorManager.getInteractables().stream().filter(i -> i.getTag() == "BEACON").toList().getFirst().getPosition();
