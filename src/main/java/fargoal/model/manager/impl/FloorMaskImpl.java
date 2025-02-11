@@ -23,14 +23,14 @@ public class FloorMaskImpl implements FloorMask {
      */
     public FloorMaskImpl() {
         this.mask = new HashMap<>();
-        resetMask();
+        this.resetMask();
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void resetMask() {
+    public final void resetMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
             for (int j = 0; j < FLOOR_HEIGTH; j++) {
                 mask.put(new Position(i, j), false);
@@ -43,7 +43,7 @@ public class FloorMaskImpl implements FloorMask {
      */
     @Override
     public void update(final FloorManager manager) {
-        int lightRange = (manager.getPlayer().hasLight() ? 2 : 1);
+        final int lightRange = (manager.getPlayer().hasLight() ? 2 : 1);
         List<Position> lightUp = this.mask.keySet().stream()
                 .filter(e -> Math.abs(e.x() - manager.getPlayer().getPosition().x()) <= lightRange
                         && Math.abs(e.y() - manager.getPlayer().getPosition().y()) <= lightRange)
@@ -58,7 +58,7 @@ public class FloorMaskImpl implements FloorMask {
             }
         }
 
-        for (var element : manager.getAllElements()) {
+        for (final var element : manager.getAllElements()) {
             if (this.mask.get(element.getPosition())) {
                 element.render();
             }
@@ -104,7 +104,7 @@ public class FloorMaskImpl implements FloorMask {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        FloorMaskImpl other = (FloorMaskImpl) obj;
+        final FloorMaskImpl other = (FloorMaskImpl) obj;
         if (mask == null) {
             if (other.mask != null) {
                 return false;

@@ -31,9 +31,9 @@ public class Assassin extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        this.setVisibilityOff();
         this.setMonsterType(MonsterType.ASSASSIN);
         this.setRender(renderFactory.assassinRenderer(this));
+        this.setVisibilityOff();
     }
 
     /** {@inheritDoc} */
