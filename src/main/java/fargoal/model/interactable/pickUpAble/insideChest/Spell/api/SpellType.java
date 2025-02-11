@@ -1,4 +1,4 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
+package fargoal.model.interactable.pickUpAble.insideChest.Spell.api;
 
 /**
  * This is an enumeration of the spells the player can found in a chest. 

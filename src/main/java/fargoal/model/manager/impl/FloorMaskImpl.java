@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import fargoal.commons.api.Position;
-import fargoal.model.core.GameContext;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
 

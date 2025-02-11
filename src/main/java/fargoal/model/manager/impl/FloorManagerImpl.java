@@ -18,6 +18,7 @@ import fargoal.model.events.api.FloorEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
 import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
+import fargoal.model.interactable.pickUpAble.onGround.SwordOfFargoal;
 import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.interactable.stair.impl.DownStairs;
 import fargoal.model.interactable.stair.impl.UpStairs;
@@ -43,6 +44,8 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     private static final int FIXED_NUMBER_OF_STAIRS = 2;
     private static final int VARIABLE_NUMBER_OF_STAIRS = 2;
     private static final int TIME_TO_WAIT_ON_EVENT = 1500;
+    private static final int MINIMUM_SWORD_LEVEL = 15;
+    private static final int VARIABLE_SWORD_LEVEL = 6;
 
     private final RenderEventListener listener;
     private FloorMap map;
@@ -56,6 +59,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
     private final RenderFactory renderFactory;
     private final Timer timer;
     private long elapsed;
+    private final SwordOfFargoal sword;
 
     /**
      * Constructor that inizializes all of its fields.
@@ -73,6 +77,8 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
                 engine.getController(),
                 new PlayerInformationRenderer(engine.getView()),
                 new InventoryInformationRenderer(engine.getView()));
+        this.sword = new SwordOfFargoal(renderFactory,
+                new Random().nextInt(VARIABLE_SWORD_LEVEL) + MINIMUM_SWORD_LEVEL);
         initializeFloor();
     }
 
@@ -196,6 +202,7 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
         while (this.monsters.size() < MAX_MONSTERS) {
             generateMonster(this.map.getRandomTile());
         }
+
         int goldSpots = new Random().nextInt(4) + 6;
         int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
         while (this.interactables.size() < goldSpots) {
@@ -219,6 +226,20 @@ public class FloorManagerImpl implements FloorManager, SceneManager {
             while (this.interactables.size() < downStair + upStair + goldSpots + treasures) {
                 generateStairs(new UpStairs(new Position(0, 0), renderFactory));
             }
+        }
+
+        if (this.player.getInventory()
+                .getListOfMaps()
+                .getListOfMaps().contains(this.floorLevel)) {
+            this.mask.clearMask();
+        }
+
+        if (this.floorLevel == sword.getMapLevel()) {
+            do {
+                sword.setPosition(this.map.getRandomTile());
+            } while (this.interactables.stream()
+                    .anyMatch(in -> in.getPosition().equals(this.sword.getPosition()))
+                    || this.temple.getPosition().equals(this.sword.getPosition()));
         }
     }
 

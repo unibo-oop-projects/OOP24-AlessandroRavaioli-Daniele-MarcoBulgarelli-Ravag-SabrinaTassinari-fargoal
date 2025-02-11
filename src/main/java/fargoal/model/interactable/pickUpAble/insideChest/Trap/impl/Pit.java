@@ -1,18 +1,17 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Trap;
+package fargoal.model.interactable.pickUpAble.insideChest.Trap.impl;
 
 import java.util.Random;
 
-import fargoal.model.events.impl.FoundTrapEvent;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
+import fargoal.model.interactable.pickUpAble.insideChest.Trap.api.AbstractTrap;
+import fargoal.model.interactable.pickUpAble.insideChest.Trap.api.TrapType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements a Pit, a trap which can be found in a chest.
  * It damages the player and there is a chance the player loses the map.
  */
-public class Pit implements ChestItem {
+public class Pit extends AbstractTrap {
 
 /**
      * This is the constructor of the class. When the player finds the trap in a chest it damages him immediately. 
@@ -26,33 +25,18 @@ public class Pit implements ChestItem {
 
     /** {@inheritDoc} */
     @Override
-    public String getChestItemType() {
-        return ChestItemType.TRAP.getName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
     public String getChestItemName() {
         return TrapType.PIT.getName();
     }
 
-    /** {@inheritDoc} */
     @Override
-    public void use(FloorManager floorManager) {
-        boolean mapLost = false;
+    public void effect(FloorManager floorManager) {
         int damage = new Random().nextInt(9) + floorManager.getFloorLevel();   
-        int chanceOfMapLost = new Random().nextInt(4);
-        if (chanceOfMapLost == 0) {
-            floorManager.getFloorMask().resetMask();
-            mapLost = true;
-        }
         if (!floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName())) {
             floorManager.getPlayer().getHealth().decreaseHealth(damage);
         } else {
             floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
         }
-        
-        floorManager.notifyFloorEvent(new FoundTrapEvent(this, mapLost));
     }
 
 }

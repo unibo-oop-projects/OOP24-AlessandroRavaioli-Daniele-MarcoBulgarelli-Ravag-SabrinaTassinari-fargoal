@@ -1,17 +1,16 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Trap;
+package fargoal.model.interactable.pickUpAble.insideChest.Trap.impl;
 
 import java.util.Random;
 
-import fargoal.model.events.impl.FoundTrapEvent;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
+import fargoal.model.interactable.pickUpAble.insideChest.Trap.api.AbstractTrap;
+import fargoal.model.interactable.pickUpAble.insideChest.Trap.api.TrapType;
 import fargoal.model.manager.api.FloorManager;
 
 /**
  * This class implements an Explosion, a trap that can be found in a chest.
  * It damages the player and there is a chance the player loses the map.
  */
-public class Explosion implements ChestItem {
+public class Explosion extends AbstractTrap {
 
     /**
      * This is the constructor of the class. When the player finds the trap in a chest it damages him immediately. 
@@ -24,28 +23,14 @@ public class Explosion implements ChestItem {
 
     /** {@inheritDoc} */
     @Override
-    public String getChestItemType() {
-        return ChestItemType.TRAP.getName();
-    }
-
-    /** {@inheritDoc} */
-    @Override
     public String getChestItemName() {
         return TrapType.EXPLOSION.getName();
     }
 
-    /** {@inheritDoc} */
     @Override
-    public void use(FloorManager floorManager) {
-        boolean mapLost = false;
+    public void effect(FloorManager floorManager) {
         int damage = new Random().nextInt(14) + floorManager.getFloorLevel();
-        int chanceOfMapLost = new Random().nextInt(4);
-        if (chanceOfMapLost == 0) {
-            floorManager.getFloorMask().resetMask();
-            mapLost = true;
-        }
         floorManager.getPlayer().getHealth().decreaseHealth(damage);
-        floorManager.notifyFloorEvent(new FoundTrapEvent(this, mapLost));
     }
 
 }

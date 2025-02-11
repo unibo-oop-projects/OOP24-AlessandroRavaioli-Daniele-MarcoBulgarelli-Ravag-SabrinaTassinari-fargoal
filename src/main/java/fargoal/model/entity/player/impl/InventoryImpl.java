@@ -7,12 +7,12 @@ import java.util.Map;
 
 import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.InvisibilitySpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.RegenerationSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.ShieldSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.TeleportSpell;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.EnchantedWeapon;
