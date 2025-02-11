@@ -12,9 +12,11 @@ import fargoal.view.api.Renderer;
 /**
  * A class that implement the sack of money the player can find in the dungeon.
  */
-public class SackOfMoney implements Interactable{
+public class SackOfMoney implements Interactable {
 
-    final private Position position;
+    private static final int MAX_GOLD = 130;
+    private static final int GOLD_TO_ADD = 20;
+    private final Position position;
     private boolean hiddenInGround;
     private boolean open;
     private int goldInSack;
@@ -25,6 +27,7 @@ public class SackOfMoney implements Interactable{
      * and the sack is not hidden in the ground in the beginning. In this constructor a certain 
      * amount of money is put in the sack. 
      * @param position - the position of the sack of money.
+     * @param renderFactory - the factory from which the renderer needed is taken.
      */
     public SackOfMoney(final Position position, final RenderFactory renderFactory) {
         this.position = position;
@@ -49,7 +52,7 @@ public class SackOfMoney implements Interactable{
     }
 
     /**
-     * Getter for the field open
+     * Getter for the field open.
      * @return true if the player opened the sack of gold.
      */
     public boolean isOpen() {
@@ -64,12 +67,12 @@ public class SackOfMoney implements Interactable{
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public Interactable interact(final FloorManager floorManager) {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
             floorManager.notifyFloorEvent(new PickUpGoldEvent(this.goldInSack));
             this.open = true;
             this.goldInSack = floorManager.getPlayer().getPlayerGold().addGold(this.goldInSack);
-            if(this.goldInSack > 0) {
+            if (this.goldInSack > 0) {
                 this.hiddenInGround = true;
             } else {
                 this.hiddenInGround = false;
@@ -82,8 +85,8 @@ public class SackOfMoney implements Interactable{
      * This private method calculates the amount of money the sack contains.
      * @return the amount of money the sack contains.
      */
-    private int generateAmountOfMoney(){
-        return new Random().nextInt(130) + 20;
+    private int generateAmountOfMoney() {
+        return new Random().nextInt(MAX_GOLD) + GOLD_TO_ADD;
     }
 
     /** {@inheritDoc} */
@@ -102,12 +105,12 @@ public class SackOfMoney implements Interactable{
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (this.isOpen()) {
             if (!this.isHiddenInGround()) {
                 floorManager.getAllElements().remove(this);
             }
         }
     }
-    
+
 }

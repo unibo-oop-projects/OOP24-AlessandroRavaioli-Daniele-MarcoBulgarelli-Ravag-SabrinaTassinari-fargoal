@@ -11,9 +11,9 @@ import fargoal.view.api.Renderer;
  * When the player is near it he can not be attacked by monster. 
  * When the player cast a teleport spell he is teleported near it.
  */
-public class BeaconOnGround implements Interactable{
+public class BeaconOnGround implements Interactable {
 
-    final Position position; 
+    private final Position position; 
     private Renderer renderer;
     private Position lastPlayerPosition;
 
@@ -21,6 +21,7 @@ public class BeaconOnGround implements Interactable{
      * The constructor of the class. When the player put on the ground a beacon that he has in the inventory 
      * it assign the position in which he had been put.
      * @param position - the position where the player put the beacon.
+     * @param floorManager - it contains all the elements of the floor.
      */
     public BeaconOnGround(final Position position, final FloorManager floorManager) {
         this.position = position;
@@ -41,7 +42,7 @@ public class BeaconOnGround implements Interactable{
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public Interactable interact(final FloorManager floorManager) {
         floorManager.getPlayer().setIsImmune(true);
         return this;
     }
@@ -62,7 +63,7 @@ public class BeaconOnGround implements Interactable{
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition().equals(this.position)) {
             if (!floorManager.getPlayer().getPosition().equals(this.lastPlayerPosition)) {
                 floorManager.notifyFloorEvent(new WalkOverEvent(this));
@@ -72,5 +73,5 @@ public class BeaconOnGround implements Interactable{
             floorManager.getPlayer().setIsImmune(false);
         }
     }
-    
+
 }

@@ -9,7 +9,7 @@ import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 
 /**
- * A class that implements an object that allows to go back up the dungeon
+ * A class that implements an object that allows to go back up the dungeon.
  */
 public class UpStairs implements Stairs {
 
@@ -22,14 +22,14 @@ public class UpStairs implements Stairs {
      * @param pos - the position of the stairs.
      * @param renderFactory - a factory to create the renderer of all the elements of the floor.
      */
-    public UpStairs(Position pos, final RenderFactory renderFactory) {
+    public UpStairs(final Position pos, final RenderFactory renderFactory) {
         this.position = pos;
         this.setRenderer(renderFactory.upstairRenderer(this));
     }
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
+    public Interactable interact(final FloorManager floorManager) {
         floorManager.decreaseFloorLevel();
         return this;
     }
@@ -62,7 +62,7 @@ public class UpStairs implements Stairs {
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
         if (!floorManager.getPlayer().getPosition().equals(lastPlayerPosition)) {
             if (floorManager.getPlayer().getPosition().equals(this.position)) {
                 floorManager.notifyFloorEvent(new WalkOverEvent(this));
