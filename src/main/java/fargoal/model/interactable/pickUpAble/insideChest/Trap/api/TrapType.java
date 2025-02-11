@@ -1,4 +1,4 @@
-package fargoal.model.interactable.pickUpAble.insideChest.Trap;
+package fargoal.model.interactable.pickUpAble.insideChest.Trap.api;
 
 /**
  * This is an enumeration of the name of the traps the player can found in a chest. 

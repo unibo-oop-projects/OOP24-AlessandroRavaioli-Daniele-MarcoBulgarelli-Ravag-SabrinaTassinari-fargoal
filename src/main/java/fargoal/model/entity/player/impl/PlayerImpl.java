@@ -17,7 +17,7 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;

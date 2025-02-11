@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.Utility;
+import fargoal.model.interactable.pickUpAble.insideChest.Utility.api.UtilityType;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 

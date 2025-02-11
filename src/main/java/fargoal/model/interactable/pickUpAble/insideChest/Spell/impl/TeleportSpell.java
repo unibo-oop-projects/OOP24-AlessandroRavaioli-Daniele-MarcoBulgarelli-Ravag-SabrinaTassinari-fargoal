@@ -3,6 +3,7 @@ package fargoal.model.interactable.pickUpAble.insideChest.Spell.impl;
 import fargoal.commons.api.Position;
 import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
+import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
 
