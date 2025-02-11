@@ -7,10 +7,20 @@ import fargoal.model.entity.player.impl.PlayerImpl;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 
-public class PlayerInputComponent implements InputComponent{
+/**
+ * Class that refresh everything that the player does or interact with.
+ */
+public class PlayerInputComponent implements InputComponent {
 
-    public void update(FloorManager manager, PlayerImpl player, InputController controller) {
-        
+    /**
+     * Method that based on the inputs processed that he received, chooses what action
+     * the player has to do.
+     * 
+     * @param manager - to get all the infos he needs
+     * @param player - to move the player or let him interact with FloorElements
+     * @param controller - to receive the processed inputs
+     */
+    public void update(final FloorManager manager, final PlayerImpl player, final InputController controller) {
         if (controller.isInteracting()) {
             Optional<Interactable> interacting = manager.getInteractables()
                     .stream()
@@ -21,37 +31,37 @@ public class PlayerInputComponent implements InputComponent{
             if (player.getInventory().getHealingPotions().getNumberInInventory() > 0) {
                 player.getInventory().getHealingPotions().use(manager);
             }
-        } else if(controller.isPlacingBeacon()) {
+        } else if (controller.isPlacingBeacon()) {
             if (player.getInventory().getBeacons().getNumberInInventory() > 0) {
                 player.getInventory().getBeacons().use(manager);
             }
-        } else if(controller.isUsingDriftSpell()) {
+        } else if (controller.isUsingDriftSpell()) {
             if (player.getInventory().getDriftSpell().getNumberInInventory() > 0) {
                 player.getInventory().getDriftSpell().use(manager);
             }
-        } else if(controller.isUsingInvisibilitySpell()) {
+        } else if (controller.isUsingInvisibilitySpell()) {
             if (player.getInventory().getInvisibilitySpell().getNumberInInventory() > 0) {
                 player.getInventory().getInvisibilitySpell().use(manager);
             }
-        } else if(controller.isUsingLightSpell()) {
+        } else if (controller.isUsingLightSpell()) {
             if (player.getInventory().getLightSpell().getNumberInInventory() > 0) {
                 player.getInventory().getLightSpell().use(manager);
             }
         } else  if (controller.isTurningLight()) {
             player.getInventory().getLightSpell().turnLight(manager);
-        } else if(controller.isUsingRegenerationSpell()) {
+        } else if (controller.isUsingRegenerationSpell()) {
             if (player.getInventory().getRegenerationSpell().getNumberInInventory() > 0) {
                 player.getInventory().getRegenerationSpell().use(manager);
             }
-        } else if(controller.isUsingShieldSpell()) {
+        } else if (controller.isUsingShieldSpell()) {
             if (player.getInventory().getShieldSpell().getNumberInInventory() > 0) {
                 player.getInventory().getShieldSpell().use(manager);
             }
-        } else if(controller.isUsingTeleportSpell()) {
+        } else if (controller.isUsingTeleportSpell()) {
             if (player.getInventory().getTeleportSpell().getNumberInInventory() > 0) {
                 player.getInventory().getTeleportSpell().use(manager);
             }
-        } else if(controller.isMoveUp() && controller.isMoveRight()) {
+        } else if (controller.isMoveUp() && controller.isMoveRight()) {
             var pos = player.getPosition().add(new Position(1, -1));
             if (manager.getMonsters()
                     .stream()
@@ -66,7 +76,7 @@ public class PlayerInputComponent implements InputComponent{
                     } else if (manager.getFloorMap().isTile(pos)) {
                         player.setPosition(pos);
                     }
-        } else if(controller.isMoveRight() && controller.isMoveDown()) {
+        } else if (controller.isMoveRight() && controller.isMoveDown()) {
             var pos = player.getPosition().add(new Position(1, 1));
             if (manager.getMonsters()
                     .stream()
@@ -81,7 +91,7 @@ public class PlayerInputComponent implements InputComponent{
                     } else if (manager.getFloorMap().isTile(pos)) {
                         player.setPosition(pos);
                     }
-        } else if(controller.isMoveDown() && controller.isMoveLeft()) {
+        } else if (controller.isMoveDown() && controller.isMoveLeft()) {
             var pos = player.getPosition().add(new Position(-1, 1));
             if (manager.getMonsters()
                     .stream()
@@ -96,7 +106,7 @@ public class PlayerInputComponent implements InputComponent{
                     } else if (manager.getFloorMap().isTile(pos)) {
                         player.setPosition(pos);
                     }
-        } else if(controller.isMoveLeft() && controller.isMoveUp()) {
+        } else if (controller.isMoveLeft() && controller.isMoveUp()) {
             var pos = player.getPosition().add(new Position(-1, -1));
             if (manager.getMonsters()
                     .stream()
@@ -111,7 +121,7 @@ public class PlayerInputComponent implements InputComponent{
                     } else if (manager.getFloorMap().isTile(pos)) {
                         player.setPosition(pos);
                     }
-        } else if(controller.isMoveDown()) {
+        } else if (controller.isMoveDown()) {
             var pos = player.getPosition().add(new Position(0, 1));
             if (manager.getMonsters()
                     .stream()
@@ -126,7 +136,7 @@ public class PlayerInputComponent implements InputComponent{
                     } else if (manager.getFloorMap().isTile(pos)) {
                         player.setPosition(pos);
                     }
-        } else if(controller.isMoveUp()) {
+        } else if (controller.isMoveUp()) {
             var pos = player.getPosition().add(new Position(0, -1));
             if (manager.getMonsters()
                     .stream()
@@ -141,7 +151,7 @@ public class PlayerInputComponent implements InputComponent{
                     } else if (manager.getFloorMap().isTile(pos)) {
                         player.setPosition(pos);
                     }
-        } else if(controller.isMoveLeft()) {
+        } else if (controller.isMoveLeft()) {
             var pos = player.getPosition().add(new Position(-1, 0));
             if (manager.getMonsters()
                     .stream()
@@ -156,7 +166,7 @@ public class PlayerInputComponent implements InputComponent{
                     } else if (manager.getFloorMap().isTile(pos)) {
                         player.setPosition(pos);
                     }
-        } else if(controller.isMoveRight()) {
+        } else if (controller.isMoveRight()) {
             var pos = player.getPosition().add(new Position(1, 0));
             if (manager.getMonsters()
                     .stream()
