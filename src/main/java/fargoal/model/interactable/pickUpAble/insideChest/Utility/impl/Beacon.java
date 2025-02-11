@@ -26,12 +26,6 @@ public class Beacon extends AbstractUtility {
         return UtilityType.BEACON.getName();
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public void use(FloorManager floorManager) {
-        
-    }
-
     @Override
     public void effect(FloorManager floorManager) {
         this.removeUtility();

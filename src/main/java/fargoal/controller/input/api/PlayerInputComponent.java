@@ -36,7 +36,6 @@ public class PlayerInputComponent implements InputComponent{
         } else if(controller.isUsingLightSpell()) {
             if (player.getInventory().getLightSpell().getNumberInInventory() > 0) {
                 player.getInventory().getLightSpell().use(manager);
-                player.getInventory().getLightSpell().turnLight(manager);
             }
         } else  if (controller.isTurningLight()) {
             player.getInventory().getLightSpell().turnLight(manager);

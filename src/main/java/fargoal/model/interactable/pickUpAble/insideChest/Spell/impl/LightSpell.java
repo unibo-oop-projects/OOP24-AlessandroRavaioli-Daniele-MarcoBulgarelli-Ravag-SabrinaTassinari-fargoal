@@ -57,6 +57,7 @@ public class LightSpell extends AbstractSpell {
     @Override
     public void effect(FloorManager floorManager) {
         floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.LIGHT.getName(), true);
+        floorManager.getPlayer().setHasLight(true);
         this.removeSpell();
         if (!floorManager.getPlayer().isVisible()) {
             floorManager.getPlayer().setIsVisible(true);
