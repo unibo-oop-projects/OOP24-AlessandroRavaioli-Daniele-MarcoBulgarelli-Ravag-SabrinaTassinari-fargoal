@@ -2,6 +2,7 @@ package fargoal.model.interactable.pickUpAble.insideChest.Trap;
 
 import java.util.Random;
 
+import fargoal.model.events.impl.FoundTrapEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.SpellType;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
@@ -38,16 +39,20 @@ public class Pit implements ChestItem {
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
+        boolean mapLost = false;
         int damage = new Random().nextInt(9) + floorManager.getFloorLevel();   
         int chanceOfMapLost = new Random().nextInt(4);
         if (chanceOfMapLost == 0) {
             floorManager.getFloorMask().resetMask();
+            mapLost = true;
         }
         if (!floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName())) {
             floorManager.getPlayer().getHealth().decreaseHealth(damage);
         } else {
             floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
         }
+        
+        floorManager.notifyFloorEvent(new FoundTrapEvent(this, mapLost));
     }
 
 }

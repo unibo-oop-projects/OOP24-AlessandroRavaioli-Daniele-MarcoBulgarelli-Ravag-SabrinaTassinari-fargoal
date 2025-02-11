@@ -2,6 +2,7 @@ package fargoal.model.interactable.pickUpAble.insideChest.Trap;
 
 import java.util.Random;
 
+import fargoal.model.events.impl.FoundTrapEvent;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
 import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItemType;
 import fargoal.model.manager.api.FloorManager;
@@ -36,12 +37,15 @@ public class CeilingTrap implements ChestItem {
     /** {@inheritDoc} */
     @Override
     public void use(FloorManager floorManager) {
+        boolean mapLost = false;
         int damage = new Random().nextInt(9) + floorManager.getFloorLevel();
         int chanceOfMapLost = new Random().nextInt(4);
         if (chanceOfMapLost == 0) {
             floorManager.getFloorMask().resetMask();
+            mapLost = true;
         }
         floorManager.getPlayer().getHealth().decreaseHealth(damage);
+        floorManager.notifyFloorEvent(new FoundTrapEvent(this, mapLost));
     }
     
 }
