@@ -15,7 +15,7 @@ public class GameEngine {
     private static final int PERIOD = 20;
     private SceneManager manager;
     private final View view;
-    private KeyboardInputController controller;
+    final private KeyboardInputController controller;
     private long elapsed;
 
     /**
@@ -48,7 +48,11 @@ public class GameEngine {
         if (delta < PERIOD) {
             try {
                 Thread.sleep(PERIOD - delta);
-            } catch (Exception e) { }
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Negative sleep");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

@@ -367,9 +367,7 @@ public final class Ai {
                     }
                 }
             }
-        }
-        if (!check) {
-            if (!possibleDirections.isEmpty()) {
+            if (!check && !possibleDirections.isEmpty()) {
                 pos = possibleDirections.get(RANDOM.nextInt(possibleDirections.size()));
                 monster.setPosition(pos);
                 if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {

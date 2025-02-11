@@ -6,7 +6,6 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
-import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
 
 /**
@@ -25,13 +24,11 @@ public class Spider extends AbstractMonster {
      * 
      * @param position - the starting position
      * @param level - the level of the monster
-     * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
      * @param renderFactory - to give a render to the Spider
      */
     public Spider(final Position position, 
-            final Integer level, 
-            final FloorMap floorMap, 
+            final Integer level,
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
