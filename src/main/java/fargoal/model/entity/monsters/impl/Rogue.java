@@ -5,6 +5,7 @@ import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.events.impl.MonsterStealGoldEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
@@ -18,7 +19,6 @@ import fargoal.view.api.RenderFactory;
 public class Rogue extends AbstractMonster {
 
     private static final int NEXT_MOVE = 5000;
-    private static final int GOLD_REMOVE = 4;
 
     /**
      * A constructor for the Rogue; it uses the
@@ -49,7 +49,9 @@ public class Rogue extends AbstractMonster {
     @Override
     public void steal() {
         final Player player = this.getFloorManager().getPlayer();
-        player.getPlayerGold().removeGold(player.getCurrentGold() / GOLD_REMOVE);
+        final int quantity = this.getRandom(player.getCurrentGold() / 2) + 1;
+        this.getFloorManager().notifyFloorEvent(new MonsterStealGoldEvent(quantity, this));
+        player.getPlayerGold().removeGold(quantity);
     }
 
     /** {@inheritDoc} */
@@ -58,15 +60,19 @@ public class Rogue extends AbstractMonster {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
-            if (this.areNeighbours(floorManager, 1) 
+            if (this.areNeighbours(floorManager, 1)
                     && !floorManager.getPlayer().isImmune()
                     && floorManager.getPlayer().isVisible()) {
-                this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                floorManager.getPlayer().receiveDamage(this);
-                this.steal();
-            } else {
-                Ai.move(this, floorManager.getPlayer());
-            }
+                        if (floorManager.getPlayer().getCurrentGold() > 0
+                                && this.getRandom(3) == 0) {
+                                    this.steal();
+                                } else {
+                                    floorManager.notifyFloorEvent(new ReceiveAttackEvent(this));
+                                    floorManager.getPlayer().receiveDamage(this);
+                                }
+                    } else {
+                        Ai.move(this, floorManager.getPlayer());
+                    }
         }
     }
 }

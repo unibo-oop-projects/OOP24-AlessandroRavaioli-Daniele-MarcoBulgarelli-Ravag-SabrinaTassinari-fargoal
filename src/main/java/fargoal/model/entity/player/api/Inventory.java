@@ -124,4 +124,6 @@ public interface Inventory {
      * @return a list of spell.
      */
     List<Spell> getListAllSpell();
+
+    boolean areThereSpells();
 }

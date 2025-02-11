@@ -5,6 +5,7 @@ import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Inventory;
+import fargoal.model.events.impl.MonsterStealSpellEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
@@ -48,6 +49,43 @@ public class Mage extends AbstractMonster {
     @Override
     public void steal() {
         Inventory inventory = this.getFloorManager().getPlayer().getInventory();
+        int num = this.getRandom(5);
+        boolean check = false;
+        while (!check) {
+            if (num == 0 
+                    && inventory.getInvisibilitySpell().getNumberInInventory() > 0) {
+                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getInvisibilitySpell(), this));
+                        inventory.getInvisibilitySpell().removeSpell();
+                        check = true;
+            } else if (num == 1
+                    && inventory.getRegenerationSpell().getNumberInInventory() > 0) {
+                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getRegenerationSpell(), this));
+                        inventory.getRegenerationSpell().removeSpell();
+                        check = true;
+            } else if (num == 1
+                    && inventory.getTeleportSpell().getNumberInInventory() > 0) {
+                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getTeleportSpell(), this));
+                        inventory.getTeleportSpell().removeSpell();
+                        check = true;
+            } else if (num == 1
+                    && inventory.getShieldSpell().getNumberInInventory() > 0) {
+                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getShieldSpell(), this));
+                        inventory.getShieldSpell().removeSpell();
+                        check = true;
+            } else if (num == 1
+                    && inventory.getLightSpell().getNumberInInventory() > 0) {
+                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getLightSpell(), this));
+                        inventory.getLightSpell().removeSpell();
+                        check = true;
+            } else if (num == 1
+                    && inventory.getDriftSpell().getNumberInInventory() > 0) {
+                        this.getFloorManager().notifyFloorEvent(new MonsterStealSpellEvent(inventory.getDriftSpell(), this));
+                        inventory.getDriftSpell().removeSpell();
+                        check = true;
+            }
+        }
+
+
         if (inventory.getHealingPotions().getNumberInInventory() != 0) {
             inventory.getHealingPotions().removeUtility();
         }
@@ -59,17 +97,19 @@ public class Mage extends AbstractMonster {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
             this.setTimer();
-            if (this.areNeighbours(floorManager, 1) 
+            if (this.areNeighbours(floorManager, 1)
                     && !floorManager.getPlayer().isImmune()
                     && floorManager.getPlayer().isVisible()) {
-                this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                floorManager.getPlayer().receiveDamage(this);
-                if(this.getRandom(2) == 0) {
-                    this.steal();
-                }
-            } else {
-                Ai.move(this, floorManager.getPlayer());
-            }
+                        if (floorManager.getPlayer().getInventory().areThereSpells()
+                                && this.getRandom(4) == 0) {
+                            this.steal();
+                        } else {
+                            this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
+                            floorManager.getPlayer().receiveDamage(this);
+                        }
+                    } else {
+                        Ai.move(this, floorManager.getPlayer());
+                    }
         }
     }
 }

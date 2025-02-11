@@ -156,4 +156,13 @@ public class InventoryImpl implements Inventory {
         return list;
     }
     
+    @Override
+    public boolean areThereSpells() {
+        return this.getInvisibilitySpell().getNumberInInventory() > 0
+                || this.getRegenerationSpell().getNumberInInventory() > 0
+                || this.getTeleportSpell().getNumberInInventory() > 0
+                || this.getShieldSpell().getNumberInInventory() > 0
+                || this.getLightSpell().getNumberInInventory() > 0
+                || this.getDriftSpell().getNumberInInventory() > 0;
+    }
 }

@@ -7,6 +7,7 @@ import fargoal.model.events.api.FloorEvent;
 import fargoal.model.events.api.FloorEventListener;
 import fargoal.model.events.impl.FoundTrapEvent;
 import fargoal.model.events.impl.MonsterEncounterEvent;
+import fargoal.model.events.impl.MonsterStealSpellEvent;
 import fargoal.model.events.impl.PickUpGoldEvent;
 import fargoal.model.events.impl.PickUpNewItemEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
@@ -51,6 +52,9 @@ public class RenderEventListener implements FloorEventListener, Renderer{
         } else if (floorEvent instanceof WalkOverEvent) {
             WalkOverEvent ev = (WalkOverEvent) floorEvent;
             text = ev.getOnWhat().getTag();
+        } else if (floorEvent instanceof MonsterStealSpellEvent) {
+            MonsterStealSpellEvent ev = (MonsterStealSpellEvent) floorEvent;
+            text = ev.WhoStole().getTag() + " stole " + ev.WhatMonsterStole().getChestItemName();
         }
     }
 
