@@ -59,17 +59,17 @@ public class InventoryImpl implements Inventory {
      * </p>
      */
     public InventoryImpl(FloorManager floorManager) {
-        this.healingPotions = new HealingPotion(floorManager);
-        this.beacons = new Beacon(floorManager);
+        this.healingPotions = new HealingPotion();
+        this.beacons = new Beacon();
         this.magicSacks = new MagicSack(floorManager);
         this.enchantedWeapons = new EnchantedWeapon(floorManager);
-        this.levelMaps = new fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map(floorManager);
-        this.invisibilityScroll = new InvisibilitySpell(floorManager);
-        this.teleportScroll = new TeleportSpell(floorManager);
-        this.shieldScroll = new ShieldSpell(floorManager);
-        this.regenerationScroll = new RegenerationSpell(floorManager);
-        this.driftScroll = new DriftSpell(floorManager);
-        this.lightScroll = new LightSpell(floorManager);
+        this.levelMaps = new fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map();
+        this.invisibilityScroll = new InvisibilitySpell();
+        this.teleportScroll = new TeleportSpell();
+        this.shieldScroll = new ShieldSpell();
+        this.regenerationScroll = new RegenerationSpell();
+        this.driftScroll = new DriftSpell();
+        this.lightScroll = new LightSpell();
         this.SpellCasted = new HashMap<>();
         this.SpellCasted.put(SpellType.DRIFT.getName(), false);
         this.SpellCasted.put(SpellType.INVISIBILITY.getName(), false);

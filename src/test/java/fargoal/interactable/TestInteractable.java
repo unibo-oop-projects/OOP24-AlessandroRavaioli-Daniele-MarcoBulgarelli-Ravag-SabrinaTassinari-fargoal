@@ -46,7 +46,7 @@ public class TestInteractable {
      void checkDriftSpell() {
           final int healthBefore = floorManager.getPlayer().getHealth().getCurrentHealth();
           final int levelFloor = floorManager.getFloorLevel();
-          floorManager.getPlayer().getInventory().getDriftSpell().store(floorManager);
+          floorManager.getPlayer().getInventory().getDriftSpell().store();
           final int numberBefore = floorManager.getPlayer().getInventory().getDriftSpell().getNumberInInventory();
           floorManager.getPlayer().useDriftSpell();
           assertNotEquals(numberBefore, floorManager.getPlayer().getInventory().getDriftSpell().getNumberInInventory());
@@ -66,7 +66,7 @@ public class TestInteractable {
      @Test
      void checkInvisibilitySpell() {
           assertTrue(floorManager.getPlayer().isVisible());
-          floorManager.getPlayer().getInventory().getInvisibilitySpell().store(floorManager);
+          floorManager.getPlayer().getInventory().getInvisibilitySpell().store();
           final int numberBefore = floorManager.getPlayer().getInventory().getInvisibilitySpell().getNumberInInventory();
           floorManager.getPlayer().useInvisibilitySpell();
           assertNotEquals(numberBefore, floorManager.getPlayer().getInventory().getInvisibilitySpell().getNumberInInventory());
@@ -80,7 +80,7 @@ public class TestInteractable {
      */
      @Test
      void checkLightSpell() {
-          floorManager.getPlayer().getInventory().getLightSpell().store(floorManager);
+          floorManager.getPlayer().getInventory().getLightSpell().store();
           final int numberBefore = floorManager.getPlayer().getInventory().getLightSpell().getNumberInInventory();
           floorManager.getPlayer().useLightSpell();
           assertNotEquals(numberBefore, floorManager.getPlayer().getInventory().getInvisibilitySpell().getNumberInInventory());
@@ -96,7 +96,7 @@ public class TestInteractable {
      */
      @Test
      void checkRegenerationSpell() {
-          floorManager.getPlayer().getInventory().getRegenerationSpell().store(floorManager);
+          floorManager.getPlayer().getInventory().getRegenerationSpell().store();
           final int numberBefore = floorManager.getPlayer().getInventory().getRegenerationSpell().getNumberInInventory();
           floorManager.getPlayer().useRegenerationSpell();
           assertNotEquals(numberBefore, floorManager.getPlayer().getInventory().getRegenerationSpell().getNumberInInventory());
@@ -108,7 +108,7 @@ public class TestInteractable {
      */
      @Test
      void checkShieldSpell() {
-          floorManager.getPlayer().getInventory().getShieldSpell().store(floorManager);
+          floorManager.getPlayer().getInventory().getShieldSpell().store();
           final int numberBefore = floorManager.getPlayer().getInventory().getShieldSpell().getNumberInInventory();
           floorManager.getPlayer().useShieldSpell();
           assertNotEquals(numberBefore, floorManager.getPlayer().getInventory().getShieldSpell().getNumberInInventory());
@@ -122,7 +122,7 @@ public class TestInteractable {
      @Test
      void checkTeleportSpell() {
           final Position positionBefore = floorManager.getPlayer().getPosition();
-          floorManager.getPlayer().getInventory().getTeleportSpell().store(floorManager);
+          floorManager.getPlayer().getInventory().getTeleportSpell().store();
           final int numberBefore = floorManager.getPlayer().getInventory().getTeleportSpell().getNumberInInventory();
           floorManager.getPlayer().useTeleportSpell();
           assertNotEquals(numberBefore, floorManager.getPlayer().getInventory().getTeleportSpell().getNumberInInventory());
@@ -175,7 +175,7 @@ public class TestInteractable {
      */
      @Test
      void checkBeacon() {
-          floorManager.getPlayer().getInventory().getBeacons().store(floorManager);
+          floorManager.getPlayer().getInventory().getBeacons().store();
           final int numberInInventory = floorManager.getPlayer().getInventory().getBeacons().getNumberInInventory();
           floorManager.getPlayer().useBeacon();
           assertNotEquals(numberInInventory, floorManager.getPlayer().getInventory().getBeacons().getNumberInInventory());
@@ -198,7 +198,7 @@ public class TestInteractable {
      void checkEnchantedWeapon() {
           final int skillBefore = floorManager.getPlayer().getSkill();
           final int numberInInventory = floorManager.getPlayer().getInventory().getEnchantedWeapons().getNumberInInventory();
-          floorManager.getPlayer().getInventory().getEnchantedWeapons().store(floorManager);
+          floorManager.getPlayer().getInventory().getEnchantedWeapons().store();
           assertNotEquals(skillBefore, floorManager.getPlayer().getSkill());
           assertNotEquals(numberInInventory, floorManager.getPlayer().getInventory().
                getEnchantedWeapons().getNumberInInventory());
@@ -211,7 +211,7 @@ public class TestInteractable {
      @Test
      void checkHealingPotion() {
           assertEquals(1, floorManager.getPlayer().getInventory().getHealingPotions().getNumberInInventory());
-          floorManager.getPlayer().getInventory().getHealingPotions().store(floorManager);
+          floorManager.getPlayer().getInventory().getHealingPotions().store();
           assertEquals(2, floorManager.getPlayer().getInventory().getHealingPotions().getNumberInInventory());
           floorManager.getPlayer().getHealth().decreaseHealth(N_DAMAGE);
           final int healthBefore = floorManager.getPlayer().getHealth().getCurrentHealth();
@@ -228,7 +228,7 @@ public class TestInteractable {
      void checkMagicSack() {
           assertEquals(1, floorManager.getPlayer().getInventory().getMagicSacks().getNumberInInventory());
           assertEquals(100, floorManager.getPlayer().getMaxGoldCapacity());
-          floorManager.getPlayer().getInventory().getMagicSacks().store(floorManager);
+          floorManager.getPlayer().getInventory().getMagicSacks().store();
           assertEquals(2, floorManager.getPlayer().getInventory().getMagicSacks().getNumberInInventory());
           assertEquals(floorManager.getPlayer().getInventory().getMagicSacks().getNumberInInventory() * 100, 
                floorManager.getPlayer().getMaxGoldCapacity());
@@ -240,7 +240,7 @@ public class TestInteractable {
      */
      @Test
      void checkMap() {
-          floorManager.getPlayer().getInventory().getListOfMaps().store(floorManager);
+          floorManager.getPlayer().getInventory().getListOfMaps().store();
           assertFalse(floorManager.getPlayer().getInventory().getListOfMaps().getListOfMaps().isEmpty());
           floorManager.getPlayer().getInventory().getListOfMaps().removeUtility();
           assertTrue(floorManager.getPlayer().getInventory().getListOfMaps().getListOfMaps().isEmpty());

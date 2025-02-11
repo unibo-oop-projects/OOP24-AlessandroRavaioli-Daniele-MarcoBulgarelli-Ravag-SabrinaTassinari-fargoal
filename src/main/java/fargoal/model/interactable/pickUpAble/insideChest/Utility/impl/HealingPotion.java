@@ -18,17 +18,10 @@ public class HealingPotion extends AbstractUtility {
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
-     * @param floorManager - it contains all the element of the floor the item is.
-     */
-    public HealingPotion(final FloorManager floorManager) {
-        this.setNumberInInventory(N_HEALING_POTION_TO_START);
-    }
-
-    /**
-     * This is an empty constructor.
      */
     public HealingPotion() {
-    } 
+        this.setNumberInInventory(N_HEALING_POTION_TO_START);
+    }
 
     /** {@inheritDoc} */
     @Override
@@ -52,6 +45,6 @@ public class HealingPotion extends AbstractUtility {
 
     /** {@inheritDoc} */
     @Override
-    public void addToPlayer(final FloorManager floorManager) {
+    public void addToPlayer() {
     } 
 }

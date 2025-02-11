@@ -9,7 +9,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public abstract class AbstractSpell implements Spell {
 
-    private int numberInInventory = 0;
+    private int numberInInventory;
     private int floorLevelSpellCasted;
 
     /** {@inheritDoc} */
@@ -20,7 +20,7 @@ public abstract class AbstractSpell implements Spell {
 
     /** {@inheritDoc} */
     @Override
-    public void store(final FloorManager floorManager) {
+    public void store() {
         this.addSpell();
     }
 
@@ -43,6 +43,12 @@ public abstract class AbstractSpell implements Spell {
     @Override
     public Integer getNumberInInventory() {
         return this.numberInInventory;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setNumberInInventory(final int numberInInventory) {
+        this.numberInInventory = numberInInventory;
     }
 
     /** {@inheritDoc} */

@@ -9,45 +9,39 @@ public interface ChestItemFactory {
 
     /**
      * This method generate a Drift Spell, which is a Spell.
-     * @param floorManager - it contains all the element of the floor. 
      * @return the chest item "Drift Spell".
      */
-    ChestItem generateDriftSpell(FloorManager floorManager);
+    ChestItem generateDriftSpell();
 
     /**
      * This method generate an Invisibility Spell, which is a Spell.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Invisibility Spell".
      */
-    ChestItem generateInvisibilitySpell(FloorManager floorManager);
+    ChestItem generateInvisibilitySpell();
 
     /**
      * This method generate a Light Spell, which is a Spell.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Light Spell".
      */
-    ChestItem generateLightSpell(FloorManager floorManager);
+    ChestItem generateLightSpell();
 
     /**
      * This method generate a Regeneration Spell, which is a Spell.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Regeneration Spell".
      */
-    ChestItem generateRegenerationSpell(FloorManager floorManager);
+    ChestItem generateRegenerationSpell();
 
     /**
      * This method generate a Shield Spell, which is a Spell.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Shield Spell".
      */
-    ChestItem generateShieldSpell(FloorManager floorManager);
+    ChestItem generateShieldSpell();
 
     /**
      * This method generate a Teleport Spell, which is a Spell.
-     * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Teleport Spell".
      */
-    ChestItem generateTeleportSpell(FloorManager floorManager);
+    ChestItem generateTeleportSpell();
 
     /**
      * This method generate a Ceiling Trap, which is a Trap.
@@ -82,7 +76,7 @@ public interface ChestItemFactory {
      * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Beacon".
      */
-    ChestItem generateBeacon(FloorManager floorManager);
+    ChestItem generateBeacon();
 
     /**
      * This method generate an Enchanted Weapon, which is an Utility.
@@ -96,14 +90,14 @@ public interface ChestItemFactory {
      * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Healing Potion".
      */
-    ChestItem generateHealingPotion(FloorManager floorManager);
+    ChestItem generateHealingPotion();
 
     /**
      * This method generate a Map, which is an Utility.
      * @param floorManager - it contains all the element of the floor.
      * @return the chest item "Map".
      */
-    ChestItem generateMap(FloorManager floorManager);
+    ChestItem generateMap();
 
     /**
      * This method generate a Magic Sack, which is an Utility.

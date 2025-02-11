@@ -92,7 +92,7 @@ public class TestFloorManager {
 
         //I need to test if the floor for which a map was found gets cleared
         Map testMap = new Map(manager);
-        testMap.store(manager);
+        testMap.store();
         FloorMask mask = new FloorMaskImpl();
         mask.clearMask();
         for(int i = 0; i < 20; i++) {

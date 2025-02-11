@@ -11,6 +11,7 @@ public class MagicSack extends AbstractUtility {
 
     private static final int GOLD_CARRIED_BY_MAGIC_SACK = 100;
     private static final int N_MAGICK_SACK_TO_START = 1;
+    private FloorManager floorManager;
 
     /**
      * This is the constructor of the class. It stores right away the item in the player's inventory.
@@ -18,6 +19,8 @@ public class MagicSack extends AbstractUtility {
      */
     public MagicSack(final FloorManager floorManager) {
         this.setNumberInInventory(N_MAGICK_SACK_TO_START);
+        this.floorManager = floorManager;
+
     }
 
     /** {@inheritDoc} */
@@ -33,8 +36,8 @@ public class MagicSack extends AbstractUtility {
 
     /** {@inheritDoc} */
     @Override
-    public void addToPlayer(final FloorManager floorManager) {
-        floorManager.getPlayer().getPlayerGold().setMaxCapacity(floorManager.getPlayer().getMaxGoldCapacity() 
+    public void addToPlayer() {
+        this.floorManager.getPlayer().getPlayerGold().setMaxCapacity(this.floorManager.getPlayer().getMaxGoldCapacity() 
             + GOLD_CARRIED_BY_MAGIC_SACK);
     }
 

@@ -14,9 +14,9 @@ public class RegenerationSpell extends AbstractSpell {
     /**
      * The constructor of the class. When The spell is found in a chest 
      * it is stored immediately in the player's inventory.
-     * @param floorManager - it contains al the element in the floor.
      */
-    public RegenerationSpell(final FloorManager floorManager) {
+    public RegenerationSpell() {
+        this.setNumberInInventory(0);
     }
 
     /** {@inheritDoc} */
