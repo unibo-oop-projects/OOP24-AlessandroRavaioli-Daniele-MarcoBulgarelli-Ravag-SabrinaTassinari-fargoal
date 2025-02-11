@@ -20,7 +20,6 @@ public class FloorMaskImpl implements FloorMask {
 
     /**
      * Constrctor that inizializes the mask as complete darkness and defines the renderers.
-     * @param view - the view in which the renderers are called
      */
     public FloorMaskImpl() {
         this.mask = new HashMap<>();
@@ -59,7 +58,7 @@ public class FloorMaskImpl implements FloorMask {
             }
         }
 
-        for(var element : manager.getAllElements()) {
+        for (var element : manager.getAllElements()) {
             if (this.mask.get(element.getPosition())) {
                 element.render();
             }
@@ -68,6 +67,9 @@ public class FloorMaskImpl implements FloorMask {
         manager.getPlayer().render();
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void clearMask() {
         for (int i = 0; i < FLOOR_LENGTH; i++) {
@@ -77,6 +79,9 @@ public class FloorMaskImpl implements FloorMask {
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -85,20 +90,28 @@ public class FloorMaskImpl implements FloorMask {
         return result;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         FloorMaskImpl other = (FloorMaskImpl) obj;
         if (mask == null) {
-            if (other.mask != null)
+            if (other.mask != null) {
                 return false;
-        } else if (!mask.equals(other.mask))
+            }
+        } else if (!mask.equals(other.mask)) {
             return false;
+        }
         return true;
     }
 
