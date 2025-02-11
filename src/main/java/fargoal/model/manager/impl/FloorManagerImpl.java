@@ -1,7 +1,9 @@
 package fargoal.model.manager.impl;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 import fargoal.commons.api.Position;
@@ -81,6 +83,13 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public void update(final GameContext context, final long elapsed) {
         this.elapsed = elapsed;
+        //Try to generate a monster, i don't need it to be guaranteed
+        if (this.monsters.size() < MAX_MONSTERS) {
+            generateMonster(this.interactables.stream()
+                    .filter(in -> in instanceof Stairs)
+                    .findAny().get().getPosition());
+            Collections.shuffle(this.interactables);
+        }
         if (timer.updateTime(this.elapsed) == 0) {
             this.getAllElements().forEach(e -> e.update(this));  
             this.player.getInventory().getListAllSpell().forEach(s -> s.update(this)); 
@@ -186,7 +195,7 @@ public class FloorManagerImpl implements FloorManager {
         this.player.setPosition(this.map.getRandomTile());
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
         while (this.monsters.size() < MAX_MONSTERS) {
-            generateMonster();
+            generateMonster(this.map.getRandomTile());
         }
         int goldSpots = new Random().nextInt(4) + 6;
         int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
@@ -214,20 +223,17 @@ public class FloorManagerImpl implements FloorManager {
         }
     }
 
-    private void generateMonster() {
+    private void generateMonster(Position pos) {
         boolean alreadyPresent = false;
-        do {
-            Position pos = this.map.getRandomTile();
-            alreadyPresent = false;
-            for (int i = 0; i < this.monsters.size(); i++) {
-                if (this.monsters.get(i).getPosition().equals(pos) || pos.equals(this.player.getPosition())) {
-                    alreadyPresent = true;
-                }
+        alreadyPresent = false;
+        for (int i = 0; i < this.monsters.size(); i++) {
+            if (this.monsters.get(i).getPosition().equals(pos) || pos.equals(this.player.getPosition())) {
+                alreadyPresent = true;
             }
-            if (!alreadyPresent) {
-                this.monsters.add(monstFact.generate(pos, this.map, this, renderFactory));
-            }
-        } while (alreadyPresent);
+        }
+        if (!alreadyPresent) {
+            this.monsters.add(monstFact.generate(pos, this.map, this, renderFactory));
+        }
     }
     
     private void generateItems() {
