@@ -1,4 +1,4 @@
-package fargoal.model.manager.impl;
+package fargoal.model.map.impl;
 
 import java.util.List;
 import java.util.HashMap;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import fargoal.commons.api.Position;
 import fargoal.model.manager.api.FloorManager;
-import fargoal.model.manager.api.FloorMask;
+import fargoal.model.map.api.FloorMask;
 
 /**
  * A class that implements the map covering effect.

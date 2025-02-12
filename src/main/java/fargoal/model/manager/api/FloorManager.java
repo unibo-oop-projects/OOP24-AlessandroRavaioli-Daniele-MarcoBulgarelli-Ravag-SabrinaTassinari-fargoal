@@ -9,6 +9,7 @@ import fargoal.model.events.api.FloorEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.temple.Temple;
 import fargoal.model.map.api.FloorMap;
+import fargoal.model.map.api.FloorMask;
 import fargoal.view.api.RenderFactory;
 
 /**
