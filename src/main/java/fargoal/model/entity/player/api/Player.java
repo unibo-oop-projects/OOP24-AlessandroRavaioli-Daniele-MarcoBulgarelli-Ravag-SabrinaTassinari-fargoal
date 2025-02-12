@@ -212,4 +212,12 @@ public interface Player extends Entity {
     void battle(final Monster monster);
 
     void setIsAttacked(final boolean value);
+
+    /**
+     * Checks if the player is currently engaged in combat.
+     * This method returns {@code true} if the player is in a fight, otherwise {@code false}.
+     * 
+     * @return {@code true} if the player is fighting, {@code false} otherwise.
+     */
+    boolean isFighting();
 }

@@ -318,12 +318,8 @@ public class PlayerImpl implements Player {
         return this.hasSword;
     }
 
-    /**
-     * Checks if the player is currently engaged in combat.
-     * This method returns {@code true} if the player is in a fight, otherwise {@code false}.
-     * 
-     * @return {@code true} if the player is fighting, {@code false} otherwise.
-     */
+    /**{@inheritDoc} */
+    @Override
     public boolean isFighting() {
         return this.isFighting;
     }
@@ -410,113 +406,9 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc} */
     @Override
     public void battle(final Monster monster) {
-        //TODO
-        //isFighting = true
-        //if isAttacked == false -> Player can flee
-        //if isAttacked == true -> player cannot flee
-        //for each turn -> doDamage to monster; recieveDamage from monster
-        //check isDead (for both sides)
-        this.isFighting = true;
-        this.stopRegeneration();
-        
-        do {
-            if(isMovingAwayFrom(monster) && !this.isAttacked) {
-                this.isFighting = false;
-                unlockInputs();
-                this.PasiveRegeneration();
-                return;
-            }
-
-            if(this.isAttacked) {
-                //TODO block the inputs between turns.
-                lockInputs();
-
-                //Monster Attack
-                this.receiveDamage(monster);
-
-                //Player Attack
-                monster.receiveDamage();
-
-            } else {
-                //TODO do not block the inputs for the whole fight
-
-                //Player Attack
-                monster.receiveDamage();
-
-                //Monster Attack
-                this.receiveDamage(monster);
-
-                try {
-                    Thread.sleep(1000);
-                } catch(InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-
-            }
-        } while(!this.isDead() || !monster.isDead());
-
-        unlockInputs();
-        this.PasiveRegeneration();      
+       return;
     }
 
-    /**
-     * Determinies if the player is moving away from the specified monster.
-     * This method should check the player's movement direction relative to the monster
-     * and return {@code true} if the player is retreating.
-     * <p>
-     * Currently, this method is not implemented and will throw an
-     * {@link UnsupportedOperationException} when called.
-     * </p>
-     * 
-     * @param monster - The {@link AbstractMonster} to check the player's movement against.
-     *  
-     * @return {@code true} if the player is moving away from the monster, {@code false} otherwise.
-     * 
-     * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
-     */
-    private boolean isMovingAwayFrom(Monster monster) {
-        Position playerPosition = this.getPosition();
-        Position monsterPosition = monster.getPosition();
-
-        int dx = monsterPosition.x() - playerPosition.x();
-        int dy = monsterPosition.y() - playerPosition.y();
-
-        if(dx > 1 || dy > 1) {
-            System.out.println("Debug: You are getting away");
-        }
-        return (dx > 1 || dy > 1);
-    }
-
-    /**
-     * Locks all player inputs except for the teleport action.
-     * This method is responsible for disabling user interactions during certain events,
-     * such as when the player is attacked by an enemy, but still allows the 
-     * player to teleport if needed.
-     * <p>
-     * Currently, this method is not implemented and will throw an
-     * {@link UnsupportedOperationException} when called.
-     * </p>
-     * 
-     * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
-     */
-    private void lockInputs() {
-        throw new UnsupportedOperationException("Unimplemented method 'lockInputs'");
-    }
-
-    /**
-     * Unlocks all previously locked player inputs.
-     * This method allows the player to resume normal interactions after a period of input restriction,
-     * enabling actions like movement, interactions or other player inputs.
-     * <p>
-     * Currently, this method is not implemented and will throw an
-     * {@link UnsupportedOperationException} when called.
-     * </p>
-     * 
-     * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
-     */
-    private void unlockInputs() {
-        throw new UnsupportedOperationException("Unimplemented method 'lockInputs'");
-    }
 
     /**{@inheritDoc}*/
     @Override
