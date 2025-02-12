@@ -49,7 +49,7 @@ public abstract class AbstractMonster implements Monster {
         this.position = position;
         lastPositions.addFirst(position);
         this.setFloorManager(floorManager);
-        this.skill = level * (random.nextInt(level) + 1);
+        this.skill = floorManager.getPlayer().getSkill() / 2 + random.nextInt(floorManager.getPlayer().getSkill()) + 1;
         this.setLevel(level);
         this.isVisible = true;
         this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (random.nextInt(level) + 1));
@@ -85,6 +85,7 @@ public abstract class AbstractMonster implements Monster {
     public void receiveDamage() {
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
         this.getHealth().decreaseHealth(damage);
+        this.isDead();
     }
 
     /** {@inheritDoc} */
@@ -108,8 +109,10 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public Integer attack() {
+        final int damage;
         final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();
-        return getRandom(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio) + 1;
+        damage = random.nextInt(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio) + 1;
+        return damage;
     }
 
     /** {@inheritDoc} */
