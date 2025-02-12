@@ -9,12 +9,13 @@ import fargoal.model.events.api.FloorEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.temple.Temple;
 import fargoal.model.map.api.FloorMap;
+import fargoal.model.map.api.FloorMask;
 import fargoal.view.api.RenderFactory;
 
 /**
  * An interface to model the entirety of the floor.
  */
-public interface FloorManager {
+public interface FloorManager extends SceneManager{
 
     /**
      * A method to return the instance of the Player.

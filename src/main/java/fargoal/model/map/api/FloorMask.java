@@ -1,4 +1,6 @@
-package fargoal.model.manager.api;
+package fargoal.model.map.api;
+
+import fargoal.model.manager.api.FloorManager;
 
 /**
  * interface that models a cover for the floor.
