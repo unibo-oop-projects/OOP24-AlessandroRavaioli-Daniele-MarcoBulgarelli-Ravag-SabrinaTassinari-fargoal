@@ -16,8 +16,10 @@ import fargoal.view.api.RenderFactory;
 public class WarLord extends AbstractMonster {
 
     private static final int NEXT_MOVE = 1500;
-    private final int minumum_wait;
-    private int num_for_shield;
+    private static final int MIN_WAIT = 1000;
+    private static final int MAX_WAIT = 1500;
+    private final int minimumWait;
+    private final int numForShield;
     private boolean shield;
     private int nextMove;
 
@@ -38,12 +40,12 @@ public class WarLord extends AbstractMonster {
         super(position, level, floorManager);
         setMonsterType(MonsterType.WAR_LORD);
         if (floorManager.getFloorLevel() > 12) {
-            minumum_wait = 1000;
+            minimumWait = MIN_WAIT;
         } else {
-            minumum_wait = 1500;
+            minimumWait = MAX_WAIT;
         }
-        num_for_shield = this.getRandom(3);
-        if (num_for_shield == 0 || num_for_shield == 1) {
+        numForShield = this.getRandom(3);
+        if (numForShield == 0 || numForShield == 1) {
             this.shield = true;
         } else {
             this.shield = false;
@@ -73,7 +75,7 @@ public class WarLord extends AbstractMonster {
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= nextMove) {
-            this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minumum_wait;
+            this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimumWait;
             this.setTimer();
             if (this.areNeighbours(floorManager, 1) 
                     && !floorManager.getPlayer().isImmune()

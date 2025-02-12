@@ -318,7 +318,12 @@ public class PlayerImpl implements Player {
         return this.hasSword;
     }
 
-    /**{@inheritDoc} */
+    /**
+     * Checks if the player is currently engaged in combat.
+     * This method returns {@code true} if the player is in a fight, otherwise {@code false}.
+     * 
+     * @return {@code true} if the player is fighting, {@code false} otherwise.
+     */
     @Override
     public boolean isFighting() {
         return this.isFighting;

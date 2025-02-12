@@ -17,7 +17,9 @@ public class Monk extends AbstractMonster {
 
     private static final int NEXT_MOVE = 2000;
     private static final int HEAL_CONSTANT = 19;
-    private final int minimum_wait;
+    private static final int MIN_WAIT = 1500;
+    private static final int MAX_WAIT = 1650;
+    private final int minimumWait;
     private int nextMove;
 
     /**
@@ -35,9 +37,9 @@ public class Monk extends AbstractMonster {
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
         if (floorManager.getFloorLevel() > 6) {
-            minimum_wait = 1500;
+            minimumWait = MIN_WAIT;
         } else {
-            minimum_wait = 1650;
+            minimumWait = MAX_WAIT;
         }
         setMonsterType(MonsterType.MONK);
         this.setRender(renderFactory.monkRenderer(this));
@@ -65,7 +67,7 @@ public class Monk extends AbstractMonster {
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= nextMove) { 
-        this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimum_wait;
+        this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimumWait;
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)
                     && !floorManager.getPlayer().isImmune()

@@ -17,9 +17,9 @@ public class PlayerInputComponent implements InputComponent {
      * Method that based on the inputs processed that he received, chooses what action
      * the player has to do.
      * 
-     * @param manager - to get all the infos he needs
-     * @param player - to move the player or let him interact with FloorElements
+     * @param sceneManager - the manager that has all the information needed, this needs to be a FloorManager
      * @param controller - to receive the processed inputs
+     * @throws IllegalArgumentException if the given manager is not a {@link FloorManager}
      */
     @Override
     public void update(final SceneManager sceneManager, final InputController controller) {
@@ -28,7 +28,7 @@ public class PlayerInputComponent implements InputComponent {
         }
         final FloorManager manager = (FloorManager) sceneManager;
         final Player player = manager.getPlayer();
-        
+
         if (controller.isInteracting()) {
             final Optional<Interactable> interacting = manager.getInteractables()
                     .stream()

@@ -19,7 +19,9 @@ public class Mage extends AbstractMonster {
 
     private static final int NEXT_MOVE = 2000;
     private static final int POSSIBLE_SPELLS = 5;
-    private final int minimum_wait;
+    private static final int MIN_WAIT = 1250;
+    private static final int MAX_WAIT = 1750;
+    private final int minimumWait;
     private int nextMove;
 
     /**
@@ -37,9 +39,9 @@ public class Mage extends AbstractMonster {
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
         if (floorManager.getFloorLevel() > 9) {
-            this.minimum_wait = 1250;
+            this.minimumWait = MIN_WAIT;
         } else {
-            this.minimum_wait = 1750;
+            this.minimumWait = MAX_WAIT;
         }
         setMonsterType(MonsterType.MAGE);
         this.setRender(renderFactory.mageRenderer(this));
@@ -108,7 +110,7 @@ public class Mage extends AbstractMonster {
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= nextMove) {
-        this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimum_wait;
+        this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimumWait;
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)
                     && !floorManager.getPlayer().isImmune()

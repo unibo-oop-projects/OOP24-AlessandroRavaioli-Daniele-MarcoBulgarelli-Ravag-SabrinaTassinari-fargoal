@@ -21,6 +21,7 @@ import fargoal.model.entity.monsters.ai.Ai;
 public abstract class AbstractMonster implements Monster {
 
     private static final Integer MONSTER_ATTACK = 4;
+    private boolean isFighting;
     private long timer;
     private final List<Position> lastPositions = new ArrayList<>();
     private Renderer render;
@@ -46,10 +47,11 @@ public abstract class AbstractMonster implements Monster {
                 final Position position,
                 final Integer level, 
                 final FloorManager floorManager) {
+        this.isFighting = false;
         this.position = position;
         lastPositions.addFirst(position);
         this.setFloorManager(floorManager);
-        this.skill = floorManager.getPlayer().getSkill() / 2 + random.nextInt(floorManager.getPlayer().getSkill()) + 1;
+        this.skill = floorManager.getPlayer().getSkill() / 2 + random.nextInt(floorManager.getPlayer().getSkill() / 2 + 1);
         this.setLevel(level);
         this.isVisible = true;
         this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (random.nextInt(level) + 1));
@@ -83,6 +85,7 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public void receiveDamage() {
+        this.isFighting = true;
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
         this.getHealth().decreaseHealth(damage);
         this.isDead();
@@ -263,4 +266,14 @@ public abstract class AbstractMonster implements Monster {
      * spells or gold from his inventory.
      */
     public void steal() { }
+
+    @Override
+    public void setIsFighting(boolean condition) {
+        this.isFighting = condition;
+    }
+
+    @Override
+    public boolean isFighting() {
+        return this.isFighting;
+    }
 }
