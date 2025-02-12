@@ -17,6 +17,7 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.interactable.api.Interactable;
+import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
@@ -105,7 +106,7 @@ public class PlayerImpl implements Player {
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
         this.moveTimer = new Timer();
 
-        this.startPasiveRegeneration();
+        this.PasiveRegeneration();
     }
 
     // public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager, KeyboardInputController controller) {
@@ -427,7 +428,7 @@ public class PlayerImpl implements Player {
             if(isMovingAwayFrom(monster) && !this.isAttacked) {
                 this.isFighting = false;
                 unlockInputs();
-                this.startPasiveRegeneration();
+                this.PasiveRegeneration();
                 return;
             }
 
@@ -460,7 +461,7 @@ public class PlayerImpl implements Player {
         } while(!this.isDead() && !monster.isDead());
 
         unlockInputs();
-        this.startPasiveRegeneration();      
+        this.PasiveRegeneration();      
     }
 
     /**
@@ -563,47 +564,45 @@ public class PlayerImpl implements Player {
      * {@link UnsupportedOperationException} when called.
      * </p>
      */
-    public void startPasiveRegeneration() {        
-        int baseHealingAmount = 1;
-        int basePeriod = 10;
-
-        if(this.isFighting() || this.health.getCurrentHealth() >= this.health.getMaxHealth()) {
-            return; //Does not regenerate if in combat or has maximum health
-        }
-
-        int multiplier = (this.position.equals(floorManager.getTemple().getPosition()) ? 1 : 0);
-        boolean hasRegenerationSpell = this.inventory.getSpellCasted().getOrDefault(SpellType.REGENERATION.getName(), false);
+    public void PasiveRegeneration() {    
         
-        if(hasRegenerationSpell) {
-            multiplier ++;
-        }
-        double finalMultiplier = Math.pow(2, multiplier);
-        System.out.println("Debug [finalMultiplier]: " + finalMultiplier);
+        final int baseHealingAmount = 1;
 
-        /*Runnable regenerationTask = () -> {
-            if(isFighting || this.health.getCurrentHealth() >= this.health.getMaxHealth()) {
+        
+    
+
+
+
+
+        /*final int baseHealingAmount = 1;
+        final int basePeriod = 10;
+
+        if(scheduler != null && !scheduler.isShutdown()) {
+            System.out.println("Debug: Regeneration is already running");
+            return;
+        }
+
+        scheduler.scheduleWithFixedDelay(() -> {
+
+            if(this.isFighting() || this.health.getCurrentHealth() >= this.health.getMaxHealth()) {
                 return; //Does not regenerate if in combat or has maximum health
             }
 
-            //Multiplier calculation
             int multiplier = (this.position.equals(floorManager.getTemple().getPosition()) ? 1 : 0);
             boolean hasRegenerationSpell = this.inventory.getSpellCasted().getOrDefault(SpellType.REGENERATION.getName(), false);
-            
+       
             if(hasRegenerationSpell) {
                 multiplier ++;
             }
             double finalMultiplier = Math.pow(2, multiplier);
+            System.out.println("Debug [finalMultiplier]: " + finalMultiplier);
+    
+            double healingRate = (basePeriod * this.health.getCurrentHealth() / (this.health.getMaxHealth() * finalMultiplier));
+            double delay = Math.max(1, healingRate);
 
-            //Time between healing calculation
-            double healingRate = (basePeriod * this.health.getCurrentHealth()) / (this.health.getMaxHealth() * finalMultiplier);
-
-            if(basePeriod > healingRate) {
-                healingTime = 0;
-                this.health.increaseHealth(baseHealingAmount);
-            }
-        };
-
-        scheduler.scheduleAtFixedRate(regenerationTask, 0, basePeriod, TimeUnit.SECONDS);*/
+            this.health.increaseHealth(baseHealingAmount);
+            System.out.println("Debug: next healing in " + delay + "s");
+        }, 0, 1, TimeUnit.SECONDS);*/
     }
 
     /**
@@ -615,7 +614,10 @@ public class PlayerImpl implements Player {
      * </p>
      */
     public void stopRegeneration() {
-        scheduler.shutdown();
+        if(scheduler != null && !scheduler.isShutdown()) {
+            scheduler.shutdown();
+            System.out.println("Debug: Passive Regeneration Stopped");
+        }
     }
 
     private Optional<Interactable> getStandingTile() {
