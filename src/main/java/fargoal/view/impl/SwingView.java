@@ -58,6 +58,7 @@ public class SwingView implements View, KeyListener {
 
     private int tilePixelDimWidth;
     private int tilePixelDimHeight;
+    private int margin;
 
     /**
      * Constructor that create the {@link SwingViewCanvas} panels, the main {@link JFrame}
@@ -189,6 +190,7 @@ public class SwingView implements View, KeyListener {
         } else {
             tilePixelDimWidth = tilePixelDimHeight * CONSTANT_FOUR / 3;
         }
+        margin = (this.getMapWidth() - tilePixelDimWidth * FLOOR_LENGTH) / 2;
     }
 
     /**
@@ -227,6 +229,10 @@ public class SwingView implements View, KeyListener {
      */
     public SwingViewCanvas getEventPanel() {
         return this.eventPanel;
+    }
+
+    public int getMargin() {
+        return this.margin;
     }
 
     /** {@inheritDoc} */

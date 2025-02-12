@@ -33,7 +33,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
                     g2d.setColor(Color.BLACK);
                     g2d.drawImage(ImageHolder.wall(),
-                    pos.x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + pos.x() * this.view.getTilePixelWidth(),
                     pos.y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -47,7 +47,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
                 g2d.setColor(Color.WHITE);
                 g2d.drawImage(ImageHolder.tile(),
-                    pos.x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + pos.x() * this.view.getTilePixelWidth(),
                     pos.y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -61,15 +61,11 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.BLUE);
             g2d.drawImage(ImageHolder.player(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
                     null);
-            // g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
-            //         obj.getPosition().y() * this.view.getTilePixelHeight(),
-            //         this.view.getTilePixelWidth(),
-            //         this.view.getTilePixelHeight());
         }, this.view);
     }
 
@@ -79,7 +75,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.LIGHT_GRAY);
             g2d.drawImage(ImageHolder.upStair(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -93,7 +89,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
             g2d.drawImage(ImageHolder.downstairs(), 
-                obj.getPosition().x() * this.view.getTilePixelWidth(),
+                this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                 obj.getPosition().y() * this.view.getTilePixelHeight(),
                 this.view.getTilePixelWidth(),
                 this.view.getTilePixelHeight(), 
@@ -107,7 +103,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.MAGENTA);
             g2d.drawImage(ImageHolder.temple(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -121,7 +117,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             if (!obj.isOpen()) {
                 g2d.drawImage(ImageHolder.chest(), 
-                    obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(), 
@@ -137,7 +133,7 @@ public class SwingRenderFactory implements RenderFactory {
             if (obj.isOpen()) {
                 if (obj.isHiddenInGround()) {
                     g2d.drawImage(ImageHolder.hiddenGold(), 
-                    obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(), 
@@ -145,7 +141,7 @@ public class SwingRenderFactory implements RenderFactory {
                 } 
             } else {
                 g2d.drawImage(ImageHolder.sackOfGold(), 
-                    obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(), 
@@ -159,7 +155,7 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer beaconRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.CYAN);
-            g2d.fillRect(obj.getPosition().x() * this.view.getTilePixelWidth(),
+            g2d.fillRect(this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight());
@@ -172,7 +168,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.DARK_GRAY);
             g2d.drawImage(ImageHolder.assassin(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(), 
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -186,7 +182,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.RED);
             g2d.drawImage(ImageHolder.barbarian(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(), 
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -200,7 +196,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.GREEN);
             g2d.drawImage(ImageHolder.mage(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(), 
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -214,7 +210,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.CYAN);
             g2d.drawImage(ImageHolder.monk(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(), 
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -228,7 +224,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.ORANGE);
             g2d.drawImage(ImageHolder.rogue(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(), 
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -242,7 +238,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.BLACK);
             g2d.drawImage(ImageHolder.spider(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(), 
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -256,7 +252,7 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.PINK);
             g2d.drawImage(ImageHolder.warlord(),
-                    obj.getPosition().x() * this.view.getTilePixelWidth(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(), 
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
@@ -270,11 +266,11 @@ public class SwingRenderFactory implements RenderFactory {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.PINK);
             g2d.drawImage(ImageHolder.sword(), 
-                obj.getPosition().x() * this.view.getTilePixelWidth(),
-                obj.getPosition().y() * this.view.getTilePixelHeight(),
-                this.view.getTilePixelWidth(),
-                this.view.getTilePixelHeight(),
-                null);
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
+                    obj.getPosition().y() * this.view.getTilePixelHeight(),
+                    this.view.getTilePixelWidth(),
+                    this.view.getTilePixelHeight(),
+                    null);
         }, this.view);
     }
 }
