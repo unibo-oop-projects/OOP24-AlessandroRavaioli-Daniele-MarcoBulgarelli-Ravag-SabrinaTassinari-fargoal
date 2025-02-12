@@ -8,6 +8,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.util.function.Consumer;
 import javax.swing.WindowConstants;
 
@@ -86,12 +88,15 @@ public class SwingView implements View, KeyListener {
             @Override
             public void componentResized(final ComponentEvent e) {
                 calculateDimensions();
-                if (tilePixelDimHeight > tilePixelDimWidth) {
-                    tilePixelDimHeight = tilePixelDimWidth * 3 / CONSTANT_FOUR; 
-                } else {
-                    tilePixelDimWidth = tilePixelDimHeight * CONSTANT_FOUR / 3;
-                }
             }
+        });
+        this.frame.addWindowStateListener(new WindowStateListener() {
+
+            @Override
+            public void windowStateChanged(WindowEvent e) {
+                calculateDimensions();
+            }
+            
         });
         tilePixelDimHeight = MINIMUM_TILE_HEIGHT;
         tilePixelDimWidth = MINIMUM_TILE_WIDTH;
@@ -180,6 +185,11 @@ public class SwingView implements View, KeyListener {
                 this.frame.getBounds().height * EVENT_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
         this.informationPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
                 this.frame.getBounds().height * INFORMATION_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
+        if (tilePixelDimHeight > tilePixelDimWidth) {
+            tilePixelDimHeight = tilePixelDimWidth * 3 / CONSTANT_FOUR; 
+        } else {
+            tilePixelDimWidth = tilePixelDimHeight * CONSTANT_FOUR / 3;
+        }
     }
 
     /**
