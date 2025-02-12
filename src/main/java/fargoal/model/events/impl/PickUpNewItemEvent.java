@@ -1,7 +1,7 @@
 package fargoal.model.events.impl;
 
 import fargoal.model.events.api.FloorEvent;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
+import fargoal.model.interactable.pickupable.inside_chest.api.ChestItem;
 
 /**
  * PickUpNewItemevent is a class called everytime that the player 

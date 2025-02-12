@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 import fargoal.model.core.GameEngine;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
 import fargoal.model.manager.impl.FloorManagerImpl;

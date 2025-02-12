@@ -2,7 +2,7 @@ package fargoal.model.events.impl;
 
 import fargoal.model.commons.FloorElement;
 import fargoal.model.events.api.FloorEvent;
-import fargoal.model.interactable.pickUpAble.insideChest.api.ChestItem;
+import fargoal.model.interactable.pickupable.inside_chest.api.ChestItem;
 
 /**
  * MonsterStealSpellEvent is a class called everytime that a monster

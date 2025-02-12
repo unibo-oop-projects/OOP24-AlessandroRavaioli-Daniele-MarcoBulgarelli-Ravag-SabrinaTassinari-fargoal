@@ -3,17 +3,17 @@ package fargoal.model.entity.player.api;
 import java.util.List;
 import java.util.Map;
 
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.InvisibilitySpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.RegenerationSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.ShieldSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.TeleportSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.EnchantedWeapon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.HealingPotion;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.MagicSack;
+import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.DriftSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.InvisibilitySpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.LightSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.RegenerationSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.ShieldSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.TeleportSpell;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.Beacon;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.EnchantedWeapon;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.HealingPotion;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.MagicSack;
 
 /**
  * Represents the player's inventory, managing various items, spells and resources.
@@ -62,7 +62,7 @@ public interface Inventory {
      *  
      * @return a list of integers representing the floor numbers of the collected maps.
      */
-    fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map getListOfMaps();
+    fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map getListOfMaps();
 
     /**
      * Retrieves the current status of casted spells.

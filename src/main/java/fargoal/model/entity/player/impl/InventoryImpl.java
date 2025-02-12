@@ -6,18 +6,18 @@ import java.util.List;
 import java.util.Map;
 
 import fargoal.model.entity.player.api.Inventory;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.Spell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.DriftSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.InvisibilitySpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.LightSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.RegenerationSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.ShieldSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.impl.TeleportSpell;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Beacon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.EnchantedWeapon;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.HealingPotion;
-import fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.MagicSack;
+import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.DriftSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.InvisibilitySpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.LightSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.RegenerationSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.ShieldSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.TeleportSpell;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.Beacon;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.EnchantedWeapon;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.HealingPotion;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.MagicSack;
 import fargoal.model.manager.api.FloorManager;
 
 /**
@@ -31,7 +31,7 @@ public class InventoryImpl implements Inventory {
     private Beacon beacons;
     private MagicSack magicSacks;
     private EnchantedWeapon enchantedWeapons;
-    private fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map levelMaps;
+    private fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map levelMaps;
 
     private InvisibilitySpell invisibilityScroll;
     private TeleportSpell teleportScroll;
@@ -63,7 +63,7 @@ public class InventoryImpl implements Inventory {
         this.beacons = new Beacon();
         this.magicSacks = new MagicSack(floorManager);
         this.enchantedWeapons = new EnchantedWeapon(floorManager);
-        this.levelMaps = new fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map();
+        this.levelMaps = new fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map();
         this.invisibilityScroll = new InvisibilitySpell();
         this.teleportScroll = new TeleportSpell();
         this.shieldScroll = new ShieldSpell();
@@ -104,7 +104,7 @@ public class InventoryImpl implements Inventory {
 
     /** {@inheritDoc} */
     @Override
-    public fargoal.model.interactable.pickUpAble.insideChest.Utility.impl.Map getListOfMaps() {
+    public fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map getListOfMaps() {
         return this.levelMaps;
     }
 

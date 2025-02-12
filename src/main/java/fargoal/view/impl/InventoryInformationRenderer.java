@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import fargoal.model.entity.player.api.Inventory;
-import fargoal.model.interactable.pickUpAble.insideChest.Spell.api.SpellType;
+import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 

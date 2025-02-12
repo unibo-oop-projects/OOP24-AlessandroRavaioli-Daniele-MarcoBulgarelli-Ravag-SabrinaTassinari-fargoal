@@ -2,8 +2,8 @@ package fargoal.view.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
-import fargoal.model.interactable.pickUpAble.insideChest.impl.ChestImpl;
-import fargoal.model.interactable.pickUpAble.onGround.SackOfMoney;
+import fargoal.model.interactable.pickupable.inside_chest.impl.ChestImpl;
+import fargoal.model.interactable.pickupable.on_ground.SackOfMoney;
 
 /**
  * A factory to generate any type of renderers 
