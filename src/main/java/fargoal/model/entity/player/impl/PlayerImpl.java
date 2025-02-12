@@ -17,6 +17,7 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.events.impl.BattleEvent;
+import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
@@ -63,6 +64,8 @@ public class PlayerImpl implements Player {
     private final Inventory inventory;
     private Integer numberOfSlainFoes;
     private final Timer moveTimer;
+    private final Timer regenerationTimer;
+    private int attackCounter = 0;
 
     private boolean hasSword;
     private boolean isFighting;
@@ -107,30 +110,10 @@ public class PlayerImpl implements Player {
         this.infoRenderer.setRenderer(this.inventory);
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
         this.moveTimer = new Timer();
+        this.regenerationTimer = new Timer();
 
         this.PasiveRegeneration();
     }
-
-    // public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager, KeyboardInputController controller) {
-    //     this.input = new PlayerInputComponent();
-    //     this.controller = controller;
-    //     startingPosition(floorMap);
-    //     this.level = INITIAL_LEVEL;
-    //     this.experiencePoints = 0;
-    //     this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
-    //     this.health = new HealthImpl(this.setInitialStat());
-    //     this.skill = setInitialStat();
-    //     this.gold = new GoldImpl();
-    //     this.inventory = new InventoryImpl(floorManager);
-    //     this.numberOfSlainFoes = 0;
-    //     this.hasSword = false;
-    //     this.isFighting = false;
-    //     this.isAttacked = false;
-    //     this.isVisible = true;
-    //     this.hasLight = false;
-    //     this.isImmune = false;
-    //     this.render = renderFactory.playerRenderer(this);
-    // }
 
     /**
      * Sets the renderer responsible for rendering the player.
@@ -435,13 +418,19 @@ public class PlayerImpl implements Player {
     /** {@inheritDoc}*/
     @Override
     public void battle(final Monster monster) {
-        floorManager.notifyFloorEvent(new BattleEvent());
+        if (isAttacked && attackCounter == 0) {
+            floorManager.notifyFloorEvent(new ReceiveAttackEvent(monster));
+        } else {
+            floorManager.notifyFloorEvent(new BattleEvent());
+        }
+        attackCounter ++;
         this.isFighting = true;
         monster.receiveDamage();
         this.receiveDamage(monster);
         if (monster.isDead() || this.isDead()) {
             this.isFighting = false;
             this.isAttacked = false;
+            attackCounter = 0;
         }
     }
 
@@ -502,6 +491,8 @@ public class PlayerImpl implements Player {
     public void PasiveRegeneration() {    
         
         final int baseHealingAmount = 1;
+        ;
+
 
         
     
