@@ -47,7 +47,7 @@ public class PlayerImpl implements Player {
     private static final int DAMAGE_MULTIPLIER = 4;
     private static final int MINIMUM_DAMAGE = 1;
     private static final int INITIAL_LEVEL = 1;
-    private static final long MILLIS_BETWEEN_MOVES = 200;
+    private static final long MILLIS_BETWEEN_MOVES = 150;
 
     private final InputComponent input;
     private final KeyboardInputController controller;
@@ -75,10 +75,13 @@ public class PlayerImpl implements Player {
     private Renderer render;
     private FloorManager floorManager;
 
+    int healingTime = 0;
+
     public PlayerImpl(FloorManager floorManager,
         KeyboardInputController controller,
         PlayerInformationRenderer playerInformationRenderer,
         InventoryInformationRenderer infoRenderer) {
+
         this.floorManager = floorManager;
         this.input = new PlayerInputComponent();
         this.controller = controller;
@@ -101,6 +104,8 @@ public class PlayerImpl implements Player {
         this.infoRenderer.setRenderer(this.inventory);
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
         this.moveTimer = new Timer();
+
+        this.startPasiveRegeneration();
     }
 
     // public PlayerImpl(FloorMap floorMap, RenderFactory renderFactory, FloorManager floorManager, KeyboardInputController controller) {
@@ -537,10 +542,13 @@ public class PlayerImpl implements Player {
         if (inventory.getHealingPotions().getNumberInInventory() == 0 
                 && this.health.getCurrentHealth() <= DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
             return true;
-        } else if (inventory.getHealingPotions().getNumberInInventory() > 0 
-                && this.health.getCurrentHealth() <= DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
-            this.inventory.getHealingPotions().use(floorManager);
-            return this.getHealth().getCurrentHealth() < DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE;
+        } else if (inventory.getHealingPotions().getNumberInInventory() > 0) {
+            if(this.health.getCurrentHealth() < DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
+                return true;
+            } else {
+                this.inventory.getHealingPotions().use(floorManager);
+                return this.getHealth().getCurrentHealth() < DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE;
+            }         
         }
         return false;
     }
@@ -555,14 +563,24 @@ public class PlayerImpl implements Player {
      * {@link UnsupportedOperationException} when called.
      * </p>
      */
-    public void startPasiveRegeneration() {
-        throw new UnsupportedOperationException("Unimplemented method 'startPassiveRegeneration");
-        /* 
+    public void startPasiveRegeneration() {        
         int baseHealingAmount = 1;
         int basePeriod = 10;
-        int healingTime = 0;
 
-        Runnable regenerationTask = () -> {
+        if(this.isFighting() || this.health.getCurrentHealth() >= this.health.getMaxHealth()) {
+            return; //Does not regenerate if in combat or has maximum health
+        }
+
+        int multiplier = (this.position.equals(floorManager.getTemple().getPosition()) ? 1 : 0);
+        boolean hasRegenerationSpell = this.inventory.getSpellCasted().getOrDefault(SpellType.REGENERATION.getName(), false);
+        
+        if(hasRegenerationSpell) {
+            multiplier ++;
+        }
+        double finalMultiplier = Math.pow(2, multiplier);
+        System.out.println("Debug [finalMultiplier]: " + finalMultiplier);
+
+        /*Runnable regenerationTask = () -> {
             if(isFighting || this.health.getCurrentHealth() >= this.health.getMaxHealth()) {
                 return; //Does not regenerate if in combat or has maximum health
             }
@@ -577,17 +595,15 @@ public class PlayerImpl implements Player {
             double finalMultiplier = Math.pow(2, multiplier);
 
             //Time between healing calculation
-            double healingRate = (basePeriod * fps * this.health.getCurrentHealth()) / (this.health.getMaxHealth() * finalMultiplier);
+            double healingRate = (basePeriod * this.health.getCurrentHealth()) / (this.health.getMaxHealth() * finalMultiplier);
 
-            healingTime ++;
-            if(healingTime > healingRate) {
+            if(basePeriod > healingRate) {
                 healingTime = 0;
                 this.health.increaseHealth(baseHealingAmount);
             }
         };
 
-        scheduler.scheduleAtFixedRate(regenerationTask, 0, basePeriod, TimeUnit.SECONDS);
-        */
+        scheduler.scheduleAtFixedRate(regenerationTask, 0, basePeriod, TimeUnit.SECONDS);*/
     }
 
     /**
