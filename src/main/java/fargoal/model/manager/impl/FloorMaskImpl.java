@@ -31,7 +31,7 @@ public class FloorMaskImpl implements FloorMask {
      * Used mainly for testing.
      * @param mask - the initial value of the mask
      */
-    public FloorMaskImpl(Map<Position, Boolean> mask) {
+    public FloorMaskImpl(final Map<Position, Boolean> mask) {
         this.mask = mask;
     }
 

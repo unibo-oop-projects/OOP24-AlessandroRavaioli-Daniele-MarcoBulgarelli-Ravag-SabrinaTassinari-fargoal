@@ -8,7 +8,7 @@ import fargoal.model.interactable.pickupable.inside_chest.api.ChestItem;
  * the player use a ChestItem from his inventory.
  */
 public class PlayerActionEvent implements FloorEvent {
-    private ChestItem item;
+    private final ChestItem item;
 
     /**
      * Constructor that assigns to the local field item the

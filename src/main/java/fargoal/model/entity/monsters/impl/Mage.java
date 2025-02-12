@@ -101,7 +101,7 @@ public class Mage extends AbstractMonster {
     @Override
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
-        if (Math.abs(this.getTimer() - temp) >= nextMove) {            
+        if (Math.abs(this.getTimer() - temp) >= nextMove) {
         this.nextMove = this.getRandom(NEXT_MOVE) + NEXT_MOVE * this.getSkill() / this.getLevel();
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)

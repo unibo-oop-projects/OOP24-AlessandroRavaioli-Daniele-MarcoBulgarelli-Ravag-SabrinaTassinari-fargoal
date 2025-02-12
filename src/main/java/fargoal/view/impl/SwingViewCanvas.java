@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 /**
- * This class is a {@link JPanel} in which elements can register themselves to be drawn
+ * This class is a {@link JPanel} in which elements can register themselves to be drawn.
  */
 public class SwingViewCanvas extends JPanel {
     private static final long serialVersionUID = 5678472183267292378L;
