@@ -33,7 +33,6 @@ class TestFloorManager {
     //Test to see if increaseFloorLevel and decreaseFloorLevel work appropriatly
     @Test
     void testFloorLevel() {
-        System.out.println("primo test");
         assertEquals(1, manager.getFloorLevel());
         manager.increaseFloorLevel();
         manager.increaseFloorLevel();
@@ -43,7 +42,7 @@ class TestFloorManager {
         manager.decreaseFloorLevel();
         assertEquals(2, manager.getFloorLevel());
         manager.decreaseFloorLevel();
-        assertThrows(IllegalStateException.class, () -> manager.decreaseFloorLevel());
+        assertThrows(IllegalStateException.class, () -> manager.decreaseFloorLevel()); //NOPMD cannot change lambda
         resetConditions();
     }
 
@@ -55,10 +54,10 @@ class TestFloorManager {
     @Test
     void testInitFloor() {
         for (long k = 0; k < 20; k++) {
-            FloorMap map = manager.getFloorMap();
+            final FloorMap map = manager.getFloorMap();
             manager.increaseFloorLevel();
             assertNotEquals(map, manager.getFloorMap());
-            List<Monster> monsters = manager.getMonsters();
+            final List<Monster> monsters = manager.getMonsters();
             assertEquals(7, monsters.size());
             for (int i = 0; i < monsters.size(); i++) {
                 for (int j = 0; j < monsters.size(); j++) {
@@ -69,7 +68,7 @@ class TestFloorManager {
             }
             assertTrue(manager.getInteractables().size() > 11);
             assertTrue(manager.getInteractables().size() <= 41);
-            var item = manager.getInteractables();
+            final var item = manager.getInteractables();
             for (int i = 0; i < manager.getInteractables().size(); i++) {
                 for (int j = 0; j < manager.getInteractables().size(); j++) {
                     if (i != j) {
@@ -85,18 +84,18 @@ class TestFloorManager {
     @Test
     void testFloorChange() {
         //I need to test that the map, the monsters and the items change after every floor
-        FloorMap map = manager.getFloorMap();
-        List<Monster> monsters = List.copyOf(manager.getMonsters());
-        List<Interactable> items = List.copyOf(manager.getInteractables());
+        final FloorMap map = manager.getFloorMap();
+        final List<Monster> monsters = List.copyOf(manager.getMonsters());
+        final List<Interactable> items = List.copyOf(manager.getInteractables());
         manager.increaseFloorLevel();
         assertNotEquals(map, manager.getFloorMap());
         assertNotEquals(monsters, manager.getMonsters());
         assertNotEquals(items, manager.getInteractables());
 
         //I need to test if the floor for which a map was found gets cleared
-        Map testMap = new Map();
+        final Map testMap = new Map();
         testMap.store();
-        FloorMask mask = new FloorMaskImpl();
+        final FloorMask mask = new FloorMaskImpl();
         mask.clearMask();
         //CHECKSTYLE: MagicNumber OFF
         //20 is the minimum numbeer of floors I need to check to see if the map was saved correctly
@@ -113,9 +112,8 @@ class TestFloorManager {
     //This has already given issue
     @Test
     void testExitWithSword() {
-        System.out.println("Quarto test");
         manager.getPlayer().setHasSword(true);
-        assertDoesNotThrow(() -> manager.decreaseFloorLevel());
+        assertDoesNotThrow(() -> manager.decreaseFloorLevel()); //NOPMD cannot change lambda expression
         manager.getPlayer().setHasSword(false);
         resetConditions();
     }
