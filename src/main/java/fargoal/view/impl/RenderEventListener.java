@@ -11,6 +11,8 @@ import fargoal.model.events.impl.MonsterStealGoldEvent;
 import fargoal.model.events.impl.MonsterStealSpellEvent;
 import fargoal.model.events.impl.PickUpGoldEvent;
 import fargoal.model.events.impl.PickUpNewItemEvent;
+import fargoal.model.events.impl.PickUpSword;
+import fargoal.model.events.impl.PlacedABeacon;
 import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.events.impl.WalkOverEvent;
@@ -84,6 +86,12 @@ public class RenderEventListener implements FloorEventListener, Renderer {
         } else if (floorEvent instanceof PlayerActionEvent) {
             final PlayerActionEvent ev = (PlayerActionEvent) floorEvent;
             text = ev.whatPlayerUsed().getChestItemName() + " has benn used";
+        } else if (floorEvent instanceof PlacedABeacon) {
+            final PlacedABeacon ev = (PlacedABeacon) floorEvent;
+            text = ev.getWhatPlaced().getTag() + " placed";
+        } else if (floorEvent instanceof PickUpSword) {
+            final PickUpSword ev = (PickUpSword) floorEvent;
+            text = ev.pickedUp().getTag() + " has finally been found!";
         }
     }
 
