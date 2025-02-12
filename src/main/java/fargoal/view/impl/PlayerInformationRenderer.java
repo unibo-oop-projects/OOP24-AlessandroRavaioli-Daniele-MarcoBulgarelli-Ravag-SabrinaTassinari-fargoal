@@ -19,7 +19,7 @@ public class PlayerInformationRenderer implements Renderer {
     private static final int MULTIPLIER_EXPERIENCE_HEIGHT = 15;
     private static final int MULTIPLIER_LEVEL_HEIGHT = 30;
     private static final int MULTIPLIER_SKILL_HEIGHT = 45;
-    private static final int GOLD_HP_DIVISOR_HEIGHT = 5;
+    private static final int CONSTANT_FIVE = 5;
     private static final int CONSTANT_SIX = 6;
     private static final int CONSTANT_SEVEN = 7;
     private static final int DIVISOR_WIDTH_SECOND_COLUMN = 16;
@@ -68,23 +68,31 @@ public class PlayerInformationRenderer implements Renderer {
                     + "/" 
                     + floorManager.getPlayer().getHealth().getMaxHealth(), 
                     swing.getEventPanel().getBounds().width / CONSTANT_SIX, 
-                    swing.getEventPanel().getBounds().height * 3 / GOLD_HP_DIVISOR_HEIGHT);
+                    swing.getEventPanel().getBounds().height * 3 / CONSTANT_FIVE);
             g2d.setColor(Color.YELLOW);
             g2d.drawString("GOLD: " + floorManager.getPlayer().getCurrentGold(), 
                     swing.getEventPanel().getBounds().width / 2,
-                    swing.getEventPanel().getBounds().height * 3 / GOLD_HP_DIVISOR_HEIGHT);
+                    swing.getEventPanel().getBounds().height * 3 / CONSTANT_FIVE);
         }, view);
         this.rendererBottom = new SwingRendererBottom(g2d -> {
             g2d.setColor(Color.WHITE);
             g2d.setFont(new Font("Arial", Font.BOLD, swing.getInformationPanel().getBounds().height * 1 / FONT_STAT_DIVISOR));
-            g2d.drawString("DUNGEON LEVEL", 
-                    swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN, 
+            g2d.drawString("SLAIN FOES",
+                    swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN,
+                    swing.getInformationPanel().getBounds().height / CONSTANT_SIX);
+            g2d.drawString("DUNGEON LEVEL",
+                    swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN,
                     swing.getInformationPanel().getBounds().height * 2 / 3);
-            g2d.drawString(String.valueOf(floorManager.getFloorLevel()), 
-                    swing.getInformationPanel().getBounds().width 
-                                * CONSTANT_SEVEN 
-                                / DIVISOR_WIDTH_SECOND_COLUMN, 
+            g2d.drawString(String.valueOf(floorManager.getFloorLevel()),
+                    swing.getInformationPanel().getBounds().width
+                                * CONSTANT_SEVEN
+                                / DIVISOR_WIDTH_SECOND_COLUMN,
                     swing.getInformationPanel().getBounds().height * 2 / 3);
+            g2d.drawString("DEEPEST DESCENT",
+                    swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN,
+                    swing.getInformationPanel().getBounds().height
+                                * CONSTANT_FIVE
+                                / CONSTANT_SIX);
             g2d.drawString("EXPERIENCE  " + floorManager.getPlayer().getExperiencePoints(),
                     swing.getInformationPanel().getBounds().width * 2 / FIRST_COLUMN_DIVISOR_WIDTH,
                     swing.getInformationPanel().getBounds().height * MULTIPLIER_EXPERIENCE_HEIGHT / FIRST_COLUMN_DIVISOR_HEIGHT);

@@ -64,11 +64,6 @@ public class InventoryInformationRenderer implements Renderer {
                                 * CONSTANT_SEVEN 
                                 / DIVISOR_WIDTH_SECOND_COLUMN, 
                     this.view.getInformationPanel().getBounds().height / 3);
-            g2d.drawString("DEEPEST DESCENT", 
-                    this.view.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN, 
-                    this.view.getInformationPanel().getBounds().height 
-                                * CONSTANT_FIVE 
-                                / CONSTANT_SIX);
             g2d.drawString("BEACONS ",
                     this.view.getInformationPanel().getBounds().width / 2,
                     this.view.getInformationPanel().getBounds().height / CONSTANT_SIX);
