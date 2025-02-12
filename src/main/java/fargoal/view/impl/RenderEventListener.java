@@ -87,7 +87,7 @@ public class RenderEventListener implements FloorEventListener, Renderer {
             text = ev.whoStole().getTag() + " stole " + ev.howMuchGold() + " gold coins";
         } else if (floorEvent instanceof PlayerActionEvent) {
             final PlayerActionEvent ev = (PlayerActionEvent) floorEvent;
-            text = ev.whatPlayerUsed().getChestItemName() + " has benn used";
+            text = ev.whatPlayerUsed().getChestItemName() + " has been used";
         } else if (floorEvent instanceof PlacedABeacon) {
             final PlacedABeacon ev = (PlacedABeacon) floorEvent;
             text = ev.getWhatPlaced().getTag() + " placed";
