@@ -98,6 +98,7 @@ public class PlayerImpl implements Player {
         this.isFighting = false;
         this.isAttacked = false;
         this.isVisible = true;
+        this.isImmune = false;
         this.hasLight = false;
         this.playerInformationRender = playerInformationRenderer;
         this.playerInformationRender.setRender(floorManager);
@@ -209,14 +210,15 @@ public class PlayerImpl implements Player {
 
     /**{@inheritDoc}*/
     @Override
-    public void levelUp() {
+    public boolean levelUp() {
         if(!this.isLevellingUp()) {
-            throw new IllegalStateException("Player does not have enough experience points to level up.");
+            return false;
         } else {
             this.level ++;
             this.health.setMaxHealth(this.health.getMaxHealth() + new Random().nextInt(MIN_LEVEL_UP_ADDED_MAX_HEALTH, MAX_LEVEL_UP_ADDED_MAX_HEALTH) + CONSTANT_ADDED_TO_MAX_HEALTH_IN_LEVEL_UP);
             this.increasePlayerSkill(new Random().nextInt(1, 10));
             this.experiencePointsRequired = this.experiencePointsRequired * 2;
+            return true;
         }
     }
 
@@ -474,7 +476,16 @@ public class PlayerImpl implements Player {
      * @throws UnsupportedOperationException Always thrown, as the method is not yet implemented.
      */
     private boolean isMovingAwayFrom(Monster monster) {
-        throw new UnsupportedOperationException("Unimplemented method 'isMovingAwayFrom'");
+        Position playerPosition = this.getPosition();
+        Position monsterPosition = monster.getPosition();
+
+        int dx = monsterPosition.x() - playerPosition.x();
+        int dy = monsterPosition.y() - playerPosition.y();
+
+        if(dx > 1 || dy > 1) {
+            System.out.println("Debug: You are getting away");
+        }
+        return (dx > 1 || dy > 1);
     }
 
     /**

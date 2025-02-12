@@ -172,7 +172,7 @@ public interface Player extends Entity {
      * their skill increase, the level increases by one and
      * the next required experience points double.
      */
-    void levelUp();
+    boolean levelUp();
 
     boolean isImmune();
 
