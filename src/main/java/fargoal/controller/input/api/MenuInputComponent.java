@@ -13,6 +13,7 @@ public class MenuInputComponent implements InputComponent{
      * 
      * @param manager - to get the necessary infos
      * @param ctrl - to get the inputs
+     * @throws IllegalArgumentException if the given manager is not a {@link MenuManager}
      */
     @Override
     public void update(final SceneManager sceneManager, final InputController ctrl) {
