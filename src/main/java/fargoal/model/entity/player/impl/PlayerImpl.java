@@ -383,7 +383,7 @@ public class PlayerImpl implements Player {
     @Override
     public void update(final FloorManager floorManager) {
         if (this.moveTimer.updateTime(floorManager.getTimePassed()) == 0) {
-            input.update(floorManager, this, controller);
+            this.input.update(floorManager, this.controller);
             moveTimer.setTime(MILLIS_BETWEEN_MOVES);
         }
     }

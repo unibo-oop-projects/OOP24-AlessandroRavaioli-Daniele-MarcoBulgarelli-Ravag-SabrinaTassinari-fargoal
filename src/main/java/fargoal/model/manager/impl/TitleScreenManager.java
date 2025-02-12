@@ -8,7 +8,6 @@ import fargoal.controller.input.api.MenuInputComponent;
 import fargoal.model.commons.Timer;
 import fargoal.model.core.GameEngine;
 import fargoal.model.manager.api.MenuManager;
-import fargoal.model.manager.api.SceneManager;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 import fargoal.view.impl.SwingRendererMiddle;
@@ -19,7 +18,7 @@ import fargoal.view.impl.SwingView;
  * Class that work and implements methods to allow the Title screen
  * to work correctly.
  */
-public class TitleScreenManager implements SceneManager, MenuManager {
+public class TitleScreenManager implements MenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
     private static final long MILLIS_TO_WAIT = 150;

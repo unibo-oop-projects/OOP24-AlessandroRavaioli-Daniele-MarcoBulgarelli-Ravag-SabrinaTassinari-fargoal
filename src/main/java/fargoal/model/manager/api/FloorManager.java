@@ -14,7 +14,7 @@ import fargoal.view.api.RenderFactory;
 /**
  * An interface to model the entirety of the floor.
  */
-public interface FloorManager {
+public interface FloorManager extends SceneManager{
 
     /**
      * A method to return the instance of the Player.

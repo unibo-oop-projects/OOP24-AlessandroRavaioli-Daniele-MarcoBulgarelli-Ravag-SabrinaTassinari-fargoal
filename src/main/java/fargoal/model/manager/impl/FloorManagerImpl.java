@@ -24,7 +24,6 @@ import fargoal.model.interactable.stair.impl.DownStairs;
 import fargoal.model.interactable.stair.impl.UpStairs;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.api.FloorMask;
-import fargoal.model.manager.api.SceneManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.impl.FloorConstructorImpl;
 import fargoal.view.api.RenderFactory;
@@ -37,7 +36,7 @@ import fargoal.model.interactable.temple.Temple;
 /**
  * A class that implements the entirety of the floor and all its elements.
  */
-public class FloorManagerImpl implements FloorManager, SceneManager {
+public class FloorManagerImpl implements FloorManager {
 
     private static final int MINIMUM_NUMBER_OF_GOLD_SPOTS = 6;
     private static final int MAX_MONSTERS = 7;

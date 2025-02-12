@@ -3,9 +3,10 @@ package fargoal.controller.input.api;
 import java.util.Optional;
 
 import fargoal.commons.api.Position;
-import fargoal.model.entity.player.impl.PlayerImpl;
+import fargoal.model.entity.player.api.Player;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.SceneManager;
 
 /**
  * Class that refresh everything that the player does or interact with.
@@ -21,7 +22,13 @@ public class PlayerInputComponent implements InputComponent {
      * @param controller - to receive the processed inputs
      */
     @Override
-    public void update(final FloorManager manager, final PlayerImpl player, final InputController controller) {
+    public void update(final SceneManager sceneManager, final InputController controller) {
+        if (!(sceneManager instanceof FloorManager)) {
+            throw new IllegalArgumentException("Expected a FloorManager");
+        }
+        final FloorManager manager = (FloorManager) sceneManager;
+        final Player player = manager.getPlayer();
+        
         if (controller.isInteracting()) {
             final Optional<Interactable> interacting = manager.getInteractables()
                     .stream()
