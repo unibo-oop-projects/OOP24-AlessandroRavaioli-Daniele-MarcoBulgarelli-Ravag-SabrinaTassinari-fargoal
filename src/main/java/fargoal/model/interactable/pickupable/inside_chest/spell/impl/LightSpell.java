@@ -1,5 +1,7 @@
 package fargoal.model.interactable.pickupable.inside_chest.spell.impl;
 
+import fargoal.model.events.impl.TurnLightOffEvent;
+import fargoal.model.events.impl.TurnLightOnEvent;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.AbstractSpell;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.model.manager.api.FloorManager;
@@ -17,7 +19,7 @@ public class LightSpell extends AbstractSpell {
      * it is stored immediately in the player's inventory.
      */
     public LightSpell() {
-        this.setNumberInInventory(0);
+        this.setNumberInInventory(1);
     }
 
     /** {@inheritDoc} */
@@ -34,11 +36,13 @@ public class LightSpell extends AbstractSpell {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.LIGHT.getName())) {
             if (floorManager.getPlayer().hasLight()) {
                 floorManager.getPlayer().setHasLight(false);
+                floorManager.notifyFloorEvent(new TurnLightOffEvent());
                 if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
                     floorManager.getPlayer().setIsVisible(false);
                 }
             } else {
                 floorManager.getPlayer().setHasLight(true);
+                floorManager.notifyFloorEvent(new TurnLightOnEvent());
             }
         }
     }

@@ -17,6 +17,8 @@ import fargoal.model.events.impl.PickUpSword;
 import fargoal.model.events.impl.PlacedABeacon;
 import fargoal.model.events.impl.PlayerActionEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
+import fargoal.model.events.impl.TurnLightOffEvent;
+import fargoal.model.events.impl.TurnLightOnEvent;
 import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
@@ -87,7 +89,7 @@ public class RenderEventListener implements FloorEventListener, Renderer {
             text = ev.whoStole().getTag() + " stole " + ev.howMuchGold() + " gold coins";
         } else if (floorEvent instanceof PlayerActionEvent) {
             final PlayerActionEvent ev = (PlayerActionEvent) floorEvent;
-            text = ev.whatPlayerUsed().getChestItemName() + " has benn used";
+            text = ev.whatPlayerUsed().getChestItemName() + " has been used";
         } else if (floorEvent instanceof PlacedABeacon) {
             final PlacedABeacon ev = (PlacedABeacon) floorEvent;
             text = ev.getWhatPlaced().getTag() + " placed";
@@ -100,6 +102,12 @@ public class RenderEventListener implements FloorEventListener, Renderer {
         } else if (floorEvent instanceof BlessedEvent) {
             final BlessedEvent ev = (BlessedEvent) floorEvent;
             text = ev.getBlessed();
+        } else if (floorEvent instanceof TurnLightOnEvent) {
+            final TurnLightOnEvent ev = (TurnLightOnEvent) floorEvent;
+            text = ev.getTurnLightOn();
+        } else if (floorEvent instanceof TurnLightOffEvent) {
+            final TurnLightOffEvent ev = (TurnLightOffEvent) floorEvent;
+            text = ev.getLightTurnOff();
         }
     }
 
