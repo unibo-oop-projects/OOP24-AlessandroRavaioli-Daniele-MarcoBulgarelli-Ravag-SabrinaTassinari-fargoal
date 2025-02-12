@@ -367,15 +367,15 @@ public final class Ai {
                     }
                 }
             }
-            if (!check && !possibleDirections.isEmpty()) {
-                pos = possibleDirections.get(RANDOM.nextInt(possibleDirections.size()));
-                monster.setPosition(pos);
-                if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
-                    monster.removeLastPosition();
-                    monster.addFirstPosition(pos);
-                } else {
-                    monster.addFirstPosition(pos);
-                }
+        }
+        if (!check && !possibleDirections.isEmpty()) {
+            pos = possibleDirections.get(RANDOM.nextInt(possibleDirections.size()));
+            monster.setPosition(pos);
+            if (monster.getLastPositions().size() == MAX_CACHE_MONSTER) {
+                monster.removeLastPosition();
+                monster.addFirstPosition(pos);
+            } else {
+                monster.addFirstPosition(pos);
             }
         }
     }

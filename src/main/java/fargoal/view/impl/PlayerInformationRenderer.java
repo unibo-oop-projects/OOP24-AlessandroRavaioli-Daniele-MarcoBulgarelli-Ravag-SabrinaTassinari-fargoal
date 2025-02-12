@@ -20,7 +20,9 @@ public class PlayerInformationRenderer implements Renderer {
     private static final int MULTIPLIER_LEVEL_HEIGHT = 30;
     private static final int MULTIPLIER_SKILL_HEIGHT = 45;
     private static final int GOLD_HP_DIVISOR_HEIGHT = 5;
-    private static final int HP_DIVISOR_WIDTH = 6;
+    private static final int CONSTANT_SIX = 6;
+    private static final int CONSTANT_SEVEN = 7;
+    private static final int DIVISOR_WIDTH_SECOND_COLUMN = 16;
 
     private SwingRendererBottom rendererBottom; 
     private SwingRendererTop rendererTop;
@@ -65,7 +67,7 @@ public class PlayerInformationRenderer implements Renderer {
                     + floorManager.getPlayer().getHealth().getCurrentHealth() 
                     + "/" 
                     + floorManager.getPlayer().getHealth().getMaxHealth(), 
-                    swing.getEventPanel().getBounds().width / HP_DIVISOR_WIDTH, 
+                    swing.getEventPanel().getBounds().width / CONSTANT_SIX, 
                     swing.getEventPanel().getBounds().height * 3 / GOLD_HP_DIVISOR_HEIGHT);
             g2d.setColor(Color.YELLOW);
             g2d.drawString("GOLD: " + floorManager.getPlayer().getCurrentGold(), 
@@ -75,6 +77,14 @@ public class PlayerInformationRenderer implements Renderer {
         this.rendererBottom = new SwingRendererBottom(g2d -> {
             g2d.setColor(Color.WHITE);
             g2d.setFont(new Font("Arial", Font.BOLD, swing.getInformationPanel().getBounds().height * 1 / FONT_STAT_DIVISOR));
+            g2d.drawString("DUNGEON LEVEL", 
+                    swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN, 
+                    swing.getInformationPanel().getBounds().height * 2 / 3);
+            g2d.drawString(String.valueOf(floorManager.getFloorLevel()), 
+                    swing.getInformationPanel().getBounds().width 
+                                * CONSTANT_SEVEN 
+                                / DIVISOR_WIDTH_SECOND_COLUMN, 
+                    swing.getInformationPanel().getBounds().height * 2 / 3);
             g2d.drawString("EXPERIENCE  " + floorManager.getPlayer().getExperiencePoints(),
                     swing.getInformationPanel().getBounds().width * 2 / FIRST_COLUMN_DIVISOR_WIDTH,
                     swing.getInformationPanel().getBounds().height * MULTIPLIER_EXPERIENCE_HEIGHT / FIRST_COLUMN_DIVISOR_HEIGHT);

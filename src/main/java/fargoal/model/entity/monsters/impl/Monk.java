@@ -15,8 +15,9 @@ import fargoal.view.api.RenderFactory;
  */
 public class Monk extends AbstractMonster {
 
-    private static final int NEXT_MOVE = 5000;
+    private static final int NEXT_MOVE = 3000;
     private static final int HEAL_CONSTANT = 19;
+    private int nextMove;
 
     /**
      * A constructor for the Monk; it uses the
@@ -57,7 +58,8 @@ public class Monk extends AbstractMonster {
     @Override
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
-        if (Math.abs(this.getTimer() - temp) >= NEXT_MOVE) {
+        if (Math.abs(this.getTimer() - temp) >= nextMove) { 
+        this.nextMove = this.getRandom(NEXT_MOVE) + NEXT_MOVE * this.getSkill() / this.getLevel();
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)
                     && !floorManager.getPlayer().isImmune()
