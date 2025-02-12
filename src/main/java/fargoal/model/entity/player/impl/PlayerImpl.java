@@ -431,6 +431,12 @@ public class PlayerImpl implements Player {
             this.isFighting = false;
             this.isAttacked = false;
             attackCounter = 0;
+
+            //winning 
+            this.increasePlayerSkill(new Random().nextInt(1, 5));
+            int gainedExp = this.getLevel() * (monster.getSkill() + monster.getHealth().getMaxHealth());
+            this.addExperiencePoints(gainedExp);
+            this.levelUp();
         }
     }
 
