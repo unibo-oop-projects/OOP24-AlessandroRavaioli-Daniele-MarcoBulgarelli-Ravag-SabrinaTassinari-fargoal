@@ -338,6 +338,12 @@ public class PlayerImpl implements Player {
 
     /**{@inheritDoc}*/
     @Override
+    public void setIsAttacked(final boolean value) {
+        this.isAttacked = value;
+    }
+
+    /**{@inheritDoc}*/
+    @Override
     public void setHasSword(final boolean condition) {
         this.hasSword = condition;
     }
@@ -399,21 +405,8 @@ public class PlayerImpl implements Player {
         return isImmune;
     }
 
-    /**
-     * Manages the entire fight sequence between the player and the given monster.
-     * This method handles the combat mechanics, including attacks, fleeing conditions,
-     * and input locking. The battle continues until either the player or the monster is defeated.
-     * <p>
-     * If the player is moving away from the monster and was the one that started the fight,
-     * the battle ends immediately, allowing the player to flee.
-     * If the player has been attacked, inputs are locked between turns.
-     * Otherwise, the combat continues in an automated fashion.
-     * </p>
-     * 
-     * @param monster - The enemy {@link AbstractMonster} the player is fighting.
-     * 
-     * @return {@code true} if the player wins the battle, {@code false} if they lose.
-     */
+    /**{@inheritDoc} */
+    @Override
     public void battle(final Monster monster) {
         //TODO
         //isFighting = true
@@ -458,7 +451,7 @@ public class PlayerImpl implements Player {
                 }
 
             }
-        } while(!this.isDead() && !monster.isDead());
+        } while(!this.isDead() || !monster.isDead());
 
         unlockInputs();
         this.PasiveRegeneration();      

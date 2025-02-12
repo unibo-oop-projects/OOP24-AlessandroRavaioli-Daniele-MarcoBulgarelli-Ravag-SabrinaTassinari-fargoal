@@ -2,6 +2,7 @@ package fargoal.model.entity.player.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
+import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 
 /**
@@ -192,4 +193,23 @@ public interface Player extends Entity {
     void useHealingPotion();
 
     void useBeacon();
+
+    /**
+     * Manages the entire fight sequence between the player and the given monster.
+     * This method handles the combat mechanics, including attacks, fleeing conditions,
+     * and input locking. The battle continues until either the player or the monster is defeated.
+     * <p>
+     * If the player is moving away from the monster and was the one that started the fight,
+     * the battle ends immediately, allowing the player to flee.
+     * If the player has been attacked, inputs are locked between turns.
+     * Otherwise, the combat continues in an automated fashion.
+     * </p>
+     * 
+     * @param monster - The enemy {@link AbstractMonster} the player is fighting.
+     * 
+     * @return {@code true} if the player wins the battle, {@code false} if they lose.
+     */
+    void battle(final Monster monster);
+
+    void setIsAttacked(final boolean value);
 }
