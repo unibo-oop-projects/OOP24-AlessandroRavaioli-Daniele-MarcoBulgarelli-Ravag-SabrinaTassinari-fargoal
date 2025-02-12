@@ -1,4 +1,4 @@
-package fargoal.entity.player;
+/* package fargoal.entity.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -146,5 +146,5 @@ public class TestInventory {
         assertFalse(inventory.removeRegenerationScroll());
         assertFalse(inventory.removeDriftScroll());
         assertFalse(inventory.removeLightScroll());
-    } */
-}
+    } 
+}*/

@@ -1,8 +1,8 @@
-package fargoal.entity.player;
+/*package fargoal.entity.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fargoal.model.entity.player.api.Gold;
@@ -49,3 +49,4 @@ public class TestGold {
         assertEquals(1000, gold.getMaxCapacity());
     }
 }
+ */

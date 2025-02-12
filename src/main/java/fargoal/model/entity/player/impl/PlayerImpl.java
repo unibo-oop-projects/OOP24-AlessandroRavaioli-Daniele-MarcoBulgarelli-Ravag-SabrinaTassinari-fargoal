@@ -16,6 +16,7 @@ import fargoal.model.entity.commons.impl.HealthImpl;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.events.impl.BattleEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
@@ -389,12 +390,35 @@ public class PlayerImpl implements Player {
         this.setPosition(newPosition);
     }
 
-    /**{@inheritDoc}*/
+    /** {@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
         if (this.moveTimer.updateTime(floorManager.getTimePassed()) == 0) {
-            this.input.update(floorManager, this.controller);
-            moveTimer.setTime(MILLIS_BETWEEN_MOVES);
+            if (isFighting) {
+                if (!isAttacked) {
+                    final var pos = this.getPosition();
+                    this.input.update(floorManager, this.controller);
+                    if (!this.getPosition().equals(pos)) {
+                        isFighting = false;
+                        floorManager.getMonsters().stream()
+                                .filter(p -> p.isFighting())
+                                .forEach(p -> p.setIsFighting(false));
+                    } else {
+                        this.battle(floorManager.getMonsters().stream()
+                                .filter(p -> p.isFighting())
+                                .findAny()
+                                .get());
+                    }
+                } else {
+                    this.battle(floorManager.getMonsters().stream()
+                            .filter(p -> p.isFighting())
+                            .findAny()
+                            .get());
+                }
+            } else {
+                this.input.update(floorManager, this.controller);
+            }
+            this.moveTimer.setTime(MILLIS_BETWEEN_MOVES);
         }
     }
 
@@ -408,10 +432,17 @@ public class PlayerImpl implements Player {
         return isImmune;
     }
 
-    /**{@inheritDoc} */
+    /** {@inheritDoc}*/
     @Override
     public void battle(final Monster monster) {
-       return;
+        floorManager.notifyFloorEvent(new BattleEvent());
+        this.isFighting = true;
+        monster.receiveDamage();
+        this.receiveDamage(monster);
+        if (monster.isDead() || this.isDead()) {
+            this.isFighting = false;
+            this.isAttacked = false;
+        }
     }
 
 
