@@ -119,4 +119,6 @@ public interface Monster extends Entity {
     void setIsFighting(boolean condition);
 
     boolean isFighting();
+
+    public boolean areNeighbours(final FloorManager floorManager, final Integer amount);
 }
