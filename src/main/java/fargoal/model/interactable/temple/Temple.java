@@ -1,6 +1,7 @@
 package fargoal.model.interactable.temple;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.BlessedEvent;
 import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
@@ -40,6 +41,7 @@ public class Temple implements Interactable {
         if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= GOLD_TO_DONATE_FOR_BLESSING) {
             floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
             floorManager.getPlayer().getPlayerGold().setGoldDonated(0);
+            floorManager.notifyFloorEvent(new BlessedEvent());
         }
         floorManager.getPlayer().getPlayerGold().resetGold();
         return this;

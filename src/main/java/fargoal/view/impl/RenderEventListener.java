@@ -6,6 +6,7 @@ import java.awt.Font;
 import fargoal.model.events.api.FloorEvent;
 import fargoal.model.events.api.FloorEventListener;
 import fargoal.model.events.impl.BattleEvent;
+import fargoal.model.events.impl.BlessedEvent;
 import fargoal.model.events.impl.FoundTrapEvent;
 import fargoal.model.events.impl.MonsterEncounterEvent;
 import fargoal.model.events.impl.MonsterStealGoldEvent;
@@ -96,6 +97,9 @@ public class RenderEventListener implements FloorEventListener, Renderer {
         } else if (floorEvent instanceof BattleEvent) {
             final BattleEvent ev = (BattleEvent) floorEvent;
             text = ev.getTextSound();
+        } else if (floorEvent instanceof BlessedEvent) {
+            final BlessedEvent ev = (BlessedEvent) floorEvent;
+            text = ev.getBlessed();
         }
     }
 
