@@ -41,6 +41,8 @@ import fargoal.model.entity.player.api.Inventory;
  */
 public class PlayerImpl implements Player {
 
+    private static final int MIN_SKILL_REWARD = 1;
+    private static final int MAX_SKILL_REWARD = 5;
     private static final int DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE = -5;
     private static final int CONSTANT_ADDED_TO_MAX_HEALTH_IN_LEVEL_UP = 4;
     private static final int MAX_LEVEL_UP_ADDED_MAX_HEALTH = 15;
@@ -433,7 +435,7 @@ public class PlayerImpl implements Player {
             attackCounter = 0;
 
             //winning 
-            this.increasePlayerSkill(new Random().nextInt(1, 5));
+            this.increasePlayerSkill(new Random().nextInt(MIN_SKILL_REWARD, MAX_SKILL_REWARD));
             int gainedExp = this.getLevel() * (monster.getSkill() + monster.getHealth().getMaxHealth());
             this.addExperiencePoints(gainedExp);
             this.levelUp();
