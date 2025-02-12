@@ -540,18 +540,24 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public boolean isDead() {
-        if (inventory.getHealingPotions().getNumberInInventory() == 0 
-                && this.health.getCurrentHealth() <= DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
-            return true;
-        } else if (inventory.getHealingPotions().getNumberInInventory() > 0) {
-            if(this.health.getCurrentHealth() < DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE) {
+        int currentHealth = this.health.getCurrentHealth();
+        int potions = inventory.getHealingPotions().getNumberInInventory();
+
+        if (!isFighting()) {
+            //if not fighting, dies as soon as player reaches 0 hp or below
+            return currentHealth < 0;
+        } else {
+            //if fighting, check if hp are not below -5 to use potion
+            if (currentHealth <= -5) {
                 return true;
-            } else {
+            } else if (potions > 0) {
+                //if player hasn't potions and is above -5 then uses the potion
                 this.inventory.getHealingPotions().use(floorManager);
-                return this.getHealth().getCurrentHealth() < DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE;
-            }         
+                return this.health.getCurrentHealth() <= 0;
+            } else {
+                return currentHealth <= 5;
+            }
         }
-        return false;
     }
 
     /**
