@@ -3,11 +3,13 @@ package fargoal.model.events.impl;
 import java.util.List;
 import java.util.Random;
 
+import fargoal.model.events.api.FloorEvent;
+
 /**
  * BattleEvent is a class called everytime that
  * a battle between the player and a monster is underway.
  */
-public class BattleEvent {
+public class BattleEvent implements FloorEvent{
     private final Random random = new Random();
     private final List<String> list = List.of("Chop!", "Clang!",
             "Ouch!", "Thud!", "Clink!", "Shriek!", "Slash!", "Shred!",

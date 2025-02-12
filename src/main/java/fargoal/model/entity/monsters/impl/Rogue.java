@@ -18,7 +18,7 @@ import fargoal.view.api.RenderFactory;
 public class Rogue extends AbstractMonster {
 
     private static final int NEXT_MOVE = 3000;
-    private final int minimum_wait;
+    private final int minimumWait;
     private int nextMove;
 
     /**
@@ -35,7 +35,7 @@ public class Rogue extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        minimum_wait = 2000;
+        minimumWait = 2000;
         setMonsterType(MonsterType.ROGUE);
         this.setRender(renderFactory.rogueRenderer(this));
     }
@@ -60,7 +60,7 @@ public class Rogue extends AbstractMonster {
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= nextMove) {
-            this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimum_wait;
+            this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimumWait;
             this.setTimer();
             if (this.areNeighbours(floorManager, 1)
                     && !floorManager.getPlayer().isImmune()
@@ -70,7 +70,9 @@ public class Rogue extends AbstractMonster {
                                     this.steal();
                                 } else {
                                     floorManager.notifyFloorEvent(new ReceiveAttackEvent(this));
-                                    floorManager.getPlayer().receiveDamage(this);
+                                    floorManager.getPlayer().setIsAttacked(true);
+                                    this.setIsFighting(true);
+                                    floorManager.getPlayer().battle(this);
                                 }
                     } else {
                         Ai.move(this, floorManager.getPlayer());

@@ -212,4 +212,6 @@ public interface Player extends Entity {
     void battle(final Monster monster);
 
     void setIsAttacked(final boolean value);
+
+    boolean isFighting();
 }

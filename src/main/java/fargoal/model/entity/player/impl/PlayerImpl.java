@@ -322,6 +322,7 @@ public class PlayerImpl implements Player {
      * 
      * @return {@code true} if the player is fighting, {@code false} otherwise.
      */
+    @Override
     public boolean isFighting() {
         return this.isFighting;
     }

@@ -115,4 +115,8 @@ public interface Monster extends Entity {
      * @param position - the position to addFirst in the cacheList
      */
     void addFirstPosition(Position position);
+
+    void setIsFighting(boolean condition);
+
+    boolean isFighting();
 }
