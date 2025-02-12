@@ -22,7 +22,7 @@ import fargoal.view.impl.SwingView;
 public class TitleScreenManager implements SceneManager, MenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
-    private static final long MILLIS_TO_WAIT = 200;
+    private static final long MILLIS_TO_WAIT = 150;
     private static final int POSSIBILITIES_DIVISOR_WIDTH = 50;
     private static final int POSSIBILITIES_DIVISOR_HEIGHT = 7;
     private static final int GAME_START_MULTIPLIER_WIDTH = 21;

@@ -93,10 +93,9 @@ public class SwingView implements View, KeyListener {
         this.frame.addWindowStateListener(new WindowStateListener() {
 
             @Override
-            public void windowStateChanged(WindowEvent e) {
+            public void windowStateChanged(final WindowEvent e) {
                 calculateDimensions();
             }
-            
         });
         tilePixelDimHeight = MINIMUM_TILE_HEIGHT;
         tilePixelDimWidth = MINIMUM_TILE_WIDTH;

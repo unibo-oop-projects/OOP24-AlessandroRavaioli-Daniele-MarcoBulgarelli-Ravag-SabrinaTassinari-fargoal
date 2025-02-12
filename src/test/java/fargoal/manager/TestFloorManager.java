@@ -22,7 +22,7 @@ import fargoal.model.manager.impl.FloorMaskImpl;
 import fargoal.model.map.api.FloorMap;
 
 class TestFloorManager {
-    
+
     private static FloorManager manager;
 
     @BeforeAll
@@ -32,7 +32,7 @@ class TestFloorManager {
 
     //Test to see if increaseFloorLevel and decreaseFloorLevel work appropriatly
     @Test
-    void TestFloorLevel() {
+    void testFloorLevel() {
         System.out.println("primo test");
         assertEquals(1, manager.getFloorLevel());
         manager.increaseFloorLevel();
@@ -49,6 +49,9 @@ class TestFloorManager {
 
     //This test is aimed at seeing if everything gets a correct position associated with them,
     //basically it is trying to see if any element gets assigned a position where another element already was
+    //CHECKSTYLE: MagicNumber OFF
+    //All the numbers present in this test are number that have already given problems,
+    //and are supposed to be limits
     @Test
     void testInitFloor() {
         for (long k = 0; k < 20; k++) {
@@ -68,9 +71,9 @@ class TestFloorManager {
             assertTrue(manager.getInteractables().size() <= 41);
             var item = manager.getInteractables();
             for (int i = 0; i < manager.getInteractables().size(); i++) {
-                for(int j = 0; j < manager.getInteractables().size(); j++) {
+                for (int j = 0; j < manager.getInteractables().size(); j++) {
                     if (i != j) {
-                        assertNotEquals(item.get(i).getPosition(), manager.getInteractables().get(j).getPosition());   
+                        assertNotEquals(item.get(i).getPosition(), manager.getInteractables().get(j).getPosition()); 
                     }
                 }
             }
@@ -78,7 +81,7 @@ class TestFloorManager {
         }
         resetConditions();
     }
-
+    //CHECKSTYLE: MagicNumber ON
     @Test
     void testFloorChange() {
         //I need to test that the map, the monsters and the items change after every floor
@@ -95,11 +98,14 @@ class TestFloorManager {
         testMap.store();
         FloorMask mask = new FloorMaskImpl();
         mask.clearMask();
-        for(int i = 0; i < 20; i++) {
+        //CHECKSTYLE: MagicNumber OFF
+        //20 is the minimum numbeer of floors I need to check to see if the map was saved correctly
+        for (int i = 0; i < 20; i++) {
             if (testMap.getListOfMaps().contains(manager.getFloorLevel())) {
                 assertEquals(mask, manager.getFloorMask());
             }
         }
+        //CHECKSTYLE: MagicNumber ON
         resetConditions();
     }
 
@@ -109,7 +115,7 @@ class TestFloorManager {
     void testExitWithSword() {
         System.out.println("Quarto test");
         manager.getPlayer().setHasSword(true);
-        assertDoesNotThrow(()-> manager.decreaseFloorLevel());
+        assertDoesNotThrow(() -> manager.decreaseFloorLevel());
         manager.getPlayer().setHasSword(false);
         resetConditions();
     }
