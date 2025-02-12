@@ -16,7 +16,7 @@ import fargoal.model.manager.api.FloorManager;
 public class Map extends AbstractUtility {
 
     private static final int MAX_MAP_LEVEL = 19;
-    private List<Integer> listOfMaps;
+    private final List<Integer> listOfMaps;
 
     /**
      * This is the constructor of the class. It store right away the map and it set the level it reveal.

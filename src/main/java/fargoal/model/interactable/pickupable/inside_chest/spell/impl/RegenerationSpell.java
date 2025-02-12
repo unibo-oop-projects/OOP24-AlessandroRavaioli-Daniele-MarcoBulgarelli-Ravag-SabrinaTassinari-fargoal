@@ -28,10 +28,9 @@ public class RegenerationSpell extends AbstractSpell {
     /** {@inheritDoc} */
     @Override
     public void update(final FloorManager floorManager) {
-        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.REGENERATION.getName())) {
-            if (this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
-                floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), false);
-            }
+        if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.REGENERATION.getName())
+                && this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
+            floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.REGENERATION.getName(), false);
         }
     }
 

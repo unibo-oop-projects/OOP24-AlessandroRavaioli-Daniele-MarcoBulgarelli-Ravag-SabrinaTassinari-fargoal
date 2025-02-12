@@ -56,7 +56,7 @@ public class UpStairs implements Stairs {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public void setRenderer(final Renderer renderer) {
+    public final void setRenderer(final Renderer renderer) {
         this.renderer = renderer;
     }
 

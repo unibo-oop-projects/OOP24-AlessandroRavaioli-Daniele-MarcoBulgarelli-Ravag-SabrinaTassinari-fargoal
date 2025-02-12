@@ -11,7 +11,7 @@ import fargoal.model.interactable.pickupable.inside_chest.api.ChestItem;
  */
 public class FoundTrapEvent implements FloorEvent {
     private final ChestItem chestItem;
-    private boolean mapLost;
+    private final boolean mapLost;
 
     /**
      * Constructor that assigns the ChestItem found in the 

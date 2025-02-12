@@ -11,7 +11,7 @@ public class MagicSack extends AbstractUtility {
 
     private static final int GOLD_CARRIED_BY_MAGIC_SACK = 100;
     private static final int N_MAGICK_SACK_TO_START = 1;
-    private FloorManager floorManager;
+    private final FloorManager floorManager;
 
     /**
      * This is the constructor of the class. It stores right away the item in the player's inventory.

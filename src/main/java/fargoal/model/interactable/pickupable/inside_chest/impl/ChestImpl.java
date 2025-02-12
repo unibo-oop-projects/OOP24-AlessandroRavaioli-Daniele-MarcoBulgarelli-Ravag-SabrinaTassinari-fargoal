@@ -74,7 +74,7 @@ public class ChestImpl implements Interactable {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
             final int num = new Random().nextInt(N_CHEST_ITEM);
             if (num >= 0 && num <= CASE_END_SPELL) {
-                Spell spell;
+                final Spell spell;
                 if (num == CASE_DRIFT_SPELL) {
                     spell = new ChestItemFactoryImpl().generateDriftSpell();
                     floorManager.getPlayer().getInventory().getDriftSpell().store();
@@ -140,7 +140,7 @@ public class ChestImpl implements Interactable {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public void setRender(final Renderer renderer) {
+    public final void setRender(final Renderer renderer) {
         this.renderer = renderer;
     }
 

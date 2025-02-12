@@ -25,7 +25,7 @@ import fargoal.model.manager.impl.FloorManagerImpl;
 /**
  * This class tests the interactables and the usables of the game.
  */
-public class TestInteractable {
+class TestInteractable {
     private static FloorManager floorManager = new FloorManagerImpl(new GameEngine());
     private static final int N_DAMAGE = 5;
 

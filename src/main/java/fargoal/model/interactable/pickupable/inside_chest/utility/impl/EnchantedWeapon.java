@@ -14,7 +14,7 @@ public class EnchantedWeapon extends AbstractUtility {
 
     private static final int MAX_SKILL_TO_ADD = 9;
     private static final int SKILL_TO_ADD = 5;
-    private FloorManager floorManager;
+    private final FloorManager floorManager;
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
@@ -39,7 +39,7 @@ public class EnchantedWeapon extends AbstractUtility {
     /** {@inheritDoc} */
     @Override
     public void addToPlayer() {
-        int skillToAdd = new Random().nextInt(MAX_SKILL_TO_ADD) + SKILL_TO_ADD;
+        final int skillToAdd = new Random().nextInt(MAX_SKILL_TO_ADD) + SKILL_TO_ADD;
         this.floorManager.getPlayer().increasePlayerSkill(skillToAdd);
     }
 

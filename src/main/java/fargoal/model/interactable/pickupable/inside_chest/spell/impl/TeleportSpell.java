@@ -37,9 +37,9 @@ public class TeleportSpell extends AbstractSpell {
     public void effect(final FloorManager floorManager) {
         final Position newPlayerPosition;
         floorManager.notifyFloorEvent(new PlayerActionEvent(this));
-        if (floorManager.getInteractables().stream().filter(i -> i.getTag().equals("BEACON")).count() > 0) {
+        if (floorManager.getInteractables().stream().filter(i -> "BEACON".equals(i.getTag())).count() > 0) {
             newPlayerPosition = floorManager.getInteractables().stream().
-                    filter(i -> i.getTag().equals("BEACON")).toList().getFirst().getPosition();
+                    filter(i -> "BEACON".equals(i.getTag())).toList().getFirst().getPosition();
         } else {
             newPlayerPosition = floorManager.getFloorMap().getRandomTile();
         }

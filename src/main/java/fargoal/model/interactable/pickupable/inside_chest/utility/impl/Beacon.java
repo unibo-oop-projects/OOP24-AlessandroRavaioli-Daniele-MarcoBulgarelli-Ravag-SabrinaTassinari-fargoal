@@ -29,7 +29,7 @@ public class Beacon extends AbstractUtility {
     @Override
     public void effect(final FloorManager floorManager) {
         this.removeUtility();
-        BeaconOnGround beaconOnGround = new BeaconOnGround(floorManager.getPlayer().getPosition(), floorManager);
+        final BeaconOnGround beaconOnGround = new BeaconOnGround(floorManager.getPlayer().getPosition(), floorManager);
         floorManager.getInteractables().add(beaconOnGround);
         floorManager.notifyFloorEvent(new PlacedABeacon(beaconOnGround));
     }

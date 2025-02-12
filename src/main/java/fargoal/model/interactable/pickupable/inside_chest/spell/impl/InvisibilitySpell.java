@@ -30,7 +30,7 @@ public class InvisibilitySpell extends AbstractSpell {
     @Override
     public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.INVISIBILITY.getName()) 
-                && this.getFloorLevelSpellCast() != floorManager.getFloorLevel() ) {
+                && this.getFloorLevelSpellCast() != floorManager.getFloorLevel()) {
             floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.INVISIBILITY.getName(), false);
             floorManager.getPlayer().setIsVisible(true);
         }

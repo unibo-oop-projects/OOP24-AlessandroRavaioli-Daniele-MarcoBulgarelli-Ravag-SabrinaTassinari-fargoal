@@ -106,10 +106,8 @@ public class SackOfMoney implements Interactable {
     /** {@inheritDoc} */
     @Override
     public final void update(final FloorManager floorManager) {
-        if (this.isOpen()) {
-            if (!this.isHiddenInGround()) {
-                floorManager.getAllElements().remove(this);
-            }
+        if (this.isOpen() && !this.isHiddenInGround()) {
+            floorManager.getAllElements().remove(this);
         }
     }
 

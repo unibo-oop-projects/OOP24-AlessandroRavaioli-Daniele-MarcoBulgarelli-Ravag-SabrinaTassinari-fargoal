@@ -64,7 +64,7 @@ public class DownStairs implements Stairs {
     @Override
     public final void update(final FloorManager floorManager) {
         if (!floorManager.getPlayer().getPosition().equals(lastPlayerPosition)
-                && floorManager.getPlayer().getPosition().equals(this.position) ) {
+                && floorManager.getPlayer().getPosition().equals(this.position)) {
             floorManager.notifyFloorEvent(new WalkOverEvent(this));
         }
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
