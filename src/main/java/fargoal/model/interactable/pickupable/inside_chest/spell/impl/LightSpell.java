@@ -19,7 +19,7 @@ public class LightSpell extends AbstractSpell {
      * it is stored immediately in the player's inventory.
      */
     public LightSpell() {
-        this.setNumberInInventory(1);
+        this.setNumberInInventory(0);
     }
 
     /** {@inheritDoc} */
