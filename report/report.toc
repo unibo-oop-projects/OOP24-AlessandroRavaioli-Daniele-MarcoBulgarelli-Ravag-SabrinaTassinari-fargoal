@@ -1,7 +1,7 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
 \contentsline {chapter}{\numberline {1}Analisi}{2}{}%
-\contentsline {section}{\numberline {1.1}Desctizione e requisiti}{2}{}%
+\contentsline {section}{\numberline {1.1}Descrizione e requisiti}{2}{}%
 \contentsline {subsection}{\numberline {1.1.1}Requisiti funzionali}{2}{}%
 \contentsline {subsection}{\numberline {1.1.2}Modello del dominio}{3}{}%
 \contentsline {chapter}{\numberline {2}Design}{4}{}%
