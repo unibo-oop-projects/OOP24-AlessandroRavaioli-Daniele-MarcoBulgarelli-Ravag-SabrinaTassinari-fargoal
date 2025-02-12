@@ -15,6 +15,9 @@ import fargoal.view.impl.SwingView;
 
 class TestFloorGeneration {
 
+    private static final int MAXIMUM_MILLIS_PER_MAP = 200;
+    private static final int NUMBER_OF_MAP_CREATIONS = 1000;
+
     private static FloorConstructor fc = new FloorConstructorImpl();
     private static FloorMap map;
 
@@ -40,4 +43,19 @@ class TestFloorGeneration {
         assertTrue(timesHappend < 20); 
     }
     //CHECKSTYLE: MagicNumber ON
+
+    //A test to see if the algorithm gets stuck or takes too long to generate a map
+    //I dont want the map to take a noticeable amount of time to generate
+    @Test
+    void testGeneration() {
+        final KeyboardInputController ctrl = new KeyboardInputController();
+        final SwingView view = new SwingView(ctrl);
+        final SwingRenderFactory rf = new SwingRenderFactory(view);
+        final long startTime = System.currentTimeMillis();
+        for (int i = 0; i < NUMBER_OF_MAP_CREATIONS; i++) {
+            map = fc.createFloor(rf);
+        }
+        final long endTime = System.currentTimeMillis() - startTime;
+        assertTrue(endTime < NUMBER_OF_MAP_CREATIONS * MAXIMUM_MILLIS_PER_MAP); 
+    }
 }
