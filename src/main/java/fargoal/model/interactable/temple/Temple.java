@@ -79,10 +79,10 @@ public class Temple implements Interactable {
     public void update(final FloorManager floorManager) {
         if (floorManager.getPlayer().getPosition().equals(this.position)) {
             floorManager.getPlayer().setIsImmune(true);
-            this.interact(floorManager);
             if (!floorManager.getPlayer().getPosition().equals(this.lastPlayerPosition)) {
                 floorManager.notifyFloorEvent(new WalkOverEvent(this));
             }
+            this.interact(floorManager);
         } else {
             floorManager.getPlayer().setIsImmune(false);
         }
