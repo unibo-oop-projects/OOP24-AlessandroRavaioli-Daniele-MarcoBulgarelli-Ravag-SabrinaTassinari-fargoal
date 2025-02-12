@@ -14,7 +14,8 @@ import fargoal.view.api.RenderFactory;
  */
 public class Assassin extends AbstractMonster {
 
-    private static final int NEXT_MOVE = 3000;
+    private static final int NEXT_MOVE = 1500;
+    private final int minimum_wait;
     private int nextMove;
 
     /**
@@ -32,6 +33,11 @@ public class Assassin extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
+        if (floorManager.getFloorLevel() > 13) {
+            this.minimum_wait = 1000;
+        } else {
+            this.minimum_wait = 1450;
+        }
         this.setMonsterType(MonsterType.ASSASSIN);
         this.setRender(renderFactory.assassinRenderer(this));
         this.setVisibilityOff();
@@ -48,7 +54,7 @@ public class Assassin extends AbstractMonster {
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= nextMove) {
-            this.nextMove = this.getRandom(NEXT_MOVE) + NEXT_MOVE * this.getSkill() / this.getLevel();
+            this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimum_wait;
             this.setTimer();
             if (this.areNeighbours(floorManager, 1) 
                     && !floorManager.getPlayer().isImmune()
