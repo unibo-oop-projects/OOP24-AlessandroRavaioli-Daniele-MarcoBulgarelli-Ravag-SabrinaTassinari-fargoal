@@ -378,6 +378,7 @@ public class PlayerImpl implements Player {
     /** {@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
+        this.PasiveRegeneration();
         if (this.moveTimer.updateTime(floorManager.getTimePassed()) == 0) {
             if (isFighting) {
                 if (!isAttacked) {
@@ -501,7 +502,6 @@ public class PlayerImpl implements Player {
         final int baseHealingAmount = 1;
         int regenerationPeriod = 10000;
 
-        this.regenerationTimer.setTime(10000);
     }
 
     /**
