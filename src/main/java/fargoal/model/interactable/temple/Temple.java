@@ -36,6 +36,7 @@ public class Temple implements Interactable {
     @Override
     public Interactable interact(final FloorManager floorManager) {
         floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
+        floorManager.getPlayer().levelUp();
         floorManager.getPlayer().getPlayerGold().setGoldDonated(
                 floorManager.getPlayer().getPlayerGold().getGoldDonated() + floorManager.getPlayer().getCurrentGold());
         if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= GOLD_TO_DONATE_FOR_BLESSING) {
@@ -44,7 +45,6 @@ public class Temple implements Interactable {
             floorManager.notifyFloorEvent(new BlessedEvent());
         }
         floorManager.getPlayer().getPlayerGold().resetGold();
-        floorManager.getPlayer().levelUp();
         return this;
     }
 

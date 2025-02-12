@@ -14,6 +14,6 @@ public class TurnLightOnEvent implements FloorEvent {
      * @return the string for the light off.
      */
     public String getTurnLightOn() {
-        return "You turned the light off";
+        return "You turned the light on";
     }
 }
