@@ -75,13 +75,21 @@ Le entità, invece, sono l’insieme dei mostri (in \ref{img:DiagrammaUMLAnalisi
 \subsection{Tassinari Sabrina}
 
 \subsubsection{Generazione di item in un forziere}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=12cm]{chestItemFactory.drawio.png}
+    \caption{Schema UML dell'applicazione del \textit{pattern AbstractFactory} e di dove viene usata la Factory}
+    \label{img:chestItemFactory}
+\end{figure}
+
 \paragraph{Problema} Il giocatore, esplorando, può trovare dei forzieri, con al loro interno degli items utili oppure delle trappole. 
 
-\paragraph{Soluzione} Per gestire la generazione di item all'apertura della cesta si utilizza il \textit{pattern Abstract Factory}, come da : 
+\paragraph{Soluzione} Per gestire la generazione di item all'apertura della cesta si utilizza il \textit{pattern Abstract Factory}, come da: \ref{img:chestItemFactory}.
 %
-l'interfaccia creatrice fornisce i metodi factory che hanno il compito di creare tutti gli item che si possono trovare nei forzieri.
-
-
+L'interfaccia creatrice fornisce i metodi factory che hanno il compito di creare tutti gli item che si possono trovare nei forzieri. 
+%
+Quando il giocatore interagisce con il forziere utilizzando il metodo \textbf{interact()} viene generato, utilizzando il metodo opportuno, un item scelto in modo randomico tra tutti.
 
 \subsection{Tramonti Daniele}
 
