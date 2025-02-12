@@ -231,6 +231,11 @@ public class SwingView implements View, KeyListener {
         return this.eventPanel;
     }
 
+    /**
+     * Method that returns the {@link #margin}.
+     * 
+     * @return - the local field {@link #margin}
+     */
     public int getMargin() {
         return this.margin;
     }
