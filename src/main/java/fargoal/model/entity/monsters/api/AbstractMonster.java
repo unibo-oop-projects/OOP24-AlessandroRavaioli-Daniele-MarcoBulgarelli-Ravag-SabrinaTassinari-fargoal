@@ -88,7 +88,6 @@ public abstract class AbstractMonster implements Monster {
         this.isFighting = true;
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
         this.getHealth().decreaseHealth(damage);
-        this.isDead();
     }
 
     /** {@inheritDoc} */
