@@ -20,7 +20,14 @@ import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
-public class TestMonsterMovement {
+/**
+ * Test class to check if a monster will move when far from the player,
+ * and otherwise if he won't move when he's near to the player (because 
+ * he's supposed to attacks him).
+ */
+class TestMonsterMovement {
+
+    private static final int MAX_MOVE_TEST = 50;
 
     private static FloorManager manager = new FloorManagerImpl(new GameEngine());
     private static Monster monster;
@@ -56,7 +63,6 @@ public class TestMonsterMovement {
                     .filter(p -> manager.getFloorMap().isTile(p))
                     .collect(Collectors.toList());
         } while (positions.isEmpty());
-        System.out.println("ciao");
         manager.getPlayer().setPosition(positions.get(random.nextInt(positions.size())));
 
         assertTrue(Math.abs(monster.getPosition().x() - manager.getPlayer().getPosition().x()) <= 1
@@ -68,7 +74,7 @@ public class TestMonsterMovement {
 
         //controllo che ad ogni move la posizione del mostro cambi
         Position lastPosition = monster.getPosition();
-        for (int i = 0; i < 25 ; i++) {
+        for (int i = 0; i < MAX_MOVE_TEST; i++) {
             monster.move();
             assertNotEquals(lastPosition, monster.getPosition());
             lastPosition = monster.getPosition();

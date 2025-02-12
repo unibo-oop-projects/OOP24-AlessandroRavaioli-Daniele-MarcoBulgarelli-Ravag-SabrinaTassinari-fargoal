@@ -1,6 +1,7 @@
 package fargoal.entity.monster;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -20,19 +21,21 @@ import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
-public class TestMonsterDamage {
-
+/**
+ * Test class to check if the monster does effectively damage
+ * to the player.
+ */
+class TestMonsterDamage {
     private static FloorManager floorManager = new FloorManagerImpl(new GameEngine());
     private static Monster monster;
     private static MonsterFactory factory = new MonsterFactoryImpl(1);
     private static Random random = new Random(); 
-    
     @BeforeAll
     static void setup() {
         List<Position> positions;
         do {
-        monster = factory.generate(floorManager.getFloorMap().getRandomTile(),  
-                floorManager, 
+        monster = factory.generate(floorManager.getFloorMap().getRandomTile(),
+                floorManager,
                 floorManager.getRenderFactory());
         positions = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),
                 new Position(-1, 0), new Position(1, 0),
@@ -48,7 +51,6 @@ public class TestMonsterDamage {
     void attack() {
         assertEquals(floorManager.getPlayer().getHealth().getCurrentHealth(), 
                 floorManager.getPlayer().getHealth().getMaxHealth());
-        
         floorManager.getPlayer().receiveDamage(monster);
         assertNotEquals(floorManager.getPlayer().getHealth().getCurrentHealth(), 
                 floorManager.getPlayer().getHealth().getMaxHealth());
@@ -59,9 +61,7 @@ public class TestMonsterDamage {
         if (monster.getHealth().getCurrentHealth() < 0) {
             assertTrue(monster.isDead());
         } else {
-            assertTrue(!monster.isDead());
+            assertFalse(monster.isDead());
         }
     }
-
-    
 }
