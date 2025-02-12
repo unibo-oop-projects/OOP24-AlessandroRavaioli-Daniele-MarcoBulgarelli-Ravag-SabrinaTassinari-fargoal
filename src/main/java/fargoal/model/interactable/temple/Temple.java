@@ -44,6 +44,7 @@ public class Temple implements Interactable {
             floorManager.notifyFloorEvent(new BlessedEvent());
         }
         floorManager.getPlayer().getPlayerGold().resetGold();
+        floorManager.getPlayer().levelUp();
         return this;
     }
 

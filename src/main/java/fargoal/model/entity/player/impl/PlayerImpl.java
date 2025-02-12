@@ -491,44 +491,9 @@ public class PlayerImpl implements Player {
     public void PasiveRegeneration() {    
         
         final int baseHealingAmount = 1;
-        ;
+        int regenerationPeriod = 10000;
 
-
-        
-    
-
-
-
-
-        /*final int baseHealingAmount = 1;
-        final int basePeriod = 10;
-
-        if(scheduler != null && !scheduler.isShutdown()) {
-            System.out.println("Debug: Regeneration is already running");
-            return;
-        }
-
-        scheduler.scheduleWithFixedDelay(() -> {
-
-            if(this.isFighting() || this.health.getCurrentHealth() >= this.health.getMaxHealth()) {
-                return; //Does not regenerate if in combat or has maximum health
-            }
-
-            int multiplier = (this.position.equals(floorManager.getTemple().getPosition()) ? 1 : 0);
-            boolean hasRegenerationSpell = this.inventory.getSpellCasted().getOrDefault(SpellType.REGENERATION.getName(), false);
-       
-            if(hasRegenerationSpell) {
-                multiplier ++;
-            }
-            double finalMultiplier = Math.pow(2, multiplier);
-            System.out.println("Debug [finalMultiplier]: " + finalMultiplier);
-    
-            double healingRate = (basePeriod * this.health.getCurrentHealth() / (this.health.getMaxHealth() * finalMultiplier));
-            double delay = Math.max(1, healingRate);
-
-            this.health.increaseHealth(baseHealingAmount);
-            System.out.println("Debug: next healing in " + delay + "s");
-        }, 0, 1, TimeUnit.SECONDS);*/
+        this.regenerationTimer.setTime(10000);
     }
 
     /**
