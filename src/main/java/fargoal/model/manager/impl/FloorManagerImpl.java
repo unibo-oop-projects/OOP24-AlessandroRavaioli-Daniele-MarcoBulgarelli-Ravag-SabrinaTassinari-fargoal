@@ -108,8 +108,9 @@ public class FloorManagerImpl implements FloorManager {
                 this.player.update(this);
             } else {
                 this.getAllElements().forEach(e -> e.update(this));
+                this.sword.update(this);
             }
-            this.player.getInventory().getListAllSpell().forEach(s -> s.update(this)); 
+            this.player.getInventory().getListAllSpell().forEach(s -> s.update(this));
         } else {
             this.listener.render();
         }
@@ -352,5 +353,12 @@ public class FloorManagerImpl implements FloorManager {
     @Override
     public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new GameOverManager(engine, endText));
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setIsOver(final boolean isOver) {
+        this.isOver = isOver;
+        endText = "TOO LATE";
     }
 }

@@ -93,4 +93,10 @@ public interface FloorManager extends SceneManager {
      * @return - the elapsed time
      */
     long getTimePassed();
+
+    /**
+     * A method to set the game to a state of end
+     * @param isOver - the new value of the field
+     */
+    void setIsOver(boolean isOver);
 }

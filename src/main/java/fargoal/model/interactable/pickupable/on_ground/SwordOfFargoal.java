@@ -3,6 +3,7 @@ package fargoal.model.interactable.pickupable.on_ground;
 import java.util.Optional;
 
 import fargoal.commons.api.Position;
+import fargoal.model.commons.Timer;
 import fargoal.model.events.impl.PickUpSword;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
@@ -14,9 +15,13 @@ import fargoal.view.api.Renderer;
  */
 public class SwordOfFargoal implements Interactable {
 
+    private static final long TIME_TO_EXIT = 900000;
+
     private Optional<Position> position;
     private final Integer mapLevel;
     private Renderer renderer;
+    private final Timer endTimer;
+    private boolean hasTimeAlreadyStarted;
 
     /**
      * This is the constructor of the class. 
@@ -26,6 +31,8 @@ public class SwordOfFargoal implements Interactable {
     public SwordOfFargoal(final RenderFactory renderFactory, final Integer mapLevel) {
         this.position = Optional.empty();
         this.mapLevel = mapLevel;
+        this.endTimer = new Timer();
+        this.hasTimeAlreadyStarted = false;
         this.setRender(renderFactory.swordRenderer(this));
     }
 
@@ -60,6 +67,9 @@ public class SwordOfFargoal implements Interactable {
     /** {@inheritDoc} */
     @Override
     public final void update(final FloorManager floorManager) {
+        if (this.hasTimeAlreadyStarted && this.endTimer.updateTime(floorManager.getTimePassed()) == 0) {
+            floorManager.setIsOver(true);
+        }
     }
 
     /** {@inheritDoc} */
@@ -82,6 +92,10 @@ public class SwordOfFargoal implements Interactable {
         floorManager.getPlayer().setHasSword(true);
         floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getExperiencePoints());
         floorManager.notifyFloorEvent(new PickUpSword(this));
+        if (!hasTimeAlreadyStarted) {
+            this.endTimer.setTime(TIME_TO_EXIT);
+            this.hasTimeAlreadyStarted = true;   
+        }
         return this;
     }
 
