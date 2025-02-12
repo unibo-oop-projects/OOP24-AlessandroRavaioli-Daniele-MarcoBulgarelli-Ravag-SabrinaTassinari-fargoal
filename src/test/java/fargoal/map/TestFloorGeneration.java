@@ -23,25 +23,13 @@ class TestFloorGeneration {
         map = fc.createFloor(new SwingRenderFactory(new SwingView(new KeyboardInputController())));
     }
 
-    @Test
-    void visualizeFloor() {
-        for (int i = 0; i < 25; i++) {
-            System.out.print(i + "\t");
-            for (int j = 0; j < 40; j++) {
-                System.out.print(
-                    map.isTile(new Position(j, i)) 
-                        ? "O"
-                        : " ");
-            }
-            System.out.println();
-        }
-    }
-
+    //CHECKSTYLE: MagicNumber OFF
+    //The numbers here represent marks that I want to be true
     @Test
     void testRandom() {
-        Position pos = map.getRandomTile();
+        final Position pos = map.getRandomTile();
         int timesHappend = 0;
-        for(int i = 0; i < 100; i++) {
+        for (int i = 0; i < 100; i++) {
             if (map.getRandomTile().equals(pos)) {
                 timesHappend++;
             }
@@ -50,5 +38,6 @@ class TestFloorGeneration {
         assertTrue(timesHappend < 70);
         assertTrue(timesHappend < 50);
         assertTrue(timesHappend < 20); 
-    }    
+    }
+    //CHECKSTYLE: MagicNumber ON
 }

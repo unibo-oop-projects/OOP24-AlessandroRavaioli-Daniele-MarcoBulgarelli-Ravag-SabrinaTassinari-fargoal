@@ -16,10 +16,10 @@ import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map;
 import fargoal.model.manager.api.FloorManager;
-import fargoal.model.manager.api.FloorMask;
 import fargoal.model.manager.impl.FloorManagerImpl;
-import fargoal.model.manager.impl.FloorMaskImpl;
 import fargoal.model.map.api.FloorMap;
+import fargoal.model.map.api.FloorMask;
+import fargoal.model.map.impl.FloorMaskImpl;
 
 class TestFloorManager {
 
