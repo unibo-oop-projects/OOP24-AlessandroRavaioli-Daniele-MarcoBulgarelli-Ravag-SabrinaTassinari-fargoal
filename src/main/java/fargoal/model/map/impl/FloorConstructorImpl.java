@@ -39,8 +39,8 @@ public class FloorConstructorImpl implements FloorConstructor {
         private static final int MAX_TURNS = 10;
 
         private Map<Position, Renderer> temporaryTiles;
-        private Map<Position, Renderer> temporaryWalls;
-        private List<Position> centers;
+        private final Map<Position, Renderer> temporaryWalls;
+        private final List<Position> centers;
         private final Random rnd;
         private final RenderFactory rf;
 
@@ -61,7 +61,7 @@ public class FloorConstructorImpl implements FloorConstructor {
             temporaryTiles = temporaryTiles.keySet().stream()
                     .filter(p -> p.x() >= 1 && p.y() >= 1)
                     .filter(p -> p.x() < FLOOR_LENGTH - 1 && p.y() < FLOOR_HEIGHT - 1)
-                    .collect(Collectors.toMap(p -> p, p ->  rf.tileRenderer(p)));
+                    .collect(Collectors.toMap(p -> p, rf::tileRenderer));
             return new FloorMapImpl(temporaryTiles, temporaryWalls, FLOOR_LENGTH, FLOOR_HEIGHT);
         }
 
@@ -78,19 +78,19 @@ public class FloorConstructorImpl implements FloorConstructor {
             enum FloorState {
                 CONTINUE, HIT_PATH, WALL
             }
-            List<Position> directions = new ArrayList<>(List.of(
+            final List<Position> directions = new ArrayList<>(List.of(
                         new Position(1, 0),
                         new Position(0, 1),
                         new Position(0, -1),
                         new Position(-1, 0)));
             FloorState state = FloorState.CONTINUE;
-            Random rnd = new Random();
+            final Random rnd = new Random();
             int direction = rnd.nextInt(directions.size());
             Position currentPosition = pos;
             int turns = 0;
 
             while (!state.equals(FloorState.HIT_PATH) &&  turns < MAX_TURNS) {
-                int length = rnd.nextInt(VARIABLE_CORRIDOR_LENGTH) + MINIMUM_CORRIDOR_LENGTH;
+                final int length = rnd.nextInt(VARIABLE_CORRIDOR_LENGTH) + MINIMUM_CORRIDOR_LENGTH;
 
                 for (int j = 0; j < length; j++) {
                     currentPosition = currentPosition.add(directions.get(direction));
@@ -111,7 +111,7 @@ public class FloorConstructorImpl implements FloorConstructor {
                 }
 
                 turns++;
-                int last = direction;
+                final int last = direction;
                 do {
                     direction = rnd.nextInt(directions.size());
                 } while (direction == OPPOSITE_DIRECTION - last);
@@ -120,9 +120,9 @@ public class FloorConstructorImpl implements FloorConstructor {
 
         private FloorMapBuilder buildRooms() {
             for (int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
-                int length = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
-                int height = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
-                Position start = new Position(
+                final int length = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
+                final int height = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
+                final Position start = new Position(
                     rnd.nextInt(FLOOR_LENGTH - MINIMUM_ROOM_SIZE - length) + 1,
                     rnd.nextInt(FLOOR_HEIGHT - MINIMUM_ROOM_SIZE - height) + 1);
                 centers.add(new Position(start.x() + length / 2, start.y() + height / 2));

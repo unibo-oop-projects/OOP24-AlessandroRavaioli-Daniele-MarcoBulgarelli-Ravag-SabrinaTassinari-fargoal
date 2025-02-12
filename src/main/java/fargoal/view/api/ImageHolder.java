@@ -3,6 +3,7 @@ package fargoal.view.api;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
@@ -60,7 +61,7 @@ public final class ImageHolder {
             tileImage = ImageIO.read(new File(TILES_FOLDER + "Tile.png" + File.separator));
             templeImage = ImageIO.read(new File(TILES_FOLDER + "Temple.png" + File.separator));
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.getAnonymousLogger().warning("IOException, unable to read image: " + e.getMessage());
         }
     }
 
