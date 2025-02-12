@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  12 FEB 2025 12:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  12 FEB 2025 12:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -150,33 +150,33 @@ Capitolo 1.
 [2
 
 ]
-<DiagrammaUMLGenerale.png, id=20, 1295.84125pt x 663.47874pt>
-File: DiagrammaUMLGenerale.png Graphic file (type png)
-<use DiagrammaUMLGenerale.png>
-Package pdftex.def Info: DiagrammaUMLGenerale.png  used on input line 60.
-(pdftex.def)             Requested size: 344.27852pt x 176.26646pt.
- [3 <./DiagrammaUMLGenerale.png>]
+<DiagrammaUMLAnalisi.drawio.png, id=20, 1245.65375pt x 1075.01625pt>
+File: DiagrammaUMLAnalisi.drawio.png Graphic file (type png)
+<use DiagrammaUMLAnalisi.drawio.png>
+Package pdftex.def Info: DiagrammaUMLAnalisi.drawio.png  used on input line 60.
+(pdftex.def)             Requested size: 341.43306pt x 294.65439pt.
+ [3] [4 <./DiagrammaUMLAnalisi.drawio.png>]
 Capitolo 2.
-[4
+[5
 
 ]
 Capitolo 3.
-[5
+[6
 
-] [6]
+] [7]
 Capitolo 4.
-[7
+[8
 
 ]
 Appendice A.
-[8
+[9
 
 ]
 Overfull \hbox (1.16798pt too wide) in paragraph at lines 176--177
 []\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
  []
 
-[9] (report.aux
+[10] (report.aux
 Package cleveref Info: loaded `italian' language definitions on input line 4.
 Package cleveref Info: loaded `italian' language definitions on input line 5.
 )
@@ -187,16 +187,16 @@ L3 programming layer <2024-01-04>
  ) 
 Here is how much of TeX's memory you used:
  4574 strings out of 474486
- 86901 string characters out of 5742811
+ 86943 string characters out of 5742811
  1934542 words of memory out of 5000000
  26860 multiletter control sequences out of 15000+600000
  564217 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,8n,65p,509b,488s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\sabrina\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (10 pages, 176828 bytes).
+Output written on report.pdf (11 pages, 235030 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
+ 95 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
