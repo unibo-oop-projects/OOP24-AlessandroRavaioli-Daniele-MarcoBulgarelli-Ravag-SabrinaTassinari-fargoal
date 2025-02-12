@@ -390,7 +390,7 @@ public class PlayerImpl implements Player {
                                 .forEach(p -> p.setIsFighting(false));
                     } else {
                         this.battle(floorManager.getMonsters().stream()
-                                .filter(p -> p.isFighting())
+                                .filter(p -> p.areNeighbours(floorManager, 1))
                                 .findAny()
                                 .get());
                     }
