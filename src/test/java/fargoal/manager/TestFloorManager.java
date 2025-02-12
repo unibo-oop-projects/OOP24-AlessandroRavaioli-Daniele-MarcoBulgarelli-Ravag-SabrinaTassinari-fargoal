@@ -21,7 +21,7 @@ import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.manager.impl.FloorMaskImpl;
 import fargoal.model.map.api.FloorMap;
 
-public class TestFloorManager {
+class TestFloorManager {
     
     private static FloorManager manager;
 

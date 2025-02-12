@@ -13,7 +13,7 @@ import fargoal.model.map.impl.FloorConstructorImpl;
 import fargoal.view.impl.SwingRenderFactory;
 import fargoal.view.impl.SwingView;
 
-public class TestFloorGeneration {
+class TestFloorGeneration {
 
     private static FloorConstructor fc = new FloorConstructorImpl();
     private static FloorMap map;

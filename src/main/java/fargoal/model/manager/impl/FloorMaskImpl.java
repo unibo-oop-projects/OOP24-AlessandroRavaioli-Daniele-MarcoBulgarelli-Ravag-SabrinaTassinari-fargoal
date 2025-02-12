@@ -27,6 +27,15 @@ public class FloorMaskImpl implements FloorMask {
     }
 
     /**
+     * Constructor that sets the field {@link #mask} to the given one.
+     * Used mainly for testing.
+     * @param mask - the initial value of the mask
+     */
+    public FloorMaskImpl(Map<Position, Boolean> mask) {
+        this.mask = mask;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
@@ -109,10 +118,10 @@ public class FloorMaskImpl implements FloorMask {
             if (other.mask != null) {
                 return false;
             }
-        } else if (!mask.equals(other.mask)) {
-            return false;
+        } else {
+           return this.mask.entrySet().containsAll(other.mask.entrySet());
         }
-        return true;
+        return false;
     }
 
 }
