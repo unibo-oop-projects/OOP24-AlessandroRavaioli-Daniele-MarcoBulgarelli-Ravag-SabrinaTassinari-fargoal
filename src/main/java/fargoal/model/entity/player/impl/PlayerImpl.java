@@ -476,18 +476,15 @@ public class PlayerImpl implements Player {
         int potions = inventory.getHealingPotions().getNumberInInventory();
 
         if (!isFighting()) {
-            //if not fighting, dies as soon as player reaches 0 hp or below
-            return currentHealth < 0;
+            return currentHealth <= 0;
         } else {
-            //if fighting, check if hp are not below -5 to use potion
-            if (currentHealth <= -5) {
+            if (currentHealth <= 0 && potions == 0) {
                 return true;
-            } else if (potions > 0) {
-                //if player hasn't potions and is above -5 then uses the potion
+            } else if (currentHealth <= 0 && potions > 0) {
                 this.inventory.getHealingPotions().use(floorManager);
                 return this.health.getCurrentHealth() <= 0;
             } else {
-                return currentHealth <= 5;
+                return currentHealth <= 0;
             }
         }
     }
