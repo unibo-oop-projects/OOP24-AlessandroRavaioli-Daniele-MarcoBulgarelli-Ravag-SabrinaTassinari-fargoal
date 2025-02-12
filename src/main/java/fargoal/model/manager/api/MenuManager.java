@@ -4,7 +4,7 @@ package fargoal.model.manager.api;
  * Interface that work to make the menu screen
  * work at the best.
  */
-public interface MenuManager extends SceneManager{
+public interface MenuManager extends SceneManager {
     /**
      * Method that change the selection from Exit
      * to Start Game.
