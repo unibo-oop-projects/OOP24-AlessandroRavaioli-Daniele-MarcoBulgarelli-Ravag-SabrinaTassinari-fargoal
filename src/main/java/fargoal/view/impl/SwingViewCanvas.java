@@ -13,6 +13,8 @@ import javax.swing.SwingUtilities;
  * Is an updater of a panel upgradeable.
  */
 public class SwingViewCanvas extends JPanel {
+    private static final long serialVersionUID = 5678472183267292378L;
+
     private final List<Consumer<Graphics2D>> list;
     private boolean canDraw;
 

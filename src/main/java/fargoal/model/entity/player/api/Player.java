@@ -54,6 +54,14 @@ public interface Player extends Entity {
     Inventory getInventory();
 
     /**
+     * Retrieves the number of monsters the player has defeated.
+     * This method returns the total count of enemies slain by the player.
+     * 
+     * @return The {@link Integer} representing the number of slain foes.
+     */
+    Integer getNumberOfSlainFoes();
+
+    /**
      * Getter for player gold object.
      * 
      * @return the player gold object.

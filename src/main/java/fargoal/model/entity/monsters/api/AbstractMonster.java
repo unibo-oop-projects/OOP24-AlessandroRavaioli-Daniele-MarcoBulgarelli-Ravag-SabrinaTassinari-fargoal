@@ -170,7 +170,9 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public void render() {
-        render.render();
+        if (this.isVisible) {
+            render.render();
+        }
     }
 
     /**
