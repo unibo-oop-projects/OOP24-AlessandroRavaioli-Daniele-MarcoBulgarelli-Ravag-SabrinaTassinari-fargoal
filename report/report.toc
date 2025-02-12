@@ -13,6 +13,8 @@
 \contentsline {subsubsection}{Generazione di item in un forziere}{5}{}%
 \contentsline {paragraph}{Problema}{5}{}%
 \contentsline {paragraph}{Soluzione}{5}{}%
+\contentsline {subsubsection}{Riuso del codice per un determinato tipo di item}{5}{}%
+\contentsline {paragraph}{Problema}{5}{}%
 \contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{5}{}%
 \contentsline {chapter}{\numberline {3}Sviluppo}{7}{}%
 \contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{7}{}%
@@ -23,12 +25,12 @@
 \contentsline {paragraph}{Utilizzo di lamba expression}{7}{}%
 \contentsline {paragraph}{Utilizzo di Stream}{7}{}%
 \contentsline {paragraph}{Utilizzo di Optional}{7}{}%
+\contentsline {subsubsection}{Tramonti Daniele}{7}{}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{8}{}%
+\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{8}{}%
+\contentsline {subsubsection}{Bulgarelli Marco}{8}{}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{8}{}%
+\contentsline {subsubsection}{Tassinari Sabrina}{8}{}%
 \contentsline {subsubsection}{Tramonti Daniele}{8}{}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{9}{}%
-\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{9}{}%
-\contentsline {subsubsection}{Bulgarelli Marco}{9}{}%
-\contentsline {subsubsection}{Ravaioli Alessandro}{9}{}%
-\contentsline {subsubsection}{Tassinari Sabrina}{9}{}%
-\contentsline {subsubsection}{Tramonti Daniele}{9}{}%
-\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{9}{}%
-\contentsline {chapter}{\numberline {A}Guida utente}{10}{}%
+\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{8}{}%
+\contentsline {chapter}{\numberline {A}Guida utente}{9}{}%

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  12 FEB 2025 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  12 FEB 2025 19:25
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -168,20 +168,20 @@ Package pdftex.def Info: chestItemFactory.drawio.png  used on input line 81.
 Capitolo 3.
 [7
 
-] [8]
+]
 Capitolo 4.
-[9
+[8
 
 ]
 Appendice A.
-[10
+[9
 
 ]
-Overfull \hbox (1.16798pt too wide) in paragraph at lines 184--185
+Overfull \hbox (1.16798pt too wide) in paragraph at lines 179--180
 []\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
  []
 
-[11] (report.aux
+[10] (report.aux
 Package cleveref Info: loaded `italian' language definitions on input line 4.
 Package cleveref Info: loaded `italian' language definitions on input line 5.
 )
@@ -199,9 +199,9 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,8n,65p,509b,488s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\sabrina\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (12 pages, 247263 bytes).
+Output written on report.pdf (11 pages, 246863 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
+ 97 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
