@@ -15,7 +15,7 @@ import fargoal.view.api.Renderer;
  */
 public class SwordOfFargoal implements Interactable {
 
-    private static final long TIME_TO_EXIT = 900000;
+    private static final long TIME_TO_EXIT = 900_000;
 
     private Optional<Position> position;
     private final Integer mapLevel;
@@ -94,7 +94,7 @@ public class SwordOfFargoal implements Interactable {
         floorManager.notifyFloorEvent(new PickUpSword(this));
         if (!hasTimeAlreadyStarted) {
             this.endTimer.setTime(TIME_TO_EXIT);
-            this.hasTimeAlreadyStarted = true;   
+            this.hasTimeAlreadyStarted = true;
         }
         return this;
     }

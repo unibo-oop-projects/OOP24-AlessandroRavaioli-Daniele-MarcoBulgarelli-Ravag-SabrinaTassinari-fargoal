@@ -7,7 +7,7 @@ import fargoal.model.events.api.FloorEvent;
  * that the player Level Up.
  */
 public class LevelUpEvent implements FloorEvent {
-    
+
     private final int level;
 
     /**

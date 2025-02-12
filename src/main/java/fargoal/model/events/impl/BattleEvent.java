@@ -15,7 +15,7 @@ public class BattleEvent implements FloorEvent {
             "Ouch!", "Thud!", "Clink!", "Shriek!", "Slash!", "Shred!",
             "Ugh!", "Claw!", "Crunch!", "Gnarl!", "Growl!", "Thump!");
     /**
-     * Method that return a random textSound for the battle
+     * Method that returns a random textSound for the battle
      * to be displayed on the screen.
      * 
      * @return a string for the battle
