@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  12 FEB 2025 10:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2025.1.19)  12 FEB 2025 10:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/sabrina/Desktop/ProjectOOP/OOP24-fargoal/Relazione/Fargoal.tex
-(c:/Users/sabrina/Desktop/ProjectOOP/OOP24-fargoal/Relazione/Fargoal.tex
+**c:/Users/sabrina/Desktop/ProjectOOP/OOP24-fargoal/report/report.tex
+(c:/Users/sabrina/Desktop/ProjectOOP/OOP24-fargoal/report/report.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
 (C:\Users\sabrina\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -77,8 +77,8 @@ File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count268
 \l__pdf_internal_box=\box51
-) (Fargoal.aux)
-\openout1 = `Fargoal.aux'.
+) (report.aux)
+\openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -132,7 +132,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 18.
  [1
 
-{C:/Users/sabrina/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (Fargoal.toc
+{C:/Users/sabrina/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (report.toc
 Package cleveref Info: loaded `italian' language definitions on input line 1.
 Package cleveref Info: loaded `italian' language definitions on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -141,7 +141,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 4.
 )
 \tf@toc=\write3
-\openout3 = `Fargoal.toc'.
+\openout3 = `report.toc'.
 
  [1
 
@@ -176,7 +176,7 @@ Overfull \hbox (1.16798pt too wide) in paragraph at lines 154--155
 []\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
  []
 
-[8] (Fargoal.aux
+[8] (report.aux
 Package cleveref Info: loaded `italian' language definitions on input line 4.
 Package cleveref Info: loaded `italian' language definitions on input line 5.
 )
@@ -186,15 +186,15 @@ L3 programming layer <2024-01-04>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4575 strings out of 474486
- 86949 string characters out of 5742811
+ 4574 strings out of 474486
+ 86901 string characters out of 5742811
  1934542 words of memory out of 5000000
  26860 multiletter control sequences out of 15000+600000
  564217 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,513b,488s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,6n,65p,509b,488s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\sabrina\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/sabrina/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Fargoal.pdf (9 pages, 141424 bytes).
+Output written on report.pdf (9 pages, 141424 bytes).
 PDF statistics:
  74 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
