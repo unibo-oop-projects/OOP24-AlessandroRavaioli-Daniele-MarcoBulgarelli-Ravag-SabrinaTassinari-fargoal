@@ -434,7 +434,7 @@ public class PlayerImpl implements Player {
         this.isFighting = true;
         monster.receiveDamage();
         this.receiveDamage(monster);
-        if (monster.isDead() || this.isDead()) {
+        if (monster.isDead() | this.isDead()) {
             this.isFighting = false;
             this.isAttacked = false;
             attackCounter = 0;
