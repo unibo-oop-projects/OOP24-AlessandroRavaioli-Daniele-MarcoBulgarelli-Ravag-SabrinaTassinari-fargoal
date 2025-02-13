@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.interactable.pickupable.inside_chest.impl.ChestImpl;
 import fargoal.model.interactable.pickupable.on_ground.SackOfMoney;
+import fargoal.model.interactable.pickupable.on_ground.SwordOfFargoal;
 
 /**
  * A factory to generate any type of renderers 
@@ -144,5 +145,5 @@ public interface RenderFactory {
      * @param obj - the Object sword to be associated with a renderer
      * @return the renderer associated with the sword
      */
-    Renderer swordRenderer(FloorElement obj);
+    Renderer swordRenderer(SwordOfFargoal obj);
 }

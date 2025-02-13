@@ -22,6 +22,7 @@ public class SwordOfFargoal implements Interactable {
     private Renderer renderer;
     private final Timer endTimer;
     private boolean hasTimeAlreadyStarted;
+    private boolean isPickedUp;
 
     /**
      * This is the constructor of the class. 
@@ -30,6 +31,7 @@ public class SwordOfFargoal implements Interactable {
      */
     public SwordOfFargoal(final RenderFactory renderFactory, final Integer mapLevel) {
         this.position = Optional.empty();
+        this.isPickedUp = false;
         this.mapLevel = mapLevel;
         this.endTimer = new Timer();
         this.hasTimeAlreadyStarted = false;
@@ -44,10 +46,18 @@ public class SwordOfFargoal implements Interactable {
 
     /**
      * Setter for the position of the sword.
-     * @param position - the position of the sword in the levelthe player is.
+     * @param position - the position of the sword in the level the player is.
      */
-    public final void setPosition(final Position position) {
+    public void setPosition(final Position position) {
         this.position = Optional.of(position);
+    }
+
+    /**
+     * Getter for the field isPickedUp, which tells if the sword is picked up.
+     * @return true if the sword is picked up, false otherwise.
+     */
+    public boolean isPickedUp() {
+        return this.isPickedUp;
     }
 
     /** {@inheritDoc} */
@@ -60,7 +70,7 @@ public class SwordOfFargoal implements Interactable {
      * Getter for the field mapLevel.
      * @return the level the sword can be found.
      */
-    public final Integer getMapLevel() {
+    public Integer getMapLevel() {
         return this.mapLevel;
     }
 
@@ -90,6 +100,7 @@ public class SwordOfFargoal implements Interactable {
     @Override
     public final Interactable interact(final FloorManager floorManager) {
         floorManager.getPlayer().setHasSword(true);
+        this.isPickedUp = true;
         floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getExperiencePoints());
         floorManager.notifyFloorEvent(new PickUpSword(this));
         if (!hasTimeAlreadyStarted) {

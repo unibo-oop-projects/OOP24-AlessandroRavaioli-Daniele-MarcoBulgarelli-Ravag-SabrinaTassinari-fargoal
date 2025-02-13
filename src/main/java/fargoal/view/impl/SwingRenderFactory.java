@@ -6,6 +6,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.interactable.pickupable.inside_chest.impl.ChestImpl;
 import fargoal.model.interactable.pickupable.on_ground.SackOfMoney;
+import fargoal.model.interactable.pickupable.on_ground.SwordOfFargoal;
 import fargoal.view.api.ImageHolder;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
@@ -262,15 +263,16 @@ public class SwingRenderFactory implements RenderFactory {
 
     /** {@inheritDoc} */
     @Override
-    public Renderer swordRenderer(final FloorElement obj) {
+    public Renderer swordRenderer(final SwordOfFargoal obj) {
         return new SwingRendererMiddle(g2d -> {
-            g2d.setColor(Color.PINK);
-            g2d.drawImage(ImageHolder.sword(), 
+            if (!obj.isPickedUp()) {
+                g2d.drawImage(ImageHolder.sword(), 
                     this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(),
                     null);
+            }
         }, this.view);
     }
 }
