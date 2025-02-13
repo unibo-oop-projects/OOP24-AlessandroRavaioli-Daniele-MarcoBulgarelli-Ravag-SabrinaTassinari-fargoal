@@ -223,7 +223,7 @@ public abstract class AbstractMonster implements Monster {
      * @param num - the max number of the random
      * @return a random number
      */
-    public final Integer getRandom(final Integer num) {
+    protected final Integer getRandom(final Integer num) {
         return random.nextInt(num);
     }
 
@@ -231,7 +231,7 @@ public abstract class AbstractMonster implements Monster {
      * Method to set the last time when the monster
      * was created or moved.
      */
-    public void setTimer() {
+    protected void setTimer() {
         this.timer = System.currentTimeMillis();
     }
 
@@ -241,7 +241,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @return a long indicating the last update
      */
-    public long getTimer() {
+    protected long getTimer() {
         return this.timer;
     }
 
@@ -268,7 +268,7 @@ public abstract class AbstractMonster implements Monster {
      * The Monster steals from the Player and takes
      * spells or gold from his inventory.
      */
-    public void steal() { }
+    protected void steal() { };
 
     /** {@inheritDoc} */
     @Override
