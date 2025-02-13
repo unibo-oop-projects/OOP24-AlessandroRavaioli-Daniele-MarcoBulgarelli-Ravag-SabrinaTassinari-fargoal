@@ -526,22 +526,24 @@ public class PlayerImpl implements Player {
     }
 
     /**
-     * Retrieves the value of the regeneration timer.
-     * <p>
-     * This method is called to ensure that the regeneration occours after 
-     * the appropriate delay.
-     * </p>
+     * Retrieves the current regeneration timer value.
      * 
-     * @return the TODO
+     * @return the timestamp of the last regeneration event in milliseconds.
      */
     private long getRegenerationTimer() {
         return this.regenerationTimer;
     }
 
+    /**
+     * Checks if the player is currently at the temple's position.
+     * 
+     * @return {@code true} if the player is on the temple, {@code false} otherwise.
+     */
     private boolean isOnTemple() {
         return this.getPosition().equals(floorManager.getTemple().getPosition());
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useInvisibilitySpell() {
         if (this.getInventory().getInvisibilitySpell().getNumberInInventory() > 0) {
@@ -549,6 +551,7 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useTeleportSpell() {
         if (this.getInventory().getTeleportSpell().getNumberInInventory() > 0) {
@@ -556,6 +559,7 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useShieldSpell() {
         if (this.getInventory().getShieldSpell().getNumberInInventory() > 0) {
@@ -563,6 +567,7 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useRegenerationSpell() {
         if (this.getInventory().getRegenerationSpell().getNumberInInventory() > 0) {
@@ -570,6 +575,7 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useDriftSpell() {
         if (this.getInventory().getDriftSpell().getNumberInInventory() > 0) {
@@ -577,6 +583,7 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useLightSpell() {
         if (this.getInventory().getLightSpell().getNumberInInventory() > 0) {
@@ -584,6 +591,7 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useHealingPotion() {
         if (this.getInventory().getHealingPotions().getNumberInInventory() > 0) {
@@ -591,6 +599,7 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc} */
     @Override
     public void useBeacon() {
         if (this.getInventory().getBeacons().getNumberInInventory() > 0) {
