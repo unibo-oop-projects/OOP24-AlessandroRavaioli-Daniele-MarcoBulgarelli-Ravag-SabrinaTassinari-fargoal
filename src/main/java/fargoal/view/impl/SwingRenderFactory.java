@@ -156,10 +156,12 @@ public class SwingRenderFactory implements RenderFactory {
     public Renderer beaconRenderer(final FloorElement obj) {
         return new SwingRendererMiddle(g2d -> {
             g2d.setColor(Color.CYAN);
-            g2d.fillRect(this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
+            g2d.drawImage(ImageHolder.beaconPlaced(), 
+                    this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(), 
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
-                    this.view.getTilePixelHeight());
+                    this.view.getTilePixelHeight(),
+                    null);
         }, this.view);
     }
 
@@ -274,5 +276,5 @@ public class SwingRenderFactory implements RenderFactory {
                     null);
             }
         }, this.view);
-    }
+    }    
 }

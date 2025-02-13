@@ -29,6 +29,7 @@ public final class ImageHolder {
     private static BufferedImage upStairsImage;
     private static BufferedImage tileImage;
     private static BufferedImage templeImage;
+    private static BufferedImage beaconImage;
 
     private static final String ENTITY_FOLDER = "src" + File.separator
             + "main" + File.separator
@@ -60,6 +61,8 @@ public final class ImageHolder {
             upStairsImage = ImageIO.read(new File(TILES_FOLDER + "UpStairs.png" + File.separator));
             tileImage = ImageIO.read(new File(TILES_FOLDER + "Tile.png" + File.separator));
             templeImage = ImageIO.read(new File(TILES_FOLDER + "Temple.png" + File.separator));
+            beaconImage = ImageIO.read(new File(TILES_FOLDER + "BeaconPlaced.png" + File.separator));
+
         } catch (IOException e) {
             Logger.getAnonymousLogger().warning("IOException, unable to read image: " + e.getMessage());
         }
@@ -216,5 +219,14 @@ public final class ImageHolder {
      */
     public static BufferedImage upStair() {
         return upStairsImage;
+    }
+
+    /**
+     * Method that returns the image for the upstairs.
+     * 
+     * @return - the image of the upstairs
+     */
+    public static BufferedImage beaconPlaced() {
+        return beaconImage;
     }
 }

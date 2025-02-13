@@ -133,11 +133,6 @@ public final class Ai {
                             } else {
                                 monster.addFirstPosition(pos);
                             }
-                            if (!monster.getFloorMap().isTile(pos)) {
-                                monster.setVisibilityOff();
-                            } else {
-                                monster.setVisibilityOn();
-                            }
                         }
                     } else {
                         pos = monster.getPosition().increaseX();
@@ -149,11 +144,6 @@ public final class Ai {
                                 monster.addFirstPosition(pos);
                             } else {
                                 monster.addFirstPosition(pos);
-                            }
-                            if (!monster.getFloorMap().isTile(pos)) {
-                                monster.setVisibilityOff();
-                            } else {
-                                monster.setVisibilityOn();
                             }
                         }
                     }
@@ -169,11 +159,6 @@ public final class Ai {
                             } else {
                                 monster.addFirstPosition(pos);
                             }
-                            if (!monster.getFloorMap().isTile(pos)) {
-                                monster.setVisibilityOff();
-                            } else {
-                                monster.setVisibilityOn();
-                            }
                         }
                     } else {
                         pos = monster.getPosition().increaseY();
@@ -186,11 +171,6 @@ public final class Ai {
                             } else {
                                 monster.addFirstPosition(pos);
                             }
-                            if (!monster.getFloorMap().isTile(pos)) {
-                                monster.setVisibilityOff();
-                            } else {
-                                monster.setVisibilityOn();
-                            }
                         }
                     }
                 }
@@ -201,11 +181,6 @@ public final class Ai {
                             .add(new Position(LIST.get(RANDOM.nextInt(LIST_SIZE)), LIST.get(RANDOM.nextInt(LIST_SIZE))));
                 } while (isInsideMap(monster, pos) || !positionList.contains(pos) || !monster.getLastPositions().contains(pos));
                 monster.setPosition(pos);
-                if (monster.getFloorMap().isTile(pos)) {
-                    monster.setVisibilityOn();
-                } else {
-                    monster.setVisibilityOff();
-                }
             }
         } else if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && monster.getFloorManager().getPlayer().isVisible()) {
             //nel caso sia piu lontano nelle ascisse

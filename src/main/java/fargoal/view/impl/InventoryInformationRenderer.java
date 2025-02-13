@@ -109,6 +109,7 @@ public class InventoryInformationRenderer implements Renderer {
                                 * MULTIPLIER_WIDTH_LAST_COLUMN_VALUES 
                                 / DIVISOR_WIDTH_VALUES, 
                     this.view.getInformationPanel().getBounds().height * 3 / DIVISOR_HEIGHT_LAST_COLUMN);
+            g2d.setColor(Color.BLACK);
             if (inventory.getRegenerationSpell().getNumberInInventory() > 0 
                         && !inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
                 g2d.setColor(Color.WHITE);
@@ -130,6 +131,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * CONSTANT_SEVEN 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
+            g2d.setColor(Color.BLACK);
             if (inventory.getTeleportSpell().getNumberInInventory() > 0) {
                 g2d.setColor(Color.WHITE);
             } else {
@@ -147,6 +149,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * MULTIPLIER_VALUE_TELEPORT 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
+            g2d.setColor(Color.BLACK);
             if (inventory.getShieldSpell().getNumberInInventory() > 0 
                         && !inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
                 g2d.setColor(Color.WHITE);
@@ -168,6 +171,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * MULTIPLIER_VALUE_SHIELD 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
+            g2d.setColor(Color.BLACK);
             if (inventory.getLightSpell().getNumberInInventory() 
                         > 0 && !inventory.getSpellCasted().get(SpellType.LIGHT.getName())) {
                 g2d.setColor(Color.WHITE);
@@ -189,6 +193,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * MULTIPLIER_VALUE_LIGHT 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
+            g2d.setColor(Color.BLACK);
             if (inventory.getDriftSpell().getNumberInInventory() > 0 
                         && !inventory.getSpellCasted().get(SpellType.DRIFT.getName())) {
                 g2d.setColor(Color.WHITE);
