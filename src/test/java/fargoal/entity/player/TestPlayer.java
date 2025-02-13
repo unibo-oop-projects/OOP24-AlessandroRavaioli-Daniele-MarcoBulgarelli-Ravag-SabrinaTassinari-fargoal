@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.logging.Logger;
+
 import org.junit.jupiter.api.Test;
 import fargoal.commons.api.Position;
 import fargoal.model.core.GameEngine;
@@ -14,13 +17,16 @@ import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
+// CHECKSTYLE:OFF MagicNumber
 class TestPlayer {
 
-    private FloorManager manager = new FloorManagerImpl(new GameEngine());
-    private PlayerImpl player = (PlayerImpl) manager.getPlayer();
+    private static final Logger LOGGER = Logger.getLogger(TestPlayer.class.getName());
+
+    private final FloorManager manager = new FloorManagerImpl(new GameEngine());
+    private final PlayerImpl player = (PlayerImpl) manager.getPlayer();
 
     @Test
-    void TestInitialization() {
+    void testInitialization() {
         assertEquals(1, player.getLevel());
         assertEquals(0, player.getExperiencePoints());
         assertEquals(200, player.getExperiencePointsRequired());
@@ -38,11 +44,11 @@ class TestPlayer {
         assertTrue(player.isVisible());
         assertFalse(player.hasLight());
         assertFalse(player.isImmune());
-        assertFalse(player.isDead());       
+        assertFalse(player.isDead());
     }
 
     @Test
-    void TestSetters() {
+    void testSetters() {
         player.setPlayerSkill(0);
         assertEquals(0, player.getSkill());
         player.setIsAttacked(true);
@@ -58,20 +64,20 @@ class TestPlayer {
     }
 
     @Test
-    void TestIncreasePlayerValues() {
+    void testIncreasePlayerValues() {
         player.setPlayerSkill(0);
         player.increasePlayerSkill(10);
         assertEquals(10, player.getSkill());
         player.addExperiencePoints(22);
         assertEquals(22, player.getExperiencePoints());
-        for(int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++) {
             player.increaseNumberOfSlainFoes();
         }
         assertEquals(10, player.getNumberOfSlainFoes());
     }
 
     @Test
-    void TestLevelUp() {
+    void testLevelUp() {
         assertEquals(1, player.getLevel());
         assertEquals(0, player.getExperiencePoints());
         assertEquals(200, player.getExperiencePointsRequired());
@@ -94,7 +100,7 @@ class TestPlayer {
     }
 
     @Test
-    void TestMovement() {
+    void testMovement() {
         player.move(new Position(0, 0));
         assertEquals(0, player.getPosition().x());
         assertEquals(0, player.getPosition().y());
@@ -110,14 +116,14 @@ class TestPlayer {
     }
 
     @Test
-    void TestBattleWon() {
-        var monsterFactory = new MonsterFactoryImpl(1);
-        Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
+    void testBattleWon() {
+        final var monsterFactory = new MonsterFactoryImpl(1);
+        final Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
         assertNotNull(monster);
-        
+
         monster.getHealth().setHealth(1);
-        int initialExp = player.getExperiencePoints();
-        int initialFoes = player.getNumberOfSlainFoes();
+        final int initialExp = player.getExperiencePoints();
+        final int initialFoes = player.getNumberOfSlainFoes();
 
         player.battle(monster);
 
@@ -127,10 +133,10 @@ class TestPlayer {
         assertEquals(initialFoes + 1, player.getNumberOfSlainFoes());
     }
 
-    @Test 
-    void TestBattleLost() {
-        var monsterFactory = new MonsterFactoryImpl(1);
-        Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
+    @Test
+    void testBattleLost() {
+        final var monsterFactory = new MonsterFactoryImpl(1);
+        final Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
         assertNotNull(monster);
 
         player.getHealth().setHealth(1);
@@ -141,12 +147,12 @@ class TestPlayer {
     }
 
     @Test
-    void TestPlayerDamage() {
-        var monsterFactory = new MonsterFactoryImpl(1);
-        Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
+    void testPlayerDamage() {
+        final var monsterFactory = new MonsterFactoryImpl(1);
+        final Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
         assertNotNull(monster);
 
-        int damage = player.doDamage(monster);
+        final int damage = player.doDamage(monster);
         assertNotNull(damage);
 
         monster.receiveDamage();
@@ -157,58 +163,60 @@ class TestPlayer {
     }
 
     @Test
-    void TestPlayerDeath() {
+    void testPlayerDeath() {
         player.getHealth().setHealth(0);
         assertTrue(player.isDead());
     }
 
     @Test
-    void TestRegenerationNormalCondition() {
+    void testRegenerationNormalCondition() {
         player.getHealth().decreaseHealth(1);
-        int hpBefore = player.getHealth().getCurrentHealth();
-        
+        final int hpBefore = player.getHealth().getCurrentHealth();
+
         try {
-            Thread.sleep(11000);
+            Thread.sleep(11_000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.warning("Thread interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt();
         }
 
         player.passiveRegeneration();
-        int hpAfter = player.getHealth().getCurrentHealth();
+        final int hpAfter = player.getHealth().getCurrentHealth();
 
         assertEquals(hpBefore + 1, hpAfter);
     }
 
     @Test
-    void TestRegenerationSpellandTemple() {
+    void testRegenerationSpellandTemple() {
         player.getHealth().decreaseHealth(1);
-        int hpBefore = player.getHealth().getCurrentHealth();
-        
+        final int hpBefore = player.getHealth().getCurrentHealth();
+
         player.getInventory().getSpellCasted().put(SpellType.REGENERATION.getName(), true);
         player.move(manager.getTemple().getPosition());
 
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.warning("Thread interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt();
         }
 
         player.passiveRegeneration();
-        int hpAfter = player.getHealth().getCurrentHealth();
+        final int hpAfter = player.getHealth().getCurrentHealth();
 
         assertEquals(hpBefore + 1, hpAfter);
     }
 
     @Test
-    void TestUseItems() {
-        int invisibilityBefore = player.getInventory().getInvisibilitySpell().getNumberInInventory();
-        int teleportBefore = player.getInventory().getTeleportSpell().getNumberInInventory();
-        int shieldBefore = player.getInventory().getShieldSpell().getNumberInInventory();
-        int regenerationBefore = player.getInventory().getRegenerationSpell().getNumberInInventory();
-        int driftBefore = player.getInventory().getDriftSpell().getNumberInInventory();
-        int lightBefore = player.getInventory().getLightSpell().getNumberInInventory();
-        int potionBefore = player.getInventory().getHealingPotions().getNumberInInventory();
-        int beaconBefore = player.getInventory().getBeacons().getNumberInInventory();
+    void testUseItems() {
+        final int invisibilityBefore = player.getInventory().getInvisibilitySpell().getNumberInInventory();
+        final int teleportBefore = player.getInventory().getTeleportSpell().getNumberInInventory();
+        final int shieldBefore = player.getInventory().getShieldSpell().getNumberInInventory();
+        final int regenerationBefore = player.getInventory().getRegenerationSpell().getNumberInInventory();
+        final int driftBefore = player.getInventory().getDriftSpell().getNumberInInventory();
+        final int lightBefore = player.getInventory().getLightSpell().getNumberInInventory();
+        final int potionBefore = player.getInventory().getHealingPotions().getNumberInInventory();
+        final int beaconBefore = player.getInventory().getBeacons().getNumberInInventory();
 
         player.useInvisibilitySpell();
         player.useTeleportSpell();
@@ -219,14 +227,14 @@ class TestPlayer {
         player.useBeacon();
         player.useHealingPotion();
 
-        int invisibilityAfter = player.getInventory().getInvisibilitySpell().getNumberInInventory();
-        int teleportAfter = player.getInventory().getTeleportSpell().getNumberInInventory();
-        int shieldAfter = player.getInventory().getShieldSpell().getNumberInInventory();
-        int regenerationAfter = player.getInventory().getRegenerationSpell().getNumberInInventory();
-        int driftAfter = player.getInventory().getDriftSpell().getNumberInInventory();
-        int lightAfter = player.getInventory().getLightSpell().getNumberInInventory();
-        int potionAfter = player.getInventory().getHealingPotions().getNumberInInventory();
-        int beaconAfter = player.getInventory().getBeacons().getNumberInInventory();
+        final int invisibilityAfter = player.getInventory().getInvisibilitySpell().getNumberInInventory();
+        final int teleportAfter = player.getInventory().getTeleportSpell().getNumberInInventory();
+        final int shieldAfter = player.getInventory().getShieldSpell().getNumberInInventory();
+        final int regenerationAfter = player.getInventory().getRegenerationSpell().getNumberInInventory();
+        final int driftAfter = player.getInventory().getDriftSpell().getNumberInInventory();
+        final int lightAfter = player.getInventory().getLightSpell().getNumberInInventory();
+        final int potionAfter = player.getInventory().getHealingPotions().getNumberInInventory();
+        final int beaconAfter = player.getInventory().getBeacons().getNumberInInventory();
 
         assertEquals(Math.max(0, invisibilityBefore - 1), invisibilityAfter);
         assertEquals(Math.max(0, teleportBefore - 1), teleportAfter);
@@ -240,9 +248,10 @@ class TestPlayer {
     }
 
     @Test
-    void TestDeepestDescent() {
+    void testDeepestDescent() {
         assertEquals(1, player.getDeepestDescent());
         player.setDeepestDescent(3);
         assertEquals(3, player.getDeepestDescent());
     }
 }
+// CHECKSTYLE:ON MagicNumber
