@@ -15,6 +15,7 @@
 \contentsline {paragraph}{Soluzione}{5}{}%
 \contentsline {subsubsection}{Riuso del codice per un determinato tipo di item}{5}{}%
 \contentsline {paragraph}{Problema}{5}{}%
+\contentsline {paragraph}{Soluzione}{5}{}%
 \contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{5}{}%
 \contentsline {chapter}{\numberline {3}Sviluppo}{7}{}%
 \contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{7}{}%
