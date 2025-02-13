@@ -12,60 +12,61 @@ import fargoal.model.entity.monsters.api.Monster;
 public interface Player extends Entity {
 
     /**
-     * Setter for player's current position.
-     * @param position - the new position of the player.
+     * Moves the player to a new position
+     * 
+     * @param newPosition - The new position to move the player to.
      */
-    void move(Position position);
+    void move(Position newPosition);
     
     /**
-     * Getter for player's current level.
+     * Gets the current level of the player.
      * 
-     * @return player's current level.
+     * @return the {@link Integer} representing the level of the player.
      */
     Integer getLevel();
 
     /**
-     * Getter for the amount of experience points
-     * the player currently has.
+     * Gets the current experience points of the player.
      * 
-     * @return the amount of experience points the 
-     * player currently has.
+     * @return the {@link Integer} representing the experience points of the player.
      */
     Integer getExperiencePoints();
 
     /**
-     * Getter for the amount of experience points required to
-     * gain a level.
+     * Gets the required experience points for the next level up.
      * 
-     * @return the amount of experience points required to gain a level.
+     * @return the {@link Integer} representing the required experience points for the next level.
      */
     Integer getExperiencePointsRequired();
 
     /**
-     * This method add an amount of experience point to the experience the player has already got.
-     * @param experiencePointToAdd - the experience point the player gained.
+     * Adds experience points to the player's total experience.
+     * Ensures that the amount added is non-negative and not null.
+     * 
+     * @param experiencePointToAdd - The amount of experience points to be added.
+     * 
+     * @throws IllegalArgumentException if the experience points to add is null or negative.
      */
     void addExperiencePoints(Integer experiencePointsToAdd);
 
     /**
-     * Getter for the player's inventory.
+     * Gets the player's inventory.
      * 
-     * @return the inventory associated to the player.
+     * @return The {@link Inventory} of the player.
      */
     Inventory getInventory();
 
     /**
      * Retrieves the number of monsters the player has defeated.
-     * This method returns the total count of enemies slain by the player.
      * 
      * @return The {@link Integer} representing the number of slain foes.
      */
     Integer getNumberOfSlainFoes();
 
     /**
-     * Getter for player gold object.
+     * Retrieves the object that represents player's gold pouch.
      * 
-     * @return the player gold object.
+     * @return the {@link Gold} that represents the player gold pouch.
      */
     Gold getPlayerGold();
 
