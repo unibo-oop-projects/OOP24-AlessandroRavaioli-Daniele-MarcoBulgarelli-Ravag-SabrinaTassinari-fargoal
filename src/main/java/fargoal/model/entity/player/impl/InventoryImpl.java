@@ -40,7 +40,7 @@ public class InventoryImpl implements Inventory {
     private final DriftSpell driftScroll;
     private final LightSpell lightScroll;
 
-    private final Map<String, Boolean> SpellCasted;
+    private final Map<String, Boolean> spellCasted;
 
     /**
      * Initializes a new instance of the {@code InventoryImpl} class.
@@ -72,12 +72,12 @@ public class InventoryImpl implements Inventory {
         this.regenerationScroll = new RegenerationSpell();
         this.driftScroll = new DriftSpell();
         this.lightScroll = new LightSpell();
-        this.SpellCasted = new HashMap<>();
-        this.SpellCasted.put(SpellType.DRIFT.getName(), false);
-        this.SpellCasted.put(SpellType.INVISIBILITY.getName(), false);
-        this.SpellCasted.put(SpellType.LIGHT.getName(), false);
-        this.SpellCasted.put(SpellType.REGENERATION.getName(), false);
-        this.SpellCasted.put(SpellType.SHIELD.getName(), false);
+        this.spellCasted = new HashMap<>();
+        this.spellCasted.put(SpellType.DRIFT.getName(), false);
+        this.spellCasted.put(SpellType.INVISIBILITY.getName(), false);
+        this.spellCasted.put(SpellType.LIGHT.getName(), false);
+        this.spellCasted.put(SpellType.REGENERATION.getName(), false);
+        this.spellCasted.put(SpellType.SHIELD.getName(), false);
     }
 
     /**{@inheritDoc} */
@@ -113,7 +113,7 @@ public class InventoryImpl implements Inventory {
     /** {@inheritDoc} */
     @Override
     public Map<String, Boolean> getSpellCasted() {
-        return this.SpellCasted;
+        return this.spellCasted;
     }
 
     /** {@inheritDoc} */

@@ -59,7 +59,7 @@ public class Mage extends AbstractMonster {
         final Inventory inventory = this.getFloorManager().getPlayer().getInventory();
         boolean check = false;
         while (!check) {
-            var num = this.getRandom(MAX_SPELLS);
+            final var num = this.getRandom(MAX_SPELLS);
             if (num == 0
                     && inventory.getInvisibilitySpell().getNumberInInventory() > 0) {
                         this.getFloorManager()
