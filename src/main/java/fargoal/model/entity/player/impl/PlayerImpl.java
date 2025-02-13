@@ -1,6 +1,5 @@
 package fargoal.model.entity.player.impl;
 
-import java.util.Optional;
 import java.util.Random;
 import fargoal.commons.api.Position;
 import fargoal.controller.input.api.InputComponent;
@@ -13,7 +12,6 @@ import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.events.impl.BattleEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
-import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.model.interactable.temple.Temple;
 import fargoal.model.manager.api.FloorManager;
@@ -500,14 +498,18 @@ public class PlayerImpl implements Player {
         final int baseHealingAmount = 1;
         int regenerationPeriod = 10000;
         final long time = System.currentTimeMillis();
+        final boolean check = floorManager.getAllElements().stream()
+                .filter(p -> p instanceof Temple)
+                .findAny()
+                .isPresent();
 
         if (this.isFighting) {
             return;
         }
 
-        if (this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && this.isOnTemple()) {
+        if (this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && check && this.isOnTemple()) {
             regenerationPeriod = regenerationPeriod / 5;
-        } else if ((this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && !this.isOnTemple()) || (!this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && this.isOnTemple())) {
+        } else if ((this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && check && !this.isOnTemple()) || (!this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && check && this.isOnTemple())) {
             regenerationPeriod = regenerationPeriod / 2;
         }
 
@@ -529,24 +531,21 @@ public class PlayerImpl implements Player {
         this.regenerationTimer = System.currentTimeMillis();
     }
 
+    /**
+     * Retrieves the value of the regeneration timer.
+     * <p>
+     * This method is called to ensure that the regeneration occours after 
+     * the appropriate delay.
+     * </p>
+     * 
+     * @return the TODO
+     */
     private long getRegenerationTimer() {
         return this.regenerationTimer;
     }
 
-
-    private Optional<Interactable> getStandingTile() {
-        Optional<Interactable> tileObject = floorManager.getInteractables()
-                    .stream()
-                    .filter(element -> this.getPosition().equals(element.getPosition()))
-                    .findAny();
-
-        return tileObject;
-    }
-
     private boolean isOnTemple() {
-        return getStandingTile()
-                .filter(tile -> tile instanceof Temple)
-                .isPresent();
+        return this.getPosition().equals(floorManager.getTemple().getPosition());
     }
 
     @Override
