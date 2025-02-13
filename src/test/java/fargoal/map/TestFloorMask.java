@@ -50,7 +50,7 @@ class TestFloorMask {
         //test with light disabled
         mask.resetMask();
         resetCheck();
-        manager.getPlayer().setPosition(new Position(3, 3));
+        manager.getPlayer().move(new Position(3, 3));
         mask.update(manager);
         //CHECKSTYLE: MagicNumber OFF
         //These are specific numbers to test

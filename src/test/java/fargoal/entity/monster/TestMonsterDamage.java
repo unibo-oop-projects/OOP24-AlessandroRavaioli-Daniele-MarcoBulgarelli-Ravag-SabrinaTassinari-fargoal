@@ -44,7 +44,7 @@ class TestMonsterDamage {
                 .filter(p -> floorManager.getFloorMap().isTile(p))
                 .collect(Collectors.toList());
         } while (positions.isEmpty());
-        floorManager.getPlayer().setPosition(positions.get(random.nextInt(positions.size())));
+        floorManager.getPlayer().move(positions.get(random.nextInt(positions.size())));
     }
 
     @Test

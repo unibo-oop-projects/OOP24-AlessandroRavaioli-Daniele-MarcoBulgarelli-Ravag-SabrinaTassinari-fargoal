@@ -63,7 +63,7 @@ class TestMonsterMovement {
                     .filter(p -> manager.getFloorMap().isTile(p))
                     .collect(Collectors.toList());
         } while (positions.isEmpty());
-        manager.getPlayer().setPosition(positions.get(random.nextInt(positions.size())));
+        manager.getPlayer().move(positions.get(random.nextInt(positions.size())));
 
         assertTrue(Math.abs(monster.getPosition().x() - manager.getPlayer().getPosition().x()) <= 1
                 && Math.abs(monster.getPosition().y() - manager.getPlayer().getPosition().y()) <= 1);

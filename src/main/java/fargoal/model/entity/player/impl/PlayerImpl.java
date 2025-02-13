@@ -84,8 +84,8 @@ public class PlayerImpl implements Player {
         this.level = INITIAL_LEVEL;
         this.experiencePoints = 0;
         this.experiencePointsRequired = INITIAL_EXPERIENCE_POINTS_REQUIRED;
-        this.health = new HealthImpl(this.setInitialStat());
-        this.skill = setInitialStat();
+        this.health = new HealthImpl(this.generateInitialStat());
+        this.skill = generateInitialStat();
         this.gold = new GoldImpl();
         this.inventory = new InventoryImpl(floorManager);
         this.numberOfSlainFoes = 0;
@@ -118,8 +118,8 @@ public class PlayerImpl implements Player {
 
     /**{@inheritDoc} */
     @Override
-    public void setPosition(Position position) {
-        this.position = position;
+    public void move(Position newPosition) {
+        this.position = newPosition;
     }
 
     /**
@@ -128,7 +128,7 @@ public class PlayerImpl implements Player {
      * 
      * @return The computed initial stat value as an {@link Integer}.
      */
-    private Integer setInitialStat() {
+    private Integer generateInitialStat() {
         Integer stat = 0;
         Integer d6;
         for(int i = 0; i <= INITIAL_STAT_MAX_COUNTER; i ++) {
@@ -345,12 +345,6 @@ public class PlayerImpl implements Player {
      */
     public void increaseNumberOfSlainFoes() {
         this.numberOfSlainFoes ++;
-    }
-
-    /**{@inheritDoc}*/
-    @Override
-    public void move(Position newPosition) {
-        this.setPosition(newPosition);
     }
 
     /** {@inheritDoc}*/

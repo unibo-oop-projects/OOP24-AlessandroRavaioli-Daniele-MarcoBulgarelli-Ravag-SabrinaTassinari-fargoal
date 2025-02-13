@@ -43,7 +43,7 @@ public class TeleportSpell extends AbstractSpell {
         } else {
             newPlayerPosition = floorManager.getFloorMap().getRandomTile();
         }
-        floorManager.getPlayer().setPosition(newPlayerPosition);
+        floorManager.getPlayer().move(newPlayerPosition);
         this.removeSpell();
     }
 

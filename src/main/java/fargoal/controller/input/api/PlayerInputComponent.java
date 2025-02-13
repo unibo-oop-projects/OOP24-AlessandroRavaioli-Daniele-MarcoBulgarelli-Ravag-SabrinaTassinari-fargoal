@@ -82,7 +82,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         } else if (controller.isMoveRight() && controller.isMoveDown()) {
             final var pos = player.getPosition().add(new Position(1, 1));
@@ -97,7 +97,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         } else if (controller.isMoveDown() && controller.isMoveLeft()) {
             final var pos = player.getPosition().add(new Position(-1, 1));
@@ -112,7 +112,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         } else if (controller.isMoveLeft() && controller.isMoveUp()) {
             final var pos = player.getPosition().add(new Position(-1, -1));
@@ -127,7 +127,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         } else if (controller.isMoveDown()) {
             final var pos = player.getPosition().add(new Position(0, 1));
@@ -142,7 +142,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         } else if (controller.isMoveUp()) {
             final var pos = player.getPosition().add(new Position(0, -1));
@@ -157,7 +157,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         } else if (controller.isMoveLeft()) {
             final var pos = player.getPosition().add(new Position(-1, 0));
@@ -172,7 +172,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         } else if (controller.isMoveRight()) {
             final var pos = player.getPosition().add(new Position(1, 0));
@@ -187,7 +187,7 @@ public class PlayerInputComponent implements InputComponent {
                             }
                         }
                     } else if (manager.getFloorMap().isTile(pos)) {
-                        player.setPosition(pos);
+                        player.move(pos);
                     }
         }
 

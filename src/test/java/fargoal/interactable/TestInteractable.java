@@ -184,7 +184,7 @@ class TestInteractable {
           assertEquals(floorManager.getPlayer().getPosition(), beacon.getPosition());
           floorManager.getAllElements().stream().filter(e -> e instanceof BeaconOnGround).findFirst().get().update(floorManager);
           assertTrue(floorManager.getPlayer().isImmune());
-          floorManager.getPlayer().setPosition(floorManager.getFloorMap().getRandomTile());
+          floorManager.getPlayer().move(floorManager.getFloorMap().getRandomTile());
           assertNotEquals(floorManager.getPlayer().getPosition(), beacon.getPosition());
           floorManager.getPlayer().useTeleportSpell();
           assertEquals(beacon.getPosition(), floorManager.getPlayer().getPosition());
@@ -255,7 +255,7 @@ class TestInteractable {
           assertEquals(0, floorManager.getPlayer().getCurrentGold());
           final Interactable sackOfGold = floorManager.getInteractables().stream().
                filter(e -> e instanceof SackOfMoney).findFirst().get();
-          floorManager.getPlayer().setPosition(sackOfGold.getPosition());
+          floorManager.getPlayer().move(sackOfGold.getPosition());
           sackOfGold.interact(floorManager);
           assertNotEquals(0, floorManager.getPlayer().getCurrentGold());
      }

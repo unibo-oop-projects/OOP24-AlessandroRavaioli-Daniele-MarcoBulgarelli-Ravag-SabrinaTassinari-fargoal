@@ -15,7 +15,7 @@ public interface Player extends Entity {
      * Setter for player's current position.
      * @param position - the new position of the player.
      */
-    void setPosition(Position position);
+    void move(Position position);
     
     /**
      * Getter for player's current level.
@@ -139,11 +139,6 @@ public interface Player extends Entity {
      * @param amount - the value to add to player's skill.
      */
     void increasePlayerSkill(final Integer amount);
-
-    /**
-     * Makes the player move one tile in the map.
-     */
-    void move(Position newPosition);
 
     /**
      * This method calculates the amount of damage the player

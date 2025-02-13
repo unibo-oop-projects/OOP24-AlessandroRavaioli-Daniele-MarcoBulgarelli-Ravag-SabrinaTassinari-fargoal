@@ -221,7 +221,7 @@ public class FloorManagerImpl implements FloorManager {
         this.mask.resetMask();
         this.monsters.clear();
         this.interactables.clear();
-        this.player.setPosition(this.map.getRandomTile());
+        this.player.move(this.map.getRandomTile());
         this.monstFact = new MonsterFactoryImpl(this.floorLevel);
         while (this.monsters.size() < MAX_MONSTERS) {
             generateMonster(this.map.getRandomTile());
