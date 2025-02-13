@@ -39,12 +39,12 @@ public class WarLord extends AbstractMonster {
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
         setMonsterType(MonsterType.WAR_LORD);
+        numForShield = this.getRandom(3);
         if (floorManager.getFloorLevel() > FLOOR_CHANGE) {
             minimumWait = MIN_WAIT;
         } else {
             minimumWait = MAX_WAIT;
         }
-        numForShield = this.getRandom(3);
         if (numForShield == 0 || numForShield == 1) {
             this.shield = true;
         } else {

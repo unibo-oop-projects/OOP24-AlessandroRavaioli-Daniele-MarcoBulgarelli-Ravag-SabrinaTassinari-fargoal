@@ -114,9 +114,8 @@ public abstract class AbstractMonster implements Monster {
     @Override
     public Integer attack() {
         final int damage;
-        var ratio = DAMAGE_NUMBER - this.getFloorManager().getFloorLevel() + 1;
+        final var ratio = DAMAGE_NUMBER - this.getFloorManager().getFloorLevel() + 1;
         damage = random.nextInt(this.getFloorManager().getPlayer().getHealth().getCurrentHealth() / ratio + 1) + 1;
-        System.out.println("Monster did " + damage + " damage");
         return damage;
     }
 
@@ -217,7 +216,7 @@ public abstract class AbstractMonster implements Monster {
      * @param num - the max number of the random
      * @return a random number
      */
-    public Integer getRandom(final Integer num) {
+    public final Integer getRandom(final Integer num) {
         return random.nextInt(num);
     }
 

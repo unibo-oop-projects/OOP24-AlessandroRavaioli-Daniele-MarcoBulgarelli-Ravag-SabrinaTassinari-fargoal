@@ -15,7 +15,7 @@ import fargoal.view.api.RenderFactory;
 public class Barbarian extends AbstractMonster {
 
     private static final int NEXT_MOVE = 3000;
-    private final int minimumWait = 2000;
+    private static final int MINIMUM_WAIT = 2000;
     private int nextMove;
 
     /**
@@ -47,7 +47,7 @@ public class Barbarian extends AbstractMonster {
     public void update(final FloorManager floorManager) {
         final long temp = System.currentTimeMillis();
         if (Math.abs(this.getTimer() - temp) >= nextMove) {
-            this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimumWait;
+            this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + MINIMUM_WAIT;
             this.setTimer();
             if (this.areNeighbours(floorManager, 1) 
                     && !floorManager.getPlayer().isImmune()
