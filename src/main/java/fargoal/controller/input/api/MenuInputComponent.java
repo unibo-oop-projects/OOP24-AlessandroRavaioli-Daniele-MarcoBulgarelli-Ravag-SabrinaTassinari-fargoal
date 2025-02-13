@@ -7,11 +7,11 @@ import fargoal.model.manager.api.SceneManager;
  * Class that work to receive and process the inputs
  * from the TitleScreen.
  */
-public class MenuInputComponent implements InputComponent{
+public class MenuInputComponent implements InputComponent {
     /**
      * Method that updates the TitleScreen based on the input that receives.
      * 
-     * @param manager - to get the necessary infos
+     * @param sceneManager - to get the necessary infos
      * @param ctrl - to get the inputs
      * @throws IllegalArgumentException if the given manager is not a {@link MenuManager}
      */

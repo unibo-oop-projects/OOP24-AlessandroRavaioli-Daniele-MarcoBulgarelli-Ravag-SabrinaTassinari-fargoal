@@ -16,6 +16,7 @@ public class Assassin extends AbstractMonster {
     private static final int NEXT_MOVE = 1500;
     private static final int MIN_WAIT = 1000;
     private static final int MAX_WAIT = 1450;
+    private static final int FLOOR_CHANGE = 13;
     private final int minimumWait;
     private int nextMove;
 
@@ -34,7 +35,7 @@ public class Assassin extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        if (floorManager.getFloorLevel() > 13) {
+        if (floorManager.getFloorLevel() > FLOOR_CHANGE) {
             this.minimumWait = MIN_WAIT;
         } else {
             this.minimumWait = MAX_WAIT;

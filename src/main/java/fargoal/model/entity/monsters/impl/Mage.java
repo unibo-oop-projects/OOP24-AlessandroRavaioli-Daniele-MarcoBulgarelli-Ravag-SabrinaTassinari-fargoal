@@ -20,6 +20,7 @@ public class Mage extends AbstractMonster {
     private static final int POSSIBLE_SPELLS = 5;
     private static final int MIN_WAIT = 1250;
     private static final int MAX_WAIT = 1750;
+    private static final int FLOOR_CHANGE = 9;
     private final int minimumWait;
     private int nextMove;
 
@@ -37,7 +38,7 @@ public class Mage extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        if (floorManager.getFloorLevel() > 9) {
+        if (floorManager.getFloorLevel() > FLOOR_CHANGE) {
             this.minimumWait = MIN_WAIT;
         } else {
             this.minimumWait = MAX_WAIT;
