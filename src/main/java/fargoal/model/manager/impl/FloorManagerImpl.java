@@ -270,12 +270,14 @@ public class FloorManagerImpl implements FloorManager {
 
     private void generateMonster(final Position pos) {
         boolean alreadyPresent = false;
+        final Monster tempMonster = monstFact.generate(pos, this, renderFactory);
         if (this.monsters.stream().anyMatch(m -> m.getPosition().equals(pos))
-                || this.player.getPosition().equals(pos)) {
+                || this.player.getPosition().equals(pos)
+                || tempMonster.areNeighbours(this, 2)) {
             alreadyPresent = true;
         }
         if (!alreadyPresent) {
-            this.monsters.add(monstFact.generate(pos, this, renderFactory));
+            this.monsters.add(tempMonster);
         }
     }
 
