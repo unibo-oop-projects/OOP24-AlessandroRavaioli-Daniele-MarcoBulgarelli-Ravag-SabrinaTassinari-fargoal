@@ -273,7 +273,7 @@ public class FloorManagerImpl implements FloorManager {
         final Monster tempMonster = monstFact.generate(pos, this, renderFactory);
         if (this.monsters.stream().anyMatch(m -> m.getPosition().equals(pos))
                 || this.player.getPosition().equals(pos)
-                || tempMonster.areNeighbours(this, 2)) {
+                || tempMonster.areNeighbours(this, 4)) {
             alreadyPresent = true;
         }
         if (!alreadyPresent) {
