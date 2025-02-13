@@ -57,10 +57,14 @@ public class Assassin extends AbstractMonster {
         if (Math.abs(this.getTimer() - temp) >= nextMove) {
             this.nextMove = this.getRandom(NEXT_MOVE * this.getSkill() / this.getLevel()) + minimumWait;
             this.setTimer();
+            if (this.areNeighbours(floorManager, 3)) {
+                this.setVisibilityOn();
+            } else {
+                this.setVisibilityOff();
+            }
             if (this.areNeighbours(floorManager, 1) 
                     && !floorManager.getPlayer().isImmune()
                     && floorManager.getPlayer().isVisible()) {
-                this.setVisibilityOn();
                 floorManager.getPlayer().setIsAttacked(true);
                 this.setIsFighting(true);
                 floorManager.getPlayer().battle(this);

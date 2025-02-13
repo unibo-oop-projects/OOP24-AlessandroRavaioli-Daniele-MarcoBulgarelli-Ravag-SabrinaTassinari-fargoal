@@ -80,6 +80,11 @@ public class PlayerInformationRenderer implements Renderer {
             g2d.drawString("SLAIN FOES",
                     swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN,
                     swing.getInformationPanel().getBounds().height / CONSTANT_SIX);
+            g2d.drawString(String.valueOf(floorManager.getPlayer().getNumberOfSlainFoes()), 
+                        swing.getInformationPanel().getBounds().width
+                        * CONSTANT_SEVEN
+                        / DIVISOR_WIDTH_SECOND_COLUMN, 
+                        swing.getInformationPanel().getBounds().height / CONSTANT_SIX);
             g2d.drawString("DUNGEON LEVEL",
                     swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN,
                     swing.getInformationPanel().getBounds().height * 2 / 3);
