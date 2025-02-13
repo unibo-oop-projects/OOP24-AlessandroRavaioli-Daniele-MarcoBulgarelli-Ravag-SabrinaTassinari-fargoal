@@ -3,11 +3,9 @@ package fargoal.model.manager.impl;
 import java.awt.Color;
 import java.awt.Font;
 
-import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.controller.input.api.MenuInputComponent;
-import fargoal.model.commons.Timer;
 import fargoal.model.core.GameEngine;
-import fargoal.model.manager.api.MenuManager;
+import fargoal.model.manager.api.AbstractMenuManager;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 import fargoal.view.impl.SwingRendererMiddle;
@@ -18,10 +16,9 @@ import fargoal.view.impl.SwingView;
  * Class that work and implements methods to allow the Title screen
  * to work correctly.
  */
-public class TitleScreenManager implements MenuManager {
+public class TitleScreenManager extends AbstractMenuManager {
 
     private static final int NUMBER_OF_OPTIONS = 2;
-    private static final long MILLIS_TO_WAIT = 150;
     private static final int POSSIBILITIES_DIVISOR_WIDTH = 50;
     private static final int POSSIBILITIES_DIVISOR_HEIGHT = 7;
     private static final int GAME_START_MULTIPLIER_WIDTH = 21;
@@ -29,28 +26,22 @@ public class TitleScreenManager implements MenuManager {
     private static final int TITLE_DIVISION_WIDTH = 5;
     private static final int DIVISOR_FONT_TOP_HEIGHT = 4;
     private static final int DIVISOR_FONT_MIDDLE_HEIGHT = 100;
+    private static final int DEFAULT_VALUE = 1;
 
-    private int selected;
-    private final MenuInputComponent inputComp;
-    private final KeyboardInputController ctrl;
     private Renderer menu;
     private Renderer title;
     private boolean timeToQuit;
     private boolean start;
-    private final Timer wait;
+
     /**
      * Constructor that set all the local fields to the starting values.
      * 
      * @param engine - to get the priority in the scene
      */
     public TitleScreenManager(final GameEngine engine) {
-        this.selected = 1;
-        this.inputComp = new MenuInputComponent();
-        this.ctrl = engine.getController();
+        super(engine, new MenuInputComponent());
         this.timeToQuit = false;
         this.start = false;
-        this.wait = new Timer();
-        this.wait.setTime(MILLIS_TO_WAIT);
         createRenderers(engine.getView());
     }
 
@@ -62,10 +53,7 @@ public class TitleScreenManager implements MenuManager {
         } else if (start) {
             setSceneManager(engine);
         }
-        if (this.wait.updateTime(engine.getElapsedTime()) == 0) {
-            this.inputComp.update(this, this.ctrl);
-            this.wait.setTime(MILLIS_TO_WAIT);
-        }
+        super.update(engine);
         this.menu.render();
         this.title.render();
     }
@@ -75,28 +63,11 @@ public class TitleScreenManager implements MenuManager {
     public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new FloorManagerImpl(engine));
     }
-    /** {@inheritDoc} */
-    @Override
-    public void increaseSelected() {
-        selected++;
-        if (selected > NUMBER_OF_OPTIONS) {
-            selected = 1;
-        }
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public void decreaseSelected() {
-        selected--;
-        if (selected < 1) {
-            selected = NUMBER_OF_OPTIONS;
-        }
-    }
-
+    
     /** {@inheritDoc} */
     @Override
     public void select() {
-        if (this.selected == 1) {
+        if (this.getSelected() == 1) {
             start = true;
         } else {
             timeToQuit = true;
@@ -113,11 +84,11 @@ public class TitleScreenManager implements MenuManager {
         final SwingView sView = (SwingView) view;
         this.menu = new SwingRendererMiddle(g2d -> {
                 g2d.setFont(new Font("Arial", Font.BOLD, sView.getFrame().getBounds().height * 3 / DIVISOR_FONT_MIDDLE_HEIGHT));
-                g2d.setColor((this.selected == 1) ? Color.cyan : Color.red);
+                g2d.setColor((this.getSelected() == 1) ? Color.cyan : Color.red);
                 g2d.drawString("START GAME",
                         sView.getMapWidth() * GAME_START_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
                         sView.getMapHeight() * 1 / POSSIBILITIES_DIVISOR_HEIGHT);
-                g2d.setColor((this.selected == 2) ? Color.cyan : Color.red);
+                g2d.setColor((this.getSelected() == 2) ? Color.cyan : Color.red);
                 g2d.drawString("EXIT",
                         sView.getMapWidth() * GAME_EXIT_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
                         sView.getMapHeight() * 3 / POSSIBILITIES_DIVISOR_HEIGHT);
@@ -129,5 +100,15 @@ public class TitleScreenManager implements MenuManager {
                     sView.getMapWidth() * 2 / TITLE_DIVISION_WIDTH,
                     sView.getEventPanel().getBounds().height / 2);
         }, view);
+    }
+
+    @Override
+    public boolean resetCondition() {
+        return this.getSelected() < DEFAULT_VALUE || this.getSelected() > NUMBER_OF_OPTIONS;
+    }
+
+    @Override
+    public void resetSelected() {
+        this.setSelected(this.getSelected() < DEFAULT_VALUE ? NUMBER_OF_OPTIONS : DEFAULT_VALUE);
     }
 }
