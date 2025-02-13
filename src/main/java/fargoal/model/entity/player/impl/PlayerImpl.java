@@ -2,10 +2,6 @@ package fargoal.model.entity.player.impl;
 
 import java.util.Optional;
 import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-
 import fargoal.commons.api.Position;
 import fargoal.controller.input.api.InputComponent;
 import fargoal.controller.input.api.KeyboardInputController;
@@ -13,18 +9,14 @@ import fargoal.controller.input.api.PlayerInputComponent;
 import fargoal.model.commons.Timer;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.commons.impl.HealthImpl;
-import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.events.impl.BattleEvent;
 import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.model.interactable.temple.Temple;
 import fargoal.model.manager.api.FloorManager;
-import fargoal.model.map.api.FloorMap;
-import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 import fargoal.view.impl.InventoryInformationRenderer;
 import fargoal.view.impl.PlayerInformationRenderer;
@@ -34,7 +26,7 @@ import fargoal.model.entity.player.api.Inventory;
 /**
  * Manages the player's state, actions, and interactions within the game world.
  * This includes handling movement, combat mechanics, health management,
- * inventory operations, and interactions with other entitires.
+ * inventory operations, and interactions with other entities.
  * <p>
  * The class also tracks the player's status, such as whether they are engaged
  * in battle, their ability to flee, and the effects of recieved or inflicted damage.
@@ -44,7 +36,6 @@ public class PlayerImpl implements Player {
 
     private static final int MIN_SKILL_REWARD = 1;
     private static final int MAX_SKILL_REWARD = 5;
-    private static final int DEATH_TOLERANCE_WHEN_HEALING_POTION_AVAILABLE = -5;
     private static final int CONSTANT_ADDED_TO_MAX_HEALTH_IN_LEVEL_UP = 4;
     private static final int MAX_LEVEL_UP_ADDED_MAX_HEALTH = 15;
     private static final int MIN_LEVEL_UP_ADDED_MAX_HEALTH = 1;
@@ -77,7 +68,6 @@ public class PlayerImpl implements Player {
     private boolean hasLight;
     private boolean isImmune;
 
-    private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private PlayerInformationRenderer playerInformationRender;
     private final InventoryInformationRenderer infoRenderer;
     private Renderer render;
@@ -132,17 +122,6 @@ public class PlayerImpl implements Player {
     @Override
     public void setPosition(Position position) {
         this.position = position;
-    }
-
-    /**
-     * Sets the player's starting position on the given floor map.
-     * The position is determined by selecting a random valid tile from the map.
-     * 
-     * @param floorMap - The {@link Floormap} instance from which a random tile is chosen.
-     */
-    private void startingPosition(FloorMap floorMap) {
-        Position pos = floorMap.getRandomTile();
-        this.setPosition(pos);
     }
 
     /**
@@ -413,11 +392,13 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /** {@inheritDoc}*/
     @Override
     public void setIsImmune(Boolean condition) {
         this.isImmune = condition;
     }
 
+    /** {@inheritDoc}*/
     @Override
     public boolean isImmune() {
         return isImmune;
@@ -494,13 +475,24 @@ public class PlayerImpl implements Player {
     }
 
     /**
-     * Starts the passive health regeneration for the player.
-     * The player will regenerate health over time unless they are in combat
-     * or have already reached their maximum health. Regeneration can be influenced
-     * by certain conditions such as being in the temple or having a regeneration spell active.
+     * Handles the player's passive health regeneration.
      * <p>
-     * Currently, this method is not implemented and will throw an
-     * {@link UnsupportedOperationException} when called.
+     * This method checks if the player is eligible for regeneration and
+     * adjusts the regeneration rate based on active effects and location.
+     * The base regeneration period can be reduced if the player is in
+     * a temple or has an active regeneration spell. 
+     * </p><p>
+     * Conditions affecting regeneration:
+     * <ul>
+     * <li>If the player is fighting, regeneration does not occour</li>
+     * <li>If both the regeneration spell is active and the player is in a temple,
+     * the regeneration period is reduced to 1/5th of the base rate.</li>
+     * <li>If either the regeneration spell is active or the player is in a temple,
+     * but not both, the regeneration period is reduced to half.</li>
+     * </ul>
+     * </p><p>
+     * When the adjusted regeneration period has passed, the player's health
+     * increases by 1 and the regeneration timer is reset.
      * </p>
      */
     public void PassiveRegeneration() {    
@@ -513,14 +505,12 @@ public class PlayerImpl implements Player {
             return;
         }
 
-        // possible cases
         if (this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && this.isOnTemple()) {
             regenerationPeriod = regenerationPeriod / 5;
         } else if ((this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && !this.isOnTemple()) || (!this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && this.isOnTemple())) {
             regenerationPeriod = regenerationPeriod / 2;
         }
 
-        //actual regeneration
         if (Math.abs(this.getRegenerationTimer() - time) >= regenerationPeriod) {
             this.health.increaseHealth(baseHealingAmount);
             resetRegenerationTimer();
@@ -528,6 +518,13 @@ public class PlayerImpl implements Player {
 
     }
 
+    /**
+     * Resets the regeneration timer to the current system time.
+     * <p>
+     * This method is called after a successful health regeneration event
+     * to ensure that the next regeneration occurs after the appropriate delay.
+     * </p>
+     */
     private void resetRegenerationTimer() {
         this.regenerationTimer = System.currentTimeMillis();
     }
