@@ -7,10 +7,10 @@
 
 \title{OOP-FARGOAL}
 \author{
-    Bulgarelli Marco, marco.bulgarelli@studio.unibo.it \and 
-    Ravaioli Alessandro, alessandro.ravaioli@studio.unibo.it \and
+    Bulgarelli Marco, marco.bulgarelli6@studio.unibo.it \and 
+    Ravaioli Alessandro, alessandro.ravaioli8@studio.unibo.it \and
     Tassinari Sabrina, sabrina.tassinari@studio.unibo.it \and
-    Tramonti Daniele, daniele.tramonti@studio.unibo.it 
+    Tramonti Daniele, daniele.tramonti2@studio.unibo.it 
 }
 \date{15 febbraio 2025}
 
@@ -109,6 +109,90 @@ Questo porta a classi molto simili, con metodi ripetuti.
 Per ogni tipo di item il metodo template è \textbf{use()}, che utilizza il metodo astratto \textbf{effect()}. 
 
 \subsection{Tramonti Daniele}
+
+\subsubsection{Struttura base dei nemici}
+
+\paragraph{Problema} I nemici presenti nel gioco possono essere diversi tra loro, ma presentano tutti la stessa struttura di base che comprende per esempio:
+
+\begin{itemize}
+    \item salute
+    \item skill
+    \item una posizione nella mappa
+    \item un livello
+    \item un tag che ne identifica il tipo
+    \item un campo per definire la visibilità
+    \item un campo per definire se il mostro è in un combattimento
+\end{itemize}
+
+\paragraph{Soluzione} Ho deciso di utilizzare un un'unica implementazione di una classe astratta \textit{AbstractMonster} che contiene già tutte le caratteristiche di base di un mostro, il quale poi nella sua classe
+%
+specifica, che estende la classe generale \textit{AbstractMonster}, potrà ricevere qualità personalizzate. La scelta di questa soluzione è stata fatta per permettere:
+
+\begin{itemize}
+    \item \textbf{estendibilità:} grazie a questa struttura l'aggiunta di un nuovo mostro è molto semplice;
+    \item \textbf{riuso:} con l'utilizzo della classe astratta generale ogni mostro ha la stessa implementazione di base senza però dover duplicare codice per ognuno.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=7cm]{AbstractMonster.png}
+    \caption{Schema UML dell'uso dell'\textit{Abstract class AbstractMonster}. Si è usato l'esempio del Rogue, del Barbarian e del Mage, ma le classi che la estendono sono di più.}
+    \label{img:AbstractMonster}
+\end{figure}
+
+\subsubsection{Creazione dei nemici}
+
+\paragraph{Problema} Ogni tipologia di nemico nel gioco ha un preciso piano dove può esistere e compiere azioni, perciò far apparire il mostro corretto nel piano in cui si trova l'avventuriero è
+%
+tutt'altro che un problema immediato da risolvere.
+
+\paragraph{Soluzione} Per riuscire a trovare una soluzione a questo problema, ho utilizzato il \textit{pattern creazionale Factory Method} per far sì che fosse presente una factory generale
+%
+con un singolo metodo pubblico da poter essere richiamato. Nella sua implementazione poi sono stati creati dei metodi per generare ogni tipo di mostro che sarebbero stati chiamati, in base
+%
+al piano in cui il player si sarebbe trovato in quel momento, dal metodo generale. Questa soluzione è stata attuata per:
+
+\begin{itemize}
+    \item \textit{facilità nell'uso:} basta richiamare il singolo metodo della factory \textbf{generate()} della factory e genererà in automatico il mostro corretto per quel piano;
+    \item \textit{estendibilità:} è possibile aggiungere un metodo specifico nell'implementazione della \textit{factory} per aggiungere un nuovo mostro;
+    \item \textit{divisione delle responsabilità:} viene delegato ad una componenente specializzata un compito di cui non si devono interessare altre classi.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=7cm]{FactoryMethod.png}
+    \caption{Schema UML dell'applicazione del \textit{pattern creazionale Factory Method}}
+\end{figure}
+
+\subsubsection{Movimento dei nemici}
+
+\paragraph{Problema} Ogni nemico si deve muovere nella mappa autonomamente cercando, se possibile, di inseguire ed attaccare l'avventuriero.
+
+\paragraph{Soluzione} Alla fine si è deciso di creare un algoritmo, in modo autonomo, uguale per tutti i mostri con lo scopo di rendere i movimenti il più realistici possibili. Si è fatto 
+%
+utilizzo di una classe statica separata, denominata \textbf{Ai}, il cui metodo viene chiamato da ogni mostro quando è il proprio turno di muoversi. L'utilizzo di algoritmi come per esempio
+%
+\textit{Shortest Path di Dijkstra} sono stati scartati per:
+
+\begin{itemize}
+    \item \textit{tempistiche:} ricalcolare il percorso migliore per ogni singolo mostro ed ad ogni movimento del player (al massimo circa 10 al secondo) avrebbe potuto portare a tempistiche di calcolo
+%
+non ottimali e di conseguenza ad un gameplay non performanti.
+\end{itemize}
+
+%
+La scelta di questa soluzione è stata fatta per permettere:
+
+\begin{itemize}
+    \item \textit{facilità nell'uso:} basta richiamare il metodo statico \textbf{move()} della classe \textit{Ai} per ottenere il movimento del mostro;
+    \item \textit{divisione delle responsabilità:} viene delegato ad una classe secondaria un compito per non farlo svolgere direttamente alla classe del mostro.
+\end{itemize}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=7cm]{MonsterMovement.png}
+    \caption{Scherma UML dell'applicazione della \textit{classe statica Ai}. Si è usato l'esempio del Rogue, del Barbarian e del Mage, ma tutte le classi dei mostri fanno riferimento ad \textit{Ai}.}
+\end{figure}
 
 \chapter{Sviluppo}
 

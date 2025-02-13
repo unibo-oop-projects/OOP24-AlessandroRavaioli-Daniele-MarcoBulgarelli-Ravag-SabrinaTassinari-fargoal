@@ -17,21 +17,30 @@
 \contentsline {paragraph}{Problema}{5}{}%
 \contentsline {paragraph}{Soluzione}{5}{}%
 \contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{7}{}%
-\contentsline {chapter}{\numberline {3}Sviluppo}{8}{}%
-\contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{8}{}%
-\contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{8}{}%
-\contentsline {subsubsection}{Bulgarelli Marco}{8}{}%
-\contentsline {subsubsection}{Ravaioli Alessandro}{8}{}%
-\contentsline {subsubsection}{Tassinari Sabrina}{8}{}%
-\contentsline {paragraph}{Utilizzo di lamba expression}{8}{}%
-\contentsline {paragraph}{Utilizzo di Stream}{8}{}%
-\contentsline {paragraph}{Utilizzo di Optional}{8}{}%
-\contentsline {subsubsection}{Tramonti Daniele}{8}{}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{9}{}%
-\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{9}{}%
-\contentsline {subsubsection}{Bulgarelli Marco}{9}{}%
-\contentsline {subsubsection}{Ravaioli Alessandro}{9}{}%
-\contentsline {subsubsection}{Tassinari Sabrina}{9}{}%
-\contentsline {subsubsection}{Tramonti Daniele}{9}{}%
-\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{9}{}%
-\contentsline {chapter}{\numberline {A}Guida utente}{10}{}%
+\contentsline {subsubsection}{Struttura base dei nemici}{7}{}%
+\contentsline {paragraph}{Problema}{7}{}%
+\contentsline {paragraph}{Soluzione}{7}{}%
+\contentsline {subsubsection}{Creazione dei nemici}{7}{}%
+\contentsline {paragraph}{Problema}{7}{}%
+\contentsline {paragraph}{Soluzione}{7}{}%
+\contentsline {subsubsection}{Movimento dei nemici}{9}{}%
+\contentsline {paragraph}{Problema}{9}{}%
+\contentsline {paragraph}{Soluzione}{9}{}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{10}{}%
+\contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{10}{}%
+\contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{10}{}%
+\contentsline {subsubsection}{Bulgarelli Marco}{10}{}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{10}{}%
+\contentsline {subsubsection}{Tassinari Sabrina}{10}{}%
+\contentsline {paragraph}{Utilizzo di lamba expression}{10}{}%
+\contentsline {paragraph}{Utilizzo di Stream}{10}{}%
+\contentsline {paragraph}{Utilizzo di Optional}{10}{}%
+\contentsline {subsubsection}{Tramonti Daniele}{10}{}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{11}{}%
+\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{11}{}%
+\contentsline {subsubsection}{Bulgarelli Marco}{11}{}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{11}{}%
+\contentsline {subsubsection}{Tassinari Sabrina}{11}{}%
+\contentsline {subsubsection}{Tramonti Daniele}{11}{}%
+\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{11}{}%
+\contentsline {chapter}{\numberline {A}Guida utente}{12}{}%
