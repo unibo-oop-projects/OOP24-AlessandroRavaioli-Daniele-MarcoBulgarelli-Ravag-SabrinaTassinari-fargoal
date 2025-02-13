@@ -2,7 +2,6 @@ package fargoal.model.entity.player.api;
 
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Entity;
-import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.Monster;
 
 /**
@@ -71,66 +70,67 @@ public interface Player extends Entity {
     Gold getPlayerGold();
 
     /**
-     * Getter for player current carried gold.
+     * Gets the gold amount the player is carrying.
      * 
-     * @return the gold amount player is currently carrying.
+     * @return the {@link Integer} that represents the gold amount player is currently carrying.
      */
     Integer getCurrentGold();
 
     /**
-     * Getter for player maximum gold capacity.
+     * Gets the maximum amount of gold the player can carry.
      * 
-     * @return the amount player is able to carry.
+     * @return the {@link Integer} that represents the maximum amount of gold the player is able to carry.
      */
     Integer getMaxGoldCapacity();
 
     /**
-     * This method controls if player has aquired the
-     * legendary sword.
+     * Checks if the player is carrying the legendary sword.
      * 
-     * @return true if player has the sword, false otherwise.
+     * @return {@code true} if the player has the legendary sword,{@code false} otherwise.
      */
     boolean hasSword();
 
     /**
-     * Setter for the hasSword condition: it changes wether the
-     * player has the legendary sword or not.
+     * Sets the player's legendary sword possession status.
      * 
-     * @param condition - True if player found the sword, false otherwise.
+     * @param condition - the new player's legendary sword possession status to set.
      */
     void setHasSword(boolean condition);
 
     /**
-     * This method control if the player is visble to monster or not.
+     * Returns the visibility status of the player.
      * 
-     * @return true if the player is visible, false otherwise.
+     * @return {@code true} if the player is visible, {@code false} otherwise.
      */
     public boolean isVisible();
 
     /**
-     * Setter for the isVisible condition.
+     * Sets the visibility status of the player.
      * 
-     * @param condition - true if the player is visible, false otherwise.
+     * @param condition - the new visibility status to set.
      */
     public void setIsVisible(boolean condition);
 
     /**
-     * Getter for the hasLight condition. This refers to the light spell, if it is true the light is on,
-     * otherwise false.
-     * @return true if the light is on, false otherwise.
+     * Returns the light spell status of the player.
+     * <p>
+     * This checks whether the light spell is active. If true, the light spell is active;
+     * otherwise, the light spell is not active.
+     * </p>
      */
     public boolean hasLight();
 
     /**
-     * Setter for the hasLight condition.
-     * @param condition - true if the light is on, false otherwise.
+     * Sets the light spell status of the player.
+     * 
+     * @param condition - the new light spell status to set.
      */
     public void setHasLight(boolean condition);
 
     /**
-     * Sets the player skill to the amount given.
+     * Sets the player's skill to the amount given.
      * 
-     * @param amount - the value to set player skill to.
+     * @param amount - the new value to set player's skill to.
      */
     public void setPlayerSkill(Integer amount);
 
@@ -142,22 +142,32 @@ public interface Player extends Entity {
     void increasePlayerSkill(final Integer amount);
 
     /**
-     * This method calculates the amount of damage the player
-     * does against the monster they are currently fighting in
-     * a single attack.
+     * Calculates the amount of damage the player does against the monster 
+     * they are currently fighting in a single attack.
+     * <p>
+     * This method calculates damage based on the player's skill and the 
+     * monster's skill, factoring in a random element. The damage is also
+     * influenced by the player's level and a predefined damage multiplier.
+     * </p>
      * 
-     * @param monster - The enemy monster.
+     * @param monster - The enemy monster the player is currently fighting.
      * 
-     * @return the amount of damage dealt.
+     * @return the {@link Integer} that represents the amount of damage dealt to the monster.
+     * 
+     * @throws IllegalArgumentException if the passed monster is null.
      */
     Integer doDamage(Monster monster);
 
     /**
-     * Subtracts health from the player when attacked by a monster.
-     * If the player is not protected by a shield spell, the player's health is decreased based on the monster's attack.
-     * If the player has a shield spell active, it is deactivated instead of taking damage.
+     * Handles the damage recieved by the player from a monster's attack.
+     * <p>
+     * If the player has activated the shield spell, the damage will be negated
+     * and the shield spell will be deactivated. Otherwise, the player recieves 
+     * the damage, and the player's current health decreases by the damage dealt
+     * by the monster.
+     * </p>
      * 
-     * @param monster - The {@link Monster} that is attacking the player.
+     * @param monster - The {@link Monster} whose attack causes the damage.
      */
     void receiveDamage(Monster monster);
 
@@ -170,43 +180,113 @@ public interface Player extends Entity {
      */
     boolean levelUp();
 
+    /**
+     * Returns the immunity status of the player.
+     * 
+     * @return {@code true} if the player is immune, {@code false} otherwise.
+     */
     boolean isImmune();
 
+    /**
+     * Sets the immunity status of the player.
+     * 
+     * @param condition - the new immunity status to set.
+     */
     void setIsImmune(Boolean condition);
 
+    /**
+     * Uses the invisibility spell from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one invisibility spell in their inventory.
+     * If the condition is met, it uses the spell.
+     * </p>
+     */
     void useInvisibilitySpell();
 
+    /**
+     * Uses the teleport spell from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one teleport spell in their inventory.
+     * If the condition is met, it uses the spell.
+     * </p>
+     */
     void useTeleportSpell();
 
+    /**
+     * Uses the shield spell from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one shield spell in their inventory.
+     * If the condition is met, it uses the spell.
+     * </p>
+     */
     void useShieldSpell();
 
+    /**
+     * Uses the regeneration spell from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one regeneration spell in their inventory.
+     * If the condition is met, it uses the spell.
+     * </p>
+     */
     void useRegenerationSpell();
 
+    /**
+     * Uses the drift spell from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one drift spell in their inventory.
+     * If the condition is met, it uses the spell.
+     * </p>
+     */
     void useDriftSpell();
 
+    /**
+     * Uses the light spell from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one light spell in their inventory.
+     * If the condition is met, it uses the spell.
+     * </p>
+     */
     void useLightSpell();
 
+    /**
+     * Uses the healing potion from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one healing potion in their inventory.
+     * If the condition is met, it uses the potion.
+     * </p>
+     */
     void useHealingPotion();
 
+    /**
+     * Uses the beacon from the player's inventory if available.
+     * <p>
+     * Checks if the player has at least one beacon in their inventory.
+     * If the condition is met, it uses the beacon.
+     * </p>
+     */
     void useBeacon();
 
     /**
-     * Manages the entire fight sequence between the player and the given monster.
-     * This method handles the combat mechanics, including attacks, fleeing conditions,
-     * and input locking. The battle continues until either the player or the monster is defeated.
+     * Starts a battle between the player and the specified monster.
      * <p>
-     * If the player is moving away from the monster and was the one that started the fight,
-     * the battle ends immediately, allowing the player to flee.
-     * If the player has been attacked, inputs are locked between turns.
-     * Otherwise, the combat continues in an automated fashion.
-     * </p>
+     * The battle consists of a sequence of attacks where both the player and the monster
+     * take turns dealing damage. The battle ends when either the player or the monster dies.
+     * The method also handles the following actions:
+     * <p>
+     *  - Notifying the floor manager of the battle or attack events.
+     * </p><p>
+     *  - Updating the player's skill and experience points based on the battle outcome.
+     * </p></p>
      * 
-     * @param monster - The enemy {@link AbstractMonster} the player is fighting.
-     * 
-     * @return {@code true} if the player wins the battle, {@code false} if they lose.
+     * @param monster - The enemy {@link Monster} to battle against.
      */
     void battle(final Monster monster);
 
+    /**
+     * Sets the attacked status of the player.
+     * 
+     * @param value - the new immunity status to set. True if the player has been attacked, false otherwise.
+     */
     void setIsAttacked(final boolean value);
 
     /**
