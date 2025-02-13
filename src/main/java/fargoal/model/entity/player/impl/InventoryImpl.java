@@ -27,18 +27,18 @@ import fargoal.model.manager.api.FloorManager;
  */
 public class InventoryImpl implements Inventory {
 
-    private HealingPotion healingPotions;
-    private Beacon beacons;
-    private MagicSack magicSacks;
-    private EnchantedWeapon enchantedWeapons;
-    private fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map levelMaps;
+    private final HealingPotion healingPotions;
+    private final Beacon beacons;
+    private final MagicSack magicSacks;
+    private final EnchantedWeapon enchantedWeapons;
+    private final fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map levelMaps;
 
-    private InvisibilitySpell invisibilityScroll;
-    private TeleportSpell teleportScroll;
-    private ShieldSpell shieldScroll;
-    private RegenerationSpell regenerationScroll;
-    private DriftSpell driftScroll;
-    private LightSpell lightScroll;
+    private final InvisibilitySpell invisibilityScroll;
+    private final TeleportSpell teleportScroll;
+    private final ShieldSpell shieldScroll;
+    private final RegenerationSpell regenerationScroll;
+    private final DriftSpell driftScroll;
+    private final LightSpell lightScroll;
 
     private final Map<String, Boolean> SpellCasted;
 
@@ -155,7 +155,7 @@ public class InventoryImpl implements Inventory {
     /** {@inheritDoc} */
     @Override
     public List<Spell> getListAllSpell() {
-        List<Spell> list = new ArrayList<>();
+        final List<Spell> list = new ArrayList<>();
         list.add(this.driftScroll);
         list.add(invisibilityScroll);
         list.add(lightScroll);

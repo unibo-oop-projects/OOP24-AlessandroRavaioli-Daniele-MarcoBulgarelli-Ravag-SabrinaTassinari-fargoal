@@ -64,8 +64,8 @@ public class GoldImpl implements Gold {
             throw new IllegalArgumentException("You cannot add a negative or null amount");
         }
 
-        int spaceAvailable = this.getMaxCapacity() - this.getCurrentGold();
-        int goldToAdd = Math.min(amount, spaceAvailable);
+        final int spaceAvailable = this.getMaxCapacity() - this.getCurrentGold();
+        final int goldToAdd = Math.min(amount, spaceAvailable);
         this.currentGold = this.currentGold + goldToAdd;
 
         return amount - goldToAdd;

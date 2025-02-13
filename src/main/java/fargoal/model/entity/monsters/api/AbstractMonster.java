@@ -268,7 +268,7 @@ public abstract class AbstractMonster implements Monster {
      * The Monster steals from the Player and takes
      * spells or gold from his inventory.
      */
-    protected void steal() { };
+    protected void steal() { }
 
     /** {@inheritDoc} */
     @Override
