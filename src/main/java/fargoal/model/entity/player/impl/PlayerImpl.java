@@ -61,6 +61,7 @@ public class PlayerImpl implements Player {
     private final Timer moveTimer;
     private long regenerationTimer;
     private int attackCounter;
+    private int deepestDescent;
 
     private boolean hasSword;
     private boolean isFighting;
@@ -108,6 +109,7 @@ public class PlayerImpl implements Player {
         this.isVisible = true;
         this.isImmune = false;
         this.hasLight = false;
+        this.deepestDescent = 0;
         this.playerInformationRender = playerInformationRenderer;
         this.playerInformationRender.setRender(floorManager);
         this.infoRenderer = infoRenderer;
@@ -115,6 +117,28 @@ public class PlayerImpl implements Player {
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
         this.moveTimer = new Timer();
         this.regenerationTimer = System.currentTimeMillis();
+    }
+
+    /**{@inheritDoc} */
+    @Override
+    public Integer getDeepestDescent() {
+        if (floorManager.getFloorLevel() > this.deepestDescent) {
+            this.deepestDescent = floorManager.getFloorLevel();
+        }
+        return this.deepestDescent;
+    }
+
+    /**
+     * Sets the deepest floor level the player has reached.
+     * <p>
+     * This method updates the deepest descent value with the provided floor level.
+     * It should be used cautiously to ensure consistency with the actual game state.
+     * </p>
+     * 
+     * @param newDeepest - The new deepest floor level to set.
+     */
+    public void setDeepestDescent(final Integer newDeepest) {
+        this.deepestDescent = newDeepest;
     }
 
     /**

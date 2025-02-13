@@ -238,4 +238,11 @@ class TestPlayer {
         assertEquals(Math.max(0, beaconBefore - 1), beaconAfter);
 
     }
+
+    @Test
+    void TestDeepestDescent() {
+        assertEquals(1, player.getDeepestDescent());
+        player.setDeepestDescent(3);
+        assertEquals(3, player.getDeepestDescent());
+    }
 }

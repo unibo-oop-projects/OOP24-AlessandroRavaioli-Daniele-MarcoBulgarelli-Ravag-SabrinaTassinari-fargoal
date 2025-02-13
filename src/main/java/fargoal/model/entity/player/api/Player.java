@@ -18,6 +18,17 @@ public interface Player extends Entity {
     void move(Position newPosition);
 
     /**
+     * Gets the deepest floor level the player has reached.
+     * <p>
+     * If the player's current floor level is greater than the previously recorded
+     * deepest descent, it updates the deepest descent value.
+     * </p>
+     * 
+     * @return the {@link Integer} that represents the deepest floor level the player has reached.
+     */
+    Integer getDeepestDescent();
+
+    /**
      * Gets the current level of the player.
      * 
      * @return the {@link Integer} representing the level of the player.
