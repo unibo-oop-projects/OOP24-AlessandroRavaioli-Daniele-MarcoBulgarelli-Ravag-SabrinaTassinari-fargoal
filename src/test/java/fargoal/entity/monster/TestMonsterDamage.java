@@ -58,7 +58,7 @@ class TestMonsterDamage {
         assertEquals(monster.getHealth().getCurrentHealth(), monster.getHealth().getMaxHealth());
         monster.receiveDamage();
         assertNotEquals(monster.getHealth().getCurrentHealth(), monster.getHealth().getMaxHealth());
-        if (monster.getHealth().getCurrentHealth() < 0) {
+        if (monster.getHealth().getCurrentHealth() <= 0) {
             assertTrue(monster.isDead());
         } else {
             assertFalse(monster.isDead());
