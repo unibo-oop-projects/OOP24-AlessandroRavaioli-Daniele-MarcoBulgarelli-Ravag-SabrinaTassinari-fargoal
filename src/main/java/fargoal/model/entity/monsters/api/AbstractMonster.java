@@ -114,7 +114,10 @@ public abstract class AbstractMonster implements Monster {
     @Override
     public Integer attack() {
         final int damage;
-        final var ratio = DAMAGE_NUMBER - this.getFloorManager().getFloorLevel() + 1;
+        var ratio = DAMAGE_NUMBER - this.getFloorManager().getFloorLevel() + 1;
+        if (ratio <= 0 && this.getFloorManager().getPlayer().hasSword()) {
+            ratio = 1;
+        }
         damage = random.nextInt(this.getFloorManager().getPlayer().getHealth().getCurrentHealth() / ratio + 1) + 1;
         return damage;
     }
