@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 import fargoal.commons.api.Position;
+import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
@@ -18,17 +19,41 @@ import fargoal.view.api.Renderer;
  */
 public class FloorConstructorImpl implements FloorConstructor {
 
+    private static final int MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS = 10;
+    private static final int EXTRA_ROOMS_IN_THE_BEGINNIG = 5;
+    private static final int EXTRA_ROOMS_BETWEEN_SIX_TO_TEN = 3;
+    private static final int EXTRA_ROOMS_END = 2;
     /**
      * {@inheritDoc}
      */
     @Override
-    public FloorMap createFloor(final RenderFactory renderFactory) {
-        return new FloorMapBuilder(renderFactory).buildRooms().buildCorridors().build();
+    public FloorMap createFloor(final FloorManager manager) {
+        //return new FloorMapBuilder(manager.getRenderFactory()).buildRooms().buildCorridors().build();
+        if (manager.getFloorLevel() <= 5) {
+            return new FloorMapBuilder(manager.getRenderFactory())
+                    .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_IN_THE_BEGINNIG)
+                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_IN_THE_BEGINNIG))
+                    .build();
+        } else if (manager.getFloorLevel() <= 10) {
+            return new FloorMapBuilder(manager.getRenderFactory())
+                    .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_BETWEEN_SIX_TO_TEN)
+                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_BETWEEN_SIX_TO_TEN))
+                    .build();
+        } else if (manager.getFloorLevel() <= 15) {
+            return new FloorMapBuilder(manager.getRenderFactory())
+                    .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_END)
+                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_END))
+                    .build();
+        } else {
+            return new FloorMapBuilder(manager.getRenderFactory())
+                    .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS)
+                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS)
+                    .build();
+        }
     }
 
     private class FloorMapBuilder {
 
-        private static final int NUMBER_OF_ROOMS_AND_CORRIDORS = 10;
         private static final int OPPOSITE_DIRECTION = 3;
         private static final int MINIMUM_ROOM_SIZE = 3;
         private static final int VARIABLE_ROOM_SIZE = 5;
@@ -118,8 +143,8 @@ public class FloorConstructorImpl implements FloorConstructor {
             }
         }
 
-        private FloorMapBuilder buildRooms() {
-            for (int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
+        private FloorMapBuilder buildRooms(final int numberOfRooms) {
+            for (int i = 0; i < numberOfRooms; i++) {
                 final int length = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
                 final int height = rnd.nextInt(VARIABLE_ROOM_SIZE) + MINIMUM_ROOM_SIZE;
                 final Position start = new Position(
@@ -131,8 +156,8 @@ public class FloorConstructorImpl implements FloorConstructor {
             return this;
         }
 
-        private FloorMapBuilder buildCorridors() {
-            for (int i = 0; i < NUMBER_OF_ROOMS_AND_CORRIDORS; i++) {
+        private FloorMapBuilder buildCorridors(final int numberOfCorridors) {
+            for (int i = 0; i < numberOfCorridors; i++) {
                 this.buildCorridor(centers.get(i));
             }
             return this;

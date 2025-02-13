@@ -6,12 +6,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import fargoal.commons.api.Position;
-import fargoal.controller.input.api.KeyboardInputController;
+import fargoal.model.core.GameEngine;
+import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.map.api.FloorConstructor;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.impl.FloorConstructorImpl;
-import fargoal.view.impl.SwingRenderFactory;
-import fargoal.view.impl.SwingView;
 
 class TestFloorGeneration {
 
@@ -23,7 +22,7 @@ class TestFloorGeneration {
 
     @BeforeAll
     static void init() {
-        map = fc.createFloor(new SwingRenderFactory(new SwingView(new KeyboardInputController())));
+        map = fc.createFloor(new FloorManagerImpl(new GameEngine()));
     }
 
     //CHECKSTYLE: MagicNumber OFF
@@ -48,12 +47,10 @@ class TestFloorGeneration {
     //I dont want the map to take a noticeable amount of time to generate
     @Test
     void testGeneration() {
-        final KeyboardInputController ctrl = new KeyboardInputController();
-        final SwingView view = new SwingView(ctrl);
-        final SwingRenderFactory rf = new SwingRenderFactory(view);
+        final FloorManagerImpl managerImpl = new FloorManagerImpl(new GameEngine());
         final long startTime = System.currentTimeMillis();
         for (int i = 0; i < NUMBER_OF_MAP_CREATIONS; i++) {
-            map = fc.createFloor(rf);
+            managerImpl.increaseFloorLevel();
         }
         final long endTime = System.currentTimeMillis() - startTime;
         assertTrue(endTime < NUMBER_OF_MAP_CREATIONS * MAXIMUM_MILLIS_PER_MAP); 
