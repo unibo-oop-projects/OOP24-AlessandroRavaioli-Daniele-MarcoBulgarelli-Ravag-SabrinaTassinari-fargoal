@@ -78,7 +78,7 @@ Le entità, invece, sono l’insieme dei mostri (in \ref{img:DiagrammaUMLAnalisi
 
 \begin{figure}
     \centering
-    \includegraphics[width=12cm]{chestItemFactory.drawio.png}
+    \includegraphics[width=8cm]{chestItemFactory.drawio.png}
     \caption{Schema UML dell'applicazione del \textit{pattern AbstractFactory} e di dove viene usata la Factory}
     \label{img:chestItemFactory}
 \end{figure}
@@ -97,9 +97,9 @@ Quando il giocatore interagisce con il forziere utilizzando il metodo \textbf{in
 %
 Questo porta a classi molto simili, con metodi ripetuti. 
 
-\paragraph{Soluzione} Ogni tipo di item ha delle caratteristiche simili, è stato quindi utilizzato il \textit{pattern Template Method}, in modo da poter riutilizzare la stessa classe per sviluppare più item.
+\paragraph{Soluzione} Ogni tipo di item ha delle caratteristiche simili; è stato quindi utilizzato il \textit{pattern Template Method}, in modo da poter riutilizzare la stessa classe per sviluppare più item.
 %
-Per quanto riguarda gli incantesimi, il metodo template è 
+Per ogni tipo di item il metodo template è \textbf{use()}, che utilizza il metodo astratto \textbf{effect()}. 
 
 \subsection{Tramonti Daniele}
 
