@@ -103,12 +103,12 @@ public class TitleScreenManager extends AbstractMenuManager {
     }
 
     @Override
-    public boolean resetCondition() {
+    public boolean loopCondition() {
         return this.getSelected() < DEFAULT_VALUE || this.getSelected() > NUMBER_OF_OPTIONS;
     }
 
     @Override
-    public void resetSelected() {
+    public void loopSelected() {
         this.setSelected(this.getSelected() < DEFAULT_VALUE ? NUMBER_OF_OPTIONS : DEFAULT_VALUE);
     }
 }
