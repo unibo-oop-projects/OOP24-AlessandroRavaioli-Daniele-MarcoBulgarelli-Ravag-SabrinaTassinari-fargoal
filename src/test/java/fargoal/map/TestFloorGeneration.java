@@ -8,16 +8,16 @@ import org.junit.jupiter.api.Test;
 import fargoal.commons.api.Position;
 import fargoal.model.core.GameEngine;
 import fargoal.model.manager.impl.FloorManagerImpl;
-import fargoal.model.map.api.FloorConstructor;
+import fargoal.model.map.api.FloorGenerator;
 import fargoal.model.map.api.FloorMap;
-import fargoal.model.map.impl.FloorConstructorImpl;
+import fargoal.model.map.impl.FloorGeneratorImpl;
 
 class TestFloorGeneration {
 
     private static final int MAXIMUM_MILLIS_PER_MAP = 200;
     private static final int NUMBER_OF_MAP_CREATIONS = 1000;
 
-    private static FloorConstructor fc = new FloorConstructorImpl();
+    private static FloorGenerator fc = new FloorGeneratorImpl();
     private static FloorMap map;
 
     @BeforeAll

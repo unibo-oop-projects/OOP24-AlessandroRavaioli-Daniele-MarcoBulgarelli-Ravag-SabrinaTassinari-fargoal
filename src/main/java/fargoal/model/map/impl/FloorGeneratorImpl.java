@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import fargoal.commons.api.Position;
 import fargoal.model.manager.api.FloorManager;
-import fargoal.model.map.api.FloorConstructor;
+import fargoal.model.map.api.FloorGenerator;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
@@ -17,7 +17,7 @@ import fargoal.view.api.Renderer;
 /**
  * class that creates a random floor.
  */
-public class FloorConstructorImpl implements FloorConstructor {
+public class FloorGeneratorImpl implements FloorGenerator {
 
     private static final int MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS = 10;
     private static final int EXTRA_ROOMS_IN_THE_BEGINNIG = 5;

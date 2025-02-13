@@ -5,7 +5,7 @@ import fargoal.model.manager.api.FloorManager;
 /**
  * interface for a class that generates a floor.
  */
-public interface FloorConstructor {
+public interface FloorGenerator {
 
     /**
      * the method that creates a floor.

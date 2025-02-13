@@ -25,7 +25,7 @@ import fargoal.model.interactable.stair.impl.UpStairs;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.api.FloorMask;
-import fargoal.model.map.impl.FloorConstructorImpl;
+import fargoal.model.map.impl.FloorGeneratorImpl;
 import fargoal.model.map.impl.FloorMaskImpl;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.impl.InventoryInformationRenderer;
@@ -217,7 +217,7 @@ public class FloorManagerImpl implements FloorManager {
     }
 
     private void initializeFloor() {
-        this.map = new FloorConstructorImpl().createFloor(this);
+        this.map = new FloorGeneratorImpl().createFloor(this);
         this.mask.resetMask();
         this.monsters.clear();
         this.interactables.clear();
