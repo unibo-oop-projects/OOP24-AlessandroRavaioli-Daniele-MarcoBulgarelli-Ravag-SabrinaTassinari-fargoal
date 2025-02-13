@@ -23,23 +23,27 @@ public class FloorConstructorImpl implements FloorConstructor {
     private static final int EXTRA_ROOMS_IN_THE_BEGINNIG = 5;
     private static final int EXTRA_ROOMS_BETWEEN_SIX_TO_TEN = 3;
     private static final int EXTRA_ROOMS_END = 2;
+    private static final int LOW_LEVELS = 5;
+    private static final int MEDIUM_LEVELS = 10;
+    private static final int HIGH_LEVELS = 15;
+
     /**
      * {@inheritDoc}
      */
     @Override
     public FloorMap createFloor(final FloorManager manager) {
         //return new FloorMapBuilder(manager.getRenderFactory()).buildRooms().buildCorridors().build();
-        if (manager.getFloorLevel() <= 5) {
+        if (manager.getFloorLevel() <= LOW_LEVELS) {
             return new FloorMapBuilder(manager.getRenderFactory())
                     .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_IN_THE_BEGINNIG)
                     .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_IN_THE_BEGINNIG))
                     .build();
-        } else if (manager.getFloorLevel() <= 10) {
+        } else if (manager.getFloorLevel() <= MEDIUM_LEVELS) {
             return new FloorMapBuilder(manager.getRenderFactory())
                     .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_BETWEEN_SIX_TO_TEN)
                     .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_BETWEEN_SIX_TO_TEN))
                     .build();
-        } else if (manager.getFloorLevel() <= 15) {
+        } else if (manager.getFloorLevel() <= HIGH_LEVELS) {
             return new FloorMapBuilder(manager.getRenderFactory())
                     .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_END)
                     .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_END))

@@ -276,5 +276,5 @@ public class SwingRenderFactory implements RenderFactory {
                     null);
             }
         }, this.view);
-    }    
+    }
 }

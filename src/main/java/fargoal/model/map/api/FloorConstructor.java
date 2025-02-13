@@ -10,7 +10,7 @@ public interface FloorConstructor {
     /**
      * the method that creates a floor.
      * 
-     * @param renderFactory - the factory that is used to obtain the renders that the floor will use
+     * @param manager - the manager that contains information on the current level and the renders to use
      * @return - a new map of the floor
      */
     FloorMap createFloor(FloorManager manager);
