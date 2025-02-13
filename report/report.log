@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  13 FEB 2025 18:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  13 FEB 2025 18:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -226,7 +226,7 @@ Appendice A.
 [12
 
 ]
-Overfull \hbox (1.16798pt too wide) in paragraph at lines 281--282
+Overfull \hbox (1.16798pt too wide) in paragraph at lines 289--290
 []\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
  []
 
@@ -250,7 +250,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,8n,65p,527b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Daniele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (14 pages, 299742 bytes).
+Output written on report.pdf (14 pages, 300440 bytes).
 PDF statistics:
  115 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
