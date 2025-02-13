@@ -173,7 +173,7 @@ class TestPlayer {
             e.printStackTrace();
         }
 
-        player.PassiveRegeneration();
+        player.passiveRegeneration();
         int hpAfter = player.getHealth().getCurrentHealth();
 
         assertEquals(hpBefore + 1, hpAfter);
@@ -193,7 +193,7 @@ class TestPlayer {
             e.printStackTrace();
         }
 
-        player.PassiveRegeneration();
+        player.passiveRegeneration();
         int hpAfter = player.getHealth().getCurrentHealth();
 
         assertEquals(hpBefore + 1, hpAfter);

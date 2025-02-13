@@ -57,7 +57,7 @@ public class PlayerImpl implements Player {
     private Integer numberOfSlainFoes;
     private final Timer moveTimer;
     private long regenerationTimer;
-    private int attackCounter = 0;
+    private int attackCounter;
 
     private boolean hasSword;
     private boolean isFighting;
@@ -66,17 +66,17 @@ public class PlayerImpl implements Player {
     private boolean hasLight;
     private boolean isImmune;
 
-    private PlayerInformationRenderer playerInformationRender;
+    private final PlayerInformationRenderer playerInformationRender;
     private final InventoryInformationRenderer infoRenderer;
     private Renderer render;
-    private FloorManager floorManager;
+    private final FloorManager floorManager;
 
     int healingTime = 0;
 
-    public PlayerImpl(FloorManager floorManager,
-        KeyboardInputController controller,
-        PlayerInformationRenderer playerInformationRenderer,
-        InventoryInformationRenderer infoRenderer) {
+    public PlayerImpl(final FloorManager floorManager,
+        final KeyboardInputController controller,
+        final PlayerInformationRenderer playerInformationRenderer,
+        final InventoryInformationRenderer infoRenderer) {
 
         this.floorManager = floorManager;
         this.input = new PlayerInputComponent();
@@ -103,7 +103,7 @@ public class PlayerImpl implements Player {
         this.moveTimer = new Timer();
         this.regenerationTimer = System.currentTimeMillis();
 
-        this.PassiveRegeneration();
+        this.passiveRegeneration();
     }
 
     /**
@@ -118,7 +118,7 @@ public class PlayerImpl implements Player {
 
     /**{@inheritDoc} */
     @Override
-    public void move(Position newPosition) {
+    public void move(final Position newPosition) {
         this.position = newPosition;
     }
 
@@ -323,7 +323,7 @@ public class PlayerImpl implements Player {
 
     /**{@inheritDoc} */
     @Override
-    public void setIsVisible(boolean condition) {
+    public void setIsVisible(final boolean condition) {
         this.isVisible = condition;
     }
 
@@ -350,7 +350,7 @@ public class PlayerImpl implements Player {
     /** {@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
-        this.PassiveRegeneration();
+        this.passiveRegeneration();
         if (this.moveTimer.updateTime(floorManager.getTimePassed()) == 0) {
             if (isFighting) {
                 if (!isAttacked) {
@@ -359,10 +359,10 @@ public class PlayerImpl implements Player {
                     if (!this.getPosition().equals(pos)) {
                         isFighting = false;
                         floorManager.getMonsters().stream()
-                                .filter(p -> p.isFighting())
+                                .filter(Monster::isFighting)
                                 .forEach(p -> p.setIsFighting(false));
                     } else {
-                        for (var monster : floorManager.getMonsters()) {
+                        for (final var monster : floorManager.getMonsters()) {
                             if (monster.isFighting()) {
                                 this.battle(monster);
                                 break;
@@ -373,7 +373,7 @@ public class PlayerImpl implements Player {
                     }
                 } else {
                     this.battle(floorManager.getMonsters().stream()
-                            .filter(p -> p.isFighting())
+                            .filter(Monster::isFighting)
                             .findAny()
                             .get());
                 }
@@ -386,7 +386,7 @@ public class PlayerImpl implements Player {
 
     /** {@inheritDoc}*/
     @Override
-    public void setIsImmune(Boolean condition) {
+    public void setIsImmune(final boolean condition) {
         this.isImmune = condition;
     }
 
@@ -414,7 +414,7 @@ public class PlayerImpl implements Player {
             attackCounter = 0;
 
             this.increasePlayerSkill(new Random().nextInt(MIN_SKILL_REWARD, MAX_SKILL_REWARD));
-            int gainedExp = this.getLevel() * (monster.getSkill() + monster.getHealth().getMaxHealth());
+            final int gainedExp = this.getLevel() * (monster.getSkill() + monster.getHealth().getMaxHealth());
             this.addExperiencePoints(gainedExp);
             this.levelUp();
             this.increaseNumberOfSlainFoes();
@@ -428,15 +428,15 @@ public class PlayerImpl implements Player {
         if(monster == null) {
             throw new IllegalArgumentException("The monster passed to this method can not be null");
         } else {
-            int ratio = this.getSkill() / monster.getSkill();
-            Random random = new Random();
-            return random.nextInt(MINIMUM_DAMAGE, (DAMAGE_MULTIPLIER * this.getLevel() * ratio));
+            final int ratio = this.getSkill() / monster.getSkill();
+            final Random random = new Random();
+            return random.nextInt(MINIMUM_DAMAGE, DAMAGE_MULTIPLIER * this.getLevel() * ratio);
         }
     }
 
     /** {@inheritDoc} */
     @Override
-    public void receiveDamage(Monster monster) {
+    public void receiveDamage(final Monster monster) {
         //if player hasn't shield
         if(!this.inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
             this.health.decreaseHealth(monster.attack());
@@ -448,8 +448,8 @@ public class PlayerImpl implements Player {
     /**{@inheritDoc}*/
     @Override
     public boolean isDead() {
-        int currentHealth = this.health.getCurrentHealth();
-        int potions = inventory.getHealingPotions().getNumberInInventory();
+        final int currentHealth = this.health.getCurrentHealth();
+        final int potions = inventory.getHealingPotions().getNumberInInventory();
 
         if (!isFighting()) {
             return currentHealth <= 0;
@@ -486,10 +486,8 @@ public class PlayerImpl implements Player {
      * increases by 1 and the regeneration timer is reset.
      * </p>
      */
-    public void PassiveRegeneration() {    
+    public void passiveRegeneration() {    
         
-        final int baseHealingAmount = 1;
-        int regenerationPeriod = 10000;
         final long time = System.currentTimeMillis();
         final boolean check = floorManager.getAllElements().stream()
                 .filter(p -> p instanceof Temple)
@@ -499,6 +497,9 @@ public class PlayerImpl implements Player {
         if (this.isFighting) {
             return;
         }
+
+        final int baseHealingAmount = 1;
+        int regenerationPeriod = 10_000;
 
         if (this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && check && this.isOnTemple()) {
             regenerationPeriod = regenerationPeriod / 5;

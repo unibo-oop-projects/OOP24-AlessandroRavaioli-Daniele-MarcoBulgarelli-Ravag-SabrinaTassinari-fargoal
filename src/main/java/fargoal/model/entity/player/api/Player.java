@@ -102,14 +102,14 @@ public interface Player extends Entity {
      * 
      * @return {@code true} if the player is visible, {@code false} otherwise.
      */
-    public boolean isVisible();
+    boolean isVisible();
 
     /**
      * Sets the visibility status of the player.
      * 
      * @param condition - the new visibility status to set.
      */
-    public void setIsVisible(boolean condition);
+    void setIsVisible(boolean condition);
 
     /**
      * Returns the light spell status of the player.
@@ -118,28 +118,28 @@ public interface Player extends Entity {
      * otherwise, the light spell is not active.
      * </p>
      */
-    public boolean hasLight();
+    boolean hasLight();
 
     /**
      * Sets the light spell status of the player.
      * 
      * @param condition - the new light spell status to set.
      */
-    public void setHasLight(boolean condition);
+    void setHasLight(boolean condition);
 
     /**
      * Sets the player's skill to the amount given.
      * 
      * @param amount - the new value to set player's skill to.
      */
-    public void setPlayerSkill(Integer amount);
+    void setPlayerSkill(Integer amount);
 
     /**
      * Increases the player's skill of the amount given.
      * 
      * @param amount - the value to add to player's skill.
      */
-    void increasePlayerSkill(final Integer amount);
+    void increasePlayerSkill(Integer amount);
 
     /**
      * Calculates the amount of damage the player does against the monster 
@@ -192,7 +192,7 @@ public interface Player extends Entity {
      * 
      * @param condition - the new immunity status to set.
      */
-    void setIsImmune(Boolean condition);
+    void setIsImmune(boolean condition);
 
     /**
      * Uses the invisibility spell from the player's inventory if available.
@@ -280,14 +280,14 @@ public interface Player extends Entity {
      * 
      * @param monster - The enemy {@link Monster} to battle against.
      */
-    void battle(final Monster monster);
+    void battle(Monster monster);
 
     /**
      * Sets the attacked status of the player.
      * 
      * @param value - the new immunity status to set. True if the player has been attacked, false otherwise.
      */
-    void setIsAttacked(final boolean value);
+    void setIsAttacked(boolean value);
 
     /**
      * Checks if the player is currently engaged in combat.
