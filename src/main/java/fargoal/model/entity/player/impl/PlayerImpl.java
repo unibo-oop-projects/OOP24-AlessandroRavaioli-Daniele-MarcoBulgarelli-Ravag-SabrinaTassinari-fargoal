@@ -21,6 +21,7 @@ import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
+import fargoal.model.interactable.temple.Temple;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.map.api.FloorMap;
 import fargoal.view.api.RenderFactory;
@@ -66,7 +67,7 @@ public class PlayerImpl implements Player {
     private final Inventory inventory;
     private Integer numberOfSlainFoes;
     private final Timer moveTimer;
-    private final Timer regenerationTimer;
+    private long regenerationTimer;
     private int attackCounter = 0;
 
     private boolean hasSword;
@@ -112,9 +113,9 @@ public class PlayerImpl implements Player {
         this.infoRenderer.setRenderer(this.inventory);
         this.setRender(floorManager.getRenderFactory().playerRenderer(this));
         this.moveTimer = new Timer();
-        this.regenerationTimer = new Timer();
+        this.regenerationTimer = System.currentTimeMillis();
 
-        this.PasiveRegeneration();
+        this.PassiveRegeneration();
     }
 
     /**
@@ -378,7 +379,7 @@ public class PlayerImpl implements Player {
     /** {@inheritDoc}*/
     @Override
     public void update(final FloorManager floorManager) {
-        this.PasiveRegeneration();
+        this.PassiveRegeneration();
         if (this.moveTimer.updateTime(floorManager.getTimePassed()) == 0) {
             if (isFighting) {
                 if (!isAttacked) {
@@ -444,6 +445,7 @@ public class PlayerImpl implements Player {
             int gainedExp = this.getLevel() * (monster.getSkill() + monster.getHealth().getMaxHealth());
             this.addExperiencePoints(gainedExp);
             this.levelUp();
+            this.increaseNumberOfSlainFoes();
         }
     }
 
@@ -501,27 +503,39 @@ public class PlayerImpl implements Player {
      * {@link UnsupportedOperationException} when called.
      * </p>
      */
-    public void PasiveRegeneration() {    
+    public void PassiveRegeneration() {    
         
         final int baseHealingAmount = 1;
         int regenerationPeriod = 10000;
+        final long time = System.currentTimeMillis();
 
-    }
-
-    /**
-     * Stops the passive health regeneration by shutting down the scheduler.
-     * This method halts the scheduled task responsible for the player's health regeneration.
-     * Once invoked, no further health regeneration will occour until the regeneration process is started again.
-     * <p>
-     * Calling this method will terminate any ongoing regeneration tasks managed by the scheduler.
-     * </p>
-     */
-    public void stopRegeneration() {
-        if(scheduler != null && !scheduler.isShutdown()) {
-            scheduler.shutdown();
-            System.out.println("Debug: Passive Regeneration Stopped");
+        if (this.isFighting) {
+            return;
         }
+
+        // possible cases
+        if (this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && this.isOnTemple()) {
+            regenerationPeriod = regenerationPeriod / 5;
+        } else if ((this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && !this.isOnTemple()) || (!this.inventory.getSpellCasted().get(SpellType.REGENERATION.getName()) && this.isOnTemple())) {
+            regenerationPeriod = regenerationPeriod / 2;
+        }
+
+        //actual regeneration
+        if (Math.abs(this.getRegenerationTimer() - time) >= regenerationPeriod) {
+            this.health.increaseHealth(baseHealingAmount);
+            resetRegenerationTimer();
+        }
+
     }
+
+    private void resetRegenerationTimer() {
+        this.regenerationTimer = System.currentTimeMillis();
+    }
+
+    private long getRegenerationTimer() {
+        return this.regenerationTimer;
+    }
+
 
     private Optional<Interactable> getStandingTile() {
         Optional<Interactable> tileObject = floorManager.getInteractables()
@@ -530,6 +544,12 @@ public class PlayerImpl implements Player {
                     .findAny();
 
         return tileObject;
+    }
+
+    private boolean isOnTemple() {
+        return getStandingTile()
+                .filter(tile -> tile instanceof Temple)
+                .isPresent();
     }
 
     @Override
