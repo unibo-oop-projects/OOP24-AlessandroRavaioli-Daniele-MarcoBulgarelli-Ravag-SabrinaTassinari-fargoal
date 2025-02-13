@@ -44,7 +44,7 @@ public class FloorManagerImpl implements FloorManager {
     private static final int MAX_NUMBER_OF_TREASURES = 25;
     private static final int FIXED_NUMBER_OF_STAIRS = 2;
     private static final int VARIABLE_NUMBER_OF_STAIRS = 2;
-    private static final int TIME_TO_WAIT_ON_EVENT = 1500;
+    private static final int TIME_TO_WAIT_ON_EVENT = 1000;
     private static final int MINIMUM_SWORD_LEVEL = 15;
     private static final int VARIABLE_SWORD_LEVEL = 6;
 
@@ -92,9 +92,6 @@ public class FloorManagerImpl implements FloorManager {
      */
     @Override
     public void update(final GameEngine engine) {
-        if (isOver) {
-            this.setSceneManager(engine);
-        }
         this.elapsed = engine.getElapsedTime();
         //Try to generate a monster, i don't need it to be guaranteed
         if (this.monsters.size() < MAX_MONSTERS) {
@@ -104,6 +101,9 @@ public class FloorManagerImpl implements FloorManager {
             Collections.shuffle(this.interactables);
         }
         if (timer.updateTime(this.elapsed) == 0) {
+            if (isOver) {
+                this.setSceneManager(engine);
+            }
             if (this.player.isFighting()) {
                 this.player.update(this);
             } else {
