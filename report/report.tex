@@ -78,7 +78,7 @@ Le entità, invece, sono l’insieme dei mostri (in \ref{img:DiagrammaUMLAnalisi
 
 \begin{figure}
     \centering
-    \includegraphics[width=8cm]{chestItemFactory.drawio.png}
+    \includegraphics[width=8cm]{patternFactory.drawio.png}
     \caption{Schema UML dell'applicazione del \textit{pattern AbstractFactory} e di dove viene usata la Factory}
     \label{img:chestItemFactory}
 \end{figure}
@@ -87,17 +87,24 @@ Le entità, invece, sono l’insieme dei mostri (in \ref{img:DiagrammaUMLAnalisi
 
 \paragraph{Soluzione} Per gestire la generazione di item all'apertura della cesta si utilizza il \textit{pattern Abstract Factory}, come da \ref{img:chestItemFactory}.
 %
-L'interfaccia creatrice fornisce i metodi factory che hanno il compito di creare tutti gli item che si possono trovare nei forzieri. 
+L'interfaccia creatrice fornisce i metodi factory che hanno il compito di creare tutti gli item che si possono trovare nei forzieri, come da \ref{img:chestItemFactory}. 
 %
 Quando il giocatore interagisce con il forziere utilizzando il metodo \textbf{interact()} viene generato, utilizzando il metodo opportuno, un item scelto in modo randomico tra tutti.
 
 \subsubsection{Riuso del codice per un determinato tipo di item}
 
+\begin{figure}
+    \centering
+    \includegraphics[width=8cm]{patternTemplateItem.drawio.png}
+    \caption{Schema UML dell'applicazione del \textit{pattern Template Method}}
+    \label{img:templateItem}
+\end{figure}
+
 \paragraph{Problema} Sviluppando i vari item che il giocatore può trovare nei forzieri, ci si è accorti che quelli di stesso tipo, quindi incantesimi, trappole e utility, condividono molte caratteristiche.
 %
 Questo porta a classi molto simili, con metodi ripetuti. 
 
-\paragraph{Soluzione} Ogni tipo di item ha delle caratteristiche simili; è stato quindi utilizzato il \textit{pattern Template Method}, in modo da poter riutilizzare la stessa classe per sviluppare più item.
+\paragraph{Soluzione} Ogni tipo di item ha delle caratteristiche simili; è stato quindi utilizzato il \textit{pattern Template Method}, in modo da poter riutilizzare la stessa classe per sviluppare più item, come da \ref{img:templateItem}.
 %
 Per ogni tipo di item il metodo template è \textbf{use()}, che utilizza il metodo astratto \textbf{effect()}. 
 
