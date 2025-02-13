@@ -17,7 +17,7 @@ import fargoal.view.api.RenderFactory;
 public class Mage extends AbstractMonster {
 
     private static final int NEXT_MOVE = 2000;
-    private static final int MAX_SPELLS = 5;
+    private static final int MAX_SPELLS = 6;
     private static final int MIN_WAIT = 1250;
     private static final int MAX_WAIT = 1750;
     private static final int FLOOR_CHANGE = 9;
@@ -57,10 +57,10 @@ public class Mage extends AbstractMonster {
     @Override
     public void steal() {
         final Inventory inventory = this.getFloorManager().getPlayer().getInventory();
-        final int num = this.getRandom(MAX_SPELLS + 1);
         boolean check = false;
         while (!check) {
-            if (num == 0 
+            var num = this.getRandom(MAX_SPELLS);
+            if (num == 0
                     && inventory.getInvisibilitySpell().getNumberInInventory() > 0) {
                         this.getFloorManager()
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getInvisibilitySpell(), this));
@@ -90,7 +90,7 @@ public class Mage extends AbstractMonster {
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getLightSpell(), this));
                         inventory.getLightSpell().removeSpell();
                         check = true;
-            } else if (num == MAX_SPELLS
+            } else if (num == MAX_SPELLS - 1
                     && inventory.getDriftSpell().getNumberInInventory() > 0) {
                         this.getFloorManager()
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getDriftSpell(), this));
