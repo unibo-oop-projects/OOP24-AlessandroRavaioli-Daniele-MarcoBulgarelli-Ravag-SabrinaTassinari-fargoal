@@ -11,12 +11,12 @@ import fargoal.model.entity.monsters.api.Monster;
 public interface Player extends Entity {
 
     /**
-     * Moves the player to a new position
+     * Moves the player to a new position.
      * 
      * @param newPosition - The new position to move the player to.
      */
     void move(Position newPosition);
-    
+
     /**
      * Gets the current level of the player.
      * 
@@ -42,7 +42,7 @@ public interface Player extends Entity {
      * Adds experience points to the player's total experience.
      * Ensures that the amount added is non-negative and not null.
      * 
-     * @param experiencePointToAdd - The amount of experience points to be added.
+     * @param experiencePointsToAdd - The amount of experience points to be added.
      * 
      * @throws IllegalArgumentException if the experience points to add is null or negative.
      */
@@ -117,6 +117,8 @@ public interface Player extends Entity {
      * This checks whether the light spell is active. If true, the light spell is active;
      * otherwise, the light spell is not active.
      * </p>
+     * 
+     * @return {@code true} if the light spell is active,{@code false} otherwise.
      */
     boolean hasLight();
 
@@ -177,6 +179,8 @@ public interface Player extends Entity {
      * Whenever the player levels up their max health and
      * their skill increase, the level increases by one and
      * the next required experience points double.
+     * 
+     * @return {@code false} if the player has not enough experience points to level up, {@code false} otherwise. 
      */
     boolean levelUp();
 
