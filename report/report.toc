@@ -15,17 +15,17 @@
 \contentsline {paragraph}{Soluzione}{5}{}%
 \contentsline {subsubsection}{Riuso del codice per un determinato tipo di item}{5}{}%
 \contentsline {paragraph}{Problema}{5}{}%
-\contentsline {paragraph}{Soluzione}{5}{}%
+\contentsline {paragraph}{Soluzione}{7}{}%
 \contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{7}{}%
 \contentsline {subsubsection}{Struttura base dei nemici}{7}{}%
 \contentsline {paragraph}{Problema}{7}{}%
 \contentsline {paragraph}{Soluzione}{7}{}%
 \contentsline {subsubsection}{Creazione dei nemici}{7}{}%
 \contentsline {paragraph}{Problema}{7}{}%
-\contentsline {paragraph}{Soluzione}{7}{}%
-\contentsline {subsubsection}{Movimento dei nemici}{9}{}%
-\contentsline {paragraph}{Problema}{9}{}%
-\contentsline {paragraph}{Soluzione}{9}{}%
+\contentsline {paragraph}{Soluzione}{8}{}%
+\contentsline {subsubsection}{Movimento dei nemici}{8}{}%
+\contentsline {paragraph}{Problema}{8}{}%
+\contentsline {paragraph}{Soluzione}{8}{}%
 \contentsline {chapter}{\numberline {3}Sviluppo}{10}{}%
 \contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{10}{}%
 \contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{10}{}%
