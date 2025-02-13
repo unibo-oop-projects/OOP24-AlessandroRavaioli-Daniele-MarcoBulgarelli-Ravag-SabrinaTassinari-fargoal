@@ -67,7 +67,7 @@ public class SwingView implements View, KeyListener {
      * @param c - to recognize the input on the panels
      */
     public SwingView(final KeyboardInputController c) {
-        this.frame = new JFrame();
+        this.frame = new JFrame("Fargoal");
         this.mapPanel = new SwingViewCanvas();
         this.eventPanel = new SwingViewCanvas();
         this.informationPanel = new SwingViewCanvas();
