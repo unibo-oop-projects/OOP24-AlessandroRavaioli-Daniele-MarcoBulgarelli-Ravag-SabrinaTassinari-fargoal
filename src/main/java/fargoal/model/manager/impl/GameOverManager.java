@@ -78,11 +78,13 @@ public class GameOverManager extends AbstractMenuManager {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean loopCondition() {
         return this.getSelected() < DEFAULT_VALUE || this.getSelected() > NUMBER_OF_OPTIONS;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void loopSelected() {
         this.setSelected(this.getSelected() < DEFAULT_VALUE ? NUMBER_OF_OPTIONS : DEFAULT_VALUE);

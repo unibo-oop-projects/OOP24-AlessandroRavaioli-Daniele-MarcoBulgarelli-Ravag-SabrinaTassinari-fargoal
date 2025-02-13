@@ -63,7 +63,7 @@ public class TitleScreenManager extends AbstractMenuManager {
     public void setSceneManager(final GameEngine engine) {
         engine.setSceneManager(new FloorManagerImpl(engine));
     }
-    
+
     /** {@inheritDoc} */
     @Override
     public void select() {
@@ -102,11 +102,13 @@ public class TitleScreenManager extends AbstractMenuManager {
         }, view);
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean loopCondition() {
         return this.getSelected() < DEFAULT_VALUE || this.getSelected() > NUMBER_OF_OPTIONS;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void loopSelected() {
         this.setSelected(this.getSelected() < DEFAULT_VALUE ? NUMBER_OF_OPTIONS : DEFAULT_VALUE);
