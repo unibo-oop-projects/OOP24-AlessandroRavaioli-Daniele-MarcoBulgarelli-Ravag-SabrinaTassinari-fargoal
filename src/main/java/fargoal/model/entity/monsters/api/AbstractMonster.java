@@ -22,7 +22,7 @@ public abstract class AbstractMonster implements Monster {
 
     private static final Integer RANDOM_SKILL = 4;
     private static final Integer RANDOM_HP = 6;
-    private int damageNumber = 15;
+    private static final int DAMAGE_NUMBER = 15;
     private boolean isFighting;
     private long timer;
     private final List<Position> lastPositions = new ArrayList<>();
@@ -114,7 +114,7 @@ public abstract class AbstractMonster implements Monster {
     @Override
     public Integer attack() {
         final int damage;
-        var ratio = damageNumber - this.getFloorManager().getFloorLevel() + 1;
+        var ratio = DAMAGE_NUMBER - this.getFloorManager().getFloorLevel() + 1;
         damage = random.nextInt(this.getFloorManager().getPlayer().getHealth().getCurrentHealth() / ratio + 1) + 1;
         System.out.println("Monster did " + damage + " damage");
         return damage;
@@ -251,13 +251,7 @@ public abstract class AbstractMonster implements Monster {
         return this.floorManager;
     }
 
-    /**
-     * Return if the monster and the player are near(based on the given amount).
-     * 
-     * @param floorManager - which can give all the information we need
-     * @param amount - the Integer to set the proximity area
-     * @return if the monster is near the player
-     */
+    /** {@inheritDoc} */
     @Override
     public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
         return Math.abs(floorManager.getPlayer().getPosition().x() - this.getPosition().x()) <= amount
@@ -270,11 +264,13 @@ public abstract class AbstractMonster implements Monster {
      */
     public void steal() { }
 
+    /** {@inheritDoc} */
     @Override
-    public void setIsFighting(boolean condition) {
+    public void setIsFighting(final boolean condition) {
         this.isFighting = condition;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isFighting() {
         return this.isFighting;

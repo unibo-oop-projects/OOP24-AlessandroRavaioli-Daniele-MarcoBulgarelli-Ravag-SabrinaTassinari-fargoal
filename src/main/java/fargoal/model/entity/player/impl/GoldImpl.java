@@ -7,7 +7,7 @@ import fargoal.model.entity.player.api.Gold;
  */
 public class GoldImpl implements Gold{
 
-    private static final int INITIAL_GOLD_MAX_CAPACITY = 2000;
+    private static final int INITIAL_GOLD_MAX_CAPACITY = 100;
 
     private Integer currentGold;
     private Integer maxCapacity;
@@ -18,7 +18,7 @@ public class GoldImpl implements Gold{
      * set to 0.
      */
     public GoldImpl(){
-        this.currentGold = 2000;
+        this.currentGold = 0;
         this.maxCapacity = INITIAL_GOLD_MAX_CAPACITY;
         this.goldDonated = 0;
     }

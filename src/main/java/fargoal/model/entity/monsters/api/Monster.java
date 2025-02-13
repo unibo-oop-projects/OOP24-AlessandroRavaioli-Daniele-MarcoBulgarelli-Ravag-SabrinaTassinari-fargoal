@@ -116,9 +116,27 @@ public interface Monster extends Entity {
      */
     void addFirstPosition(Position position);
 
+    /**
+     * Method that set the field isFighting of the monster
+     * true if the condition given is true, false otherwise.
+     * 
+     * @param condition - the boolean value to give to the isFighting field
+     */
     void setIsFighting(boolean condition);
 
+    /**
+     * Method that return if the monster is fighting or not.
+     * 
+     * @return - if the monster is in a fight or not
+     */
     boolean isFighting();
 
-    public boolean areNeighbours(final FloorManager floorManager, final Integer amount);
+    /**
+     * Return if the monster and the player are near(based on the given amount).
+     * 
+     * @param floorManager - which can give all the information we need
+     * @param amount - the Integer to set the proximity area
+     * @return if the monster is near the player
+     */
+    boolean areNeighbours(FloorManager floorManager, Integer amount);
 }

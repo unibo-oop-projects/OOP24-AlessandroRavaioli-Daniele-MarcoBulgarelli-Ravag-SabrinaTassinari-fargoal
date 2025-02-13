@@ -17,7 +17,7 @@ import fargoal.view.api.RenderFactory;
 public class Rogue extends AbstractMonster {
 
     private static final int NEXT_MOVE = 3000;
-    private final int minimumWait;
+    private final int minimumWait = 2000;
     private int nextMove;
 
     /**
@@ -34,7 +34,6 @@ public class Rogue extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        minimumWait = 2000;
         setMonsterType(MonsterType.ROGUE);
         this.setRender(renderFactory.rogueRenderer(this));
     }

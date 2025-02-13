@@ -18,6 +18,7 @@ public class Monk extends AbstractMonster {
     private static final int HEAL_CONSTANT = 19;
     private static final int MIN_WAIT = 1500;
     private static final int MAX_WAIT = 1650;
+    private static final int FLOOR_CHANGE = 6;
     private final int minimumWait;
     private int nextMove;
 
@@ -35,7 +36,7 @@ public class Monk extends AbstractMonster {
             final FloorManager floorManager,
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
-        if (floorManager.getFloorLevel() > 6) {
+        if (floorManager.getFloorLevel() > FLOOR_CHANGE) {
             minimumWait = MIN_WAIT;
         } else {
             minimumWait = MAX_WAIT;

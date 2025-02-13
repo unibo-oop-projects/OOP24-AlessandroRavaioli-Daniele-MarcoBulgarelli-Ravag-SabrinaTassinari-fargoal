@@ -17,6 +17,7 @@ public class WarLord extends AbstractMonster {
     private static final int NEXT_MOVE = 1500;
     private static final int MIN_WAIT = 1000;
     private static final int MAX_WAIT = 1500;
+    private static final int FLOOR_CHANGE = 12;
     private final int minimumWait;
     private final int numForShield;
     private boolean shield;
@@ -38,7 +39,7 @@ public class WarLord extends AbstractMonster {
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
         setMonsterType(MonsterType.WAR_LORD);
-        if (floorManager.getFloorLevel() > 12) {
+        if (floorManager.getFloorLevel() > FLOOR_CHANGE) {
             minimumWait = MIN_WAIT;
         } else {
             minimumWait = MAX_WAIT;
