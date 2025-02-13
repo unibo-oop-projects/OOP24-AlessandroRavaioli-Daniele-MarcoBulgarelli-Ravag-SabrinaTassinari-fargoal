@@ -57,8 +57,10 @@ public class InventoryImpl implements Inventory {
      * <p>
      * A map is used to track the active state of spells, initially setting them as inactive.
      * </p>
+     * 
+     * @param floorManager - to get all the infos the method needs
      */
-    public InventoryImpl(FloorManager floorManager) {
+    public InventoryImpl(final FloorManager floorManager) {
         this.healingPotions = new HealingPotion();
         this.beacons = new Beacon();
         this.magicSacks = new MagicSack(floorManager);
@@ -114,36 +116,43 @@ public class InventoryImpl implements Inventory {
         return this.SpellCasted;
     }
 
+    /** {@inheritDoc} */
     @Override
     public InvisibilitySpell getInvisibilitySpell() {
         return this.invisibilityScroll;
     }
 
+    /** {@inheritDoc} */
     @Override
     public TeleportSpell getTeleportSpell() {
         return this.teleportScroll;
     }
 
+    /** {@inheritDoc} */
     @Override
     public ShieldSpell getShieldSpell() {
         return this.shieldScroll;
     }
 
+    /** {@inheritDoc} */
     @Override
     public RegenerationSpell getRegenerationSpell() {
         return this.regenerationScroll;
     }
 
+    /** {@inheritDoc} */
     @Override
     public DriftSpell getDriftSpell() {
         return this.driftScroll;
     }
 
+    /** {@inheritDoc} */
     @Override
     public LightSpell getLightSpell() {
         return this.lightScroll;
     }
 
+    /** {@inheritDoc} */
     @Override
     public List<Spell> getListAllSpell() {
         List<Spell> list = new ArrayList<>();
@@ -155,7 +164,7 @@ public class InventoryImpl implements Inventory {
         list.add(teleportScroll);
         return list;
     }
-    
+    /** {@inheritDoc} */
     @Override
     public boolean areThereSpells() {
         return this.getInvisibilitySpell().getNumberInInventory() > 0
