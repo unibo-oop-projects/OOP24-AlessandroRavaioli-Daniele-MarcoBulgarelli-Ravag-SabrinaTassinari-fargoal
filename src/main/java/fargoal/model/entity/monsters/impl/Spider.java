@@ -4,7 +4,6 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.ai.Ai;
 import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
-import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 
@@ -61,8 +60,9 @@ public class Spider extends AbstractMonster {
             if (this.areNeighbours(floorManager, 1) 
                     && !floorManager.getPlayer().isImmune()
                     && floorManager.getPlayer().isVisible()) {
-                this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                floorManager.getPlayer().receiveDamage(this);
+                floorManager.getPlayer().setIsAttacked(true);
+                this.setIsFighting(true);
+                floorManager.getPlayer().battle(this);
             } else {
                 Ai.move(this, floorManager.getPlayer());
             }

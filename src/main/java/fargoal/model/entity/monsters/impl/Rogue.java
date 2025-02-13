@@ -6,7 +6,6 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
 import fargoal.model.events.impl.MonsterStealGoldEvent;
-import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 
@@ -69,7 +68,6 @@ public class Rogue extends AbstractMonster {
                                 && this.getRandom(3) == 0) {
                                     this.steal();
                                 } else {
-                                    floorManager.notifyFloorEvent(new ReceiveAttackEvent(this));
                                     floorManager.getPlayer().setIsAttacked(true);
                                     this.setIsFighting(true);
                                     floorManager.getPlayer().battle(this);

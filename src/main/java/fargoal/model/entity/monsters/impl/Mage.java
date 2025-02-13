@@ -6,7 +6,6 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.events.impl.MonsterStealSpellEvent;
-import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 
@@ -119,8 +118,9 @@ public class Mage extends AbstractMonster {
                                 && this.getRandom(4) == 0) {
                             this.steal();
                         } else {
-                            this.getFloorManager().notifyFloorEvent(new ReceiveAttackEvent(this));
-                            floorManager.getPlayer().receiveDamage(this);
+                            floorManager.getPlayer().setIsAttacked(true);
+                            this.setIsFighting(true);
+                            floorManager.getPlayer().battle(this);
                         }
                     } else {
                         Ai.move(this, floorManager.getPlayer());

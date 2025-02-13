@@ -20,7 +20,9 @@ import fargoal.model.entity.monsters.ai.Ai;
  */
 public abstract class AbstractMonster implements Monster {
 
-    private static final Integer MONSTER_ATTACK = 4;
+    private static final Integer RANDOM_SKILL = 4;
+    private static final Integer RANDOM_HP = 6;
+    private int damageNumber = 15;
     private boolean isFighting;
     private long timer;
     private final List<Position> lastPositions = new ArrayList<>();
@@ -51,10 +53,10 @@ public abstract class AbstractMonster implements Monster {
         this.position = position;
         lastPositions.addFirst(position);
         this.setFloorManager(floorManager);
-        this.skill = floorManager.getPlayer().getSkill() / 2 + random.nextInt(floorManager.getPlayer().getSkill() / 2 + 1);
+        this.skill = floorManager.getFloorLevel() + random.nextInt(RANDOM_SKILL);
         this.setLevel(level);
         this.isVisible = true;
-        this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (random.nextInt(level) + 1));
+        this.health = new HealthImpl(floorManager.getFloorLevel() * 3 / 2 + random.nextInt(RANDOM_HP));
         this.timer = System.currentTimeMillis();
     }
 
@@ -112,8 +114,9 @@ public abstract class AbstractMonster implements Monster {
     @Override
     public Integer attack() {
         final int damage;
-        final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();
-        damage = random.nextInt(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio) + 1;
+        var ratio = damageNumber - this.getFloorManager().getFloorLevel() + 1;
+        damage = random.nextInt(this.getFloorManager().getPlayer().getHealth().getCurrentHealth() / ratio + 1) + 1;
+        System.out.println("Monster did " + damage + " damage");
         return damage;
     }
 
