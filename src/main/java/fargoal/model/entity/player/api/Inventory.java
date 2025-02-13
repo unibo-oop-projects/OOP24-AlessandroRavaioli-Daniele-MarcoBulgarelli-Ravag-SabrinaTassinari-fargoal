@@ -29,7 +29,7 @@ public interface Inventory {
      * Retrieves the HealingPotion Object on which the methods 
      * inherent in that utility can be called.
      *
-     * @return the HealingPotion Object
+     * @return the {@link HealingPotion} Object
      */
     HealingPotion getHealingPotions();
 
@@ -37,7 +37,7 @@ public interface Inventory {
      * Retrieves the Beacon Object on which the methods 
      * inherent in that utility can be called.
      *
-     * @return the Beacon Object
+     * @return the {@link Beacon} Object
      */
     Beacon getBeacons();
 
@@ -45,7 +45,7 @@ public interface Inventory {
      * Retrieves the MagicSack Object on which the methods 
      * inherent in that utility can be called.
      *
-     * @return the MagicSack Object
+     * @return the {@link MagicSack} Object
      */
     MagicSack getMagicSacks();
 
@@ -53,76 +53,77 @@ public interface Inventory {
      * Retrieves the EnchantedWeapon Object on which the methods 
      * inherent in that utility can be called.
      *
-     * @return the EnchantedWeapon Object
+     * @return the {@link EnchantedWeapon} Object
      */
     EnchantedWeapon getEnchantedWeapons();
 
     /**
      * Retrieves the list of floor maps collected by the player.
      *
-     * @return a list of integers representing the floor numbers of the collected maps.
+     * @return a {@link List} of {@link Integer} representing the floor numbers of the collected maps.
      */
     fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map getListOfMaps();
 
     /**
      * Retrieves the current status of casted spells.
      * 
-     * @return a map where the keys are spell names and the values indicate
+     * @return a {@link Map} where the {@code keys} are spell names and the {@code values} indicate
      * whether the spell is currently active (true) or not (false).
      */
     Map<String, Boolean> getSpellCasted();
 
     /**
-     * Retrieves the InvisibilitySpell Object on which the methods 
+     * Retrieves the {@link InvisibilitySpell} Object on which the methods 
      * inherent in that spell can be called.
      *
-     * @return the InvisibilitySpell Object
+     * @return the {@link InvisibilitySpell} Object
      */
     InvisibilitySpell getInvisibilitySpell();
 
     /**
-     * Retrieves the TeleportSpell Object on which the methods 
+     * Retrieves the {@link TeleportSpell} Object on which the methods 
      * inherent in that spell can be called.
      *
-     * @return the TeleportSpell Object
+     * @return the {@link TeleportSpell} Object
      */
     TeleportSpell getTeleportSpell();
 
     /**
-     * Retrieves the ShieldSpell Object on which the methods 
+     * Retrieves the {@link ShieldSpell} Object on which the methods 
      * inherent in that spell can be called.
      *
-     * @return the ShieldSpell Object
+     * @return the {@link ShieldSpell} Object
      */
     ShieldSpell getShieldSpell();
 
     /**
-     * Retrieves the RegenerationSpell Object on which the methods 
+     * Retrieves the {@link RegenerationSpell} Object on which the methods 
      * inherent in that spell can be called.
      *
-     * @return the RegenerationSpell Object
+     * @return the {@link RegenerationSpell} Object
      */
     RegenerationSpell getRegenerationSpell();
 
     /**
-     * Retrieves the DriftSpell Object on which the methods 
+     * Retrieves the {@link DriftSpell} Object on which the methods 
      * inherent in that spell can be called.
      *
-     * @return the DriftSpell Object
+     * @return the {@link DriftSpell} Object
      */
     DriftSpell getDriftSpell();
 
     /**
-     * Retrieves the LightSpell Object on which the methods 
+     * Retrieves the {@link LightSpell} Object on which the methods 
      * inherent in that spell can be called.
      *
-     * @return the LightSpell Object
+     * @return the {@link LightSpell} Object
      */
     LightSpell getLightSpell();
 
     /**
-     * This method return a list of all types of spell in the inventory.
-     * @return a list of spell.
+     * This method returns a {@link List} of all types of spells in the inventory.
+     * 
+     * @return a {@link List} of spells.
      */
     List<Spell> getListAllSpell();
 
@@ -130,7 +131,7 @@ public interface Inventory {
      * This method returns if the {@link Player} has some spells
      * in the inventory or not.
      * 
-     * @return if {@link Player} has spells in {@link Inventory}
+     * @return {@code true} if the {@link Player} has spells in {@link Inventory}, {@code false} otherwise.
      */
     boolean areThereSpells();
 }
