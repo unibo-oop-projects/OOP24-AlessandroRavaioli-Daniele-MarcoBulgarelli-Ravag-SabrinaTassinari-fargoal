@@ -27,7 +27,7 @@ import fargoal.model.manager.impl.FloorManagerImpl;
  */
 class TestMonsterMovement {
 
-    private static final int MAX_MOVE_TEST = 50;
+    private static final int MAX_MOVE_TEST = 1000;
 
     private static FloorManager manager = new FloorManagerImpl(new GameEngine());
     private static Monster monster;
@@ -72,7 +72,11 @@ class TestMonsterMovement {
         monster.update(manager);
         assertEquals(monster.getPosition(), pos);
 
-        //controllo che ad ogni move la posizione del mostro cambi
+        /* Controllo che ad ogni move la posizione del mostro cambi
+        molto improbabile che non cambi, ma potrebbe accadere
+        solo nel caso in cui è circondato da muri e mostri
+        e non ha possibilità di muoversi, in quel caso
+        rimarrebbe fermo. */
         Position lastPosition = monster.getPosition();
         for (int i = 0; i < MAX_MOVE_TEST; i++) {
             monster.move();
