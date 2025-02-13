@@ -28,14 +28,6 @@ public interface Monster extends Entity {
     void receiveDamage();
 
     /**
-     * Method that returns the level of the
-     * Monster selected.
-     * 
-     * @return the level of the Monster
-     */
-    Integer getLevel();
-
-    /**
      * Set the new Position of the Monster.
      * 
      * @param position - the new Position

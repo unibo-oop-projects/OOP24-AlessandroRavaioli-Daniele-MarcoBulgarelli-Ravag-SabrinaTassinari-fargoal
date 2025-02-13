@@ -92,9 +92,13 @@ public abstract class AbstractMonster implements Monster {
         this.getHealth().decreaseHealth(damage);
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public Integer getLevel() {
+    /**
+     * Method that returns the level of the
+     * Monster selected.
+     * 
+     * @return the level of the Monster
+     */
+    protected Integer getLevel() {
         return this.level;
     }
 
