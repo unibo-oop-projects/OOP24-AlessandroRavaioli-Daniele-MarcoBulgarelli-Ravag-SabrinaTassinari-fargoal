@@ -72,25 +72,25 @@ public class Mage extends AbstractMonster {
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getRegenerationSpell(), this));
                         inventory.getRegenerationSpell().removeSpell();
                         check = true;
-            } else if (num == 1
+            } else if (num == 2
                     && inventory.getTeleportSpell().getNumberInInventory() > 0) {
                         this.getFloorManager()
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getTeleportSpell(), this));
                         inventory.getTeleportSpell().removeSpell();
                         check = true;
-            } else if (num == 1
+            } else if (num == 3
                     && inventory.getShieldSpell().getNumberInInventory() > 0) {
                         this.getFloorManager()
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getShieldSpell(), this));
                         inventory.getShieldSpell().removeSpell();
                         check = true;
-            } else if (num == 1
+            } else if (num == 4
                     && inventory.getLightSpell().getNumberInInventory() > 0) {
                         this.getFloorManager()
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getLightSpell(), this));
                         inventory.getLightSpell().removeSpell();
                         check = true;
-            } else if (num == 1
+            } else if (num == 5
                     && inventory.getDriftSpell().getNumberInInventory() > 0) {
                         this.getFloorManager()
                                 .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getDriftSpell(), this));
