@@ -131,7 +131,6 @@ public abstract class AbstractMonster implements Monster {
     public boolean isDead() {
         if (this.getHealth().getCurrentHealth() <= 0) {
             floorManager.getMonsters().remove(this);
-            System.out.println(this.getTag() + " è morto");
             return true;
         }
         return false;
