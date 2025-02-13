@@ -98,6 +98,13 @@ public class PlayerInformationRenderer implements Renderer {
                     swing.getInformationPanel().getBounds().height
                                 * CONSTANT_FIVE
                                 / CONSTANT_SIX);
+            g2d.drawString(String.valueOf(floorManager.getPlayer().getDeepestDescent()), 
+                        swing.getInformationPanel().getBounds().width
+                        * CONSTANT_SEVEN
+                        / DIVISOR_WIDTH_SECOND_COLUMN, 
+                        swing.getInformationPanel().getBounds().height
+                        * CONSTANT_FIVE
+                        / CONSTANT_SIX);
             g2d.drawString("EXPERIENCE  " + floorManager.getPlayer().getExperiencePoints(),
                     swing.getInformationPanel().getBounds().width * 2 / FIRST_COLUMN_DIVISOR_WIDTH,
                     swing.getInformationPanel().getBounds().height * MULTIPLIER_EXPERIENCE_HEIGHT / FIRST_COLUMN_DIVISOR_HEIGHT);
