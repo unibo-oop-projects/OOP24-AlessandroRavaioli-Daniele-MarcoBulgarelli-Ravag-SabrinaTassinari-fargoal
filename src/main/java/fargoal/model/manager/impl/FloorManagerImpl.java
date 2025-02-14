@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.commons.Timer;
@@ -128,6 +129,11 @@ public class FloorManagerImpl implements FloorManager {
     /**
      * {@inheritDoc}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "The classes that call the method need to work on the player present"
+            + "and not on a copy of it"
+    )
     @Override
     public Player getPlayer() {
         return this.player;
@@ -160,6 +166,11 @@ public class FloorManagerImpl implements FloorManager {
     /**
      * {@inheritDoc}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "The classes that call this method need to have the mask of the floor"
+            + "and not a copy of the mask, as that would not update accordingly"
+    )
     @Override
     public FloorMask getFloorMask() {
         return this.mask;
@@ -172,6 +183,10 @@ public class FloorManagerImpl implements FloorManager {
     }
 
     /** {@inheritDoc} */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "The important value of the temple is its position, and it cannot be changed"
+    )
     @Override
     public Temple getTemple() {
         return this.temple;
