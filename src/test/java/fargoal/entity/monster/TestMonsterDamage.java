@@ -49,16 +49,16 @@ class TestMonsterDamage {
 
     @Test
     void attack() {
-        assertEquals(floorManager.getPlayer().getHealth().getCurrentHealth(), 
-                floorManager.getPlayer().getHealth().getMaxHealth());
+        assertEquals(floorManager.getPlayer().getCurrentHealth(), 
+                floorManager.getPlayer().getMaxHealth());
         floorManager.getPlayer().receiveDamage(monster);
-        assertNotEquals(floorManager.getPlayer().getHealth().getCurrentHealth(), 
-                floorManager.getPlayer().getHealth().getMaxHealth());
+        assertNotEquals(floorManager.getPlayer().getCurrentHealth(), 
+                floorManager.getPlayer().getMaxHealth());
 
-        assertEquals(monster.getHealth().getCurrentHealth(), monster.getHealth().getMaxHealth());
+        assertEquals(monster.getCurrentHealth(), monster.getMaxHealth());
         monster.receiveDamage();
-        assertNotEquals(monster.getHealth().getCurrentHealth(), monster.getHealth().getMaxHealth());
-        if (monster.getHealth().getCurrentHealth() <= 0) {
+        assertNotEquals(monster.getCurrentHealth(), monster.getMaxHealth());
+        if (monster.getCurrentHealth() <= 0) {
             assertTrue(monster.isDead());
         } else {
             assertFalse(monster.isDead());

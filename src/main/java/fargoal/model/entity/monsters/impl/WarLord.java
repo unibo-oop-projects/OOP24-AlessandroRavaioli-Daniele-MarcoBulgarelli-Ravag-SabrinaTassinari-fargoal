@@ -64,7 +64,7 @@ public class WarLord extends AbstractMonster {
         if (shield) {
             shield = false;
         } else {
-            this.getHealth().decreaseHealth(damage);
+            this.decreaseHealth(damage);
         }
     }
 

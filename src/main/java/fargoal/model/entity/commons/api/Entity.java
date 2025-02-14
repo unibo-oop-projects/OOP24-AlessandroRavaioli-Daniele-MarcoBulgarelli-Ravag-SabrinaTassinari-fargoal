@@ -6,12 +6,18 @@ import fargoal.model.commons.FloorElement;
  * An Entity represent a FloorElement that can move, attack and be damaged.
  */
 public interface Entity extends FloorElement {
-    /**
-     * Return the health of the FloorElement selected.
-     * 
-     * @return the health
-     */
-    Health getHealth();
+
+    void increaseHealth(Integer amount);
+
+    void decreaseHealth(Integer amount);
+
+    Integer getCurrentHealth();
+
+    Integer getMaxHealth();
+
+    void setHealth(Integer amount);
+
+    boolean isHealthy();
 
     /**
      * Return the skill of the FloorElement selected.

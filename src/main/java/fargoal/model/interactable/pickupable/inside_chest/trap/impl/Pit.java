@@ -36,7 +36,7 @@ public class Pit extends AbstractTrap {
     public void effect(final FloorManager floorManager) {
         final int damage = this.random.nextInt(MAX_DAMAGE) + floorManager.getFloorLevel();
         if (!floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName())) {
-            floorManager.getPlayer().getHealth().decreaseHealth(damage);
+            floorManager.getPlayer().decreaseHealth(damage);
         } else {
             floorManager.getPlayer().getInventory().getSpellCasted().replace(SpellType.DRIFT.getName(), false);
         }

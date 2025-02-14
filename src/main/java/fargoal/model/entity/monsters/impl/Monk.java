@@ -60,9 +60,9 @@ public class Monk extends AbstractMonster {
      * to recover hp.
      */
     private void heal() {
-        this.getHealth().increaseHealth(this.getRandom(HEAL_CONSTANT) + 3 * this.getLevel());
-        if (this.getHealth().getCurrentHealth() > this.getHealth().getMaxHealth()) {
-            this.getHealth().setHealth(this.getHealth().getMaxHealth());
+        this.increaseHealth(this.getRandom(HEAL_CONSTANT) + 3 * this.getLevel());
+        if (this.getCurrentHealth() > this.getMaxHealth()) {
+            this.setHealth(this.getMaxHealth());
         }
     }
 
@@ -79,7 +79,7 @@ public class Monk extends AbstractMonster {
                 floorManager.getPlayer().setIsAttacked(true);
                 this.setIsFighting(true);
                 floorManager.getPlayer().battle(this);
-            } else if (!this.getHealth().isHealthy() && !this.areNeighbours(floorManager, 2)) {
+            } else if (!this.isHealthy() && !this.areNeighbours(floorManager, 2)) {
                 this.heal();
             } else {
                 Ai.move(this, floorManager.getPlayer(), floorManager);

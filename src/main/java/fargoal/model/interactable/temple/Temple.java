@@ -40,7 +40,7 @@ public class Temple implements Interactable {
         floorManager.getPlayer().getPlayerGold().setGoldDonated(
                 floorManager.getPlayer().getPlayerGold().getGoldDonated() + floorManager.getPlayer().getCurrentGold());
         if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= GOLD_TO_DONATE_FOR_BLESSING) {
-            floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
+            floorManager.getPlayer().setHealth(floorManager.getPlayer().getMaxHealth());
             floorManager.getPlayer().getPlayerGold().setGoldDonated(0);
             floorManager.notifyFloorEvent(new BlessedEvent());
         }

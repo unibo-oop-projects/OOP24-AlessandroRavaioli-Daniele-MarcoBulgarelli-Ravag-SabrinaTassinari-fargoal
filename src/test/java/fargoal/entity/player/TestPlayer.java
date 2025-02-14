@@ -31,7 +31,7 @@ class TestPlayer {
         assertEquals(1, player.getLevel());
         assertEquals(0, player.getExperiencePoints());
         assertEquals(200, player.getExperiencePointsRequired());
-        assertNotNull(player.getHealth());
+        assertNotNull(player.getCurrentHealth());
         assertNotNull(player.getSkill());
         assertEquals(0, player.getCurrentGold());
         assertEquals(100, player.getMaxGoldCapacity());
@@ -122,7 +122,7 @@ class TestPlayer {
         final Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
         assertNotNull(monster);
 
-        monster.getHealth().setHealth(1);
+        monster.setHealth(1);
         final int initialExp = player.getExperiencePoints();
         final int initialFoes = player.getNumberOfSlainFoes();
 
@@ -140,7 +140,7 @@ class TestPlayer {
         final Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
         assertNotNull(monster);
 
-        player.getHealth().setHealth(1);
+        player.setHealth(1);
 
         player.battle(monster);
 
@@ -157,22 +157,22 @@ class TestPlayer {
         assertNotNull(damage);
 
         monster.receiveDamage();
-        assertFalse(monster.getHealth().isHealthy());
+        assertFalse(monster.isHealthy());
 
         player.receiveDamage(monster);
-        assertFalse(player.getHealth().isHealthy());
+        assertFalse(player.isHealthy());
     }
 
     @Test
     void testPlayerDeath() {
-        player.getHealth().setHealth(0);
+        player.setHealth(0);
         assertTrue(player.isDead());
     }
 
     @Test
     void testRegenerationNormalCondition() {
-        player.getHealth().decreaseHealth(1);
-        final int hpBefore = player.getHealth().getCurrentHealth();
+        player.decreaseHealth(1);
+        final int hpBefore = player.getCurrentHealth();
 
         try {
             Thread.sleep(11_000);
@@ -182,15 +182,15 @@ class TestPlayer {
         }
 
         player.passiveRegeneration();
-        final int hpAfter = player.getHealth().getCurrentHealth();
+        final int hpAfter = player.getCurrentHealth();
 
         assertEquals(hpBefore + 1, hpAfter);
     }
 
     @Test
     void testRegenerationSpellandTemple() {
-        player.getHealth().decreaseHealth(1);
-        final int hpBefore = player.getHealth().getCurrentHealth();
+        player.decreaseHealth(1);
+        final int hpBefore = player.getCurrentHealth();
 
         player.getInventory().getSpellCasted().put(SpellType.REGENERATION.getName(), true);
         player.move(manager.getTemple().getPosition());
@@ -203,7 +203,7 @@ class TestPlayer {
         }
 
         player.passiveRegeneration();
-        final int hpAfter = player.getHealth().getCurrentHealth();
+        final int hpAfter = player.getCurrentHealth();
 
         assertEquals(hpBefore + 1, hpAfter);
     }

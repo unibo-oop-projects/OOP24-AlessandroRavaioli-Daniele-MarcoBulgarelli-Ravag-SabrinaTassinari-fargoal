@@ -34,7 +34,7 @@ public class CeilingTrap extends AbstractTrap {
     @Override
     public void effect(final FloorManager floorManager) {
         final int damage = this.random.nextInt(MAX_DAMAGE) + floorManager.getFloorLevel();
-        floorManager.getPlayer().getHealth().decreaseHealth(damage);
+        floorManager.getPlayer().decreaseHealth(damage);
     } 
 
 }

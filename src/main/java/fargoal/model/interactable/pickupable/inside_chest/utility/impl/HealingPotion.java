@@ -35,12 +35,12 @@ public class HealingPotion extends AbstractUtility {
     @Override
     public void effect(final FloorManager floorManager) {
         final int healthToAdd = this.random.nextInt(MAX_HIT_POINTS_TO_ADD) + 3 * floorManager.getPlayer().getLevel();
-        final int healthToSet = floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd;
+        final int healthToSet = floorManager.getPlayer().getCurrentHealth() + healthToAdd;
         floorManager.notifyFloorEvent(new PlayerActionEvent(this));
-        if (healthToSet >= floorManager.getPlayer().getHealth().getMaxHealth()) {
-            floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
+        if (healthToSet >= floorManager.getPlayer().getMaxHealth()) {
+            floorManager.getPlayer().setHealth(floorManager.getPlayer().getMaxHealth());
         } else {
-            floorManager.getPlayer().getHealth().setHealth(healthToSet);
+            floorManager.getPlayer().setHealth(healthToSet);
         }
         this.removeUtility();
     }

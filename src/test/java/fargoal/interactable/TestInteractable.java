@@ -44,7 +44,7 @@ class TestInteractable {
      */
      @Test
      void checkDriftSpell() {
-          final int healthBefore = floorManager.getPlayer().getHealth().getCurrentHealth();
+          final int healthBefore = floorManager.getPlayer().getCurrentHealth();
           final int levelFloor = floorManager.getFloorLevel();
           floorManager.getPlayer().getInventory().addDriftSpell();
           final int numberBefore = floorManager.getPlayer().getInventory().numberDriftSpells();
@@ -54,9 +54,9 @@ class TestInteractable {
           new Pit(floorManager);
           assertEquals(floorManager.getFloorLevel(), levelFloor);
           assertFalse(floorManager.getPlayer().getInventory().getSpellCasted().get(SpellType.DRIFT.getName()));
-          assertEquals(healthBefore, floorManager.getPlayer().getHealth().getCurrentHealth());
+          assertEquals(healthBefore, floorManager.getPlayer().getCurrentHealth());
           new Pit(floorManager);
-          assertNotEquals(healthBefore, floorManager.getPlayer().getHealth().getCurrentHealth());
+          assertNotEquals(healthBefore, floorManager.getPlayer().getCurrentHealth());
      }
 
      /**
@@ -134,9 +134,9 @@ class TestInteractable {
      */
      @Test
      void checkCeilingTrap() {
-          final int healthBefore = floorManager.getPlayer().getHealth().getCurrentHealth();
+          final int healthBefore = floorManager.getPlayer().getCurrentHealth();
           new CeilingTrap(floorManager);
-          assertNotEquals(healthBefore, floorManager.getPlayer().getHealth().getCurrentHealth());
+          assertNotEquals(healthBefore, floorManager.getPlayer().getCurrentHealth());
      }
 
      /**
@@ -144,9 +144,9 @@ class TestInteractable {
      */
      @Test
      void checkExplosionTrap() {
-          final int healthBefore = floorManager.getPlayer().getHealth().getCurrentHealth();
+          final int healthBefore = floorManager.getPlayer().getCurrentHealth();
           new Explosion(floorManager);
-          assertNotEquals(healthBefore, floorManager.getPlayer().getHealth().getCurrentHealth());
+          assertNotEquals(healthBefore, floorManager.getPlayer().getCurrentHealth());
      }
 
      /**
@@ -154,9 +154,9 @@ class TestInteractable {
      */
      @Test
      void checkPitTrap() {
-          final int healthBefore = floorManager.getPlayer().getHealth().getCurrentHealth();
+          final int healthBefore = floorManager.getPlayer().getCurrentHealth();
           new Pit(floorManager);
-          assertNotEquals(healthBefore, floorManager.getPlayer().getHealth().getCurrentHealth());
+          assertNotEquals(healthBefore, floorManager.getPlayer().getCurrentHealth());
      }
 
      /**
@@ -213,10 +213,10 @@ class TestInteractable {
           assertEquals(1, floorManager.getPlayer().getInventory().numberHealingPotions());
           floorManager.getPlayer().getInventory().addHealingPotion();
           assertEquals(2, floorManager.getPlayer().getInventory().numberHealingPotions());
-          floorManager.getPlayer().getHealth().decreaseHealth(N_DAMAGE);
-          final int healthBefore = floorManager.getPlayer().getHealth().getCurrentHealth();
+          floorManager.getPlayer().decreaseHealth(N_DAMAGE);
+          final int healthBefore = floorManager.getPlayer().getCurrentHealth();
           floorManager.getPlayer().useHealingPotion();
-          assertNotEquals(healthBefore, floorManager.getPlayer().getHealth().getCurrentHealth());
+          assertNotEquals(healthBefore, floorManager.getPlayer().getCurrentHealth());
           assertEquals(1, floorManager.getPlayer().getInventory().numberHealingPotions());
      }
 

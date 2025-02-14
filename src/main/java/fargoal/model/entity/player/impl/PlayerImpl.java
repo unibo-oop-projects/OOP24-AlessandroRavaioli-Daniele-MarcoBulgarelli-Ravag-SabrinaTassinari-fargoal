@@ -271,15 +271,34 @@ public class PlayerImpl implements Player {
         }
     }
 
-    /**{@inheritDoc}*/
-    @SuppressFBWarnings(
-        value = {"EI"},
-        justification = "Need to return the current health value and not a copy, "
-         + "because could be made some operations on it."
-    )
     @Override
-    public Health getHealth() {
-        return this.health;
+    public void increaseHealth(final Integer amount) {
+        this.health.increaseHealth(amount);
+    }
+
+    @Override
+    public void decreaseHealth(final Integer amount) {
+        this.health.decreaseHealth(amount);
+    }
+
+    @Override
+    public Integer getCurrentHealth() {
+        return this.health.getCurrentHealth();
+    }
+
+    @Override
+    public Integer getMaxHealth() {
+        return this.health.getMaxHealth();
+    }
+
+    @Override
+    public void setHealth(final Integer amount) {
+        this.health.setHealth(amount);
+    }
+
+    @Override
+    public boolean isHealthy() {
+        return this.health.isHealthy();
     }
 
     /**{@inheritDoc}*/
@@ -469,7 +488,7 @@ public class PlayerImpl implements Player {
             attackCounter = 0;
 
             this.increasePlayerSkill(this.random.nextInt(MIN_SKILL_REWARD, MAX_SKILL_REWARD));
-            final int gainedExp = this.getLevel() * (monster.getSkill() + monster.getHealth().getMaxHealth());
+            final int gainedExp = this.getLevel() * (monster.getSkill() + monster.getMaxHealth());
             this.addExperiencePoints(gainedExp);
             this.levelUp();
             this.increaseNumberOfSlainFoes();

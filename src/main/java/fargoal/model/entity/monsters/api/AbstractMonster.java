@@ -73,15 +73,34 @@ public abstract class AbstractMonster implements Monster {
         return this.monsterType;
     }
 
-    /** {@inheritDoc} */
-    @SuppressFBWarnings(
-        value = {"EI"},
-        justification = "Need to return the current health value and not a copy, "
-         + "because could be made some operations on it."
-    )
     @Override
-    public Health getHealth() {
-        return this.health;
+    public void decreaseHealth(Integer amount) {
+        this.health.decreaseHealth(amount);
+    }
+
+    @Override
+    public void increaseHealth(Integer amount) {
+        this.health.increaseHealth(amount);
+    }
+
+    @Override
+    public Integer getCurrentHealth() {
+        return this.health.getCurrentHealth();
+    }
+
+    @Override
+    public Integer getMaxHealth() {
+        return this.health.getMaxHealth();
+    }
+
+    @Override
+    public void setHealth(final Integer amount) {
+        this.health.setHealth(amount);
+    }
+
+    @Override
+    public boolean isHealthy() {
+        return this.health.isHealthy();
     }
 
     /** {@inheritDoc} */
@@ -101,7 +120,7 @@ public abstract class AbstractMonster implements Monster {
     public void receiveDamage() {
         this.isFighting = true;
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
-        this.getHealth().decreaseHealth(damage);
+        this.decreaseHealth(damage);
     }
 
     /**
@@ -134,7 +153,7 @@ public abstract class AbstractMonster implements Monster {
         if (ratio <= 0 || this.getFloorManager().getPlayer().hasSword()) {
             ratio = 1;
         }
-        damage = random.nextInt(this.getFloorManager().getPlayer().getHealth().getCurrentHealth() / ratio + 1) + 1;
+        damage = random.nextInt(this.getFloorManager().getPlayer().getCurrentHealth() / ratio + 1) + 1;
         return damage;
     }
 

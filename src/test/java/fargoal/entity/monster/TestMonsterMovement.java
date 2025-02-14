@@ -39,7 +39,6 @@ class TestMonsterMovement {
         List<Position> positions;
         do {
             pos = manager.getFloorMap().getRandomTile();
-            manager.getMonsters().clear();
             final Monster monsterCreate = factory.generate(pos,
                 manager, 
                 manager.getRenderFactory());

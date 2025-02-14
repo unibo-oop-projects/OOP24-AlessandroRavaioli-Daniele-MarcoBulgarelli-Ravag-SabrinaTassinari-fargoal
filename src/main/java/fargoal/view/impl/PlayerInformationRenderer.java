@@ -59,20 +59,20 @@ public class PlayerInformationRenderer implements Renderer {
     public void setRender(final FloorManager floorManager) {
         final SwingView swing = (SwingView) view;
         this.rendererTop = new SwingRendererTop(g2d -> {
-            if (floorManager.getPlayer().getHealth().getCurrentHealth() 
-                    > floorManager.getPlayer().getHealth().getMaxHealth() / 2) {
+            if (floorManager.getPlayer().getCurrentHealth() 
+                    > floorManager.getPlayer().getMaxHealth() / 2) {
                 g2d.setColor(Color.GREEN);
-            } else if (floorManager.getPlayer().getHealth().getCurrentHealth() 
-                    > floorManager.getPlayer().getHealth().getMaxHealth() / 3) {
+            } else if (floorManager.getPlayer().getCurrentHealth() 
+                    > floorManager.getPlayer().getMaxHealth() / 3) {
                 g2d.setColor(Color.ORANGE);
             } else {
                 g2d.setColor(Color.RED);
             }
             g2d.setFont(new Font("Arial", Font.BOLD, swing.getFrame().getBounds().height * 3 / FONT_GOLD_HP_HEIGHT_DIVISOR));
             g2d.drawString("HP: " 
-                    + floorManager.getPlayer().getHealth().getCurrentHealth() 
+                    + floorManager.getPlayer().getCurrentHealth() 
                     + "/" 
-                    + floorManager.getPlayer().getHealth().getMaxHealth(), 
+                    + floorManager.getPlayer().getMaxHealth(), 
                     swing.getEventPanel().getBounds().width / CONSTANT_SIX, 
                     swing.getEventPanel().getBounds().height * 3 / CONSTANT_FIVE);
             g2d.setColor(Color.YELLOW);
