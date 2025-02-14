@@ -7,6 +7,8 @@ import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 /**
  * Class that has the objective to memorize in a static way
  * images, to not have to read them at every frame.
@@ -68,6 +70,12 @@ public final class ImageHolder {
         }
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the player.
      * 
@@ -77,6 +85,12 @@ public final class ImageHolder {
         return playerImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the chest.
      * 
@@ -86,6 +100,12 @@ public final class ImageHolder {
         return chestImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the downstairs.
      * 
@@ -95,6 +115,12 @@ public final class ImageHolder {
         return downstairsImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the hiddengold.
      * 
@@ -104,6 +130,12 @@ public final class ImageHolder {
         return hiddenGoldImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the sack of gold.
      * 
@@ -113,6 +145,12 @@ public final class ImageHolder {
         return sackOfGoldImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the sword.
      * 
@@ -122,6 +160,12 @@ public final class ImageHolder {
         return swordImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the assassin.
      * 
@@ -131,6 +175,12 @@ public final class ImageHolder {
         return assassinImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the barbarian.
      * 
@@ -140,6 +190,12 @@ public final class ImageHolder {
         return barbarianImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the mage.
      * 
@@ -149,6 +205,12 @@ public final class ImageHolder {
         return mageImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the monk.
      * 
@@ -158,6 +220,12 @@ public final class ImageHolder {
         return monkImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the rogue.
      * 
@@ -167,6 +235,12 @@ public final class ImageHolder {
         return rogueImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the spider.
      * 
@@ -176,6 +250,12 @@ public final class ImageHolder {
         return spiderImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the war lord.
      * 
@@ -185,6 +265,12 @@ public final class ImageHolder {
         return warLordImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the wall.
      * 
@@ -194,6 +280,12 @@ public final class ImageHolder {
         return wallImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the tile.
      * 
@@ -203,6 +295,12 @@ public final class ImageHolder {
         return tileImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the temple.
      * 
@@ -212,6 +310,12 @@ public final class ImageHolder {
         return templeImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the upstairs.
      * 
@@ -221,6 +325,12 @@ public final class ImageHolder {
         return upStairsImage;
     }
 
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     /**
      * Method that returns the image for the upstairs.
      * 
