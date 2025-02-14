@@ -52,11 +52,7 @@ public class UpStairs implements Stairs {
         this.renderer.render();
     }
 
-    /**
-     * Setter for field renderer.
-     * @param renderer - the new renderer.
-     */
-    public final void setRenderer(final RenderFactory rf) {
+    private void setRenderer(final RenderFactory rf) {
         this.renderer = rf.upstairRenderer(this);
     }
 

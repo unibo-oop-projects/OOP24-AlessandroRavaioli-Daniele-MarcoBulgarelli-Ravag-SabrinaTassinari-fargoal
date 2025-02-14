@@ -138,11 +138,7 @@ public class ChestImpl implements Interactable {
         this.renderer.render();
     }
 
-    /**
-     * Setter for field renderer.
-     * @param renderer - the new renderer.
-     */
-    public final void setRender(final RenderFactory rf) {
+    private void setRender(final RenderFactory rf) {
         this.renderer = rf.chestRenderer(this);
     }
 

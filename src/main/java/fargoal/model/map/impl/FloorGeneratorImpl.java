@@ -29,6 +29,9 @@ public class FloorGeneratorImpl implements FloorGenerator {
 
     private final Random rnd;
 
+    /**
+     * A contructor to initialize the internal random.
+     */
     public FloorGeneratorImpl() {
         this.rnd = new Random();
     }

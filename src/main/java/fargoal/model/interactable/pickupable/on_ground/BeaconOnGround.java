@@ -54,11 +54,7 @@ public class BeaconOnGround implements Interactable {
         this.renderer.render();
     }
 
-    /**
-     * Setter for field renderer.
-     * @param renderer - the new renderer.
-     */
-    private final void setRender(final RenderFactory rf) {
+    private void setRender(final RenderFactory rf) {
         this.renderer = rf.beaconRenderer(this);
     }
 

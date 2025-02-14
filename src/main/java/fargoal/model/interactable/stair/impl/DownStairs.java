@@ -62,10 +62,6 @@ public class DownStairs implements Stairs {
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
 
-    /**
-     * A method to set the renderer of the stairs.
-     * @param rf - the factory containing the method
-     */
     private void setRenderer(final RenderFactory rf) {
         this.renderer = rf.downstairRenderer(this);
     }

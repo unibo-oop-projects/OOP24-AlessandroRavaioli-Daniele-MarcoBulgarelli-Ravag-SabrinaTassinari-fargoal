@@ -73,12 +73,12 @@ public abstract class AbstractMonster implements Monster {
         return this.monsterType;
     }
 
+    /** {@inheritDoc} */
     @SuppressFBWarnings(
         value = {"EI"},
         justification = "Need to return the current health value and not a copy, "
          + "because could be made some operations on it"
     )
-    /** {@inheritDoc} */
     @Override
     public Health getHealth() {
         return this.health;

@@ -54,6 +54,7 @@ public final class Ai {
      * 
      * @param monster - the monster to be moved
      * @param player - the player to be reached
+     * @param floorManager - the manager containing all the information needed
      */
     public static void move(final Monster monster, final Player player, final FloorManager floorManager) {
         List<Position> possibleDirections = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),

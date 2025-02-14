@@ -81,6 +81,7 @@ public class SwingView implements View, KeyListener {
         this.frame.setVisible(true);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setUp() {
         this.frame.setLayout(new BorderLayout());

@@ -70,272 +70,288 @@ public final class ImageHolder {
         }
     }
 
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     /**
      * Method that returns the image for the player.
      * 
      * @return - the image of the player
      */
-    public static BufferedImage player() {
-        return playerImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage player() {
+        return playerImage;
+    }
+
+
     /**
      * Method that returns the image for the chest.
      * 
      * @return - the image of the chest
      */
-    public static BufferedImage chest() {
-        return chestImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage chest() {
+        return chestImage;
+    }
+
+
     /**
      * Method that returns the image for the downstairs.
      * 
      * @return - the image of the downstairs
      */
-    public static BufferedImage downstairs() {
-        return downstairsImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage downstairs() {
+        return downstairsImage;
+    }
+
+
     /**
      * Method that returns the image for the hiddengold.
      * 
      * @return - the image of the hiddengold
      */
-    public static BufferedImage hiddenGold() {
-        return hiddenGoldImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage hiddenGold() {
+        return hiddenGoldImage;
+    }
+
+
     /**
      * Method that returns the image for the sack of gold.
      * 
      * @return - the image of the sack of gold
      */
-    public static BufferedImage sackOfGold() {
-        return sackOfGoldImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage sackOfGold() {
+        return sackOfGoldImage;
+    }
+
+
     /**
      * Method that returns the image for the sword.
      * 
      * @return - the image of the sword
      */
-    public static BufferedImage sword() {
-        return swordImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage sword() {
+        return swordImage;
+    }
+
+
     /**
      * Method that returns the image for the assassin.
      * 
      * @return - the image of the assassin
      */
-    public static BufferedImage assassin() {
-        return assassinImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage assassin() {
+        return assassinImage;
+    }
+
+
     /**
      * Method that returns the image for the barbarian.
      * 
      * @return - the image of the barbarian
      */
-    public static BufferedImage barbarian() {
-        return barbarianImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage barbarian() {
+        return barbarianImage;
+    }
+
+
     /**
      * Method that returns the image for the mage.
      * 
      * @return - the image of the mage
      */
-    public static BufferedImage mage() {
-        return mageImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage mage() {
+        return mageImage;
+    }
+
+
     /**
      * Method that returns the image for the monk.
      * 
      * @return - the image of the monk
      */
-    public static BufferedImage monk() {
-        return monkImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage monk() {
+        return monkImage;
+    }
+
+
     /**
      * Method that returns the image for the rogue.
      * 
      * @return - the image of the rogue
      */
-    public static BufferedImage rogue() {
-        return rogueImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage rogue() {
+        return rogueImage;
+    }
+
+
     /**
      * Method that returns the image for the spider.
      * 
      * @return - the image of the spider
      */
-    public static BufferedImage spider() {
-        return spiderImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage spider() {
+        return spiderImage;
+    }
+
+
     /**
      * Method that returns the image for the war lord.
      * 
      * @return - the image of the war lord
      */
-    public static BufferedImage warlord() {
-        return warLordImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage warlord() {
+        return warLordImage;
+    }
+
+
     /**
      * Method that returns the image for the wall.
      * 
      * @return - the image of the wall
      */
-    public static BufferedImage wall() {
-        return wallImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage wall() {
+        return wallImage;
+    }
+
+
     /**
      * Method that returns the image for the tile.
      * 
      * @return - the image of the tile
      */
-    public static BufferedImage tile() {
-        return tileImage;
-    }
-
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
+    public static BufferedImage tile() {
+        return tileImage;
+    }
+
+
     /**
      * Method that returns the image for the temple.
      * 
      * @return - the image of the temple
      */
+    @SuppressFBWarnings(
+        value = {
+            "MS"
+        },
+        justification = "The field cannot be final"
+    )
     public static BufferedImage temple() {
         return templeImage;
     }
 
+
+    /**
+     * Method that returns the image for the upstairs.
+     * 
+     * @return - the image of the upstairs
+     */
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
-    /**
-     * Method that returns the image for the upstairs.
-     * 
-     * @return - the image of the upstairs
-     */
     public static BufferedImage upStair() {
         return upStairsImage;
     }
 
+    /**
+     * Method that returns the image for the upstairs.
+     * 
+     * @return - the image of the upstairs
+     */
     @SuppressFBWarnings(
         value = {
             "MS"
         },
         justification = "The field cannot be final"
     )
-    /**
-     * Method that returns the image for the upstairs.
-     * 
-     * @return - the image of the upstairs
-     */
     public static BufferedImage beaconPlaced() {
         return beaconImage;
     }

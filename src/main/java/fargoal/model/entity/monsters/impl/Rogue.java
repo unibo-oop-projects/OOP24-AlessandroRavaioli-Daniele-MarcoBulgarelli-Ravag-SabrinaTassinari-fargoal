@@ -38,7 +38,7 @@ public class Rogue extends AbstractMonster {
         this.setRenderer(renderFactory);
     }
 
-    private final void setRenderer(final RenderFactory renderFactory) {
+    private void setRenderer(final RenderFactory renderFactory) {
         this.setRender(renderFactory.rogueRenderer(this));
     }
 

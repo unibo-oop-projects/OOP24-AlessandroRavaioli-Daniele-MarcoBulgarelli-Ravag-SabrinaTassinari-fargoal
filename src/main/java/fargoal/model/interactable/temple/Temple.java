@@ -66,11 +66,7 @@ public class Temple implements Interactable {
         this.renderer.render();
     }
 
-    /**
-     * Setter for field renderer.
-     * @param rf - the factory containig the renderer.
-     */
-    private final void setRender(final RenderFactory rf) {
+    private void setRender(final RenderFactory rf) {
         this.renderer = rf.templeRenderer(this);
     }
 
