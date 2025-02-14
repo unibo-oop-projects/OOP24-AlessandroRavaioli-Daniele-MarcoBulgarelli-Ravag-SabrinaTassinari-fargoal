@@ -110,6 +110,11 @@ public class FloorManagerImpl implements FloorManager {
                 this.player.update(this);
             } else {
                 this.getAllElements().forEach(e -> e.update(this));
+                for (int i = 0; i < this.monsters.size(); i++) {
+                    if (this.monsters.get(i).isDead()) {
+                        this.monsters.remove(i);
+                    }
+                }
                 this.sword.update(this);
             }
             this.player.getInventory().getListAllSpell().forEach(s -> s.update(this));
@@ -136,7 +141,7 @@ public class FloorManagerImpl implements FloorManager {
      */
     @Override
     public List<Monster> getMonsters() {
-        return this.monsters;
+        return List.copyOf(this.monsters);
     }
 
     /**
