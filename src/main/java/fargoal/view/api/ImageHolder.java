@@ -3,6 +3,7 @@ package fargoal.view.api;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
@@ -51,28 +52,35 @@ public final class ImageHolder {
     private ImageHolder() { }
 
     static {
-        try {
-            playerImage = ImageIO.read(new File(ENTITY_FOLDER + "Player.png" + File.separator));
-            chestImage = ImageIO.read(new File(TILES_FOLDER + "Chest.png" + File.separator));
-            downstairsImage = ImageIO.read(new File(TILES_FOLDER + "DownStairs.png" + File.separator));
-            hiddenGoldImage = ImageIO.read(new File(TILES_FOLDER + "HiddenGold.png" + File.separator));
-            sackOfGoldImage = ImageIO.read(new File(TILES_FOLDER + "SackOfGold.png" + File.separator));
-            swordImage = ImageIO.read(new File(TILES_FOLDER + "Sword.png" + File.separator));
-            assassinImage = ImageIO.read(new File(ENTITY_FOLDER + "Assassin.png" + File.separator));
-            barbarianImage = ImageIO.read(new File(ENTITY_FOLDER + "Barbarian.png" + File.separator));
-            mageImage = ImageIO.read(new File(ENTITY_FOLDER + "Mage.png" + File.separator));
-            monkImage = ImageIO.read(new File(ENTITY_FOLDER + "Monk.png" + File.separator));
-            rogueImage = ImageIO.read(new File(ENTITY_FOLDER + "Rogue.png" + File.separator));
-            spiderImage = ImageIO.read(new File(ENTITY_FOLDER + "Spider.png" + File.separator));
-            warLordImage = ImageIO.read(new File(ENTITY_FOLDER + "WarLord.png" + File.separator));
-            wallImage = ImageIO.read(new File(TILES_FOLDER + "Wall.png" + File.separator));
-            upStairsImage = ImageIO.read(new File(TILES_FOLDER + "UpStairs.png" + File.separator));
-            tileImage = ImageIO.read(new File(TILES_FOLDER + "Tile.png" + File.separator));
-            templeImage = ImageIO.read(new File(TILES_FOLDER + "Temple.png" + File.separator));
-            beaconImage = ImageIO.read(new File(TILES_FOLDER + "BeaconPlaced.png" + File.separator));
+            playerImage = loadImage("/entity/Player.png");
+            chestImage = loadImage("/tiles/Chest.png");
+            downstairsImage = loadImage("/tiles/DownStairs.png");
+            hiddenGoldImage = loadImage("/tiles/HiddenGold.png");
+            sackOfGoldImage = loadImage("/tiles/SackOfGold.png");
+            swordImage = loadImage("/tiles/Sword.png");
+            assassinImage = loadImage("/entity/Assassin.png");
+            barbarianImage = loadImage("/entity/Barbarian.png");
+            mageImage = loadImage("/entity/Mage.png");
+            monkImage = loadImage("/entity/Monk.png");
+            rogueImage = loadImage("/entity/Rogue.png");
+            spiderImage = loadImage("/entity/Spider.png");
+            warLordImage = loadImage("/entity/WarLord.png");
+            wallImage = loadImage("/tiles/Wall.png");
+            upStairsImage = loadImage("/tiles/UpStairs.png");
+            tileImage = loadImage("/tiles/Tile.png");
+            templeImage = loadImage("/tiles/Temple.png");
+            beaconImage = loadImage("/tiles/BeaconPlaced.png");
+    }
 
+    private static BufferedImage loadImage(String path) {
+        try (InputStream is = ImageHolder.class.getResourceAsStream(path)) {
+            if (is == null) {
+                throw new IOException("Resource not found: " + path);
+            }
+            return ImageIO.read(is); 
         } catch (IOException e) {
-            Logger.getAnonymousLogger().warning("IOException, unable to read image: " + e.getMessage());
+            Logger.getAnonymousLogger().warning("IOException, unable to load image" + path + " - " + e.getMessage());
+            return null;
         }
     }
 
