@@ -13,6 +13,12 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * Class that has the objective to memorize in a static way
  * images, to not have to read them at every frame.
  */
+@SuppressFBWarnings(
+    value = {
+        "MS"
+    },
+    justification = "No field can be declared as final"
+)
 public final class ImageHolder {
     private static BufferedImage playerImage;
     private static BufferedImage chestImage;
@@ -75,12 +81,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the player
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage player() {
         return playerImage;
     }
@@ -91,12 +91,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the chest
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage chest() {
         return chestImage;
     }
@@ -107,12 +101,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the downstairs
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage downstairs() {
         return downstairsImage;
     }
@@ -123,12 +111,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the hiddengold
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage hiddenGold() {
         return hiddenGoldImage;
     }
@@ -139,12 +121,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the sack of gold
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage sackOfGold() {
         return sackOfGoldImage;
     }
@@ -155,12 +131,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the sword
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage sword() {
         return swordImage;
     }
@@ -171,12 +141,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the assassin
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage assassin() {
         return assassinImage;
     }
@@ -187,12 +151,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the barbarian
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage barbarian() {
         return barbarianImage;
     }
@@ -203,12 +161,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the mage
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage mage() {
         return mageImage;
     }
@@ -219,12 +171,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the monk
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage monk() {
         return monkImage;
     }
@@ -235,12 +181,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the rogue
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage rogue() {
         return rogueImage;
     }
@@ -251,12 +191,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the spider
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage spider() {
         return spiderImage;
     }
@@ -267,12 +201,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the war lord
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage warlord() {
         return warLordImage;
     }
@@ -283,12 +211,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the wall
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage wall() {
         return wallImage;
     }
@@ -299,12 +221,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the tile
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage tile() {
         return tileImage;
     }
@@ -315,12 +231,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the temple
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage temple() {
         return templeImage;
     }
@@ -331,12 +241,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the upstairs
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage upStair() {
         return upStairsImage;
     }
@@ -346,12 +250,6 @@ public final class ImageHolder {
      * 
      * @return - the image of the upstairs
      */
-    @SuppressFBWarnings(
-        value = {
-            "MS"
-        },
-        justification = "The field cannot be final"
-    )
     public static BufferedImage beaconPlaced() {
         return beaconImage;
     }

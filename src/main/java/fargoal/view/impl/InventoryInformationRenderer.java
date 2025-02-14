@@ -53,7 +53,7 @@ public class InventoryInformationRenderer implements Renderer {
     public void render() {
         renderer.render();
     }
-    
+
     private void setRenderer(final Inventory inventory) {
         renderer = new SwingRendererBottom(g2d -> {
             g2d.setFont(new Font("Arial", 

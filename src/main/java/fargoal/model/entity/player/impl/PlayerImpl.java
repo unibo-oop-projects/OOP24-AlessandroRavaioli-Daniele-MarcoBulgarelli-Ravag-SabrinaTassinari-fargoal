@@ -469,6 +469,13 @@ public class PlayerImpl implements Player {
     }
 
     /** {@inheritDoc}*/
+    @SuppressFBWarnings(
+        value = {
+            "NS_NON_SHORT_CIRCUIT_LOGIC",
+            "NS_DANGEROUS_NON_SHORT_CIRCUIT_LOGIC"},
+            justification = "this short circuit logic is studied to be both necessary and not dangerous"
+                + "It will not cause errors and the efficiency will not be of impact overall"
+    )
     @Override
     public void battle(final Monster monster) {
         if (isAttacked && attackCounter == 0) {
