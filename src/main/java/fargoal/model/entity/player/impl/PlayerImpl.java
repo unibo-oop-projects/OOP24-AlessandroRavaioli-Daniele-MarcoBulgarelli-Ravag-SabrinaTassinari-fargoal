@@ -17,6 +17,7 @@ import fargoal.model.events.impl.ReceiveAttackEvent;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.model.interactable.temple.Temple;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 import fargoal.view.impl.InventoryInformationRenderer;
 import fargoal.view.impl.PlayerInformationRenderer;
@@ -125,9 +126,13 @@ public class PlayerImpl implements Player {
         this.playerInformationRender.setRender(floorManager);
         this.infoRenderer = infoRenderer;
         this.infoRenderer.setRenderer(this.inventory);
-        this.setRender(floorManager.getRenderFactory().playerRenderer(this));
+        this.setRender(floorManager.getRenderFactory());
         this.moveTimer = new Timer();
         this.regenerationTimer = System.currentTimeMillis();
+    }
+
+    private void setRender(final RenderFactory renderfactory) {
+        this.render = renderfactory.playerRenderer(this);
     }
 
     /**{@inheritDoc} */
@@ -150,16 +155,6 @@ public class PlayerImpl implements Player {
      */
     public void setDeepestDescent(final Integer newDeepest) {
         this.deepestDescent = newDeepest;
-    }
-
-    /**
-     * Sets the renderer responsible for rendering the player.
-     * This method allows updating the current rendering engine or system.
-     * 
-     * @param renderer - The {@link Renderer} instance to be assigned to the player.
-     */
-    public final void setRender(final Renderer renderer) {
-        this.render = renderer;
     }
 
     /**{@inheritDoc} */
