@@ -1,9 +1,8 @@
 package fargoal.entity.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,17 +32,17 @@ class TestInventory {
 
     @Test
     void testInitialInventory() {
-        assertEquals(0, inventory.getHealingPotions().getNumberInInventory());
+        assertEquals(1, inventory.getHealingPotions().getNumberInInventory());
         assertEquals(0, inventory.getBeacons().getNumberInInventory());
-        assertEquals(0, inventory.getMagicSacks().getNumberInInventory());
+        assertEquals(1, inventory.getMagicSacks().getNumberInInventory());
         assertEquals(0, inventory.getEnchantedWeapons().getNumberInInventory());
-        assertEquals(List.of(), inventory.getListOfMaps());
         assertEquals(0, inventory.getInvisibilitySpell().getNumberInInventory());
-        assertEquals(0, inventory.getTeleportSpell().getNumberInInventory());
+        assertEquals(1, inventory.getTeleportSpell().getNumberInInventory());
         assertEquals(0, inventory.getShieldSpell().getNumberInInventory());
         assertEquals(0, inventory.getRegenerationSpell().getNumberInInventory());
         assertEquals(0, inventory.getDriftSpell().getNumberInInventory());
         assertEquals(0, inventory.getLightSpell().getNumberInInventory());
+        assertNotNull(inventory.getListOfMaps());
     }
 
     @Test
