@@ -17,7 +17,7 @@ import fargoal.view.api.Renderer;
  */
 public class ChestImpl implements Interactable {
 
-    static final int N_CHEST_ITEM = 14;
+    static final int N_CHEST_ITEM = 15;
     private static final int CASE_DRIFT_SPELL = 0;
     private static final int CASE_INVISIBILITY_SPELL = 1;
     private static final int CASE_LIGHT_SPELL = 2;
