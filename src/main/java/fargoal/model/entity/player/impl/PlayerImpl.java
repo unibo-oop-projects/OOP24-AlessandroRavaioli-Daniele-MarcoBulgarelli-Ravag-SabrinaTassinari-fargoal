@@ -89,8 +89,7 @@ public class PlayerImpl implements Player {
      * 
      * @param floorManager - The floor manager that handles the game environment and events.
      * @param controller - The keyboard input controller to manage player input.
-     * @param playerInformationRenderer - The renderer for displaying player-related information.
-     * @param infoRenderer - The renderer for displaying inventory-related information.
+     * @param view - The view that needs to know where to print informations. 
      */
     @SuppressFBWarnings(
         value = {"EI_EXPOSE_REP2"},
@@ -269,31 +268,37 @@ public class PlayerImpl implements Player {
         }
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void increaseHealth(final Integer amount) {
         this.health.increaseHealth(amount);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void decreaseHealth(final Integer amount) {
         this.health.decreaseHealth(amount);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getCurrentHealth() {
         return this.health.getCurrentHealth();
     }
 
+    /**{@inheritDoc}*/
     @Override
     public Integer getMaxHealth() {
         return this.health.getMaxHealth();
     }
 
+    /**{@inheritDoc}*/
     @Override
     public void setHealth(final Integer amount) {
         this.health.setHealth(amount);
     }
 
+    /**{@inheritDoc}*/
     @Override
     public boolean isHealthy() {
         return this.health.isHealthy();
