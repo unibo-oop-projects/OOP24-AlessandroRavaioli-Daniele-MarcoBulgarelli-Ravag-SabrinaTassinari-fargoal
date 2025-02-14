@@ -19,6 +19,7 @@ import fargoal.model.interactable.temple.Temple;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
+import fargoal.view.api.View;
 import fargoal.view.impl.InventoryInformationRenderer;
 import fargoal.view.impl.PlayerInformationRenderer;
 import fargoal.model.entity.player.api.Gold;
@@ -100,8 +101,7 @@ public class PlayerImpl implements Player {
     )
     public PlayerImpl(final FloorManager floorManager,
         final KeyboardInputController controller,
-        final PlayerInformationRenderer playerInformationRenderer,
-        final InventoryInformationRenderer infoRenderer) {
+        final View view) {
 
         this.random = new Random();
         this.floorManager = floorManager;
@@ -122,10 +122,8 @@ public class PlayerImpl implements Player {
         this.isImmune = false;
         this.hasLight = false;
         this.deepestDescent = 0;
-        this.playerInformationRender = playerInformationRenderer;
-        this.playerInformationRender.setRender(floorManager);
-        this.infoRenderer = infoRenderer;
-        this.infoRenderer.setRenderer(this.inventory);
+        this.playerInformationRender = new PlayerInformationRenderer(view, floorManager);
+        this.infoRenderer = new InventoryInformationRenderer(view, inventory);
         this.setRender(floorManager.getRenderFactory());
         this.moveTimer = new Timer();
         this.regenerationTimer = System.currentTimeMillis();
