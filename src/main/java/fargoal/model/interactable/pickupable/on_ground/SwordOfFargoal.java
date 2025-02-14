@@ -56,7 +56,7 @@ public class SwordOfFargoal implements Interactable {
      * Getter for the field isPickedUp, which tells if the sword is picked up.
      * @return true if the sword is picked up, false otherwise.
      */
-    public boolean isPickedUp() {
+    public final boolean isPickedUp() {
         return this.isPickedUp;
     }
 
