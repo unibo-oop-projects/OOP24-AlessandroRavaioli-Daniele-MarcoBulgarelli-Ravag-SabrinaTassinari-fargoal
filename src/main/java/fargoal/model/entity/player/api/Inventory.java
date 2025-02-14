@@ -96,17 +96,47 @@ public interface Inventory {
      */
     void addEnchantedWeapon();
 
-    public Integer numberOfMaps();
+    /**
+     * Method that returns the number of map that the player 
+     * has found.
+     * 
+     * @return - the number of map that the player has found
+     */
+    Integer numberOfMaps();
 
-    public void addMap();
+    /**
+     * Method that adds a map in the list of the maps in the {@link Inventory}.
+     */
+    void addMap();
 
-    public void removeMap();
+    /**
+     * Method that removes a map in the list of maps in the {@link Inventory}.
+     */
+    void removeMap();
 
-    public boolean hasMap(Integer level);
+    /**
+     * Method that returns if the list of maps contains the map
+     * of the level given.
+     * 
+     * @param level - the level it checks if there's the map or not
+     * @return true if there's the map of this level, false otherwise
+     */
+    boolean hasMap(Integer level);
 
-    public boolean isEmpty();
+    /**
+     * Method that returns if there are no maps in the {@link Inventory}.
+     * 
+     * @return true if there are no maps, false otherwise
+     */
+    boolean isEmpty();
 
-    public List<Integer> getListOfMaps();
+    /**
+     * Method that returns a copy of the list of the maps
+     * contained in the {@link Inventory}.
+     * 
+     * @return a copy of the list of the maps contained in {@link Inventory}
+     */
+    List<Integer> getListOfMaps();
 
     /**
      * Retrieves the current status of casted spells.

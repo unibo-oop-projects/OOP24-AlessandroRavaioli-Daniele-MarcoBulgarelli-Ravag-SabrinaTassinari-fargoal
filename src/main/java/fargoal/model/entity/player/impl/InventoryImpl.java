@@ -88,31 +88,37 @@ public class InventoryImpl implements Inventory {
         this.spellCasted.put(SpellType.SHIELD.getName(), false);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Integer numberOfMaps() {
         return this.levelMaps.getNumberInInventory();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void addMap() {
         this.levelMaps.store();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void removeMap() {
         this.levelMaps.removeUtility();
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean hasMap(final Integer level) {
         return this.levelMaps.getListOfMaps().contains(level);
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isEmpty() {
         return this.levelMaps.getListOfMaps().isEmpty();
     }
 
+    /** {@inheritDoc} */
     @Override
     public List<Integer> getListOfMaps() {
         return List.copyOf(this.levelMaps.getListOfMaps());
