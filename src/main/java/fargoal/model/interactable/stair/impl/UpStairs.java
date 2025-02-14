@@ -24,7 +24,7 @@ public class UpStairs implements Stairs {
      */
     public UpStairs(final Position pos, final RenderFactory renderFactory) {
         this.position = pos;
-        this.setRenderer(renderFactory.upstairRenderer(this));
+        this.setRenderer(renderFactory);
     }
 
     /** {@inheritDoc} */
@@ -56,8 +56,8 @@ public class UpStairs implements Stairs {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public final void setRenderer(final Renderer renderer) {
-        this.renderer = renderer;
+    public final void setRenderer(final RenderFactory rf) {
+        this.renderer = rf.upstairRenderer(this);
     }
 
     /** {@inheritDoc} */

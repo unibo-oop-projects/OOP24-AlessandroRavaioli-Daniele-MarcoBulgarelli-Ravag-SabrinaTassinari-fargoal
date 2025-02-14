@@ -35,7 +35,7 @@ public class SwordOfFargoal implements Interactable {
         this.mapLevel = mapLevel;
         this.endTimer = new Timer();
         this.hasTimeAlreadyStarted = false;
-        this.setRender(renderFactory.swordRenderer(this));
+        this.setRender(renderFactory);
     }
 
     /** {@inheritDoc} */
@@ -92,8 +92,8 @@ public class SwordOfFargoal implements Interactable {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public final void setRender(final Renderer renderer) {
-        this.renderer = renderer;
+    private final void setRender(final RenderFactory rf) {
+        this.renderer = rf.swordRenderer(this);
     }
 
     /** {@inheritDoc} */

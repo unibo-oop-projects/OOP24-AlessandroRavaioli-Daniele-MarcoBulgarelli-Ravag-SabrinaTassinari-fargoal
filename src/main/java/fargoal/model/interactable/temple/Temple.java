@@ -29,7 +29,7 @@ public class Temple implements Interactable {
      */
     public Temple(final Position position, final RenderFactory renderFactory) {
         this.position = position;
-        this.setRender(renderFactory.templeRenderer(this));
+        this.setRender(renderFactory);
     }
 
     /** {@inheritDoc} */
@@ -68,10 +68,10 @@ public class Temple implements Interactable {
 
     /**
      * Setter for field renderer.
-     * @param renderer - the new renderer.
+     * @param rf - the factory containig the renderer.
      */
-    public final void setRender(final Renderer renderer) {
-        this.renderer = renderer;
+    private final void setRender(final RenderFactory rf) {
+        this.renderer = rf.templeRenderer(this);
     }
 
     /** {@inheritDoc} */
