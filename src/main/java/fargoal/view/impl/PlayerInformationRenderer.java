@@ -24,6 +24,8 @@ public class PlayerInformationRenderer implements Renderer {
     private static final int CONSTANT_SIX = 6;
     private static final int CONSTANT_SEVEN = 7;
     private static final int DIVISOR_WIDTH_SECOND_COLUMN = 16;
+    private static final int MULTIPLIER_SWORD_WIDTH = 8;
+    private static final int DIVISOR_SWORD_WIDTH = 20;
 
     private SwingRendererBottom rendererBottom; 
     private SwingRendererTop rendererTop;
@@ -93,6 +95,26 @@ public class PlayerInformationRenderer implements Renderer {
                         * CONSTANT_SEVEN
                         / DIVISOR_WIDTH_SECOND_COLUMN, 
                         swing.getInformationPanel().getBounds().height / CONSTANT_SIX);
+            g2d.setColor(Color.YELLOW);
+            g2d.drawString("LEGENDARY SWORD", 
+                    swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN, 
+                    swing.getInformationPanel().getBounds().height / 2);
+            if (floorManager.getPlayer().hasSword()) {
+                g2d.setColor(Color.GREEN);
+                g2d.drawString("TRUE", 
+                        swing.getInformationPanel().getBounds().width
+                        * CONSTANT_SIX
+                        / DIVISOR_WIDTH_SECOND_COLUMN, 
+                        swing.getInformationPanel().getBounds().height / 2);
+            } else {
+                g2d.setColor(Color.RED);
+                g2d.drawString("FALSE", 
+                        swing.getInformationPanel().getBounds().width
+                        * MULTIPLIER_SWORD_WIDTH
+                        / DIVISOR_SWORD_WIDTH, 
+                        swing.getInformationPanel().getBounds().height / 2);
+            }
+            g2d.setColor(Color.WHITE);
             g2d.drawString("DUNGEON LEVEL",
                     swing.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN,
                     swing.getInformationPanel().getBounds().height * 2 / 3);
