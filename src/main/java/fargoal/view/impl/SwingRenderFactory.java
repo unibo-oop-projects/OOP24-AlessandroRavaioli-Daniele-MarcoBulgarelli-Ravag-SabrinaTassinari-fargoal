@@ -137,7 +137,6 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer goldRenderer(final SackOfMoney obj) {
         return new SwingRendererMiddle(g2d -> {
-            if (!obj.isOpen()) {
                 if (obj.isHiddenInGround()) {
                     g2d.drawImage(ImageHolder.hiddenGold(), 
                     this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
@@ -145,15 +144,14 @@ public class SwingRenderFactory implements RenderFactory {
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(), 
                     null);
-                } 
-            } else {
+                } else {
                 g2d.drawImage(ImageHolder.sackOfGold(), 
                     this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
                     this.view.getTilePixelWidth(),
                     this.view.getTilePixelHeight(), 
                     null);
-            }
+                }
         }, this.view);
     }
 
