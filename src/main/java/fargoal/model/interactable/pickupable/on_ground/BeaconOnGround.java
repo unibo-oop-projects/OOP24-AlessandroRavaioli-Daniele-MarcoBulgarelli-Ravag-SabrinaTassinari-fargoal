@@ -72,4 +72,9 @@ public class BeaconOnGround implements Interactable {
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
 
+    @Override
+    public boolean exists(FloorManager floorManager) {
+        return true;
+    }
+
 }

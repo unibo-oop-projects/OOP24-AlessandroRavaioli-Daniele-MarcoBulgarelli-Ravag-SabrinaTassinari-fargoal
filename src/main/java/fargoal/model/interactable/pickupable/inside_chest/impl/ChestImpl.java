@@ -150,4 +150,9 @@ public class ChestImpl implements Interactable {
         }
     }
 
+    @Override
+    public boolean exists(FloorManager floorManager) {
+        return !this.isOpen();
+    }
+
 }

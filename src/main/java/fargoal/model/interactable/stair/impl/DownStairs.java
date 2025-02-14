@@ -66,4 +66,9 @@ public class DownStairs implements Stairs {
         this.renderer = rf.downstairRenderer(this);
     }
 
+    @Override
+    public boolean exists(FloorManager floorManager) {
+        return true;
+    }
+
 }
