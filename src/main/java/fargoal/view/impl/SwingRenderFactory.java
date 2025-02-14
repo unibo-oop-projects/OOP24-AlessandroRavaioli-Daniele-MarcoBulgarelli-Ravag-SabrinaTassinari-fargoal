@@ -2,6 +2,7 @@ package fargoal.view.impl;
 
 import java.awt.Color;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.commons.api.Position;
 import fargoal.model.commons.FloorElement;
 import fargoal.model.interactable.pickupable.inside_chest.impl.ChestImpl;
@@ -24,6 +25,11 @@ public class SwingRenderFactory implements RenderFactory {
      * 
      * @param view - the general view then casted to {@link SwingView}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "The class needs to work on the same view as the one given"
+            + "so if the one given changes the reference also needs to change"
+    )
     public SwingRenderFactory(final View view) {
         this.view = (SwingView) view;
     }

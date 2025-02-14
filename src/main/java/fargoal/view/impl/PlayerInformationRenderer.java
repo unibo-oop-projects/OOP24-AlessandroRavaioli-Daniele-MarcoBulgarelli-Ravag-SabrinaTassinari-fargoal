@@ -3,6 +3,7 @@ package fargoal.view.impl;
 import java.awt.Color;
 import java.awt.Font;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
@@ -34,6 +35,11 @@ public class PlayerInformationRenderer implements Renderer {
      * 
      * @param view - the view of the game
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "The class needs to work on the same view as the one given"
+            + "so if the one given changes the reference also needs to change"
+    )
     public PlayerInformationRenderer(final View view) {
         this.view = view;
     }

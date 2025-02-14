@@ -13,6 +13,8 @@ import java.awt.event.WindowStateListener;
 import java.util.function.Consumer;
 import javax.swing.WindowConstants;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
@@ -71,7 +73,16 @@ public class SwingView implements View, KeyListener {
         this.mapPanel = new SwingViewCanvas();
         this.eventPanel = new SwingViewCanvas();
         this.informationPanel = new SwingViewCanvas();
-        this.mapPanel.setBackground(Color.DARK_GRAY);
+        this.frame.setResizable(true);
+        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.input = c;
+        tilePixelDimHeight = MINIMUM_TILE_HEIGHT;
+        tilePixelDimWidth = MINIMUM_TILE_WIDTH;
+        this.frame.setVisible(true);
+    }
+
+    @Override
+    public void setUp() {
         this.frame.setLayout(new BorderLayout());
         this.frame.setMinimumSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
         this.frame.getContentPane().add(mapPanel, BorderLayout.CENTER);
@@ -79,32 +90,12 @@ public class SwingView implements View, KeyListener {
         this.frame.getContentPane().add(this.informationPanel, BorderLayout.SOUTH);
         this.eventPanel.setBackground(Color.BLACK);
         this.informationPanel.setBackground(Color.GRAY);
-        this.frame.setResizable(true);
-        this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        this.input = c;
-        this.frame.addKeyListener(this);
-        this.frame.addComponentListener(new ComponentAdapter() {
-
-            /** {@inheritDoc} */
-            @Override
-            public void componentResized(final ComponentEvent e) {
-                calculateDimensions();
-            }
-        });
-        this.frame.addWindowStateListener(new WindowStateListener() {
-
-            @Override
-            public void windowStateChanged(final WindowEvent e) {
-                calculateDimensions();
-            }
-        });
-        tilePixelDimHeight = MINIMUM_TILE_HEIGHT;
-        tilePixelDimWidth = MINIMUM_TILE_WIDTH;
+        this.mapPanel.setBackground(Color.DARK_GRAY);
         this.eventPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
                 this.frame.getBounds().height * EVENT_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
         this.informationPanel.setPreferredSize(new Dimension(this.frame.getBounds().width, 
                 this.frame.getBounds().height * INFORMATION_PANEL_MULTIPLIER_HEIGHT / PANELS_DIVISOR_HEIGHT));
-        this.frame.setVisible(true);
+        this.setListeners();
     }
 
     /**
@@ -112,6 +103,10 @@ public class SwingView implements View, KeyListener {
      * 
      * @return the local field {@link #frame}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "The classes that call this method need the specifics of the frame itself"
+    )
     public JFrame getFrame() {
         return this.frame;
     }
@@ -218,6 +213,11 @@ public class SwingView implements View, KeyListener {
      * 
      * @return the local field {@link #informationPanel}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "It is needed to give the object itself because the ones that call it"
+            + "need to work on the panel"
+    )
     public SwingViewCanvas getInformationPanel() {
         return this.informationPanel;
     }
@@ -227,6 +227,11 @@ public class SwingView implements View, KeyListener {
      * 
      * @return the local field {@link #eventPanel}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "It is needed to give the object itself because the ones that call it"
+            + "need to work on the panel"
+    )
     public SwingViewCanvas getEventPanel() {
         return this.eventPanel;
     }
@@ -238,6 +243,25 @@ public class SwingView implements View, KeyListener {
      */
     public int getMargin() {
         return this.margin;
+    }
+
+    private void setListeners() {
+        this.frame.addKeyListener(this);
+        this.frame.addComponentListener(new ComponentAdapter() {
+
+            /** {@inheritDoc} */
+            @Override
+            public void componentResized(final ComponentEvent e) {
+                calculateDimensions();
+            }
+        });
+        this.frame.addWindowStateListener(new WindowStateListener() {
+
+            @Override
+            public void windowStateChanged(final WindowEvent e) {
+                calculateDimensions();
+            }
+        });
     }
 
     /** {@inheritDoc} */
