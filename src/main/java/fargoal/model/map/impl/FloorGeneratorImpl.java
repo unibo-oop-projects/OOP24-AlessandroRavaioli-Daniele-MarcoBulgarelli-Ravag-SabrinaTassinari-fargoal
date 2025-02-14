@@ -40,7 +40,7 @@ public class FloorGeneratorImpl implements FloorGenerator {
      * {@inheritDoc}
      */
     @Override
-    public FloorMap createFloor(final FloorManager manager) {
+    public final FloorMap createFloor(final FloorManager manager) {
         if (manager.getFloorLevel() <= LOW_LEVELS) {
             return new FloorMapBuilder(manager.getRenderFactory())
                     .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_IN_THE_BEGINNIG)

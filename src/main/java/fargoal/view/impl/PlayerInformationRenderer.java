@@ -40,8 +40,9 @@ public class PlayerInformationRenderer implements Renderer {
         justification = "The class needs to work on the same view as the one given"
             + "so if the one given changes the reference also needs to change"
     )
-    public PlayerInformationRenderer(final View view) {
+    public PlayerInformationRenderer(final View view, final FloorManager floorManager) {
         this.view = view;
+        this.setRender(floorManager);
     }
 
     /** {@inheritDoc} */
@@ -56,7 +57,7 @@ public class PlayerInformationRenderer implements Renderer {
      * 
      * @param floorManager - the floormanager to take all the necessary infos
      */
-    public void setRender(final FloorManager floorManager) {
+    private void setRender(final FloorManager floorManager) {
         final SwingView swing = (SwingView) view;
         this.rendererTop = new SwingRendererTop(g2d -> {
             if (floorManager.getPlayer().getHealth().getCurrentHealth() 

@@ -28,8 +28,6 @@ import fargoal.model.map.api.FloorMask;
 import fargoal.model.map.impl.FloorGeneratorImpl;
 import fargoal.model.map.impl.FloorMaskImpl;
 import fargoal.view.api.RenderFactory;
-import fargoal.view.impl.InventoryInformationRenderer;
-import fargoal.view.impl.PlayerInformationRenderer;
 import fargoal.view.impl.RenderEventListener;
 import fargoal.view.impl.SwingRenderFactory;
 import fargoal.model.interactable.temple.Temple;
@@ -81,8 +79,7 @@ public class FloorManagerImpl implements FloorManager {
         this.timer = new Timer();
         this.player = new PlayerImpl(this,
                 engine.getController(),
-                new PlayerInformationRenderer(engine.getView()),
-                new InventoryInformationRenderer(engine.getView()));
+                engine.getView());
         this.sword = new SwordOfFargoal(renderFactory,
                 rnd.nextInt(VARIABLE_SWORD_LEVEL) + MINIMUM_SWORD_LEVEL);
         this.isOver = false;

@@ -42,8 +42,9 @@ public class InventoryInformationRenderer implements Renderer {
         justification = "The class needs to work on the same view as the one given"
             + "so if the one given changes the reference also needs to change"
     )
-    public InventoryInformationRenderer(final View view) {
+    public InventoryInformationRenderer(final View view, final Inventory inventory) {
         this.view = (SwingView) view;
+        this.setRenderer(inventory);
     }
 
     /** {@inheritDoc} */
@@ -56,7 +57,7 @@ public class InventoryInformationRenderer implements Renderer {
      * 
      * @param inventory - the player's inventory
      */
-    public void setRenderer(final Inventory inventory) {
+    private void setRenderer(final Inventory inventory) {
         renderer = new SwingRendererBottom(g2d -> {
             g2d.setFont(new Font("Arial", 
                         Font.BOLD, 
