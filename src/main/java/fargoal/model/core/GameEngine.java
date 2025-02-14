@@ -67,6 +67,11 @@ public class GameEngine {
     /**
      * The method that stops the application.
      */
+    @SuppressFBWarnings(
+        value = {"DM_EXIT"},
+        justification = "This method has the only purpose of shutting down the virtual machine"
+            + "it is only called when the program has to terminate"
+    )
     public void stop() {
         System.exit(0);
     }
@@ -83,6 +88,11 @@ public class GameEngine {
      * A method to set the current scene manager that needs to be updated.
      * @param manager - the manager that needs to be updated {@link SceneManager}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "This method is needed to change the scene that needs to be updated"
+            + "so a reference to the scene itself is needed"
+    )
     public void setSceneManager(final SceneManager manager) {
         this.manager = manager;
     }

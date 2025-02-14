@@ -41,33 +41,33 @@ public class PlayerInputComponent implements InputComponent {
             }
         } else if (controller.isPlacingBeacon()) {
             if (player.getInventory().numberBeacons() > 0) {
-                player.getInventory().useBeacon();;
+                player.getInventory().useBeacon();
             }
         } else if (controller.isUsingDriftSpell()) {
             if (player.getInventory().numberDriftSpells() > 0) {
-                player.getInventory().useDriftSpell();;
+                player.getInventory().useDriftSpell();
             }
         } else if (controller.isUsingInvisibilitySpell()) {
             if (player.getInventory().numberInvisibilitySpells() > 0) {
-                player.getInventory().useInvisibilitySpell();;
+                player.getInventory().useInvisibilitySpell();
             }
         } else if (controller.isUsingLightSpell()) {
             if (player.getInventory().numberLightSpells() > 0) {
-                player.getInventory().useLightSpell();;
+                player.getInventory().useLightSpell();
             }
         } else  if (controller.isTurningLight()) {
-            player.getInventory().turnLight();;
+            player.getInventory().turnLight();
         } else if (controller.isUsingRegenerationSpell()) {
             if (player.getInventory().numberRegenerationSpell() > 0) {
-                player.getInventory().useRegenerationSpell();;
+                player.getInventory().useRegenerationSpell();
             }
         } else if (controller.isUsingShieldSpell()) {
             if (player.getInventory().numberShieldSpells() > 0) {
-                player.getInventory().useShieldSpell();;
+                player.getInventory().useShieldSpell();
             }
         } else if (controller.isUsingTeleportSpell()) {
             if (player.getInventory().numberTeleportSpells() > 0) {
-                player.getInventory().useTeleportSpell();;
+                player.getInventory().useTeleportSpell();
             }
         } else if (controller.isMoveUp() && controller.isMoveRight()) {
             final var pos = player.getPosition().add(new Position(1, -1));
