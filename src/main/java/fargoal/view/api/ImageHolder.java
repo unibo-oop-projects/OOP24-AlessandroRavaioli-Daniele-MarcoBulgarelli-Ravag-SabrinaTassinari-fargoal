@@ -62,14 +62,14 @@ public final class ImageHolder {
             beaconImage = loadImage("/tiles/BeaconPlaced.png");
     }
 
-    private static BufferedImage loadImage(String path) {
+    private static BufferedImage loadImage(final String path) {
         try (InputStream is = ImageHolder.class.getResourceAsStream(path)) {
-            if (is == null) {
-                throw new IOException("Resource not found: " + path);
-            }
             return ImageIO.read(is); 
         } catch (IOException e) {
             Logger.getAnonymousLogger().warning("IOException, unable to load image" + path + " - " + e.getMessage());
+            return null;
+        } catch (IllegalArgumentException e) {
+            Logger.getAnonymousLogger().warning("Image was null");
             return null;
         }
     }
