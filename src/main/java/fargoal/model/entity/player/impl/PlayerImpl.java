@@ -277,6 +277,11 @@ public class PlayerImpl implements Player {
     }
 
     /**{@inheritDoc}*/
+    @SuppressFBWarnings(
+        value = {"EI"},
+        justification = "Need to return the current health value and not a copy, "
+         + "because could be made some operations on it."
+    )
     @Override
     public Health getHealth() {
         return this.health;
@@ -301,6 +306,13 @@ public class PlayerImpl implements Player {
     }
 
     /**{@inheritDoc}*/
+    @SuppressFBWarnings(
+        value = {"EI"},
+        justification = "Need to return the current inventory value and not a copy, "
+         + "because could be made some operations on it."
+         + "All methods to work on inventory are inside the object inventory"
+         + " to mantain code readable and not confusing"
+    )
     @Override
     public Inventory getInventory() {
         return this.inventory;

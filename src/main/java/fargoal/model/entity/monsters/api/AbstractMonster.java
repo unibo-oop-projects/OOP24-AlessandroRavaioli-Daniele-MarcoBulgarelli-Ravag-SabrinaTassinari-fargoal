@@ -77,7 +77,7 @@ public abstract class AbstractMonster implements Monster {
     @SuppressFBWarnings(
         value = {"EI"},
         justification = "Need to return the current health value and not a copy, "
-         + "because could be made some operations on it"
+         + "because could be made some operations on it."
     )
     @Override
     public Health getHealth() {
