@@ -1,7 +1,6 @@
 package fargoal.view.api;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
@@ -39,15 +38,6 @@ public final class ImageHolder {
     private static BufferedImage tileImage;
     private static BufferedImage templeImage;
     private static BufferedImage beaconImage;
-
-    private static final String ENTITY_FOLDER = "src" + File.separator
-            + "main" + File.separator
-            + "resources" + File.separator
-            + "entity" + File.separator;
-    private static final String TILES_FOLDER =  "src" + File.separator
-            + "main" + File.separator
-            + "resources" + File.separator
-            + "tiles" + File.separator;
 
     private ImageHolder() { }
 
