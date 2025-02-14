@@ -12,6 +12,13 @@ public abstract class AbstractSpell implements Spell {
     private int numberInInventory;
     private int floorLevelSpellCasted;
 
+    /**
+     * Constructor that sets the value of the field {@link #numberInInventory} to 0.
+     */
+    public AbstractSpell() {
+        this.numberInInventory = 0;
+    }
+
     /** {@inheritDoc} */
     @Override
     public final String getChestItemType() {

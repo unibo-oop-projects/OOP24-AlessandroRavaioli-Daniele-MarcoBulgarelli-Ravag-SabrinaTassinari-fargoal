@@ -20,7 +20,7 @@ public abstract class AbstractMenuManager implements MenuManager {
     /**
      * This constructor that initializes all internal variables and starts an input timer.
      * @param engine - the game engine containing 
-     * @param inputComponent
+     * @param inputComponent - the component that processes inputs on the menu
      */
     protected AbstractMenuManager(final GameEngine engine, final MenuInputComponent inputComponent) {
         this.selected = 1;
@@ -80,7 +80,7 @@ public abstract class AbstractMenuManager implements MenuManager {
     protected abstract boolean loopCondition();
 
     /**
-     * Method that makes {@link seleced} loop.
+     * Method that makes {@link #selected} loop.
      */
     protected abstract void loopSelected();
 }

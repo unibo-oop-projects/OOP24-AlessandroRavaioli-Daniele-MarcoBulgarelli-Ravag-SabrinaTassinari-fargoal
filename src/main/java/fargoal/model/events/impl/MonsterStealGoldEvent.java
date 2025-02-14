@@ -16,8 +16,8 @@ public class MonsterStealGoldEvent implements FloorEvent {
      * gold that the monster stole, and to the local field monster the monster
      * that stole to the player the gold.
      * 
-     * @param gold
-     * @param monster
+     * @param gold - the gold stolen
+     * @param monster - the monster that stole the gold
      */
     public MonsterStealGoldEvent(final int gold, final FloorElement monster) {
         this.gold = gold;

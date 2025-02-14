@@ -10,6 +10,13 @@ public abstract class AbstractUtility implements Utility {
 
     private int numberInInventory;
 
+    /**
+     * Constructor that sets the value of the local field {@link #numberInInventory} to 0.
+     */
+    public AbstractUtility() {
+        this.numberInInventory = 0;
+    }
+
     /** {@inheritDoc} */
     @Override
     public final String getChestItemType() {

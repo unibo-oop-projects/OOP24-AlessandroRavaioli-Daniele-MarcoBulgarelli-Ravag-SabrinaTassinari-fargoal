@@ -26,7 +26,9 @@ public class FloorMapImpl implements FloorMap {
      * @param walls - a Map that constains all positions of the walls and their renderers
      * @param width - the width of the map
      * @param height - the height of the map
-     * @see Map, Position, Renderer
+     * @see Map
+     * @see Position
+     * @see Renderer
      */
     protected FloorMapImpl(final Map<Position, Renderer> tiles,
             final Map<Position, Renderer> walls,

@@ -8,6 +8,13 @@ public class Timer {
     private long time;
 
     /**
+     * Constructor that sets the initial time to 0.
+     */
+    public Timer() {
+        this.time = 0;
+    }
+
+    /**
      * A method to set the time the timer has to check.
      * @param time - how long is this time interval
      */

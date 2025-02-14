@@ -14,17 +14,17 @@ public class LevelUpEvent implements FloorEvent {
      * Constructor that assigns to the local field {@link #level}
      * the level given.
      * 
-     * @param level - the current level of the {@link Player}
+     * @param level - the current level of the Player
      */
     public LevelUpEvent(final Integer level) {
         this.level = level;
     }
 
     /**
-     * Method that returns the current level of the {@link Player}
+     * Method that returns the current level of the Player
      * after the Level Up.
      * 
-     * @return - the current level of the {@link Player}
+     * @return - the current level of the Player
      */
     public Integer whatLevelPlayerIs() {
         return this.level;

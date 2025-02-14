@@ -15,7 +15,7 @@ public class PickUpNewItemEvent implements FloorEvent {
      * Constructor that assigns to the local field item the
      * corresponding ChestItem found in the chest.
      * 
-     * @param item
+     * @param item - the picked up item
      */
     public PickUpNewItemEvent(final ChestItem item) {
         this.item = item;

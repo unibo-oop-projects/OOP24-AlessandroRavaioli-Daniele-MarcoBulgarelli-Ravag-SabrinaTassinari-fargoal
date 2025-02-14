@@ -84,7 +84,6 @@ public interface FloorManager extends SceneManager {
     /**
      * A method that notifies the listener that an event has occurred.
      * @param floorEvent - the event that has happened {@link FloorEvent}
-     * @see FloorEventListener
      */
     void notifyFloorEvent(FloorEvent floorEvent);
 

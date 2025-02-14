@@ -291,7 +291,7 @@ public interface Player extends Entity {
      *  - Notifying the floor manager of the battle or attack events.
      * </p><p>
      *  - Updating the player's skill and experience points based on the battle outcome.
-     * </p></p>
+     * </p>
      * 
      * @param monster - The enemy {@link Monster} to battle against.
      */

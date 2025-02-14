@@ -8,6 +8,7 @@ import fargoal.model.manager.api.SceneManager;
  * from the TitleScreen.
  */
 public class MenuInputComponent implements InputComponent {
+
     /**
      * Method that updates the TitleScreen based on the input that receives.
      * 

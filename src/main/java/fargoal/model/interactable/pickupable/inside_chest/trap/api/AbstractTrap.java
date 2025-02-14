@@ -14,7 +14,14 @@ import fargoal.model.manager.api.FloorManager;
  */
 public abstract class AbstractTrap implements ChestItem {
 
-    private final Random random = new Random();
+    private final Random random;
+
+    /**
+     * This constructor initializes the random.
+     */
+    public AbstractTrap() {
+        this.random = new Random();
+    }
 
     /** {@inheritDoc} */
     @Override 
@@ -37,7 +44,7 @@ public abstract class AbstractTrap implements ChestItem {
 
     /**
      * This method damage or teleport the player.
-     * @param floorManager
+     * @param floorManager - the manager with all the information about the floor where this method was called
      */
     public abstract void effect(FloorManager floorManager);
 

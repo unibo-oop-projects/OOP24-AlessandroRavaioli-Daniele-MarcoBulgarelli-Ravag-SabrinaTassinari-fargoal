@@ -21,7 +21,13 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 public class SwingViewCanvas extends JPanel {
     private static final long serialVersionUID = 5678472183267292378L;
 
+    /** 
+     * the list of all the registered renderers.
+     */
     private final List<Consumer<Graphics2D>> list;
+    /**
+     * A value that is needed to reduce flickering while resizing.
+     */
     private boolean canDraw;
 
     /**
@@ -29,8 +35,8 @@ public class SwingViewCanvas extends JPanel {
      * and set the local field {@link #canDraw} to true.
      */
     SwingViewCanvas() {
-        list = new LinkedList<>();
-        canDraw = true;
+        this.list = new LinkedList<>();
+        this.canDraw = true;
     }
 
     /**

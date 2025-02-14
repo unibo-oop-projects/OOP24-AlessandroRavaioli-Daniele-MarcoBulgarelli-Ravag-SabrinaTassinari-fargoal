@@ -566,7 +566,7 @@ public class PlayerImpl implements Player {
      * <li>If either the regeneration spell is active or the player is in a temple,
      * but not both, the regeneration period is reduced to half.</li>
      * </ul>
-     * </p><p>
+     * <p>
      * When the adjusted regeneration period has passed, the player's health
      * increases by 1 and the regeneration timer is reset.
      * </p>

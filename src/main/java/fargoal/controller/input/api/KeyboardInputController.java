@@ -23,8 +23,7 @@ public class KeyboardInputController implements InputController {
     private boolean isTurningLight;
 
     /**
-     * Constructor that calling the local method
-     * {@link #reset}, set all the local fields to false.
+     * Constructor that sets all the local fields to false.
      */
     public KeyboardInputController() {
         isMoveDown = false;
