@@ -44,6 +44,10 @@ public class Mage extends AbstractMonster {
             this.minimumWait = MAX_WAIT;
         }
         setMonsterType(MonsterType.MAGE);
+        this.setRenderer(renderFactory);
+    }
+
+    private final void setRenderer(final RenderFactory renderFactory) {
         this.setRender(renderFactory.mageRenderer(this));
     }
 

@@ -50,6 +50,10 @@ public class WarLord extends AbstractMonster {
         } else {
             this.shield = false;
         }
+        this.setRenderer(renderFactory);
+    }
+
+    private final void setRenderer(final RenderFactory renderFactory) {
         this.setRender(renderFactory.warlordRenderer(this));
     }
 

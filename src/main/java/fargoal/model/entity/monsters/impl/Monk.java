@@ -42,6 +42,10 @@ public class Monk extends AbstractMonster {
             minimumWait = MAX_WAIT;
         }
         setMonsterType(MonsterType.MONK);
+        this.setRenderer(renderFactory);
+    }
+
+    private final void setRenderer(final RenderFactory renderFactory) {
         this.setRender(renderFactory.monkRenderer(this));
     }
 

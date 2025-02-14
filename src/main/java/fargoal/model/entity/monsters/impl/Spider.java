@@ -42,6 +42,10 @@ public class Spider extends AbstractMonster {
             minimumWait = MAX_WAIT;
         }
         setMonsterType(MonsterType.SPIDER);
+        this.setRenderer(renderFactory);
+    }
+
+    private final void setRenderer(final RenderFactory renderFactory) {
         this.setRender(renderFactory.spiderRenderer(this));
     }
 

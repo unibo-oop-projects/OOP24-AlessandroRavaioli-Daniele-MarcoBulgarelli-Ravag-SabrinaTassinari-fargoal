@@ -41,8 +41,12 @@ public class Assassin extends AbstractMonster {
             this.minimumWait = MAX_WAIT;
         }
         this.setMonsterType(MonsterType.ASSASSIN);
-        this.setRender(renderFactory.assassinRenderer(this));
+        this.setRenderer(renderFactory);
         this.setVisibilityOff();
+    }
+
+    private final void setRenderer(final RenderFactory renderFactory) {
+        this.setRender(renderFactory.assassinRenderer(this));
     }
 
     /** {@inheritDoc} */

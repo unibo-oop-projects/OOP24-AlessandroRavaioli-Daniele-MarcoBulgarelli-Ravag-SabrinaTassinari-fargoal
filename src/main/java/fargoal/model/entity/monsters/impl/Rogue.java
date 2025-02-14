@@ -35,6 +35,10 @@ public class Rogue extends AbstractMonster {
             final RenderFactory renderFactory) {
         super(position, level, floorManager);
         setMonsterType(MonsterType.ROGUE);
+        this.setRenderer(renderFactory);
+    }
+
+    private final void setRenderer(final RenderFactory renderFactory) {
         this.setRender(renderFactory.rogueRenderer(this));
     }
 
