@@ -15,20 +15,24 @@ import fargoal.model.core.GameEngine;
 import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.entity.player.api.Player;
 
-public class TestInventory {
-    
+class TestInventory {
     private Inventory inventory;
     private final FloorManager manager = new FloorManagerImpl(new GameEngine());
     private final Player player = manager.getPlayer();
     private final Inventory playerInventory = player.getInventory();
 
-     @BeforeEach
+    /**
+     * Configurates the inventory before each test.
+     * If this class gets extended, make sure to call {@code super.setup()}
+     * to maintain the configuration.
+     */
+    @BeforeEach
     void setUp() {
         inventory = new InventoryImpl(manager);
     }
 
     @Test
-    void testInitialInventory(){
+    void testInitialInventory() {
         assertEquals(0, inventory.getHealingPotions().getNumberInInventory());
         assertEquals(0, inventory.getBeacons().getNumberInInventory());
         assertEquals(0, inventory.getMagicSacks().getNumberInInventory());
@@ -50,7 +54,7 @@ public class TestInventory {
         playerInventory.getInvisibilitySpell().setNumberInInventory(10);
         //CHECKSTYLE: MagicNumber ON
         playerInventory.getInvisibilitySpell().removeSpell();
-        
+
         //CHECKSTYLE: MagicNumber OFF
         //9 is the expected number of invisibility spells the player has after getting 10 and using one.
         assertEquals(9, playerInventory.getInvisibilitySpell().getNumberInInventory());
