@@ -57,13 +57,6 @@ public interface Monster extends Entity {
     FloorMap getFloorMap();
 
     /**
-     * Return the Floormanager where the Monster is located.
-     * 
-     * @return the Floormanager
-     */
-    FloorManager getFloorManager();
-
-    /**
      * Set the Monster's visibility to true,
      * which means that the Monster is visible.
      */

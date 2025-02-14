@@ -78,7 +78,7 @@ public class Monk extends AbstractMonster {
             } else if (!this.getHealth().isHealthy() && !this.areNeighbours(floorManager, 2)) {
                 this.heal();
             } else {
-                Ai.move(this, floorManager.getPlayer());
+                Ai.move(this, floorManager.getPlayer(), floorManager);
             }
         }
     }

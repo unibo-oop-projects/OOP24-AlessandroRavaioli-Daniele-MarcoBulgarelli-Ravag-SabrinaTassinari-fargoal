@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.commons.impl.HealthImpl;
@@ -34,7 +35,7 @@ public abstract class AbstractMonster implements Monster {
     private Integer level;
     private FloorManager floorManager;
     private boolean isVisible;
-    private final Random random = new Random();
+    private final Random random;
 
     /**
      * A constructor to set the field that the monster needs
@@ -45,10 +46,16 @@ public abstract class AbstractMonster implements Monster {
      * @param level - the level of the monster
      * @param floorManager - to get infos about the other entities/items
      */
+    @SuppressFBWarnings(
+        value = {"DMI_RANDOM_USED_ONLY_ONCE"},
+        justification = "this random is NOT used only once"
+    )
+
     public AbstractMonster(
                 final Position position,
                 final Integer level, 
                 final FloorManager floorManager) {
+        this.random = new Random();
         this.isFighting = false;
         this.position = position;
         lastPositions.addFirst(position);
@@ -66,6 +73,11 @@ public abstract class AbstractMonster implements Monster {
         return this.monsterType;
     }
 
+    @SuppressFBWarnings(
+        value = {"EI"},
+        justification = "Need to return the current health value and not a copy, "
+         + "because could be made some operations on it"
+    )
     /** {@inheritDoc} */
     @Override
     public Health getHealth() {
@@ -111,7 +123,7 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public void move() {
-        Ai.move(this, floorManager.getPlayer());
+        Ai.move(this, floorManager.getPlayer(), floorManager);
     }
 
     /** {@inheritDoc} */
@@ -157,7 +169,7 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public List<Position> getLastPositions() {
-        return this.lastPositions;
+        return List.copyOf(this.lastPositions);
     }
 
     /** {@inheritDoc} */
@@ -251,9 +263,12 @@ public abstract class AbstractMonster implements Monster {
         return this.floorManager.getFloorMap();
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public FloorManager getFloorManager() {
+    /**
+     * Return the Floormanager where the Monster is located.
+     * 
+     * @return the Floormanager
+     */
+    protected FloorManager getFloorManager() {
         return this.floorManager;
     }
 

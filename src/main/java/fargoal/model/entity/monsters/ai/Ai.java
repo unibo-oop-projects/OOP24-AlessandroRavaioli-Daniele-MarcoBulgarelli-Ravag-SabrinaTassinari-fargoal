@@ -10,6 +10,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Player;
+import fargoal.model.manager.api.FloorManager;
 
 /**
  * Class to allow monster to move, trying to reach
@@ -54,7 +55,7 @@ public final class Ai {
      * @param monster - the monster to be moved
      * @param player - the player to be reached
      */
-    public static void move(final Monster monster, final Player player) {
+    public static void move(final Monster monster, final Player player, final FloorManager floorManager) {
         List<Position> possibleDirections = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),
                 new Position(-1, 0), new Position(1, 0),
                 new Position(1, 1), new Position(0, 1), new Position(-1, 1))
@@ -62,7 +63,7 @@ public final class Ai {
                 .collect(Collectors.toList());
 
         final List<Position> positionList = new ArrayList<>();
-        monster.getFloorManager().getMonsters().forEach(p -> positionList.add(p.getPosition()));
+        floorManager.getMonsters().forEach(p -> positionList.add(p.getPosition()));
 
         final int xDistance = Math.abs(monster.getPosition().x() - player.getPosition().x());
         final int yDistance = Math.abs(monster.getPosition().y() - player.getPosition().y());
@@ -119,7 +120,7 @@ public final class Ai {
         }
         //controllo se il mostro vede il player
         if (monster.getMonsterType().equals(MonsterType.SPIDER)) {
-            if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && monster.getFloorManager().getPlayer().isVisible()) {
+            if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && floorManager.getPlayer().isVisible()) {
                 if (xDistance >= yDistance) {
                     if (xMonsterBigger) {
                         pos = monster.getPosition().decreaseX();
@@ -182,7 +183,7 @@ public final class Ai {
                 } while (isInsideMap(monster, pos) || !positionList.contains(pos) || !monster.getLastPositions().contains(pos));
                 monster.setPosition(pos);
             }
-        } else if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && monster.getFloorManager().getPlayer().isVisible()) {
+        } else if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && floorManager.getPlayer().isVisible()) {
             //nel caso sia piu lontano nelle ascisse
             if (xDistance >= yDistance) {
                 //controllo se l'ascissa del mostro è maggiore di quella del player

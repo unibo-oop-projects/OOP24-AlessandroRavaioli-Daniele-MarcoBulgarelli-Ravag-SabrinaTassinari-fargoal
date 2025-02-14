@@ -71,7 +71,7 @@ public class Assassin extends AbstractMonster {
                 floorManager.getPlayer().battle(this);
             } else {
                 this.setVisibilityOff();
-                Ai.move(this, floorManager.getPlayer());
+                Ai.move(this, floorManager.getPlayer(), floorManager);
             }
         }
     }

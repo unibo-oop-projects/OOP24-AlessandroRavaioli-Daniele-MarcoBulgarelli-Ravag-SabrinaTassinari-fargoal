@@ -84,7 +84,7 @@ public class WarLord extends AbstractMonster {
                 this.setIsFighting(true);
                 floorManager.getPlayer().battle(this);
             } else {
-                Ai.move(this, floorManager.getPlayer());
+                Ai.move(this, floorManager.getPlayer(), floorManager);
             }
         }
     }

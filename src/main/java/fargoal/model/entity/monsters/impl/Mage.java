@@ -124,7 +124,7 @@ public class Mage extends AbstractMonster {
                             floorManager.getPlayer().battle(this);
                         }
                     } else {
-                        Ai.move(this, floorManager.getPlayer());
+                        Ai.move(this, floorManager.getPlayer(), floorManager);
                     }
         }
     }
