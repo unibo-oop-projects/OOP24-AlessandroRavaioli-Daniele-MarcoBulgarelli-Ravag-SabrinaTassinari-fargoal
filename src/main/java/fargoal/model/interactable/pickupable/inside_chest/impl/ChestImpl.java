@@ -79,22 +79,22 @@ public class ChestImpl implements Interactable {
                 final Spell spell;
                 if (num == CASE_DRIFT_SPELL) {
                     spell = new ChestItemFactoryImpl().generateDriftSpell();
-                    floorManager.getPlayer().getInventory().getDriftSpell().store();
+                    floorManager.getPlayer().getInventory().addDriftSpell();
                 } else if (num == CASE_INVISIBILITY_SPELL) {
                     spell = new ChestItemFactoryImpl().generateInvisibilitySpell();
-                    floorManager.getPlayer().getInventory().getInvisibilitySpell().store();
+                    floorManager.getPlayer().getInventory().addInvisibilitySpell();
                 } else if (num == CASE_LIGHT_SPELL) {
                     spell = new ChestItemFactoryImpl().generateLightSpell();
-                    floorManager.getPlayer().getInventory().getLightSpell().store();
+                    floorManager.getPlayer().getInventory().addLightSpell();
                 } else if (num == CASE_REGENERATION_SPELL) {
                     spell = new ChestItemFactoryImpl().generateRegenerationSpell();
-                    floorManager.getPlayer().getInventory().getRegenerationSpell().store();
+                    floorManager.getPlayer().getInventory().addRegenerationSpell();
                 } else if (num == CASE_SHIELD_SPELL) {
                     spell = new ChestItemFactoryImpl().generateShieldSpell();
-                    floorManager.getPlayer().getInventory().getShieldSpell().store();
+                    floorManager.getPlayer().getInventory().addShieldSpell();
                 } else {
                     spell = new ChestItemFactoryImpl().generateTeleportSpell();
-                    floorManager.getPlayer().getInventory().getTeleportSpell().store();
+                    floorManager.getPlayer().getInventory().addTeleportSpell();
                 }
                 floorManager.notifyFloorEvent(new PickUpNewItemEvent(spell));
             } else if (num >= CASE_BEGIN_TRAP && num <= CASE_END_TRAP) {
@@ -111,19 +111,19 @@ public class ChestImpl implements Interactable {
                 final Utility item;
                 if (num == CASE_BEACONS) {
                     item = new ChestItemFactoryImpl().generateBeacon();
-                    floorManager.getPlayer().getInventory().getBeacons().store();
+                    floorManager.getPlayer().getInventory().addBeacon();
                 } else if (num == CASE_ENCHANTED_WEAPONS) {
                     item = new ChestItemFactoryImpl().generateEnchantedWeapon(floorManager);
-                    floorManager.getPlayer().getInventory().getEnchantedWeapons().store();
+                    floorManager.getPlayer().getInventory().addEnchantedWeapon();
                 } else if (num == CASE_HEALING_POTION) {
                     item = new ChestItemFactoryImpl().generateHealingPotion();
-                    floorManager.getPlayer().getInventory().getHealingPotions().store();
+                    floorManager.getPlayer().getInventory().addHealingPotion();
                 } else if (num == CASE_MAP) {
                     item = new ChestItemFactoryImpl().generateMap();
                     floorManager.getPlayer().getInventory().getListOfMaps().store();
                 } else {
                     item = new ChestItemFactoryImpl().generateMagicSack(floorManager);
-                    floorManager.getPlayer().getInventory().getMagicSacks().store();
+                    floorManager.getPlayer().getInventory().addMagicSack();
                 }
                 floorManager.notifyFloorEvent(new PickUpNewItemEvent(item));
             }

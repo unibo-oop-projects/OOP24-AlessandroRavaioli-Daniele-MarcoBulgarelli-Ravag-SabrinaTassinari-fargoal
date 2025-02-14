@@ -65,7 +65,7 @@ public class InventoryInformationRenderer implements Renderer {
             g2d.drawString("ENCHANTED SWORD+",
                     this.view.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_SECOND_COLUMN,
                     this.view.getInformationPanel().getBounds().height / 3);
-            g2d.drawString(String.valueOf(inventory.getEnchantedWeapons().getNumberInInventory()), 
+            g2d.drawString(String.valueOf(inventory.numberEnchantedWeapons()), 
                     this.view.getInformationPanel().getBounds().width 
                                 * CONSTANT_SEVEN 
                                 / DIVISOR_WIDTH_SECOND_COLUMN, 
@@ -73,7 +73,7 @@ public class InventoryInformationRenderer implements Renderer {
             g2d.drawString("BEACONS ",
                     this.view.getInformationPanel().getBounds().width / 2,
                     this.view.getInformationPanel().getBounds().height / CONSTANT_SIX);
-            g2d.drawString(String.valueOf(inventory.getBeacons().getNumberInInventory()), 
+            g2d.drawString(String.valueOf(inventory.numberBeacons()), 
                     this.view.getInformationPanel().getBounds().width 
                                 * CONSTANT_TWENTYTHREE 
                                 / DIVISOR_WIDTH_VALUES, 
@@ -81,7 +81,7 @@ public class InventoryInformationRenderer implements Renderer {
             g2d.drawString("MAGIC SACKS ",
                     this.view.getInformationPanel().getBounds().width / 2,
                     this.view.getInformationPanel().getBounds().height / 2);
-            g2d.drawString(String.valueOf(inventory.getMagicSacks().getNumberInInventory()), 
+            g2d.drawString(String.valueOf(inventory.numberMagicSacks()), 
                     this.view.getInformationPanel().getBounds().width 
                                 * CONSTANT_TWENTYTHREE 
                                 / DIVISOR_WIDTH_VALUES, 
@@ -91,37 +91,37 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * CONSTANT_FIVE 
                                 / CONSTANT_SIX);
-            g2d.drawString(String.valueOf(inventory.getHealingPotions().getNumberInInventory()), 
+            g2d.drawString(String.valueOf(inventory.numberHealingPotions()), 
                     this.view.getInformationPanel().getBounds().width 
                                 * CONSTANT_TWENTYTHREE 
                                 / DIVISOR_WIDTH_VALUES, 
                     this.view.getInformationPanel().getBounds().height 
                                 * CONSTANT_FIVE 
                                 / CONSTANT_SIX);
-            if (inventory.getInvisibilitySpell().getNumberInInventory() > 0 
+            if (inventory.numberInvisibilitySpells() > 0 
                         && !inventory.getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
                 g2d.setColor(Color.WHITE);
             } else if (inventory.getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
                 g2d.setColor(Color.CYAN);
-            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 
+            } else if (inventory.numberInvisibilitySpells() <= 0 
                         && !inventory.getSpellCasted().get(SpellType.INVISIBILITY.getName())) {
                 g2d.setColor(Color.BLACK);
             }
             g2d.drawString("INVISIBILITY", 
                     this.view.getInformationPanel().getBounds().width * 3 / DIVISOR_WIDTH_LAST_COLUMN, 
                     this.view.getInformationPanel().getBounds().height * 3 / DIVISOR_HEIGHT_LAST_COLUMN);
-            g2d.drawString(String.valueOf(inventory.getInvisibilitySpell().getNumberInInventory()),
+            g2d.drawString(String.valueOf(inventory.numberInvisibilitySpells()),
                     this.view.getInformationPanel().getBounds().width 
                                 * MULTIPLIER_WIDTH_LAST_COLUMN_VALUES 
                                 / DIVISOR_WIDTH_VALUES, 
                     this.view.getInformationPanel().getBounds().height * 3 / DIVISOR_HEIGHT_LAST_COLUMN);
             g2d.setColor(Color.BLACK);
-            if (inventory.getRegenerationSpell().getNumberInInventory() > 0 
+            if (inventory.numberRegenerationSpell() > 0 
                         && !inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
                 g2d.setColor(Color.WHITE);
             } else if (inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
                 g2d.setColor(Color.CYAN);
-            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 
+            } else if (inventory.numberRegenerationSpell() <= 0 
                         && !inventory.getSpellCasted().get(SpellType.REGENERATION.getName())) {
                 g2d.setColor(Color.BLACK);
             }
@@ -130,7 +130,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * CONSTANT_SEVEN 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
-            g2d.drawString(String.valueOf(inventory.getRegenerationSpell().getNumberInInventory()),
+            g2d.drawString(String.valueOf(inventory.numberRegenerationSpell()),
                     this.view.getInformationPanel().getBounds().width 
                                 * MULTIPLIER_WIDTH_LAST_COLUMN_VALUES 
                                 / DIVISOR_WIDTH_VALUES, 
@@ -138,7 +138,7 @@ public class InventoryInformationRenderer implements Renderer {
                                 * CONSTANT_SEVEN 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
             g2d.setColor(Color.BLACK);
-            if (inventory.getTeleportSpell().getNumberInInventory() > 0) {
+            if (inventory.numberTeleportSpells() > 0) {
                 g2d.setColor(Color.WHITE);
             } else {
                 g2d.setColor(Color.BLACK);
@@ -148,7 +148,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * MULTIPLIER_VALUE_TELEPORT 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
-            g2d.drawString(String.valueOf(inventory.getTeleportSpell().getNumberInInventory()),
+            g2d.drawString(String.valueOf(inventory.numberTeleportSpells()),
                     this.view.getInformationPanel().getBounds().width 
                                 * MULTIPLIER_WIDTH_LAST_COLUMN_VALUES 
                                 / DIVISOR_WIDTH_VALUES, 
@@ -156,12 +156,12 @@ public class InventoryInformationRenderer implements Renderer {
                                 * MULTIPLIER_VALUE_TELEPORT 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
             g2d.setColor(Color.BLACK);
-            if (inventory.getShieldSpell().getNumberInInventory() > 0 
+            if (inventory.numberShieldSpells() > 0 
                         && !inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
                 g2d.setColor(Color.WHITE);
             } else if (inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
                 g2d.setColor(Color.CYAN);
-            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 
+            } else if (inventory.numberShieldSpells() <= 0 
                         && !inventory.getSpellCasted().get(SpellType.SHIELD.getName())) {
                 g2d.setColor(Color.BLACK);
             }
@@ -170,7 +170,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * MULTIPLIER_VALUE_SHIELD 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
-            g2d.drawString(String.valueOf(inventory.getShieldSpell().getNumberInInventory()),
+            g2d.drawString(String.valueOf(inventory.numberShieldSpells()),
                     this.view.getInformationPanel().getBounds().width 
                                 * MULTIPLIER_WIDTH_LAST_COLUMN_VALUES 
                                 / DIVISOR_WIDTH_VALUES, 
@@ -178,12 +178,12 @@ public class InventoryInformationRenderer implements Renderer {
                                 * MULTIPLIER_VALUE_SHIELD 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
             g2d.setColor(Color.BLACK);
-            if (inventory.getLightSpell().getNumberInInventory() 
+            if (inventory.numberLightSpells() 
                         > 0 && !inventory.getSpellCasted().get(SpellType.LIGHT.getName())) {
                 g2d.setColor(Color.WHITE);
             } else if (inventory.getSpellCasted().get(SpellType.LIGHT.getName())) {
                 g2d.setColor(Color.CYAN);
-            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 
+            } else if (inventory.numberLightSpells() <= 0 
                         && !inventory.getSpellCasted().get(SpellType.LIGHT.getName())) {
                 g2d.setColor(Color.BLACK);
             }
@@ -192,7 +192,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * MULTIPLIER_VALUE_LIGHT 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
-            g2d.drawString(String.valueOf(inventory.getLightSpell().getNumberInInventory()),
+            g2d.drawString(String.valueOf(inventory.numberLightSpells()),
                     this.view.getInformationPanel().getBounds().width 
                                 * MULTIPLIER_WIDTH_LAST_COLUMN_VALUES 
                                 / DIVISOR_WIDTH_VALUES, 
@@ -200,12 +200,12 @@ public class InventoryInformationRenderer implements Renderer {
                                 * MULTIPLIER_VALUE_LIGHT 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
             g2d.setColor(Color.BLACK);
-            if (inventory.getDriftSpell().getNumberInInventory() > 0 
+            if (inventory.numberDriftSpells() > 0 
                         && !inventory.getSpellCasted().get(SpellType.DRIFT.getName())) {
                 g2d.setColor(Color.WHITE);
             } else if (inventory.getSpellCasted().get(SpellType.DRIFT.getName())) {
                 g2d.setColor(Color.CYAN);
-            } else if (inventory.getInvisibilitySpell().getNumberInInventory() <= 0 
+            } else if (inventory.numberDriftSpells() <= 0 
                         && !inventory.getSpellCasted().get(SpellType.DRIFT.getName())) {
                 g2d.setColor(Color.BLACK);
             }
@@ -214,7 +214,7 @@ public class InventoryInformationRenderer implements Renderer {
                     this.view.getInformationPanel().getBounds().height 
                                 * CONSTANT_TWENTYTHREE 
                                 / DIVISOR_HEIGHT_LAST_COLUMN);
-            g2d.drawString(String.valueOf(inventory.getDriftSpell().getNumberInInventory()),
+            g2d.drawString(String.valueOf(inventory.numberDriftSpells()),
                     this.view.getInformationPanel().getBounds().width 
                                 * MULTIPLIER_WIDTH_LAST_COLUMN_VALUES 
                                 / DIVISOR_WIDTH_VALUES, 

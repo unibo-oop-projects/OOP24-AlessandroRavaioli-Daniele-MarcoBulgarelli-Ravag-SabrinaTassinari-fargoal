@@ -39,6 +39,7 @@ public class InventoryImpl implements Inventory {
     private final RegenerationSpell regenerationScroll;
     private final DriftSpell driftScroll;
     private final LightSpell lightScroll;
+    private final FloorManager floorManager;
 
     private final Map<String, Boolean> spellCasted;
 
@@ -61,6 +62,7 @@ public class InventoryImpl implements Inventory {
      * @param floorManager - to get all the infos the method needs
      */
     public InventoryImpl(final FloorManager floorManager) {
+        this.floorManager = floorManager;
         this.healingPotions = new HealingPotion();
         this.beacons = new Beacon();
         this.magicSacks = new MagicSack(floorManager);
@@ -80,30 +82,6 @@ public class InventoryImpl implements Inventory {
         this.spellCasted.put(SpellType.SHIELD.getName(), false);
     }
 
-    /**{@inheritDoc} */
-    @Override
-    public HealingPotion getHealingPotions() {
-        return this.healingPotions;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public Beacon getBeacons() {
-        return this.beacons;
-    }
-
-    /**{@inheritDoc} */
-    @Override
-    public MagicSack getMagicSacks() {
-        return this.magicSacks;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public EnchantedWeapon getEnchantedWeapons() {
-        return this.enchantedWeapons;
-    }
-
     /** {@inheritDoc} */
     @Override
     public fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map getListOfMaps() {
@@ -114,42 +92,6 @@ public class InventoryImpl implements Inventory {
     @Override
     public Map<String, Boolean> getSpellCasted() {
         return this.spellCasted;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public InvisibilitySpell getInvisibilitySpell() {
-        return this.invisibilityScroll;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public TeleportSpell getTeleportSpell() {
-        return this.teleportScroll;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public ShieldSpell getShieldSpell() {
-        return this.shieldScroll;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public RegenerationSpell getRegenerationSpell() {
-        return this.regenerationScroll;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public DriftSpell getDriftSpell() {
-        return this.driftScroll;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public LightSpell getLightSpell() {
-        return this.lightScroll;
     }
 
     /** {@inheritDoc} */
@@ -167,11 +109,196 @@ public class InventoryImpl implements Inventory {
     /** {@inheritDoc} */
     @Override
     public boolean areThereSpells() {
-        return this.getInvisibilitySpell().getNumberInInventory() > 0
-                || this.getRegenerationSpell().getNumberInInventory() > 0
-                || this.getTeleportSpell().getNumberInInventory() > 0
-                || this.getShieldSpell().getNumberInInventory() > 0
-                || this.getLightSpell().getNumberInInventory() > 0
-                || this.getDriftSpell().getNumberInInventory() > 0;
+        return this.numberInvisibilitySpells() > 0
+                || this.numberRegenerationSpell() > 0
+                || this.numberTeleportSpells() > 0
+                || this.numberShieldSpells() > 0
+                || this.numberLightSpells() > 0
+                || this.numberDriftSpells() > 0;
+    }
+
+    @Override
+    public Integer numberHealingPotions() {
+        return this.healingPotions.getNumberInInventory();
+    }
+
+    @Override
+    public void useHealingPotion() {
+        this.healingPotions.use(floorManager);
+    }
+
+    @Override
+    public void removeHealingPotion() {
+        this.healingPotions.removeUtility();
+    }
+
+    @Override
+    public void addHealingPotion() {
+        this.healingPotions.store();
+    }
+
+    @Override
+    public Integer numberBeacons() {
+        return this.beacons.getNumberInInventory();
+    }
+
+    @Override
+    public void useBeacon() {
+        this.beacons.use(floorManager);
+    }
+
+    @Override
+    public void removeBeacon() {
+        this.beacons.removeUtility();
+    }
+
+    @Override
+    public void addBeacon() {
+        this.beacons.store();
+    }
+
+    @Override
+    public Integer numberMagicSacks() {
+        return this.magicSacks.getNumberInInventory();
+    }
+
+    @Override
+    public void addMagicSack() {
+        this.magicSacks.store();
+    }
+
+    @Override
+    public Integer numberEnchantedWeapons() {
+        return this.enchantedWeapons.getNumberInInventory();
+    }
+
+    @Override
+    public void addEnchantedWeapon() {
+        this.enchantedWeapons.store();
+    }
+
+    @Override
+    public Integer numberInvisibilitySpells() {
+        return this.invisibilityScroll.getNumberInInventory();
+    }
+
+    @Override
+    public void addInvisibilitySpell() {
+        this.invisibilityScroll.store();
+    }
+
+    @Override
+    public void removeInvisibilitySpell() {
+        this.invisibilityScroll.removeSpell();
+    }
+
+    @Override
+    public void useInvisibilitySpell() {
+        this.invisibilityScroll.use(floorManager);
+    }
+
+    @Override
+    public Integer numberTeleportSpells() {
+        return this.teleportScroll.getNumberInInventory();
+    }
+
+    @Override
+    public void addTeleportSpell() {
+        this.teleportScroll.store();
+    }
+
+    @Override
+    public void removeTeleportSpell() {
+        this.teleportScroll.removeSpell();
+    }
+
+    @Override
+    public void useTeleportSpell() {
+        this.teleportScroll.use(floorManager);
+    }
+
+    @Override
+    public Integer numberShieldSpells() {
+        return this.shieldScroll.getNumberInInventory();
+    }
+
+    @Override
+    public void addShieldSpell() {
+        this.shieldScroll.store();
+    }
+
+    @Override
+    public void removeShieldSpell() {
+        this.shieldScroll.removeSpell();
+    }
+
+    @Override
+    public void useShieldSpell() {
+        this.shieldScroll.use(floorManager);
+    }
+
+    @Override
+    public Integer numberRegenerationSpell() {
+        return this.regenerationScroll.getNumberInInventory();
+    }
+
+    @Override
+    public void addRegenerationSpell() {
+        this.regenerationScroll.store();
+    }
+
+    @Override
+    public void removeRegenerationSpell() {
+        this.regenerationScroll.removeSpell();
+    }
+
+    @Override
+    public void useRegenerationSpell() {
+        this.regenerationScroll.use(floorManager);
+    }
+
+    @Override
+    public Integer numberDriftSpells() {
+        return this.driftScroll.getNumberInInventory();
+    }
+
+    @Override
+    public void addDriftSpell() {
+        this.driftScroll.store();
+    }
+
+    @Override
+    public void removeDriftSpell() {
+        this.driftScroll.removeSpell();
+    }
+
+    @Override
+    public void useDriftSpell() {
+        this.driftScroll.use(floorManager);
+    }
+
+    @Override
+    public Integer numberLightSpells() {
+        return this.lightScroll.getNumberInInventory();
+    }
+
+    @Override
+    public void addLightSpell() {
+        this.lightScroll.store();
+    }
+
+    @Override
+    public void removeLightSpell() {
+        this.lightScroll.removeSpell();
+    }
+
+    @Override
+    public void useLightSpell() {
+        this.lightScroll.use(floorManager);
+    }
+
+    @Override
+    public void turnLight() {
+        this.lightScroll.turnLight(floorManager);
     }
 }

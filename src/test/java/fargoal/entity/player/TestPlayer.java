@@ -210,14 +210,14 @@ class TestPlayer {
 
     @Test
     void testUseItems() {
-        final int invisibilityBefore = player.getInventory().getInvisibilitySpell().getNumberInInventory();
-        final int teleportBefore = player.getInventory().getTeleportSpell().getNumberInInventory();
-        final int shieldBefore = player.getInventory().getShieldSpell().getNumberInInventory();
-        final int regenerationBefore = player.getInventory().getRegenerationSpell().getNumberInInventory();
-        final int driftBefore = player.getInventory().getDriftSpell().getNumberInInventory();
-        final int lightBefore = player.getInventory().getLightSpell().getNumberInInventory();
-        final int potionBefore = player.getInventory().getHealingPotions().getNumberInInventory();
-        final int beaconBefore = player.getInventory().getBeacons().getNumberInInventory();
+        final int invisibilityBefore = player.getInventory().numberInvisibilitySpells();
+        final int teleportBefore = player.getInventory().numberTeleportSpells();
+        final int shieldBefore = player.getInventory().numberShieldSpells();
+        final int regenerationBefore = player.getInventory().numberRegenerationSpell();
+        final int driftBefore = player.getInventory().numberDriftSpells();
+        final int lightBefore = player.getInventory().numberLightSpells();
+        final int potionBefore = player.getInventory().numberHealingPotions();
+        final int beaconBefore = player.getInventory().numberBeacons();
 
         player.useInvisibilitySpell();
         player.useTeleportSpell();
@@ -228,14 +228,14 @@ class TestPlayer {
         player.useBeacon();
         player.useHealingPotion();
 
-        final int invisibilityAfter = player.getInventory().getInvisibilitySpell().getNumberInInventory();
-        final int teleportAfter = player.getInventory().getTeleportSpell().getNumberInInventory();
-        final int shieldAfter = player.getInventory().getShieldSpell().getNumberInInventory();
-        final int regenerationAfter = player.getInventory().getRegenerationSpell().getNumberInInventory();
-        final int driftAfter = player.getInventory().getDriftSpell().getNumberInInventory();
-        final int lightAfter = player.getInventory().getLightSpell().getNumberInInventory();
-        final int potionAfter = player.getInventory().getHealingPotions().getNumberInInventory();
-        final int beaconAfter = player.getInventory().getBeacons().getNumberInInventory();
+        final int invisibilityAfter = player.getInventory().numberInvisibilitySpells();
+        final int teleportAfter = player.getInventory().numberTeleportSpells();
+        final int shieldAfter = player.getInventory().numberShieldSpells();
+        final int regenerationAfter = player.getInventory().numberRegenerationSpell();
+        final int driftAfter = player.getInventory().numberDriftSpells();
+        final int lightAfter = player.getInventory().numberLightSpells();
+        final int potionAfter = player.getInventory().numberHealingPotions();
+        final int beaconAfter = player.getInventory().numberBeacons();
 
         assertEquals(Math.max(0, invisibilityBefore - 1), invisibilityAfter);
         assertEquals(Math.max(0, teleportBefore - 1), teleportAfter);
