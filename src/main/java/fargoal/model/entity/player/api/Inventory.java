@@ -17,7 +17,6 @@ import fargoal.model.interactable.pickupable.inside_chest.utility.impl.MagicSack
 
 /**
  * Represents the player's inventory, managing various items, spells and resources.
- * This interface provides methods to add, remove, and retrieve different types of items.
  * <p>
  * Implementing classes should provide mechanisms to track and modify 
  * the player's inventory dynamically during gameplay.
