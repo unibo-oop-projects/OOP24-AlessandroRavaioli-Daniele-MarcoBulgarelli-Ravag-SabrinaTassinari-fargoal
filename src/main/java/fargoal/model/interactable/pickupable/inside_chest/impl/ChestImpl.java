@@ -55,7 +55,7 @@ public class ChestImpl implements Interactable {
      * With this method it can be checked if the chest is open or not. 
      * @return a boolean that indicate if the chest is open or not.
      */
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.open;
     }
 
