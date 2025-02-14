@@ -9,6 +9,12 @@ import java.util.function.Consumer;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
+@SuppressFBWarnings(
+    value = {"Se"},
+    justification = "Nothing of this entire application is meant to be serializable"
+)
 /**
  * This class is a {@link JPanel} in which elements can register themselves to be drawn.
  */
@@ -36,6 +42,10 @@ public class SwingViewCanvas extends JPanel {
         SwingUtilities.invokeLater(() -> list.add(g2d));
     }
 
+    @SuppressFBWarnings(
+        value = {"BC_UNCONFIRMED_CAST"},
+        justification = "This application uses only Graphics2D"
+    )
     /** {@inheritDoc} */
     @Override
     public void paintComponent(final Graphics g) {
