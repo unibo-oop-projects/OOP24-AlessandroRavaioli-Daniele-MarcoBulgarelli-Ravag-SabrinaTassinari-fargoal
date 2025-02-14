@@ -37,6 +37,7 @@ public class ChestImpl implements Interactable {
     private final Position position;
     private boolean open;
     private Renderer renderer;
+    private final Random random;
 
     /**
      * The constructor of thi class. It set all the field of the class.
@@ -44,6 +45,7 @@ public class ChestImpl implements Interactable {
      * @param renderFactory - a factory to create the renderer of all the elements of the floor.
      */
     public ChestImpl(final Position position, final RenderFactory renderFactory) {
+        this.random = new Random();
         this.position = position;
         this.open = false;
         this.setRender(renderFactory.chestRenderer(this));
@@ -72,7 +74,7 @@ public class ChestImpl implements Interactable {
     @Override
     public Interactable interact(final FloorManager floorManager) {
         if (this.position.equals(floorManager.getPlayer().getPosition())) {
-            final int num = new Random().nextInt(N_CHEST_ITEM);
+            final int num = this.random.nextInt(N_CHEST_ITEM);
             if (num >= 0 && num <= CASE_END_SPELL) {
                 final Spell spell;
                 if (num == CASE_DRIFT_SPELL) {

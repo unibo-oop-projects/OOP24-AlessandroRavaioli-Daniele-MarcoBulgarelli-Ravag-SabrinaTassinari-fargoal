@@ -17,11 +17,13 @@ public class Map extends AbstractUtility {
 
     private static final int MAX_MAP_LEVEL = 19;
     private final List<Integer> listOfMaps;
+    private final Random random;
 
     /**
      * This is the constructor of the class. It store right away the map and it set the level it reveal.
      */
     public Map() {
+        this.random = new Random();
         listOfMaps = new ArrayList<>();
         this.setNumberInInventory(0);
     }
@@ -31,7 +33,7 @@ public class Map extends AbstractUtility {
      * @return the level the map reveal.
      */
     private int getMapLevel() {
-        return new Random().nextInt(MAX_MAP_LEVEL) + 1;
+        return this.random.nextInt(MAX_MAP_LEVEL) + 1;
     }
 
     /** {@inheritDoc} */
@@ -57,7 +59,7 @@ public class Map extends AbstractUtility {
      * @return the list of the maps.
      */
     public List<Integer> getListOfMaps() {
-        return this.listOfMaps;
+        return List.copyOf(this.listOfMaps);
     }
 
     /**

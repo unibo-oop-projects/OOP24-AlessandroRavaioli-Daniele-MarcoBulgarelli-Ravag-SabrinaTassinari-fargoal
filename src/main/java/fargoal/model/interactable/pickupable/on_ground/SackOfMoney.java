@@ -21,6 +21,7 @@ public class SackOfMoney implements Interactable {
     private boolean open;
     private int goldInSack;
     private Renderer renderer;
+    private final Random random;
 
     /**
      * The constructor of the class. The position of the sack is the parameter 
@@ -30,6 +31,7 @@ public class SackOfMoney implements Interactable {
      * @param renderFactory - the factory from which the renderer needed is taken.
      */
     public SackOfMoney(final Position position, final RenderFactory renderFactory) {
+        this.random = new Random();
         this.position = position;
         this.hiddenInGround = false;
         this.open = false;
@@ -90,7 +92,7 @@ public class SackOfMoney implements Interactable {
      * @return the amount of money the sack contains.
      */
     private int generateAmountOfMoney() {
-        return new Random().nextInt(MAX_GOLD) + GOLD_TO_ADD;
+        return this.random.nextInt(MAX_GOLD) + GOLD_TO_ADD;
     }
 
     /** {@inheritDoc} */

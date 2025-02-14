@@ -15,11 +15,13 @@ public class HealingPotion extends AbstractUtility {
 
     private static final int N_HEALING_POTION_TO_START = 1;
     private static final int MAX_HIT_POINTS_TO_ADD = 19;
+    private final Random random;
 
     /**
      * This is the constructor of the class. It store right away the item the player found in a chest.
      */
     public HealingPotion() {
+        this.random = new Random();
         this.setNumberInInventory(N_HEALING_POTION_TO_START);
     }
 
@@ -32,7 +34,7 @@ public class HealingPotion extends AbstractUtility {
     /** {@inheritDoc} */
     @Override
     public void effect(final FloorManager floorManager) {
-        final int healthToAdd = new Random().nextInt(MAX_HIT_POINTS_TO_ADD) + 3 * floorManager.getPlayer().getLevel();
+        final int healthToAdd = this.random.nextInt(MAX_HIT_POINTS_TO_ADD) + 3 * floorManager.getPlayer().getLevel();
         final int healthToSet = floorManager.getPlayer().getHealth().getCurrentHealth() + healthToAdd;
         floorManager.notifyFloorEvent(new PlayerActionEvent(this));
         if (healthToSet >= floorManager.getPlayer().getHealth().getMaxHealth()) {

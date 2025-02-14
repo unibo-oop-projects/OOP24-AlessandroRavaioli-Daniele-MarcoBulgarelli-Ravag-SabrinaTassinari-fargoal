@@ -14,6 +14,8 @@ import fargoal.model.manager.api.FloorManager;
  */
 public abstract class AbstractTrap implements ChestItem {
 
+    private final Random random = new Random();
+
     /** {@inheritDoc} */
     @Override 
     public final String getChestItemType() {
@@ -24,7 +26,7 @@ public abstract class AbstractTrap implements ChestItem {
     @Override
     public final void use(final FloorManager floorManager) {
         boolean mapLost = false;
-        final int chanceOfMapLost = new Random().nextInt(4);
+        final int chanceOfMapLost = this.random.nextInt(4);
         if (chanceOfMapLost == 0) {
             mapLost = true;
             floorManager.getFloorMask().resetMask();

@@ -14,6 +14,7 @@ public class EnchantedWeapon extends AbstractUtility {
 
     private static final int MAX_SKILL_TO_ADD = 9;
     private static final int SKILL_TO_ADD = 5;
+    private final Random random;
     private final FloorManager floorManager;
 
     /**
@@ -21,6 +22,7 @@ public class EnchantedWeapon extends AbstractUtility {
      * @param floorManager - it contains all the element of the floor the item is.
      */
     public EnchantedWeapon(final FloorManager floorManager) {
+        this.random = new Random();
         this.setNumberInInventory(0);
         this.floorManager = floorManager;
     }
@@ -39,7 +41,7 @@ public class EnchantedWeapon extends AbstractUtility {
     /** {@inheritDoc} */
     @Override
     public void addToPlayer() {
-        final int skillToAdd = new Random().nextInt(MAX_SKILL_TO_ADD) + SKILL_TO_ADD;
+        final int skillToAdd = this.random.nextInt(MAX_SKILL_TO_ADD) + SKILL_TO_ADD;
         this.floorManager.getPlayer().increasePlayerSkill(skillToAdd);
     }
 

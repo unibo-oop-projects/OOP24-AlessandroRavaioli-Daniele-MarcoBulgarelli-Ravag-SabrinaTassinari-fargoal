@@ -74,6 +74,7 @@ public class PlayerImpl implements Player {
     private final InventoryInformationRenderer infoRenderer;
     private Renderer render;
     private final FloorManager floorManager;
+    private final Random random;
 
     /**
      * Constructs a new player instance with the specified dependencies.
@@ -92,6 +93,7 @@ public class PlayerImpl implements Player {
         final PlayerInformationRenderer playerInformationRenderer,
         final InventoryInformationRenderer infoRenderer) {
 
+        this.random = new Random();
         this.floorManager = floorManager;
         this.input = new PlayerInputComponent();
         this.controller = controller;
@@ -167,7 +169,7 @@ public class PlayerImpl implements Player {
         Integer stat = 0;
         Integer d6;
         for (int i = 0; i <= INITIAL_STAT_MAX_COUNTER; i++) {
-            d6 = new Random().nextInt(1, NUMBER_OF_A_SIX_FACED_DICES_FACES);
+            d6 = this.random.nextInt(1, NUMBER_OF_A_SIX_FACED_DICES_FACES);
             stat = stat + d6;
         }
         return stat;
@@ -215,9 +217,9 @@ public class PlayerImpl implements Player {
         } else {
             this.level++;
             this.health.setMaxHealth(this.health.getMaxHealth() 
-                                        + new Random().nextInt(MIN_LEVELUP_MAXHEALTH, MAX_LEVELUP_MAXHEALTH)
+                                        + this.random.nextInt(MIN_LEVELUP_MAXHEALTH, MAX_LEVELUP_MAXHEALTH)
                                         + CONST_TO_MAXHEALTH_LEVELUP);
-            this.increasePlayerSkill(new Random().nextInt(1, 10));
+            this.increasePlayerSkill(this.random.nextInt(1, 10));
             this.experiencePointsRequired = this.experiencePointsRequired * 2;
             return true;
         }
@@ -450,7 +452,7 @@ public class PlayerImpl implements Player {
             this.isAttacked = false;
             attackCounter = 0;
 
-            this.increasePlayerSkill(new Random().nextInt(MIN_SKILL_REWARD, MAX_SKILL_REWARD));
+            this.increasePlayerSkill(this.random.nextInt(MIN_SKILL_REWARD, MAX_SKILL_REWARD));
             final int gainedExp = this.getLevel() * (monster.getSkill() + monster.getHealth().getMaxHealth());
             this.addExperiencePoints(gainedExp);
             this.levelUp();
@@ -466,7 +468,6 @@ public class PlayerImpl implements Player {
             throw new IllegalArgumentException("The monster passed to this method can not be null");
         } else {
             final int ratio = this.getSkill() / monster.getSkill();
-            final Random random = new Random();
             return random.nextInt(MINIMUM_DAMAGE, DAMAGE_MULTIPLIER * this.getLevel() * ratio);
         }
     }
