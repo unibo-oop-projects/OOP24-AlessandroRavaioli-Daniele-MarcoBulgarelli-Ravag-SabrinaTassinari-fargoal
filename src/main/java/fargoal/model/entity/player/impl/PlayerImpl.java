@@ -342,6 +342,11 @@ public class PlayerImpl implements Player {
     }
 
     /**{@inheritDoc}*/
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "It needs the reference to the object"
+        + " because it needs to work on the object and modify it."
+    )
     @Override
     public Gold getPlayerGold() {
         return this.gold;

@@ -119,6 +119,11 @@ public class InventoryImpl implements Inventory {
     }
 
     /** {@inheritDoc} */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "It needs the reference to the object"
+        + " because it needs to work on the object and modify it."
+    )
     @Override
     public Map<String, Boolean> getSpellCasted() {
         return this.spellCasted;
