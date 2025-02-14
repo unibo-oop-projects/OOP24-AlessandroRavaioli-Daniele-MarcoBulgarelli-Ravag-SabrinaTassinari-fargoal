@@ -4,16 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
-import fargoal.model.interactable.pickupable.inside_chest.spell.impl.DriftSpell;
-import fargoal.model.interactable.pickupable.inside_chest.spell.impl.InvisibilitySpell;
-import fargoal.model.interactable.pickupable.inside_chest.spell.impl.LightSpell;
-import fargoal.model.interactable.pickupable.inside_chest.spell.impl.RegenerationSpell;
-import fargoal.model.interactable.pickupable.inside_chest.spell.impl.ShieldSpell;
-import fargoal.model.interactable.pickupable.inside_chest.spell.impl.TeleportSpell;
-import fargoal.model.interactable.pickupable.inside_chest.utility.impl.Beacon;
-import fargoal.model.interactable.pickupable.inside_chest.utility.impl.EnchantedWeapon;
-import fargoal.model.interactable.pickupable.inside_chest.utility.impl.HealingPotion;
-import fargoal.model.interactable.pickupable.inside_chest.utility.impl.MagicSack;
 
 /**
  * Represents the player's inventory, managing various items, spells and resources.
@@ -24,37 +14,29 @@ import fargoal.model.interactable.pickupable.inside_chest.utility.impl.MagicSack
  */
 public interface Inventory {
 
-    /**
-     * Retrieves the HealingPotion Object on which the methods 
-     * inherent in that utility can be called.
-     *
-     * @return the {@link HealingPotion} Object
-     */
-    HealingPotion getHealingPotions();
+    Integer numberHealingPotions();
 
-    /**
-     * Retrieves the Beacon Object on which the methods 
-     * inherent in that utility can be called.
-     *
-     * @return the {@link Beacon} Object
-     */
-    Beacon getBeacons();
+    void useHealingPotion();
 
-    /**
-     * Retrieves the MagicSack Object on which the methods 
-     * inherent in that utility can be called.
-     *
-     * @return the {@link MagicSack} Object
-     */
-    MagicSack getMagicSacks();
+    void removeHealingPotion();
 
-    /**
-     * Retrieves the EnchantedWeapon Object on which the methods 
-     * inherent in that utility can be called.
-     *
-     * @return the {@link EnchantedWeapon} Object
-     */
-    EnchantedWeapon getEnchantedWeapons();
+    void addHealingPotion();
+
+    Integer numberBeacons();
+
+    void useBeacon();
+
+    void removeBeacon();
+
+    void addBeacon();
+
+    Integer numberMagicSacks();
+
+    void addMagicSack();
+
+    Integer numberEnchantedWeapons();
+
+    void addEnchantedWeapon();
 
     /**
      * Retrieves the list of floor maps collected by the player.
@@ -71,53 +53,56 @@ public interface Inventory {
      */
     Map<String, Boolean> getSpellCasted();
 
-    /**
-     * Retrieves the {@link InvisibilitySpell} Object on which the methods 
-     * inherent in that spell can be called.
-     *
-     * @return the {@link InvisibilitySpell} Object
-     */
-    InvisibilitySpell getInvisibilitySpell();
 
-    /**
-     * Retrieves the {@link TeleportSpell} Object on which the methods 
-     * inherent in that spell can be called.
-     *
-     * @return the {@link TeleportSpell} Object
-     */
-    TeleportSpell getTeleportSpell();
+    Integer numberInvisibilitySpells();
 
-    /**
-     * Retrieves the {@link ShieldSpell} Object on which the methods 
-     * inherent in that spell can be called.
-     *
-     * @return the {@link ShieldSpell} Object
-     */
-    ShieldSpell getShieldSpell();
+    void addInvisibilitySpell();
 
-    /**
-     * Retrieves the {@link RegenerationSpell} Object on which the methods 
-     * inherent in that spell can be called.
-     *
-     * @return the {@link RegenerationSpell} Object
-     */
-    RegenerationSpell getRegenerationSpell();
+    void removeInvisibilitySpell();
 
-    /**
-     * Retrieves the {@link DriftSpell} Object on which the methods 
-     * inherent in that spell can be called.
-     *
-     * @return the {@link DriftSpell} Object
-     */
-    DriftSpell getDriftSpell();
+    void useInvisibilitySpell();
 
-    /**
-     * Retrieves the {@link LightSpell} Object on which the methods 
-     * inherent in that spell can be called.
-     *
-     * @return the {@link LightSpell} Object
-     */
-    LightSpell getLightSpell();
+    Integer numberTeleportSpells();
+
+    void addTeleportSpell();
+
+    void removeTeleportSpell();
+
+    void useTeleportSpell();
+
+    Integer numberShieldSpells();
+
+    void addShieldSpell();
+
+    void removeShieldSpell();
+
+    void useShieldSpell();
+
+    Integer numberRegenerationSpell();
+
+    void addRegenerationSpell();
+
+    void removeRegenerationSpell();
+
+    void useRegenerationSpell();
+
+    Integer numberDriftSpells();
+
+    void addDriftSpell();
+
+    void removeDriftSpell();
+
+    void useDriftSpell();
+
+    Integer numberLightSpells();
+
+    void addLightSpell();
+
+    void removeLightSpell();
+
+    void useLightSpell();
+
+    void turnLight();
 
     /**
      * This method returns a {@link List} of all types of spells in the inventory.

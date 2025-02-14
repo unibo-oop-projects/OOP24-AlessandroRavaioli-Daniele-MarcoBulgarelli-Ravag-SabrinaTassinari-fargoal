@@ -6,6 +6,12 @@ import fargoal.model.entity.monsters.api.AbstractMonster;
 import fargoal.model.entity.monsters.api.MonsterType;
 import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.events.impl.MonsterStealSpellEvent;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.DriftSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.InvisibilitySpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.LightSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.RegenerationSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.ShieldSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.TeleportSpell;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
 
@@ -65,47 +71,42 @@ public class Mage extends AbstractMonster {
         while (!check) {
             final var num = this.getRandom(MAX_SPELLS);
             if (num == 0
-                    && inventory.getInvisibilitySpell().getNumberInInventory() > 0) {
+                    && inventory.numberInvisibilitySpells() > 0) {
                         this.getFloorManager()
-                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getInvisibilitySpell(), this));
-                        inventory.getInvisibilitySpell().removeSpell();
+                                .notifyFloorEvent(new MonsterStealSpellEvent(new InvisibilitySpell(), this));
+                        inventory.removeInvisibilitySpell();
                         check = true;
             } else if (num == 1
-                    && inventory.getRegenerationSpell().getNumberInInventory() > 0) {
+                    && inventory.numberRegenerationSpell() > 0) {
                         this.getFloorManager()
-                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getRegenerationSpell(), this));
-                        inventory.getRegenerationSpell().removeSpell();
+                                .notifyFloorEvent(new MonsterStealSpellEvent(new RegenerationSpell(), this));
+                        inventory.removeRegenerationSpell();
                         check = true;
             } else if (num == 2
-                    && inventory.getTeleportSpell().getNumberInInventory() > 0) {
+                    && inventory.numberTeleportSpells() > 0) {
                         this.getFloorManager()
-                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getTeleportSpell(), this));
-                        inventory.getTeleportSpell().removeSpell();
+                                .notifyFloorEvent(new MonsterStealSpellEvent(new TeleportSpell(), this));
+                        inventory.removeTeleportSpell();
                         check = true;
             } else if (num == 3
-                    && inventory.getShieldSpell().getNumberInInventory() > 0) {
+                    && inventory.numberShieldSpells() > 0) {
                         this.getFloorManager()
-                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getShieldSpell(), this));
-                        inventory.getShieldSpell().removeSpell();
+                                .notifyFloorEvent(new MonsterStealSpellEvent(new ShieldSpell(), this));
+                        inventory.removeShieldSpell();
                         check = true;
             } else if (num == 4
-                    && inventory.getLightSpell().getNumberInInventory() > 0) {
+                    && inventory.numberLightSpells() > 0) {
                         this.getFloorManager()
-                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getLightSpell(), this));
-                        inventory.getLightSpell().removeSpell();
+                                .notifyFloorEvent(new MonsterStealSpellEvent(new LightSpell(), this));
+                        inventory.removeLightSpell();
                         check = true;
             } else if (num == MAX_SPELLS - 1
-                    && inventory.getDriftSpell().getNumberInInventory() > 0) {
+                    && inventory.numberDriftSpells() > 0) {
                         this.getFloorManager()
-                                .notifyFloorEvent(new MonsterStealSpellEvent(inventory.getDriftSpell(), this));
-                        inventory.getDriftSpell().removeSpell();
+                                .notifyFloorEvent(new MonsterStealSpellEvent(new DriftSpell(), this));
+                        inventory.removeDriftSpell();
                         check = true;
             }
-        }
-
-
-        if (inventory.getHealingPotions().getNumberInInventory() != 0) {
-            inventory.getHealingPotions().removeUtility();
         }
     }
 

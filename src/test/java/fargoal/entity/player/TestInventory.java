@@ -32,16 +32,16 @@ class TestInventory {
 
     @Test
     void testInitialInventory() {
-        assertEquals(1, inventory.getHealingPotions().getNumberInInventory());
-        assertEquals(0, inventory.getBeacons().getNumberInInventory());
-        assertEquals(1, inventory.getMagicSacks().getNumberInInventory());
-        assertEquals(0, inventory.getEnchantedWeapons().getNumberInInventory());
-        assertEquals(0, inventory.getInvisibilitySpell().getNumberInInventory());
-        assertEquals(1, inventory.getTeleportSpell().getNumberInInventory());
-        assertEquals(0, inventory.getShieldSpell().getNumberInInventory());
-        assertEquals(0, inventory.getRegenerationSpell().getNumberInInventory());
-        assertEquals(0, inventory.getDriftSpell().getNumberInInventory());
-        assertEquals(0, inventory.getLightSpell().getNumberInInventory());
+        assertEquals(1, inventory.numberHealingPotions());
+        assertEquals(0, inventory.numberBeacons());
+        assertEquals(1, inventory.numberMagicSacks());
+        assertEquals(0, inventory.numberEnchantedWeapons());
+        assertEquals(0, inventory.numberInvisibilitySpells());
+        assertEquals(1, inventory.numberTeleportSpells());
+        assertEquals(0, inventory.numberShieldSpells());
+        assertEquals(0, inventory.numberRegenerationSpell());
+        assertEquals(0, inventory.numberDriftSpells());
+        assertEquals(0, inventory.numberLightSpells());
         assertNotNull(inventory.getListOfMaps());
     }
 
@@ -50,13 +50,15 @@ class TestInventory {
         assertTrue(player.getInventory().areThereSpells());
         //CHECKSTYLE: MagicNumber OFF
         //10 is a random number to set the number of invisibility spells for test porpouses.
-        playerInventory.getInvisibilitySpell().setNumberInInventory(10);
+        for (int i = 0; i < 10; i++) {
+            playerInventory.addInvisibilitySpell();
+        }
         //CHECKSTYLE: MagicNumber ON
-        playerInventory.getInvisibilitySpell().removeSpell();
+        playerInventory.removeInvisibilitySpell();
 
         //CHECKSTYLE: MagicNumber OFF
         //9 is the expected number of invisibility spells the player has after getting 10 and using one.
-        assertEquals(9, playerInventory.getInvisibilitySpell().getNumberInInventory());
+        assertEquals(9, playerInventory.numberInvisibilitySpells());
         //CHECKSTYLE: MagicNumber ON
     }
 }

@@ -36,38 +36,38 @@ public class PlayerInputComponent implements InputComponent {
                     .findAny();
             interacting.ifPresent(element -> element.interact(manager));
         } else if (controller.isUsingHealingPotion()) {
-            if (player.getInventory().getHealingPotions().getNumberInInventory() > 0) {
-                player.getInventory().getHealingPotions().use(manager);
+            if (player.getInventory().numberHealingPotions() > 0) {
+                player.getInventory().useHealingPotion();
             }
         } else if (controller.isPlacingBeacon()) {
-            if (player.getInventory().getBeacons().getNumberInInventory() > 0) {
-                player.getInventory().getBeacons().use(manager);
+            if (player.getInventory().numberBeacons() > 0) {
+                player.getInventory().useBeacon();;
             }
         } else if (controller.isUsingDriftSpell()) {
-            if (player.getInventory().getDriftSpell().getNumberInInventory() > 0) {
-                player.getInventory().getDriftSpell().use(manager);
+            if (player.getInventory().numberDriftSpells() > 0) {
+                player.getInventory().useDriftSpell();;
             }
         } else if (controller.isUsingInvisibilitySpell()) {
-            if (player.getInventory().getInvisibilitySpell().getNumberInInventory() > 0) {
-                player.getInventory().getInvisibilitySpell().use(manager);
+            if (player.getInventory().numberInvisibilitySpells() > 0) {
+                player.getInventory().useInvisibilitySpell();;
             }
         } else if (controller.isUsingLightSpell()) {
-            if (player.getInventory().getLightSpell().getNumberInInventory() > 0) {
-                player.getInventory().getLightSpell().use(manager);
+            if (player.getInventory().numberLightSpells() > 0) {
+                player.getInventory().useLightSpell();;
             }
         } else  if (controller.isTurningLight()) {
-            player.getInventory().getLightSpell().turnLight(manager);
+            player.getInventory().turnLight();;
         } else if (controller.isUsingRegenerationSpell()) {
-            if (player.getInventory().getRegenerationSpell().getNumberInInventory() > 0) {
-                player.getInventory().getRegenerationSpell().use(manager);
+            if (player.getInventory().numberRegenerationSpell() > 0) {
+                player.getInventory().useRegenerationSpell();;
             }
         } else if (controller.isUsingShieldSpell()) {
-            if (player.getInventory().getShieldSpell().getNumberInInventory() > 0) {
-                player.getInventory().getShieldSpell().use(manager);
+            if (player.getInventory().numberShieldSpells() > 0) {
+                player.getInventory().useShieldSpell();;
             }
         } else if (controller.isUsingTeleportSpell()) {
-            if (player.getInventory().getTeleportSpell().getNumberInInventory() > 0) {
-                player.getInventory().getTeleportSpell().use(manager);
+            if (player.getInventory().numberTeleportSpells() > 0) {
+                player.getInventory().useTeleportSpell();;
             }
         } else if (controller.isMoveUp() && controller.isMoveRight()) {
             final var pos = player.getPosition().add(new Position(1, -1));
