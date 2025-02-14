@@ -33,8 +33,8 @@ class TestMonsterGeneration {
 
     private static FloorManager manager = new FloorManagerImpl(new GameEngine());
     private static MonsterFactory factory = new MonsterFactoryImpl(1);
-    private static List<String> monsters = Stream.of(" ").collect(Collectors.toList());
-    private static Monster monster;
+    private List<String> monsters = Stream.of(" ").collect(Collectors.toList());
+    private Monster monster;
 
     @Test
     void firstFloors() {

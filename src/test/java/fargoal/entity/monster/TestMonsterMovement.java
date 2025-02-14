@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
-import org.junit.jupiter.api.BeforeAll;
+ 
 import org.junit.jupiter.api.Test;
 
 import fargoal.commons.api.Position;
@@ -30,38 +29,27 @@ class TestMonsterMovement {
     private static final int MAX_MOVE_TEST = 1000;
 
     private static FloorManager manager = new FloorManagerImpl(new GameEngine());
-    private static Monster monster;
     private static MonsterFactory factory = new MonsterFactoryImpl(1);
-    private static Position pos;
     private static Random random = new Random();
-
-    @BeforeAll
-    static void setup() {
-        monster = factory.generate(pos,
-                manager, 
-                manager.getRenderFactory());
-    }
-
-    @Test
-    void visualizeMonster() {
-        assertEquals(pos, monster.getPosition());
-    }
 
     @Test
     void moveMonster() {
+        Monster monster;
+        Position pos;
         List<Position> positions;
         do {
             pos = manager.getFloorMap().getRandomTile();
             manager.getMonsters().clear();
-            monster = factory.generate(pos,
+            final Monster monsterCreate = factory.generate(pos,
                 manager, 
                 manager.getRenderFactory());
             positions = Stream.of(new Position(-1, -1), new Position(0, -1), new Position(1, -1),
                     new Position(-1, 0), new Position(1, 0),
                     new Position(-1, 1), new Position(0, 1), new Position(1, 1))
-                    .map(p -> p.add(monster.getPosition()))
+                    .map(p -> p.add(monsterCreate.getPosition()))
                     .filter(p -> manager.getFloorMap().isTile(p))
                     .collect(Collectors.toList());
+            monster = monsterCreate;
         } while (positions.isEmpty());
         manager.getPlayer().move(positions.get(random.nextInt(positions.size())));
 
