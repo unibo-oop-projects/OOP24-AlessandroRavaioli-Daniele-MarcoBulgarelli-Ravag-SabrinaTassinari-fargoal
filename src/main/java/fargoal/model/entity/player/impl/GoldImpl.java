@@ -14,8 +14,11 @@ public class GoldImpl implements Gold {
     private Integer goldDonated;
 
     /**
-     * Creates an instance of Gold, the initial gold is 
-     * set to 0.
+     * Constructs a {@link GoldImpl} instance with initial values.
+     * <p>
+     * This constructor initializes the player's gold-related attributes,
+     * setting the current gold amount to zero, defining the maximum gold capacity,
+     * and tracking the amount of gold donated.
      */
     public GoldImpl() {
         this.currentGold = 0;

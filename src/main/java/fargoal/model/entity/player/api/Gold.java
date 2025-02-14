@@ -3,64 +3,65 @@ package fargoal.model.entity.player.api;
 /**
  * Interface to manage gold.
  */
-
 public interface Gold {
     /**
-     * Getter for current gold amount.
+     * Gets the current amount of gold saved in the {@link Gold} object.
      * 
-     * @return the current gold amount.
+     * @return the {@link Integer} that represents the current gold amount.
      */
     Integer getCurrentGold();
 
     /**
-     * Getter for the maximum gold capacity.
+     * Gets the maximum amount of gold carriable.
      * 
-     * @return the maximum amount of gold transportable.
+     * @return the {@link Integer} that represents the maximum amount of gold transportable.
      */
     Integer getMaxCapacity();
 
     /**
-     * Getter for the gold donated to the temple.
+     * Gets the total amount of gold donated.
      * 
-     * @return the gold donated to the temple
+     * @return the gold donated to the temple.
      */
     Integer getGoldDonated();
 
     /**
-     * Setter for the maximum gold capacity.
+     * Sets the maximum capacity of gold that can be carried.
      * 
-     * @param amount - the maximum gold the player can carry now.
+     * @param amount - the new maximum capacity of gold.
      */
     void setMaxCapacity(Integer amount);
 
     /**
-     * Setter for the gold to donate to the temple.
+     * Sets the amount of gold donated.
      * 
-     * @param amount - the amount to donate to the temple
+     * @param amount - the new amount of gold donated. Must be non-null and non-negative.
+     * 
+     * @throws IllegalArgumentException if the amount is null or negative.
      */
     void setGoldDonated(Integer amount);
 
     /**
-     * Sets current gold amount to 0.
+     * Sets current gold amount to zero.
      */
     void resetGold();
 
     /**
-     * Increases the current gold amount.
-     * If the amount to add exceeds the max capacity,
-     * only the amount needed to reach the limit is added
-     * and the leftover gold is returned.
+     * Adds gold to the player's current amount, up to the maximum capacity.
      * 
-     * @param amount - the amount of gold to add.
+     * @param amount - the amount of gold to add. Must be non-null and non-negative.
      * 
-     * @return the leftover gold amount that could not be added.
+     * @return the leftover gold amount that could not be added due to capacity limits.
+     * 
+     * @throws IllegalArgumentException if the amount is null or negative.
      */
     Integer addGold(Integer amount);
 
     /**
-     * Decreases the current gold amount.
+     * Removes a specified amount of gold from the current gold.
+     * If the amount to be removed exceeds the current gold, the gold is set to zero instead.
      * 
-     * @param amount - the amount of gold to remove
+     * @param amount - the amount of gold to remove.
      */
     void removeGold(Integer amount);
 }

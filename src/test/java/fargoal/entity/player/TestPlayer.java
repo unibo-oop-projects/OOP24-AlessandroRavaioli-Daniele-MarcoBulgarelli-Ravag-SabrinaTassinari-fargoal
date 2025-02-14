@@ -17,7 +17,8 @@ import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
-// CHECKSTYLE:OFF MagicNumber
+//CHECKSTYLE: MagicNumber OFF
+//Deactivates all magic numbers as they are needed for test porpouses.
 class TestPlayer {
 
     private static final Logger LOGGER = Logger.getLogger(TestPlayer.class.getName());
