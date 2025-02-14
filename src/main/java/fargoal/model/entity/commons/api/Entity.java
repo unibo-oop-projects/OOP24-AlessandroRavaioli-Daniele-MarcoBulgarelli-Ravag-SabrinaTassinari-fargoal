@@ -7,16 +7,47 @@ import fargoal.model.commons.FloorElement;
  */
 public interface Entity extends FloorElement {
 
+    /**
+     * Increases the current health value for this {@link Entity}.
+     * 
+     * @param amount to subtract to the current health value.
+     */
     void increaseHealth(Integer amount);
 
+    /**
+     * Decreases the current health value for this {@link Entity}.
+     * 
+     * @param amount to subtract to the current health value.
+     */
     void decreaseHealth(Integer amount);
 
+    /**
+     * Getter for the current health of this {@link Entity}.
+     * 
+     * @return current health.
+     */
     Integer getCurrentHealth();
 
+    /**
+     * Getter for the max health value of this {@link Entity}.
+     * 
+     * @return the max health
+     */
     Integer getMaxHealth();
 
+    /**
+     * Set the current health value to the given amount value for this {@link Entity}.
+     * 
+     * @param amount to set as entity's health
+     */
     void setHealth(Integer amount);
 
+    /**
+     * Method to check if the {@link Entity} current Health value
+     * is equals to the max Health value. 
+     * 
+     * @return if the Entity has all hp
+     */
     boolean isHealthy();
 
     /**

@@ -73,31 +73,37 @@ public abstract class AbstractMonster implements Monster {
         return this.monsterType;
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void decreaseHealth(Integer amount) {
+    public void decreaseHealth(final Integer amount) {
         this.health.decreaseHealth(amount);
     }
 
+    /** {@inheritDoc} */
     @Override
-    public void increaseHealth(Integer amount) {
+    public void increaseHealth(final Integer amount) {
         this.health.increaseHealth(amount);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Integer getCurrentHealth() {
         return this.health.getCurrentHealth();
     }
 
+    /** {@inheritDoc} */
     @Override
     public Integer getMaxHealth() {
         return this.health.getMaxHealth();
     }
 
+    /** {@inheritDoc} */
     @Override
     public void setHealth(final Integer amount) {
         this.health.setHealth(amount);
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean isHealthy() {
         return this.health.isHealthy();
