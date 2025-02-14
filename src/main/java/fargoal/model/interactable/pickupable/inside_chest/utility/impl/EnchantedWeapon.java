@@ -2,6 +2,7 @@ package fargoal.model.interactable.pickupable.inside_chest.utility.impl;
 
 import java.util.Random;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.model.interactable.pickupable.inside_chest.utility.api.AbstractUtility;
 import fargoal.model.interactable.pickupable.inside_chest.utility.api.UtilityType;
 import fargoal.model.manager.api.FloorManager;
@@ -21,6 +22,11 @@ public class EnchantedWeapon extends AbstractUtility {
      * This is the constructor of the class. It store right away the item the player found in a chest.
      * @param floorManager - it contains all the element of the floor the item is.
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "The class needs to work on the same floormanager as the one given"
+        + " so if the one given changes, the reference also needs to change"
+    )
     public EnchantedWeapon(final FloorManager floorManager) {
         this.random = new Random();
         this.setNumberInInventory(0);

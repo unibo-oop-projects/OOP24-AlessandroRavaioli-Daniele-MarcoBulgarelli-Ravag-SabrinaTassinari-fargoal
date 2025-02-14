@@ -13,12 +13,14 @@ import fargoal.model.manager.api.FloorManager;
 public class CeilingTrap extends AbstractTrap {
 
     private static final int MAX_DAMAGE = 9;
+    private final Random random;
 
     /**
      * This is the constructor of the class. When the player finds the trap in the chest it damages him immediately.
      * @param floorManager - it contains all the element of the floor the trap was found.
      */
     public CeilingTrap(final FloorManager floorManager) {
+        this.random = new Random();
         this.use(floorManager);
     }
 
@@ -31,7 +33,7 @@ public class CeilingTrap extends AbstractTrap {
     /** {@inheritDoc} */
     @Override
     public void effect(final FloorManager floorManager) {
-        final int damage = new Random().nextInt(MAX_DAMAGE) + floorManager.getFloorLevel();
+        final int damage = this.random.nextInt(MAX_DAMAGE) + floorManager.getFloorLevel();
         floorManager.getPlayer().getHealth().decreaseHealth(damage);
     } 
 
