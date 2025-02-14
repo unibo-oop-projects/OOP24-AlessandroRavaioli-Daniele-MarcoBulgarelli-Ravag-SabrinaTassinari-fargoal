@@ -64,12 +64,14 @@ public class FloorManagerImpl implements FloorManager {
     private final SwordOfFargoal sword;
     private boolean isOver;
     private String endText;
+    private final Random rnd;
 
     /**
      * Constructor that inizializes all of its fields.
      * @param engine - the GameEngine in which the program runs {@link GameEngine}
      */
     public FloorManagerImpl(final GameEngine engine) {
+        this.rnd = new Random();
         this.listener = new RenderEventListener(engine.getView());
         this.monsters = new LinkedList<>();
         this.mask = new FloorMaskImpl();
@@ -82,7 +84,7 @@ public class FloorManagerImpl implements FloorManager {
                 new PlayerInformationRenderer(engine.getView()),
                 new InventoryInformationRenderer(engine.getView()));
         this.sword = new SwordOfFargoal(renderFactory,
-                new Random().nextInt(VARIABLE_SWORD_LEVEL) + MINIMUM_SWORD_LEVEL);
+                rnd.nextInt(VARIABLE_SWORD_LEVEL) + MINIMUM_SWORD_LEVEL);
         this.isOver = false;
         initializeFloor();
     }
@@ -227,8 +229,8 @@ public class FloorManagerImpl implements FloorManager {
             generateMonster(this.map.getRandomTile());
         }
 
-        final int goldSpots = new Random().nextInt(4) + MINIMUM_NUMBER_OF_GOLD_SPOTS;
-        final int treasures = Math.min(MAX_NUMBER_OF_TREASURES, new Random().nextInt(this.floorLevel) + 3);
+        final int goldSpots = rnd.nextInt(4) + MINIMUM_NUMBER_OF_GOLD_SPOTS;
+        final int treasures = Math.min(MAX_NUMBER_OF_TREASURES, rnd.nextInt(this.floorLevel) + 3);
         while (this.interactables.size() < goldSpots) {
             generateGold();
         }
@@ -241,12 +243,12 @@ public class FloorManagerImpl implements FloorManager {
         } while (this.interactables.stream().anyMatch(item -> item.getPosition().equals(this.temple.getPosition())) 
                 || this.player.getPosition().equals(this.temple.getPosition()));
 
-        final int downStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+        final int downStair = rnd.nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
         while (this.interactables.size() < downStair + goldSpots + treasures) {
             generateStairs(new DownStairs(new Position(0, 0), renderFactory));
         }
         if (this.floorLevel != 1 || this.player.hasSword()) {
-            final int upStair = new Random().nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
+            final int upStair = rnd.nextInt(VARIABLE_NUMBER_OF_STAIRS) + FIXED_NUMBER_OF_STAIRS;
             while (this.interactables.size() < downStair + upStair + goldSpots + treasures) {
                 generateStairs(new UpStairs(new Position(0, 0), renderFactory));
             }

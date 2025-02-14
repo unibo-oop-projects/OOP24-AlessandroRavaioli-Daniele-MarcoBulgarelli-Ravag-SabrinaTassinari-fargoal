@@ -26,7 +26,7 @@ class TestInventory {
      * to maintain the configuration.
      */
     @BeforeEach
-    void setUp() {
+    void init() {
         inventory = new InventoryImpl(manager);
     }
 
