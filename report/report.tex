@@ -4,6 +4,7 @@
 \usepackage[italian]{babel}
 \usepackage[italian]{cleveref}
 \usepackage{graphicx}
+\usepackage{float}
 
 \title{OOP-FARGOAL}
 \author{
@@ -68,7 +69,21 @@ Le entità, invece, sono l’insieme dei mostri (in \ref{img:DiagrammaUMLAnalisi
 
 L'architettura dell'applicazione segue il pattern architetturale MVC. Il punto di partenza della nostra applicazione è la classe \textit{GameEngine} che inizializza \textit{View, Model} e \textit{Controller}. 
 %
+La \textit{View} è il punto d'ingresso degli input, la quale li riceve ed in seguito notifica l'\textit{InputController}. Quest'ultimo grazie all' \textbf{InputComponent} riesce ad aggiornare 
+%
+il \textit{Model}, che nel nostro caso è la \textbf{SceneManager}. Questa è estesa da \textbf{FloorManager}, interfaccia che si occupa di gestire collisioni e gestire ed aggiornare
+%
+gli elementi attivi nel piano. Infine utilizzando l'interfaccia \textbf{Renderer}, i vari \textit{FloorElement} vengono aggiunti in coda nella \textit{View} in attesa di essere
+%
+ridisegnati nel seguente \textbf{update()}.
+%
 
+\begin{figure}[H]
+    \centering{}
+    \includegraphics[width=13cm]{MVCProgetto.png}
+    \caption{Architettura dell'applicazione (MVC)}
+    \label{img:analysis}
+\end{figure}
 
 \section{Design dettagliato}
 
@@ -80,7 +95,7 @@ L'architettura dell'applicazione segue il pattern architetturale MVC. Il punto d
 
 \subsubsection{Generazione di item in un forziere}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=7cm]{patternFactory.drawio.png}
     \caption{Schema UML dell'applicazione del \textit{pattern AbstractFactory} e di dove viene usata la Factory}
@@ -137,7 +152,7 @@ specifica, che estende la classe generale \textit{AbstractMonster}, potrà ricev
     \item \textbf{riuso:} con l'utilizzo della classe astratta generale ogni mostro ha la stessa implementazione di base senza però dover duplicare codice per ognuno.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=7cm]{AbstractMonster.png}
     \caption{Schema UML dell'uso dell'\textit{Abstract class AbstractMonster}. Si è usato l'esempio del Rogue, del Barbarian e del Mage, ma le classi che la estendono sono di più.}
@@ -162,7 +177,7 @@ al piano in cui il player si sarebbe trovato in quel momento, dal metodo general
     \item \textit{divisione delle responsabilità:} viene delegato ad una componenente specializzata un compito di cui non si devono interessare altre classi.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=7cm]{FactoryMethod.png}
     \caption{Schema UML dell'applicazione del \textit{pattern creazionale Factory Method}}
@@ -192,7 +207,7 @@ La scelta di questa soluzione è stata fatta per permettere:
     \item \textit{divisione delle responsabilità:} viene delegato ad una classe secondaria un compito per non farlo svolgere direttamente alla classe del mostro.
 \end{itemize}
 
-\begin{figure}
+\begin{figure}[H]
     \centering
     \includegraphics[width=7cm]{MonsterMovement.png}
     \caption{Scherma UML dell'applicazione della \textit{classe statica Ai}. Si è usato l'esempio del Rogue, del Barbarian e del Mage, ma tutte le classi dei mostri fanno riferimento ad \textit{Ai}.}
@@ -225,6 +240,8 @@ Utilizzati in: "INSERIRE PERMANENT LINK ALLA RIGA DOVE SI UTILIZZA"
 Utilizzati in: "INSERIRE PERMANENT LINK ALLA RIGA DOVE SI UTILIZZA"
 
 \subsubsection{Tramonti Daniele}
+\paragraph{Utilizzo di Stream}
+Utilizzati in: 
 
 \chapter{Commenti finali}
 

@@ -40,6 +40,8 @@ INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\graphics-cfg\grap
 INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\graphics-def\pdftex.def
 INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\graphics-def\pdftex.def
 INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\graphics-def\pdftex.def
+INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
 INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex\latex\l3backend\l3backend-pdftex.def
 INPUT .\report.aux
@@ -87,6 +89,13 @@ INPUT .\DiagrammaAnalisi.drawio.png
 INPUT .\DiagrammaAnalisi.drawio.png
 INPUT .\DiagrammaAnalisi.drawio.png
 INPUT .\DiagrammaAnalisi.drawio.png
+INPUT .\MVCProgetto.png
+INPUT .\MVCProgetto.png
+INPUT .\MVCProgetto.png
+INPUT .\MVCProgetto.png
+INPUT .\MVCProgetto.png
+INPUT .\MVCProgetto.png
+INPUT .\MVCProgetto.png
 INPUT .\patternFactory.drawio.png
 INPUT .\patternFactory.drawio.png
 INPUT .\patternFactory.drawio.png

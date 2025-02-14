@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  13 FEB 2025 18:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  14 FEB 2025 23:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -73,29 +73,36 @@ File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen143
 \Gin@req@width=\dimen144
+) (C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count277
+\float@exts=\toks20
+\float@box=\box52
+\@float@everytoks=\toks21
+\@floatcapt=\box53
 ) (C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count277
-\l__pdf_internal_box=\box52
+\l__color_backend_stack_int=\count278
+\l__pdf_internal_box=\box54
 ) (report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Info: Redefining \it@ocap on input line 17.
-LaTeX Info: Redefining \it@ccap on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Info: Redefining \it@ocap on input line 18.
+LaTeX Info: Redefining \it@ccap on input line 18.
 
 
 File italian.ldf warning: 
@@ -103,21 +110,21 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting
-italian.ldf    on input line 17.
+italian.ldf    on input line 18.
 
 (C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count278
+\scratchcounter=\count279
 \scratchdimen=\dimen145
-\scratchbox=\box53
-\nofMPsegments=\count279
-\nofMParguments=\count280
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count281
+\scratchbox=\box55
+\nofMPsegments=\count280
+\nofMParguments=\count281
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count282
 \MPscratchDim=\dimen146
-\MPnumerator=\count282
-\makeMPintoPDFobject=\count283
-\everyMPtoPDFconversion=\toks21
+\MPnumerator=\count283
+\makeMPintoPDFobject=\count284
+\everyMPtoPDFconversion=\toks23
 ) (C:\Users\Daniele\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -125,11 +132,11 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 18.
+(Font)              <12> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 18.
+(Font)              <8> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 18.
+(Font)              <6> on input line 19.
 
 
 [1
@@ -159,7 +166,7 @@ Capitolo 1.
 <DiagrammaAnalisi.drawio.png, id=20, 1225.57875pt x 996.72375pt>
 File: DiagrammaAnalisi.drawio.png Graphic file (type png)
 <use DiagrammaAnalisi.drawio.png>
-Package pdftex.def Info: DiagrammaAnalisi.drawio.png  used on input line 60.
+Package pdftex.def Info: DiagrammaAnalisi.drawio.png  used on input line 61.
 (pdftex.def)             Requested size: 341.43306pt x 277.66634pt.
 
 
@@ -167,72 +174,85 @@ Package pdftex.def Info: DiagrammaAnalisi.drawio.png  used on input line 60.
 
 [4 <./DiagrammaAnalisi.drawio.png>]
 Capitolo 2.
-<patternFactory.drawio.png, id=30, 633.36626pt x 693.59125pt>
+<MVCProgetto.png, id=30, 703.62875pt x 327.2225pt>
+File: MVCProgetto.png Graphic file (type png)
+<use MVCProgetto.png>
+Package pdftex.def Info: MVCProgetto.png  used on input line 83.
+(pdftex.def)             Requested size: 369.88582pt x 172.01407pt.
+
+Overfull \hbox (24.88582pt too wide) in paragraph at lines 83--84
+ [][] 
+ []
+
+<patternFactory.drawio.png, id=31, 633.36626pt x 693.59125pt>
 File: patternFactory.drawio.png Graphic file (type png)
 <use patternFactory.drawio.png>
-Package pdftex.def Info: patternFactory.drawio.png  used on input line 85.
+Package pdftex.def Info: patternFactory.drawio.png  used on input line 100.
 (pdftex.def)             Requested size: 199.16928pt x 218.1014pt.
-<patternTemplateItem.drawio.png, id=31, 704.6325pt x 704.6325pt>
-File: patternTemplateItem.drawio.png Graphic file (type png)
-<use patternTemplateItem.drawio.png>
-Package pdftex.def Info: patternTemplateItem.drawio.png  used on input line 102.
-(pdftex.def)             Requested size: 199.16928pt x 199.16656pt.
 
 
 [5
 
-]
+ <./MVCProgetto.png>]
+<patternTemplateItem.drawio.png, id=36, 704.6325pt x 704.6325pt>
+File: patternTemplateItem.drawio.png Graphic file (type png)
+<use patternTemplateItem.drawio.png>
+Package pdftex.def Info: patternTemplateItem.drawio.png  used on input line 117.
+(pdftex.def)             Requested size: 199.16928pt x 199.16656pt.
 
-[6 <./patternFactory.drawio.png> <./patternTemplateItem.drawio.png>]
-<AbstractMonster.png, id=41, 362.35374pt x 343.2825pt>
+
+[6 <./patternFactory.drawio.png>]
+
+[7 <./patternTemplateItem.drawio.png>]
+<AbstractMonster.png, id=46, 362.35374pt x 343.2825pt>
 File: AbstractMonster.png Graphic file (type png)
 <use AbstractMonster.png>
-Package pdftex.def Info: AbstractMonster.png  used on input line 142.
+Package pdftex.def Info: AbstractMonster.png  used on input line 157.
 (pdftex.def)             Requested size: 199.16928pt x 188.6907pt.
 
 
-[7]
-<FactoryMethod.png, id=45, 442.65375pt x 234.8775pt>
+[8 <./AbstractMonster.png>]
+<FactoryMethod.png, id=51, 442.65375pt x 234.8775pt>
 File: FactoryMethod.png Graphic file (type png)
 <use FactoryMethod.png>
-Package pdftex.def Info: FactoryMethod.png  used on input line 167.
+Package pdftex.def Info: FactoryMethod.png  used on input line 182.
 (pdftex.def)             Requested size: 199.16928pt x 105.68314pt.
 
 
-[8 <./AbstractMonster.png>]
-<MonsterMovement.png, id=50, 382.42876pt x 192.72pt>
+[9 <./FactoryMethod.png>]
+<MonsterMovement.png, id=56, 382.42876pt x 192.72pt>
 File: MonsterMovement.png Graphic file (type png)
 <use MonsterMovement.png>
-Package pdftex.def Info: MonsterMovement.png  used on input line 197.
+Package pdftex.def Info: MonsterMovement.png  used on input line 212.
 (pdftex.def)             Requested size: 199.16928pt x 100.36787pt.
 
 
-[9 <./FactoryMethod.png> <./MonsterMovement.png>]
+[10 <./MonsterMovement.png>]
 Capitolo 3.
-
-
-[10
-
-]
-Capitolo 4.
 
 
 [11
 
 ]
-Appendice A.
+Capitolo 4.
 
 
 [12
 
 ]
-Overfull \hbox (1.16798pt too wide) in paragraph at lines 289--290
+Appendice A.
+
+
+[13
+
+]
+Overfull \hbox (1.16798pt too wide) in paragraph at lines 306--307
 []\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
  []
 
 
 
-[13] (report.aux
+[14] (report.aux
 Package cleveref Info: loaded `italian' language definitions on input line 4.
 Package cleveref Info: loaded `italian' language definitions on input line 5.
 )
@@ -242,17 +262,17 @@ L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4622 strings out of 473530
- 88432 string characters out of 5713826
+ 4702 strings out of 473530
+ 89751 string characters out of 5713826
  540429 words of memory out of 5000000
- 27848 multiletter control sequences out of 15000+600000
+ 27924 multiletter control sequences out of 15000+600000
  564985 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,8n,65p,527b,489s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Daniele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (14 pages, 300440 bytes).
+Output written on report.pdf (15 pages, 312394 bytes).
 PDF statistics:
- 115 PDF objects out of 1000 (max. 8388607)
+ 120 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
