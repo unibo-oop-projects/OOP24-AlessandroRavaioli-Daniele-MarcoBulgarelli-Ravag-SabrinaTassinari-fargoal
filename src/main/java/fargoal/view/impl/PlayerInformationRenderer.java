@@ -34,6 +34,7 @@ public class PlayerInformationRenderer implements Renderer {
      * principal view value of the game.
      * 
      * @param view - the view of the game
+     * @param floorManager - the manager with all the information about the player
      */
     @SuppressFBWarnings(
         value = {"EI_EXPOSE_REP2"},

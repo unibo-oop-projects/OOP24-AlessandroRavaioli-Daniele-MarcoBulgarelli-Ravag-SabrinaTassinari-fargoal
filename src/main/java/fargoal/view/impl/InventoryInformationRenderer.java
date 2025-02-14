@@ -36,6 +36,7 @@ public class InventoryInformationRenderer implements Renderer {
      * principal view value of the game.
      * 
      * @param view - the view of the game
+     * @param inventory - the inventory this renderer takes information from
      */
     @SuppressFBWarnings(
         value = {"EI_EXPOSE_REP2"},
@@ -52,11 +53,7 @@ public class InventoryInformationRenderer implements Renderer {
     public void render() {
         renderer.render();
     }
-    /**
-     * Method that set the render of all the infos about the player's inventory.
-     * 
-     * @param inventory - the player's inventory
-     */
+    
     private void setRenderer(final Inventory inventory) {
         renderer = new SwingRendererBottom(g2d -> {
             g2d.setFont(new Font("Arial", 

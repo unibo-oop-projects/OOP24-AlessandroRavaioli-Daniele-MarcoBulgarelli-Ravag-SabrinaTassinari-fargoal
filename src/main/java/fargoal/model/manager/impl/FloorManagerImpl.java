@@ -113,6 +113,11 @@ public class FloorManagerImpl implements FloorManager {
                         this.monsters.remove(i);
                     }
                 }
+                for (int i = 0; i < this.interactables.size(); i++) {
+                    if (!this.interactables.get(i).exists(this)) {
+                        this.interactables.remove(i);
+                    }
+                }
                 this.sword.update(this);
             }
             this.player.getInventory().getListAllSpell().forEach(s -> s.update(this));
@@ -179,7 +184,7 @@ public class FloorManagerImpl implements FloorManager {
     /** {@inheritDoc} */
     @Override
     public List<Interactable> getInteractables() {
-        return this.interactables;
+        return List.copyOf(this.interactables);
     }
 
     /** {@inheritDoc} */
