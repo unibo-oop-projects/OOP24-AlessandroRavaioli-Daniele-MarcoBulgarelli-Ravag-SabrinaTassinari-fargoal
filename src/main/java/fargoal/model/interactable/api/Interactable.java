@@ -16,6 +16,10 @@ public interface Interactable extends FloorElement {
      */
     Interactable interact(FloorManager floorManager);
 
+    /**
+     * This method tells if the interectables still exists in the map.
+     * @return true if it exists, false otherwise.
+     */
     boolean exists();
 
 }

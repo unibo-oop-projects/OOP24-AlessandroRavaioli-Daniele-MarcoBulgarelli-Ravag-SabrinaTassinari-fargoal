@@ -106,6 +106,7 @@ public class SwordOfFargoal implements Interactable {
         return this;
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean exists() {
         return !this.isPickedUp();

@@ -85,6 +85,7 @@ public class Temple implements Interactable {
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean exists() {
         return true;

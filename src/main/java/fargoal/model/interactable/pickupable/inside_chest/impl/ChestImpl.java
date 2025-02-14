@@ -150,6 +150,7 @@ public class ChestImpl implements Interactable {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean exists() {
         return !this.isOpen();

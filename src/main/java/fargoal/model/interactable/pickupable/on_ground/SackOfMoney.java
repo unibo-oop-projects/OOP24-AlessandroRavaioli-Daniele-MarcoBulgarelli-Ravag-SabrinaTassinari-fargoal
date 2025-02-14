@@ -117,11 +117,10 @@ public class SackOfMoney implements Interactable {
         }
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean exists() {
         return !this.isOpen() || this.isHiddenInGround();
     }
-
-    
 
 }

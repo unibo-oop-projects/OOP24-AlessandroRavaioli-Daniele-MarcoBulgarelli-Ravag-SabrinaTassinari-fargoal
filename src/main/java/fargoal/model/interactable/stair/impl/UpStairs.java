@@ -66,6 +66,7 @@ public class UpStairs implements Stairs {
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean exists() {
         return true;

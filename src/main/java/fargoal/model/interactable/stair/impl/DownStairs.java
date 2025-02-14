@@ -66,6 +66,7 @@ public class DownStairs implements Stairs {
         this.renderer = rf.downstairRenderer(this);
     }
 
+    /** {@inheritDoc} */
     @Override
     public boolean exists() {
         return true;
