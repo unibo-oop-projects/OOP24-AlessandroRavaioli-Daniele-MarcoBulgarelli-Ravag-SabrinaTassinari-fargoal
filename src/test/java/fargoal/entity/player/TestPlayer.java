@@ -140,11 +140,13 @@ class TestPlayer {
         final Monster monster = monsterFactory.generate(new Position(0, 0), manager, manager.getRenderFactory());
         assertNotNull(monster);
 
+        player.getInventory().removeHealingPotion();
         player.setHealth(1);
 
         player.battle(monster);
 
         assertFalse(player.isFighting());
+        assertTrue(player.isDead());
     }
 
     @Test
