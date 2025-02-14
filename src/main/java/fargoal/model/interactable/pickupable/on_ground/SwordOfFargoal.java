@@ -106,4 +106,9 @@ public class SwordOfFargoal implements Interactable {
         return this;
     }
 
+    @Override
+    public boolean exists(FloorManager floorManager) {
+        return !this.isPickedUp;
+    }
+
 }

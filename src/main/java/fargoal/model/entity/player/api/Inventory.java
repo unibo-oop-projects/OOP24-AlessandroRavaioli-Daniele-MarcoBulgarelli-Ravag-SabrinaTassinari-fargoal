@@ -98,7 +98,7 @@ public interface Inventory {
      * 
      * @return a {@link Map} where the {@code keys} are spell names and the {@code values} indicate
      * whether the spell is currently active (true) or not (false).
-     */
+    */
     Map<String, Boolean> getSpellCasted();
 
 
