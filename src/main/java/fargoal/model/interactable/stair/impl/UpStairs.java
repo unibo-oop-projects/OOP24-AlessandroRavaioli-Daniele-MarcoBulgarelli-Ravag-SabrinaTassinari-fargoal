@@ -67,7 +67,7 @@ public class UpStairs implements Stairs {
     }
 
     @Override
-    public boolean exists(FloorManager floorManager) {
+    public boolean exists() {
         return true;
     }
 }

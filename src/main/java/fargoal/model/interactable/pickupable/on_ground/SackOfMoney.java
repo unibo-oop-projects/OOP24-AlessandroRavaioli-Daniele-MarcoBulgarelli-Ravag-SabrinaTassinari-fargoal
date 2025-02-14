@@ -118,7 +118,7 @@ public class SackOfMoney implements Interactable {
     }
 
     @Override
-    public boolean exists(FloorManager floorManager) {
+    public boolean exists() {
         return !this.isOpen() || this.isHiddenInGround();
     }
 

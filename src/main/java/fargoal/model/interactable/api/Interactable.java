@@ -16,6 +16,6 @@ public interface Interactable extends FloorElement {
      */
     Interactable interact(FloorManager floorManager);
 
-    boolean exists(FloorManager floorManager);
+    boolean exists();
 
 }
