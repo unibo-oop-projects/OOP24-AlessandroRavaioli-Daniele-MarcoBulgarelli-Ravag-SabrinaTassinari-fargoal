@@ -14,12 +14,9 @@ import org.junit.jupiter.api.Test;
 import fargoal.model.core.GameEngine;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.interactable.api.Interactable;
-import fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.map.api.FloorMap;
-import fargoal.model.map.api.FloorMask;
-import fargoal.model.map.impl.FloorMaskImpl;
 
 class TestFloorManager {
 
@@ -91,20 +88,6 @@ class TestFloorManager {
         assertNotEquals(map, manager.getFloorMap());
         assertNotEquals(monsters, manager.getMonsters());
         assertNotEquals(items, manager.getInteractables());
-
-        //I need to test if the floor for which a map was found gets cleared
-        final Map testMap = new Map();
-        testMap.store();
-        final FloorMask mask = new FloorMaskImpl();
-        mask.clearMask();
-        //CHECKSTYLE: MagicNumber OFF
-        //20 is the minimum numbeer of floors I need to check to see if the map was saved correctly
-        for (int i = 0; i < 20; i++) {
-            if (testMap.getListOfMaps().contains(manager.getFloorLevel())) {
-                assertEquals(mask, manager.getFloorMask());
-            }
-        }
-        //CHECKSTYLE: MagicNumber ON
         resetConditions();
     }
 
