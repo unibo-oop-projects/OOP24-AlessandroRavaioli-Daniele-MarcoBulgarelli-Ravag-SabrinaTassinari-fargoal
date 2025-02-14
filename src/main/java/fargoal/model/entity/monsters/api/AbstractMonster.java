@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.commons.api.Position;
 import fargoal.model.entity.commons.api.Health;
 import fargoal.model.entity.commons.impl.HealthImpl;
@@ -20,18 +21,21 @@ import fargoal.model.entity.monsters.ai.Ai;
  */
 public abstract class AbstractMonster implements Monster {
 
-    private static final Integer MONSTER_ATTACK = 4;
+    private static final Integer RANDOM_SKILL = 4;
+    private static final Integer RANDOM_HP = 6;
+    private static final int DAMAGE_NUMBER = 15;
+    private boolean isFighting;
     private long timer;
-    private List<Position> lastPositions = new ArrayList<>();
+    private final List<Position> lastPositions = new ArrayList<>();
     private Renderer render;
     private MonsterType monsterType;
-    private Health health;
+    private final Health health;
     private Position position;
-    private Integer skill;
+    private final Integer skill;
     private Integer level;
     private FloorManager floorManager;
-    private boolean isVisible = false;
-    private final Random random = new Random();
+    private boolean isVisible;
+    private final Random random;
 
     /**
      * A constructor to set the field that the monster needs
@@ -40,21 +44,27 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param position - the starting position
      * @param level - the level of the monster
-     * @param floorMap - the floorMap where the monster is located
      * @param floorManager - to get infos about the other entities/items
      */
+    @SuppressFBWarnings(
+        value = {"DMI_RANDOM_USED_ONLY_ONCE"},
+        justification = "this random is NOT used only once"
+    )
+
     public AbstractMonster(
                 final Position position,
                 final Integer level, 
                 final FloorManager floorManager) {
-        this.setPosition(position);
-        this.addFirstPosition(position);
+        this.random = new Random();
+        this.isFighting = false;
+        this.position = position;
+        lastPositions.addFirst(position);
         this.setFloorManager(floorManager);
-        this.setSkill(level);
+        this.skill = floorManager.getFloorLevel() + random.nextInt(RANDOM_SKILL);
         this.setLevel(level);
-        this.setVisibilityOn();
-        this.health = new HealthImpl(floorManager.getPlayer().getHealth().getCurrentHealth() / 3 * (this.getRandom(level) + 1));
-        this.setTimer();
+        this.isVisible = true;
+        this.health = new HealthImpl(floorManager.getFloorLevel() * 3 / 2 + random.nextInt(RANDOM_HP));
+        this.timer = System.currentTimeMillis();
     }
 
     /** {@inheritDoc} */
@@ -65,8 +75,38 @@ public abstract class AbstractMonster implements Monster {
 
     /** {@inheritDoc} */
     @Override
-    public Health getHealth() {
-        return this.health;
+    public void decreaseHealth(final Integer amount) {
+        this.health.decreaseHealth(amount);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void increaseHealth(final Integer amount) {
+        this.health.increaseHealth(amount);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Integer getCurrentHealth() {
+        return this.health.getCurrentHealth();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public Integer getMaxHealth() {
+        return this.health.getMaxHealth();
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setHealth(final Integer amount) {
+        this.health.setHealth(amount);
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isHealthy() {
+        return this.health.isHealthy();
     }
 
     /** {@inheritDoc} */
@@ -84,13 +124,18 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public void receiveDamage() {
+        this.isFighting = true;
         final int damage = this.getFloorManager().getPlayer().doDamage(this);
-        this.getHealth().decreaseHealth(damage);
+        this.decreaseHealth(damage);
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public Integer getLevel() {
+    /**
+     * Method that returns the level of the
+     * Monster selected.
+     * 
+     * @return the level of the Monster
+     */
+    protected Integer getLevel() {
         return this.level;
     }
 
@@ -103,49 +148,54 @@ public abstract class AbstractMonster implements Monster {
     /** {@inheritDoc} */
     @Override
     public void move() {
-        Ai.move(this, floorManager.getPlayer());
+        Ai.move(this, floorManager.getPlayer(), floorManager);
     }
 
     /** {@inheritDoc} */
     @Override
     public Integer attack() {
-        final var ratio = this.getFloorManager().getPlayer().getSkill() / this.getSkill();
-        return getRandom(MONSTER_ATTACK * this.getFloorManager().getPlayer().getLevel() * ratio) + 1;
+        final int damage;
+        var ratio = DAMAGE_NUMBER - this.getFloorManager().getFloorLevel() + 1;
+        if (ratio <= 0 || this.getFloorManager().getPlayer().hasSword()) {
+            ratio = 1;
+        }
+        damage = random.nextInt(this.getFloorManager().getPlayer().getCurrentHealth() / ratio + 1) + 1;
+        return damage;
     }
 
     /** {@inheritDoc} */
     @Override
     public boolean isDead() {
-        return this.getHealth().getCurrentHealth() <= 0;
+        return this.health.getCurrentHealth() <= 0;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void setVisibilityOn() {
+    public final void setVisibilityOn() {
         this.isVisible = true;
     }
 
     /** {@inheritDoc} */
     @Override
-    public void setVisibilityOff() {
+    public final void setVisibilityOff() {
         this.isVisible = false;
     }
 
     /** {@inheritDoc} */
     @Override
-    public boolean getVisibility() {
+    public final boolean isVisible() {
         return this.isVisible;
     }
 
     /** {@inheritDoc} */
     @Override
     public List<Position> getLastPositions() {
-        return this.lastPositions;
+        return List.copyOf(this.lastPositions);
     }
 
     /** {@inheritDoc} */
     @Override
-    public void addFirstPosition(Position position) {
+    public void addFirstPosition(final Position position) {
         this.lastPositions.addFirst(position);
     }
 
@@ -160,14 +210,16 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @param render - the render that the monster will use
      */
-    public void setRender(Renderer render) {
+    protected final void setRender(final Renderer render) {
         this.render = render;
     }
 
     /** {@inheritDoc} */
     @Override
     public void render() {
-        render.render();
+        if (this.isVisible) {
+            render.render();
+        }
     }
 
     /**
@@ -177,16 +229,6 @@ public abstract class AbstractMonster implements Monster {
      */
     private void setLevel(final Integer level) {
         this.level = level;
-    }
-
-    /**
-     * Set the skill of the Monster, based on the 
-     * level where the Monster is.
-     * 
-     * @param level - the level where the Monster is
-     */
-    private void setSkill(final Integer level) {
-        this.skill = level * (getRandom(level) + 1);
     }
 
     /**
@@ -202,9 +244,8 @@ public abstract class AbstractMonster implements Monster {
      * Set the MonsterType of the Monster selected.
      * 
      * @param monsterType the MonsterType of the Monster
-     * @return
      */
-    public void setMonsterType(final MonsterType monsterType) {
+    protected final void setMonsterType(final MonsterType monsterType) {
         this.monsterType = monsterType;
     }
 
@@ -215,7 +256,7 @@ public abstract class AbstractMonster implements Monster {
      * @param num - the max number of the random
      * @return a random number
      */
-    public Integer getRandom(final Integer num) {
+    protected final Integer getRandom(final Integer num) {
         return random.nextInt(num);
     }
 
@@ -223,7 +264,7 @@ public abstract class AbstractMonster implements Monster {
      * Method to set the last time when the monster
      * was created or moved.
      */
-    public void setTimer() {
+    protected void setTimer() {
         this.timer = System.currentTimeMillis();
     }
 
@@ -233,7 +274,7 @@ public abstract class AbstractMonster implements Monster {
      * 
      * @return a long indicating the last update
      */
-    public long getTimer() {
+    protected long getTimer() {
         return this.timer;
     }
 
@@ -243,19 +284,17 @@ public abstract class AbstractMonster implements Monster {
         return this.floorManager.getFloorMap();
     }
 
-    /** {@inheritDoc} */
-    @Override
-    public FloorManager getFloorManager() {
+    /**
+     * Return the Floormanager where the Monster is located.
+     * 
+     * @return the Floormanager
+     */
+    protected FloorManager getFloorManager() {
         return this.floorManager;
     }
 
-    /**
-     * Return if the monster and the player are near(based on the given amount).
-     * 
-     * @param floorManager - which can give all the information we need
-     * @param amount - the Integer to set the proximity area
-     * @return if the monster is near the player
-     */
+    /** {@inheritDoc} */
+    @Override
     public boolean areNeighbours(final FloorManager floorManager, final Integer amount) {
         return Math.abs(floorManager.getPlayer().getPosition().x() - this.getPosition().x()) <= amount
                 && Math.abs(floorManager.getPlayer().getPosition().y() - this.getPosition().y()) <= amount;
@@ -263,7 +302,19 @@ public abstract class AbstractMonster implements Monster {
 
     /**
      * The Monster steals from the Player and takes
-     * spell or potions from his inventory.
+     * spells or gold from his inventory.
      */
-    public abstract void steal();
+    protected void steal() { }
+
+    /** {@inheritDoc} */
+    @Override
+    public void setIsFighting(final boolean condition) {
+        this.isFighting = condition;
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean isFighting() {
+        return this.isFighting;
+    }
 }

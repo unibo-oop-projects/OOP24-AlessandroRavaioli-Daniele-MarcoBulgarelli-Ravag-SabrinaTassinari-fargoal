@@ -2,36 +2,47 @@ package fargoal.entity.player;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
+ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import fargoal.model.entity.player.api.Gold;
 import fargoal.model.entity.player.impl.GoldImpl;
 
-public class TestGold {
+//CHECKSTYLE: MagicNumber OFF
+//Deactivates all magic numbers as they are needed for test porpouses.
+/**
+ * Class to test {@link GoldImpl} class.
+ */
+class TestGold {
 
     private Gold gold;
 
+    /**
+     * Configurates the gold implementation before each test.
+     * If this class gets extended, make sure to call {@code super.setup()}
+     * to maintain the configuration.
+     */
     @BeforeEach
     void setup() {
         gold = new GoldImpl();
     }
 
     @Test
-    void TestInitialization() {
+    void testInitialization() {
         assertEquals(0, gold.getCurrentGold());
         assertEquals(100, gold.getMaxCapacity());
+        assertEquals(0, gold.getGoldDonated());
     }
 
     @Test
-    void TestObtainingGold() {
+    void testObtainingGold() {
         gold.addGold(11);
         gold.addGold(100);
         assertEquals(100, gold.getCurrentGold());
     }
 
     @Test
-    void TestGoldReset() {
+    void testGoldReset() {
         gold.addGold(99);
         assertEquals(99, gold.getCurrentGold());
         gold.resetGold();
@@ -39,7 +50,7 @@ public class TestGold {
     }
 
     @Test
-    void TestMaxCapacity() {
+    void testMaxCapacity() {
         gold.setMaxCapacity(1000);
         assertEquals(1000, gold.getMaxCapacity());
         assertEquals(0, gold.getCurrentGold());
@@ -48,4 +59,22 @@ public class TestGold {
         assertEquals(1000, gold.getCurrentGold());
         assertEquals(1000, gold.getMaxCapacity());
     }
+
+    @Test
+    void testDonatedGold() {
+        gold.setGoldDonated(100);
+        assertEquals(100, gold.getGoldDonated());
+        gold.setGoldDonated(0);
+        assertEquals(0, gold.getGoldDonated());
+    }
+
+    @Test
+    void testRemoveGold() {
+        gold.removeGold(19);
+        assertEquals(0, gold.getCurrentGold());
+        gold.addGold(100);
+        gold.removeGold(99);
+        assertEquals(1, gold.getCurrentGold());
+    }
+    //CHECKSTYLE: MagicNumber ON
 }

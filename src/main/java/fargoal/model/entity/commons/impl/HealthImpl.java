@@ -43,6 +43,9 @@ public class HealthImpl implements Health {
     @Override
     public void increaseHealth(final Integer amount) {
         this.currentHealth = this.currentHealth + amount;
+        if (this.currentHealth > this.maxHealth) {
+            this.currentHealth = this.maxHealth;
+        }
     }
 
     /** {@inheritDoc} */

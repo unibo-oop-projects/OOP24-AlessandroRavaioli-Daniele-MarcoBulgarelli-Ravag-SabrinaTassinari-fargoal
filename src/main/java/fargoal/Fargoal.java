@@ -1,4 +1,4 @@
-package fargoal;
+ package fargoal;
 
 import fargoal.model.core.GameEngine;
 
@@ -12,7 +12,7 @@ public final class Fargoal {
     /**
      * starts the application.
      * 
-     * @param args
+     * @param args - this argument is not used
      */
     public static void main(final String[] args) {
         new GameEngine().start();

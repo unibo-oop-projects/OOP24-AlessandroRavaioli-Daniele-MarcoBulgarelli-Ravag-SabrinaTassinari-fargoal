@@ -6,42 +6,32 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import fargoal.commons.api.Position;
-import fargoal.controller.input.api.KeyboardInputController;
-import fargoal.model.map.api.FloorConstructor;
+import fargoal.model.core.GameEngine;
+import fargoal.model.manager.impl.FloorManagerImpl;
+import fargoal.model.map.api.FloorGenerator;
 import fargoal.model.map.api.FloorMap;
-import fargoal.model.map.impl.FloorConstructorImpl;
-import fargoal.view.impl.SwingRenderFactory;
-import fargoal.view.impl.SwingView;
+import fargoal.model.map.impl.FloorGeneratorImpl;
 
-public class TestFloorGeneration {
+class TestFloorGeneration {
 
-    private static FloorConstructor fc = new FloorConstructorImpl();
+    private static final int MAXIMUM_MILLIS_PER_MAP = 200;
+    private static final int NUMBER_OF_MAP_CREATIONS = 1000;
+
+    private static FloorGenerator fc = new FloorGeneratorImpl();
     private static FloorMap map;
 
     @BeforeAll
     static void init() {
-        map = fc.createFloor(new SwingRenderFactory(new SwingView(new KeyboardInputController())));
+        map = fc.createFloor(new FloorManagerImpl(new GameEngine()));
     }
 
-    @Test
-    void visualizeFloor() {
-        for (int i = 0; i < 25; i++) {
-            System.out.print(i + "\t");
-            for (int j = 0; j < 40; j++) {
-                System.out.print(
-                    map.isTile(new Position(j, i)) 
-                        ? "O"
-                        : " ");
-            }
-            System.out.println();
-        }
-    }
-
+    //CHECKSTYLE: MagicNumber OFF
+    //The numbers here represent marks that I want to be true
     @Test
     void testRandom() {
-        Position pos = map.getRandomTile();
+        final Position pos = map.getRandomTile();
         int timesHappend = 0;
-        for(int i = 0; i < 100; i++) {
+        for (int i = 0; i < 100; i++) {
             if (map.getRandomTile().equals(pos)) {
                 timesHappend++;
             }
@@ -50,5 +40,19 @@ public class TestFloorGeneration {
         assertTrue(timesHappend < 70);
         assertTrue(timesHappend < 50);
         assertTrue(timesHappend < 20); 
-    }    
+    }
+    //CHECKSTYLE: MagicNumber ON
+
+    //A test to see if the algorithm gets stuck or takes too long to generate a map
+    //I dont want the map to take a noticeable amount of time to generate
+    @Test
+    void testGeneration() {
+        final FloorManagerImpl managerImpl = new FloorManagerImpl(new GameEngine());
+        final long startTime = System.currentTimeMillis();
+        for (int i = 0; i < NUMBER_OF_MAP_CREATIONS; i++) {
+            managerImpl.increaseFloorLevel();
+        }
+        final long endTime = System.currentTimeMillis() - startTime;
+        assertTrue(endTime < NUMBER_OF_MAP_CREATIONS * MAXIMUM_MILLIS_PER_MAP); 
+    }
 }

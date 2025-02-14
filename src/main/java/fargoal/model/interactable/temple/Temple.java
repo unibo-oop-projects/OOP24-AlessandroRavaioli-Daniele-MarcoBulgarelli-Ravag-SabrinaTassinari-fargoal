@@ -1,6 +1,8 @@
 package fargoal.model.interactable.temple;
 
 import fargoal.commons.api.Position;
+import fargoal.model.events.impl.BlessedEvent;
+import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
 import fargoal.view.api.RenderFactory;
@@ -15,8 +17,10 @@ import fargoal.view.api.Renderer;
  */
 public class Temple implements Interactable {
 
-    final private Position position;
+    private static final int GOLD_TO_DONATE_FOR_BLESSING = 2000;
+    private final Position position;
     private Renderer renderer;
+    private Position lastPlayerPosition;
 
     /**
      * This is the constructor of the class. It set the position of the temple.
@@ -25,24 +29,22 @@ public class Temple implements Interactable {
      */
     public Temple(final Position position, final RenderFactory renderFactory) {
         this.position = position;
-        this.setRender(renderFactory.templeRenderer(this));
+        this.setRender(renderFactory);
     }
 
     /** {@inheritDoc} */
     @Override
-    public Interactable interact(FloorManager floorManager) {
-        if (floorManager.getPlayer().getPosition() == this.position) {
-            floorManager.getPlayer().setIsImmune(true);
-            floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
-            floorManager.getPlayer().getPlayerGold().setGoldDonated(floorManager.getPlayer().getCurrentGold());
-            if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= 2000) {
-                floorManager.getPlayer().getHealth().setHealth(floorManager.getPlayer().getHealth().getMaxHealth());
-                floorManager.getPlayer().getPlayerGold().resetGold();
-            }
-            floorManager.getPlayer().getPlayerGold().resetGold();
-        } else {
-            floorManager.getPlayer().setIsImmune(false);
+    public Interactable interact(final FloorManager floorManager) {
+        floorManager.getPlayer().addExperiencePoints(floorManager.getPlayer().getCurrentGold());
+        floorManager.getPlayer().levelUp();
+        floorManager.getPlayer().getPlayerGold().setGoldDonated(
+                floorManager.getPlayer().getPlayerGold().getGoldDonated() + floorManager.getPlayer().getCurrentGold());
+        if (floorManager.getPlayer().getPlayerGold().getGoldDonated() >= GOLD_TO_DONATE_FOR_BLESSING) {
+            floorManager.getPlayer().setHealth(floorManager.getPlayer().getMaxHealth());
+            floorManager.getPlayer().getPlayerGold().setGoldDonated(0);
+            floorManager.notifyFloorEvent(new BlessedEvent());
         }
+        floorManager.getPlayer().getPlayerGold().resetGold();
         return this;
     }
 
@@ -64,17 +66,29 @@ public class Temple implements Interactable {
         this.renderer.render();
     }
 
-    /**
-     * Setter for field renderer.
-     * @param renderer - the new renderer.
-     */
-    public void setRender(final Renderer renderer) {
-        this.renderer = renderer;
+    private void setRender(final RenderFactory rf) {
+        this.renderer = rf.templeRenderer(this);
     }
 
     /** {@inheritDoc} */
     @Override
-    public void update(FloorManager floorManager) {
+    public void update(final FloorManager floorManager) {
+        if (floorManager.getPlayer().getPosition().equals(this.position)) {
+            floorManager.getPlayer().setIsImmune(true);
+            if (!floorManager.getPlayer().getPosition().equals(this.lastPlayerPosition)) {
+                floorManager.notifyFloorEvent(new WalkOverEvent(this));
+            }
+            this.interact(floorManager);
+        } else {
+            floorManager.getPlayer().setIsImmune(false);
+        }
+        this.lastPlayerPosition = floorManager.getPlayer().getPosition();
     }
-    
+
+    /** {@inheritDoc} */
+    @Override
+    public boolean exists() {
+        return true;
+    }
+
 }

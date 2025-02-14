@@ -7,9 +7,10 @@ import fargoal.model.manager.api.FloorManager;
  * (or get damage from them) one time and they are gone. Most of this items are in the inventory.
  */
 public interface Usable {
-    
+
     /**
      * This method let the item be used.
+     * @param floorManager - it contains all the element of the floor.
      */
     void use(FloorManager floorManager);
 }
