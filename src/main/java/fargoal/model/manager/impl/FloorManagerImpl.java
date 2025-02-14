@@ -114,7 +114,7 @@ public class FloorManagerImpl implements FloorManager {
                     }
                 }
                 for (int i = 0; i < this.interactables.size(); i++) {
-                    if (!this.interactables.get(i).exists(this)) {
+                    if (!this.interactables.get(i).exists()) {
                         this.interactables.remove(i);
                     }
                 }
