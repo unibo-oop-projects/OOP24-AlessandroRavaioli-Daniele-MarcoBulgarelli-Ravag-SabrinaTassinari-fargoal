@@ -122,7 +122,7 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer chestRenderer(final ChestImpl obj) {
         return new SwingRendererMiddle(g2d -> {
-            if (!obj.isOpen()) {
+            if (obj.exists()) {
                 g2d.drawImage(ImageHolder.chest(), 
                     this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
@@ -137,7 +137,7 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer goldRenderer(final SackOfMoney obj) {
         return new SwingRendererMiddle(g2d -> {
-            if (obj.isOpen()) {
+            if (!obj.isOpen()) {
                 if (obj.isHiddenInGround()) {
                     g2d.drawImage(ImageHolder.hiddenGold(), 
                     this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
@@ -273,7 +273,7 @@ public class SwingRenderFactory implements RenderFactory {
     @Override
     public Renderer swordRenderer(final SwordOfFargoal obj) {
         return new SwingRendererMiddle(g2d -> {
-            if (!obj.isPickedUp()) {
+            if (obj.exists()) {
                 g2d.drawImage(ImageHolder.sword(), 
                     this.view.getMargin() + obj.getPosition().x() * this.view.getTilePixelWidth(),
                     obj.getPosition().y() * this.view.getTilePixelHeight(),
