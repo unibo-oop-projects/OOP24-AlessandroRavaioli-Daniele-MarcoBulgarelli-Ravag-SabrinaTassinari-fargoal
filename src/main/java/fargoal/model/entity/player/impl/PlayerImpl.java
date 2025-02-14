@@ -1,6 +1,8 @@
 package fargoal.model.entity.player.impl;
 
 import java.util.Random;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.commons.api.Position;
 import fargoal.controller.input.api.InputComponent;
 import fargoal.controller.input.api.KeyboardInputController;
@@ -88,6 +90,13 @@ public class PlayerImpl implements Player {
      * @param playerInformationRenderer - The renderer for displaying player-related information.
      * @param infoRenderer - The renderer for displaying inventory-related information.
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "The class that calls this constructor doesn't maintain"
+        + " references to the given elements."
+        + "The class also needs to work on the same manager as the one given"
+        + "so if the one given changes the reference also needs to change"
+    )
     public PlayerImpl(final FloorManager floorManager,
         final KeyboardInputController controller,
         final PlayerInformationRenderer playerInformationRenderer,

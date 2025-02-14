@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
@@ -61,6 +62,11 @@ public class InventoryImpl implements Inventory {
      * 
      * @param floorManager - to get all the infos the method needs
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "The class needs to work on the same manager as the one given"
+            + "so if the one given changes the reference also needs to change"
+    )
     public InventoryImpl(final FloorManager floorManager) {
         this.floorManager = floorManager;
         this.healingPotions = new HealingPotion();
