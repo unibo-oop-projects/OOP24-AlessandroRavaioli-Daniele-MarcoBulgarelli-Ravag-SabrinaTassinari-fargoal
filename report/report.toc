@@ -1,47 +1,47 @@
 \babel@toc {italian}{}\relax 
 \babel@toc {italian}{}\relax 
-\contentsline {chapter}{\numberline {1}Analisi}{2}{}%
-\contentsline {section}{\numberline {1.1}Descrizione e requisiti}{2}{}%
-\contentsline {subsection}{\numberline {1.1.1}Requisiti funzionali}{2}{}%
-\contentsline {subsection}{\numberline {1.1.2}Modello del dominio}{3}{}%
-\contentsline {chapter}{\numberline {2}Design}{5}{}%
-\contentsline {section}{\numberline {2.1}Architettura}{5}{}%
-\contentsline {section}{\numberline {2.2}Design dettagliato}{6}{}%
-\contentsline {subsection}{\numberline {2.2.1}Bulgarelli Marco}{6}{}%
-\contentsline {subsection}{\numberline {2.2.2}Ravaioli Alessandro}{6}{}%
-\contentsline {subsection}{\numberline {2.2.3}Tassinari Sabrina}{6}{}%
-\contentsline {subsubsection}{Generazione di item in un forziere}{6}{}%
-\contentsline {paragraph}{Problema}{6}{}%
-\contentsline {paragraph}{Soluzione}{6}{}%
-\contentsline {subsubsection}{Riuso del codice per un determinato tipo di item}{6}{}%
-\contentsline {paragraph}{Problema}{6}{}%
-\contentsline {paragraph}{Soluzione}{7}{}%
-\contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{7}{}%
-\contentsline {subsubsection}{Struttura base dei nemici}{7}{}%
-\contentsline {paragraph}{Problema}{7}{}%
-\contentsline {paragraph}{Soluzione}{8}{}%
-\contentsline {subsubsection}{Creazione dei nemici}{8}{}%
-\contentsline {paragraph}{Problema}{8}{}%
-\contentsline {paragraph}{Soluzione}{8}{}%
-\contentsline {subsubsection}{Movimento dei nemici}{9}{}%
-\contentsline {paragraph}{Problema}{9}{}%
-\contentsline {paragraph}{Soluzione}{9}{}%
-\contentsline {chapter}{\numberline {3}Sviluppo}{11}{}%
-\contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{11}{}%
-\contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{11}{}%
-\contentsline {subsubsection}{Bulgarelli Marco}{11}{}%
-\contentsline {subsubsection}{Ravaioli Alessandro}{11}{}%
-\contentsline {subsubsection}{Tassinari Sabrina}{11}{}%
-\contentsline {paragraph}{Utilizzo di lamba expression}{11}{}%
-\contentsline {paragraph}{Utilizzo di Stream}{11}{}%
-\contentsline {paragraph}{Utilizzo di Optional}{11}{}%
-\contentsline {subsubsection}{Tramonti Daniele}{11}{}%
-\contentsline {paragraph}{Utilizzo di Stream}{11}{}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{12}{}%
-\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{12}{}%
-\contentsline {subsubsection}{Bulgarelli Marco}{12}{}%
-\contentsline {subsubsection}{Ravaioli Alessandro}{12}{}%
-\contentsline {subsubsection}{Tassinari Sabrina}{12}{}%
-\contentsline {subsubsection}{Tramonti Daniele}{12}{}%
-\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{12}{}%
-\contentsline {chapter}{\numberline {A}Guida utente}{13}{}%
+\contentsline {chapter}{\numberline {1}Analisi}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Descrizione e requisiti}{2}{section.1.1}%
+\contentsline {subsection}{\numberline {1.1.1}Requisiti funzionali}{2}{subsection.1.1.1}%
+\contentsline {subsection}{\numberline {1.1.2}Modello del dominio}{3}{subsection.1.1.2}%
+\contentsline {chapter}{\numberline {2}Design}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Architettura}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Design dettagliato}{6}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Bulgarelli Marco}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Ravaioli Alessandro}{6}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Tassinari Sabrina}{6}{subsection.2.2.3}%
+\contentsline {subsubsection}{Generazione di item in un forziere}{6}{section*.2}%
+\contentsline {paragraph}{Problema}{6}{section*.3}%
+\contentsline {paragraph}{Soluzione}{6}{section*.4}%
+\contentsline {subsubsection}{Riuso del codice per un determinato tipo di item}{6}{section*.5}%
+\contentsline {paragraph}{Problema}{6}{section*.6}%
+\contentsline {paragraph}{Soluzione}{7}{section*.7}%
+\contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{7}{subsection.2.2.4}%
+\contentsline {subsubsection}{Struttura base dei nemici}{7}{section*.8}%
+\contentsline {paragraph}{Problema}{7}{section*.9}%
+\contentsline {paragraph}{Soluzione}{8}{section*.10}%
+\contentsline {subsubsection}{Creazione dei nemici}{8}{section*.11}%
+\contentsline {paragraph}{Problema}{8}{section*.12}%
+\contentsline {paragraph}{Soluzione}{8}{section*.13}%
+\contentsline {subsubsection}{Movimento dei nemici}{9}{section*.14}%
+\contentsline {paragraph}{Problema}{9}{section*.15}%
+\contentsline {paragraph}{Soluzione}{9}{section*.16}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{11}{chapter.3}%
+\contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{11}{subsection.3.0.1}%
+\contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{11}{subsection.3.0.2}%
+\contentsline {subsubsection}{Bulgarelli Marco}{11}{section*.17}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{11}{section*.18}%
+\contentsline {subsubsection}{Tassinari Sabrina}{11}{section*.19}%
+\contentsline {paragraph}{Utilizzo di lamba expression}{11}{section*.20}%
+\contentsline {paragraph}{Utilizzo di Stream}{11}{section*.21}%
+\contentsline {paragraph}{Utilizzo di Optional}{11}{section*.22}%
+\contentsline {subsubsection}{Tramonti Daniele}{12}{section*.23}%
+\contentsline {paragraph}{Utilizzo di Stream e lambda expression}{12}{section*.24}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{13}{chapter.4}%
+\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{13}{subsection.4.0.1}%
+\contentsline {subsubsection}{Bulgarelli Marco}{13}{section*.25}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{13}{section*.26}%
+\contentsline {subsubsection}{Tassinari Sabrina}{13}{section*.27}%
+\contentsline {subsubsection}{Tramonti Daniele}{13}{section*.28}%
+\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{14}{subsection.4.0.2}%
+\contentsline {chapter}{\numberline {A}Guida utente}{15}{appendix.Alph1}%
