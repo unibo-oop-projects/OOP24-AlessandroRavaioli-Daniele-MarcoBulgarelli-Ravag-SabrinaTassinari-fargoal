@@ -32,7 +32,7 @@ public class FloorMaskImpl implements FloorMask {
      * @param mask - the initial value of the mask
      */
     public FloorMaskImpl(final Map<Position, Boolean> mask) {
-        this.mask = mask;
+        this.mask = Map.copyOf(mask);
     }
 
     /**

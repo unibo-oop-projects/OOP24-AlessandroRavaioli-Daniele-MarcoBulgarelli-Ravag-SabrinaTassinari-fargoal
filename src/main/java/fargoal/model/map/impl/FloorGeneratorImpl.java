@@ -27,26 +27,31 @@ public class FloorGeneratorImpl implements FloorGenerator {
     private static final int MEDIUM_LEVELS = 10;
     private static final int HIGH_LEVELS = 15;
 
+    private final Random rnd;
+
+    public FloorGeneratorImpl() {
+        this.rnd = new Random();
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
     public FloorMap createFloor(final FloorManager manager) {
-        //return new FloorMapBuilder(manager.getRenderFactory()).buildRooms().buildCorridors().build();
         if (manager.getFloorLevel() <= LOW_LEVELS) {
             return new FloorMapBuilder(manager.getRenderFactory())
                     .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_IN_THE_BEGINNIG)
-                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_IN_THE_BEGINNIG))
+                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + rnd.nextInt(EXTRA_ROOMS_IN_THE_BEGINNIG))
                     .build();
         } else if (manager.getFloorLevel() <= MEDIUM_LEVELS) {
             return new FloorMapBuilder(manager.getRenderFactory())
                     .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_BETWEEN_SIX_TO_TEN)
-                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_BETWEEN_SIX_TO_TEN))
+                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + rnd.nextInt(EXTRA_ROOMS_BETWEEN_SIX_TO_TEN))
                     .build();
         } else if (manager.getFloorLevel() <= HIGH_LEVELS) {
             return new FloorMapBuilder(manager.getRenderFactory())
                     .buildRooms(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + EXTRA_ROOMS_END)
-                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + new Random().nextInt(EXTRA_ROOMS_END))
+                    .buildCorridors(MINUMUM_NUMBER_OF_ROOMS_AND_CORRIDORS + rnd.nextInt(EXTRA_ROOMS_END))
                     .build();
         } else {
             return new FloorMapBuilder(manager.getRenderFactory())
@@ -70,12 +75,10 @@ public class FloorGeneratorImpl implements FloorGenerator {
         private Map<Position, Renderer> temporaryTiles;
         private final Map<Position, Renderer> temporaryWalls;
         private final List<Position> centers;
-        private final Random rnd;
         private final RenderFactory rf;
 
         FloorMapBuilder(final RenderFactory renderFactory) {
             this.rf = renderFactory;
-            this.rnd = new Random();
             this.temporaryTiles = new HashMap<>();
             this.temporaryWalls = new HashMap<>();
             this.centers = new ArrayList<>();
@@ -113,7 +116,6 @@ public class FloorGeneratorImpl implements FloorGenerator {
                         new Position(0, -1),
                         new Position(-1, 0)));
             FloorState state = FloorState.CONTINUE;
-            final Random rnd = new Random();
             int direction = rnd.nextInt(directions.size());
             Position currentPosition = pos;
             int turns = 0;
