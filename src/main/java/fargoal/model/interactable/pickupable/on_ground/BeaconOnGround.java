@@ -4,6 +4,7 @@ import fargoal.commons.api.Position;
 import fargoal.model.events.impl.WalkOverEvent;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.view.api.RenderFactory;
 import fargoal.view.api.Renderer;
 
 /**
@@ -25,7 +26,7 @@ public class BeaconOnGround implements Interactable {
      */
     public BeaconOnGround(final Position position, final FloorManager floorManager) {
         this.position = position;
-        this.renderer = floorManager.getRenderFactory().beaconRenderer(this);
+        setRender(floorManager.getRenderFactory());
     }
 
     /** {@inheritDoc} */
@@ -57,8 +58,8 @@ public class BeaconOnGround implements Interactable {
      * Setter for field renderer.
      * @param renderer - the new renderer.
      */
-    public final void setRender(final Renderer renderer) {
-        this.renderer = renderer;
+    private final void setRender(final RenderFactory rf) {
+        this.renderer = rf.beaconRenderer(this);
     }
 
     /** {@inheritDoc} */

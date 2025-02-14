@@ -24,7 +24,7 @@ public class DownStairs implements Stairs {
      */
     public DownStairs(final Position pos, final RenderFactory renderFactory) {
         this.position = pos;
-        this.setRender(renderFactory.downstairRenderer(this));
+        this.setRenderer(renderFactory);
     }
 
     /** {@inheritDoc} */
@@ -52,14 +52,6 @@ public class DownStairs implements Stairs {
         this.renderer.render();
     }
 
-    /**
-     * Setter for field renderer.
-     * @param renderer - the new renderer.
-     */
-    public final void setRender(final Renderer renderer) {
-        this.renderer = renderer;
-    }
-
     /** {@inheritDoc} */
     @Override
     public final void update(final FloorManager floorManager) {
@@ -68,6 +60,14 @@ public class DownStairs implements Stairs {
             floorManager.notifyFloorEvent(new WalkOverEvent(this));
         }
         this.lastPlayerPosition = floorManager.getPlayer().getPosition();
+    }
+
+    /**
+     * A method to set the renderer of the stairs.
+     * @param rf - the factory containing the method
+     */
+    private void setRenderer(final RenderFactory rf) {
+        this.renderer = rf.downstairRenderer(this);
     }
 
 }
