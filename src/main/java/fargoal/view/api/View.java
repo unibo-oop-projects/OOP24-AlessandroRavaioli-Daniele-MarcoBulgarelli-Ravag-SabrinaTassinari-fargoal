@@ -9,4 +9,10 @@ public interface View {
      * every single graphic detail.
      */
     void update();
+
+    /**
+     * Method that sets up all the elements that need to be set up
+     * not at construction.
+     */
+    void setUp();
 }

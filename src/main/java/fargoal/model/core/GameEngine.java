@@ -2,6 +2,7 @@ package fargoal.model.core;
 
 import java.util.logging.Logger;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.controller.input.api.KeyboardInputController;
 import fargoal.model.manager.api.SceneManager;
 import fargoal.model.manager.impl.TitleScreenManager;
@@ -27,6 +28,11 @@ public class GameEngine {
         this.controller = new KeyboardInputController();
         this.view = new SwingView(controller);
         this.manager = new TitleScreenManager(this);
+        this.finishInitialization();
+    }
+
+    private void finishInitialization() {
+        this.view.setUp();
     }
 
     /**
@@ -93,6 +99,11 @@ public class GameEngine {
      * A method to obtain the View associated with this engine.
      * @return - The view the engine updates {@link View}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP"},
+        justification = "To be able to be seen the elements need a reference to the view"
+            + "that is being updated"
+    )
     public View getView() {
         return this.view;
     }

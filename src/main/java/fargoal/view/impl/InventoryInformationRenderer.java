@@ -3,6 +3,7 @@ package fargoal.view.impl;
 import java.awt.Color;
 import java.awt.Font;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import fargoal.model.entity.player.api.Inventory;
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.view.api.Renderer;
@@ -36,6 +37,11 @@ public class InventoryInformationRenderer implements Renderer {
      * 
      * @param view - the view of the game
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "The class needs to work on the same view as the one given"
+            + "so if the one given changes the reference also needs to change"
+    )
     public InventoryInformationRenderer(final View view) {
         this.view = (SwingView) view;
     }

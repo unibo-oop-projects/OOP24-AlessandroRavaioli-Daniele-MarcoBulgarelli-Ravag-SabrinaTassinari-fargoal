@@ -1,6 +1,9 @@
 package fargoal.view.impl;
 
 import java.util.function.Consumer;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import java.awt.Graphics2D;
 
 import fargoal.view.api.Renderer;
@@ -20,6 +23,11 @@ public class SwingRendererMiddle implements Renderer {
      * @param drawing - that specifies what to draw
      * @param view - the general view then casted to a {@link SwingView}
      */
+    @SuppressFBWarnings(
+        value = {"EI_EXPOSE_REP2"},
+        justification = "The class needs to work on the same view as the one given"
+            + "so if the one given changes the reference also needs to change"
+    )
     public SwingRendererMiddle(final Consumer<Graphics2D> drawing, final View view) {
         this.drawingAction = drawing;
         this.view = (SwingView) view;
