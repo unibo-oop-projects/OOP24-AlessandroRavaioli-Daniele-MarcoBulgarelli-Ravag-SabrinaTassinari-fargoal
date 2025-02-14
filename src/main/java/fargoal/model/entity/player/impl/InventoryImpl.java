@@ -88,10 +88,34 @@ public class InventoryImpl implements Inventory {
         this.spellCasted.put(SpellType.SHIELD.getName(), false);
     }
 
-    /** {@inheritDoc} */
     @Override
-    public fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map getListOfMaps() {
-        return this.levelMaps;
+    public Integer numberOfMaps() {
+        return this.levelMaps.getNumberInInventory();
+    }
+
+    @Override
+    public void addMap() {
+        this.levelMaps.store();
+    }
+
+    @Override
+    public void removeMap() {
+        this.levelMaps.removeUtility();
+    }
+
+    @Override
+    public boolean hasMap(final Integer level) {
+        return this.levelMaps.getListOfMaps().contains(level);
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.levelMaps.getListOfMaps().isEmpty();
+    }
+
+    @Override
+    public List<Integer> getListOfMaps() {
+        return List.copyOf(this.levelMaps.getListOfMaps());
     }
 
     /** {@inheritDoc} */

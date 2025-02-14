@@ -276,9 +276,7 @@ public class FloorManagerImpl implements FloorManager {
             }
         }
 
-        if (this.player.getInventory()
-                .getListOfMaps()
-                .getListOfMaps().contains(this.floorLevel)) {
+        if (this.player.getInventory().hasMap(this.floorLevel)) {
             this.mask.clearMask();
         }
 
@@ -386,5 +384,11 @@ public class FloorManagerImpl implements FloorManager {
     public void setIsOver(final boolean isOver) {
         this.isOver = isOver;
         endText = "TOO LATE";
+    }
+
+    /** {@inheritDoc} */
+    @Override
+    public void addInteractable(final Interactable interactable) {
+        this.interactables.add(interactable);
     }
 }

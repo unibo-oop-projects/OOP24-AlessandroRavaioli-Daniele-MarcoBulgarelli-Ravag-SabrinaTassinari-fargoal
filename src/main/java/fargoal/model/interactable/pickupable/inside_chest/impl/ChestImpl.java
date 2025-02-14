@@ -120,7 +120,7 @@ public class ChestImpl implements Interactable {
                     floorManager.getPlayer().getInventory().addHealingPotion();
                 } else if (num == CASE_MAP) {
                     item = new ChestItemFactoryImpl().generateMap();
-                    floorManager.getPlayer().getInventory().getListOfMaps().store();
+                    floorManager.getPlayer().getInventory().addMap();
                 } else {
                     item = new ChestItemFactoryImpl().generateMagicSack(floorManager);
                     floorManager.getPlayer().getInventory().addMagicSack();

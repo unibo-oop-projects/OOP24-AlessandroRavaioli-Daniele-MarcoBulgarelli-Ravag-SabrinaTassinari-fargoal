@@ -240,10 +240,10 @@ class TestInteractable {
      */
      @Test
      void checkMap() {
-          floorManager.getPlayer().getInventory().getListOfMaps().store();
-          assertFalse(floorManager.getPlayer().getInventory().getListOfMaps().getListOfMaps().isEmpty());
-          floorManager.getPlayer().getInventory().getListOfMaps().removeUtility();
-          assertTrue(floorManager.getPlayer().getInventory().getListOfMaps().getListOfMaps().isEmpty());
+          floorManager.getPlayer().getInventory().addMap();
+          assertFalse(floorManager.getPlayer().getInventory().isEmpty());
+          floorManager.getPlayer().getInventory().removeMap();
+          assertTrue(floorManager.getPlayer().getInventory().isEmpty());
      }
 
      /**

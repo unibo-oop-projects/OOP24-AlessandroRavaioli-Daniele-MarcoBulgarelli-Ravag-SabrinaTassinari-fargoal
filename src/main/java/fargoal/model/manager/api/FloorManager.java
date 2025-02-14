@@ -99,4 +99,12 @@ public interface FloorManager extends SceneManager {
      * @param isOver - the new value of the field
      */
     void setIsOver(boolean isOver);
+
+    /**
+     * A method that add a new {@link Interactable} element
+     * to the floor.
+     * 
+     * @param interactable - the new element
+     */
+    void addInteractable(Interactable interactable);
 }

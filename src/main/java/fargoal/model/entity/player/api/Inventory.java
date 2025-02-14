@@ -4,6 +4,16 @@ import java.util.List;
 import java.util.Map;
 
 import fargoal.model.interactable.pickupable.inside_chest.spell.api.Spell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.DriftSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.InvisibilitySpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.LightSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.RegenerationSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.ShieldSpell;
+import fargoal.model.interactable.pickupable.inside_chest.spell.impl.TeleportSpell;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.Beacon;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.EnchantedWeapon;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.HealingPotion;
+import fargoal.model.interactable.pickupable.inside_chest.utility.impl.MagicSack;
 
 /**
  * Represents the player's inventory, managing various items, spells and resources.
@@ -86,12 +96,17 @@ public interface Inventory {
      */
     void addEnchantedWeapon();
 
-    /**
-     * Retrieves the list of floor maps collected by the player.
-     *
-     * @return a {@link List} of {@link Integer} representing the floor numbers of the collected maps.
-     */
-    fargoal.model.interactable.pickupable.inside_chest.utility.impl.Map getListOfMaps();
+    public Integer numberOfMaps();
+
+    public void addMap();
+
+    public void removeMap();
+
+    public boolean hasMap(Integer level);
+
+    public boolean isEmpty();
+
+    public List<Integer> getListOfMaps();
 
     /**
      * Retrieves the current status of casted spells.
