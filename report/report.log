@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.14)  15 FEB 2025 01:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.14)  15 FEB 2025 03:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -397,47 +397,54 @@ Package hyperref Warning: Difference (2) between bookmark levels is greater
 (hyperref)                than one, level fixed on input line 278.
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 287--323
+
+ []
+
+
 
 [14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 309--310
+Underfull \hbox (badness 10000) in paragraph at lines 344--345
 \OT1/cmtt/m/n/10 cb5f09a083bb0696ec37722b48ac348cbd7187d8 / src / main / java / fargoal /
  []
 
 
 
-[15]
+[16]
 Capitolo 4.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 314.
+(hyperref)                than one, level fixed on input line 349.
 
 
 
-[16
+[17
 
 ]
 
-[17]
+[18]
 Appendice A.
 
 
-[18
+[19
 
 ]
-Overfull \hbox (1.16798pt too wide) in paragraph at lines 386--387
+Overfull \hbox (1.16798pt too wide) in paragraph at lines 421--422
 []\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
  []
 
 
 
-[19] (report.aux
+[20] (report.aux
 Package cleveref Info: loaded `italian' language definitions on input line 7.
 Package cleveref Info: loaded `italian' language definitions on input line 8.
 )
@@ -449,17 +456,17 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: AC10D95EC1D4DDB414072E5C17BEA3A9;2692.
  ) 
 Here is how much of TeX's memory you used:
- 11627 strings out of 473530
- 198818 string characters out of 5714794
- 655480 words of memory out of 5000000
+ 11628 strings out of 473530
+ 198825 string characters out of 5714794
+ 656480 words of memory out of 5000000
  34664 multiletter control sequences out of 15000+600000
  565153 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,499b,521s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\marco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (20 pages, 385435 bytes).
+Output written on report.pdf (21 pages, 388636 bytes).
 PDF statistics:
- 332 PDF objects out of 1000 (max. 8388607)
- 81 named destinations out of 1000 (max. 500000)
+ 336 PDF objects out of 1000 (max. 8388607)
+ 82 named destinations out of 1000 (max. 500000)
  190 words of extra memory for PDF output out of 10000 (max. 10000000)
 
