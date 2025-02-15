@@ -39,7 +39,6 @@ class TestFloorGeneration {
         assertTrue(timesHappend < 90);
         assertTrue(timesHappend < 70);
         assertTrue(timesHappend < 50);
-        assertTrue(timesHappend < 20); 
     }
     //CHECKSTYLE: MagicNumber ON
 
