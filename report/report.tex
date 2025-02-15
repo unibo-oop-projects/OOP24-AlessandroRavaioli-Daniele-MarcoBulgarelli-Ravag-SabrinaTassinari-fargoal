@@ -90,6 +90,65 @@ ridisegnati nel seguente \textbf{update()}.
 
 \subsection{Bulgarelli Marco}
 
+\subsubsection{Organizzazione del Player}
+
+\paragraph{Problema} Fornire interfacce che permettano una gestione più efficiente del Player e migliorare la leggibilità del codice.
+
+\paragraph{Soluzione} Suddivisione della gestione del Player in tre classi specifiche, ognuna con un ruolo ben definito:
+
+\begin{itemize}
+    \item \textit{Inventory} per la gestione dell'inventario.
+    \item \textit{Gold} per la gestione del denaro.
+    \item \textit{Health} per la gestione dei punti vita.
+\end{itemize}
+
+La classe \textit{PlayerImpl} si compone di due elementi fondamentali per la supervisione delle risorse del giocatore: \textit{Inventory} e \textit{Gold}. \newline
+%
+\textit{Inventory}, implementato da \textit{InventoryImpl}, gestisce gli oggetti del giocatore, consentendo di aggiungerli, rimuoverli e monitorarne la quantità
+%
+all’interno dell’inventario. \textit{Gold}, implementato da \textit{GoldImpl}, gestisce invece il numero di monete trasportate dal Player, il limite massimo trasportabile
+%
+e le donazioni effettuate al tempio. \newline
+%
+Separare questa logica dalla classe \textit{PlayerImpl} evita ridondanze e migliora la leggibilità del codice. \newline
+%
+Oltre a queste componenti, \textit{PlayerImpl} include \textit{Health}, la cui implementazione \textit{HealthImpl} si occupa della gestione dei punti vita del giocatore e
+%
+delle operazioni correlate. Questa classe è stata progettata a livello di entità (\textit{Entity}) per consentirne il riutilizzo anche da parte dei mostri, garantendo maggiore flessibilità. \newline
+%
+Grazie a questa suddivisione, il codice risulta più leggibile, modulare ed estensibile, facilitando future modifiche e aggiunte senza compromettere la chiarezza della struttura.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=13cm]{PlayerImpl.png}
+    \caption{Schema UML delle classi che compongono \textit{PlayerImpl} usate per semplificare l'organizzazione del Player.}
+    \label{img:PlayerImpl.png}
+\end{figure}
+
+\paragraph{Problema} Gestione dell’input da tastiera, evitando di creare dipendenze tra model e view.
+
+\paragraph{Soluzione} Utilizzo del pattern di progettazione Observer. \newline
+%
+L’interfaccia \textit{View} è responsabile della ricezione degli input direttamente dal Client. Una volta acquisiti, questi input vengono trasmessi all’interfaccia \textit{InputController}, 
+%
+che viene implementata da \textit{KeyboardInputController}. 
+%
+Il ruolo di \textit{InputController} è quello di fungere da intermediario tra \textit{View} e \textit{InputComponent}, garantendo che le azioni del giocatore vengano interpretate correttamente. \newline 
+%
+Grazie a \textit{InputController}, il sistema è in grado di rilevare quali tasti vengono premuti e in quale momento, traducendo questi comandi in istruzioni comprensibili per il gioco.
+%
+Una volta ricevute le informazioni da \textit{InputController}, \textit{InputComponent} le elabora e le utilizza per eseguire le azioni richieste dal giocatore, come il movimento, l’interazione 
+%
+con l’ambiente o l’utilizzo di oggetti.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=13cm]{ObserverPattern.png}
+    \caption{Diagramma UML che rappresenta il flusso degli input.}
+    \label{img:ObserverPattern.png}
+\end{figure}
+
+
 \subsection{Ravaioli Alessandro}
 
 \subsection{Tassinari Sabrina}
