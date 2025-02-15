@@ -164,26 +164,27 @@ Ogni mappa è composta da stanze, ovvero spazi più larghi di caselle camminabil
 \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{mapUMLdiagram.png}
-    \caption{Schema UML della generazione della mappa tramite builder}
+    \caption{Schema UML della generazione della mappa tramite builder.}
     \label{img:mapBuilder}
 \end{figure}
 
-\paragraph{Soluzione} Dato che la generazione della mappa è definita da dei passaggi sequenziali e ben definiti, ho deciso che il miglior modo per poterla costruire fosse con un builder.
+\paragraph{Soluzione} Dato che la generazione della mappa è definita da dei passaggi sequenziali e ben precisi, ho deciso che il miglior modo per poterla costruire fosse con un builder.
 %
 Per evitare che venisse chiamata la costruzione fuori ordine l’ho realizzata come classe interna a FloorGenerator, questo permette anche di semplificare la creazione della mappa dall’esterno.
 %
-Per riuscire a dare una impressione di difficoltà dalla mappa ho fatto in modo che vengano generate più stanze e corridoi ai piani bassi e che ne vengano invece generate di meno scendendo più a fondo, 
+Per riuscire a dare un'impressione di difficoltà della mappa ho fatto in modo che vengano generate più stanze e corridoi ai piani bassi e che ne vengano invece generate di meno scendendo più a fondo, 
 %
 questo permette anche di ridurre la possibilità di rimanere bloccati ai primi piani quando non si hanno le risorse per evitarlo.
 
+\clearpage
 \subsubsection{Strutturare i gestori}
 
-\paragraph{Problema} Strutturare i gestori in modo da minimizzare il numero di modifiche per crearne nuove o modificarle
+\paragraph{Problema} Strutturare i gestori in modo da minimizzare il numero di modifiche per crearne nuovi o modificarli.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{SceneStructureDiagram.png}
-    \caption{Schema UML della struttura degli SceneManager}
+    \caption{Schema UML della struttura degli SceneManager.}
     \label{img:SceneStructure}
 \end{figure}
 
@@ -193,41 +194,43 @@ Sono arrivato a una struttura dove posso definire le basi dei manager nell'inter
 %
 Di queste due categorie sono riuscito a utilizzare il \textit{Pattern Template Method} per definire tutte le funzioni dei MenuManager data la grande somiglianza tra le loro funzioni.
 
+\clearpage
 \subsection{Tassinari Sabrina}
 
 \subsubsection{Generazione di item in un forziere}
 
 \paragraph{Problema} Il giocatore, esplorando, può trovare dei forzieri, con al loro interno degli items utili oppure delle trappole. 
 
-\paragraph{Soluzione} Per gestire la generazione di item all'apertura della cesta si utilizza il \textit{pattern Abstract Factory}, come da \ref{img:chestItemFactory}.
+\paragraph{Soluzione} Per gestire la generazione di item all'apertura della cesta si utilizza il \textit{pattern Abstract Factory}.
 %
-L'interfaccia creatrice fornisce i metodi factory che hanno il compito di creare tutti gli item che si possono trovare nei forzieri, come da \ref{img:chestItemFactory}. 
+L'interfaccia creatrice fornisce i metodi factory che hanno il compito di creare tutti gli item che si possono trovare nei forzieri, come mostrato nella figura \ref{img:chestItemFactory}. 
 %
-Quando il giocatore interagisce con il forziere utilizzando il metodo \textbf{interact()} viene generato, utilizzando il metodo opportuno, un item scelto in modo randomico tra tutti.
+Quando il giocatore interagisce con il forziere utilizzando il metodo \textbf{interact()}, usando il metodo opportuno, viene generato un item scelto in modo randomico tra tutti.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=7cm]{patternFactory.drawio.png}
-    \caption{Schema UML dell'applicazione del \textit{pattern AbstractFactory} e di dove viene usata la Factory}
+    \caption{Schema UML dell'applicazione del \textit{pattern AbstractFactory} e di dove viene usata la Factory.}
     \label{img:chestItemFactory}
 \end{figure}
 
+\clearpage
 \subsubsection{Riuso del codice per un determinato tipo di item}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=7cm]{patternTemplateItem.drawio.png}
-    \caption{Schema UML dell'applicazione del \textit{pattern Template Method}. Si è usato l'esempio del DriftSpell, della CeilingTrap e del Beacon, ma le classi che estendono le classi astratte sono di più.}
-    \label{img:templateItem}
-\end{figure}
-
-\paragraph{Problema} Sviluppando i vari item che il giocatore può trovare nei forzieri, ci si è accorti che quelli di stesso tipo, quindi incantesimi, trappole e utility, condividono molte caratteristiche.
+\paragraph{Problema} Sviluppando i vari item che il giocatore può trovare nei forzieri, ci si è accorti che quelli dello stesso tipo, quindi incantesimi, trappole e utility, condividono molte caratteristiche.
 %
 Questo porta a classi molto simili, con metodi ripetuti. 
 
 \paragraph{Soluzione} Ogni tipo di item ha delle caratteristiche simili; è stato quindi utilizzato il \textit{pattern Template Method}, in modo da poter riutilizzare la stessa classe per sviluppare più item, come da \ref{img:templateItem}.
 %
 Per ogni tipo di item il metodo template è \textbf{use()}, che utilizza il metodo astratto \textbf{effect()}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{patternTemplateItem.drawio.png}
+    \caption{Schema UML dell'applicazione del \textit{pattern Template Method}. Si è usato l'esempio del DriftSpell, della CeilingTrap e del Beacon, ma le classi che estendono le classi astratte sono di più.}
+    \label{img:templateItem}
+\end{figure}
 
 \clearpage
 \subsection{Tramonti Daniele}
@@ -275,15 +278,15 @@ con un singolo metodo pubblico da poter essere richiamato. Nella sua implementaz
 al piano in cui il player si sarebbe trovato in quel momento, dal metodo generale. Questa soluzione è stata attuata per:
 
 \begin{itemize}
-    \item \textit{facilità nell'uso:} basta richiamare il singolo metodo della factory \textbf{generate()} della factory e genererà in automatico il mostro corretto per quel piano;
-    \item \textit{estendibilità:} è possibile aggiungere un metodo specifico nell'implementazione della \textit{factory} per aggiungere un nuovo mostro;
-    \item \textit{divisione delle responsabilità:} viene delegato ad una componenente specializzata un compito di cui non si devono interessare altre classi.
+    \item \textbf{facilità nell'uso:} basta richiamare il singolo metodo \textbf{generate()} della factory e verrà creato in automatico il mostro corretto per quel piano;
+    \item \textbf{estendibilità:} è possibile aggiungere un metodo specifico nell'implementazione della \textit{factory} per aggiungere un nuovo mostro;
+    \item \textbf{divisione delle responsabilità:} viene delegato ad una componenente specializzata un compito di cui non si devono interessare altre classi.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=9cm]{FactoryMethod.png}
-    \caption{Schema UML dell'applicazione del \textit{pattern creazionale Factory Method}}
+    \caption{Schema UML dell'applicazione del \textit{pattern creazionale Factory Method}.}
 \end{figure}
 
 \clearpage
@@ -291,24 +294,24 @@ al piano in cui il player si sarebbe trovato in quel momento, dal metodo general
 
 \paragraph{Problema} Ogni nemico si deve muovere nella mappa autonomamente cercando, se possibile, di inseguire ed attaccare l'avventuriero.
 
-\paragraph{Soluzione} Alla fine si è deciso di creare un algoritmo, in modo autonomo, uguale per tutti i mostri con lo scopo di rendere i movimenti il più realistici possibili. Si è fatto 
+\paragraph{Soluzione} Alla fine sono arrivato alla decisione di creare un algoritmo, in modo autonomo, uguale per tutti i mostri con lo scopo di rendere i movimenti il più realistici possibili. Ho 
 %
-utilizzo di una classe statica separata, denominata \textbf{Ai}, il cui metodo viene chiamato da ogni mostro quando è il proprio turno di muoversi. L'utilizzo di algoritmi come per esempio
+utilizzato una classe statica separata, denominata \textbf{Ai}, il cui metodo \textbf{move()} viene chiamato da ogni mostro quando è il proprio turno di muoversi. L'utilizzo di algoritmi come per esempio
 %
 \textit{Shortest Path di Dijkstra} sono stati scartati per:
 
 \begin{itemize}
-    \item \textit{tempistiche:} ricalcolare il percorso migliore per ogni singolo mostro ed ad ogni movimento del player (al massimo circa 10 al secondo) avrebbe potuto portare a tempistiche di calcolo
+    \item \textbf{tempistiche:} ricalcolare il percorso migliore per ogni singolo mostro ed ad ogni movimento del player (circa al massimo 10 al secondo) avrebbe potuto portare a tempistiche di calcolo
 %
-non ottimali e di conseguenza ad un gameplay non performanti.
+non ottimali e di conseguenza ad un gameplay non performante.
 \end{itemize}
 
 %
 La scelta di questa soluzione è stata fatta per permettere:
 
 \begin{itemize}
-    \item \textit{facilità nell'uso:} basta richiamare il metodo statico \textbf{move()} della classe \textit{Ai} per ottenere il movimento del mostro;
-    \item \textit{divisione delle responsabilità:} viene delegato ad una classe secondaria un compito per non farlo svolgere direttamente alla classe del mostro.
+    \item \textbf{facilità nell'uso:} basta richiamare il metodo statico \textbf{move()} della classe \textit{Ai} per ottenere il movimento del mostro;
+    \item \textbf{divisione delle responsabilità:} viene delegato ad una classe secondaria un compito per non farlo svolgere direttamente alla classe del mostro.
 \end{itemize}
 
 \begin{figure}[H]
@@ -326,7 +329,9 @@ Per testare l'applicazione abbiamo fatto uso di diversi test che testavano i var
     \item \textbf{Oro}, del quale si testa: l’inizializzazione, la gestione delle operazioni di acquisizione, perdita e reset dell’oro, il metodo per modificare la capacità massima di oro trasportabile e la meccanica della donazione dell’oro al tempio.
     \item \textbf{Mostri}, dei quali viene testata la generazione idonea nel piano corrispondente, il movimento corretto nelle situazioni in cui si possono trovare e il giusto funzionamento dei danni verso il Player.
     \item \textbf{Interactables}, dei quali viene testato se una volta trovati vengono effettivamente aggiunti nell'inventario e se una volta usati abbiano l'effetto desiderato sul Player.
-    \item \textbf{Player}, del quale si testano una vasta gamma di funzionalità, di seguito illustrate in maggior dettaglio.
+    \item \textbf{Mappa}, della quale è stato testato se il metodo che restituisce una casella casuale. restituisse effettivamente una casella casuale. Inoltre è stato testato che le tempistiche di creazione della mappa non fossero eccessive.
+    \item \textbf{FloorManager}, del quale è stato testato la corretta inizializzazione di piani, l'effettivo scorrere dei piani e se l'uscita dal \textit{Dungeon} con la spada funzionasse.
+    \item \textbf{Player}, del quale si testano una vasta gamma di funzionalità, di seguito illustrate in maggior dettaglio:
 \end{itemize} 
 %
 In merito all'inventario, si verifica che venga inizializzato correttamente con il numero previsto di oggetti, confrontando i valori attesi di pozioni, incantesimi e altri elementi con quelli effettivi. Inoltre, si controlla che 
@@ -385,7 +390,7 @@ Per quanto riguarda gli items si è testato se la loro generazione fosse corrett
 \end{itemize}
 
 \subsubsection{Ravaioli Alessandro}
-\paragraph{Utilizzo di Stream e lambda expression}
+\paragraph{Utilizzo di \texttt{Stream} e \texttt{lambda expression}}
 Utilizzati in: 
 \begin{sloppypar}
     \url{https://github.com/ravag/OOP24-fargoal/blob/33688c471035d4ce72dd7ede6749bdbd755a3ec9/src/main/java/fargoal/model/map/impl/FloorGeneratorImpl.java#L96-L99}
