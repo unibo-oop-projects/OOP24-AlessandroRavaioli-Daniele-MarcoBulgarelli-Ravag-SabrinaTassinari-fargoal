@@ -25,9 +25,9 @@ public class MenuInputComponent implements InputComponent {
         if (ctrl.isInteracting()) {
             manager.select();
         } else if (ctrl.isMoveDown()) {
-            manager.decreaseSelected();
-        } else if (ctrl.isMoveUp()) {
             manager.increaseSelected();
+        } else if (ctrl.isMoveUp()) {
+            manager.decreaseSelected();
         }
     }
 }
