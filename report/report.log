@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  15 FEB 2025 09:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  15 FEB 2025 15:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -350,189 +350,215 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 147--148
  [][] 
  []
 
+<mapUMLdiagram.png, id=156, 583.17876pt x 282.05376pt>
+File: mapUMLdiagram.png Graphic file (type png)
+<use mapUMLdiagram.png>
+Package pdftex.def Info: mapUMLdiagram.png  used on input line 166.
+(pdftex.def)             Requested size: 256.0748pt x 123.8544pt.
 
 
 [8 <./ObserverPattern.png>]
-<patternFactory.drawio.png, id=164, 633.36626pt x 693.59125pt>
+<SceneStructureDiagram.png, id=165, 623.32875pt x 532.99126pt>
+File: SceneStructureDiagram.png Graphic file (type png)
+<use SceneStructureDiagram.png>
+Package pdftex.def Info: SceneStructureDiagram.png  used on input line 185.
+(pdftex.def)             Requested size: 256.0748pt x 218.967pt.
+
+
+[9 <./mapUMLdiagram.png>]
+<patternFactory.drawio.png, id=177, 633.36626pt x 693.59125pt>
 File: patternFactory.drawio.png Graphic file (type png)
 <use patternFactory.drawio.png>
-Package pdftex.def Info: patternFactory.drawio.png  used on input line 170.
+Package pdftex.def Info: patternFactory.drawio.png  used on input line 210.
 (pdftex.def)             Requested size: 199.16928pt x 218.1014pt.
-<patternTemplateItem.drawio.png, id=165, 704.6325pt x 704.6325pt>
+
+
+[10 <./SceneStructureDiagram.png>]
+<patternTemplateItem.drawio.png, id=189, 704.6325pt x 704.6325pt>
 File: patternTemplateItem.drawio.png Graphic file (type png)
 <use patternTemplateItem.drawio.png>
-Package pdftex.def Info: patternTemplateItem.drawio.png  used on input line 179.
+Package pdftex.def Info: patternTemplateItem.drawio.png  used on input line 219.
 (pdftex.def)             Requested size: 199.16928pt x 199.16656pt.
 
 
-[9 <./patternFactory.drawio.png>]
+[11 <./patternFactory.drawio.png>]
 
-[10 <./patternTemplateItem.drawio.png>]
-<AbstractMonster.png, id=185, 362.35374pt x 343.2825pt>
+[12 <./patternTemplateItem.drawio.png>]
+<AbstractMonster.png, id=206, 362.35374pt x 343.2825pt>
 File: AbstractMonster.png Graphic file (type png)
 <use AbstractMonster.png>
-Package pdftex.def Info: AbstractMonster.png  used on input line 220.
+Package pdftex.def Info: AbstractMonster.png  used on input line 260.
 (pdftex.def)             Requested size: 170.71652pt x 161.73041pt.
 
 
-[11
+[13
 
  <./AbstractMonster.png>]
-<FactoryMethod.png, id=195, 442.65375pt x 234.8775pt>
+<FactoryMethod.png, id=216, 442.65375pt x 234.8775pt>
 File: FactoryMethod.png Graphic file (type png)
 <use FactoryMethod.png>
-Package pdftex.def Info: FactoryMethod.png  used on input line 245.
+Package pdftex.def Info: FactoryMethod.png  used on input line 285.
 (pdftex.def)             Requested size: 256.0748pt x 135.8814pt.
 
 
-[12 <./FactoryMethod.png>]
-<MonsterMovement.png, id=206, 382.42876pt x 192.72pt>
+[14 <./FactoryMethod.png>]
+<MonsterMovement.png, id=226, 382.42876pt x 192.72pt>
 File: MonsterMovement.png Graphic file (type png)
 <use MonsterMovement.png>
-Package pdftex.def Info: MonsterMovement.png  used on input line 276.
+Package pdftex.def Info: MonsterMovement.png  used on input line 316.
 (pdftex.def)             Requested size: 256.0748pt x 129.05113pt.
 
 
-[13
+[15
 
  <./MonsterMovement.png>]
 Capitolo 3.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 282.
+(hyperref)                than one, level fixed on input line 322.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 292--326
+Underfull \hbox (badness 10000) in paragraph at lines 332--366
 
  []
 
 
 
-[14
+[16
 
 ]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 332.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 372.
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 375--377
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 375--377
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main / java /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 375--377
 []$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 335--337
+Underfull \hbox (badness 10000) in paragraph at lines 375--377
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main / java /
  []
 
 
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main / java /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
 []$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main / java /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
 []$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 381--384
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main / java /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 391--392
+\OT1/cmtt/m/n/10 33688c471035d4ce72dd7ede6749bdbd755a3ec9 / src / main / java / fargoal /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
+[][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
 \OT1/cmtt/m/n/10 0ffa0e6b567dd64bd80c4c169fa41b394a9408cc / src / main / java /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--355
+Underfull \hbox (badness 10000) in paragraph at lines 399--400
 \OT1/cmtt/m/n/10 fargoal / model / interactable / pickupable / inside _ chest / spell /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 404--405
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 404--405
 \OT1/cmtt/m/n/10 0ffa0e6b567dd64bd80c4c169fa41b394a9408cc / src / main /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 404--405
 \OT1/cmtt/m/n/10 java / fargoal / model / interactable / pickupable / on _ ground /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+Underfull \hbox (badness 10000) in paragraph at lines 413--414
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 368--369
+Underfull \hbox (badness 10000) in paragraph at lines 413--414
 \OT1/cmtt/m/n/10 cb5f09a083bb0696ec37722b48ac348cbd7187d8 / src / main / java /
  []
 
 
 
-[16]
+[18]
 Capitolo 4.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 375.
+(hyperref)                than one, level fixed on input line 420.
 
-
-
-[17
-
-]
-
-[18]
-Appendice A.
 
 
 [19
 
 ]
-Overfull \hbox (1.16798pt too wide) in paragraph at lines 451--452
+
+[20]
+Appendice A.
+
+
+[21
+
+]
+Overfull \hbox (1.16798pt too wide) in paragraph at lines 503--504
 []\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
  []
 
 
 
-[20] (report.aux
+[22] (report.aux
 Package cleveref Info: loaded `italian' language definitions on input line 7.
 Package cleveref Info: loaded `italian' language definitions on input line 8.
 )
@@ -544,17 +570,17 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 55FE545F82A33BAF3143BBF15AB01CC5;2374.
  ) 
 Here is how much of TeX's memory you used:
- 11625 strings out of 473530
- 199316 string characters out of 5713826
- 658480 words of memory out of 5000000
- 34665 multiletter control sequences out of 15000+600000
+ 11654 strings out of 473530
+ 199900 string characters out of 5713826
+ 659480 words of memory out of 5000000
+ 34683 multiletter control sequences out of 15000+600000
  565153 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,527b,546s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Daniele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (21 pages, 398350 bytes).
+Output written on report.pdf (23 pages, 428071 bytes).
 PDF statistics:
- 352 PDF objects out of 1000 (max. 8388607)
- 78 named destinations out of 1000 (max. 500000)
- 182 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 378 PDF objects out of 1000 (max. 8388607)
+ 89 named destinations out of 1000 (max. 500000)
+ 192 words of extra memory for PDF output out of 10000 (max. 10000000)
 

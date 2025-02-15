@@ -152,7 +152,47 @@ con l’ambiente o l’utilizzo di oggetti.
 
 \subsection{Ravaioli Alessandro}
 
-\newpage
+Il mio ruolo principale riguardava la realizzazione della mappa e della struttura che gestisce gli elementi sul piano.
+%
+Ogni mappa è composta da stanze, ovvero spazi più larghi di caselle camminabili, e corridoi, delle sequenze di caselle che possono collegare due stanze tra di loro.
+%
+
+\subsubsection{Generazione mappa del piano}
+
+\paragraph{Problema} Bisogna generare la mappa del piano con possibilmente una sembianza di difficoltà incrementale
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{mapUMLdiagram.png}
+    \caption{Schema UML della generazione della mappa tramite builder}
+    \label{img:mapBuilder}
+\end{figure}
+
+\paragraph{Soluzione} Dato che la generazione della mappa è definita da dei passaggi sequenziali e ben definiti, ho deciso che il miglior modo per poterla costruire fosse con un builder.
+%
+Per evitare che venisse chiamata la costruzione fuori ordine l’ho realizzata come classe interna a FloorGenerator, questo permette anche di semplificare la creazione della mappa dall’esterno.
+%
+Per riuscire a dare una impressione di difficoltà dalla mappa ho fatto in modo che vengano generate più stanze e corridoi ai piani bassi e che ne vengano invece generate di meno scendendo più a fondo, 
+%
+questo permette anche di ridurre la possibilità di rimanere bloccati ai primi piani quando non si hanno le risorse per evitarlo.
+
+\subsubsection{Strutturare i gestori}
+
+\paragraph{Problema} Strutturare i gestori in modo da minimizzare il numero di modifiche per crearne nuove o modificarle
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=9cm]{SceneStructureDiagram.png}
+    \caption{Schema UML della struttura degli SceneManager}
+    \label{img:SceneStructure}
+\end{figure}
+
+\paragraph{Soluzione} Ho modellato le scene con interfacce e classi astratte evitando il più possibile ripetizioni.
+%
+Sono arrivato a una struttura dove posso definire le basi dei manager nell'interfaccia SceneManager e specializzarli poi in due categorie.
+%
+Di queste due categorie sono riuscito a utilizzare il \textit{Pattern Template Method} per definire tutte le funzioni dei MenuManager data la grande somiglianza tra le loro funzioni.
+
 \subsection{Tassinari Sabrina}
 
 \subsubsection{Generazione di item in un forziere}
@@ -345,6 +385,11 @@ Per quanto riguarda gli items si è testato se la loro generazione fosse corrett
 \end{itemize}
 
 \subsubsection{Ravaioli Alessandro}
+\paragraph{Utilizzo di Stream e lambda expression}
+Utilizzati in: 
+\begin{sloppypar}
+    \url{https://github.com/ravag/OOP24-fargoal/blob/33688c471035d4ce72dd7ede6749bdbd755a3ec9/src/main/java/fargoal/model/map/impl/FloorGeneratorImpl.java#L96-L99}
+\end{sloppypar}
 
 \subsubsection{Tassinari Sabrina}
 \begin{itemize}
@@ -384,6 +429,13 @@ Mi ritengo molto soddisfatto del risultato ottenuto e sono contento che il gioco
 elementi che possano arricchire ulteriormente l’esperienza di gioco e renderla ancora più coinvolgente.
 
 \subsubsection{Ravaioli Alessandro}
+Nel gruppo il mio ruolo era principalmente quello di creare la mappa di gioco e di gestire gestire tutte le cose che ci andavano sopra.
+%
+Non sono completamente soddisfatto del mio lavoro in quanto mi ero posto come obiettivo extra quello di rendere impossibile il bloccarsi nella mappa, a differenza dell' originale,
+%
+però sono rimasto soddisfatto del risultato finale e del lavoro dei miei compagni. Questa è stata una buona esperienza di esempio per il programmare in gruppo. 
+%
+Se tornerò su questo progetto decisamente cambierò la generazione della mappa, anche se non diventa più fedele, per fare in modo che non si rimanga più bloccati.
 
 \subsubsection{Tassinari Sabrina}
 Per quanto riguarda la mia parte del lavoro, mi sono occupata degli Interectable, quindi degli oggetti magici con cui il giocatore interagisce nel gioco.
