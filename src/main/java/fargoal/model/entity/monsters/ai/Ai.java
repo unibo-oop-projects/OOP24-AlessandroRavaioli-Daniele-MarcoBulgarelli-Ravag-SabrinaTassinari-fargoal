@@ -18,6 +18,7 @@ import fargoal.model.manager.api.FloorManager;
  */
 public final class Ai {
 
+    private static final Integer MAX_SPIDER_TRY = 100;
     private static final Integer MAX_CACHE_MONSTER = 5;
     private static final Integer LIST_SIZE = 3;
     private static final Integer MAX_DISTANCE = 10;
@@ -178,10 +179,12 @@ public final class Ai {
                 }
             }
             if (!check) {
+                var max = 0;
                 do {
+                    max++;
                     pos = monster.getPosition()
                             .add(new Position(LIST.get(RANDOM.nextInt(LIST_SIZE)), LIST.get(RANDOM.nextInt(LIST_SIZE))));
-                } while (isInsideMap(monster, pos) || !positionList.contains(pos) || !monster.getLastPositions().contains(pos));
+                } while (max < MAX_SPIDER_TRY && (isInsideMap(monster, pos) || !positionList.contains(pos) || !monster.getLastPositions().contains(pos)));
                 monster.setPosition(pos);
             }
         } else if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && floorManager.getPlayer().isVisible()) {
