@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  15 FEB 2025 15:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.13)  15 FEB 2025 15:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -350,22 +350,24 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 147--148
  [][] 
  []
 
-<mapUMLdiagram.png, id=156, 583.17876pt x 282.05376pt>
+
+
+[8 <./ObserverPattern.png>]
+<mapUMLdiagram.png, id=162, 583.17876pt x 282.05376pt>
 File: mapUMLdiagram.png Graphic file (type png)
 <use mapUMLdiagram.png>
 Package pdftex.def Info: mapUMLdiagram.png  used on input line 166.
 (pdftex.def)             Requested size: 256.0748pt x 123.8544pt.
-
-
-[8 <./ObserverPattern.png>]
-<SceneStructureDiagram.png, id=165, 623.32875pt x 532.99126pt>
+<SceneStructureDiagram.png, id=163, 623.32875pt x 532.99126pt>
 File: SceneStructureDiagram.png Graphic file (type png)
 <use SceneStructureDiagram.png>
 Package pdftex.def Info: SceneStructureDiagram.png  used on input line 185.
 (pdftex.def)             Requested size: 256.0748pt x 218.967pt.
 
 
-[9 <./mapUMLdiagram.png>]
+[9
+
+ <./mapUMLdiagram.png>]
 <patternFactory.drawio.png, id=177, 633.36626pt x 693.59125pt>
 File: patternFactory.drawio.png Graphic file (type png)
 <use patternFactory.drawio.png>
@@ -578,7 +580,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  75i,8n,79p,527b,546s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Daniele\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/Daniele/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (23 pages, 428071 bytes).
+Output written on report.pdf (23 pages, 427685 bytes).
 PDF statistics:
  378 PDF objects out of 1000 (max. 8388607)
  89 named destinations out of 1000 (max. 500000)

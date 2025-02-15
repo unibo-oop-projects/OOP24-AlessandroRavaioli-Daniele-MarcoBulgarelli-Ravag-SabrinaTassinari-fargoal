@@ -7,7 +7,7 @@
 \usepackage{hyperref}
 \usepackage[italian]{cleveref}
 
-\title{OOP-FARGOAL}
+\title{FARGOAL}
 \author{
     Bulgarelli Marco, marco.bulgarelli6@studio.unibo.it \and 
     Ravaioli Alessandro, alessandro.ravaioli8@studio.unibo.it \and
@@ -40,7 +40,7 @@ La nostra versione cercherà di essere il più fedele possibile al gioco origina
     \item All’interno del piano saranno presenti due tipologie di oggetti di cui il giocatore potrà usufruire: dei bauli, che possono contenere degli oggetti magici o delle trappole, oppure delle sacche di monete.
     \item Il sistema di progresso del personaggio è legato all’accumulo di esperienza, che contribuisce all’aumentare del suo livello. Questa può essere ottenuta sia combattendo contro i mostri che offrendo donazioni in oro ai templi.
     \item In ogni piano sarà presente almeno un tempio, dove è possibile donare oro per salire di livello, rigenerare punti ferita e, ogni volta che sono state donate 2000 monete, di essere curati completamente. Inoltre, i templi garantiscono temporanea inattaccabilità ed una rigenerazione accelerata.
-    \item Una volta recuperata la spada, è necessario riportarla in superficie, ritornando al primo piano e salendo le scale per uscire dal labirinto. La sfida sta nel fatto che, appena presa in mano la spada partirà un timer di 15 minuti per ritornare in superficie, se il timer scade la partita è persa.
+    \item Una volta recuperata la spada, è necessario riportarla in superficie, ritornando al primo piano e salendo le scale per uscire dal labirinto. La sfida sta nel fatto che, appena presa in mano la spada, partirà un timer di 15 minuti per ritornare in superficie, se il timer scade la partita è persa.
 \end{itemize}
 
 \newpage
@@ -128,7 +128,7 @@ Grazie a questa suddivisione, il codice risulta più leggibile, modulare ed este
 
 \paragraph{Problema} Gestione dell’input da tastiera, evitando di creare dipendenze tra model e view.
 
-\paragraph{Soluzione} Utilizzo del pattern di progettazione Observer. \newline
+\paragraph{Soluzione} Utilizzo del \textit{pattern di progettazione Observer}. \newline
 %
 L’interfaccia \textit{View} è responsabile della ricezione degli input direttamente dal Client. Una volta acquisiti, questi input vengono trasmessi all’interfaccia \textit{InputController}, 
 %
@@ -149,7 +149,7 @@ con l’ambiente o l’utilizzo di oggetti.
     \label{img:ObserverPattern.png}
 \end{figure}
 
-
+\clearpage
 \subsection{Ravaioli Alessandro}
 
 Il mio ruolo principale riguardava la realizzazione della mappa e della struttura che gestisce gli elementi sul piano.
