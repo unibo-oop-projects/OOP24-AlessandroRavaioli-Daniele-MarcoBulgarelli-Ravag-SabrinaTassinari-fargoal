@@ -184,7 +184,8 @@ public final class Ai {
                     max++;
                     pos = monster.getPosition()
                             .add(new Position(LIST.get(RANDOM.nextInt(LIST_SIZE)), LIST.get(RANDOM.nextInt(LIST_SIZE))));
-                } while (max < MAX_SPIDER_TRY && (isInsideMap(monster, pos) || !positionList.contains(pos) || !monster.getLastPositions().contains(pos)));
+                } while (max < MAX_SPIDER_TRY 
+                        && (isInsideMap(monster, pos) || !positionList.contains(pos) || !monster.getLastPositions().contains(pos)));
                 monster.setPosition(pos);
             }
         } else if (xDistance < MAX_DISTANCE && yDistance < MAX_DISTANCE && floorManager.getPlayer().isVisible()) {
