@@ -20,13 +20,14 @@ import fargoal.model.interactable.pickupable.inside_chest.trap.impl.Teleport;
 import fargoal.model.interactable.pickupable.on_ground.BeaconOnGround;
 import fargoal.model.interactable.pickupable.on_ground.SackOfMoney;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
 /**
  * This class tests the interactables and the usables of the game.
  */
 class TestInteractable {
-    private static FloorManager floorManager = new FloorManagerImpl(new GameEngine());
+    private static FloorManager floorManager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
     private static final int N_DAMAGE = 5;
 
      /**

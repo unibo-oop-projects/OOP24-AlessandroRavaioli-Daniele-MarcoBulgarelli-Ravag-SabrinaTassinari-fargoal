@@ -24,6 +24,7 @@ import fargoal.model.interactable.stair.api.Stairs;
 import fargoal.model.interactable.stair.impl.DownStairs;
 import fargoal.model.interactable.stair.impl.UpStairs;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.map.api.FloorMap;
 import fargoal.model.map.api.FloorMask;
 import fargoal.model.map.impl.FloorGeneratorImpl;
@@ -46,6 +47,8 @@ public class FloorManagerImpl implements FloorManager {
     private static final int TIME_TO_WAIT_ON_EVENT = 1000;
     private static final int MINIMUM_SWORD_LEVEL = 15;
     private static final int VARIABLE_SWORD_LEVEL = 6;
+    private static final int SHORT_MINIMUM_SWORD_LEVEL = 3;
+    private static final int SHORT_VARIABLE_SWORD_LEVEL = 3;
 
     private final RenderEventListener listener;
     private final List<Monster> monsters;
@@ -68,8 +71,9 @@ public class FloorManagerImpl implements FloorManager {
     /**
      * Constructor that inizializes all of its fields.
      * @param engine - the GameEngine in which the program runs {@link GameEngine}
+     * @param length - the {@link MatchType} the dictates the length of the attempt
      */
-    public FloorManagerImpl(final GameEngine engine) {
+    public FloorManagerImpl(final GameEngine engine, final MatchType length) {
         this.rnd = new Random();
         this.listener = new RenderEventListener(engine.getView());
         this.monsters = new LinkedList<>();
@@ -81,8 +85,11 @@ public class FloorManagerImpl implements FloorManager {
         this.player = new PlayerImpl(this,
                 engine.getController(),
                 engine.getView());
-        this.sword = new SwordOfFargoal(renderFactory,
-                rnd.nextInt(VARIABLE_SWORD_LEVEL) + MINIMUM_SWORD_LEVEL);
+        this.sword = length.equals(MatchType.NORMAL)
+                ? new SwordOfFargoal(renderFactory,
+                        rnd.nextInt(VARIABLE_SWORD_LEVEL) + MINIMUM_SWORD_LEVEL)
+                : new SwordOfFargoal(renderFactory,
+                        rnd.nextInt(SHORT_VARIABLE_SWORD_LEVEL) + SHORT_MINIMUM_SWORD_LEVEL);
         this.isOver = false;
         initializeFloor();
     }

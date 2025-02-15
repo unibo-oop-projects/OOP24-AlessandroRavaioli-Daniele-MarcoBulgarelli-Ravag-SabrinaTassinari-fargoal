@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import fargoal.model.entity.player.impl.InventoryImpl;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.core.GameEngine;
 import fargoal.model.entity.player.api.Inventory;
@@ -16,7 +17,7 @@ import fargoal.model.entity.player.api.Player;
 
 class TestInventory {
     private Inventory inventory;
-    private final FloorManager manager = new FloorManagerImpl(new GameEngine());
+    private final FloorManager manager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
     private final Player player = manager.getPlayer();
     private final Inventory playerInventory = player.getInventory();
 

@@ -15,8 +15,8 @@ import fargoal.view.api.RenderFactory;
 public class Barbarian extends AbstractMonster {
 
     private static final int NEXT_MOVE = 3000;
-    private static final int MAX_WAIT = 2000;
     private static final int MINIMUM_WAIT = 1200;
+    private static final int MAX_WAIT = 2000;
     private final int minimumWait;
     private int nextMove;
 

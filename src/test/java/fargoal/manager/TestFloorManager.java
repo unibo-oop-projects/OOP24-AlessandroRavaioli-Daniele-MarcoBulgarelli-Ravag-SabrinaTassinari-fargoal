@@ -15,16 +15,19 @@ import fargoal.model.core.GameEngine;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.map.api.FloorMap;
 
 class TestFloorManager {
 
+    private static final int NUMBER_OF_FLOORS = 1000;
+
     private static FloorManager manager;
 
     @BeforeAll
     static void init() {
-        manager = new FloorManagerImpl(new GameEngine());
+        manager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
     }
 
     //Test to see if increaseFloorLevel and decreaseFloorLevel work appropriatly
@@ -98,6 +101,15 @@ class TestFloorManager {
         manager.getPlayer().setHasSword(true);
         assertDoesNotThrow(() -> manager.decreaseFloorLevel()); //NOPMD cannot change lambda expression
         manager.getPlayer().setHasSword(false);
+        resetConditions();
+    }
+
+    //Test to see if multiple floor changes give problems
+    @Test
+    void testContinousFloorGeneration() {
+        for (int i = 0; i < NUMBER_OF_FLOORS; i++) {
+            manager.increaseFloorLevel();
+        }
         resetConditions();
     }
 
