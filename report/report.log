@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2025.2.14)  15 FEB 2025 05:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.12) (preloaded format=pdflatex 2025.2.15)  15 FEB 2025 11:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Progetto OOP/Fargoal/OOP24-fargoal/report/report.tex"
-(c:/Progetto OOP/Fargoal/OOP24-fargoal/report/report.tex
+**/home/michele/Scrivania/ProgettoOOP/OOP24-fargoal/report/report.tex
+(/home/michele/Scrivania/ProgettoOOP/OOP24-fargoal/report/report.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
-(C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+(/home/michele/.miktex/texmfs/install/tex/latex/base/report.cls
 Document Class: report 2024/06/29 v1.4n Standard LaTeX document class
-(C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+(/home/michele/.miktex/texmfs/install/tex/latex/base/size10.clo
 File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count196
@@ -24,107 +24,115 @@ File: size10.clo 2024/06/29 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen141
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/base/inputenc.sty
 Package: inputenc 2024/02/08 v1.3d Input encoding file
 \inpenc@prehook=\toks17
 \inpenc@posthook=\toks18
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
+) (/home/michele/.miktex/texmfs/install/tex/generic/babel/babel.sty
 Package: babel 2025/02/02 v25.3 The multilingual framework for pdfLaTeX, LuaLaTeX and XeLaTeX
 \babel@savecnt=\count271
 \U@D=\dimen142
-\l@unhyphenated=\language79
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\l@unhyphenated=\language1
+ (/home/michele/.miktex/texmfs/install/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count272
 
 *************************************
 * Local config file bblopts.cfg used
 *
-(C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
+(/home/michele/.miktex/texmfs/install/tex/latex/arabi/bblopts.cfg
 File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
+) (/home/michele/.miktex/texmfs/install/tex/latex/babel-italian/italian.ldf
 Language: italian 2024/10/10 v.1.5.01 Italian support for the babel system
+
+
+Package babel Warning: No hyphenation patterns were preloaded for
+(babel)                the language 'Italian' into the format.
+(babel)                Please, configure your TeX system to add them and
+(babel)                rebuild the format. Now I will use the patterns
+(babel)                preloaded for \language=0 instead on input line 21.
+
 \it@lettering=\count273
 \it@doublequoteactive=\count274
 \it@ISOcompliance=\count275
-)) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/it\babel-italian.tex
+)) (/home/michele/.miktex/texmfs/install/tex/generic/babel/locale/it/babel-italian.tex
 Package babel Info: Importing font and identification data for italian
 (babel)             from babel-it.ini. Reported on input line 11.
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count276
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks19
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/graphics/graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/graphics/trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (/home/michele/.miktex/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+ (/home/michele/.miktex/texmfs/install/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen143
 \Gin@req@width=\dimen144
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count277
 \float@exts=\toks20
 \float@box=\box52
 \@float@everytoks=\toks21
 \@floatcapt=\box53
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2024-11-05 v7.01l Hypertext links for LaTeX
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+ (/home/michele/.miktex/texmfs/install/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+) (/home/michele/.miktex/texmfs/install/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+) (/home/michele/.miktex/texmfs/install/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+ (/home/michele/.miktex/texmfs/install/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+) (/home/michele/.miktex/texmfs/install/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+ (/home/michele/.miktex/texmfs/install/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+)) (/home/michele/.miktex/texmfs/install/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/hyperref/nameref.sty
 Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+) (/home/michele/.miktex/texmfs/install/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count278
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+) (/home/michele/.miktex/texmfs/install/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 \@linkdim=\dimen145
 \Hy@linkcounter=\count279
 \Hy@pagecounter=\count280
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+ (/home/michele/.miktex/texmfs/install/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2024-11-05 v7.01l Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (/home/michele/.miktex/texmfs/install/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count281
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+ (/home/michele/.miktex/texmfs/install/tex/latex/hyperref/puenc.def
 File: puenc.def 2024-11-05 v7.01l Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
@@ -137,15 +145,15 @@ Package hyperref Info: Backreferencing OFF on input line 4177.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4424.
 \c@Hy@tempcnt=\count282
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4763.
 \XeTeXLinkMargin=\dimen146
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+ (/home/michele/.miktex/texmfs/install/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+ (/home/michele/.miktex/texmfs/install/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
 \Fld@menulength=\count283
@@ -158,7 +166,7 @@ Package hyperref Info: backreferencing OFF on input line 6057.
 Package hyperref Info: Link coloring OFF on input line 6062.
 Package hyperref Info: Link coloring with OCG OFF on input line 6067.
 Package hyperref Info: PDF/A mode OFF on input line 6072.
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/base/atbegshi-ltx.sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
@@ -167,23 +175,23 @@ package with kernel methods
 \c@Hfootnote=\count286
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+ (/home/michele/.miktex/texmfs/install/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2024-11-05 v7.01l Hyperref driver for pdfTeX
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
 with kernel methods
 )
 \Fld@listcount=\count287
 \c@bookmark@seq@number=\count288
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+ (/home/michele/.miktex/texmfs/install/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
 \Hy@SectionHShift=\skip51
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/cleveref\cleveref.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/cleveref/cleveref.sty
 Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 Package cleveref Info: `hyperref' support loaded on input line 2370.
 LaTeX Info: Redefining \cref on input line 2370.
@@ -196,7 +204,7 @@ LaTeX Info: Redefining \cpagerefrange on input line 2370.
 LaTeX Info: Redefining \Cpagerefrange on input line 2370.
 LaTeX Info: Redefining \labelcref on input line 2370.
 LaTeX Info: Redefining \labelcpageref on input line 2370.
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+) (/home/michele/.miktex/texmfs/install/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count289
 \l__pdf_internal_box=\box54
@@ -232,7 +240,7 @@ italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting
 italian.ldf    on input line 19.
 
-(C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+(/home/michele/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count290
 \scratchdimen=\dimen149
@@ -245,16 +253,16 @@ italian.ldf    on input line 19.
 \MPnumerator=\count294
 \makeMPintoPDFobject=\count295
 \everyMPtoPDFconversion=\toks23
-) (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+) (/home/michele/.miktex/texmfs/install/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/grfext\grfext.sty
+ (/home/michele/.miktex/texmfs/install/tex/latex/grfext/grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
 )
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
- (C:\Users\marco\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+ (/home/michele/.miktex/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring OFF on input line 19.
@@ -272,7 +280,7 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 [1
 
-{C:/Users/marco/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (report.toc
+{/home/michele/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map}] (report.toc
 Package cleveref Info: loaded `italian' language definitions on input line 1.
 Package cleveref Info: loaded `italian' language definitions on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -295,6 +303,11 @@ l.24 \chapter
 ]
 Capitolo 1.
 
+Overfull \hbox (12.58398pt too wide) in paragraph at lines 43--44
+[]\OT1/cmr/m/n/10 Una volta recuperata la spada, ^^Re necessario riportarla in superficie, ritornando
+ []
+
+
 
 [2
 
@@ -310,6 +323,11 @@ Package pdftex.def Info: DiagrammaAnalisi.drawio.png  used on input line 62.
 
 [4 <./DiagrammaAnalisi.drawio.png>]
 Capitolo 2.
+
+Overfull \hbox (1.5888pt too wide) in paragraph at lines 71--81
+\OT1/cmr/m/n/10 in seguito notifica l'\OT1/cmr/m/it/10 InputController\OT1/cmr/m/n/10 . Quest'ultimo grazie all' \OT1/cmr/bx/n/10 InputComponent
+ []
+
 <MVCProgetto.png, id=136, 703.62875pt x 327.2225pt>
 File: MVCProgetto.png Graphic file (type png)
 <use MVCProgetto.png>
@@ -325,6 +343,25 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 84--85
 [5
 
  <./MVCProgetto.png>]
+Overfull \hbox (2.29886pt too wide) in paragraph at lines 97--98
+ []\OT1/cmr/bx/n/10 Soluzione[] \OT1/cmr/m/n/10 Suddivisione della gestione del Player in tre classi specifiche, ognuna
+ []
+
+
+Overfull \hbox (16.82797pt too wide) in paragraph at lines 105--120
+[]\OT1/cmr/m/n/10 La classe \OT1/cmr/m/it/10 PlayerImpl \OT1/cmr/m/n/10 si compone di due elementi fondamentali per la supervisione
+ []
+
+
+Overfull \hbox (6.44507pt too wide) in paragraph at lines 105--120
+\OT1/cmr/m/n/10 consentirne il riutilizzo anche da parte dei mostri, garantendo maggiore flessibilit^^Ra. 
+ []
+
+
+Overfull \hbox (8.15338pt too wide) in paragraph at lines 105--120
+\OT1/cmr/m/n/10 Grazie a questa suddivisione, il codice risulta pi^^Ru leggibile, modulare ed estensibile,
+ []
+
 <PlayerImpl.png, id=143, 628.3475pt x 605.26125pt>
 File: PlayerImpl.png Graphic file (type png)
 <use PlayerImpl.png>
@@ -338,6 +375,21 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 123--124
 
 
 [6]
+Overfull \hbox (39.04086pt too wide) in paragraph at lines 130--143
+\OT1/cmr/m/n/10 Client. Una volta acquisiti, questi input vengono trasmessi all'interfaccia \OT1/cmr/m/it/10 InputController\OT1/cmr/m/n/10 ,
+ []
+
+
+Overfull \hbox (8.834pt too wide) in paragraph at lines 130--143
+\OT1/cmr/m/n/10 premuti e in quale momento, traducendo questi comandi in istruzioni comprensibili
+ []
+
+
+Overfull \hbox (13.89023pt too wide) in paragraph at lines 130--143
+\OT1/cmr/m/n/10 per il gioco. Una volta ricevute le informazioni da \OT1/cmr/m/it/10 InputController\OT1/cmr/m/n/10 , \OT1/cmr/m/it/10 InputComponent
+ []
+
+
 
 [7 <./PlayerImpl.png>]
 <ObserverPattern.png, id=160, 673.51625pt x 365.365pt>
@@ -350,166 +402,265 @@ Overfull \hbox (24.88582pt too wide) in paragraph at lines 146--147
  [][] 
  []
 
-<patternFactory.drawio.png, id=161, 633.36626pt x 693.59125pt>
-File: patternFactory.drawio.png Graphic file (type png)
-<use patternFactory.drawio.png>
-Package pdftex.def Info: patternFactory.drawio.png  used on input line 160.
-(pdftex.def)             Requested size: 199.16928pt x 218.1014pt.
+
+Overfull \hbox (13.23643pt too wide) in paragraph at lines 161--162
+ []\OT1/cmr/bx/n/10 Problema[] \OT1/cmr/m/n/10 Bisogna generare la mappa del piano con possibilmente una sembianza
+ []
+
+<mapUMLdiagram.png, id=161, 583.17876pt x 282.05376pt>
+File: mapUMLdiagram.png Graphic file (type png)
+<use mapUMLdiagram.png>
+Package pdftex.def Info: mapUMLdiagram.png  used on input line 165.
+(pdftex.def)             Requested size: 256.0748pt x 123.8544pt.
 
 
 [8 <./ObserverPattern.png>]
-<patternTemplateItem.drawio.png, id=170, 704.6325pt x 704.6325pt>
+Overfull \hbox (0.81975pt too wide) in paragraph at lines 180--181
+ []\OT1/cmr/bx/n/10 Problema[] \OT1/cmr/m/n/10 Strutturare i gestori in modo da minimizzare il numero di modifiche
+ []
+
+<SceneStructureDiagram.png, id=170, 623.32875pt x 563.10374pt>
+File: SceneStructureDiagram.png Graphic file (type png)
+<use SceneStructureDiagram.png>
+Package pdftex.def Info: SceneStructureDiagram.png  used on input line 184.
+(pdftex.def)             Requested size: 256.0748pt x 231.33801pt.
+
+
+[9 <./mapUMLdiagram.png>]
+<patternFactory.drawio.png, id=180, 633.36626pt x 693.59125pt>
+File: patternFactory.drawio.png Graphic file (type png)
+<use patternFactory.drawio.png>
+Package pdftex.def Info: patternFactory.drawio.png  used on input line 201.
+(pdftex.def)             Requested size: 199.16928pt x 218.1014pt.
+
+
+[10 <./SceneStructureDiagram.png>]
+<patternTemplateItem.drawio.png, id=190, 704.6325pt x 704.6325pt>
 File: patternTemplateItem.drawio.png Graphic file (type png)
 <use patternTemplateItem.drawio.png>
-Package pdftex.def Info: patternTemplateItem.drawio.png  used on input line 177.
+Package pdftex.def Info: patternTemplateItem.drawio.png  used on input line 218.
 (pdftex.def)             Requested size: 199.16928pt x 199.16656pt.
 
 
-[9 <./patternFactory.drawio.png>]
+[11 <./patternFactory.drawio.png>]
 
-[10 <./patternTemplateItem.drawio.png>]
-<AbstractMonster.png, id=192, 362.35374pt x 343.2825pt>
+[12 <./patternTemplateItem.drawio.png>]
+<AbstractMonster.png, id=213, 362.35374pt x 343.2825pt>
 File: AbstractMonster.png Graphic file (type png)
 <use AbstractMonster.png>
-Package pdftex.def Info: AbstractMonster.png  used on input line 217.
+Package pdftex.def Info: AbstractMonster.png  used on input line 258.
 (pdftex.def)             Requested size: 199.16928pt x 188.6907pt.
 
+Overfull \hbox (0.35442pt too wide) in paragraph at lines 269--274
+ []\OT1/cmr/bx/n/10 Soluzione[] \OT1/cmr/m/n/10 Per riuscire a trovare una soluzione a questo problema, ho utilizzato
+ []
 
-[11 <./AbstractMonster.png>]
-<FactoryMethod.png, id=203, 442.65375pt x 234.8775pt>
+
+Overfull \hbox (9.38724pt too wide) in paragraph at lines 276--277
+[]\OT1/cmr/m/it/10 facilit^^Ra nell'uso: \OT1/cmr/m/n/10 basta richiamare il singolo metodo della factory \OT1/cmr/bx/n/10 generate()
+ []
+
+
+
+[13 <./AbstractMonster.png>]
+Overfull \hbox (12.64322pt too wide) in paragraph at lines 277--278
+[]\OT1/cmr/m/it/10 estendibilit^^Ra: \OT1/cmr/m/n/10 ^^Re possibile aggiungere un metodo specifico nell'implementazione
+ []
+
+
+Overfull \hbox (22.95377pt too wide) in paragraph at lines 278--279
+[]\OT1/cmr/m/it/10 divisione delle responsabilit^^Ra: \OT1/cmr/m/n/10 viene delegato ad una componenente specializzata
+ []
+
+<FactoryMethod.png, id=224, 442.65375pt x 234.8775pt>
 File: FactoryMethod.png Graphic file (type png)
 <use FactoryMethod.png>
-Package pdftex.def Info: FactoryMethod.png  used on input line 242.
+Package pdftex.def Info: FactoryMethod.png  used on input line 283.
 (pdftex.def)             Requested size: 199.16928pt x 105.68314pt.
-<MonsterMovement.png, id=204, 382.42876pt x 192.72pt>
+
+Overfull \hbox (5.9864pt too wide) in paragraph at lines 289--290
+ []\OT1/cmr/bx/n/10 Problema[] \OT1/cmr/m/n/10 Ogni nemico si deve muovere nella mappa autonomamente cercando,
+ []
+
+<MonsterMovement.png, id=225, 382.42876pt x 192.72pt>
 File: MonsterMovement.png Graphic file (type png)
 <use MonsterMovement.png>
-Package pdftex.def Info: MonsterMovement.png  used on input line 272.
+Package pdftex.def Info: MonsterMovement.png  used on input line 313.
 (pdftex.def)             Requested size: 199.16928pt x 100.36787pt.
 
 
-[12 <./FactoryMethod.png>]
+[14 <./FactoryMethod.png>]
 
-[13 <./MonsterMovement.png>]
+[15 <./MonsterMovement.png>]
 Capitolo 3.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 278.
+(hyperref)                than one, level fixed on input line 319.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 287--323
+Overfull \hbox (10.5974pt too wide) in paragraph at lines 322--323
+[]\OT1/cmr/bx/n/10 Inventario\OT1/cmr/m/n/10 , del quale si testa l'inizializzazione e la gestione degli incantesimi. 
+ []
+
+
+Overfull \hbox (15.68927pt too wide) in paragraph at lines 324--325
+[]\OT1/cmr/bx/n/10 Mostri\OT1/cmr/m/n/10 , dei quali viene testata la generazione idonea nel piano corrispondente,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 328--364
 
  []
 
 
 
-[14
+[16
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
+Underfull \hbox (badness 10000) in paragraph at lines 373--375
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
+Underfull \hbox (badness 10000) in paragraph at lines 373--375
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
+Underfull \hbox (badness 10000) in paragraph at lines 373--375
 \OT1/cmtt/m/n/10 java / fargoal / model / entity / player / impl / PlayerImpl . java #
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
+Underfull \hbox (badness 10000) in paragraph at lines 373--375
 \OT1/cmtt/m/n/10 L441-[]L445$[] []$https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--334
+Underfull \hbox (badness 10000) in paragraph at lines 373--375
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main / java /
  []
 
 
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 \OT1/cmtt/m/n/10 java / fargoal / model / entity / player / impl / PlayerImpl . java #
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 \OT1/cmtt/m/n/10 L443$[] []$https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 \OT1/cmtt/m/n/10 java / fargoal / model / entity / player / impl / PlayerImpl . java #
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 \OT1/cmtt/m/n/10 L457$[] []$https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--344
+Underfull \hbox (badness 10000) in paragraph at lines 382--385
 \OT1/cmtt/m/n/10 d519fa7565af74f3ad12632d480b3a3f8f15e8af / src / main / java /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ravag / OOP24-[]fargoal / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 363--364
+Underfull \hbox (badness 10000) in paragraph at lines 409--410
 \OT1/cmtt/m/n/10 cb5f09a083bb0696ec37722b48ac348cbd7187d8 / src / main / java / fargoal /
  []
 
 
 
-[16]
+[18]
 Capitolo 4.
 
 Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 368.
+(hyperref)                than one, level fixed on input line 414.
 
 
+Overfull \hbox (9.01923pt too wide) in paragraph at lines 417--424
+\OT1/cmr/m/n/10 L'esperienza si ^^Re rivelata estremamente formativa. Non solo ho avuto l'opportunit^^Ra
+ []
 
-[17
 
-]
+Overfull \hbox (8.6673pt too wide) in paragraph at lines 417--424
+\OT1/cmr/m/n/10 LaTeX. Questi strumenti non solo saranno utili per i corsi futuri, ma rappresentano
+ []
 
-[18]
-Appendice A.
+
+Overfull \hbox (19.22281pt too wide) in paragraph at lines 417--424
+\OT1/cmr/m/n/10 anche competenze che mi accompagneranno nel corso della mia carriera professionale. 
+ []
+
+
+Overfull \hbox (1.54695pt too wide) in paragraph at lines 417--424
+\OT1/cmr/m/n/10 un valore emotivo a questo progetto. Mi piacerebbe proseguire il lavoro, rifinendo
+ []
+
+
+Overfull \hbox (6.50052pt too wide) in paragraph at lines 417--424
+\OT1/cmr/m/n/10 nuovi elementi che possano arricchire ulteriormente l'esperienza di gioco e renderla
+ []
+
 
 
 [19
 
 ]
-Overfull \hbox (1.16798pt too wide) in paragraph at lines 447--448
-[]\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : que-sto in-can-te-si-mo vie-ne usa-to pre-men-do il $[]$.
+
+[20]
+Appendice A.
+
+
+[21
+
+]
+Overfull \hbox (1.16798pt too wide) in paragraph at lines 500--501
+[]\OT1/cmr/bx/n/10 Regeneration spell\OT1/cmr/m/n/10 : questo incantesimo viene usato premendo il $[]$.
+ []
+
+
+Overfull \hbox (10.65808pt too wide) in paragraph at lines 500--501
+\OT1/cmr/m/n/10 veloce; viene quindi riacquistato un punto ferita ogni 5 secondi; normalmente,
+ []
+
+
+Overfull \hbox (1.41736pt too wide) in paragraph at lines 505--506
+\OT1/cmr/m/n/10 bevuta in automatico, a patto che l'avventuriero ne abbia una in inventario,
+ []
+
+
+Overfull \hbox (4.73221pt too wide) in paragraph at lines 507--508
+\OT1/cmr/m/n/10 dungeon; quando il giocatore arriver^^Ra a quel piano la mappa sar^^Ra illuminata,
  []
 
 
 
-[20] (report.aux
+[22] (report.aux
 Package cleveref Info: loaded `italian' language definitions on input line 7.
 Package cleveref Info: loaded `italian' language definitions on input line 8.
 )
@@ -521,17 +672,17 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: AC10D95EC1D4DDB414072E5C17BEA3A9;2692.
  ) 
 Here is how much of TeX's memory you used:
- 11631 strings out of 473530
- 198855 string characters out of 5714794
- 657480 words of memory out of 5000000
- 34665 multiletter control sequences out of 15000+600000
+ 11662 strings out of 475467
+ 198484 string characters out of 5766644
+ 651687 words of memory out of 5000000
+ 34445 multiletter control sequences out of 15000+600000
  565153 words of font info for 57 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 75i,8n,79p,499b,521s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\marco\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/marco/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on report.pdf (21 pages, 398061 bytes).
+ 0 hyphenation exceptions out of 8191
+ 75i,8n,79p,509b,522s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/michele/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx10.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmbx12.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr12.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr17.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr6.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmti10.pfb></home/michele/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on report.pdf (23 pages, 431533 bytes).
 PDF statistics:
- 358 PDF objects out of 1000 (max. 8388607)
- 84 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 380 PDF objects out of 1000 (max. 8388607)
+ 95 named destinations out of 1000 (max. 500000)
+ 200 words of extra memory for PDF output out of 10000 (max. 10000000)
 

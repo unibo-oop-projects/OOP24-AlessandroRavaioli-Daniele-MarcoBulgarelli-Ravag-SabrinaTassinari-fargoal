@@ -13,42 +13,49 @@
 \contentsline {paragraph}{Soluzione}{6}{section*.4}%
 \contentsline {paragraph}{Problema}{7}{section*.5}%
 \contentsline {paragraph}{Soluzione}{7}{section*.6}%
-\contentsline {subsection}{\numberline {2.2.2}Ravaioli Alessandro}{9}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}Tassinari Sabrina}{9}{subsection.2.2.3}%
-\contentsline {subsubsection}{Generazione di item in un forziere}{9}{section*.7}%
-\contentsline {paragraph}{Problema}{9}{section*.8}%
+\contentsline {subsection}{\numberline {2.2.2}Ravaioli Alessandro}{8}{subsection.2.2.2}%
+\contentsline {subsubsection}{Generazione mappa del piano}{8}{section*.7}%
+\contentsline {paragraph}{Problema}{8}{section*.8}%
 \contentsline {paragraph}{Soluzione}{9}{section*.9}%
-\contentsline {subsubsection}{Riuso del codice per un determinato tipo di item}{9}{section*.10}%
+\contentsline {subsubsection}{Strutturare i gestori}{9}{section*.10}%
 \contentsline {paragraph}{Problema}{9}{section*.11}%
 \contentsline {paragraph}{Soluzione}{10}{section*.12}%
-\contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{10}{subsection.2.2.4}%
-\contentsline {subsubsection}{Struttura base dei nemici}{10}{section*.13}%
-\contentsline {paragraph}{Problema}{10}{section*.14}%
+\contentsline {subsection}{\numberline {2.2.3}Tassinari Sabrina}{11}{subsection.2.2.3}%
+\contentsline {subsubsection}{Generazione di item in un forziere}{11}{section*.13}%
+\contentsline {paragraph}{Problema}{11}{section*.14}%
 \contentsline {paragraph}{Soluzione}{11}{section*.15}%
-\contentsline {subsubsection}{Creazione dei nemici}{11}{section*.16}%
+\contentsline {subsubsection}{Riuso del codice per un determinato tipo di item}{11}{section*.16}%
 \contentsline {paragraph}{Problema}{11}{section*.17}%
 \contentsline {paragraph}{Soluzione}{11}{section*.18}%
-\contentsline {subsubsection}{Movimento dei nemici}{12}{section*.19}%
+\contentsline {subsection}{\numberline {2.2.4}Tramonti Daniele}{12}{subsection.2.2.4}%
+\contentsline {subsubsection}{Struttura base dei nemici}{12}{section*.19}%
 \contentsline {paragraph}{Problema}{12}{section*.20}%
-\contentsline {paragraph}{Soluzione}{12}{section*.21}%
-\contentsline {chapter}{\numberline {3}Sviluppo}{14}{chapter.3}%
-\contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{14}{subsection.3.0.1}%
-\contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{15}{subsection.3.0.2}%
-\contentsline {subsubsection}{Bulgarelli Marco}{15}{section*.22}%
-\contentsline {paragraph}{Utilizzo di lambda expression}{15}{section*.23}%
-\contentsline {paragraph}{Utilizzo di Stream, di Optional o di altri costrutti funzionali}{16}{section*.24}%
-\contentsline {subsubsection}{Ravaioli Alessandro}{16}{section*.25}%
-\contentsline {subsubsection}{Tassinari Sabrina}{16}{section*.26}%
-\contentsline {paragraph}{Utilizzo di lamba expression}{16}{section*.27}%
-\contentsline {paragraph}{Utilizzo di Stream}{16}{section*.28}%
-\contentsline {paragraph}{Utilizzo di Optional}{16}{section*.29}%
-\contentsline {subsubsection}{Tramonti Daniele}{16}{section*.30}%
-\contentsline {paragraph}{Utilizzo di Stream e lambda expression}{16}{section*.31}%
-\contentsline {chapter}{\numberline {4}Commenti finali}{17}{chapter.4}%
-\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{17}{subsection.4.0.1}%
-\contentsline {subsubsection}{Bulgarelli Marco}{17}{section*.32}%
-\contentsline {subsubsection}{Ravaioli Alessandro}{18}{section*.33}%
-\contentsline {subsubsection}{Tassinari Sabrina}{18}{section*.34}%
-\contentsline {subsubsection}{Tramonti Daniele}{18}{section*.35}%
-\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{18}{subsection.4.0.2}%
-\contentsline {chapter}{\numberline {A}Guida utente}{19}{appendix.Alph1}%
+\contentsline {paragraph}{Soluzione}{13}{section*.21}%
+\contentsline {subsubsection}{Creazione dei nemici}{13}{section*.22}%
+\contentsline {paragraph}{Problema}{13}{section*.23}%
+\contentsline {paragraph}{Soluzione}{13}{section*.24}%
+\contentsline {subsubsection}{Movimento dei nemici}{14}{section*.25}%
+\contentsline {paragraph}{Problema}{14}{section*.26}%
+\contentsline {paragraph}{Soluzione}{14}{section*.27}%
+\contentsline {chapter}{\numberline {3}Sviluppo}{16}{chapter.3}%
+\contentsline {subsection}{\numberline {3.0.1}Testing automatizzato}{16}{subsection.3.0.1}%
+\contentsline {subsection}{\numberline {3.0.2}Note di sviluppo}{17}{subsection.3.0.2}%
+\contentsline {subsubsection}{Bulgarelli Marco}{17}{section*.28}%
+\contentsline {paragraph}{Utilizzo di lambda expression}{17}{section*.29}%
+\contentsline {paragraph}{Utilizzo di Stream, di Optional o di altri costrutti funzionali}{18}{section*.30}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{18}{section*.31}%
+\contentsline {paragraph}{Utilizzo di Stream e lambda expression}{18}{section*.32}%
+\contentsline {subsubsection}{Tassinari Sabrina}{18}{section*.33}%
+\contentsline {paragraph}{Utilizzo di lamba expression}{18}{section*.34}%
+\contentsline {paragraph}{Utilizzo di Stream}{18}{section*.35}%
+\contentsline {paragraph}{Utilizzo di Optional}{18}{section*.36}%
+\contentsline {subsubsection}{Tramonti Daniele}{18}{section*.37}%
+\contentsline {paragraph}{Utilizzo di Stream e lambda expression}{18}{section*.38}%
+\contentsline {chapter}{\numberline {4}Commenti finali}{19}{chapter.4}%
+\contentsline {subsection}{\numberline {4.0.1}Autovalutazione e lavori futuri}{19}{subsection.4.0.1}%
+\contentsline {subsubsection}{Bulgarelli Marco}{19}{section*.39}%
+\contentsline {subsubsection}{Ravaioli Alessandro}{19}{section*.40}%
+\contentsline {subsubsection}{Tassinari Sabrina}{20}{section*.41}%
+\contentsline {subsubsection}{Tramonti Daniele}{20}{section*.42}%
+\contentsline {subsection}{\numberline {4.0.2}Difficoltà incontrate e commenti per i docenti}{20}{subsection.4.0.2}%
+\contentsline {chapter}{\numberline {A}Guida utente}{21}{appendix.Alph1}%
