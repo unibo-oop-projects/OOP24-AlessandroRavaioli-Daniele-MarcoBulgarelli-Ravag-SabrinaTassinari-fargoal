@@ -21,6 +21,8 @@ import fargoal.model.map.api.FloorMap;
 
 class TestFloorManager {
 
+    private static final int NUMBER_OF_FLOORS = 1000;
+
     private static FloorManager manager;
 
     @BeforeAll
@@ -99,6 +101,15 @@ class TestFloorManager {
         manager.getPlayer().setHasSword(true);
         assertDoesNotThrow(() -> manager.decreaseFloorLevel()); //NOPMD cannot change lambda expression
         manager.getPlayer().setHasSword(false);
+        resetConditions();
+    }
+
+    //Test to see if multiple floor changes give problems
+    @Test
+    void testContinousFloorGeneration() {
+        for (int i = 0; i < NUMBER_OF_FLOORS; i++) {
+            manager.increaseFloorLevel();
+        }
         resetConditions();
     }
 
