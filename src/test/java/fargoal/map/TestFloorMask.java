@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import fargoal.commons.api.Position;
 import fargoal.model.core.GameEngine;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.map.api.FloorMask;
 import fargoal.model.map.impl.FloorMaskImpl;
@@ -27,7 +28,7 @@ class TestFloorMask {
     @BeforeAll
     static void init() {
         mask = new FloorMaskImpl();
-        manager = new FloorManagerImpl(new GameEngine());
+        manager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
         checkMap = new HashMap<>();
         resetCheck();
     }

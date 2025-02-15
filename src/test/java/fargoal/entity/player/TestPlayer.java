@@ -15,6 +15,7 @@ import fargoal.model.interactable.pickupable.inside_chest.spell.api.SpellType;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
 //CHECKSTYLE: MagicNumber OFF
@@ -23,7 +24,7 @@ class TestPlayer {
 
     private static final Logger LOGGER = Logger.getLogger(TestPlayer.class.getName());
 
-    private final FloorManager manager = new FloorManagerImpl(new GameEngine());
+    private final FloorManager manager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
     private final PlayerImpl player = (PlayerImpl) manager.getPlayer();
 
     @Test

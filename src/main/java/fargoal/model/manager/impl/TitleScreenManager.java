@@ -6,6 +6,7 @@ import java.awt.Font;
 import fargoal.controller.input.api.MenuInputComponent;
 import fargoal.model.core.GameEngine;
 import fargoal.model.manager.api.AbstractMenuManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.view.api.Renderer;
 import fargoal.view.api.View;
 import fargoal.view.impl.SwingRendererMiddle;
@@ -18,7 +19,7 @@ import fargoal.view.impl.SwingView;
  */
 public class TitleScreenManager extends AbstractMenuManager {
 
-    private static final int NUMBER_OF_OPTIONS = 2;
+    private static final int NUMBER_OF_OPTIONS = 3;
     private static final int POSSIBILITIES_DIVISOR_WIDTH = 50;
     private static final int POSSIBILITIES_DIVISOR_HEIGHT = 7;
     private static final int GAME_START_MULTIPLIER_WIDTH = 21;
@@ -27,11 +28,13 @@ public class TitleScreenManager extends AbstractMenuManager {
     private static final int DIVISOR_FONT_TOP_HEIGHT = 4;
     private static final int DIVISOR_FONT_MIDDLE_HEIGHT = 100;
     private static final int DEFAULT_VALUE = 1;
+    private static final int EXIT_HEIGHT = 5;
 
     private Renderer menu;
     private Renderer title;
     private boolean timeToQuit;
     private boolean start;
+    private MatchType length;
 
     /**
      * Constructor that set all the local fields to the starting values.
@@ -61,16 +64,20 @@ public class TitleScreenManager extends AbstractMenuManager {
     /** {@inheritDoc} */
     @Override
     public void setSceneManager(final GameEngine engine) {
-        engine.setSceneManager(new FloorManagerImpl(engine));
+        engine.setSceneManager(new FloorManagerImpl(engine, this.length));
     }
 
     /** {@inheritDoc} */
     @Override
     public void select() {
         if (this.getSelected() == 1) {
-            start = true;
+            this.start = true;
+            this.length = MatchType.NORMAL;
+        } else if (this.getSelected() == 2) {
+            this.start = true;
+            this.length = MatchType.SHORT;
         } else {
-            timeToQuit = true;
+            this.timeToQuit = true;
         }
     }
 
@@ -89,9 +96,13 @@ public class TitleScreenManager extends AbstractMenuManager {
                         sView.getMapWidth() * GAME_START_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
                         sView.getMapHeight() * 1 / POSSIBILITIES_DIVISOR_HEIGHT);
                 g2d.setColor((this.getSelected() == 2) ? Color.cyan : Color.red);
+                g2d.drawString("SHORT GAME",
+                        sView.getMapWidth() * GAME_START_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
+                        sView.getMapHeight() * 3 / POSSIBILITIES_DIVISOR_HEIGHT);
+                g2d.setColor(this.getSelected() == 3 ? Color.cyan : Color.red);
                 g2d.drawString("EXIT",
                         sView.getMapWidth() * GAME_EXIT_MULTIPLIER_WIDTH / POSSIBILITIES_DIVISOR_WIDTH,
-                        sView.getMapHeight() * 3 / POSSIBILITIES_DIVISOR_HEIGHT);
+                        sView.getMapHeight() * EXIT_HEIGHT / POSSIBILITIES_DIVISOR_HEIGHT);
         }, view);
         this.title = new SwingRendererTop(g2d -> {
             g2d.setFont(new Font("Arial", Font.BOLD, sView.getEventPanel().getBounds().height * 1 / DIVISOR_FONT_TOP_HEIGHT));

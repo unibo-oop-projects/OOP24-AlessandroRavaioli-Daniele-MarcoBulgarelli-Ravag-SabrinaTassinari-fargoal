@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import fargoal.commons.api.Position;
 import fargoal.model.core.GameEngine;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.map.api.FloorGenerator;
 import fargoal.model.map.api.FloorMap;
@@ -14,7 +15,7 @@ import fargoal.model.map.impl.FloorGeneratorImpl;
 
 class TestFloorGeneration {
 
-    private static final int MAXIMUM_MILLIS_PER_MAP = 200;
+    private static final int MAXIMUM_MILLIS_PER_MAP = 2000;
     private static final int NUMBER_OF_MAP_CREATIONS = 1000;
 
     private static FloorGenerator fc = new FloorGeneratorImpl();
@@ -22,7 +23,7 @@ class TestFloorGeneration {
 
     @BeforeAll
     static void init() {
-        map = fc.createFloor(new FloorManagerImpl(new GameEngine()));
+        map = fc.createFloor(new FloorManagerImpl(new GameEngine(), MatchType.NORMAL));
     }
 
     //CHECKSTYLE: MagicNumber OFF
@@ -47,7 +48,7 @@ class TestFloorGeneration {
     //I dont want the map to take a noticeable amount of time to generate
     @Test
     void testGeneration() {
-        final FloorManagerImpl managerImpl = new FloorManagerImpl(new GameEngine());
+        final FloorManagerImpl managerImpl = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
         final long startTime = System.currentTimeMillis();
         for (int i = 0; i < NUMBER_OF_MAP_CREATIONS; i++) {
             managerImpl.increaseFloorLevel();

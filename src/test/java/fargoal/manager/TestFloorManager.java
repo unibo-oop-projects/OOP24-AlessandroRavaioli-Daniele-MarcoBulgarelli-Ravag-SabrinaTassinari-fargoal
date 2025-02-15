@@ -15,6 +15,7 @@ import fargoal.model.core.GameEngine;
 import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.interactable.api.Interactable;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 import fargoal.model.map.api.FloorMap;
 
@@ -24,7 +25,7 @@ class TestFloorManager {
 
     @BeforeAll
     static void init() {
-        manager = new FloorManagerImpl(new GameEngine());
+        manager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
     }
 
     //Test to see if increaseFloorLevel and decreaseFloorLevel work appropriatly

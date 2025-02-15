@@ -17,6 +17,7 @@ import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
 /**
@@ -28,7 +29,7 @@ class TestMonsterMovement {
 
     private static final int MAX_MOVE_TEST = 1000;
 
-    private static FloorManager manager = new FloorManagerImpl(new GameEngine());
+    private static FloorManager manager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
     private static MonsterFactory factory = new MonsterFactoryImpl(1);
     private static Random random = new Random();
 

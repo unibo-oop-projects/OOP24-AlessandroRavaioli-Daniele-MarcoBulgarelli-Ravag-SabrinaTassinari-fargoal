@@ -19,6 +19,7 @@ import fargoal.model.entity.monsters.api.Monster;
 import fargoal.model.entity.monsters.api.MonsterFactory;
 import fargoal.model.entity.monsters.impl.MonsterFactoryImpl;
 import fargoal.model.manager.api.FloorManager;
+import fargoal.model.manager.api.MatchType;
 import fargoal.model.manager.impl.FloorManagerImpl;
 
 /**
@@ -26,7 +27,7 @@ import fargoal.model.manager.impl.FloorManagerImpl;
  * to the player.
  */
 class TestMonsterDamage {
-    private static FloorManager floorManager = new FloorManagerImpl(new GameEngine());
+    private static FloorManager floorManager = new FloorManagerImpl(new GameEngine(), MatchType.NORMAL);
     private static Monster monster;
     private static MonsterFactory factory = new MonsterFactoryImpl(1);
     private static Random random = new Random(); 
